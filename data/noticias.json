@@ -1,0 +1,20 @@
+[
+  {
+    "id": "n-2026-06-12",
+    "categoria": "Actualización catastral",
+    "badge": "var(--tt-green-600)",
+    "fecha": "12 de junio de 2026",
+    "titulo": "Inicia la actualización catastral 2026 en las comunas del norte de Valledupar",
+    "extracto": "Los equipos de reconocimiento predial de Tuterritorio comenzaron el levantamiento de información en las comunas 5 y 6. El operativo actualizará linderos, áreas y destino económico de más de 18.000 predios urbanos.",
+    "imagen": "/assets/valledupar-panorama.jpg"
+  },
+  {
+    "id": "n-2026-05-30",
+    "categoria": "Comunidad",
+    "badge": "var(--tt-teal-500)",
+    "fecha": "30 de mayo de 2026",
+    "titulo": "Tuterritorio ha atendido a 2.713 usuarios en lo que va de 2026",
+    "extracto": "La oficina de gestión catastral y los canales en línea acompañan a cada vez más ciudadanos en sus trámites catastrales y de avalúo.",
+    "imagen": "/assets/valledupar-2.png"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  { "id": "g-001", "term": "Actualización catastral", "def": "Proceso mediante el cual se renueva la información de los predios para que refleje sus condiciones físicas, jurídicas y económicas actuales." },
+  { "id": "g-002", "term": "Alcaldía", "def": "Es el edificio, sede u órgano administrativo que representa institucionalmente al municipio.", "more": [
+    { "label": "Función", "text": "Administra los recursos públicos locales y presta servicios esenciales como agua potable, recolección de basura, mantenimiento de espacios públicos y seguridad." },
+    { "label": "Liderazgo", "text": "Está dirigida por un alcalde, elegido por voto popular, quien se encarga de cumplir y hacer cumplir las leyes locales y nacionales." },
+    { "label": "Más información", "text": "Consulta la guía de la Rama Ejecutiva – Orden Municipal, publicada por el Departamento Administrativo de la Función Pública." }
+  ] },
+  { "id": "g-003", "term": "Área construida", "def": "Suma de las superficies cubiertas de las edificaciones de un predio, medida sobre cada piso o nivel." },
+  { "id": "g-004", "term": "Área de terreno", "def": "Extensión superficial del suelo de un predio, delimitada por sus linderos y expresada en metros cuadrados o hectáreas." },
+  { "id": "g-005", "term": "Avalúo catastral", "def": "Valor asignado oficialmente a un predio por la autoridad catastral; sirve de base para liquidar el impuesto predial." },
+  { "id": "g-006", "term": "Avalúo comercial", "def": "Estimación del valor de mercado de un predio en una fecha determinada, realizada por un perito conforme a normas vigentes." },
+  { "id": "g-007", "term": "Catastro multipropósito", "def": "Sistema de información territorial que integra datos físicos, jurídicos y económicos del predio para múltiples usos públicos." },
+  { "id": "g-008", "term": "Cédula catastral", "def": "Documento que identifica un predio y reúne sus datos catastrales principales, como número predial, área y avalúo." },
+  { "id": "g-009", "term": "Conservación catastral", "def": "Conjunto de operaciones que mantienen al día la información catastral entre procesos de formación o actualización." },
+  { "id": "g-010", "term": "Destino económico", "def": "Clasificación del uso predominante de un predio (residencial, comercial, industrial, agropecuario, entre otros)." },
+  { "id": "g-011", "term": "Formación catastral", "def": "Conjunto de operaciones para identificar, describir y valorar por primera vez los predios de una zona." },
+  { "id": "g-012", "term": "Gestor catastral", "def": "Entidad pública habilitada para prestar el servicio de gestión catastral en un territorio; en Valledupar, Tuterritorio." },
+  { "id": "g-013", "term": "IGAC", "def": "Instituto Geográfico Agustín Codazzi; máxima autoridad catastral y reguladora del catastro en Colombia." },
+  { "id": "g-014", "term": "Impuesto predial unificado", "def": "Tributo municipal anual que grava la propiedad o posesión de un predio, calculado sobre su avalúo catastral." },
+  { "id": "g-015", "term": "Linderos", "def": "Líneas que delimitan un predio y lo separan de los predios vecinos y de los bienes de uso público." },
+  { "id": "g-016", "term": "Matrícula inmobiliaria", "def": "Folio único que la Oficina de Registro asigna a un inmueble para llevar su historia jurídica." },
+  { "id": "g-017", "term": "Mejora", "def": "Construcción o edificación levantada sobre un predio que incrementa su valor; puede pertenecer a un tercero distinto del dueño del suelo." },
+  { "id": "g-018", "term": "Municipio", "def": "Es una entidad territorial conformada por una población determinada y un área geográfica que incluye zonas urbanas y rurales.", "more": [
+    { "label": "Función", "text": "Es la base de la organización político-administrativa del Estado, diseñada para estar más cerca de los ciudadanos y gestionar sus necesidades de primera línea." },
+    { "label": "Más información", "text": "Consulta la guía de la Rama Ejecutiva – Orden Municipal, publicada por el Departamento Administrativo de la Función Pública." }
+  ] },
+  { "id": "g-019", "term": "Mutación", "def": "Cambio en los datos de un predio —área, propietario, linderos o uso— que debe reportarse a la autoridad catastral." },
+  { "id": "g-020", "term": "Número predial nacional", "def": "Código único de 30 dígitos que identifica de forma inequívoca cada predio del país." },
+  { "id": "g-021", "term": "Predio", "def": "Inmueble que pertenece a una o varias personas y está delimitado por sus linderos; unidad básica del catastro." },
+  { "id": "g-022", "term": "PSE", "def": "Proveedor de Servicios Electrónicos; plataforma para realizar pagos en línea, como el del impuesto predial." },
+  { "id": "g-023", "term": "Trámite catastral", "def": "Solicitud que realiza el ciudadano para crear, modificar o corregir la información catastral de su predio." },
+  { "id": "g-024", "term": "Zona homogénea física", "def": "Área con características de suelo, topografía y servicios similares, usada como base del avalúo." },
+  { "id": "g-025", "term": "Zona homogénea geoeconómica", "def": "Área con un valor de la tierra homogéneo, definida para asignar avalúos de forma equitativa." }
+]
