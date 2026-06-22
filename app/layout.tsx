@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import RevealManager from "@/components/motion/RevealManager";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { OverridesProvider } from "@/components/admin/Editable";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 // Inter auto-hospedada por Next (no se llama a Google Fonts en runtime)
 const inter = Inter({
@@ -29,16 +28,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body>
-        <a href="#main" className="skip-link">
-          Saltar al contenido
-        </a>
-        {/* Barra de progreso de scroll (colores de marca) — global en todo el sitio */}
-        <div id="scrollProg" />
         <AuthProvider>
           <OverridesProvider>
-            <Header />
-            <main id="main">{children}</main>
-            <Footer />
+            <SiteChrome>{children}</SiteChrome>
           </OverridesProvider>
         </AuthProvider>
         <RevealManager />

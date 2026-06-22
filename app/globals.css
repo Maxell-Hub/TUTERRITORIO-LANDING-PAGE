@@ -896,12 +896,20 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .up-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,.7); font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); color: var(--tt-navy-700); }
 
-/* ---- Página /admin ---- */
-.admin-page { min-height: 62vh; display: flex; align-items: center; justify-content: center;
-  padding: clamp(2.5rem,6vw,5rem) 20px; background: var(--tt-gray-50); }
-.admin-card { width: 100%; max-width: 460px; background: #fff; border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
-.admin-panel { padding: 22px 24px; display: flex; flex-direction: column; gap: 18px; }
+/* ---- Página /admin (pantalla independiente de login) ---- */
+.admin-auth { min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px; background: linear-gradient(180deg, #eef3f6 0%, #f8fafb 60%, #ffffff 100%); }
+.admin-auth-card { position: relative; width: 100%; max-width: 430px; background: #fff;
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 40px 34px 34px; text-align: center; overflow: hidden; }
+.admin-ribbon { display: block; height: 5px; width: 120px; margin: 18px auto 0; border-radius: 999px; background: var(--ribbon); }
+.admin-logo { display: block; height: 62px; width: auto; margin: 0 auto; object-fit: contain; }
+.admin-welcome { margin: 22px 0 0; font: var(--fw-extra) var(--fs-xl)/1.15 var(--font-display);
+  letter-spacing: var(--ls-tight); color: var(--tt-navy-700); }
+.admin-sub { margin: 8px 0 0; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-500); }
+.admin-form { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.admin-panel { margin-top: 24px; display: flex; flex-direction: column; gap: 18px; text-align: left; }
 .admin-help { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.55 var(--font-sans); color: var(--tt-gray-700); }
 .admin-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .admin-links .adm-btn { text-decoration: none; }
+.admin-panel .adm-btn.danger { align-self: flex-start; }
