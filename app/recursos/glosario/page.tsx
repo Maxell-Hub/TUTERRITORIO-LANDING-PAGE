@@ -24,11 +24,6 @@ export default function GlosarioPage() {
 
       <section id="glosario" className="rec-section green">
         <div className="rec-wrap">
-          <div className="rec-head" style={{ marginBottom: 26 }}>
-            <span style={{ font: "700 0.75rem/1 var(--font-sans)", letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--tt-green-600)" }}>Términos clave</span>
-            <h2><b>Glosario</b> catastral</h2>
-            <div className="rec-rule" />
-          </div>
           <Glosario />
         </div>
       </section>

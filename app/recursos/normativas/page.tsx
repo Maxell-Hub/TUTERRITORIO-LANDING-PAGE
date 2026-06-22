@@ -24,14 +24,6 @@ export default function NormativasPage() {
 
       <section id="normativas" className="rec-section blue">
         <div className="rec-wrap">
-          <div className="rec-head" style={{ marginBottom: 14 }}>
-            <span className="eyebrow-b">Marco legal</span>
-            <h2><b>Normativas</b> del catastro multipropósito</h2>
-            <div className="rec-rule" />
-          </div>
-          <p style={{ margin: "0 0 26px", maxWidth: "62ch", font: "400 1rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}>
-            Leyes, decretos, resoluciones y acuerdos que regulan la gestión catastral en Colombia y su aplicación en el municipio de Valledupar.
-          </p>
           <Normativas />
         </div>
       </section>
