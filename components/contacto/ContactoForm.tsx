@@ -75,13 +75,18 @@ export default function ContactoForm() {
 
         <div className="ct-row2">
           <div className="ct-field">
+            <label htmlFor="ct-cedula">Cédula <span style={{ color: "var(--tt-red-500)" }}>*</span></label>
+            <input id="ct-cedula" className="ct-input" required name="cedula" inputMode="numeric" placeholder="Tu número de cédula" />
+          </div>
+          <div className="ct-field">
             <label htmlFor="ct-correo">Correo electrónico <span style={{ color: "var(--tt-red-500)" }}>*</span></label>
             <input id="ct-correo" className="ct-input" required type="email" name="correo" placeholder="tucorreo@ejemplo.com" />
           </div>
-          <div className="ct-field">
-            <label htmlFor="ct-tel">Teléfono</label>
-            <input id="ct-tel" className="ct-input" type="tel" name="telefono" placeholder="+(57) 300 000 0000" />
-          </div>
+        </div>
+
+        <div className="ct-field">
+          <label htmlFor="ct-tel">Teléfono</label>
+          <input id="ct-tel" className="ct-input" type="tel" name="telefono" placeholder="+(57) 300 000 0000" />
         </div>
 
         <div className="ct-field">

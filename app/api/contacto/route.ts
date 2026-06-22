@@ -10,7 +10,7 @@ import { Resend } from "resend";
  *  - CONTACT_TO      (destino; por defecto sistemas@atghub.co)
  *  - CONTACT_FROM    (remitente verificado en Resend; por defecto el de pruebas)
  */
-const REQUIRED = ["nombre", "correo", "mensaje", "autorizacion"];
+const REQUIRED = ["nombre", "cedula", "correo", "mensaje", "autorizacion"];
 
 const TO = process.env.CONTACT_TO || "sistemas@atghub.co";
 const FROM = process.env.CONTACT_FROM || "Tuterritorio <onboarding@resend.dev>";
@@ -47,6 +47,7 @@ export async function POST(req: Request) {
   }
 
   const nombre = esc(body.nombre);
+  const cedula = esc(body.cedula);
   const correo = esc(body.correo);
   const telefono = esc(body.telefono) || "—";
   const mensaje = esc(body.mensaje).replace(/\n/g, "<br>");
@@ -55,7 +56,7 @@ export async function POST(req: Request) {
   // Versión de texto plano (mejora la entregabilidad / evita spam).
   const text =
     `Nuevo mensaje de contacto — Tuterritorio\n\n` +
-    `Nombre: ${body.nombre}\nCorreo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\n\n` +
+    `Nombre: ${body.nombre}\nCédula: ${body.cedula}\nCorreo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\n\n` +
     `Mensaje:\n${body.mensaje}\n\nRadicado: ${radicado}`;
 
   const html = `
@@ -85,6 +86,10 @@ export async function POST(req: Request) {
               <tr>
                 <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#6C757D;width:120px;vertical-align:top;">Nombre</td>
                 <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#163A4C;font-weight:bold;">${nombre}</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#6C757D;vertical-align:top;">Cédula</td>
+                <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#1A1A1A;">${cedula}</td>
               </tr>
               <tr>
                 <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#6C757D;vertical-align:top;">Correo</td>
