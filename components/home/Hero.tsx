@@ -33,7 +33,6 @@ export default function Hero() {
             asegura{" "}
             <span className="hero-tu">
               <span className="green">Tuterritorio</span>
-              <span className="underline" />
             </span>
           </h1>
           <Editable as="p" id="home.intro" multiline>
