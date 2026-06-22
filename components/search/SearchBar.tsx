@@ -40,10 +40,10 @@ export default function SearchBar() {
         fetch("/api/content/equipo").then((r) => r.json()).catch(() => []),
       ]);
       const items: Item[] = [];
-      if (Array.isArray(noticias)) noticias.forEach((n: { titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, text: n.extracto || "", href: "/noticias", cat: "Noticia" }));
-      if (Array.isArray(normativas)) normativas.forEach((n: { code?: string; desc?: string }) => n?.code && items.push({ title: n.code, text: n.desc || "", href: "/recursos/normativas", cat: "Normativa" }));
-      if (Array.isArray(glosario)) glosario.forEach((t: { term?: string; def?: string }) => t?.term && items.push({ title: t.term, text: t.def || "", href: "/recursos/glosario", cat: "Glosario" }));
-      if (Array.isArray(equipo)) equipo.forEach((m: { name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, text: `${m.role || ""} ${m.area || ""}`, href: "/nosotros/equipo", cat: "Equipo" }));
+      if (Array.isArray(noticias)) noticias.forEach((n: { id?: string; titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, text: n.extracto || "", href: n.id ? `/noticias#${n.id}` : "/noticias", cat: "Noticia" }));
+      if (Array.isArray(normativas)) normativas.forEach((n: { id?: string; code?: string; desc?: string }) => n?.code && items.push({ title: n.code, text: n.desc || "", href: n.id ? `/recursos/normativas#${n.id}` : "/recursos/normativas", cat: "Normativa" }));
+      if (Array.isArray(glosario)) glosario.forEach((t: { id?: string; term?: string; def?: string }) => t?.term && items.push({ title: t.term, text: t.def || "", href: t.id ? `/recursos/glosario#${t.id}` : "/recursos/glosario", cat: "Glosario" }));
+      if (Array.isArray(equipo)) equipo.forEach((m: { id?: string; name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, text: `${m.role || ""} ${m.area || ""}`, href: m.id ? `/nosotros/equipo#${m.id}` : "/nosotros/equipo", cat: "Equipo" }));
       setDynamic(items);
     } catch {
       /* ignore */
@@ -87,10 +87,7 @@ export default function SearchBar() {
   return (
     <div className="gc-search-wrap">
       <form className="gc-search" role="search" aria-label="Buscar en el sitio" onSubmit={onSubmit}>
-        <button type="button" className="seg" aria-label="Categoría de búsqueda: General">
-          General
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-        </button>
+        <span className="seg" aria-hidden="true">General</span>
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}

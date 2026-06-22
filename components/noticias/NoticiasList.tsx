@@ -7,6 +7,7 @@ import NewsEditor from "@/components/noticias/NewsEditor";
 import type { News } from "@/lib/content";
 import { DEFAULT_NOTICIAS } from "@/lib/content";
 import { saveContent } from "@/lib/saveContent";
+import { useScrollToHash } from "@/lib/useScrollToHash";
 
 const Arrow = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
@@ -62,6 +63,8 @@ export default function NoticiasList() {
     if (!confirm("¿Eliminar esta noticia? Esta acción no se puede deshacer.")) return;
     persist(news.filter((n) => n.id !== id));
   }
+
+  useScrollToHash(news);
 
   const chips = ["Todas", ...Array.from(new Set(news.map((n) => n.categoria).filter(Boolean)))];
   const filtered = cat === "Todas" ? news : news.filter((n) => n.categoria === cat);
@@ -119,7 +122,7 @@ export default function NoticiasList() {
       {/* Noticia destacada */}
       {featured ? (
         <section className="news-feat-section">
-          <a href="#" className="feat-card" onClick={(e) => isAdmin && e.preventDefault()}>
+          <a id={featured.id} href="#" className="feat-card" onClick={(e) => isAdmin && e.preventDefault()}>
             {isAdmin && (
               <div className="adm-card-actions">
                 <button className="adm-btn ghost sm" onClick={(e) => { e.preventDefault(); setEditing(featured); }}><PencilIcon /> Editar</button>
@@ -154,7 +157,7 @@ export default function NoticiasList() {
             </div>
             <div className="news-grid">
               {rest.map((n) => (
-                <a href="#" className="news-card" key={n.id} onClick={(e) => isAdmin && e.preventDefault()}>
+                <a id={n.id} href="#" className="news-card" key={n.id} onClick={(e) => isAdmin && e.preventDefault()}>
                   {isAdmin && (
                     <div className="adm-card-actions">
                       <button className="adm-btn ghost sm" onClick={(e) => { e.preventDefault(); setEditing(n); }}><PencilIcon /></button>

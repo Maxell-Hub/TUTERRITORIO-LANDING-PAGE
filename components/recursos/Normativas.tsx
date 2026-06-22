@@ -6,6 +6,7 @@ import NormEditor from "@/components/recursos/NormEditor";
 import type { Norm } from "@/lib/content";
 import { DEFAULT_NORMATIVAS } from "@/lib/content";
 import { saveContent } from "@/lib/saveContent";
+import { useScrollToHash } from "@/lib/useScrollToHash";
 
 const TONE: Record<string, { accent: string; soft: string; tag: string }> = {
   Leyes: { accent: "var(--tt-blue-700)", soft: "color-mix(in srgb, var(--tt-blue-700) 12%, #fff)", tag: "Ley" },
@@ -67,6 +68,8 @@ export default function Normativas() {
     persist(norms.filter((n) => n.id !== id));
   }
 
+  useScrollToHash(norms);
+
   const list = cat === "Todas" ? norms : norms.filter((n) => n.cat === cat);
   const isAdmin = !!user;
 
@@ -110,7 +113,7 @@ export default function Normativas() {
           {list.map((n) => {
             const tone = TONE[n.cat] ?? fallbackTone;
             return (
-              <div className="norm-row" key={n.id} style={{ borderLeft: `5px solid ${tone.accent}` }}>
+              <div id={n.id} className="norm-row" key={n.id} style={{ borderLeft: `5px solid ${tone.accent}` }}>
                 <span className="norm-tag" style={{ background: tone.soft, color: tone.accent }}>{tone.tag}</span>
                 <div>
                   <div className="norm-code">{n.code}</div>

@@ -6,6 +6,7 @@ import GlosarioEditor from "@/components/recursos/GlosarioEditor";
 import type { Term } from "@/lib/content";
 import { DEFAULT_GLOSARIO } from "@/lib/content";
 import { saveContent } from "@/lib/saveContent";
+import { useScrollToHash } from "@/lib/useScrollToHash";
 
 const norm = (s: string) => (s || "").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 
@@ -64,6 +65,8 @@ export default function Glosario() {
     if (!confirm("¿Eliminar este término? Esta acción no se puede deshacer.")) return;
     persist(glossary.filter((t) => t.id !== id));
   }
+
+  useScrollToHash(glossary);
 
   const withInitial = glossary.map((t) => ({ ...t, initial: norm(t.term).charAt(0).toUpperCase() }));
   const nq = norm(q);
@@ -133,7 +136,7 @@ export default function Glosario() {
             const expandable = more.length > 0 || t.def.length > 130;
             const open = openTerm === t.term;
             return (
-              <div className="term-card" key={t.id}>
+              <div id={t.id} className="term-card" key={t.id}>
                 <span className="term-badge" style={{ background: BADGES[i % BADGES.length] }}>{t.initial}</span>
                 <h3 className="term-name">{t.term}</h3>
                 <p className={`term-def${expandable && !open ? " term-clamp" : ""}`}>{t.def}</p>

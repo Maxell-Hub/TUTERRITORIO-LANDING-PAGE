@@ -7,6 +7,7 @@ import TeamEditor from "@/components/nosotros/TeamEditor";
 import type { Member } from "@/lib/content";
 import { DEFAULT_EQUIPO } from "@/lib/content";
 import { saveContent } from "@/lib/saveContent";
+import { useScrollToHash } from "@/lib/useScrollToHash";
 
 const UserIcon = ({ size = 26, stroke = "#fff", sw = 2 }: { size?: number; stroke?: string; sw?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
@@ -70,6 +71,8 @@ export default function EquipoTeam() {
     persist(members.filter((m) => m.id !== id));
   }
 
+  useScrollToHash(members);
+
   const isAdmin = !!user;
   const lead = members.filter((m) => m.area === "Liderazgo");
   const techCount = members.filter((m) => m.area !== "Liderazgo").length;
@@ -94,7 +97,7 @@ export default function EquipoTeam() {
 
           <div className="lead-grid">
             {lead.map((m) => (
-              <div key={m.id} className="member lift lead-card">
+              <div id={m.id} key={m.id} className="member lift lead-card">
                 <div className="lead-photo" style={{ background: "linear-gradient(135deg,#1E5167,#0C222F)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
                   {m.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -156,7 +159,7 @@ export default function EquipoTeam() {
                   </div>
                   <div className="avatar-grid">
                     {list.map((m) => (
-                      <div key={m.id} className="member">
+                      <div id={m.id} key={m.id} className="member">
                         <div className="avatar-ph" style={{ position: "relative", overflow: "hidden" }}>
                           {m.photo ? (
                             // eslint-disable-next-line @next/next/no-img-element
