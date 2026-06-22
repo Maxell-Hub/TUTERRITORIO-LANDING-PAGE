@@ -56,7 +56,7 @@ export default function NosotrosPage() {
             </div>
             <div className="reveal" data-dir="right" style={{ position: "relative" }}>
               <div className="intro-img">
-                <img src="/assets/valledupar-letras.jpg" data-parallax="0.6" alt="Monumento Valledupar, Ciudad de los Santos Reyes" />
+                <img src="/assets/valledupar-letras.jpg" data-parallax="0.6" alt="Monumento Valledupar, Ciudad de los Santos Reyes" loading="lazy" decoding="async" />
               </div>
               <span style={{ position: "absolute", left: -14, bottom: -14, display: "inline-flex", alignItems: "center", gap: 9, padding: "12px 18px", borderRadius: 12, background: "#163A4C", color: "#fff", font: "700 0.875rem/1.2 var(--font-sans)", boxShadow: "0 6px 22px rgba(14,34,51,.20)" }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#8FBE4E" }} /> Valledupar, Cesar

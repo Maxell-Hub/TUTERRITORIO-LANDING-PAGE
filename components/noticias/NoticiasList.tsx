@@ -166,7 +166,7 @@ export default function NoticiasList() {
                     </div>
                   )}
                   <div className="news-card-imgwrap">
-                    <img className="news-card-img" src={n.imagen} alt={n.titulo} />
+                    <img className="news-card-img" src={n.imagen} alt={n.titulo} loading="lazy" decoding="async" />
                     <span className="news-card-badge" style={{ background: n.badge }}>{n.categoria}</span>
                   </div>
                   <div className="news-card-body">

@@ -9,12 +9,12 @@ export default function Footer() {
       <div className="footer-wrap">
         <div className="footer-card">
           <div className="footer-top">
-            <img src="/assets/logo-tuterritorio-footer.png" alt="Tuterritorio" style={{ height: 92, width: "auto", objectFit: "contain", display: "block" }} />
+            <img src="/assets/logo-tuterritorio-footer.png" alt="Tuterritorio" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain", display: "block" }} />
             <div className="footer-marks">
-              <img src="/assets/escudo-valledupar.png" alt="Escudo de Valledupar" style={{ height: 60, display: "block" }} />
+              <img src="/assets/escudo-valledupar.png" alt="Escudo de Valledupar" loading="lazy" decoding="async" style={{ height: 60, display: "block" }} />
               <span className="sep" />
-              <img src="/assets/escudo-colombia-new.png" alt="Escudo de Colombia" style={{ height: 56, display: "block" }} />
-              <img src="/assets/bandera-tricolor.png" alt="Bandera de Colombia" style={{ height: 34, display: "block" }} />
+              <img src="/assets/escudo-colombia-new.png" alt="Escudo de Colombia" loading="lazy" decoding="async" style={{ height: 56, display: "block" }} />
+              <img src="/assets/bandera-tricolor.png" alt="Bandera de Colombia" loading="lazy" decoding="async" style={{ height: 34, display: "block" }} />
             </div>
           </div>
 
@@ -48,9 +48,9 @@ export default function Footer() {
       {/* gov.co bottom bar */}
       <div className="govco-bottom">
         <div className="govco-bottom-row">
-          <img src="/assets/co-colombia.png" alt="CO — Colombia" style={{ height: 46, display: "block" }} />
+          <img src="/assets/co-colombia.png" alt="CO — Colombia" loading="lazy" decoding="async" style={{ height: 46, display: "block" }} />
           <span className="sep" />
-          <img src="/assets/govco-white.png" alt="gov.co" style={{ height: 30, display: "block" }} />
+          <img src="/assets/govco-white.png" alt="gov.co" loading="lazy" decoding="async" style={{ height: 30, display: "block" }} />
         </div>
       </div>
     </footer>

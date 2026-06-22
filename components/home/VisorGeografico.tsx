@@ -53,7 +53,7 @@ export default function VisorGeografico() {
             className="reveal cm-stage"
             onMouseLeave={() => setActive(null)}
           >
-            <img className="cm-mapimg" src="/assets/valledupar-comunas.png" alt="Mapa de comunas de Valledupar" />
+            <img className="cm-mapimg" src="/assets/valledupar-comunas.png" alt="Mapa de comunas de Valledupar" loading="lazy" decoding="async" />
 
             {ORDER.map((n) => {
               const d = CM[n];
