@@ -7,6 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import Splash from "@/components/layout/Splash";
 
 type AuthCtx = {
   user: string | null;
@@ -30,6 +31,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const [user, setUser] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const [logoutSplash, setLogoutSplash] = useState(false);
 
   // Carga la sesión actual al montar.
   useEffect(() => {
@@ -90,11 +92,13 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     }
     setUser(null);
     notify("Sesión cerrada");
+    setLogoutSplash(true); // animación de pantalla de carga al cerrar sesión
   }, [notify]);
 
   return (
     <Ctx.Provider value={{ user, loading, login, logout, notify }}>
       {children}
+      {logoutSplash && <Splash onFinish={() => setLogoutSplash(false)} />}
       <div className="tt-toast-wrap" aria-live="polite" aria-atomic="true">
         {toasts.map((t) => (
           <div key={t.id} className={`tt-toast ${t.tone}`} role="status">
