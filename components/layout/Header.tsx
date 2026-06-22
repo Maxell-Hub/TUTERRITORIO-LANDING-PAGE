@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import SearchBar from "@/components/search/SearchBar";
 import { useAuth } from "@/components/auth/AuthProvider";
-import LoginModal from "@/components/auth/LoginModal";
 
 /**
  * Header institucional global (3 franjas: gov.co + marca + nav).
@@ -52,7 +51,6 @@ export default function Header() {
   const isHome = pathname === "/";
   const [active, setActive] = useState("#top");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const { user, logout } = useAuth();
 
   // Marca activo: en Inicio por scroll-spy; en otras páginas por prefijo de ruta.
@@ -105,26 +103,18 @@ export default function Header() {
           <a href="https://www.gov.co" aria-label="Portal del Estado Colombiano gov.co" style={{ display: "inline-flex", alignItems: "center" }}>
             <img src="/assets/govco-white.png" alt="gov.co" style={{ height: 24, display: "block" }} />
           </a>
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            {user ? (
-              <>
-                <span className="gc-welcome">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" />
-                  </svg>
-                  Bienvenido, {user}
-                </span>
-                <span style={{ width: 1, height: 18, background: "rgba(255,255,255,.45)" }} />
-                <button type="button" className="gc-auth gc-auth-btn" onClick={() => logout()}>Cerrar sesión</button>
-              </>
-            ) : (
-              <>
-                <button type="button" className="gc-auth gc-auth-btn" onClick={() => setShowLogin(true)}>Iniciar Sesión</button>
-                <span style={{ width: 1, height: 18, background: "rgba(255,255,255,.45)" }} />
-                <button type="button" className="gc-auth gc-auth-btn" onClick={() => setShowLogin(true)}>Registrarse</button>
-              </>
-            )}
-          </div>
+          {user && (
+            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+              <span className="gc-welcome">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" />
+                </svg>
+                Bienvenido, {user}
+              </span>
+              <span style={{ width: 1, height: 18, background: "rgba(255,255,255,.45)" }} />
+              <button type="button" className="gc-auth gc-auth-btn" onClick={() => logout()}>Cerrar sesión</button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -243,8 +233,6 @@ export default function Header() {
           ))}
         </nav>
       </aside>
-
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     </header>
   );
 }

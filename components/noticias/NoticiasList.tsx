@@ -18,8 +18,6 @@ const TrashIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /></svg>
 );
 
-const CHIPS = ["Todas", "Actualización catastral", "Avalúos", "Trámites", "Comunidad"];
-
 export default function NoticiasList() {
   const { user, notify } = useAuth();
   const [cat, setCat] = useState("Todas");
@@ -69,6 +67,7 @@ export default function NoticiasList() {
     persist(news.filter((n) => n.id !== id));
   }
 
+  const chips = ["Todas", ...Array.from(new Set(news.map((n) => n.categoria).filter(Boolean)))];
   const filtered = cat === "Todas" ? news : news.filter((n) => n.categoria === cat);
   const featured = filtered[0];
   const rest = filtered.slice(1);
@@ -99,7 +98,7 @@ export default function NoticiasList() {
           )}
 
           <div className="news-chips">
-            {CHIPS.map((label) => {
+            {chips.map((label) => {
               const active = label === cat;
               return (
                 <button

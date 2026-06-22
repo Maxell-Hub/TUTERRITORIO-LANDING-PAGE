@@ -6,6 +6,9 @@
 /out/
 /build
 
+# Imágenes subidas en local por el administrador (en producción van a Vercel Blob)
+/public/uploads
+
 # Variables de entorno (NO subir secretos al repositorio)
 .env
 .env.local
