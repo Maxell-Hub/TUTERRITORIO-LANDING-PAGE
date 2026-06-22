@@ -952,17 +952,13 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
     radial-gradient(36% 44% at 78% 12%, rgba(240,182,59,.16), transparent 70%),
     linear-gradient(135deg, #0C222F 0%, #0E2A39 38%, #1E5167 78%, #3B85A5 100%);
   transition: opacity .55s var(--ease-soft), visibility .55s; }
-/* Patrón de puntos sutil (identidad gov/Tuterritorio) */
-.splash::before { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(255,255,255,.10) 1.4px, transparent 1.6px); background-size: 26px 26px; opacity: .6; }
 /* Cinta multicolor de marca en el borde inferior */
 .splash::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--ribbon); }
 .splash-fade { opacity: 0; visibility: hidden; }
 
 .splash-brand { position: relative; z-index: 2; display: flex; align-items: center; gap: 20px; }
-/* Imagotipo sobre placa blanca para que resalte en el fondo oscuro */
-.splash-mark { width: 56px; height: 56px; object-fit: contain; flex: none; background: #fff;
-  padding: 12px; border-radius: 18px; box-shadow: 0 16px 40px rgba(6,18,26,.45);
+.splash-mark { width: 82px; height: 82px; object-fit: contain; flex: none;
+  filter: drop-shadow(0 12px 26px rgba(0,0,0,.35));
   animation: splash-pop .6s var(--ease-soft) both; }
 
 /* Texto que se revela de izquierda a derecha (y sale de derecha a izquierda) */

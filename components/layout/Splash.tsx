@@ -1,32 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * Pantalla de carga inicial.
+ * Pantalla de carga con el logo animado:
  * - Aparece el imagotipo.
  * - El texto "Tuterritorio" se revela de izquierda a derecha.
- * - Al terminar de cargar, el texto desaparece de derecha a izquierda y la
- *   pantalla se desvanece.
- * Se monta una sola vez (en el layout): no reaparece al navegar entre páginas.
+ * - Al terminar, el texto desaparece de derecha a izquierda y se desvanece.
+ *
+ * Llama a `onFinish` cuando termina. Se usa SOLO en /admin (al entrar y al
+ * iniciar sesión), no en el resto del sitio.
  */
-export default function Splash() {
+export default function Splash({ onFinish }: { onFinish?: () => void }) {
   const [out, setOut] = useState(false); // el texto sale (derecha → izquierda)
-  const [fade, setFade] = useState(false); // se desvanece toda la pantalla
-  const [gone, setGone] = useState(false); // se desmonta
+  const [fade, setFade] = useState(false); // se desvanece la pantalla
+  const onFinishRef = useRef(onFinish);
+  onFinishRef.current = onFinish;
 
   useEffect(() => {
-    const t1 = setTimeout(() => setOut(true), 1600);
-    const t2 = setTimeout(() => setFade(true), 2200);
-    const t3 = setTimeout(() => setGone(true), 2750);
+    const t1 = setTimeout(() => setOut(true), 1400);
+    const t2 = setTimeout(() => setFade(true), 2000);
+    const t3 = setTimeout(() => onFinishRef.current?.(), 2500);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
     };
   }, []);
-
-  if (gone) return null;
 
   return (
     <div
