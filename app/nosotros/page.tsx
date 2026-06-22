@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export default function NosotrosPage() {
     <>
       {/* Banner */}
       <section style={{ background: "#0C222F" }}>
-        <img src="/assets/banner-bienvenidos.png" alt="Bienvenidos a Tu Territorio — Conectamos personas, transformamos lugares" style={{ display: "block", width: "100%", height: "auto" }} />
+        <Image src="/assets/banner-bienvenidos.png" alt="Bienvenidos a Tu Territorio — Conectamos personas, transformamos lugares" width={1672} height={941} priority sizes="100vw" style={{ display: "block", width: "100%", height: "auto" }} />
       </section>
 
       {/* Quiénes somos */}
@@ -56,7 +57,7 @@ export default function NosotrosPage() {
             </div>
             <div className="reveal" data-dir="right" style={{ position: "relative" }}>
               <div className="intro-img">
-                <img src="/assets/valledupar-letras.jpg" data-parallax="0.6" alt="Monumento Valledupar, Ciudad de los Santos Reyes" loading="lazy" decoding="async" />
+                <Image src="/assets/valledupar-letras.jpg" data-parallax="0.6" alt="Monumento Valledupar, Ciudad de los Santos Reyes" width={1600} height={1065} sizes="(max-width: 980px) 100vw, 50vw" />
               </div>
               <span style={{ position: "absolute", left: -14, bottom: -14, display: "inline-flex", alignItems: "center", gap: 9, padding: "12px 18px", borderRadius: 12, background: "#163A4C", color: "#fff", font: "700 0.875rem/1.2 var(--font-sans)", boxShadow: "0 6px 22px rgba(14,34,51,.20)" }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#8FBE4E" }} /> Valledupar, Cesar

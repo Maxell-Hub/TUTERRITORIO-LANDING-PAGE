@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useAuth } from "@/components/auth/AuthProvider";
 import NewsEditor from "@/components/noticias/NewsEditor";
 import type { News } from "@/lib/content";
@@ -131,7 +132,7 @@ export default function NoticiasList() {
               </div>
             )}
             <div className="feat-imgwrap">
-              <img className="feat-img" src={featured.imagen} alt={featured.titulo} />
+              <Image className="feat-img" src={featured.imagen} alt={featured.titulo} fill priority sizes="(max-width: 900px) 100vw, 50vw" />
               <span className="news-badge" style={{ background: featured.badge }}>{featured.categoria}</span>
             </div>
             <div className="feat-body">
@@ -166,7 +167,7 @@ export default function NoticiasList() {
                     </div>
                   )}
                   <div className="news-card-imgwrap">
-                    <img className="news-card-img" src={n.imagen} alt={n.titulo} loading="lazy" decoding="async" />
+                    <Image className="news-card-img" src={n.imagen} alt={n.titulo} fill sizes="(max-width: 700px) 100vw, 380px" />
                     <span className="news-card-badge" style={{ background: n.badge }}>{n.categoria}</span>
                   </div>
                   <div className="news-card-body">

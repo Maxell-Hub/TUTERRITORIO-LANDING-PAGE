@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type Comuna = { zone: string; name: string; c: string; uso: string; s: string[]; left: number; top: number; margin: string };
@@ -53,7 +54,7 @@ export default function VisorGeografico() {
             className="reveal cm-stage"
             onMouseLeave={() => setActive(null)}
           >
-            <img className="cm-mapimg" src="/assets/valledupar-comunas.png" alt="Mapa de comunas de Valledupar" loading="lazy" decoding="async" />
+            <Image className="cm-mapimg" src="/assets/valledupar-comunas.png" alt="Mapa de comunas de Valledupar" width={750} height={784} sizes="(max-width: 600px) 100vw, 520px" />
 
             {ORDER.map((n) => {
               const d = CM[n];

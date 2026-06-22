@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Editable from "@/components/admin/Editable";
 
 const Check = () => (
@@ -14,7 +15,13 @@ export default function Hero() {
       <div className="hero-blobB" />
 
       <div className="hero-map">
-        <img src="/assets/mapa-valledupar-pot.png" alt="Mapa de la estructura ecológica y comunas de Valledupar" />
+        <Image
+          src="/assets/mapa-valledupar-pot.png"
+          alt="Mapa de la estructura ecológica y comunas de Valledupar"
+          fill
+          priority
+          sizes="(max-width: 860px) 0px, 50vw"
+        />
       </div>
       <div className="hm-fade" />
 
