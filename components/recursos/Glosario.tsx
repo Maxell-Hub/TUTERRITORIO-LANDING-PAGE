@@ -5,6 +5,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import GlosarioEditor from "@/components/recursos/GlosarioEditor";
 import type { Term } from "@/lib/content";
 import { DEFAULT_GLOSARIO } from "@/lib/content";
+import { saveContent } from "@/lib/saveContent";
 
 const norm = (s: string) => (s || "").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 
@@ -42,15 +43,10 @@ export default function Glosario() {
   async function persist(next: Term[]) {
     setGlossary(next);
     try {
-      const res = await fetch("/api/content/glosario", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(next),
-      });
-      if (!res.ok) throw new Error();
+      await saveContent("glosario", next);
       notify("Cambios guardados");
-    } catch {
-      notify("No se pudieron guardar los cambios", "error");
+    } catch (e) {
+      notify(e instanceof Error ? e.message : "No se pudieron guardar los cambios", "error");
     }
   }
 

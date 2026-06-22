@@ -34,6 +34,16 @@ export async function PUT(req: Request, { params }: Ctx) {
     return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
   }
 
-  await writeContent(key, body);
+  try {
+    await writeContent(key, body);
+  } catch {
+    return NextResponse.json(
+      {
+        error:
+          "No se pudo guardar en el servidor. Si el sitio está en Vercel, conecta el almacenamiento 'Blob' (Storage → Create Database → Blob → Connect) y vuelve a desplegar.",
+      },
+      { status: 500 }
+    );
+  }
   return NextResponse.json({ ok: true });
 }

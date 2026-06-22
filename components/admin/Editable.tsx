@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { saveContent } from "@/lib/saveContent";
 
 /* ------------------------------------------------------------------
    Overrides: textos editables del sitio.
@@ -46,16 +47,11 @@ export function OverridesProvider({ children }: { children: React.ReactNode }) {
     (id: string, value: string) => {
       setValues((prev) => {
         const next = { ...prev, [id]: value };
-        fetch("/api/content/overrides", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(next),
-        })
-          .then((r) => {
-            if (!r.ok) throw new Error();
-            notify("Cambios guardados");
-          })
-          .catch(() => notify("No se pudieron guardar los cambios", "error"));
+        saveContent("overrides", next)
+          .then(() => notify("Cambios guardados"))
+          .catch((e) =>
+            notify(e instanceof Error ? e.message : "No se pudieron guardar los cambios", "error")
+          );
         return next;
       });
     },

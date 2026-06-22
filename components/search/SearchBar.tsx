@@ -1,49 +1,132 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
-/**
- * Buscador institucional. Por requisito, SOLO se monta en la página de Inicio.
- * Aquí queda cableado a /api/search (full-text de todo el sitio) — pendiente de
- * conectar el índice real cuando integremos las demás secciones + CMS.
- */
+type Item = { title: string; text: string; href: string; cat: string };
+
+const norm = (s: string) =>
+  (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+/** Páginas y secciones fijas del sitio. */
+const STATIC_ITEMS: Item[] = [
+  { title: "Inicio", text: "consulta tu predio catastro multipropósito valledupar avalúo impuesto predial linderos área", href: "/", cat: "Inicio" },
+  { title: "Nosotros", text: "quiénes somos misión visión funciones objetivos proceso catastral gestor", href: "/nosotros", cat: "Nosotros" },
+  { title: "Nuestro equipo", text: "liderazgo equipo técnico topografía jurídica sistemas atención al ciudadano integrantes", href: "/nosotros/equipo", cat: "Nosotros" },
+  { title: "Trámites y servicios", text: "incorporación de área rectificación desenglobe englobe inscripción de predio avalúo catastral cambio de destino cambio de propietario certificado plano predial carta catastral ficha predial", href: "/servicios", cat: "Servicios" },
+  { title: "Normativas", text: "leyes decretos resoluciones acuerdos marco legal catastro igac", href: "/recursos/normativas", cat: "Recursos" },
+  { title: "Glosario catastral", text: "términos definiciones conceptos catastro", href: "/recursos/glosario", cat: "Recursos" },
+  { title: "Noticias", text: "sala de prensa actualización catastral comunidad avalúos trámites", href: "/noticias", cat: "Noticias" },
+  { title: "Contactos", text: "dirección teléfono correo sede horario de atención mapa ubicación", href: "/contactos", cat: "Contactos" },
+  { title: "PQRSD", text: "peticiones quejas reclamos sugerencias denuncias radicar solicitud", href: "/pqrsd", cat: "Contactos" },
+];
+
 export default function SearchBar() {
+  const router = useRouter();
   const [q, setQ] = useState("");
+  const [focused, setFocused] = useState(false);
+  const [dynamic, setDynamic] = useState<Item[]>([]);
+  const loadedRef = useRef(false);
+
+  // Carga (una sola vez, al enfocar) el contenido editable para incluirlo.
+  async function loadIndex() {
+    if (loadedRef.current) return;
+    loadedRef.current = true;
+    try {
+      const [noticias, normativas, glosario, equipo] = await Promise.all([
+        fetch("/api/content/noticias").then((r) => r.json()).catch(() => []),
+        fetch("/api/content/normativas").then((r) => r.json()).catch(() => []),
+        fetch("/api/content/glosario").then((r) => r.json()).catch(() => []),
+        fetch("/api/content/equipo").then((r) => r.json()).catch(() => []),
+      ]);
+      const items: Item[] = [];
+      if (Array.isArray(noticias)) noticias.forEach((n: { titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, text: n.extracto || "", href: "/noticias", cat: "Noticia" }));
+      if (Array.isArray(normativas)) normativas.forEach((n: { code?: string; desc?: string }) => n?.code && items.push({ title: n.code, text: n.desc || "", href: "/recursos/normativas", cat: "Normativa" }));
+      if (Array.isArray(glosario)) glosario.forEach((t: { term?: string; def?: string }) => t?.term && items.push({ title: t.term, text: t.def || "", href: "/recursos/glosario", cat: "Glosario" }));
+      if (Array.isArray(equipo)) equipo.forEach((m: { name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, text: `${m.role || ""} ${m.area || ""}`, href: "/nosotros/equipo", cat: "Equipo" }));
+      setDynamic(items);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  const results = useMemo(() => {
+    const nq = norm(q).trim();
+    if (!nq) return [];
+    const words = nq.split(/\s+/);
+    const all = [...STATIC_ITEMS, ...dynamic];
+    return all
+      .map((it) => {
+        const hayTitle = norm(it.title);
+        const hay = hayTitle + " " + norm(it.text) + " " + norm(it.cat);
+        const matches = words.every((w) => hay.includes(w));
+        if (!matches) return null;
+        // Prioriza coincidencias en el título.
+        const score = words.every((w) => hayTitle.includes(w)) ? 0 : 1;
+        return { it, score };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a!.score - b!.score)
+      .slice(0, 8)
+      .map((r) => r!.it);
+  }, [q, dynamic]);
+
+  function go(href: string) {
+    setQ("");
+    setFocused(false);
+    router.push(href);
+  }
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!q.trim()) return;
-    // TODO: navegar a /buscar?q=... cuando exista el índice de búsqueda
-    window.location.href = `/buscar?q=${encodeURIComponent(q.trim())}`;
+    if (results.length) go(results[0].href);
   }
 
+  const showResults = focused && q.trim().length > 0;
+
   return (
-    <form className="gc-search" role="search" aria-label="Buscar en el sitio" onSubmit={onSubmit}>
-      <button type="button" className="seg" aria-label="Categoría de búsqueda: General">
-        General
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m6 9 6 6 6-6" />
-        </svg>
-      </button>
-      <input
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder="Realiza búsqueda..."
-        aria-label="Términos de búsqueda"
-      />
-      <button type="button" className="ic-btn" title="Búsqueda por voz" aria-label="Búsqueda por voz">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="9" y="2" width="6" height="12" rx="3" />
-          <path d="M5 10a7 7 0 0 0 14 0" />
-          <path d="M12 17v4" />
-        </svg>
-      </button>
-      <button type="submit" className="go-btn" title="Buscar" aria-label="Buscar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.3-4.3" />
-        </svg>
-      </button>
-    </form>
+    <div className="gc-search-wrap">
+      <form className="gc-search" role="search" aria-label="Buscar en el sitio" onSubmit={onSubmit}>
+        <button type="button" className="seg" aria-label="Categoría de búsqueda: General">
+          General
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+        </button>
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          onFocus={() => { setFocused(true); loadIndex(); }}
+          onBlur={() => setFocused(false)}
+          placeholder="Buscar en el sitio…"
+          aria-label="Términos de búsqueda"
+        />
+        <button type="submit" className="go-btn" title="Buscar" aria-label="Buscar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+        </button>
+      </form>
+
+      {showResults && (
+        <div className="search-results" role="listbox">
+          {results.length > 0 ? (
+            results.map((r, i) => (
+              <a
+                key={`${r.href}-${i}`}
+                href={r.href}
+                className="sr-item"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={(e) => { e.preventDefault(); go(r.href); }}
+              >
+                <span className="sr-cat">{r.cat}</span>
+                <span className="sr-body">
+                  <span className="sr-title">{r.title}</span>
+                  {r.text && <span className="sr-snippet">{r.text}</span>}
+                </span>
+              </a>
+            ))
+          ) : (
+            <div className="search-empty">No encontramos resultados para “{q}”.</div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }

@@ -136,7 +136,7 @@ export default function Header() {
               <img src="/assets/logo-catastro-vpar.png" alt="Alcaldía de Valledupar — Catastro" style={{ height: 52, width: 126, objectFit: "cover", display: "block" }} />
             </a>
           </div>
-          {isHome && <SearchBar />}
+          <SearchBar />
           <button
             type="button"
             className="nav-burger"

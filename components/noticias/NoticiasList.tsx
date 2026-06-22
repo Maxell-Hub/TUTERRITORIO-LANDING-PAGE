@@ -6,6 +6,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import NewsEditor from "@/components/noticias/NewsEditor";
 import type { News } from "@/lib/content";
 import { DEFAULT_NOTICIAS } from "@/lib/content";
+import { saveContent } from "@/lib/saveContent";
 
 const Arrow = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
@@ -42,15 +43,10 @@ export default function NoticiasList() {
   async function persist(next: News[]) {
     setNews(next);
     try {
-      const res = await fetch("/api/content/noticias", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(next),
-      });
-      if (!res.ok) throw new Error();
+      await saveContent("noticias", next);
       notify("Cambios guardados");
-    } catch {
-      notify("No se pudieron guardar los cambios", "error");
+    } catch (e) {
+      notify(e instanceof Error ? e.message : "No se pudieron guardar los cambios", "error");
     }
   }
 

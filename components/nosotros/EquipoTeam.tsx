@@ -6,6 +6,7 @@ import Editable from "@/components/admin/Editable";
 import TeamEditor from "@/components/nosotros/TeamEditor";
 import type { Member } from "@/lib/content";
 import { DEFAULT_EQUIPO } from "@/lib/content";
+import { saveContent } from "@/lib/saveContent";
 
 const UserIcon = ({ size = 26, stroke = "#fff", sw = 2 }: { size?: number; stroke?: string; sw?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
@@ -49,15 +50,10 @@ export default function EquipoTeam() {
   async function persist(next: Member[]) {
     setMembers(next);
     try {
-      const res = await fetch("/api/content/equipo", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(next),
-      });
-      if (!res.ok) throw new Error();
+      await saveContent("equipo", next);
       notify("Cambios guardados");
-    } catch {
-      notify("No se pudieron guardar los cambios", "error");
+    } catch (e) {
+      notify(e instanceof Error ? e.message : "No se pudieron guardar los cambios", "error");
     }
   }
 
