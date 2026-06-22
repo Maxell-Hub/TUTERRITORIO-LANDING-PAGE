@@ -61,45 +61,47 @@ export default function GlosarioEditor({ initial, onCancel, onSave }: Props) {
   return (
     <div className="tt-modal-overlay" onClick={onCancel}>
       <form
-        className="tt-modal adm-modal"
+        className="tt-modal news-editor"
         role="dialog"
         aria-modal="true"
         aria-label={initial ? "Editar término" : "Nuevo término"}
         onClick={(e) => e.stopPropagation()}
         onSubmit={submit}
       >
-        <div className="login-head">
+        <div className="ne-head">
           <div>
+            <span className="ne-kicker">Recursos · Glosario catastral</span>
             <h2>{initial ? "Editar término" : "Nuevo término"}</h2>
-            <p>Palabra del glosario catastral</p>
           </div>
           <button type="button" className="tt-modal-close" aria-label="Cerrar" onClick={onCancel}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
           </button>
         </div>
 
-        <div className="adm-modal-body">
-          <label className="adm-fld">
-            <span>Término</span>
-            <input value={term} onChange={(e) => setTerm(e.target.value)} required />
-          </label>
-          <label className="adm-fld">
-            <span>Definición</span>
-            <textarea value={def} onChange={(e) => setDef(e.target.value)} required />
+        <div className="ne-body">
+          <label className="ne-field">
+            <span className="ne-label">Término</span>
+            <input className="ne-input" value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Ej: Avalúo catastral" required />
           </label>
 
-          <div className="adm-fld">
-            <span>Detalles adicionales (opcional — aparecen en “Ver más”)</span>
+          <label className="ne-field">
+            <span className="ne-label">Definición</span>
+            <textarea className="ne-input" rows={3} value={def} onChange={(e) => setDef(e.target.value)} placeholder="Explicación en lenguaje claro" required />
+          </label>
+
+          <div className="ne-field">
+            <span className="ne-label">Detalles adicionales (opcional — aparecen en “Ver más”)</span>
             {more.map((m, i) => (
               <div key={i} className="gl-more-row">
                 <input
-                  className="gl-more-label"
+                  className="ne-input"
                   value={m.label}
                   onChange={(e) => setMoreField(i, "label", e.target.value)}
                   placeholder="Título (ej: Función)"
                 />
                 <textarea
-                  className="gl-more-text"
+                  className="ne-input"
+                  rows={2}
                   value={m.text}
                   onChange={(e) => setMoreField(i, "text", e.target.value)}
                   placeholder="Texto del detalle"
@@ -116,10 +118,10 @@ export default function GlosarioEditor({ initial, onCancel, onSave }: Props) {
           </div>
         </div>
 
-        <div className="adm-modal-foot">
+        <div className="ne-foot">
           <button type="button" className="adm-btn ghost" onClick={onCancel}>Cancelar</button>
           <button type="submit" className="adm-btn" disabled={busy}>
-            {busy ? "Guardando…" : "Guardar término"}
+            {busy ? "Guardando…" : initial ? "Guardar cambios" : "Agregar término"}
           </button>
         </div>
       </form>

@@ -32,7 +32,7 @@ export default function Hero() {
             Conoce tu predio,<br />
             asegura{" "}
             <span className="hero-tu">
-              <span className="green"><span className="white">Tu</span>territorio</span>
+              <span className="green">Tuterritorio</span>
               <span className="underline" />
             </span>
           </h1>

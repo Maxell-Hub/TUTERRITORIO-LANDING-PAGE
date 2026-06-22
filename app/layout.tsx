@@ -5,6 +5,7 @@ import RevealManager from "@/components/motion/RevealManager";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { OverridesProvider } from "@/components/admin/Editable";
 import SiteChrome from "@/components/layout/SiteChrome";
+import Splash from "@/components/layout/Splash";
 
 // Inter auto-hospedada por Next (no se llama a Google Fonts en runtime)
 const inter = Inter({
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body>
+        <Splash />
         <AuthProvider>
           <OverridesProvider>
             <SiteChrome>{children}</SiteChrome>

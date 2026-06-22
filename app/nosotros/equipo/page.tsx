@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
+import EquipoTeam from "@/components/nosotros/EquipoTeam";
 
 export const metadata: Metadata = {
   title: "Nuestro Equipo — Tuterritorio",
@@ -14,18 +15,6 @@ const NODES = [
   { l: 86, t: 74, s: 64, c: "#F0B63B", a: "tt-bobB 7.4s", sw: 26, sh: "0 10px 22px rgba(240,182,59,.4)", b: 4 },
   { l: 18, t: 78, s: 56, c: "#D83744", a: "tt-bobA 6.5s", sw: 24, sh: "0 10px 22px rgba(216,55,68,.32)", b: 4 },
   { l: 14, t: 50, s: 46, c: "#8FBE4E", a: "tt-bobB 5.8s", sw: 20, sh: "0 8px 18px rgba(143,190,78,.36)", b: 3 },
-];
-
-const LIDERAZGO = [
-  { g: "linear-gradient(135deg,#1E5167,#0C222F)", pill: "Dirección General", pillBg: "#EAF1F4", pillC: "#2A6580", role: "Directora(or) General" },
-  { g: "linear-gradient(135deg,#3E6E44,#2E5E38)", pill: "Gestión Catastral", pillBg: "#EAF1EC", pillC: "#2E5E38", role: "Jefe de la Oficina de Gestión Catastral" },
-];
-
-const AREAS = [
-  { c: "#3B85A5", t: "Topografía y campo", meta: "Levantamiento, reconocimiento predial y verificación de linderos · 8 integrantes", n: 8, icon: <><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z" /><path d="M9 3v15M15 6v15" /></> },
-  { c: "#4E8654", t: "Jurídica", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad · 5 integrantes", n: 5, icon: <><path d="M3 21h18M6 21V8l6-4 6 4v13M9 21v-6h6v6" /></> },
-  { c: "#E0A526", t: "Sistemas y datos", meta: "Información geográfica, bases de datos y plataformas digitales · 6 integrantes", n: 6, icon: <><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></> },
-  { c: "#D83744", t: "Atención al ciudadano", meta: "Orientación, recepción de solicitudes y acompañamiento · 6 integrantes", n: 6, icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></> },
 ];
 
 const UserIcon = ({ size = 26, stroke = "#fff", sw = 2 }: { size?: number; stroke?: string; sw?: number }) => (
@@ -67,73 +56,8 @@ export default function EquipoPage() {
         </div>
       </section>
 
-      {/* Liderazgo */}
-      <section className="sec-pad" style={{ background: "#fff" }}>
-        <div className="sec-wrap">
-          <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 48px", textAlign: "center" }}>
-            <span className="eyebrow-b">Liderazgo</span>
-            <Editable as="h2" id="equipo.lead-title" className="h2-nos">Quienes orientan nuestra gestión</Editable>
-            <span className="ribbon5 center" style={{ marginTop: 18, width: 110, height: 4 }} />
-          </div>
-          <div className="lead-grid reveal">
-            {LIDERAZGO.map((l) => (
-              <div key={l.pill} className="member lift lead-card">
-                <div className="lead-photo" style={{ background: l.g, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <UserIcon size={56} stroke="rgba(255,255,255,.55)" sw={1.5} />
-                </div>
-                <div style={{ padding: "26px 24px 30px" }}>
-                  <span className="lead-pill" style={{ background: l.pillBg, color: l.pillC }}>{l.pill}</span>
-                  <h3 style={{ margin: "14px 0 0", font: "700 1.3125rem/1.25 var(--font-sans)", color: "var(--tt-navy-700)" }}>Nombre Apellido</h3>
-                  <p style={{ margin: "6px 0 0", font: "400 0.9375rem/1.4 var(--font-sans)", color: "var(--tt-gray-500)" }}>{l.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Equipo técnico (por áreas) */}
-      <section className="sec-pad" style={{ background: "var(--tt-gray-50)", paddingBottom: "clamp(5rem,9vw,8rem)" }}>
-        <div className="sec-wrap">
-          <div className="reveal" style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
-            <div style={{ maxWidth: "46rem" }}>
-              <span className="eyebrow-b">Equipo técnico</span>
-              <Editable as="h2" id="equipo.tech-title" className="h2-nos">Un equipo interdisciplinario</Editable>
-              <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}><Editable as="span" id="equipo.tech-intro" multiline>Más de 25 profesionales organizados por áreas de especialidad, trabajando de forma coordinada en cada etapa del proceso catastral.</Editable></p>
-            </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <span style={{ font: "800 clamp(2.6rem,5vw,3.6rem)/1 var(--font-sans)", color: "#3B85A5" }}>+25</span>
-              <span style={{ font: "600 0.9375rem/1.2 var(--font-sans)", color: "var(--tt-gray-500)" }}>profesionales</span>
-            </div>
-          </div>
-
-          <div className="team-stack">
-            {AREAS.map((area) => (
-              <div key={area.t} className="reveal team-area" style={{ borderLeft: `5px solid ${area.c}` }}>
-                <div className="head">
-                  <span className="ic" style={{ background: area.c }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{area.icon}</svg>
-                  </span>
-                  <div>
-                    <h3>{area.t}</h3>
-                    <p className="meta">{area.meta}</p>
-                  </div>
-                </div>
-                <div className="avatar-grid">
-                  {Array.from({ length: area.n }).map((_, i) => (
-                    <div key={i} className="member">
-                      <div className="avatar-ph"><UserIcon size={34} stroke="#A9B6BF" sw={1.6} /></div>
-                      <span className="cap">Nombre Apellido<small className="role">Cargo / perfil</small></span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ margin: "22px 0 0", font: "400 0.875rem/1.5 var(--font-sans)", color: "#9AA3AB" }}>* Áreas e integrantes son referenciales; las fotos y nombres se reemplazan con datos reales (idealmente desde el CMS).</p>
-        </div>
-      </section>
+      {/* Liderazgo + Equipo técnico (editable por el administrador) */}
+      <EquipoTeam />
     </>
   );
 }

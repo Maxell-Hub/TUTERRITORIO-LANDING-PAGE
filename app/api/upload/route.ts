@@ -1,70 +1,55 @@
-import { NextResponse } from "next/server";
+import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { cookies } from "next/headers";
-import { promises as fs } from "fs";
-import path from "path";
 import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
-const MAX_BYTES = 8 * 1024 * 1024; // 8 MB
-
-function safeName(original: string): string {
-  const ext = (original.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
-  const base =
-    original
-      .replace(/\.[^.]+$/, "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "") // quita acentos
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 40) || "imagen";
-  return `${base}-${Date.now()}.${ext}`;
-}
-
-export async function POST(req: Request) {
-  // Solo administradores autenticados pueden subir imágenes.
-  const store = await cookies();
-  if (!verifyToken(store.get(SESSION_COOKIE)?.value)) {
-    return NextResponse.json({ error: "No autorizado" }, { status: 401 });
-  }
-
-  let file: File | null = null;
+/**
+ * Subida DIRECTA del navegador a Vercel Blob (no pasa el archivo por la función,
+ * así no aplica el límite de 4.5 MB de los endpoints serverless). El cliente usa
+ * `upload()` de @vercel/blob/client apuntando a esta ruta, que solo genera el
+ * token de subida tras verificar que hay sesión de administrador.
+ *
+ * Requiere que el proyecto tenga Vercel Blob conectado (variable
+ * BLOB_READ_WRITE_TOKEN). En local sin Blob, el cliente usa /api/upload-local.
+ */
+export async function POST(request: Request): Promise<Response> {
+  let body: HandleUploadBody;
   try {
-    const form = await req.formData();
-    const f = form.get("file");
-    if (f && typeof f !== "string") file = f as File;
+    body = (await request.json()) as HandleUploadBody;
   } catch {
-    return NextResponse.json({ error: "Solicitud inválida" }, { status: 400 });
+    return Response.json({ error: "Solicitud inválida" }, { status: 400 });
   }
 
-  if (!file) {
-    return NextResponse.json({ error: "No se recibió ninguna imagen" }, { status: 400 });
-  }
-  if (!file.type.startsWith("image/")) {
-    return NextResponse.json({ error: "El archivo debe ser una imagen" }, { status: 400 });
-  }
-  if (file.size > MAX_BYTES) {
-    return NextResponse.json({ error: "La imagen no puede superar los 8 MB" }, { status: 400 });
-  }
-
-  const filename = safeName(file.name || "imagen.jpg");
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
-
-  // Producción (Vercel): subir a Vercel Blob.
-  if (token) {
-    const { put } = await import("@vercel/blob");
-    const blob = await put(`noticias/${filename}`, file, {
-      access: "public",
-      contentType: file.type,
-      token,
-      addRandomSuffix: false,
+  try {
+    const json = await handleUpload({
+      body,
+      request,
+      onBeforeGenerateToken: async () => {
+        const store = await cookies();
+        if (!verifyToken(store.get(SESSION_COOKIE)?.value)) {
+          throw new Error("No autorizado");
+        }
+        return {
+          allowedContentTypes: [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "image/gif",
+            "image/avif",
+            "application/pdf",
+          ],
+          maximumSizeInBytes: 20 * 1024 * 1024, // 20 MB
+          addRandomSuffix: true,
+        };
+      },
+      onUploadCompleted: async () => {
+        /* sin post-proceso */
+      },
     });
-    return NextResponse.json({ url: blob.url });
+    return Response.json(json);
+  } catch (error) {
+    return Response.json(
+      { error: error instanceof Error ? error.message : "Error al subir" },
+      { status: 400 }
+    );
   }
-
-  // Local / servidor Node: guardar en public/uploads.
-  const buf = Buffer.from(await file.arrayBuffer());
-  const dir = path.join(process.cwd(), "public", "uploads");
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.join(dir, filename), buf);
-  return NextResponse.json({ url: `/uploads/${filename}` });
 }

@@ -1,0 +1,12 @@
+[
+  { "id": "m-l1", "name": "Nombre Apellido", "role": "Directora(or) General", "area": "Liderazgo" },
+  { "id": "m-l2", "name": "Nombre Apellido", "role": "Jefe de la Oficina de Gestión Catastral", "area": "Liderazgo" },
+  { "id": "m-t1", "name": "Nombre Apellido", "role": "Topógrafo", "area": "Topografía y campo" },
+  { "id": "m-t2", "name": "Nombre Apellido", "role": "Reconocedor predial", "area": "Topografía y campo" },
+  { "id": "m-j1", "name": "Nombre Apellido", "role": "Abogada(o)", "area": "Jurídica" },
+  { "id": "m-j2", "name": "Nombre Apellido", "role": "Analista jurídico", "area": "Jurídica" },
+  { "id": "m-s1", "name": "Nombre Apellido", "role": "Ingeniera(o) de sistemas", "area": "Sistemas y datos" },
+  { "id": "m-s2", "name": "Nombre Apellido", "role": "Analista SIG", "area": "Sistemas y datos" },
+  { "id": "m-a1", "name": "Nombre Apellido", "role": "Atención al ciudadano", "area": "Atención al ciudadano" },
+  { "id": "m-a2", "name": "Nombre Apellido", "role": "Orientadora(or)", "area": "Atención al ciudadano" }
+]

@@ -1,16 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 export default function AdminPage() {
-  const { user, loading, login, logout, notify } = useAuth();
+  const { user, loading, login, notify } = useAuth();
+  const router = useRouter();
   const [usr, setUsr] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const userRef = useRef<HTMLInputElement>(null);
+
+  // Si ya hay sesión (o apenas inicia), entra directo al sitio para editar.
+  useEffect(() => {
+    if (!loading && user) router.replace("/");
+  }, [loading, user, router]);
 
   useEffect(() => {
     if (!loading && !user) userRef.current?.focus();
@@ -21,41 +27,28 @@ export default function AdminPage() {
     setError("");
     setBusy(true);
     const res = await login(usr, pass);
-    setBusy(false);
     if (res.ok) {
       notify("Inicio de Sesión Exitoso");
+      router.replace("/");
     } else {
+      setBusy(false);
       setError(res.error || "No se pudo iniciar sesión");
     }
   }
 
   return (
     <section className="admin-auth">
+      <span className="admin-blob a" aria-hidden="true" />
+      <span className="admin-blob b" aria-hidden="true" />
+      <span className="admin-blob c" aria-hidden="true" />
+
       <div className="admin-auth-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="admin-logo" src="/assets/logo-imagotipo.png" alt="Tuterritorio" />
         <span className="admin-ribbon" />
 
         {user ? (
-          <>
-            <h1 className="admin-welcome">¡Hola, {user}!</h1>
-            <p className="admin-sub">Sesión iniciada como administrador</p>
-            <div className="admin-panel">
-              <p className="admin-help">
-                Entra a cualquier sección y verás los botones para agregar o editar
-                contenido directamente sobre la página.
-              </p>
-              <div className="admin-links">
-                <Link className="adm-btn" href="/noticias">Gestionar Noticias</Link>
-                <Link className="adm-btn ghost" href="/recursos/normativas">Normativas</Link>
-                <Link className="adm-btn ghost" href="/recursos/glosario">Glosario</Link>
-                <Link className="adm-btn ghost" href="/">Ir al inicio</Link>
-              </div>
-              <button type="button" className="adm-btn danger" onClick={() => logout()}>
-                Cerrar sesión
-              </button>
-            </div>
-          </>
+          <p className="admin-sub" style={{ marginTop: 22 }}>Entrando…</p>
         ) : (
           <>
             <h1 className="admin-welcome">¡Bienvenido a Tuterritorio!</h1>

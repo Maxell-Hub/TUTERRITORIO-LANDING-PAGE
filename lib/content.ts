@@ -121,6 +121,34 @@ export const DEFAULT_GLOSARIO: Term[] = [
   { id: "g-025", term: "Zona homogénea geoeconómica", def: "Área con un valor de la tierra homogéneo, definida para asignar avalúos de forma equitativa." },
 ];
 
+/* ------------------------------------------------------------------ */
+/* EQUIPO (Nuestro Equipo)                                             */
+/* ------------------------------------------------------------------ */
+
+export type Member = { id: string; name: string; role: string; area: string; photo?: string };
+
+/** Grupos del equipo. El primero es el liderazgo; el resto son áreas técnicas. */
+export const TEAM_AREAS = [
+  "Liderazgo",
+  "Topografía y campo",
+  "Jurídica",
+  "Sistemas y datos",
+  "Atención al ciudadano",
+];
+
+export const DEFAULT_EQUIPO: Member[] = [
+  { id: "m-l1", name: "Nombre Apellido", role: "Directora(or) General", area: "Liderazgo" },
+  { id: "m-l2", name: "Nombre Apellido", role: "Jefe de la Oficina de Gestión Catastral", area: "Liderazgo" },
+  { id: "m-t1", name: "Nombre Apellido", role: "Topógrafo", area: "Topografía y campo" },
+  { id: "m-t2", name: "Nombre Apellido", role: "Reconocedor predial", area: "Topografía y campo" },
+  { id: "m-j1", name: "Nombre Apellido", role: "Abogada(o)", area: "Jurídica" },
+  { id: "m-j2", name: "Nombre Apellido", role: "Analista jurídico", area: "Jurídica" },
+  { id: "m-s1", name: "Nombre Apellido", role: "Ingeniera(o) de sistemas", area: "Sistemas y datos" },
+  { id: "m-s2", name: "Nombre Apellido", role: "Analista SIG", area: "Sistemas y datos" },
+  { id: "m-a1", name: "Nombre Apellido", role: "Atención al ciudadano", area: "Atención al ciudadano" },
+  { id: "m-a2", name: "Nombre Apellido", role: "Orientadora(or)", area: "Atención al ciudadano" },
+];
+
 /**
  * "overrides": mapa de id de texto -> valor editado. Lo usan los componentes
  * <Editable> para reemplazar textos puntuales en Inicio, Nosotros, Servicios,
@@ -134,6 +162,7 @@ export function defaultFor(key: string): unknown {
   if (key === "noticias") return DEFAULT_NOTICIAS;
   if (key === "normativas") return DEFAULT_NORMATIVAS;
   if (key === "glosario") return DEFAULT_GLOSARIO;
+  if (key === "equipo") return DEFAULT_EQUIPO;
   if (key === "overrides") return DEFAULT_OVERRIDES;
   return null;
 }

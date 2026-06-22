@@ -122,7 +122,9 @@ export default function Header() {
       <div className="brand-row-bg">
         <div className="brand-row">
           <div className="brand-logos">
-            <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" style={{ height: 64, width: "auto", objectFit: "contain", display: "block" }} />
+            <a href="/" aria-label="Ir al inicio" style={{ display: "inline-flex" }}>
+              <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" style={{ height: 64, width: "auto", objectFit: "contain", display: "block" }} />
+            </a>
             <span className="brand-sep" />
             <a
               href="https://www.valledupar-cesar.gov.co/micro-site/8529E318-DCA9-F011-BFB4-08BFB81D5CA8/7839157F-F4DC-F011-AB1D-C45AB1C9846A"
