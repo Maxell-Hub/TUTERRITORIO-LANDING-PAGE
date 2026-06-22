@@ -37,6 +37,7 @@ export default function Splash({ onFinish }: { onFinish?: () => void }) {
       <span className="splash-blob a" aria-hidden="true" />
       <span className="splash-blob b" aria-hidden="true" />
       <span className="splash-blob c" aria-hidden="true" />
+      <span className="splash-blob d" aria-hidden="true" />
 
       <div className="splash-brand">
         {/* eslint-disable-next-line @next/next/no-img-element */}

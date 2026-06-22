@@ -15,7 +15,6 @@ export default function ContactosPage() {
     <>
       {/* HERO */}
       <section className="ct-hero">
-        <div className="ct-halftone" />
         <svg className="ct-swoosh" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 120 L0 64 C 360 8 1080 8 1440 64 L1440 120 Z" fill="#fff" /></svg>
 
         <div className="ct-hero-grid">
@@ -32,9 +31,6 @@ export default function ContactosPage() {
 
           {/* Escena animada de contacto */}
           <div className="ct-scene" aria-hidden="true">
-            <span className="ct-ripple" />
-            <span className="ct-ripple" style={{ animationDelay: "1.05s" }} />
-            <span className="ct-ripple" style={{ animationDelay: "2.1s" }} />
             <svg width="320" height="320" viewBox="0 0 320 320" style={{ position: "absolute", opacity: 0.5 }}>
               <circle className="ct-arc" cx="160" cy="160" r="120" fill="none" stroke="var(--tt-amber-500)" strokeWidth="2" strokeDasharray="6 10" strokeLinecap="round" style={{ animation: "ct-dash 3s linear infinite" }} />
             </svg>
