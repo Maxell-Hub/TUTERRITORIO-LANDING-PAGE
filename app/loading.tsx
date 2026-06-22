@@ -4,7 +4,7 @@ export default function Loading() {
       <div className="rl-stage">
         <span className="rl-ring" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="rl-logo" src="/assets/logo-mark.png" alt="" />
+        <img className="rl-logo" src="/assets/logo-imagotipo.png" alt="" />
       </div>
     </div>
   );

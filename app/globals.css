@@ -945,21 +945,28 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 
 /* ---- Pantalla de carga (splash) ---- */
 .splash { position: fixed; inset: 0; z-index: 3000; display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 30px; background: linear-gradient(135deg,#0C222F 0%,#0E2A39 40%,#1E5167 100%);
-  transition: opacity .6s var(--ease-soft), visibility .6s; }
-.splash-hide { opacity: 0; visibility: hidden; }
-.splash-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 170px; height: 170px; }
-.splash-logo { width: 150px; height: auto; object-fit: contain; position: relative; z-index: 2;
-  animation: splash-pop .7s var(--ease-soft) both, splash-pulse 1.8s ease-in-out .7s infinite; }
-.splash-ring { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(143,190,78,.55);
-  animation: splash-ringexp 1.8s ease-out infinite; }
-.splash-ring.two { animation-delay: .9s; border-color: rgba(89,169,196,.5); }
-.splash-bar { width: 180px; height: 4px; border-radius: 999px; background: rgba(255,255,255,.16); overflow: hidden; position: relative; }
+  justify-content: center; gap: 32px;
+  background: radial-gradient(120% 120% at 50% 25%, #ffffff 0%, #eef4f7 55%, #e3edf2 100%);
+  transition: opacity .55s var(--ease-soft), visibility .55s; }
+.splash-fade { opacity: 0; visibility: hidden; }
+
+.splash-brand { display: flex; align-items: center; gap: 18px; }
+.splash-mark { width: 76px; height: 76px; object-fit: contain; flex: none;
+  animation: splash-pop .6s var(--ease-soft) both; }
+
+/* Texto que se revela de izquierda a derecha (y sale de derecha a izquierda) */
+.splash-word { font: var(--fw-extra) clamp(2.2rem, 7vw, 3.2rem)/1 var(--font-display);
+  letter-spacing: var(--ls-tight); color: var(--tt-navy-700); white-space: nowrap;
+  clip-path: inset(0 100% 0 0); animation: splash-word-in .8s var(--ease-soft) .35s forwards; }
+.splash-out .splash-word { animation: splash-word-out .6s var(--ease-soft) forwards; }
+@keyframes splash-word-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes splash-word-out { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(0 100% 0 0); } }
+
+.splash-bar { width: 190px; height: 4px; border-radius: 999px; background: rgba(14,34,51,.10); overflow: hidden; position: relative; }
 .splash-bar > span { position: absolute; left: 0; top: 0; height: 100%; width: 38%; border-radius: 999px;
   background: var(--ribbon); animation: splash-bar 1.1s var(--ease-soft) infinite; }
-@keyframes splash-pop { 0% { opacity: 0; transform: scale(.78); } 60% { opacity: 1; } 100% { opacity: 1; transform: scale(1); } }
-@keyframes splash-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-@keyframes splash-ringexp { 0% { transform: scale(.7); opacity: .85; } 100% { transform: scale(1.75); opacity: 0; } }
+.splash-out .splash-bar { opacity: 0; transition: opacity .4s var(--ease-soft); }
+@keyframes splash-pop { 0% { opacity: 0; transform: scale(.7) rotate(-6deg); } 60% { opacity: 1; } 100% { opacity: 1; transform: scale(1) rotate(0); } }
 @keyframes splash-bar { 0% { transform: translateX(-130%); } 100% { transform: translateX(380%); } }
 
 /* ---- Loading de transición entre páginas ---- */
@@ -969,8 +976,10 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .rl-ring { position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--tt-gray-200);
   border-top-color: var(--tt-blue-700); animation: rl-spin .8s linear infinite; }
 @keyframes rl-spin { to { transform: rotate(360deg); } }
+@keyframes splash-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .splash-logo, .splash-ring, .splash-bar > span, .rl-logo, .rl-ring,
+  .splash-mark, .splash-word, .splash-bar > span, .rl-logo, .rl-ring,
   .admin-blob { animation: none !important; }
+  .splash-word { clip-path: inset(0 0 0 0) !important; }
 }
