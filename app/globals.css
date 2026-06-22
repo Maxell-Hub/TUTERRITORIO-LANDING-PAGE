@@ -946,15 +946,20 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 /* ---- Pantalla de carga (splash) — fondo corporativo ---- */
 .splash { position: fixed; inset: 0; z-index: 3000; overflow: hidden; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 34px;
-  background:
-    radial-gradient(40% 50% at 15% 20%, rgba(143,190,78,.16), transparent 70%),
-    radial-gradient(46% 56% at 86% 84%, rgba(89,169,196,.20), transparent 70%),
-    radial-gradient(34% 42% at 80% 14%, rgba(240,182,59,.12), transparent 70%),
-    linear-gradient(135deg, #fbfdfe 0%, #eef4f7 55%, #e3edf2 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #eef4f7 55%, #e3edf2 100%);
   transition: opacity .55s var(--ease-soft), visibility .55s; }
 /* Cinta multicolor de marca en el borde inferior */
-.splash::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--ribbon); }
+.splash::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--ribbon); z-index: 3; }
 .splash-fade { opacity: 0; visibility: hidden; }
+
+/* Destellos de color de marca flotando (fondo corporativo) */
+.splash-blob { position: absolute; z-index: 0; border-radius: 50%; filter: blur(16px); pointer-events: none; }
+.splash-blob.a { width: 440px; height: 440px; top: -130px; left: -110px;
+  background: radial-gradient(circle, rgba(143,190,78,.42), rgba(143,190,78,0) 70%); animation: tt-floatA 18s ease-in-out infinite; }
+.splash-blob.b { width: 400px; height: 400px; bottom: -140px; right: -110px;
+  background: radial-gradient(circle, rgba(89,169,196,.45), rgba(89,169,196,0) 70%); animation: tt-floatB 22s ease-in-out infinite; }
+.splash-blob.c { width: 300px; height: 300px; top: 52%; right: 14%;
+  background: radial-gradient(circle, rgba(240,182,59,.30), rgba(240,182,59,0) 70%); animation: tt-floatA 26s ease-in-out infinite; }
 
 .splash-brand { position: relative; z-index: 2; display: flex; align-items: center; gap: 22px; }
 .splash-mark { width: 110px; height: 110px; object-fit: contain; flex: none;
@@ -988,6 +993,6 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 
 @media (prefers-reduced-motion: reduce) {
   .splash-mark, .splash-word, .splash-bar > span, .rl-logo, .rl-ring,
-  .admin-blob { animation: none !important; }
+  .admin-blob, .splash-blob { animation: none !important; }
   .splash-word { clip-path: inset(0 0 0 0) !important; }
 }

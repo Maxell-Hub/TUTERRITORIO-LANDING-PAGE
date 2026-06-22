@@ -34,6 +34,10 @@ export default function Splash({ onFinish }: { onFinish?: () => void }) {
       role="status"
       aria-label="Cargando Tuterritorio"
     >
+      <span className="splash-blob a" aria-hidden="true" />
+      <span className="splash-blob b" aria-hidden="true" />
+      <span className="splash-blob c" aria-hidden="true" />
+
       <div className="splash-brand">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="splash-mark" src="/assets/logo-imagotipo-tr.png" alt="Tuterritorio" />
