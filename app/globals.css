@@ -838,6 +838,12 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
   font: var(--fw-regular) var(--fs-base)/1 var(--font-sans); color: var(--tt-gray-900); outline: none; width: 100%;
   transition: box-shadow .2s var(--ease-soft), border-color .2s var(--ease-soft); }
 .fld input:focus { border-color: var(--tt-blue-700); box-shadow: 0 0 0 3px rgba(59,133,165,.25); }
+.fld-pass { position: relative; }
+.fld-pass input { width: 100%; padding-right: 46px; }
+.pass-toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px;
+  border: none; background: transparent; color: var(--tt-gray-500); cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; border-radius: 8px; transition: color .18s var(--ease-soft), background .18s var(--ease-soft); }
+.pass-toggle:hover { color: var(--tt-navy-700); background: var(--tt-gray-50); }
 .login-error { background: color-mix(in srgb, var(--tt-red-500) 12%, #fff); color: var(--tt-red-600);
   border: 1px solid color-mix(in srgb, var(--tt-red-500) 30%, #fff); border-radius: var(--radius-md);
   padding: 11px 14px; font: var(--fw-semibold) var(--fs-sm)/1.4 var(--font-sans); }
