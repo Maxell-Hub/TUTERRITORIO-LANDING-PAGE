@@ -212,6 +212,9 @@ export default function Header() {
             </svg>
           </button>
         </div>
+        <div className="nav-drawer-search">
+          <SearchBar />
+        </div>
         <nav className="nav-drawer-list">
           {NAV.map((item) => (
             <div key={item.label} className="nd-group">
