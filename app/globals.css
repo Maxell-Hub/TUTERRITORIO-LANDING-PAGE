@@ -273,7 +273,8 @@ img { max-width: 100%; }
 .visor-dots { position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(rgba(12,34,47,.045) 1.2px, transparent 1.3px); background-size: 24px 24px; }
 .visor-inner { position: relative; z-index: 1; max-width: var(--container-wide); margin: 0 auto; }
-.visor-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,520px); gap: clamp(2rem,5vw,4.5rem); align-items: center; }
+.visor-grid { display: grid; grid-template-columns: minmax(0,440px) minmax(0,600px); justify-content: center;
+  gap: clamp(1rem,2.5vw,2.4rem); align-items: center; }
 .visor-tag { display: inline-flex; align-items: center; gap: 9px; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans);
   letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--tt-blue-700); }
 .visor-tag .ln { width: 24px; height: 2px; background: var(--tt-green-600); border-radius: 2px; }
@@ -286,14 +287,14 @@ img { max-width: 100%; }
   background: color-mix(in srgb, var(--tt-green-500) 16%, #fff); align-items: center; justify-content: center; }
 .visor-list span.txt { font: var(--fw-semibold) var(--fs-md)/1.3 var(--font-sans); color: var(--tt-navy-700); }
 /* comunas interactive */
-.cm-stage { position: relative; width: 100%; max-width: 520px; margin: 0 auto; display: block; }
+.cm-stage { position: relative; width: 100%; max-width: 600px; margin: 0 auto; display: block; }
 .cm-mapimg { display: block; width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 22px 48px rgba(14,34,51,.16)); }
 /* Mapa de sectores catastrales: se funde con el fondo de la sección.
    - multiply hace que el fondo blanco de la imagen desaparezca sobre la sección.
    - la máscara radial difumina los bordes para que no se vea un recuadro. */
-.cm-mapimg.is-sectores { filter: none; mix-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(125% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 84%, transparent 100%);
-  mask-image: radial-gradient(125% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 84%, transparent 100%); }
+.cm-mapimg.is-sectores { filter: none; mix-blend-mode: multiply; transform: scale(1.06); transform-origin: center;
+  -webkit-mask-image: radial-gradient(116% 108% at 50% 50%, #000 42%, rgba(0,0,0,.55) 64%, rgba(0,0,0,.18) 82%, transparent 94%);
+  mask-image: radial-gradient(116% 108% at 50% 50%, #000 42%, rgba(0,0,0,.55) 64%, rgba(0,0,0,.18) 82%, transparent 94%); }
 .cm-dot { position: absolute; width: 26px; height: 26px; transform: translate(-50%,-50%); border-radius: 50%;
   border: 0; padding: 0; cursor: pointer; background: transparent; z-index: 2; }
 .cm-dot i { position: absolute; inset: 7px; border-radius: 50%; background: var(--c); border: 2px solid #fff;
