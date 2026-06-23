@@ -63,14 +63,13 @@ export async function POST(req: Request) {
   const direccion = esc(body.direccion) || "—";
   const asunto = esc(body.asunto);
   const descripcion = esc(body.descripcion).replace(/\n/g, "<br>");
-  const radicado = `TT-${Date.now()}`;
 
   const text =
     `Nueva PQRSD — Tuterritorio\n\n` +
     `Tipo: ${body.tipo}\nNombre: ${body.nombre}\n` +
     `Documento: ${body.tipoDocumento} ${body.documento}\n` +
     `Correo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\nDirección: ${body.direccion || "—"}\n\n` +
-    `Asunto: ${body.asunto}\n\nDescripción:\n${body.descripcion}\n\nRadicado: ${radicado}`;
+    `Asunto: ${body.asunto}\n\nDescripción:\n${body.descripcion}`;
 
   const row = (label: string, value: string, link?: string) => `
     <tr>
@@ -111,12 +110,12 @@ export async function POST(req: Request) {
             <div style="margin-top:8px;background:#f6f9fa;border-left:4px solid #3B85A5;border-radius:8px;padding:16px 18px;color:#333333;font-size:15px;line-height:1.7;">${descripcion}</div>
             <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;"><tr>
               <td style="border-radius:10px;background:#163A4C;">
-                <a href="mailto:${correo}?subject=Respuesta%20a%20tu%20PQRSD%20${radicado}%20-%20Tuterritorio" style="display:inline-block;padding:13px 28px;color:#ffffff;text-decoration:none;font-weight:bold;font-size:14px;">Responder a ${nombre}</a>
+                <a href="mailto:${correo}?subject=Respuesta%20a%20tu%20PQRSD%20-%20Tuterritorio" style="display:inline-block;padding:13px 28px;color:#ffffff;text-decoration:none;font-weight:bold;font-size:14px;">Responder a ${nombre}</a>
               </td>
             </tr></table>
           </td></tr>
           <tr><td style="background:#f6f9fa;padding:18px 32px;border-top:1px solid #eef1f3;">
-            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;">Radicado <strong style="color:#6C757D;">${radicado}</strong> · PQRSD generada automáticamente desde el sitio web de Tuterritorio.</div>
+            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;">PQRSD generada automáticamente desde el sitio web de Tuterritorio.</div>
           </td></tr>
         </table>
         <div style="color:#9AA3AB;font-size:11px;margin-top:16px;">Tuterritorio — Oficina de Catastro Multipropósito de Valledupar</div>
@@ -128,7 +127,7 @@ export async function POST(req: Request) {
   if (!apiKey) {
     // Sin clave configurada (p. ej. en local): no se envía, pero no se rompe.
     console.warn("[PQRSD] RESEND_API_KEY no configurada — el correo NO se envió.", { nombre, correo, asunto });
-    return NextResponse.json({ ok: true, radicado, warning: "email-no-configurado" }, { status: 200 });
+    return NextResponse.json({ ok: true, warning: "email-no-configurado" }, { status: 200 });
   }
 
   try {
@@ -137,7 +136,7 @@ export async function POST(req: Request) {
       from: FROM,
       to: [TO],
       replyTo: String(body.correo),
-      subject: `PQRSD ${tipo} — ${nombre} (${radicado})`,
+      subject: `PQRSD ${tipo} — ${nombre}`,
       html,
       text,
     });
@@ -150,5 +149,5 @@ export async function POST(req: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true, radicado }, { status: 200 });
+  return NextResponse.json({ ok: true }, { status: 200 });
 }
