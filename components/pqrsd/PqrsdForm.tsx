@@ -122,7 +122,6 @@ export default function PqrsdForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof Values, boolean>>>({});
   const [sending, setSending] = useState(false);
   const [ok, setOk] = useState(false);
-  const [radicado, setRadicado] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const honeyRef = useRef<HTMLInputElement>(null);
 
@@ -177,7 +176,6 @@ export default function PqrsdForm() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json?.error || "No se pudo radicar. Intenta de nuevo.");
-      setRadicado(json?.radicado || "");
       setOk(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
@@ -191,7 +189,6 @@ export default function PqrsdForm() {
     setValues(EMPTY);
     setErrors({});
     setTouched({});
-    setRadicado("");
     setOk(false);
   }
 
@@ -211,11 +208,6 @@ export default function PqrsdForm() {
             Tu solicitud fue enviada correctamente a nuestro equipo. Recibirás respuesta al correo
             registrado dentro de los términos de ley.
           </p>
-          {radicado && (
-            <p style={{ marginTop: -6 }}>
-              Número de radicado: <strong style={{ color: "var(--tt-navy-700)" }}>{radicado}</strong>
-            </p>
-          )}
           <button className="ct-reset" onClick={resetForm}>Radicar otra solicitud</button>
         </div>
       </div>
