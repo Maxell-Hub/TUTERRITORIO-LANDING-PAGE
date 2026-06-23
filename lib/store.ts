@@ -17,8 +17,16 @@ import { put, list } from "@vercel/blob";
 
 export const KEY_RE = /^[a-z0-9-]+$/;
 
+// Soporta dos modos:
+//  1) Token estático clásico: BLOB_READ_WRITE_TOKEN (uso local o externo).
+//  2) Store conectado al proyecto (modelo nuevo): BLOB_STORE_ID; en ese caso el
+//     SDK se autentica con las credenciales que Vercel inyecta y NO se pasa token.
 const BLOB_TOKEN = process.env.BLOB_READ_WRITE_TOKEN;
-const useBlob = !!BLOB_TOKEN;
+const BLOB_STORE_ID = process.env.BLOB_STORE_ID;
+const useBlob = !!(BLOB_TOKEN || BLOB_STORE_ID);
+
+/** Opciones de autenticación para el SDK: solo pasa token si existe el estático. */
+const tokenOpt: { token?: string } = BLOB_TOKEN ? { token: BLOB_TOKEN } : {};
 
 /** ¿Está configurado el almacenamiento Blob en este despliegue? */
 export const isBlobConfigured = useBlob;
@@ -48,7 +56,7 @@ async function writeFs(key: string, value: unknown): Promise<void> {
 async function readBlob<T>(key: string, fallback: T): Promise<T> {
   try {
     const name = `${key}.json`;
-    const { blobs } = await list({ prefix: name, token: BLOB_TOKEN });
+    const { blobs } = await list({ prefix: name, ...tokenOpt });
     const match = blobs.find((b) => b.pathname === name);
     if (!match) return fallback;
     const res = await fetch(match.url, { cache: "no-store" });
@@ -64,7 +72,7 @@ async function writeBlob(key: string, value: unknown): Promise<void> {
     contentType: "application/json",
     addRandomSuffix: false,
     allowOverwrite: true,
-    token: BLOB_TOKEN,
+    ...tokenOpt,
   });
 }
 
