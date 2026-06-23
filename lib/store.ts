@@ -20,6 +20,11 @@ export const KEY_RE = /^[a-z0-9-]+$/;
 const BLOB_TOKEN = process.env.BLOB_READ_WRITE_TOKEN;
 const useBlob = !!BLOB_TOKEN;
 
+/** ¿Está configurado el almacenamiento Blob en este despliegue? */
+export const isBlobConfigured = useBlob;
+/** ¿Corremos en Vercel (sistema de archivos de solo lectura, salvo /tmp)? */
+export const isServerless = !!process.env.VERCEL;
+
 const DATA_DIR = path.join(process.cwd(), "data");
 function fileFor(key: string): string {
   return path.join(DATA_DIR, `${key}.json`);

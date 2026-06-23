@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { readContent, writeContent, KEY_RE } from "@/lib/store";
+import { readContent, writeContent, KEY_RE, isBlobConfigured, isServerless } from "@/lib/store";
 import { defaultFor } from "@/lib/content";
 import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
@@ -36,14 +36,21 @@ export async function PUT(req: Request, { params }: Ctx) {
 
   try {
     await writeContent(key, body);
-  } catch {
-    return NextResponse.json(
-      {
-        error:
-          "No se pudo guardar en el servidor. Si el sitio está en Vercel, conecta el almacenamiento 'Blob' (Storage → Create Database → Blob → Connect) y vuelve a desplegar.",
-      },
-      { status: 500 }
-    );
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error("[content] Error al guardar:", key, detail);
+
+    // Diagnóstico claro según el entorno:
+    let error: string;
+    if (isServerless && !isBlobConfigured) {
+      // En Vercel pero sin token de Blob en ESTE despliegue (no se conectó o falta Redeploy).
+      error =
+        "El almacenamiento Blob no está conectado a este despliegue. En Vercel: Storage → conecta el Blob al proyecto, asegúrate de que la variable BLOB_READ_WRITE_TOKEN esté en el entorno de Producción y haz un nuevo Deploy (Redeploy).";
+    } else {
+      // Blob configurado u otro entorno: mostramos la causa real.
+      error = `No se pudo guardar: ${detail}`;
+    }
+    return NextResponse.json({ error }, { status: 500 });
   }
   return NextResponse.json({ ok: true });
 }
