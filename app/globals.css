@@ -288,18 +288,11 @@ img { max-width: 100%; }
 .visor-list span.txt { font: var(--fw-semibold) var(--fs-md)/1.3 var(--font-sans); color: var(--tt-navy-700); }
 /* comunas interactive */
 .cm-stage { position: relative; width: 100%; max-width: 600px; margin: 0 auto; display: block; }
-/* Capa de degradado que funde los bordes del mapa con el fondo de la sección */
-.cm-stage::after { content: ""; position: absolute; inset: -2%; z-index: 1; pointer-events: none;
-  background:
-    radial-gradient(120% 112% at 50% 50%, transparent 52%, color-mix(in srgb, #f5f7f9 70%, #fff) 86%, #f6f8fa 100%),
-    linear-gradient(180deg, #ffffff 0%, transparent 16%, transparent 84%, #f5f7f9 100%); }
 .cm-mapimg { display: block; width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 22px 48px rgba(14,34,51,.16)); }
 /* Mapa de sectores catastrales: se funde con el fondo de la sección.
    - multiply hace que el fondo blanco de la imagen desaparezca sobre la sección.
    - la máscara radial difumina los bordes para que no se vea un recuadro. */
-.cm-mapimg.is-sectores { filter: none; mix-blend-mode: multiply; transform: scale(1.06); transform-origin: center;
-  -webkit-mask-image: radial-gradient(116% 108% at 50% 50%, #000 42%, rgba(0,0,0,.55) 64%, rgba(0,0,0,.18) 82%, transparent 94%);
-  mask-image: radial-gradient(116% 108% at 50% 50%, #000 42%, rgba(0,0,0,.55) 64%, rgba(0,0,0,.18) 82%, transparent 94%); }
+.cm-mapimg.is-sectores { filter: none; mix-blend-mode: multiply; transform: scale(1.06); transform-origin: center; }
 .cm-dot { position: absolute; width: 26px; height: 26px; transform: translate(-50%,-50%); border-radius: 50%;
   border: 0; padding: 0; cursor: pointer; background: transparent; z-index: 2; }
 .cm-dot i { position: absolute; inset: 7px; border-radius: 50%; background: var(--c); border: 2px solid #fff;
