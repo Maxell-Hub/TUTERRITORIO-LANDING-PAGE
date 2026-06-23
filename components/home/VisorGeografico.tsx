@@ -8,15 +8,15 @@ type Sector = { zone: string; name: string; c: string; left: number; top: number
 // Sectores catastrales de Valledupar (mapa oficial). Posiciones de los puntos
 // sobre el mapa en %. El detalle de barrios/uso se completará con datos oficiales.
 const SC: Record<number, Sector> = {
-  4: { zone: "Norte", name: "Sector 4", c: "#E0867D", left: 40, top: 27 },
-  1: { zone: "Nor-oriente", name: "Sector 1", c: "#7FB98E", left: 53, top: 33 },
-  5: { zone: "Occidente", name: "Sector 5", c: "#9BB4C9", left: 28, top: 50 },
-  2: { zone: "Centro · Oriente", name: "Sector 2", c: "#86C0A0", left: 57, top: 53 },
-  6: { zone: "Sur-occidente", name: "Sector 6", c: "#E3C56B", left: 34, top: 69 },
-  3: { zone: "Sur", name: "Sector 3", c: "#B79BD4", left: 44, top: 78 },
+  4: { zone: "Norte", name: "Sector 4", c: "#E0867D", left: 42, top: 30 },
+  5: { zone: "Occidente", name: "Sector 5", c: "#E29B92", left: 22, top: 43 },
+  1: { zone: "Centro", name: "Sector 1", c: "#97BEDB", left: 40, top: 47 },
+  2: { zone: "Oriente", name: "Sector 2", c: "#86C0A0", left: 62, top: 50 },
+  6: { zone: "Sur-occidente", name: "Sector 6", c: "#E3C56B", left: 33, top: 64 },
+  3: { zone: "Sur", name: "Sector 3", c: "#B79BD4", left: 43, top: 73 },
 };
 
-const ORDER = [4, 1, 5, 2, 6, 3];
+const ORDER = [4, 5, 1, 2, 6, 3];
 
 const Check = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tt-green-600)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">

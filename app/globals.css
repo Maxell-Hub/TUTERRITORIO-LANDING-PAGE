@@ -269,7 +269,7 @@ img { max-width: 100%; }
 
 /* ---- VISOR GEOGRÁFICO ---- */
 .visor { position: relative; background: linear-gradient(180deg, #ffffff 0%, #f5f7f9 100%); overflow: hidden;
-  padding: clamp(2.2rem,4.2vw,3.4rem) clamp(1rem,5vw,61px) clamp(2.2rem,4vw,56px); }
+  padding: clamp(2.2rem,4.2vw,3.4rem) clamp(1rem,5vw,61px) 145px; }
 .visor-dots { position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(rgba(12,34,47,.045) 1.2px, transparent 1.3px); background-size: 24px 24px; }
 .visor-inner { position: relative; z-index: 1; max-width: var(--container-wide); margin: 0 auto; }
