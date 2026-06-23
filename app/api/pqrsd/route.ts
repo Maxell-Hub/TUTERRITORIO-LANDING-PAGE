@@ -13,7 +13,7 @@ import { Resend } from "resend";
 
 const REQUIRED = ["tipo", "nombre", "tipoDocumento", "documento", "correo", "asunto", "descripcion", "autorizacion"];
 
-const TO = process.env.PQRSD_TO || "sistemas@atghub.co";
+const TO = process.env.PQRSD_TO || "contactenos@tuterritorio.gov.co";
 const FROM = process.env.PQRSD_FROM || process.env.CONTACT_FROM || "Tuterritorio <onboarding@resend.dev>";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
