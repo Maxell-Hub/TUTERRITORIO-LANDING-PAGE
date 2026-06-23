@@ -12,7 +12,7 @@ import { Resend } from "resend";
  */
 const REQUIRED = ["nombre", "cedula", "correo", "mensaje", "autorizacion"];
 
-const TO = process.env.CONTACT_TO || "sistemas@atghub.co";
+const TO = process.env.CONTACT_TO || "contactenos@tuterritorio.gov.co";
 const FROM = process.env.CONTACT_FROM || "Tuterritorio <no-responder@tuterritorio.gov.co>";
 
 const esc = (s: unknown) =>

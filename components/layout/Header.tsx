@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchBar from "@/components/search/SearchBar";
 import { useAuth } from "@/components/auth/AuthProvider";
 
@@ -43,7 +43,7 @@ const NAV: NavItem[] = [
     ],
   },
   { label: "Noticias", href: "/noticias", match: "/noticias" },
-  { label: "Contactos", href: "/contactos", match: "/contactos" },
+  { label: "Contacto", href: "/contactos", match: "/contactos" },
 ];
 
 export default function Header() {
@@ -51,7 +51,20 @@ export default function Header() {
   const isHome = pathname === "/";
   const [active, setActive] = useState("#top");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const { user, logout } = useAuth();
+
+  // Detecta cuándo el menú de navegación queda fijado arriba (para animarlo).
+  useEffect(() => {
+    const onScroll = () => {
+      const el = navRef.current;
+      if (el) setStuck(el.getBoundingClientRect().top <= 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Marca activo: en Inicio por scroll-spy; en otras páginas por prefijo de ruta.
   const isActive = (item: NavItem) =>
@@ -153,7 +166,7 @@ export default function Header() {
       </div>
 
       {/* nav */}
-      <nav className="mainnav" aria-label="Navegación principal">
+      <nav ref={navRef} className={`mainnav${stuck ? " is-stuck" : ""}`} aria-label="Navegación principal">
         <div className="mainnav-row">
           {NAV.map((item) =>
             item.drop ? (
