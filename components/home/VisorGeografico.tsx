@@ -9,7 +9,7 @@ type Sector = { zone: string; name: string; c: string; left: number; top: number
 // sobre el mapa en %. El detalle de barrios/uso se completará con datos oficiales.
 // `left`/`top` en %: cada punto queda debajo de su recuadro "SECTOR N", separado.
 const SC: Record<number, Sector> = {
-  4: { zone: "Norte", name: "Sector 4", c: "#E0867D", left: 49, top: 38 },
+  4: { zone: "Norte", name: "Sector 4", c: "#E0867D", left: 50, top: 33 },
   5: { zone: "Occidente", name: "Sector 5", c: "#E29B92", left: 22, top: 44 },
   1: { zone: "Centro", name: "Sector 1", c: "#97BEDB", left: 38, top: 53 },
   2: { zone: "Oriente", name: "Sector 2", c: "#86C0A0", left: 63, top: 58 },
