@@ -12,7 +12,8 @@ import { Resend } from "resend";
  */
 const REQUIRED = ["nombre", "cedula", "correo", "mensaje", "autorizacion"];
 
-const TO = process.env.CONTACT_TO || "contactenos@tuterritorio.gov.co";
+// Destino fijo (no depende de la variable CONTACT_TO de Vercel).
+const TO = "contactenos@tuterritorio.gov.co";
 const FROM = process.env.CONTACT_FROM || "Tuterritorio <no-responder@tuterritorio.gov.co>";
 
 const esc = (s: unknown) =>
