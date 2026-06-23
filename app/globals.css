@@ -371,6 +371,10 @@ img { max-width: 100%; }
   background: #fff; font: var(--fw-regular) var(--fs-base)/1.4 var(--font-sans); color: var(--tt-gray-900); outline: none;
   transition: border-color .18s var(--ease-soft), box-shadow .18s var(--ease-soft); }
 .pq-input:focus { border-color: var(--tt-green-600); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tt-green-500) 22%, transparent); }
+.pq-input.is-invalid { border-color: var(--tt-red-500); }
+.pq-input.is-invalid:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--tt-red-500) 20%, transparent); }
+.pq-error { margin-top: 2px; font: var(--fw-semibold) var(--fs-sm)/1.4 var(--font-sans); color: var(--tt-red-600); }
+.pq-hint { margin-top: 2px; font: var(--fw-regular) var(--fs-sm)/1.4 var(--font-sans); color: var(--tt-gray-500); }
 .pq-submit { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; border: none; border-radius: var(--radius-button);
   background: var(--tt-green-600); color: #fff; font: var(--fw-bold) var(--fs-md)/1 var(--font-sans); cursor: pointer;
   box-shadow: var(--shadow-md); transition: background .18s var(--ease-soft), transform .18s var(--ease-soft); }
