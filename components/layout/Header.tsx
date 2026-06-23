@@ -106,9 +106,15 @@ export default function Header() {
     function spy() {
       const y = window.scrollY + 150;
       let cur = targets[0];
+      let best = -Infinity;
+      // Elige la sección realmente en pantalla: la de mayor offsetTop que ya pasó
+      // el umbral (no depende del orden del arreglo de targets).
       targets.forEach((t) => {
         const el = document.querySelector(t) as HTMLElement | null;
-        if (el && el.offsetTop <= y) cur = t;
+        if (el && el.offsetTop <= y && el.offsetTop >= best) {
+          cur = t;
+          best = el.offsetTop;
+        }
       });
       setActive(cur);
     }
