@@ -49,7 +49,6 @@ const NAV: NavItem[] = [
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [active, setActive] = useState("#top");
   const [menuOpen, setMenuOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
   const [navH, setNavH] = useState(0);
@@ -75,9 +74,10 @@ export default function Header() {
     };
   }, []);
 
-  // Marca activo: en Inicio por scroll-spy; en otras páginas por prefijo de ruta.
+  // Marca activo según la página actual: en Inicio siempre "Inicio";
+  // en las demás, por prefijo de ruta.
   const isActive = (item: NavItem) =>
-    isHome ? active === item.target : !!item.match && pathname.startsWith(item.match);
+    isHome ? item.href === "/" : !!item.match && pathname.startsWith(item.match);
 
   // Cierra el menú móvil al cambiar de ruta.
   useEffect(() => {
@@ -98,30 +98,6 @@ export default function Header() {
       window.removeEventListener("keydown", onKey);
     };
   }, [menuOpen]);
-
-  // Scroll-spy (solo en Inicio): resalta la sección visible.
-  useEffect(() => {
-    if (!isHome) return;
-    const targets = NAV.map((n) => n.target).filter(Boolean) as string[];
-    function spy() {
-      const y = window.scrollY + 150;
-      let cur = targets[0];
-      let best = -Infinity;
-      // Elige la sección realmente en pantalla: la de mayor offsetTop que ya pasó
-      // el umbral (no depende del orden del arreglo de targets).
-      targets.forEach((t) => {
-        const el = document.querySelector(t) as HTMLElement | null;
-        if (el && el.offsetTop <= y && el.offsetTop >= best) {
-          cur = t;
-          best = el.offsetTop;
-        }
-      });
-      setActive(cur);
-    }
-    spy();
-    window.addEventListener("scroll", spy, { passive: true });
-    return () => window.removeEventListener("scroll", spy);
-  }, [isHome]);
 
   return (
     <header id="top">
