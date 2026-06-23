@@ -247,6 +247,22 @@ img { max-width: 100%; }
   letter-spacing: var(--ls-tight); color: #fff; }
 .hero-tu { position: relative; white-space: nowrap; }
 .hero-tu .green { color: #4e8654; }
+/* "Tuterritorio": degradado de marca que se desplaza continuamente (dinámico) */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-tu .green {
+    background: linear-gradient(90deg, #6AA070 0%, #8FBE4E 22%, #59A9C4 46%, #8FBE4E 72%, #6AA070 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: tu-shimmer 6s linear infinite;
+  }
+}
+@keyframes tu-shimmer { from { background-position: 0% center; } to { background-position: -220% center; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-tu .green { animation: none; -webkit-text-fill-color: #6AA070; color: #6AA070; }
+}
 .hero-tu .green .white { color: #fff; }
 .hero-tu .underline { position: absolute; left: 0; right: 0; bottom: -6px; height: 8px; border-radius: var(--radius-pill);
   opacity: .85; background-color: #4e8654; }
