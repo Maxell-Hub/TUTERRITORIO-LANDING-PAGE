@@ -13,7 +13,7 @@ const SC: Record<number, Sector> = {
   5: { zone: "Occidente", name: "Sector 5", c: "#E29B92", left: 22, top: 37 },
   1: { zone: "Centro", name: "Sector 1", c: "#97BEDB", left: 35, top: 52 },
   2: { zone: "Oriente", name: "Sector 2", c: "#86C0A0", left: 66, top: 66 },
-  6: { zone: "Sur-occidente", name: "Sector 6", c: "#E3C56B", left: 33, top: 65 },
+  6: { zone: "Sur-occidente", name: "Sector 6", c: "#E3C56B", left: 36, top: 74 },
   3: { zone: "Sur", name: "Sector 3", c: "#B79BD4", left: 50, top: 83 },
 };
 
