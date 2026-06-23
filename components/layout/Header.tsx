@@ -133,7 +133,7 @@ export default function Header() {
               aria-label="Alcaldía de Valledupar — Catastro (abre en una pestaña nueva)"
               style={{ display: "inline-flex" }}
             >
-              <img src="/assets/logo-catastro-vpar.png" alt="Alcaldía de Valledupar — Catastro" style={{ height: 65, width: 158, objectFit: "cover", display: "block", marginBottom: 3 }} />
+              <img src="/assets/logo-catastro-vpar.png" alt="Alcaldía de Valledupar — Catastro" style={{ height: 65, width: 158, objectFit: "cover", display: "block", marginBottom: 15 }} />
             </a>
           </div>
           <SearchBar />
