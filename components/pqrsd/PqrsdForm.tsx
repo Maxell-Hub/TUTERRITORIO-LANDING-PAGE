@@ -255,11 +255,13 @@ export default function PqrsdForm() {
           <span className="pq-label">Nombre completo <span className="req">*</span></span>
           <input
             className={`pq-input${touched.nombre && errors.nombre ? " is-invalid" : ""}`}
-            type="text" name="nombre" data-field="nombre" placeholder="Nombres y apellidos"
+            type="text" name="nombre" data-field="nombre" placeholder="Ej: Juan Carlos Pérez Gómez"
             value={values.nombre} onChange={(e) => setField("nombre", e.target.value)} onBlur={() => onBlur("nombre")}
             autoComplete="name"
           />
-          {touched.nombre && errors.nombre && <span className="pq-error">{errors.nombre}</span>}
+          {touched.nombre && errors.nombre
+            ? <span className="pq-error">{errors.nombre}</span>
+            : <span className="pq-hint">Solo letras. Nombres y apellidos completos.</span>}
         </label>
 
         <label className="pq-field">
@@ -272,7 +274,9 @@ export default function PqrsdForm() {
             <option value="" disabled>Selecciona…</option>
             {DOCS.map((d) => <option key={d} value={d}>{d}</option>)}
           </select>
-          {touched.tipoDocumento && errors.tipoDocumento && <span className="pq-error">{errors.tipoDocumento}</span>}
+          {touched.tipoDocumento && errors.tipoDocumento
+            ? <span className="pq-error">{errors.tipoDocumento}</span>
+            : <span className="pq-hint">Selecciona una opción de la lista.</span>}
         </label>
 
         <label className="pq-field">
@@ -293,32 +297,38 @@ export default function PqrsdForm() {
           <span className="pq-label">Correo electrónico <span className="req">*</span></span>
           <input
             className={`pq-input${touched.correo && errors.correo ? " is-invalid" : ""}`}
-            type="email" name="correo" data-field="correo" placeholder="tucorreo@ejemplo.com"
+            type="email" name="correo" data-field="correo" placeholder="nombre@dominio.com"
             value={values.correo} onChange={(e) => setField("correo", e.target.value)} onBlur={() => onBlur("correo")}
             autoComplete="email"
           />
-          {touched.correo && errors.correo && <span className="pq-error">{errors.correo}</span>}
+          {touched.correo && errors.correo
+            ? <span className="pq-error">{errors.correo}</span>
+            : <span className="pq-hint">Formato: nombre@dominio.com</span>}
         </label>
 
         <label className="pq-field">
           <span className="pq-label">Teléfono</span>
           <input
             className={`pq-input${touched.telefono && errors.telefono ? " is-invalid" : ""}`}
-            type="tel" name="telefono" data-field="telefono" inputMode="tel" placeholder="Celular (10 dígitos) o fijo (7)"
+            type="tel" name="telefono" data-field="telefono" inputMode="tel" placeholder="Ej: 3001234567"
             value={values.telefono} onChange={(e) => setField("telefono", e.target.value)} onBlur={() => onBlur("telefono")}
           />
-          {touched.telefono && errors.telefono && <span className="pq-error">{errors.telefono}</span>}
+          {touched.telefono && errors.telefono
+            ? <span className="pq-error">{errors.telefono}</span>
+            : <span className="pq-hint">Celular: 10 dígitos · Fijo: 7 dígitos.</span>}
         </label>
 
         <label className="pq-field">
           <span className="pq-label">Dirección</span>
           <input
             className={`pq-input${touched.direccion && errors.direccion ? " is-invalid" : ""}`}
-            type="text" name="direccion" data-field="direccion" placeholder="Dirección de notificación"
+            type="text" name="direccion" data-field="direccion" placeholder="Ej: Calle 16 #9-48"
             value={values.direccion} onChange={(e) => setField("direccion", e.target.value)} onBlur={() => onBlur("direccion")}
             autoComplete="street-address"
           />
-          {touched.direccion && errors.direccion && <span className="pq-error">{errors.direccion}</span>}
+          {touched.direccion && errors.direccion
+            ? <span className="pq-error">{errors.direccion}</span>
+            : <span className="pq-hint">Dirección de notificación (opcional).</span>}
         </label>
       </div>
 
@@ -329,7 +339,9 @@ export default function PqrsdForm() {
           type="text" name="asunto" data-field="asunto" placeholder="Resumen breve de tu solicitud"
           value={values.asunto} onChange={(e) => setField("asunto", e.target.value)} onBlur={() => onBlur("asunto")}
         />
-        {touched.asunto && errors.asunto && <span className="pq-error">{errors.asunto}</span>}
+        {touched.asunto && errors.asunto
+          ? <span className="pq-error">{errors.asunto}</span>
+          : <span className="pq-hint">Mínimo 5 caracteres.</span>}
       </label>
 
       <label className="pq-field" style={{ marginTop: 18 }}>
@@ -341,7 +353,9 @@ export default function PqrsdForm() {
           style={{ resize: "vertical", minHeight: 140 }}
           value={values.descripcion} onChange={(e) => setField("descripcion", e.target.value)} onBlur={() => onBlur("descripcion")}
         />
-        {touched.descripcion && errors.descripcion && <span className="pq-error">{errors.descripcion}</span>}
+        {touched.descripcion && errors.descripcion
+          ? <span className="pq-error">{errors.descripcion}</span>
+          : <span className="pq-hint">Mínimo 20 caracteres.</span>}
       </label>
 
       <label style={{ display: "flex", alignItems: "flex-start", gap: 11, marginTop: 22, font: "var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans)", color: "var(--tt-gray-700)", cursor: "pointer" }}>
