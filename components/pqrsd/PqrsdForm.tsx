@@ -98,7 +98,6 @@ function validateField(name: keyof Values, v: Values): string {
       return "";
     case "asunto":
       if (!val) return "El asunto es obligatorio.";
-      if ((val as string).length < 5) return "El asunto debe tener al menos 5 caracteres.";
       return "";
     case "descripcion":
       if (!val) return "La descripción es obligatoria.";
@@ -339,9 +338,7 @@ export default function PqrsdForm() {
           type="text" name="asunto" data-field="asunto" placeholder="Resumen breve de tu solicitud"
           value={values.asunto} onChange={(e) => setField("asunto", e.target.value)} onBlur={() => onBlur("asunto")}
         />
-        {touched.asunto && errors.asunto
-          ? <span className="pq-error">{errors.asunto}</span>
-          : <span className="pq-hint">Mínimo 5 caracteres.</span>}
+        {touched.asunto && errors.asunto && <span className="pq-error">{errors.asunto}</span>}
       </label>
 
       <label className="pq-field" style={{ marginTop: 18 }}>

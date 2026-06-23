@@ -86,7 +86,7 @@ export default function ContactoForm() {
 
         <div className="ct-field">
           <label htmlFor="ct-tel">Teléfono</label>
-          <input id="ct-tel" className="ct-input" type="tel" name="telefono" placeholder="+(57) 300 000 0000" />
+          <input id="ct-tel" className="ct-input" type="tel" name="telefono" placeholder="300 000 0000" />
         </div>
 
         <div className="ct-field">
