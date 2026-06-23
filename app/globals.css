@@ -288,6 +288,12 @@ img { max-width: 100%; }
 /* comunas interactive */
 .cm-stage { position: relative; width: 100%; max-width: 520px; margin: 0 auto; display: block; }
 .cm-mapimg { display: block; width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 22px 48px rgba(14,34,51,.16)); }
+/* Mapa de sectores catastrales: se funde con el fondo de la sección.
+   - multiply hace que el fondo blanco de la imagen desaparezca sobre la sección.
+   - la máscara radial difumina los bordes para que no se vea un recuadro. */
+.cm-mapimg.is-sectores { filter: none; mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(125% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 84%, transparent 100%);
+  mask-image: radial-gradient(125% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 84%, transparent 100%); }
 .cm-dot { position: absolute; width: 26px; height: 26px; transform: translate(-50%,-50%); border-radius: 50%;
   border: 0; padding: 0; cursor: pointer; background: transparent; z-index: 2; }
 .cm-dot i { position: absolute; inset: 7px; border-radius: 50%; background: var(--c); border: 2px solid #fff;
