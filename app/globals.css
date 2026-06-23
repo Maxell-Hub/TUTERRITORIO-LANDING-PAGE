@@ -770,6 +770,8 @@ img { max-width: 100%; }
   transition: box-shadow var(--dur-fast) var(--ease-soft), border-color var(--dur-fast) var(--ease-soft); }
 textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: vertical; }
 .ct-input:focus { border-color: var(--tt-blue-700); box-shadow: 0 0 0 3px rgba(59,133,165,.25); }
+.ct-input.is-invalid { border-color: var(--tt-red-500); }
+.ct-input.is-invalid:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--tt-red-500) 20%, transparent); }
 .ct-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .ct-submit { height: 52px; border: none; border-radius: var(--radius-button); background: var(--tt-blue-700); color: #fff;
   font: var(--fw-semibold) var(--fs-base)/1 var(--font-sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
