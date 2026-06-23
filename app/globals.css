@@ -343,11 +343,24 @@ img { max-width: 100%; }
 .govco-bottom-row .sep { width: 1px; height: 34px; background: rgba(255,255,255,.45); }
 
 /* ---- PQRSD (hero + formulario) ---- */
-.pq-hero { position: relative; background: var(--grad-hero); color: #fff; overflow: hidden;
-  padding: clamp(2.6rem,5vw,3.6rem) clamp(1rem,5vw,64px); }
-.pq-hero .dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.12) 1.5px, transparent 1.6px);
-  background-size: 20px 20px; opacity: .5; pointer-events: none; }
-.pq-hero-inner { position: relative; z-index: 1; max-width: var(--container-wide); margin: 0 auto; }
+.pq-hero { position: relative; isolation: isolate; color: #fff; overflow: hidden;
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--tt-green-500) 30%, transparent) 0%, transparent 46%),
+    radial-gradient(120% 130% at 0% 100%, color-mix(in srgb, var(--tt-blue-500) 26%, transparent) 0%, transparent 50%),
+    var(--grad-hero);
+  padding: clamp(3rem,5.5vw,4.4rem) clamp(1rem,5vw,64px) clamp(3.4rem,6vw,4.8rem); }
+/* Brillo diagonal sutil para dar profundidad */
+.pq-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+  background: linear-gradient(115deg, transparent 0%, transparent 40%, rgba(255,255,255,.07) 52%, transparent 64%, transparent 100%); }
+/* Cinta multicolor institucional en el borde inferior */
+.pq-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; z-index: 1; background: var(--ribbon); }
+/* Halos de color corporativos suaves */
+.pq-hero-deco { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+.pq-hero-deco::before { content: ""; position: absolute; top: -42%; right: -6%; width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--tt-green-500) 50%, transparent) 0%, transparent 66%); }
+.pq-hero-deco::after { content: ""; position: absolute; bottom: -55%; left: -8%; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--tt-blue-600) 42%, transparent) 0%, transparent 68%); }
+.pq-hero-inner { position: relative; z-index: 2; max-width: var(--container-wide); margin: 0 auto; }
 .pq-hero h1 { margin: 18px 0 0; font: var(--fw-extra) clamp(2rem,4.4vw,3rem)/1.05 var(--font-display); letter-spacing: var(--ls-tight); color: #fff; }
 .pq-hero p { margin: 14px 0 0; max-width: 40em; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: rgba(255,255,255,.82); }
 /* padding-bottom amplio para separar el formulario del footer (que sobresale hacia arriba) */

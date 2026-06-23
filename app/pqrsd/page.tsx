@@ -11,7 +11,7 @@ export default function PqrsdPage() {
   return (
     <>
       <section className="pq-hero">
-        <div className="dots" />
+        <div className="pq-hero-deco" aria-hidden="true" />
         <div className="pq-hero-inner">
           <span className="hero-eyebrow">Atención a la ciudadanía</span>
           <h1>Radica tu PQRSD</h1>
