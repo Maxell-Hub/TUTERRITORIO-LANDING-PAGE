@@ -52,18 +52,27 @@ export default function Header() {
   const [active, setActive] = useState("#top");
   const [menuOpen, setMenuOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
+  const [navH, setNavH] = useState(0);
   const navRef = useRef<HTMLElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const { user, logout } = useAuth();
 
-  // Detecta cuándo el menú de navegación queda fijado arriba (para animarlo).
+  // Cuando el "sentinel" (justo encima del menú) sale por arriba de la pantalla,
+  // el menú pasa a fijo arriba. Usamos IntersectionObserver (sin jank de scroll).
   useEffect(() => {
-    const onScroll = () => {
-      const el = navRef.current;
-      if (el) setStuck(el.getBoundingClientRect().top <= 0);
+    const sentinel = sentinelRef.current;
+    if (navRef.current) setNavH(navRef.current.offsetHeight);
+    if (!sentinel) return;
+    const io = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting), {
+      threshold: 0,
+    });
+    io.observe(sentinel);
+    const onResize = () => navRef.current && setNavH(navRef.current.offsetHeight);
+    window.addEventListener("resize", onResize);
+    return () => {
+      io.disconnect();
+      window.removeEventListener("resize", onResize);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Marca activo: en Inicio por scroll-spy; en otras páginas por prefijo de ruta.
@@ -166,6 +175,8 @@ export default function Header() {
       </div>
 
       {/* nav */}
+      {/* Marcador para detectar cuándo fijar el menú */}
+      <div ref={sentinelRef} aria-hidden="true" className="mainnav-sentinel" />
       <nav ref={navRef} className={`mainnav${stuck ? " is-stuck" : ""}`} aria-label="Navegación principal">
         <div className="mainnav-row">
           {NAV.map((item) =>
@@ -199,6 +210,8 @@ export default function Header() {
           )}
         </div>
       </nav>
+      {/* Espaciador: ocupa el alto del menú cuando este pasa a fijo, para que el contenido no salte */}
+      <div aria-hidden="true" style={{ height: stuck ? navH : 0 }} />
 
       {/* Menú móvil: panel lateral deslizante */}
       <div

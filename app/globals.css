@@ -113,13 +113,14 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) { .sr-flash { animation: none !important; } }
 
 /* ---- Main nav ---- */
-.mainnav { position: sticky; top: 0; z-index: 50; background: #fafbfc; border-top: 1px solid var(--border-subtle);
+.mainnav { position: relative; z-index: 50; background: #fafbfc; border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle); box-shadow: 0 4px 16px rgba(14,34,51,.06);
   transition: box-shadow .35s var(--ease-soft), background .35s var(--ease-soft); }
-/* Al quedar fijado arriba: fondo sólido, sombra elevada y entrada suave */
-.mainnav.is-stuck { background: #ffffff; box-shadow: 0 10px 30px rgba(14,34,51,.13);
-  animation: nav-drop .42s var(--ease-soft); }
-@keyframes nav-drop { from { transform: translateY(-16px); opacity: .4; } to { transform: translateY(0); opacity: 1; } }
+.mainnav-sentinel { height: 0; }
+/* Al pasar el scroll, el menú se fija arriba con una entrada suave + sombra elevada */
+.mainnav.is-stuck { position: fixed; top: 0; left: 0; right: 0; background: #ffffff;
+  box-shadow: 0 10px 30px rgba(14,34,51,.13); animation: nav-drop .42s var(--ease-soft); }
+@keyframes nav-drop { from { transform: translateY(-100%); opacity: .35; } to { transform: translateY(0); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .mainnav.is-stuck { animation: none; } }
 .mainnav-row { max-width: var(--container-wide); margin: 0 auto; display: flex; align-items: stretch; gap: 2px;
   padding: 0 clamp(1rem,5vw,64px); height: 67px; }
