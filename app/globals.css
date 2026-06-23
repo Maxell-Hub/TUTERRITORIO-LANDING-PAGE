@@ -123,7 +123,7 @@ img { max-width: 100%; }
 @keyframes nav-drop { from { transform: translateY(-100%); opacity: .35; } to { transform: translateY(0); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .mainnav.is-stuck { animation: none; } }
 .mainnav-row { max-width: var(--container-wide); margin: 0 auto; display: flex; align-items: center;
-  justify-content: space-between; gap: clamp(12px,2vw,28px); padding: 13px clamp(1rem,5vw,64px); min-height: 78px; }
+  justify-content: space-between; gap: clamp(12px,2vw,28px); padding: 8px clamp(1rem,5vw,64px); min-height: 70px; }
 /* Menú centrado entre logos y buscador */
 .mainnav-links { flex: 1; display: flex; align-items: center; justify-content: center; gap: 2px; }
 /* Buscador + hamburguesa a la derecha */
@@ -133,13 +133,13 @@ img { max-width: 100%; }
 .mainnav-actions .gc-search .seg { height: 50px; width: auto; padding: 0 18px; }
 .mainnav-actions .gc-search input { padding: 0 10px; }
 /* Placeholder con el mismo tamaño y fuente que los textos del menú de navegación */
-.mainnav-actions .gc-search input::placeholder { font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
+.mainnav-actions .gc-search input::placeholder { font-family: var(--font-sans); font-size: 0.8125rem; font-weight: var(--fw-semibold); }
 .mainnav-actions .gc-search .go-btn { width: 40px; height: 40px; }
 .mn-item { position: relative; display: flex; }
-.mn-link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 13px 15px;
-  font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); color: var(--tt-gray-700); text-decoration: none;
+.mn-link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 12px 13px;
+  font: var(--fw-semibold) 0.8125rem/1 var(--font-sans); color: var(--tt-gray-700); text-decoration: none;
   white-space: nowrap; transition: color .2s var(--ease-soft); background: none; border: none; cursor: pointer; }
-.mn-link::after { content: ""; position: absolute; left: 15px; right: 15px; bottom: 5px; height: 2.5px;
+.mn-link::after { content: ""; position: absolute; left: 13px; right: 13px; bottom: 5px; height: 2.5px;
   border-radius: 2px; background: var(--tt-blue-700); transform: scaleX(0); transform-origin: center;
   transition: transform .28s var(--ease-soft); }
 .mn-link:hover { color: var(--tt-navy-700); }
