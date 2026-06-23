@@ -137,9 +137,10 @@ export async function POST(req: Request) {
     });
     if (error) throw new Error(error.message);
   } catch (e) {
-    console.error("[CONTACTO] Error al enviar correo:", e);
+    const detail = e instanceof Error ? e.message : String(e);
+    console.error("[CONTACTO] Error al enviar correo:", detail);
     return NextResponse.json(
-      { ok: false, error: "No se pudo enviar el mensaje en este momento. Intenta más tarde." },
+      { ok: false, error: `No se pudo enviar el mensaje: ${detail}` },
       { status: 502 }
     );
   }

@@ -122,7 +122,16 @@ export default function ContactoForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...values, autorizacion: "Sí" }),
       });
-      if (!res.ok) throw new Error("No se pudo enviar el mensaje. Intenta de nuevo.");
+      if (!res.ok) {
+        let msg = "No se pudo enviar el mensaje. Intenta de nuevo.";
+        try {
+          const j = await res.json();
+          if (j?.error) msg = j.error;
+        } catch {
+          /* respuesta sin JSON */
+        }
+        throw new Error(msg);
+      }
       setSent(true);
       const sec = document.getElementById("formulario");
       if (sec) window.scrollTo({ top: Math.max(0, sec.offsetTop - 90), behavior: "smooth" });
