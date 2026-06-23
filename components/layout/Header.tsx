@@ -51,26 +51,41 @@ export default function Header() {
   const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
+  const [returning, setReturning] = useState(false);
   const [navH, setNavH] = useState(0);
   const navRef = useRef<HTMLElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const { user, logout } = useAuth();
 
   // Cuando el "sentinel" (justo encima del menú) sale por arriba de la pantalla,
-  // el menú pasa a fijo arriba. Usamos IntersectionObserver (sin jank de scroll).
+  // el menú pasa a fijo arriba. Al volver arriba, animamos su regreso al lugar.
   useEffect(() => {
     const sentinel = sentinelRef.current;
     if (navRef.current) setNavH(navRef.current.offsetHeight);
     if (!sentinel) return;
-    const io = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting), {
-      threshold: 0,
-    });
+    let prev = false;
+    let t: number | undefined;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        const next = !e.isIntersecting;
+        setStuck(next);
+        if (prev && !next) {
+          // Regresó arriba: dispara la animación suave de vuelta a su sitio.
+          setReturning(true);
+          window.clearTimeout(t);
+          t = window.setTimeout(() => setReturning(false), 480);
+        }
+        prev = next;
+      },
+      { threshold: 0 }
+    );
     io.observe(sentinel);
     const onResize = () => navRef.current && setNavH(navRef.current.offsetHeight);
     window.addEventListener("resize", onResize);
     return () => {
       io.disconnect();
       window.removeEventListener("resize", onResize);
+      window.clearTimeout(t);
     };
   }, []);
 
@@ -124,7 +139,7 @@ export default function Header() {
 
       {/* Barra unificada: logos (izq) · menú (centro) · buscador (der). Se fija al hacer scroll. */}
       <div ref={sentinelRef} aria-hidden="true" className="mainnav-sentinel" />
-      <nav ref={navRef} className={`mainnav${stuck ? " is-stuck" : ""}`} aria-label="Navegación principal">
+      <nav ref={navRef} className={`mainnav${stuck ? " is-stuck" : ""}${returning ? " is-returning" : ""}`} aria-label="Navegación principal">
         <div className="mainnav-row">
           {/* Logos (izquierda) */}
           <div className="brand-logos">
