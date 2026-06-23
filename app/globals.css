@@ -134,7 +134,7 @@ img { max-width: 100%; }
 .mainnav-actions .gc-search input { padding: 0 10px; }
 /* Placeholder con el mismo tamaño y fuente que los textos del menú de navegación */
 .mainnav-actions .gc-search input::placeholder { font-family: var(--font-sans); font-size: 0.8125rem; font-weight: var(--fw-semibold); }
-.mainnav-actions .gc-search .go-btn { width: 40px; height: 40px; }
+.mainnav-actions .gc-search .go-btn { width: 38px; height: 38px; }
 .mn-item { position: relative; display: flex; }
 .mn-link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 12px 13px;
   font: var(--fw-semibold) 0.8125rem/1 var(--font-sans); color: var(--tt-gray-700); text-decoration: none;
