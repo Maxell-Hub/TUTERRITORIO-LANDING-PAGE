@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="footer-data">
             <div><b>NIT:</b> 901996731-8</div>
             <div><b>Dirección:</b> Calle 16 #9-48, Edificio Caja Agraria - Oficina 1301 Valledupar, Cesar</div>
-            <div><b>Horario de atención:</b> Lunes a Viernes de 8:00 a.m. - 12:00 m. y 2:00 p.m. - 5:00 p.m.</div>
+            <div><b>Horario de atención:</b> Lunes a Viernes de 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</div>
             <div><b>Teléfono:</b> +(57)(605) 5885761</div>
             <div><b>Servicio a la ciudadanía:</b> +(57)(605) 5885761 Ext. 100</div>
             <div style={{ marginTop: 6 }}><b>Denuncias:</b> <a href="mailto:denuncias@tuterritorio.gov.co">denuncias@tuterritorio.gov.co</a></div>
