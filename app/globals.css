@@ -543,6 +543,10 @@ img { max-width: 100%; }
 @media (max-width: 860px) {
   .hero-map { display: none; }
 }
+/* En celular el hero no necesita ser tan alto (sin mapa de fondo) */
+@media (max-width: 768px) {
+  .hero { min-height: 66vh; }
+}
 @media (max-width: 720px) { .footer-marks { display: none !important; } }
 @media (max-width: 560px) { .cm-tip { width: 200px; } }
 
