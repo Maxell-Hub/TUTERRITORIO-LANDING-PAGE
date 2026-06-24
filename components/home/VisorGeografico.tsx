@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type Sector = { zone: string; name: string; c: string; left: number; top: number };
 
@@ -27,7 +27,12 @@ const Check = () => (
 
 export default function VisorGeografico() {
   const [active, setActive] = useState<number | null>(null);
-  const tip = active ? SC[active] : null;
+  // Recuerda el último sector para que, al quitar el mouse, la tarjeta no
+  // desaparezca de golpe: se queda en el DOM y se desvanece suavemente.
+  const lastRef = useRef<number | null>(null);
+  if (active !== null) lastRef.current = active;
+  const current = active ?? lastRef.current;
+  const tip = current ? SC[current] : null;
 
   return (
     <section id="visor" className="visor">
@@ -77,7 +82,7 @@ export default function VisorGeografico() {
 
             {tip && (
               <div
-                className={`cm-tip show${tip.top < 42 ? " below" : ""}`}
+                className={`cm-tip${active !== null ? " show" : ""}${tip.top < 42 ? " below" : ""}`}
                 style={{ left: `${tip.left}%`, top: `${tip.top}%`, ["--c" as string]: tip.c }}
                 role="status"
               >

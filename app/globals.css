@@ -358,7 +358,7 @@ img { max-width: 100%; }
 @keyframes cm-ping { 0% { opacity: .7; transform: scale(.7); } 70%,100% { opacity: 0; transform: scale(1.7); } }
 .cm-tip { position: absolute; z-index: 6; width: 232px; background: #fff; border: 1px solid var(--border-subtle);
   border-radius: 16px; box-shadow: 0 20px 48px rgba(14,34,51,.20); padding: 15px 16px 16px; opacity: 0;
-  pointer-events: none; transition: opacity .2s var(--ease-soft), left .26s var(--ease-soft), top .26s var(--ease-soft); }
+  pointer-events: none; transition: opacity .3s var(--ease-soft), left .26s var(--ease-soft), top .26s var(--ease-soft); }
 .cm-tip.show { opacity: 1; }
 .cm-tip:not(.below) { transform: translate(-50%, calc(-100% - 16px)); }
 .cm-tip.below { transform: translate(-50%, 16px); }
