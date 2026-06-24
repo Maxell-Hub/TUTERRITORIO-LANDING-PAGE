@@ -476,28 +476,28 @@ img { max-width: 100%; }
   --parcel-b: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20320'%20fill='none'%20stroke='%2359A9C4'%20stroke-opacity='0.6'%20stroke-width='6'%20stroke-linejoin='round'%3E%3Crect%20x='12'%20y='12'%20width='296'%20height='296'%20rx='46'/%3E%3Cpath%20d='M12%20120C92%2096%20232%20142%20308%20112'/%3E%3Cpath%20d='M12%20214C92%20194%20232%20240%20308%20210'/%3E%3Cpath%20d='M120%2012C96%2092%20142%20232%20112%20308'/%3E%3Cpath%20d='M214%2012C194%2092%20240%20232%20210%20308'/%3E%3C/svg%3E");
   --parcel-n: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20320'%20fill='none'%20stroke='%23163A4C'%20stroke-opacity='0.15'%20stroke-width='6'%20stroke-linejoin='round'%3E%3Crect%20x='12'%20y='12'%20width='296'%20height='296'%20rx='46'/%3E%3Cpath%20d='M12%20120C92%2096%20232%20142%20308%20112'/%3E%3Cpath%20d='M12%20214C92%20194%20232%20240%20308%20210'/%3E%3Cpath%20d='M120%2012C96%2092%20142%20232%20112%20308'/%3E%3Cpath%20d='M214%2012C194%2092%20240%20232%20210%20308'/%3E%3C/svg%3E");
 }
-/* INICIO: gran parcela (motivo del logo) abajo-izquierda; se quitan rejilla y blobs */
+/* INICIO: parcela del logo abajo-izquierda; se quitan rejilla y blobs */
 .hero-dots, .hero-blobA, .hero-blobB { display: none; }
-.hero { background: var(--parcel-w) no-repeat left -140px bottom -160px / 560px auto, var(--grad-hero); }
+.hero { background: var(--parcel-w) no-repeat left -110px bottom -110px / 560px auto, var(--grad-hero); }
 
-/* SERVICIOS: parcela azul arriba-derecha */
+/* SERVICIOS: degradado AZUL + parcela azul arriba-derecha */
 .serv-banner .blobA, .serv-banner .blobB { display: none; }
-.serv-banner { background: var(--parcel-b) no-repeat right -120px top -140px / 520px auto, linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); }
+.serv-banner { background: var(--parcel-b) no-repeat right -80px top -80px / 540px auto, linear-gradient(125deg,#0B2A3A 0%,#1E5167 48%,#4E97B6 100%); }
 
-/* PQRSD: parcela verde abajo-izquierda */
+/* PQRSD: degradado VERDE + parcela verde abajo-izquierda */
 .pq-hero-deco { display: none; }
-.pq-hero { background: var(--parcel-g) no-repeat left -120px bottom -150px / 500px auto, var(--grad-hero); }
+.pq-hero { background: var(--parcel-g) no-repeat left -80px bottom -90px / 540px auto, linear-gradient(135deg,#0C222F 0%,#16402C 48%,#3E6E44 100%); }
 
-/* NORMATIVAS: parcela blanca arriba-derecha */
+/* NORMATIVAS: degradado NAVY-TEAL + parcela blanca arriba-derecha */
 .rec-hero-norm .rec-glow, .rec-hero-abc .rec-glow { display: none; }
-.rec-hero-norm { background: var(--parcel-w) no-repeat right -110px top -130px / 480px auto, var(--grad-hero); }
+.rec-hero-norm { background: var(--parcel-w) no-repeat right -80px top -90px / 520px auto, linear-gradient(135deg,#0C222F 0%,#163A4C 55%,#2A5A70 100%); }
 
-/* ABC CATASTRAL: parcela verde arriba-izquierda */
-.rec-hero-abc { background: var(--parcel-g) no-repeat left -120px top -140px / 500px auto, var(--grad-hero); }
+/* ABC CATASTRAL: degradado VERDE PROFUNDO + parcela verde arriba-izquierda */
+.rec-hero-abc { background: var(--parcel-g) no-repeat left -80px top -90px / 540px auto, linear-gradient(135deg,#10231A 0%,#264D33 52%,#4E8654 100%); }
 
-/* CONTACTOS: parcela blanca arriba-derecha (se conserva el swoosh) */
+/* CONTACTOS: degradado TEAL + parcela blanca arriba-derecha (se conserva el swoosh) */
 .ct-halftone { display: none; }
-.ct-hero { background: var(--parcel-w) no-repeat right -100px top -120px / 460px auto, var(--grad-hero); }
+.ct-hero { background: var(--parcel-w) no-repeat right -70px top -80px / 500px auto, linear-gradient(125deg,#0C222F 0%,#1E5167 50%,#59A9C4 100%); }
 
 /* NOTICIAS: claro con parcela tenue arriba-derecha + cinta institucional */
 .news-header { position: relative; overflow: hidden; background: var(--parcel-n) no-repeat right -70px top -90px / 380px auto, linear-gradient(180deg,#fbfdfe 0%,#eef4f7 100%); }
