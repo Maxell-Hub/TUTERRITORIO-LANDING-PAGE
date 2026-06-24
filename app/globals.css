@@ -152,9 +152,9 @@ img { max-width: 100%; }
 .mainnav-actions .gc-search-wrap { flex: none; width: clamp(250px,24vw,310px); max-width: 310px; }
 .mainnav-actions .gc-search { height: 50px; padding-right: 6px; }
 .mainnav-actions .gc-search .seg { height: 50px; width: auto; padding: 0 18px; }
-.mainnav-actions .gc-search input { padding: 0 10px; }
+.mainnav-actions .gc-search input { padding: 0 10px; font: var(--fw-semibold) var(--fs-sm)/1.2 var(--font-sans); color: var(--tt-gray-500); }
 /* Placeholder con el mismo tamaño y fuente que los textos del menú de navegación */
-.mainnav-actions .gc-search input::placeholder { font-family: var(--font-sans); font-size: 0.8125rem; font-weight: var(--fw-semibold); }
+.mainnav-actions .gc-search input::placeholder { font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--tt-gray-500); opacity: 1; }
 .mainnav-actions .gc-search .go-btn { width: 38px; height: 38px; }
 .mn-item { position: relative; display: flex; }
 .mn-link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 12px 13px;
