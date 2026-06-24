@@ -468,6 +468,54 @@ img { max-width: 100%; }
   border-radius: var(--radius-md); padding: 14px 16px; color: var(--tt-navy-700); font: var(--fw-semibold) var(--fs-sm)/1.5 var(--font-sans); margin-bottom: 20px; }
 
 /* ============================================================
+   FONDOS DE SECCIONES — rediseño (patrones nítidos, sin blur)
+   ============================================================ */
+/* INICIO: cuadrícula tipo plano catastral (se quitan los blobs difusos) */
+.hero-dots { background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 46px 46px; opacity: 1; }
+.hero-blobA, .hero-blobB { display: none; }
+
+/* SERVICIOS: franjas diagonales corporativas */
+.serv-banner { background:
+    repeating-linear-gradient(135deg, transparent 0 46px, rgba(255,255,255,.030) 46px 92px),
+    linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); }
+.serv-banner .blobA, .serv-banner .blobB { display: none; }
+
+/* PQRSD: malla de puntos nítida (se quitan los halos difusos) */
+.pq-hero { background:
+    radial-gradient(rgba(255,255,255,.11) 1.4px, transparent 1.5px) 0 0 / 26px 26px,
+    var(--grad-hero); }
+.pq-hero-deco { display: none; }
+
+/* NORMATIVAS: anillos tipo curvas de nivel (topográfico) */
+.rec-hero-norm { background:
+    repeating-radial-gradient(circle at 84% 16%, transparent 0 26px, rgba(143,190,78,.08) 26px 28px),
+    repeating-radial-gradient(circle at 10% 92%, transparent 0 30px, rgba(89,169,196,.07) 30px 32px),
+    var(--grad-hero); }
+.rec-hero-norm .rec-glow { display: none; }
+
+/* ABC CATASTRAL: malla diagonal cruzada (cross-hatch) */
+.rec-hero-abc { background:
+    repeating-linear-gradient(45deg, transparent 0 22px, rgba(255,255,255,.038) 22px 23px),
+    repeating-linear-gradient(-45deg, transparent 0 22px, rgba(143,190,78,.05) 22px 23px),
+    var(--grad-hero); }
+.rec-hero-abc .rec-glow { display: none; }
+
+/* NOTICIAS: claro con líneas diagonales sutiles + cinta institucional arriba */
+.news-header { position: relative; background:
+    repeating-linear-gradient(135deg, transparent 0 30px, rgba(14,34,51,.02) 30px 31px),
+    linear-gradient(180deg,#fbfdfe 0%,#edf4f7 100%); }
+.news-header::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--ribbon); }
+
+/* CONTACTOS: la malla de puntos pasa a cuadrícula fina (distinta a las demás) */
+.ct-halftone { background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 40px 40px; opacity: 1; }
+
+/* ============================================================
    MICRO-ANIMACIONES (sutiles, on-brand)
    ============================================================ */
 /* Glint blanco que recorre las barras multicolor de marca */
