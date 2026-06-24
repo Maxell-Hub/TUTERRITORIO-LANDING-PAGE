@@ -70,7 +70,7 @@ export default function GlosarioEditor({ initial, onCancel, onSave }: Props) {
       >
         <div className="ne-head">
           <div>
-            <span className="ne-kicker">Recursos · Glosario catastral</span>
+            <span className="ne-kicker">Recursos · ABC Catastral</span>
             <h2>{initial ? "Editar término" : "Nuevo término"}</h2>
           </div>
           <button type="button" className="tt-modal-close" aria-label="Cerrar" onClick={onCancel}>

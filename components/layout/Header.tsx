@@ -39,7 +39,7 @@ const NAV: NavItem[] = [
     match: "/recursos",
     drop: [
       { label: "Normativas", href: "/recursos/normativas" },
-      { label: "Glosario catastral", href: "/recursos/glosario" },
+      { label: "ABC Catastral", href: "/recursos/glosario" },
     ],
   },
   { label: "Noticias", href: "/noticias", match: "/noticias" },

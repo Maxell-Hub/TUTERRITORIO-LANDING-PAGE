@@ -15,7 +15,7 @@ const STATIC_ITEMS: Item[] = [
   { title: "Nuestro equipo", text: "liderazgo equipo técnico topografía jurídica sistemas atención al ciudadano integrantes", href: "/nosotros/equipo", cat: "Nosotros" },
   { title: "Trámites y servicios", text: "incorporación de área rectificación desenglobe englobe inscripción de predio avalúo catastral cambio de destino cambio de propietario certificado plano predial carta catastral ficha predial", href: "/servicios", cat: "Servicios" },
   { title: "Normativas", text: "leyes decretos resoluciones acuerdos marco legal catastro igac", href: "/recursos/normativas", cat: "Recursos" },
-  { title: "Glosario catastral", text: "términos definiciones conceptos catastro", href: "/recursos/glosario", cat: "Recursos" },
+  { title: "ABC Catastral", text: "glosario términos definiciones conceptos catastro abc", href: "/recursos/glosario", cat: "Recursos" },
   { title: "Noticias", text: "sala de prensa actualización catastral comunidad avalúos trámites", href: "/noticias", cat: "Noticias" },
   { title: "Contactos", text: "dirección teléfono correo sede horario de atención mapa ubicación", href: "/contactos", cat: "Contactos" },
   { title: "PQRSD", text: "peticiones quejas reclamos sugerencias denuncias radicar solicitud", href: "/pqrsd", cat: "Contactos" },
