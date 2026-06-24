@@ -9,15 +9,15 @@ type Sector = { zone: string; name: string; c: string; left: number; top: number
 // sobre el mapa en %. El detalle de barrios/uso se completará con datos oficiales.
 // `left`/`top` en %: cada punto queda debajo de su recuadro "SECTOR N", separado.
 const SC: Record<number, Sector> = {
-  4: { zone: "Norte", name: "Sector 4", c: "#E0867D", left: 45, top: 31 },
-  5: { zone: "Occidente", name: "Sector 5", c: "#E29B92", left: 21, top: 40 },
-  1: { zone: "Centro", name: "Sector 1", c: "#97BEDB", left: 38, top: 49 },
-  2: { zone: "Oriente", name: "Sector 2", c: "#86C0A0", left: 63, top: 52 },
-  6: { zone: "Sur-occidente", name: "Sector 6", c: "#E3C56B", left: 33, top: 64 },
-  3: { zone: "Sur", name: "Sector 3", c: "#B79BD4", left: 45, top: 74 },
+  1: { zone: "Norte", name: "Sector 1", c: "#E0867D", left: 45, top: 31 },        // rojo (arriba)
+  6: { zone: "Occidente", name: "Sector 6", c: "#E29B92", left: 21, top: 40 },    // coral (izquierda)
+  4: { zone: "Centro", name: "Sector 4", c: "#97BEDB", left: 38, top: 49 },       // azul (centro)
+  2: { zone: "Oriente", name: "Sector 2", c: "#86C0A0", left: 63, top: 52 },      // verde (derecha)
+  5: { zone: "Sur-occidente", name: "Sector 5", c: "#E3C56B", left: 33, top: 64 },// amarillo (abajo-izq)
+  3: { zone: "Sur", name: "Sector 3", c: "#B79BD4", left: 45, top: 74 },          // morado (abajo)
 };
 
-const ORDER = [4, 5, 1, 2, 6, 3];
+const ORDER = [1, 6, 4, 2, 5, 3];
 
 const Check = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tt-green-600)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
