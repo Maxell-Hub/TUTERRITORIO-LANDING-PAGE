@@ -32,7 +32,7 @@
   --ease-soft:cubic-bezier(.4,0,.2,1); --dur-base:.28s;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { margin: 0; font-family: var(--font-sans); color: var(--text-body); background: #fff; overflow-x: hidden; }
 a { color: inherit; }
 img { max-width: 100%; }
@@ -75,9 +75,14 @@ img { max-width: 100%; }
   .logo-tt { height: 50px; }
   .logo-cat { height: 50px; width: 122px; margin-bottom: 9px; }
 }
-@media (max-width: 430px) {
+@media (max-width: 480px) {
+  .brand-logos { gap: 8px; }
   .logo-tt { height: 42px; }
   .logo-cat { height: 42px; width: 102px; margin-bottom: 7px; }
+}
+@media (max-width: 380px) {
+  .logo-tt { height: 38px; }
+  .logo-cat { height: 38px; width: 92px; margin-bottom: 6px; }
 }
 
 /* ---- search (gc-search) ---- */
