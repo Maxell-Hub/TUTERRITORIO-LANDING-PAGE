@@ -47,22 +47,12 @@ export default function NosotrosPage() {
       {/* Quiénes somos */}
       <section className="sec-pad" style={{ background: "#fff" }}>
         <div className="sec-wrap">
-          <div className="intro-grid">
-            <div className="reveal" data-dir="left">
-              <span className="eyebrow-b">Nosotros</span>
-              <h1 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.6vw,2.6rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}><Editable as="span" id="nos.title">Un catastro moderno al servicio de Valledupar</Editable></h1>
-              <span className="ribbon5" style={{ margin: "18px 0 0" }} />
-              <p style={{ margin: "26px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "var(--tt-gray-700)" }}>Tuterritorio es el operador del <b style={{ color: "var(--tt-navy-700)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.</p>
-              <p style={{ margin: "18px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}><Editable as="span" id="nos.intro2" multiline>Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.</Editable></p>
-            </div>
-            <div className="reveal" data-dir="right" style={{ position: "relative" }}>
-              <div className="intro-img">
-                <Image src="/assets/valledupar-letras.jpg" data-parallax="0.6" alt="Monumento Valledupar, Ciudad de los Santos Reyes" width={1600} height={1065} sizes="(max-width: 980px) 100vw, 50vw" />
-              </div>
-              <span style={{ position: "absolute", left: -14, bottom: -14, display: "inline-flex", alignItems: "center", gap: 9, padding: "12px 18px", borderRadius: 12, background: "#163A4C", color: "#fff", font: "700 0.875rem/1.2 var(--font-sans)", boxShadow: "0 6px 22px rgba(14,34,51,.20)" }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#8FBE4E" }} /> Valledupar, Cesar
-              </span>
-            </div>
+          <div className="reveal" data-dir="left" style={{ maxWidth: "54rem" }}>
+            <span className="eyebrow-b">Nosotros</span>
+            <h1 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.6vw,2.6rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}><Editable as="span" id="nos.title">Un catastro moderno al servicio de Valledupar</Editable></h1>
+            <span className="ribbon5" style={{ margin: "18px 0 0" }} />
+            <p style={{ margin: "26px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "var(--tt-gray-700)" }}>Tuterritorio es el operador del <b style={{ color: "var(--tt-navy-700)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.</p>
+            <p style={{ margin: "18px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}><Editable as="span" id="nos.intro2" multiline>Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.</Editable></p>
           </div>
         </div>
       </section>
