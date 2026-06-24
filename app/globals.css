@@ -468,52 +468,40 @@ img { max-width: 100%; }
   border-radius: var(--radius-md); padding: 14px 16px; color: var(--tt-navy-700); font: var(--fw-semibold) var(--fs-sm)/1.5 var(--font-sans); margin-bottom: 20px; }
 
 /* ============================================================
-   FONDOS DE SECCIONES — rediseño (patrones nítidos, sin blur)
+   FONDOS DE SECCIONES — motivo de "parcelas" del logo (formas, sin rejilla de puntos)
    ============================================================ */
-/* INICIO: cuadrícula tipo plano catastral (se quitan los blobs difusos) */
-.hero-dots { background-image:
-    linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px);
-  background-size: 48px 48px; opacity: 1; }
-.hero-blobA, .hero-blobB { display: none; }
+:root {
+  --parcel-w: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20320'%20fill='none'%20stroke='%23ffffff'%20stroke-opacity='0.5'%20stroke-width='6'%20stroke-linejoin='round'%3E%3Crect%20x='12'%20y='12'%20width='296'%20height='296'%20rx='46'/%3E%3Cpath%20d='M12%20120C92%2096%20232%20142%20308%20112'/%3E%3Cpath%20d='M12%20214C92%20194%20232%20240%20308%20210'/%3E%3Cpath%20d='M120%2012C96%2092%20142%20232%20112%20308'/%3E%3Cpath%20d='M214%2012C194%2092%20240%20232%20210%20308'/%3E%3C/svg%3E");
+  --parcel-g: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20320'%20fill='none'%20stroke='%238FBE4E'%20stroke-opacity='0.6'%20stroke-width='6'%20stroke-linejoin='round'%3E%3Crect%20x='12'%20y='12'%20width='296'%20height='296'%20rx='46'/%3E%3Cpath%20d='M12%20120C92%2096%20232%20142%20308%20112'/%3E%3Cpath%20d='M12%20214C92%20194%20232%20240%20308%20210'/%3E%3Cpath%20d='M120%2012C96%2092%20142%20232%20112%20308'/%3E%3Cpath%20d='M214%2012C194%2092%20240%20232%20210%20308'/%3E%3C/svg%3E");
+  --parcel-b: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20320'%20fill='none'%20stroke='%2359A9C4'%20stroke-opacity='0.6'%20stroke-width='6'%20stroke-linejoin='round'%3E%3Crect%20x='12'%20y='12'%20width='296'%20height='296'%20rx='46'/%3E%3Cpath%20d='M12%20120C92%2096%20232%20142%20308%20112'/%3E%3Cpath%20d='M12%20214C92%20194%20232%20240%20308%20210'/%3E%3Cpath%20d='M120%2012C96%2092%20142%20232%20112%20308'/%3E%3Cpath%20d='M214%2012C194%2092%20240%20232%20210%20308'/%3E%3C/svg%3E");
+  --parcel-n: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20320'%20fill='none'%20stroke='%23163A4C'%20stroke-opacity='0.15'%20stroke-width='6'%20stroke-linejoin='round'%3E%3Crect%20x='12'%20y='12'%20width='296'%20height='296'%20rx='46'/%3E%3Cpath%20d='M12%20120C92%2096%20232%20142%20308%20112'/%3E%3Cpath%20d='M12%20214C92%20194%20232%20240%20308%20210'/%3E%3Cpath%20d='M120%2012C96%2092%20142%20232%20112%20308'/%3E%3Cpath%20d='M214%2012C194%2092%20240%20232%20210%20308'/%3E%3C/svg%3E");
+}
+/* INICIO: gran parcela (motivo del logo) abajo-izquierda; se quitan rejilla y blobs */
+.hero-dots, .hero-blobA, .hero-blobB { display: none; }
+.hero { background: var(--parcel-w) no-repeat left -140px bottom -160px / 560px auto, var(--grad-hero); }
 
-/* SERVICIOS: franjas diagonales corporativas */
-.serv-banner { background:
-    repeating-linear-gradient(135deg, transparent 0 40px, rgba(143,190,78,.10) 40px 42px, transparent 42px 84px),
-    linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); }
+/* SERVICIOS: parcela azul arriba-derecha */
 .serv-banner .blobA, .serv-banner .blobB { display: none; }
+.serv-banner { background: var(--parcel-b) no-repeat right -120px top -140px / 520px auto, linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); }
 
-/* PQRSD: malla de puntos nítida (se quitan los halos difusos) */
-.pq-hero { background:
-    radial-gradient(rgba(255,255,255,.22) 2px, transparent 2.2px) 0 0 / 28px 28px,
-    var(--grad-hero); }
+/* PQRSD: parcela verde abajo-izquierda */
 .pq-hero-deco { display: none; }
+.pq-hero { background: var(--parcel-g) no-repeat left -120px bottom -150px / 500px auto, var(--grad-hero); }
 
-/* NORMATIVAS: anillos tipo curvas de nivel (topográfico) */
-.rec-hero-norm { background:
-    repeating-radial-gradient(circle at 84% 16%, transparent 0 24px, rgba(143,190,78,.18) 24px 26px, transparent 26px 28px),
-    repeating-radial-gradient(circle at 8% 96%, transparent 0 28px, rgba(89,169,196,.16) 28px 30px, transparent 30px 32px),
-    var(--grad-hero); }
-.rec-hero-norm .rec-glow { display: none; }
+/* NORMATIVAS: parcela blanca arriba-derecha */
+.rec-hero-norm .rec-glow, .rec-hero-abc .rec-glow { display: none; }
+.rec-hero-norm { background: var(--parcel-w) no-repeat right -110px top -130px / 480px auto, var(--grad-hero); }
 
-/* ABC CATASTRAL: malla diagonal cruzada (cross-hatch) */
-.rec-hero-abc { background:
-    repeating-linear-gradient(45deg, transparent 0 24px, rgba(255,255,255,.10) 24px 26px),
-    repeating-linear-gradient(-45deg, transparent 0 24px, rgba(143,190,78,.12) 24px 26px),
-    var(--grad-hero); }
-.rec-hero-abc .rec-glow { display: none; }
+/* ABC CATASTRAL: parcela verde arriba-izquierda */
+.rec-hero-abc { background: var(--parcel-g) no-repeat left -120px top -140px / 500px auto, var(--grad-hero); }
 
-/* NOTICIAS: claro con líneas diagonales + cinta institucional arriba */
-.news-header { position: relative; background:
-    repeating-linear-gradient(135deg, transparent 0 26px, rgba(59,133,165,.06) 26px 28px),
-    linear-gradient(180deg,#fbfdfe 0%,#e7f1f5 100%); }
-.news-header::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--ribbon); }
+/* CONTACTOS: parcela blanca arriba-derecha (se conserva el swoosh) */
+.ct-halftone { display: none; }
+.ct-hero { background: var(--parcel-w) no-repeat right -100px top -120px / 460px auto, var(--grad-hero); }
 
-/* CONTACTOS: la malla de puntos pasa a cuadrícula fina (distinta a las demás) */
-.ct-halftone { background-image:
-    linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px);
-  background-size: 42px 42px; opacity: 1; }
+/* NOTICIAS: claro con parcela tenue arriba-derecha + cinta institucional */
+.news-header { position: relative; overflow: hidden; background: var(--parcel-n) no-repeat right -70px top -90px / 380px auto, linear-gradient(180deg,#fbfdfe 0%,#eef4f7 100%); }
+.news-header::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--ribbon); z-index: 1; }
 
 /* ============================================================
    MICRO-ANIMACIONES (sutiles, on-brand)
