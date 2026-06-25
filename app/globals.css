@@ -1293,3 +1293,55 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .footer-legal a:hover { text-decoration: underline; opacity: 1; }
 .footer-legal span { color: rgba(255,255,255,.5); }
 @media (prefers-reduced-motion: reduce) { .ext-modal { animation: none; } }
+
+/* ============================================================
+   CÍRCULOS FLOTANTES (idioma · tema · experiencia)
+   ============================================================ */
+.fab-stack { position: fixed; right: 18px; bottom: 96px; z-index: 120; display: flex; flex-direction: column; gap: 14px; }
+.fab { position: relative; width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+  box-shadow: 0 8px 22px rgba(14,34,51,.28); text-decoration: none;
+  transition: transform .2s var(--ease-soft), box-shadow .2s var(--ease-soft); }
+.fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 28px rgba(14,34,51,.34); }
+.fab:active { transform: scale(.96); }
+.fab-lang { background: var(--tt-blue-700); }
+.fab-theme { background: var(--tt-navy-700); }
+.fab-feedback { background: var(--tt-green-600); }
+.fab-badge { position: absolute; bottom: -3px; right: -3px; min-width: 20px; height: 18px; padding: 0 4px; border-radius: 9px;
+  background: var(--tt-amber-500); color: var(--tt-navy-900); font: var(--fw-bold) 10px/18px var(--font-sans); text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+@media (max-width: 560px) { .fab-stack { right: 12px; bottom: 78px; } .fab { width: 48px; height: 48px; } }
+@media (prefers-reduced-motion: reduce) { .fab:hover { transform: none; } }
+
+/* Oculta la barra/UI de Google Translate (la traducción se controla por el círculo) */
+.goog-te-banner-frame, .skiptranslate > iframe { display: none !important; }
+body { top: 0 !important; }
+#google_translate_element { display: none !important; }
+.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+/* ============================================================
+   MODO OSCURO (primer corte — superficies principales)
+   ============================================================ */
+.dark { color-scheme: dark;
+  --text-body:#e6edf2; --tt-gray-900:#e6edf2; --tt-gray-700:#c3d0d9; --tt-gray-500:#9fb0bd;
+  --tt-gray-300:#3a4751; --tt-gray-200:#2b3742; --tt-gray-100:#1a242c; --tt-gray-50:#161f26;
+  --tt-ink:#f0f5f8; --border-subtle:#2c3942; }
+.dark body { background:#0c1419; }
+.dark .brand-row-bg, .dark .mainnav, .dark .mainnav.is-stuck { background:#0f171d; border-color:#2c3942; }
+.dark .section-gray, .dark .news-header, .dark .rec-section, .dark .pq-section, .dark .legal-hero { background:#0f171d; }
+.dark .visor { background:linear-gradient(180deg,#0f171d 0%,#0c1419 100%); }
+.dark .ct-card, .dark .pq-form, .dark .term-card, .dark .news-card, .dark .feat-card,
+.dark .mn-drop, .dark .cm-tip, .dark .legal-meta, .dark .privacy-notice, .dark .ext-modal,
+.dark .func-card, .dark .glass-card, .dark .lead-card, .dark .team-area, .dark .search-results,
+.dark .pq-input, .dark .ct-input, .dark .enlace-row {
+  background:#131c23 !important; border-color:#2c3942 !important; color:var(--text-body); }
+.dark .sec-title, .dark .visor h2, .dark .legal-wrap h1, .dark .legal-body h2, .dark .legal-body h3,
+.dark .ct-card h2, .dark .pq-form h2, .dark .term-name, .dark .enlace-body .et,
+.dark .news-card-body h3, .dark .sitemap-group h2, .dark .pq-label, .dark .ct-field label {
+  color:#e9f1f6 !important; }
+.dark .mn-link { color:#c3d0d9; }
+.dark .mn-link.on, .dark .mn-link:hover { color:#fff; }
+.dark .pq-input::placeholder, .dark .ct-input::placeholder { color:#7d8d99; }
+.dark .legal-table thead th { background:#1f2c35; }
+.dark .legal-table th[scope="row"] { background:#11191f; color:#e9f1f6; }

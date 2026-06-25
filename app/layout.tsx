@@ -7,6 +7,8 @@ import { OverridesProvider } from "@/components/admin/Editable";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import FloatingActions from "@/components/site/FloatingActions";
+import GoogleTranslate from "@/components/site/GoogleTranslate";
 
 // Inter auto-hospedada por Next (no se llama a Google Fonts en runtime)
 const inter = Inter({
@@ -116,6 +118,12 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body>
+        {/* Aplica el tema guardado antes de pintar (evita parpadeo claro→oscuro) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('tt-theme')==='dark')document.documentElement.classList.add('dark');}catch(e){}`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -126,6 +134,8 @@ export default function RootLayout({
           </OverridesProvider>
         </AuthProvider>
         <RevealManager />
+        <FloatingActions />
+        <GoogleTranslate />
         <Analytics />
         <SpeedInsights />
       </body>
