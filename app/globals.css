@@ -1345,3 +1345,51 @@ body { top: 0 !important; }
 .dark .pq-input::placeholder, .dark .ct-input::placeholder { color:#7d8d99; }
 .dark .legal-table thead th { background:#1f2c35; }
 .dark .legal-table th[scope="row"] { background:#11191f; color:#e9f1f6; }
+
+/* ============================================================
+   MODO OSCURO — barrido completo (cubre estilos en línea)
+   ============================================================ */
+/* Secciones claras → oscuras */
+.dark .serv-section, .dark .ct-form-section, .dark .news-feat-section, .dark .news-grid-section,
+.dark .ct-map-section, .dark .nos-section, .dark .obj-section, .dark .sec-pad,
+.dark .rec-section, .dark .rec-section.blue, .dark .rec-section.green, .dark .equipo-section {
+  background: #0f171d !important; }
+.dark .visor { background: linear-gradient(180deg,#0f171d 0%,#0c1419 100%) !important; }
+.dark .section-gray { background: #0f171d !important; }
+
+/* Tarjetas / superficies blancas → oscuras */
+.dark .tr-card, .dark .etapa-card, .dark .gl-search, .dark .ct-sede-card, .dark .nav-drawer,
+.dark .route-loading, .dark .ne-foot, .dark .obj-row, .dark .az-btn, .dark .news-chip,
+.dark .gc-search, .dark .pq-chip, .dark .sr-item, .dark .gl-toolbar, .dark .term-card,
+.dark .news-card, .dark .feat-card, .dark .ct-card, .dark .pq-form,
+.dark .lead-card, .dark .team-area, .dark .mn-drop, .dark .cm-tip, .dark .search-results,
+.dark .legal-meta, .dark .privacy-notice, .dark .ext-modal {
+  background: #131c23 !important; border-color: #2c3942 !important; }
+
+/* Encabezados → claros (incluye color en línea con var navy) */
+.dark h1, .dark h2, .dark h3, .dark h4 { color: #eaf1f6 !important; }
+
+/* Texto e inline-vars que no flipean solos */
+.dark .ed, .dark .term-def, .dark .news-card-body p, .dark .feat-body p,
+.dark .legal-body p, .dark .legal-list, .dark .legal-meta { color: #c3d0d9 !important; }
+
+/* Campos de formulario y buscador */
+.dark input, .dark textarea, .dark select {
+  background: #131c23 !important; color: var(--text-body) !important; border-color: #2c3942 !important; }
+.dark input::placeholder, .dark textarea::placeholder { color: #7d8d99 !important; }
+.dark .gc-search .seg { background: #1f2c35 !important; color: #9fc6e0 !important; }
+.dark .pq-radios .pq-chip { color: #c3d0d9; }
+
+/* Enlaces dentro de contenido */
+.dark .legal-body a, .dark .privacy-notice a, .dark .footer-data a, .dark .mn-drop a, .dark .sitemap-group a { color: #6fb3d6 !important; }
+
+/* Bordes / separadores */
+.dark .brand-sep, .dark .footer-marks .sep, .dark .legal-body h2, .dark .news-chip { border-color: #2c3942 !important; }
+
+/* Encabezado del sitio */
+.dark .brand-row-bg, .dark .mainnav, .dark .mainnav.is-stuck { background: #0f171d !important; }
+.dark .mn-link { color: #c3d0d9; }
+.dark .mn-link.on, .dark .mn-link:hover { color: #fff; }
+
+/* Footer verde: se mantiene el verde corporativo; el título a verde claro */
+.dark .footer-card h3 { color: #bfe3a0 !important; }
