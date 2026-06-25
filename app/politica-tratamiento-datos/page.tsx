@@ -16,10 +16,8 @@ export default function PoliticaDatosPage() {
         <p className="legal-lead">Tuterritorio — Catastro Multipropósito de Valledupar</p>
 
         <ul className="legal-meta">
-          <li><b>Fecha de expedición:</b> 【DD/MM/AAAA】</li>
           <li><b>Última actualización:</b> 25 de junio de 2026</li>
           <li><b>Versión:</b> 1.0</li>
-          <li><b>Acto administrativo de adopción:</b> 【Resolución/Acuerdo N.° ___ de ___】</li>
         </ul>
 
         <div className="legal-body">
@@ -30,8 +28,8 @@ export default function PoliticaDatosPage() {
               <tr><th scope="row">Razón social</th><td>Tuterritorio — Catastro Multipropósito de Valledupar</td></tr>
               <tr><th scope="row">NIT</th><td>901.996.731-8</td></tr>
               <tr><th scope="row">Domicilio</th><td>Calle 16 #9-48, Edificio Caja Agraria, Of. 1301, Valledupar, Cesar</td></tr>
-              <tr><th scope="row">Correo protección de datos</th><td>【protecciondedatos@tuterritorio.gov.co】</td></tr>
-              <tr><th scope="row">Correo general</th><td><a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></td></tr>
+              <tr><th scope="row">Correo (consultas y protección de datos)</th><td><a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></td></tr>
+              <tr><th scope="row">Teléfono</th><td>(605) 5885761 Ext. 100</td></tr>
             </tbody>
           </table>
 
@@ -81,7 +79,8 @@ export default function PoliticaDatosPage() {
 
           <h2 id="procedimiento">8. Procedimiento para consultas y reclamos</h2>
           <p>
-            <b>Canales:</b> correo 【protecciondedatos@tuterritorio.gov.co】, presencial
+            <b>Canales:</b> correo{" "}
+            <a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a>, presencial
             (Calle 16 #9-48, Of. 1301) y formulario{" "}
             <a href="/pqrsd">tuterritorio.gov.co/pqrsd</a>.
           </p>
@@ -112,11 +111,19 @@ export default function PoliticaDatosPage() {
 
           <h2 id="encargados">10. Encargados y transferencia internacional</h2>
           <p>
-            Tuterritorio usa proveedores de hosting y CDN que actúan como Encargados, con servidores
-            que pueden ubicarse fuera de Colombia (p. ej. EE. UU.), adoptando las garantías de los
-            arts. 24-26 de la Ley 1581 y los contratos de transmisión correspondientes.
-            【Listar Encargados específicos: hosting, procesador de formularios, plataformas de
-            consulta predial e impuesto predial】.
+            Tuterritorio usa proveedores tecnológicos que actúan como Encargados del tratamiento, con
+            servidores que pueden ubicarse fuera de Colombia (p. ej. EE. UU.), adoptando las garantías
+            de los arts. 24-26 de la Ley 1581 y los contratos de transmisión correspondientes.
+            Los Encargados son:
+          </p>
+          <ul className="legal-list legal-list-disc">
+            <li><b>Vercel Inc.</b> — alojamiento (hosting) y red de distribución de contenido (CDN). EE. UU.</li>
+            <li><b>Cloudflare, Inc.</b> — DNS y red de distribución de contenido (CDN). EE. UU.</li>
+            <li><b>Resend</b> — envío de los correos generados por los formularios de PQRSD y contacto. EE. UU.</li>
+          </ul>
+          <p>
+            Las plataformas externas de consulta de predios e impuesto predial enlazadas desde el sitio
+            son operadas por terceros con sus propias políticas de tratamiento de datos.
           </p>
 
           <h2 id="ninos">11. Datos de niños, niñas y adolescentes</h2>

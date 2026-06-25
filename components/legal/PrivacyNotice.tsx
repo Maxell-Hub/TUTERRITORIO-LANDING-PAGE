@@ -8,7 +8,7 @@ export default function PrivacyNotice() {
       <p>
         <b>Responsable:</b> Tuterritorio — Catastro Multipropósito de Valledupar
         (NIT 901.996.731-8), Calle 16 #9-48, Of. 1301, Valledupar. Correo:
-        {" "}<a href="mailto:protecciondedatos@tuterritorio.gov.co">protecciondedatos@tuterritorio.gov.co</a>.
+        {" "}<a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a>.
         Sus datos serán tratados para atender su solicitud (PQRSD, contacto o trámite catastral),
         notificarle la respuesta y cumplir obligaciones legales. Usted puede conocer, actualizar,
         rectificar y suprimir sus datos y revocar la autorización escribiendo a ese correo. Consulte la{" "}
