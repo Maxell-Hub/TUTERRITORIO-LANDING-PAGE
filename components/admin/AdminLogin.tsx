@@ -5,10 +5,14 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import Splash from "@/components/layout/Splash";
 
-export default function AdminPage() {
+/**
+ * Formulario de inicio de sesión del panel. Se renderiza desde la ruta secreta
+ * `/acceso/<ADMIN_PATH>` (validada en el servidor). No hay ruta `/admin` pública.
+ */
+export default function AdminLogin() {
   const { user, login, notify } = useAuth();
   const router = useRouter();
-  const [booting, setBooting] = useState(true); // animación al entrar a /admin
+  const [booting, setBooting] = useState(true); // animación al entrar
   const [usr, setUsr] = useState("");
   const [pass, setPass] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -26,7 +30,6 @@ export default function AdminPage() {
     setBusy(true);
     const res = await login(usr, pass);
     if (res.ok) {
-      // `user` pasa a estar definido → se muestra el splash y luego entra al sitio.
       notify("Inicio de Sesión Exitoso");
     } else {
       setBusy(false);
@@ -34,9 +37,7 @@ export default function AdminPage() {
     }
   }
 
-  // Splash al entrar a /admin.
   if (booting) return <Splash onFinish={() => setBooting(false)} />;
-  // Con sesión: splash de "entrando" y luego al sitio para editar.
   if (user) return <Splash onFinish={() => router.replace("/")} />;
 
   return (

@@ -6,13 +6,12 @@ import Footer from "@/components/layout/Footer";
 
 /**
  * Decide si mostrar la estructura del sitio (encabezado, pie, etc.).
- * En el panel (segmento "admin") se devuelve solo el contenido: una página
- * independiente con el formulario de inicio de sesión. Se usa el SEGMENTO
- * renderizado (no la URL) para que funcione aunque se entre por la ruta secreta.
+ * En el panel (segmento "acceso") se devuelve solo el contenido: una página
+ * independiente con el formulario de inicio de sesión.
  */
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const segment = useSelectedLayoutSegment();
-  const bare = segment === "admin";
+  const bare = segment === "acceso";
 
   if (bare) return <>{children}</>;
 
