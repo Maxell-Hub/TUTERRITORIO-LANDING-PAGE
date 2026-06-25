@@ -54,20 +54,11 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Tuterritorio — Catastro Multipropósito de Valledupar",
     description: DESCRIPTION,
-    images: [
-      {
-        url: "/assets/banner-bienvenidos.png",
-        width: 1672,
-        height: 941,
-        alt: "Tuterritorio — Catastro Multipropósito de Valledupar",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tuterritorio — Catastro Multipropósito de Valledupar",
     description: DESCRIPTION,
-    images: ["/assets/banner-bienvenidos.png"],
   },
   robots: {
     index: true,
