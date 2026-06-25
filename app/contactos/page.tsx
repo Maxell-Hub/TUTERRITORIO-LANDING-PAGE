@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import ContactoForm from "@/components/contacto/ContactoForm";
 
 export const metadata: Metadata = {
-  title: "Contáctenos — Tuterritorio",
+  title: "Contáctenos",
+  alternates: { canonical: "/contactos" },
   description:
     "Escríbenos tu solicitud sobre tu predio, visita nuestra sede en Valledupar o encuéntranos en el mapa. Estamos para servirte.",
 };

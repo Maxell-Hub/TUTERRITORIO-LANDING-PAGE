@@ -3,7 +3,8 @@ import Editable from "@/components/admin/Editable";
 import EquipoTeam from "@/components/nosotros/EquipoTeam";
 
 export const metadata: Metadata = {
-  title: "Nuestro Equipo — Tuterritorio",
+  title: "Nuestro Equipo",
+  alternates: { canonical: "/nosotros/equipo" },
   description:
     "Conoce al equipo humano de Tuterritorio: liderazgo y equipo técnico interdisciplinario que opera el catastro de Valledupar.",
 };

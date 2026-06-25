@@ -3,7 +3,8 @@ import Image from "next/image";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
-  title: "Nosotros — Tuterritorio",
+  title: "Nosotros",
+  alternates: { canonical: "/nosotros" },
   description:
     "Tuterritorio, operador del Catastro Multipropósito de Valledupar: quiénes somos, nuestras funciones, misión, visión, objetivos y el proceso catastral.",
 };

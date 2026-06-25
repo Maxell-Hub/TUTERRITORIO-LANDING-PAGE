@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
-  title: "Trámites y servicios — Tuterritorio",
+  title: "Trámites y servicios",
+  alternates: { canonical: "/servicios" },
   description:
     "Trámites y productos catastrales de Tuterritorio (Catastro de Valledupar): actualiza, corrige y consulta información de predios y propietarios.",
 };

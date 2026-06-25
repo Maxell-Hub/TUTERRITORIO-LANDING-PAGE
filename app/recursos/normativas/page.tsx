@@ -3,7 +3,8 @@ import Normativas from "@/components/recursos/Normativas";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
-  title: "Normativas — Tuterritorio",
+  title: "Normativas",
+  alternates: { canonical: "/recursos/normativas" },
   description:
     "Marco legal del catastro multipropósito: leyes, decretos, resoluciones y acuerdos que regulan la gestión catastral en Colombia y Valledupar.",
 };

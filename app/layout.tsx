@@ -16,11 +16,106 @@ const inter = Inter({
   display: "swap",
 });
 
+const SITE_URL = "https://tuterritorio.gov.co";
+const SITE_NAME = "Tuterritorio";
+const DESCRIPTION =
+  "Catastro Multipropósito de Valledupar. Consulta la información de tu predio (linderos, área y avalúo), realiza trámites catastrales, radica tu PQRSD y consulta el impuesto predial. Operado por Tuterritorio.";
+
 export const metadata: Metadata = {
-  title: "Tuterritorio — Consulta tu predio en Valledupar",
-  description:
-    "Catastro multipropósito de Valledupar. Consulta tu predio, paga el impuesto predial y radica tu PQRSD.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Tuterritorio — Catastro Multipropósito de Valledupar",
+    template: "%s — Tuterritorio",
+  },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "catastro Valledupar",
+    "catastro multipropósito",
+    "consultar predio Valledupar",
+    "avalúo catastral",
+    "impuesto predial Valledupar",
+    "trámites catastrales",
+    "PQRSD Valledupar",
+    "gestor catastral Cesar",
+    "Tuterritorio",
+    "información predial",
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "government",
+  alternates: { canonical: "/" },
+  formatDetection: { email: false, telephone: false, address: false },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: "Tuterritorio — Catastro Multipropósito de Valledupar",
+    description: DESCRIPTION,
+    images: [
+      {
+        url: "/assets/banner-bienvenidos.png",
+        width: 1672,
+        height: 941,
+        alt: "Tuterritorio — Catastro Multipropósito de Valledupar",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tuterritorio — Catastro Multipropósito de Valledupar",
+    description: DESCRIPTION,
+    images: ["/assets/banner-bienvenidos.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: { icon: "/icon.png", apple: "/icon.png" },
 };
+
+// Datos estructurados (JSON-LD) para buscadores: organización gubernamental + sitio web.
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "GovernmentOrganization",
+    name: SITE_NAME,
+    alternateName: "Catastro Multipropósito de Valledupar",
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.png`,
+    image: `${SITE_URL}/assets/banner-bienvenidos.png`,
+    description: DESCRIPTION,
+    email: "contactenos@tuterritorio.gov.co",
+    telephone: "+576055885761",
+    taxID: "901996731-8",
+    areaServed: { "@type": "City", name: "Valledupar" },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Calle 16 #9-48, Edificio Caja Agraria - Oficina 1301",
+      addressLocality: "Valledupar",
+      addressRegion: "Cesar",
+      addressCountry: "CO",
+    },
+    sameAs: ["https://www.instagram.com/tuterritorio_valledupar/"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    inLanguage: "es-CO",
+    publisher: { "@type": "GovernmentOrganization", name: SITE_NAME },
+  },
+];
 
 export default function RootLayout({
   children,
@@ -30,6 +125,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <AuthProvider>
           <OverridesProvider>
             <SiteChrome>{children}</SiteChrome>

@@ -3,7 +3,8 @@ import Glosario from "@/components/recursos/Glosario";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
-  title: "ABC Catastral — Tuterritorio",
+  title: "ABC Catastral",
+  alternates: { canonical: "/recursos/glosario" },
   description:
     "Diccionario de términos del catastro multipropósito: busca y filtra los conceptos clave explicados en lenguaje claro.",
 };

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import PqrsdForm from "@/components/pqrsd/PqrsdForm";
 
 export const metadata: Metadata = {
-  title: "Radica tu PQRSD — Tuterritorio",
+  title: "Radica tu PQRSD",
+  alternates: { canonical: "/pqrsd" },
   description:
     "Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio, catastro de Valledupar.",
 };
