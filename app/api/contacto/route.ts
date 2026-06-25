@@ -62,11 +62,17 @@ export async function POST(req: Request) {
   const telefono = esc(body.telefono) || "—";
   const mensaje = esc(body.mensaje).replace(/\n/g, "<br>");
 
+  // Prueba del consentimiento (Ley 1581/2012): fecha y hora de la autorización.
+  const consentAt = body.autorizacionFecha
+    ? new Date(String(body.autorizacionFecha)).toLocaleString("es-CO", { timeZone: "America/Bogota", dateStyle: "medium", timeStyle: "short" })
+    : "—";
+
   // Versión de texto plano (mejora la entregabilidad / evita spam).
   const text =
     `Nuevo mensaje de contacto — Tuterritorio\n\n` +
     `Nombre: ${body.nombre}\nCédula: ${body.cedula}\nCorreo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\n\n` +
-    `Mensaje:\n${body.mensaje}`;
+    `Mensaje:\n${body.mensaje}\n\n` +
+    `Autorización de tratamiento de datos: Sí (vía web)\nFecha y hora del consentimiento: ${consentAt}`;
 
   const html = `
   <body style="margin:0;background:#eef3f6;">
@@ -119,7 +125,8 @@ export async function POST(req: Request) {
           </td></tr>
           <!-- Pie -->
           <tr><td style="background:#f6f9fa;padding:18px 32px;border-top:1px solid #eef1f3;">
-            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;">Mensaje generado automáticamente desde el sitio web de Tuterritorio.</div>
+            <div style="color:#6C757D;font-size:12px;line-height:1.5;"><strong>Autorización de datos:</strong> Sí (vía web) · <strong>Fecha del consentimiento:</strong> ${consentAt}</div>
+            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;margin-top:6px;">Mensaje generado automáticamente desde el sitio web de Tuterritorio.</div>
           </td></tr>
         </table>
         <div style="color:#9AA3AB;font-size:11px;margin-top:16px;">Tuterritorio — Oficina de Catastro Multipropósito de Valledupar</div>

@@ -14,6 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/noticias", priority: 0.8, freq: "weekly" },
     { path: "/recursos/normativas", priority: 0.6, freq: "monthly" },
     { path: "/recursos/glosario", priority: 0.6, freq: "monthly" },
+    { path: "/politica-tratamiento-datos", priority: 0.4, freq: "yearly" },
+    { path: "/terminos-y-condiciones", priority: 0.3, freq: "yearly" },
+    { path: "/accesibilidad", priority: 0.3, freq: "yearly" },
+    { path: "/mapa-del-sitio", priority: 0.3, freq: "yearly" },
   ];
 
   return pages.map((p) => ({

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import PrivacyNotice from "@/components/legal/PrivacyNotice";
 
 const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const NOMBRE_RE = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{2,}(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ.]{1,}){1,}$/;
@@ -117,10 +118,11 @@ export default function ContactoForm() {
 
     setSending(true);
     try {
+      // Prueba del consentimiento: fecha y hora exactas de la autorización (Ley 1581/2012).
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, autorizacion: "Sí" }),
+        body: JSON.stringify({ ...values, autorizacion: "Sí", autorizacionFecha: new Date().toISOString() }),
       });
       if (!res.ok) {
         let msg = "No se pudo enviar el mensaje. Intenta de nuevo.";
@@ -186,11 +188,12 @@ export default function ContactoForm() {
           <input
             id="ct-nombre" className={`ct-input${touched.nombre && errors.nombre ? " is-invalid" : ""}`}
             name="nombre" data-field="nombre" placeholder="Ej: Juan Carlos Pérez Gómez" autoComplete="name"
+            aria-invalid={touched.nombre && !!errors.nombre ? true : undefined} aria-describedby="ct-nombre-msg"
             value={values.nombre} onChange={(e) => setField("nombre", e.target.value)} onBlur={() => onBlur("nombre")}
           />
           {touched.nombre && errors.nombre
-            ? <span className="pq-error">{errors.nombre}</span>
-            : <span className="pq-hint">Solo letras. Nombres y apellidos completos.</span>}
+            ? <span id="ct-nombre-msg" className="pq-error" role="alert">{errors.nombre}</span>
+            : <span id="ct-nombre-msg" className="pq-hint">Solo letras. Nombres y apellidos completos.</span>}
         </div>
 
         <div className="ct-row2">
@@ -199,22 +202,24 @@ export default function ContactoForm() {
             <input
               id="ct-cedula" className={`ct-input${touched.cedula && errors.cedula ? " is-invalid" : ""}`}
               name="cedula" data-field="cedula" inputMode="numeric" placeholder="Tu número de cédula"
+              aria-invalid={touched.cedula && !!errors.cedula ? true : undefined} aria-describedby="ct-cedula-msg"
               value={values.cedula} onChange={(e) => setField("cedula", e.target.value)} onBlur={() => onBlur("cedula")}
             />
             {touched.cedula && errors.cedula
-              ? <span className="pq-error">{errors.cedula}</span>
-              : <span className="pq-hint">Entre 6 y 10 dígitos, sin puntos ni comas.</span>}
+              ? <span id="ct-cedula-msg" className="pq-error" role="alert">{errors.cedula}</span>
+              : <span id="ct-cedula-msg" className="pq-hint">Entre 6 y 10 dígitos, sin puntos ni comas.</span>}
           </div>
           <div className="ct-field">
             <label htmlFor="ct-correo">Correo electrónico <span style={{ color: "var(--tt-red-500)" }}>*</span></label>
             <input
               id="ct-correo" className={`ct-input${touched.correo && errors.correo ? " is-invalid" : ""}`}
               type="email" name="correo" data-field="correo" placeholder="nombre@dominio.com" autoComplete="email"
+              aria-invalid={touched.correo && !!errors.correo ? true : undefined} aria-describedby="ct-correo-msg"
               value={values.correo} onChange={(e) => setField("correo", e.target.value)} onBlur={() => onBlur("correo")}
             />
             {touched.correo && errors.correo
-              ? <span className="pq-error">{errors.correo}</span>
-              : <span className="pq-hint">Formato: nombre@dominio.com</span>}
+              ? <span id="ct-correo-msg" className="pq-error" role="alert">{errors.correo}</span>
+              : <span id="ct-correo-msg" className="pq-hint">Formato: nombre@dominio.com</span>}
           </div>
         </div>
 
@@ -223,11 +228,12 @@ export default function ContactoForm() {
           <input
             id="ct-tel" className={`ct-input${touched.telefono && errors.telefono ? " is-invalid" : ""}`}
             type="tel" name="telefono" data-field="telefono" inputMode="tel" placeholder="300 000 0000"
+            aria-invalid={touched.telefono && !!errors.telefono ? true : undefined} aria-describedby="ct-tel-msg"
             value={values.telefono} onChange={(e) => setField("telefono", e.target.value)} onBlur={() => onBlur("telefono")}
           />
           {touched.telefono && errors.telefono
-            ? <span className="pq-error">{errors.telefono}</span>
-            : <span className="pq-hint">Celular: 10 dígitos · Fijo: 7 dígitos.</span>}
+            ? <span id="ct-tel-msg" className="pq-error" role="alert">{errors.telefono}</span>
+            : <span id="ct-tel-msg" className="pq-hint">Celular: 10 dígitos · Fijo: 7 dígitos.</span>}
         </div>
 
         <div className="ct-field">
@@ -235,22 +241,31 @@ export default function ContactoForm() {
           <textarea
             id="ct-msg" className={`ct-input${touched.mensaje && errors.mensaje ? " is-invalid" : ""}`}
             name="mensaje" data-field="mensaje" rows={5} placeholder="Cuéntanos en qué podemos ayudarte…"
+            aria-invalid={touched.mensaje && !!errors.mensaje ? true : undefined} aria-describedby="ct-msg-msg"
             value={values.mensaje} onChange={(e) => setField("mensaje", e.target.value)} onBlur={() => onBlur("mensaje")}
           />
           {touched.mensaje && errors.mensaje
-            ? <span className="pq-error">{errors.mensaje}</span>
-            : <span className="pq-hint">Mínimo 20 caracteres.</span>}
+            ? <span id="ct-msg-msg" className="pq-error" role="alert">{errors.mensaje}</span>
+            : <span id="ct-msg-msg" className="pq-hint">Mínimo 20 caracteres.</span>}
         </div>
 
-        <label style={{ display: "flex", alignItems: "flex-start", gap: 10, font: "400 0.875rem/1.5 var(--font-sans)", color: "var(--tt-gray-700)", cursor: "pointer" }}>
+        <PrivacyNotice />
+
+        <label className="consent-label">
           <input
-            type="checkbox" name="autorizacion" data-field="autorizacion" checked={values.autorizacion}
+            type="checkbox" name="autorizacion" data-field="autorizacion" checked={values.autorizacion} required
+            aria-invalid={touched.autorizacion && !!errors.autorizacion ? true : undefined}
+            aria-describedby={touched.autorizacion && errors.autorizacion ? "ct-autorizacion-msg" : undefined}
             onChange={(e) => { setValues((v) => ({ ...v, autorizacion: e.target.checked })); setTouched((t) => ({ ...t, autorizacion: true })); setErrors((er) => ({ ...er, autorizacion: e.target.checked ? "" : "Debes autorizar el tratamiento de tus datos." })); }}
-            style={{ marginTop: 3, width: 18, height: 18, accentColor: "var(--tt-blue-700)", flex: "none" }}
           />
-          <span>Autorizo el tratamiento de mis datos personales conforme a la política de privacidad de Tuterritorio. <span style={{ color: "var(--tt-red-500)" }}>*</span></span>
+          <span>
+            Autorizo de manera previa, expresa e informada el tratamiento de mis datos personales
+            conforme a la{" "}
+            <a href="/politica-tratamiento-datos" target="_blank" rel="noopener">Política de Tratamiento de Datos Personales</a>{" "}
+            de Tuterritorio y a la Ley 1581 de 2012. <span style={{ color: "var(--tt-red-500)" }}>*</span>
+          </span>
         </label>
-        {touched.autorizacion && errors.autorizacion && <span className="pq-error">{errors.autorizacion}</span>}
+        {touched.autorizacion && errors.autorizacion && <span id="ct-autorizacion-msg" className="pq-error" role="alert">{errors.autorizacion}</span>}
 
         <button type="submit" className="ct-submit" disabled={sending}>
           {sending ? "Enviando…" : "Enviar mensaje"}

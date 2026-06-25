@@ -74,12 +74,18 @@ export async function POST(req: Request) {
   const asunto = esc(body.asunto);
   const descripcion = esc(body.descripcion).replace(/\n/g, "<br>");
 
+  // Prueba del consentimiento (Ley 1581/2012): fecha y hora de la autorización.
+  const consentAt = body.autorizacionFecha
+    ? new Date(String(body.autorizacionFecha)).toLocaleString("es-CO", { timeZone: "America/Bogota", dateStyle: "medium", timeStyle: "short" })
+    : "—";
+
   const text =
     `Nueva PQRSD — Tuterritorio\n\n` +
     `Tipo: ${body.tipo}\nNombre: ${body.nombre}\n` +
     `Documento: ${body.tipoDocumento} ${body.documento}\n` +
     `Correo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\nDirección: ${body.direccion || "—"}\n\n` +
-    `Asunto: ${body.asunto}\n\nDescripción:\n${body.descripcion}`;
+    `Asunto: ${body.asunto}\n\nDescripción:\n${body.descripcion}\n\n` +
+    `Autorización de tratamiento de datos: Sí (vía web)\nFecha y hora del consentimiento: ${consentAt}`;
 
   const row = (label: string, value: string, link?: string) => `
     <tr>
@@ -125,7 +131,8 @@ export async function POST(req: Request) {
             </tr></table>
           </td></tr>
           <tr><td style="background:#f6f9fa;padding:18px 32px;border-top:1px solid #eef1f3;">
-            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;">PQRSD generada automáticamente desde el sitio web de Tuterritorio.</div>
+            <div style="color:#6C757D;font-size:12px;line-height:1.5;"><strong>Autorización de datos:</strong> Sí (vía web) · <strong>Fecha del consentimiento:</strong> ${consentAt}</div>
+            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;margin-top:6px;">PQRSD generada automáticamente desde el sitio web de Tuterritorio.</div>
           </td></tr>
         </table>
         <div style="color:#9AA3AB;font-size:11px;margin-top:16px;">Tuterritorio — Oficina de Catastro Multipropósito de Valledupar</div>

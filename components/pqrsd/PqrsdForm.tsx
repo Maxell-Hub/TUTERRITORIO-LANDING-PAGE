@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import PrivacyNotice from "@/components/legal/PrivacyNotice";
 
 const TIPOS = ["Petición", "Queja", "Reclamo", "Sugerencia", "Denuncia"];
 const DOCS = ["Cédula de ciudadanía", "Cédula de extranjería", "NIT", "Pasaporte"];
@@ -171,7 +172,8 @@ export default function PqrsdForm() {
       const res = await fetch("/api/pqrsd", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, autorizacion: "Sí" }),
+        // Prueba del consentimiento: fecha y hora exactas de la autorización (Ley 1581/2012).
+        body: JSON.stringify({ ...values, autorizacion: "Sí", autorizacionFecha: new Date().toISOString() }),
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json?.error || "No se pudo radicar. Intenta de nuevo.");
@@ -355,15 +357,23 @@ export default function PqrsdForm() {
           : <span className="pq-hint">Mínimo 20 caracteres.</span>}
       </label>
 
-      <label style={{ display: "flex", alignItems: "flex-start", gap: 11, marginTop: 22, font: "var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans)", color: "var(--tt-gray-700)", cursor: "pointer" }}>
+      <div style={{ marginTop: 22 }}><PrivacyNotice /></div>
+
+      <label className="consent-label" style={{ marginTop: 14 }}>
         <input
-          type="checkbox" name="autorizacion" data-field="autorizacion" checked={values.autorizacion}
+          type="checkbox" name="autorizacion" data-field="autorizacion" checked={values.autorizacion} required
+          aria-invalid={touched.autorizacion && !!errors.autorizacion ? true : undefined}
+          aria-describedby={touched.autorizacion && errors.autorizacion ? "pq-autorizacion-msg" : undefined}
           onChange={(e) => { setValues((v) => ({ ...v, autorizacion: e.target.checked })); setTouched((t) => ({ ...t, autorizacion: true })); setErrors((er) => ({ ...er, autorizacion: e.target.checked ? "" : "Debes autorizar el tratamiento de tus datos." })); }}
-          style={{ marginTop: 3, width: 18, height: 18, accentColor: "var(--tt-green-600)", flex: "none" }}
         />
-        <span>Autorizo el tratamiento de mis datos personales conforme a la política de privacidad de Tuterritorio y la Ley 1581 de 2012. <span className="req">*</span></span>
+        <span>
+          Autorizo de manera previa, expresa e informada el tratamiento de mis datos personales
+          conforme a la{" "}
+          <a href="/politica-tratamiento-datos" target="_blank" rel="noopener">Política de Tratamiento de Datos Personales</a>{" "}
+          de Tuterritorio y a la Ley 1581 de 2012. <span className="req">*</span>
+        </span>
       </label>
-      {touched.autorizacion && errors.autorizacion && <div className="pq-error">{errors.autorizacion}</div>}
+      {touched.autorizacion && errors.autorizacion && <div id="pq-autorizacion-msg" className="pq-error" role="alert">{errors.autorizacion}</div>}
 
       <div style={{ marginTop: 30, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
         <button type="submit" className="pq-submit" disabled={sending}>

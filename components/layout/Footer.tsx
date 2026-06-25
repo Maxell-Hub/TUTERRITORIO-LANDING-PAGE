@@ -45,6 +45,17 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Enlaces legales obligatorios */}
+      <nav className="footer-legal" aria-label="Enlaces legales">
+        <a href="/politica-tratamiento-datos">Política de privacidad</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terminos-y-condiciones">Términos y condiciones</a>
+        <span aria-hidden="true">·</span>
+        <a href="/accesibilidad">Accesibilidad</a>
+        <span aria-hidden="true">·</span>
+        <a href="/mapa-del-sitio">Mapa del sitio</a>
+      </nav>
+
       {/* gov.co bottom bar */}
       <div className="govco-bottom">
         <div className="govco-bottom-row">

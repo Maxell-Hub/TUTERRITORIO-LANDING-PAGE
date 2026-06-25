@@ -1,3 +1,5 @@
+import ExternalLink from "@/components/common/ExternalLink";
+
 const Arrow = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14M13 6l6 6-6 6" />
@@ -44,23 +46,28 @@ export default function EnlacesInteres() {
         </div>
 
         <div className="enlaces-list">
-          {LINKS.map((l) => (
-            <a
-              key={l.n}
-              href={l.href}
-              target={l.external ? "_blank" : undefined}
-              rel={l.external ? "noopener noreferrer" : undefined}
-              className="enlace-row reveal"
-              style={{ ["--accent" as string]: l.accent }}
-            >
-              <span className="enlace-num">{l.n}</span>
-              <div className="enlace-body">
-                <h3 className="et">{l.title}</h3>
-                <p className="ed">{l.desc}</p>
-              </div>
-              <span className="enlace-arrow"><Arrow /></span>
-            </a>
-          ))}
+          {LINKS.map((l) => {
+            const inner = (
+              <>
+                <span className="enlace-num">{l.n}</span>
+                <div className="enlace-body">
+                  <h3 className="et">{l.title}</h3>
+                  <p className="ed">{l.desc}</p>
+                </div>
+                <span className="enlace-arrow"><Arrow /></span>
+              </>
+            );
+            // Enlaces externos (no-.gov.co) → aviso de salida del sitio oficial.
+            return l.external ? (
+              <ExternalLink key={l.n} href={l.href} className="enlace-row reveal" ariaLabel={l.title} style={{ ["--accent" as string]: l.accent }}>
+                {inner}
+              </ExternalLink>
+            ) : (
+              <a key={l.n} href={l.href} className="enlace-row reveal" style={{ ["--accent" as string]: l.accent }}>
+                {inner}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
