@@ -61,13 +61,12 @@ export async function POST(req: Request) {
   const correo = esc(body.correo);
   const telefono = esc(body.telefono) || "—";
   const mensaje = esc(body.mensaje).replace(/\n/g, "<br>");
-  const radicado = `CT-${Date.now()}`;
 
   // Versión de texto plano (mejora la entregabilidad / evita spam).
   const text =
     `Nuevo mensaje de contacto — Tuterritorio\n\n` +
     `Nombre: ${body.nombre}\nCédula: ${body.cedula}\nCorreo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\n\n` +
-    `Mensaje:\n${body.mensaje}\n\nRadicado: ${radicado}`;
+    `Mensaje:\n${body.mensaje}`;
 
   const html = `
   <body style="margin:0;background:#eef3f6;">
@@ -120,7 +119,7 @@ export async function POST(req: Request) {
           </td></tr>
           <!-- Pie -->
           <tr><td style="background:#f6f9fa;padding:18px 32px;border-top:1px solid #eef1f3;">
-            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;">Radicado <strong style="color:#6C757D;">${radicado}</strong> · Mensaje generado automáticamente desde el sitio web de Tuterritorio.</div>
+            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;">Mensaje generado automáticamente desde el sitio web de Tuterritorio.</div>
           </td></tr>
         </table>
         <div style="color:#9AA3AB;font-size:11px;margin-top:16px;">Tuterritorio — Oficina de Catastro Multipropósito de Valledupar</div>
@@ -132,7 +131,7 @@ export async function POST(req: Request) {
   if (!apiKey) {
     // Sin clave configurada (p. ej. en local): no se envía, pero no se rompe.
     console.warn("[CONTACTO] RESEND_API_KEY no configurada — el correo NO se envió.", { nombre, correo });
-    return NextResponse.json({ ok: true, radicado, warning: "email-no-configurado" }, { status: 200 });
+    return NextResponse.json({ ok: true, warning: "email-no-configurado" }, { status: 200 });
   }
 
   try {
@@ -155,5 +154,5 @@ export async function POST(req: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true, radicado }, { status: 200 });
+  return NextResponse.json({ ok: true }, { status: 200 });
 }
