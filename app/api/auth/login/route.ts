@@ -7,8 +7,17 @@ import {
   SESSION_COOKIE,
   SESSION_MAX_AGE,
 } from "@/lib/auth";
+import { rateLimit, clientIp } from "@/lib/rateLimit";
 
 export async function POST(req: Request) {
+  // Anti fuerza bruta: máx. 8 intentos por IP cada 10 minutos.
+  if (!rateLimit(`login:${clientIp(req)}`, 8, 10 * 60_000)) {
+    return NextResponse.json(
+      { error: "Demasiados intentos. Espera unos minutos e inténtalo de nuevo." },
+      { status: 429 }
+    );
+  }
+
   let user = "";
   let pass = "";
   try {

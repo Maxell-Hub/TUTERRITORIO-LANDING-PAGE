@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit, clientIp } from "@/lib/rateLimit";
 
 /**
  * Endpoint de contacto: valida, aplica anti-spam (honeypot) y envía el mensaje
@@ -23,6 +24,14 @@ const esc = (s: unknown) =>
     .replace(/>/g, "&gt;");
 
 export async function POST(req: Request) {
+  // Anti-spam/abuso: máx. 5 envíos por IP cada 10 minutos.
+  if (!rateLimit(`contacto:${clientIp(req)}`, 5, 10 * 60_000)) {
+    return NextResponse.json(
+      { ok: false, error: "Has enviado varios mensajes. Espera unos minutos antes de intentar de nuevo." },
+      { status: 429 }
+    );
+  }
+
   let body: Record<string, unknown>;
   try {
     body = await req.json();
@@ -138,10 +147,10 @@ export async function POST(req: Request) {
     });
     if (error) throw new Error(error.message);
   } catch (e) {
-    const detail = e instanceof Error ? e.message : String(e);
-    console.error("[CONTACTO] Error al enviar correo:", detail);
+    // Se registra el detalle en el servidor, pero NO se expone al cliente.
+    console.error("[CONTACTO] Error al enviar correo:", e);
     return NextResponse.json(
-      { ok: false, error: `No se pudo enviar el mensaje: ${detail}` },
+      { ok: false, error: "No se pudo enviar el mensaje en este momento. Intenta más tarde." },
       { status: 502 }
     );
   }

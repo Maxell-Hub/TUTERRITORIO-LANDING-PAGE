@@ -1,12 +1,17 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { isBlobConfigured, isServerless } from "@/lib/store";
+import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
 /**
- * Diagnóstico de almacenamiento (sin exponer secretos).
- * Abre /api/storage-status en el navegador para saber si el despliegue actual
- * tiene conectado el Blob (BLOB_READ_WRITE_TOKEN presente) y si corre en Vercel.
+ * Diagnóstico de almacenamiento (sin secretos). Solo para administradores:
+ * evita exponer detalles de la infraestructura a cualquier visitante.
  */
 export async function GET() {
+  const store = await cookies();
+  if (!verifyToken(store.get(SESSION_COOKIE)?.value)) {
+    return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+  }
   return NextResponse.json({
     isServerless,
     isBlobConfigured,
