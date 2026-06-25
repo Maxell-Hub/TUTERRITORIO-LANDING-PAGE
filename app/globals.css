@@ -1316,7 +1316,8 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 /* Oculta la barra/UI de Google Translate (la traducción se controla por el círculo) */
 .goog-te-banner-frame, .skiptranslate > iframe { display: none !important; }
 body { top: 0 !important; }
-#google_translate_element { display: none !important; }
+/* El gadget debe renderizarse para que el widget funcione; se oculta fuera de pantalla (no display:none) */
+#google_translate_element { position: absolute !important; left: -9999px !important; top: 0 !important; height: 0 !important; overflow: hidden !important; }
 .goog-tooltip, .goog-tooltip:hover { display: none !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
