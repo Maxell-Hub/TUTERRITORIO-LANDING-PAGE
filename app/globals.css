@@ -1456,3 +1456,7 @@ body { top: 0 !important; }
 .dark .hero h1 { color: #f3f7fa !important; }
 .dark .hero p { color: rgba(226,236,242,.88); }
 .dark .hero-feat { color: rgba(226,236,242,.92); }
+
+/* MODO OSCURO — Visor geográfico: subtítulo y rayita en blanco */
+.dark .visor-tag { color: #ffffff !important; font-weight: 700 !important; }
+.dark .visor-tag .ln { background: #ffffff !important; }
