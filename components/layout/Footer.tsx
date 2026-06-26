@@ -9,7 +9,8 @@ export default function Footer() {
       <div className="footer-wrap">
         <div className="footer-card">
           <div className="footer-top">
-            <img src="/assets/logo-tuterritorio-footer.png" alt="Tuterritorio" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain", display: "block" }} />
+            <img src="/assets/logo-tuterritorio-footer.png" alt="Tuterritorio" className="logo-light-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
+            <img src="/assets/logo-tuterritorio-v-blanco.png" alt="" aria-hidden="true" className="logo-dark-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
             <div className="footer-marks">
               <img src="/assets/escudo-valledupar.png" alt="Escudo de Valledupar" loading="lazy" decoding="async" style={{ height: 60, display: "block" }} />
               <span className="sep" />
@@ -33,10 +34,10 @@ export default function Footer() {
           <div className="footer-social">
             <a className="gc-social" href="https://www.instagram.com/tuterritorio_valledupar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Tuterritorio">
               <span className="ic">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="5" />
                   <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1.1" fill="#fff" stroke="none" />
+                  <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
                 </svg>
               </span>
               Instagram
@@ -56,14 +57,6 @@ export default function Footer() {
         <a href="/mapa-del-sitio">Mapa del sitio</a>
       </nav>
 
-      {/* gov.co bottom bar */}
-      <div className="govco-bottom">
-        <div className="govco-bottom-row">
-          <img src="/assets/co-colombia.png" alt="CO — Colombia" loading="lazy" decoding="async" style={{ height: 46, display: "block" }} />
-          <span className="sep" />
-          <img src="/assets/govco-white.png" alt="gov.co" loading="lazy" decoding="async" style={{ height: 30, display: "block" }} />
-        </div>
-      </div>
     </footer>
   );
 }
