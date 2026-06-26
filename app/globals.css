@@ -1515,3 +1515,54 @@ body { top: 0 !important; }
     background-color .35s ease, border-color .35s ease; }
   .func-card h3, .func-card p, .func-card::before { transition: background-color .35s ease, color .3s ease; }
 }
+
+/* ============================================================
+   Nosotros — Misión/Visión (2 columnas) y Etapas (escalera)
+   ============================================================ */
+/* Misión / Visión: título + texto divididos por línea vertical sutil */
+.mv-split { position: relative; display: grid; grid-template-columns: 1fr 1px 1fr; gap: clamp(28px,5vw,68px);
+  max-width: 1080px; margin: 0 auto; align-items: start; }
+.mv-line { align-self: stretch; width: 1px; background: rgba(255,255,255,.20); }
+.mv-title { margin: 0; font: 800 clamp(1.7rem,3vw,2.2rem)/1.05 var(--font-sans); letter-spacing: -.02em; color: #fff; }
+.mv-accent { display: block; width: 56px; height: 4px; border-radius: 999px; margin: 16px 0 20px; background: var(--ribbon); }
+.mv-text { margin: 0; font: 400 clamp(1rem,1.4vw,1.125rem)/1.7 var(--font-sans); color: rgba(255,255,255,.85); max-width: 42ch; }
+@media (max-width: 760px) {
+  .mv-split { grid-template-columns: 1fr; gap: 0; }
+  .mv-line { display: none; }
+  .mv-col + .mv-col { margin-top: 34px; padding-top: 34px; border-top: 1px solid rgba(255,255,255,.18); }
+}
+
+/* Etapas del proceso: barras verticales que crecen (escalera) */
+.etapas-stairs { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(14px,2.2vw,26px); align-items: start; }
+.stair { display: flex; flex-direction: column; }
+.stair-track { height: 240px; display: flex; align-items: flex-end; }
+.stair-fill { position: relative; width: 100%; height: var(--h); min-height: 64px; border-radius: 16px 16px 0 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 72%, #ffffff) 0%, var(--c) 100%);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--c) 38%, transparent);
+  transform: scaleY(0); transform-origin: bottom; transition: transform .75s cubic-bezier(.22,1,.36,1); }
+.reveal.in .stair-fill { transform: scaleY(1); }
+.etapas-stairs .stair:nth-child(1) .stair-fill { transition-delay: .05s; }
+.etapas-stairs .stair:nth-child(2) .stair-fill { transition-delay: .18s; }
+.etapas-stairs .stair:nth-child(3) .stair-fill { transition-delay: .31s; }
+.etapas-stairs .stair:nth-child(4) .stair-fill { transition-delay: .44s; }
+.stair-num { position: absolute; top: 14px; left: 0; right: 0; text-align: center; font: 800 1.5rem/1 var(--font-sans); color: #fff; opacity: .92; }
+.stair h3 { margin: 20px 0 0; font: 700 1.2rem/1.25 var(--font-sans); color: var(--tt-navy-700); }
+.stair p { margin: 9px 0 0; font: 400 .9375rem/1.55 var(--font-sans); color: var(--tt-gray-500); }
+@media (max-width: 760px) { .etapas-stairs { grid-template-columns: 1fr 1fr; gap: 18px; } .stair-track { height: 180px; } }
+@media (prefers-reduced-motion: reduce) { .stair-fill { transform: scaleY(1); transition: none; } }
+
+/* ---- Modo oscuro ---- */
+/* Banner: atenuado y fondo acorde a la página */
+.dark .nos-banner { background: #0c1419 !important; }
+.dark .nos-banner img { filter: brightness(.82) saturate(.95); }
+/* Misión/Visión: banda con degradado oscuro (consistente con el hero) */
+.dark .mv-section { background: linear-gradient(135deg,#071019 0%,#0c2330 55%,#123141 100%) !important; }
+.dark .mv-line { background: rgba(255,255,255,.16); }
+/* Objetivos: números en blanco y filas sin tarjeta (fondo = página) */
+.dark .obj-num { color: #ffffff !important; }
+.dark .obj-row { background: transparent !important; border-color: rgba(255,255,255,.12) !important; }
+.dark .obj-row:hover { background: rgba(255,255,255,.04) !important; }
+.dark .obj-row p { color: #e6edf2 !important; }
+/* Etapas: texto claro */
+.dark .stair h3 { color: #eaf1f6 !important; }
+.dark .stair p { color: #c3d0d9 !important; }

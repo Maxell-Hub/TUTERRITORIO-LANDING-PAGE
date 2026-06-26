@@ -29,21 +29,17 @@ const OBJETIVOS = [
 ];
 
 const ETAPAS = [
-  { c: "#3B85A5", t: "Formación", d: "Identificación, recolección e incorporación inicial de la información de la totalidad de los predios.", icon: <><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" /><rect x="9" y="3" width="6" height="4" rx="1" /><path d="M9 12h6M9 16h6" /></> },
-  { c: "#4E8654", t: "Actualización", d: "Identificación, recolección y registro de cambios o inconsistencias en los predios durante un periodo determinado.", icon: <><path d="M21 2v6h-6" /><path d="M3 12a9 9 0 0 1 15-6.7L21 8" /><path d="M3 22v-6h6" /><path d="M21 12a9 9 0 0 1-15 6.7L3 16" /></> },
-  { c: "#E0A526", t: "Conservación", d: "Mantenimiento permanente y gestión continua de la base de información catastral.", icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></> },
-  { c: "#D83744", t: "Difusión", d: "Disponibilidad y acceso a la información catastral para su consulta y uso por parte de los ciudadanos.", icon: <><circle cx="12" cy="12" r="2" /><path d="M4.93 4.93a10 10 0 0 0 0 14.14M19.07 4.93a10 10 0 0 1 0 14.14M7.76 7.76a6 6 0 0 0 0 8.48M16.24 7.76a6 6 0 0 1 0 8.48" /></> },
+  { c: "#1E5167", t: "Formación", d: "Identificación, recolección e incorporación inicial de la información de la totalidad de los predios.", icon: <><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" /><rect x="9" y="3" width="6" height="4" rx="1" /><path d="M9 12h6M9 16h6" /></> },
+  { c: "#3B85A5", t: "Actualización", d: "Identificación, recolección y registro de cambios o inconsistencias en los predios durante un periodo determinado.", icon: <><path d="M21 2v6h-6" /><path d="M3 12a9 9 0 0 1 15-6.7L21 8" /><path d="M3 22v-6h6" /><path d="M21 12a9 9 0 0 1-15 6.7L3 16" /></> },
+  { c: "#4E8654", t: "Conservación", d: "Mantenimiento permanente y gestión continua de la base de información catastral.", icon: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></> },
+  { c: "#F0B63B", t: "Difusión", d: "Disponibilidad y acceso a la información catastral para su consulta y uso por parte de los ciudadanos.", icon: <><circle cx="12" cy="12" r="2" /><path d="M4.93 4.93a10 10 0 0 0 0 14.14M19.07 4.93a10 10 0 0 1 0 14.14M7.76 7.76a6 6 0 0 0 0 8.48M16.24 7.76a6 6 0 0 1 0 8.48" /></> },
 ];
-
-const Svg = ({ children, size = 28, stroke = "#fff", sw = 2 }: { children: React.ReactNode; size?: number; stroke?: string; sw?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">{children}</svg>
-);
 
 export default function NosotrosPage() {
   return (
     <>
       {/* Banner */}
-      <section style={{ background: "#0C222F" }}>
+      <section className="nos-banner" style={{ background: "#0C222F" }}>
         <Image src="/assets/banner-bienvenidos.png" alt="Bienvenidos a Tu Territorio — Conectamos personas, transformamos lugares" width={1672} height={941} priority sizes="100vw" style={{ display: "block", width: "100%", height: "auto" }} />
       </section>
 
@@ -79,31 +75,20 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Mensaje (Misión / Visión) */}
-      <section className="sec-pad" style={{ position: "relative", background: "linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%)", color: "#fff", overflow: "hidden" }}>
+      {/* Misión / Visión */}
+      <section className="sec-pad mv-section" style={{ position: "relative", background: "linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%)", color: "#fff", overflow: "hidden" }}>
         <div className="nos-glow" />
-        <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}>
-          <div className="reveal" style={{ maxWidth: "48rem" }}>
-            <span style={{ font: "700 0.75rem/1 var(--font-sans)", letterSpacing: "0.04em", textTransform: "uppercase", color: "#8FBE4E" }}>Nuestro mensaje</span>
-            <p style={{ margin: "18px 0 0", font: "800 clamp(1.6rem,3.4vw,2.5rem)/1.25 var(--font-sans)", letterSpacing: "-0.02em", color: "#fff" }}>&quot;Conocer nuestro territorio para construir nuestro futuro.&quot;</p>
-            <p style={{ margin: "20px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "rgba(255,255,255,.82)" }}>Cada persona es nuestra razón para seguir trabajando. Conectamos personas y transformamos lugares para que la información del territorio esté al servicio de todos: con transparencia, cercanía y vocación de servicio público.</p>
-            <span className="ribbon5" style={{ margin: "26px 0 0", width: 140 }} />
+        <div className="mv-split reveal">
+          <div className="mv-col">
+            <h2 className="mv-title">Misión</h2>
+            <span className="mv-accent" aria-hidden="true" />
+            <p className="mv-text"><Editable as="span" id="nos.mision" multiline>Gestionar de manera integral el catastro multipropósito de Valledupar, generando información predial confiable y actualizada al servicio de la ciudadanía y la administración municipal.</Editable></p>
           </div>
-          <div className="mensaje-grid reveal">
-            <div className="glass-card">
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <span style={{ display: "inline-flex", width: 44, height: 44, borderRadius: "50%", background: "#4E8654", alignItems: "center", justifyContent: "center", flex: "none" }}><Svg size={22}><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></Svg></span>
-                <h3 style={{ margin: 0, font: "700 1.375rem/1.2 var(--font-sans)", color: "#fff" }}>Misión</h3>
-              </div>
-              <p style={{ margin: "16px 0 0", font: "400 1rem/1.6 var(--font-sans)", color: "rgba(255,255,255,.82)" }}><Editable as="span" id="nos.mision" multiline>Gestionar de manera integral el catastro multipropósito de Valledupar, generando información predial confiable y actualizada al servicio de la ciudadanía y la administración municipal.</Editable></p>
-            </div>
-            <div className="glass-card">
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <span style={{ display: "inline-flex", width: 44, height: 44, borderRadius: "50%", background: "#3B85A5", alignItems: "center", justifyContent: "center", flex: "none" }}><Svg size={22}><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></Svg></span>
-                <h3 style={{ margin: 0, font: "700 1.375rem/1.2 var(--font-sans)", color: "#fff" }}>Visión</h3>
-              </div>
-              <p style={{ margin: "16px 0 0", font: "400 1rem/1.6 var(--font-sans)", color: "rgba(255,255,255,.82)" }}><Editable as="span" id="nos.vision" multiline>Ser un catastro moderno, transparente y cercano, que impulse el desarrollo, la equidad y la planeación sostenible del territorio de Valledupar.</Editable></p>
-            </div>
+          <span className="mv-line" aria-hidden="true" />
+          <div className="mv-col">
+            <h2 className="mv-title">Visión</h2>
+            <span className="mv-accent" aria-hidden="true" />
+            <p className="mv-text"><Editable as="span" id="nos.vision" multiline>Ser un catastro moderno, transparente y cercano, que impulse el desarrollo, la equidad y la planeación sostenible del territorio de Valledupar.</Editable></p>
           </div>
         </div>
       </section>
@@ -139,10 +124,12 @@ export default function NosotrosPage() {
             <p style={{ margin: "14px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-500)" }}>Así avanzamos, paso a paso, hasta tener un catastro actualizado y al servicio de la gente.</p>
             <span className="ribbon5 center" style={{ marginTop: 18, width: 110, height: 4 }} />
           </div>
-          <div className="etapas4 reveal">
-            {ETAPAS.map((e) => (
-              <div key={e.t} className="lift etapa-card">
-                <span className="ic" style={{ background: e.c, boxShadow: `0 6px 16px ${e.c}55` }}><Svg size={28}>{e.icon}</Svg></span>
+          <div className="etapas-stairs reveal">
+            {ETAPAS.map((e, i) => (
+              <div key={e.t} className="stair" style={{ "--c": e.c, "--h": `${40 + i * 20}%` } as React.CSSProperties}>
+                <div className="stair-track">
+                  <div className="stair-fill"><span className="stair-num">{i + 1}</span></div>
+                </div>
                 <h3>{e.t}</h3>
                 <p>{e.d}</p>
               </div>
