@@ -573,7 +573,7 @@ img { max-width: 100%; }
 @keyframes tt-dash { to { stroke-dashoffset: -28; } }
 
 #scrollProg { position: fixed; top: 0; left: 0; height: 3px; width: 100%; transform: scaleX(0);
-  transform-origin: 0 50%; background: linear-gradient(90deg,#4E97B6,#6AA070,#8FBE4E,#F0B63B,#D83744);
+  transform-origin: 0 50%; background: linear-gradient(90deg,#0C222F,#1E5167,#3B85A5,#4E8654,#F0B63B);
   z-index: 9999; pointer-events: none; }
 
 [data-parallax] { will-change: transform; }
