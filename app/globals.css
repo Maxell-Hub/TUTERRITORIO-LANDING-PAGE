@@ -1628,5 +1628,9 @@ body { top: 0 !important; }
 .dark .ct-success h3 { color: #eaf1f6 !important; }
 
 /* MODO OSCURO — Trámites (Servicios), Normativas, ABC y Contacto: fondo fundido con la página */
-.dark .serv-section, .dark .rec-section,
+/* Se incluyen los selectores compuestos .rec-section.blue/.green para ganar en especificidad */
+.dark .serv-section,
+.dark .rec-section, .dark .rec-section.blue, .dark .rec-section.green,
 .dark .ct-form-section, .dark .ct-map-section { background: #0c1419 !important; }
+/* Filas de Normativas: eran blancas en oscuro (no tenían override) → superficie oscura */
+.dark .norm-row { background: #131c23 !important; border-color: #2c3942 !important; }
