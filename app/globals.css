@@ -570,6 +570,9 @@ img { max-width: 100%; }
 @keyframes tt-floatA { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(0,-22px) rotate(6deg); } }
 @keyframes tt-bobA { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(-12px); } }
 @keyframes tt-bobB { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(10px); } }
+@keyframes tt-driftA { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-50%) translate(7px,-13px); } }
+@keyframes tt-driftB { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-50%) translate(-7px,12px); } }
+@keyframes tt-ring { 0% { transform: scale(.85); opacity: .5; } 70% { opacity: 0; } 100% { transform: scale(1.7); opacity: 0; } }
 @keyframes tt-dash { to { stroke-dashoffset: -28; } }
 
 #scrollProg { position: fixed; top: 0; left: 0; height: 3px; width: 100%; transform: scaleX(0);
@@ -661,8 +664,9 @@ img { max-width: 100%; }
 .hero-net { position: relative; height: 420px; }
 .net-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .net-lines g { animation: tt-dash 2.6s linear infinite; }
-.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; border: 4px solid #fff; }
+.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.5); }
+.net-node::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor;
+  opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
 
 /* Equipo — liderazgo + áreas */
 .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 880px; margin: 0 auto; }
@@ -1579,3 +1583,18 @@ body { top: 0 !important; }
 
 /* MODO OSCURO — Enlaces de interés: flechas de los círculos en blanco */
 .dark .enlace-arrow { color: #ffffff !important; border-color: rgba(255,255,255,.28) !important; }
+
+/* ============================================================
+   Equipo — monograma de área (en vez de icono) y modo oscuro
+   ============================================================ */
+.team-area .ic.mono { color: #ffffff; font: 800 1.25rem/1 var(--font-sans); letter-spacing: .02em; }
+@media (prefers-reduced-motion: reduce) { .net-node::after { animation: none !important; opacity: 0; } }
+
+/* Modo oscuro */
+.dark .equipo-hero { background: linear-gradient(150deg,#091219 0%,#0d222d 55%,#123443 100%); }
+.dark .lead-card h3 { color: #ffffff !important; font-weight: 700 !important; }
+.dark .avatar-grid .cap { color: #ffffff !important; font-weight: 700 !important; }
+.dark .avatar-grid .cap .role { color: #b9c6d0 !important; font-weight: 500 !important; }
+.dark .lead-card p { color: #c3d0d9 !important; }
+.dark .team-area h3 { color: #eaf1f6 !important; }
+.dark .team-area .meta { color: #9fb0bd !important; }

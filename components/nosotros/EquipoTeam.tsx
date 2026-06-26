@@ -22,11 +22,12 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
-const AREAS: { key: string; c: string; meta: string; icon: React.ReactNode }[] = [
-  { key: "Topografía y campo", c: "#3B85A5", meta: "Levantamiento, reconocimiento predial y verificación de linderos", icon: <><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z" /><path d="M9 3v15M15 6v15" /></> },
-  { key: "Jurídica", c: "#4E8654", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad", icon: <><path d="M3 21h18M6 21V8l6-4 6 4v13M9 21v-6h6v6" /></> },
-  { key: "Sistemas y datos", c: "#E0A526", meta: "Información geográfica, bases de datos y plataformas digitales", icon: <><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></> },
-  { key: "Atención al ciudadano", c: "#D83744", meta: "Orientación, recepción de solicitudes y acompañamiento", icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></> },
+// Sin íconos: cada área se identifica con su monograma (letra) sobre el color corporativo.
+const AREAS: { key: string; c: string; meta: string; mono: string }[] = [
+  { key: "Topografía y campo", c: "#3B85A5", mono: "T", meta: "Levantamiento, reconocimiento predial y verificación de linderos" },
+  { key: "Jurídica", c: "#4E8654", mono: "J", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad" },
+  { key: "Sistemas y datos", c: "#F0B63B", mono: "S", meta: "Información geográfica, bases de datos y plataformas digitales" },
+  { key: "Atención al ciudadano", c: "#1E5167", mono: "A", meta: "Orientación, recepción de solicitudes y acompañamiento" },
 ];
 
 export default function EquipoTeam() {
@@ -146,9 +147,7 @@ export default function EquipoTeam() {
               return (
                 <div key={area.key} className="team-area" style={{ borderLeft: `5px solid ${area.c}` }}>
                   <div className="head">
-                    <span className="ic" style={{ background: area.c }}>
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{area.icon}</svg>
-                    </span>
+                    <span className="ic mono" style={{ background: area.c }} aria-hidden="true">{area.mono}</span>
                     <div>
                       <h3>{area.key}</h3>
                       <p className="meta">{area.meta} · {list.length} {list.length === 1 ? "integrante" : "integrantes"}</p>
