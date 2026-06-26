@@ -1445,3 +1445,14 @@ body { top: 0 !important; }
 .dark .gc-social { color: #ffffff !important; }
 .dark .gc-social .ic { background: #ffffff !important; color: #4E97B6 !important; }
 .dark .gc-social:hover .ic { background: #e6f1f7 !important; transform: translateY(-2px); }
+
+/* ============================================================
+   MODO OSCURO — Hero (Inicio): fondo más oscuro y acorde
+   ============================================================ */
+.dark .hero { background: linear-gradient(135deg, #070e15 0%, #0b1f2a 45%, #103040 100%) !important; }
+.dark .hm-fade { background: linear-gradient(90deg, #070e15 0%, #070e15 58%, rgba(7,14,21,.85) 68%, rgba(7,14,21,.5) 80%, rgba(7,14,21,.2) 90%, rgba(7,14,21,0) 100%) !important; }
+.dark .hero-map img { filter: brightness(.62) saturate(.9); }
+.dark .hero-eyebrow { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.20); color: #ffffff; }
+.dark .hero h1 { color: #f3f7fa !important; }
+.dark .hero p { color: rgba(226,236,242,.88); }
+.dark .hero-feat { color: rgba(226,236,242,.92); }
