@@ -1591,7 +1591,7 @@ body { top: 0 !important; }
 @media (prefers-reduced-motion: reduce) { .net-node::after { animation: none !important; opacity: 0; } }
 
 /* Modo oscuro */
-.dark .equipo-hero { background: linear-gradient(150deg,#091219 0%,#0d222d 55%,#123443 100%); }
+.dark .equipo-hero { background: linear-gradient(160deg,#0c1419 0%,#0e222c 50%,#0c1419 100%); }
 .dark .lead-card h3 { color: #ffffff !important; font-weight: 700 !important; }
 .dark .avatar-grid .cap { color: #ffffff !important; font-weight: 700 !important; }
 .dark .avatar-grid .cap .role { color: #b9c6d0 !important; font-weight: 500 !important; }
