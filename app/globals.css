@@ -16,7 +16,7 @@
   --tt-white:#FFFFFF; --tt-gray-50:#F8F9FA; --tt-gray-100:#F2F2F2; --tt-gray-200:#E2E6E9;
   --tt-gray-300:#DEE2E6; --tt-gray-500:#6C757D; --tt-gray-700:#4B4B4B; --tt-gray-900:#333333; --tt-ink:#1A1A1A;
   --text-body:var(--tt-gray-900); --border-subtle:var(--tt-gray-200);
-  --ribbon:linear-gradient(90deg,var(--tt-blue-600) 0%,var(--tt-blue-600) 20%,var(--tt-green-500) 20%,var(--tt-green-500) 40%,var(--tt-lime-500) 40%,var(--tt-lime-500) 60%,var(--tt-amber-500) 60%,var(--tt-amber-500) 80%,var(--tt-red-500) 80%,var(--tt-red-500) 100%);
+  --ribbon:linear-gradient(90deg,#0C222F 0%,#0C222F 20%,#1E5167 20%,#1E5167 40%,#3B85A5 40%,#3B85A5 60%,#4E8654 60%,#4E8654 80%,#F0B63B 80%,#F0B63B 100%);
   --grad-hero:linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%);
   --font-sans:var(--font-inter),ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-display:var(--font-inter),ui-sans-serif,system-ui,sans-serif;
