@@ -9,15 +9,15 @@ export const metadata: Metadata = {
     "Tuterritorio, operador del Catastro Multipropósito de Valledupar: quiénes somos, nuestras funciones, misión, visión, objetivos y el proceso catastral.",
 };
 
-// Bento asimétrico: número de sección, color de acento (paleta institucional),
-// tamaño de tarjeta (lg≈65% · md≈50% · sm≈35%) y, en ámbar, un tono de enlace legible.
+// Bento en 2 filas: cada fila lleva 1 tarjeta ancha (fn-lg) + 2 angostas (fn-sm).
+// Acentos con colores corporativos vivos (azul · verde · amarillo).
 const FUNCIONES = [
-  { n: "01", c: "#0C222F", cls: "fn-lg", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar.", icon: <><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z" /><path d="M9 3v15M15 6v15" /></> },
-  { n: "02", c: "#2F6B4F", cls: "fn-sm", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos.", icon: <><path d="M3 3v18h18" /><path d="m7 15 4-4 3 3 5-6" /></> },
-  { n: "03", c: "#F0B63B", cl: "#9A7416", cls: "fn-md", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal.", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M9 15l2 2 4-4" /></> },
-  { n: "04", c: "#C83B45", cls: "fn-md", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio.", icon: <><path d="M3 3v18h18" /><rect x="7" y="11" width="3" height="6" /><rect x="12" y="7" width="3" height="10" /><rect x="17" y="13" width="3" height="4" /></> },
-  { n: "05", c: "#2F6B4F", cls: "fn-sm", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras.", icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></> },
-  { n: "06", c: "#0C222F", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable.", icon: <><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></> },
+  { n: "01", c: "#3B85A5", cls: "fn-lg", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar." },
+  { n: "02", c: "#4E8654", cls: "fn-sm", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos." },
+  { n: "03", c: "#F0B63B", cls: "fn-sm", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal." },
+  { n: "04", c: "#3B85A5", cls: "fn-sm", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio." },
+  { n: "05", c: "#4E8654", cls: "fn-sm", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras." },
+  { n: "06", c: "#F0B63B", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable." },
 ];
 
 // Tonos distintos, todos derivados de la paleta corporativa (azul oscuro · azul · verde · amarillo · azul claro)
