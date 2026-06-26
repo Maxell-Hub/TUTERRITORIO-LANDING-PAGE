@@ -1632,5 +1632,14 @@ body { top: 0 !important; }
 .dark .serv-section,
 .dark .rec-section, .dark .rec-section.blue, .dark .rec-section.green,
 .dark .ct-form-section, .dark .ct-map-section { background: #0c1419 !important; }
-/* Filas de Normativas: eran blancas en oscuro (no tenían override) → superficie oscura */
-.dark .norm-row { background: #131c23 !important; border-color: #2c3942 !important; }
+/* Opción B — tarjetas de Trámites, Normativas y ABC fundidas con el fondo,
+   definidas solo por su borde (todo plano y unificado) */
+.dark .tr-card, .dark .norm-row, .dark .term-card {
+  background: #0c1419 !important; border-color: #2f3d47 !important; box-shadow: none !important; }
+.dark .tr-card:hover, .dark .tr-card:focus-within,
+.dark .norm-row:hover, .dark .term-card:hover {
+  background: #111b22 !important; border-color: #3B85A5 !important; box-shadow: 0 10px 26px rgba(0,0,0,.4) !important; }
+
+/* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
+   fondo de la página, igual que el hero de Nuestro Equipo */
+.dark .serv-banner, .dark .rec-hero, .dark .ct-hero { background: #0c1419 !important; }
