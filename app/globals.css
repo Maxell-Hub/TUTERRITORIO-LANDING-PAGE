@@ -1460,3 +1460,23 @@ body { top: 0 !important; }
 /* MODO OSCURO — Visor geográfico: subtítulo y rayita en blanco */
 .dark .visor-tag { color: #ffffff !important; font-weight: 700 !important; }
 .dark .visor-tag .ln { background: #ffffff !important; }
+
+/* ============================================================
+   MODO OSCURO — barrido global de subtítulos y textos en negrita azul
+   ============================================================ */
+/* Subtítulos tipo etiqueta (eyebrow/kicker/tag) → blanco en todas las páginas */
+.dark .eyebrow,
+.dark .eyebrow-b,
+.dark .legal-eyebrow,
+.dark .ne-doc-tag,
+.dark .visor-tag,
+.dark [style*="--tt-blue-700"] { color: #ffffff !important; }
+.dark .visor-tag .ln { background: #ffffff !important; }
+
+/* Texto en negrita de color azul/navy dentro del contenido → blanco y negrita */
+.dark [style*="--tt-navy-700"] { color: #ffffff !important; }
+.dark b[style*="--tt-navy"],
+.dark b[style*="--tt-blue"] { color: #ffffff !important; font-weight: 700 !important; }
+
+/* Sección "Hacia dónde trabajamos" (los números): fondo acorde al cuerpo de la página */
+.dark .sec-pad:has(.obj-grid) { background: #0c1419 !important; }
