@@ -1626,3 +1626,7 @@ body { top: 0 !important; }
 .dark .ct-reset { background: #131c23 !important; color: #9fc6e0 !important; border-color: #3B85A5 !important; }
 .dark .ct-reset:hover { background: #1c2a33 !important; }
 .dark .ct-success h3 { color: #eaf1f6 !important; }
+
+/* MODO OSCURO — Trámites (Servicios), Normativas, ABC y Contacto: fondo fundido con la página */
+.dark .serv-section, .dark .rec-section,
+.dark .ct-form-section, .dark .ct-map-section { background: #0c1419 !important; }
