@@ -1394,3 +1394,8 @@ body { top: 0 !important; }
 
 /* Footer verde: se mantiene el verde corporativo; el título a verde claro */
 .dark .footer-card h3 { color: #bfe3a0 !important; }
+
+/* Logos del header: versión normal en claro, versión blanca en oscuro */
+.logo-dark-only { display: none; }
+.dark .logo-light-only { display: none; }
+.dark .logo-dark-only { display: block; }
