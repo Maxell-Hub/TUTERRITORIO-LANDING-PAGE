@@ -1643,3 +1643,10 @@ body { top: 0 !important; }
 /* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
    fondo de la página, igual que el hero de Nuestro Equipo */
 .dark .serv-banner, .dark .rec-hero, .dark .ct-hero { background: #0c1419 !important; }
+
+/* MODO OSCURO — Contacto: la curva blanca (ct-swoosh) se funde con el fondo */
+.dark .ct-swoosh path { fill: #0c1419 !important; }
+
+/* MODO OSCURO — Mapa de Google (embed sin tema oscuro oficial): se oscurece con
+   un filtro de inversión + corrección de tono para integrarlo al modo oscuro */
+.dark .ct-map-frame iframe { filter: invert(0.92) hue-rotate(180deg) saturate(0.82) brightness(0.92) contrast(0.95); }
