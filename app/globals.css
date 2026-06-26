@@ -68,7 +68,7 @@ img { max-width: 100%; }
 .brand-sep { width: 1px; height: 44px; background: var(--border-subtle); }
 /* Logos del header (tamaño responsivo) */
 .logo-tt { height: 66px; width: auto; object-fit: contain; display: block; }
-.logo-cat { height: 56px; width: 136px; object-fit: cover; display: block; margin-bottom: 6px; }
+.logo-cat { height: 56px; width: 136px; object-fit: contain; object-position: left center; display: block; margin-bottom: 6px; }
 @media (max-width: 700px) {
   .brand-logos { gap: 10px; }
   .brand-sep { height: 38px; }
