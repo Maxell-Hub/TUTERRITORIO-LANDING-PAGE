@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="footer-wrap">
         <div className="footer-card">
           <div className="footer-top">
-            <img src="/assets/logo-tuterritorio-footer.png" alt="Tuterritorio" className="logo-light-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
+            <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" className="logo-light-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
             <img src="/assets/logo-tuterritorio-v-blanco.png" alt="" aria-hidden="true" className="logo-dark-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
             <div className="footer-marks">
               <img src="/assets/escudo-valledupar.png" alt="Escudo de Valledupar" loading="lazy" decoding="async" style={{ height: 60, display: "block" }} />
@@ -24,10 +24,7 @@ export default function Footer() {
             <div><b>NIT:</b> 901996731-8</div>
             <div><b>Dirección:</b> Calle 16 #9-48, Edificio Caja Agraria - Oficina 1301 Valledupar, Cesar</div>
             <div><b>Horario de atención:</b> Lunes a Viernes de 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</div>
-            <div><b>Teléfono:</b> +(57)(605) 5885761</div>
-            <div><b>Servicio a la ciudadanía:</b> +(57)(605) 5885761 Ext. 100</div>
-            <div style={{ marginTop: 6 }}><b>Denuncias:</b> <a href="mailto:denuncias@tuterritorio.gov.co">denuncias@tuterritorio.gov.co</a></div>
-            <div><b>Correo contacto:</b> <a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></div>
+            <div style={{ marginTop: 6 }}><b>Correo contacto:</b> <a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></div>
           </div>
 
           {/* Footer limpio: SOLO Instagram */}

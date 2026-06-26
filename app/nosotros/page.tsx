@@ -20,12 +20,13 @@ const FUNCIONES = [
   { n: "06", c: "#0C222F", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable.", icon: <><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></> },
 ];
 
+// Tonos distintos, todos derivados de la paleta corporativa (azul oscuro · azul · verde · amarillo · azul claro)
 const OBJETIVOS = [
-  { n: "01", c: "#3B85A5", t: "Mantener actualizada la información catastral de todo el municipio." },
-  { n: "02", c: "#4E8654", t: "Garantizar la seguridad jurídica de la propiedad de los ciudadanos." },
-  { n: "03", c: "#F0B63B", t: "Fortalecer la planeación y el ordenamiento territorial con datos reales." },
-  { n: "04", c: "#3B85A5", t: "Fortalecer las finanzas públicas locales con información justa y equitativa." },
-  { n: "05", c: "#4E8654", t: "Acercar el catastro a la ciudadanía con atención oportuna y transparente." },
+  { n: "01", c: "#1E5167", t: "Mantener actualizada la información catastral de todo el municipio." },
+  { n: "02", c: "#3B85A5", t: "Garantizar la seguridad jurídica de la propiedad de los ciudadanos." },
+  { n: "03", c: "#4E8654", t: "Fortalecer la planeación y el ordenamiento territorial con datos reales." },
+  { n: "04", c: "#F0B63B", t: "Fortalecer las finanzas públicas locales con información justa y equitativa." },
+  { n: "05", c: "#5BA3C0", t: "Acercar el catastro a la ciudadanía con atención oportuna y transparente." },
 ];
 
 const ETAPAS = [
@@ -105,7 +106,7 @@ export default function NosotrosPage() {
             <div className="reveal" data-dir="right" style={{ display: "flex", flexDirection: "column" }}>
               {OBJETIVOS.map((o) => (
                 <div key={o.n} className="obj-row">
-                  <span className="obj-num" style={{ color: o.c }}>{o.n}</span>
+                  <span className="obj-num" style={{ "--oc": o.c, color: o.c } as React.CSSProperties}>{o.n}</span>
                   <p>{o.t}</p>
                 </div>
               ))}
