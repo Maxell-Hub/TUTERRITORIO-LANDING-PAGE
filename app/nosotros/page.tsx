@@ -70,17 +70,9 @@ export default function NosotrosPage() {
           </div>
           <div className="func-bento">
             {FUNCIONES.map((f) => (
-              <article key={f.t} className={`reveal func-card ${f.cls}`} style={{ "--c": f.c, "--cl": f.cl ?? f.c } as React.CSSProperties}>
-                <span className="fn-num" aria-hidden="true">{f.n}</span>
-                <span className="fn-ic">
-                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
-                </span>
+              <article key={f.t} className={`reveal func-card ${f.cls}`} style={{ "--c": f.c } as React.CSSProperties}>
                 <h3>{f.t}</h3>
                 <p>{f.d}</p>
-                <a className="fn-more" href="/servicios">
-                  Conocer más
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </a>
               </article>
             ))}
           </div>
