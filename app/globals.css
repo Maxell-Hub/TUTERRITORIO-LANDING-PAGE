@@ -1399,3 +1399,30 @@ body { top: 0 !important; }
 .logo-dark-only { display: none; }
 .dark .logo-light-only { display: none; }
 .dark .logo-dark-only { display: block; }
+
+/* ============================================================
+   MODO OSCURO — ajustes (submenús, buscador, sectores, footer)
+   ============================================================ */
+/* Submenús (dropdown del menú): texto blanco */
+.dark .mn-drop a { color: #eaf1f6 !important; }
+.dark .mn-drop a:hover { background: #1c2a33 !important; color: #ffffff !important; }
+
+/* Buscador: texto y placeholder en blanco */
+.dark .gc-search input { color: #ffffff !important; }
+.dark .gc-search input::placeholder { color: #aab8c2 !important; }
+
+/* Tooltip de sectores: texto claro, eyebrow legible y punta oscura */
+.dark .cm-tip { background: #131c23 !important; }
+.dark .cm-tip .ct-name, .dark .cm-tip .ct-use { color: #eaf1f6 !important; }
+.dark .cm-tip .ct-label { color: #9fb0bd !important; }
+.dark .cm-tip .ct-zone { color: color-mix(in srgb, var(--c) 62%, #ffffff) !important; }
+.dark .cm-tip::after { background: #131c23 !important; border-color: #2c3942 !important; }
+
+/* Footer: tarjeta blanca → oscura y verde → verde oscuro acorde al modo */
+.dark .site-footer { background: #12231a !important; }
+.dark .footer-card { background: #131c23 !important; box-shadow: 0 12px 32px rgba(0,0,0,.45) !important; }
+.dark .footer-legal { background: #12231a !important; border-top-color: rgba(255,255,255,.10) !important; }
+.dark .footer-data { color: #c3d0d9 !important; }
+.dark .footer-data b { color: #eaf1f6 !important; }
+.dark .footer-data a { color: #8fd6a3 !important; }
+.dark .footer-card h3 { color: #bfe3a0 !important; }
