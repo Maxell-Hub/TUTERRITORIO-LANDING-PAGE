@@ -9,13 +9,15 @@ export const metadata: Metadata = {
     "Tuterritorio, operador del Catastro Multipropósito de Valledupar: quiénes somos, nuestras funciones, misión, visión, objetivos y el proceso catastral.",
 };
 
+// Bento asimétrico: número de sección, color de acento (paleta institucional),
+// tamaño de tarjeta (lg≈65% · md≈50% · sm≈35%) y, en ámbar, un tono de enlace legible.
 const FUNCIONES = [
-  { g: "linear-gradient(140deg,#59A9C4 0%,#3B85A5 100%)", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar.", icon: <><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z" /><path d="M9 3v15M15 6v15" /></> },
-  { g: "linear-gradient(140deg,#5A9A60 0%,#3E6E44 100%)", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos.", icon: <><path d="M3 3v18h18" /><path d="m7 15 4-4 3 3 5-6" /></> },
-  { g: "linear-gradient(140deg,#4E97B6 0%,#2F6B86 100%)", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal.", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M9 15l2 2 4-4" /></> },
-  { g: "linear-gradient(140deg,#E7A828 0%,#C0851A 100%)", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio.", icon: <><path d="M3 3v18h18" /><rect x="7" y="11" width="3" height="6" /><rect x="12" y="7" width="3" height="10" /><rect x="17" y="13" width="3" height="4" /></> },
-  { g: "linear-gradient(140deg,#D83744 0%,#B22E39 100%)", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras.", icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></> },
-  { g: "linear-gradient(140deg,#1E5167 0%,#0C222F 100%)", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable.", icon: <><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></> },
+  { n: "01", c: "#0C222F", cls: "fn-lg", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar.", icon: <><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z" /><path d="M9 3v15M15 6v15" /></> },
+  { n: "02", c: "#2F6B4F", cls: "fn-sm", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos.", icon: <><path d="M3 3v18h18" /><path d="m7 15 4-4 3 3 5-6" /></> },
+  { n: "03", c: "#F0B63B", cl: "#9A7416", cls: "fn-md", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal.", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M9 15l2 2 4-4" /></> },
+  { n: "04", c: "#C83B45", cls: "fn-md", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio.", icon: <><path d="M3 3v18h18" /><rect x="7" y="11" width="3" height="6" /><rect x="12" y="7" width="3" height="10" /><rect x="17" y="13" width="3" height="4" /></> },
+  { n: "05", c: "#2F6B4F", cls: "fn-sm", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras.", icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></> },
+  { n: "06", c: "#0C222F", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable.", icon: <><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></> },
 ];
 
 const OBJETIVOS = [
@@ -58,24 +60,28 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Lo que hacemos / Funciones */}
-      <section className="sec-pad" style={{ background: "var(--tt-gray-50)" }}>
+      {/* Lo que hacemos / Funciones — composición Bento asimétrica */}
+      <section className="sec-pad" style={{ background: "#fff" }}>
         <div className="sec-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <span className="eyebrow-b">Lo que hacemos</span>
             <Editable as="h2" id="nos.func-title" className="h2-nos">Nuestras funciones</Editable>
             <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}><Editable as="span" id="nos.func-intro" multiline>Gestionamos de forma integral el catastro del municipio, desde el levantamiento de la información hasta la atención de cada trámite ciudadano.</Editable></p>
           </div>
-          <div className="func-grid">
+          <div className="func-bento">
             {FUNCIONES.map((f) => (
-              <div key={f.t} className="reveal lift func-card" style={{ background: f.g }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={1.25} strokeLinecap="round" strokeLinejoin="round" className="func-wm">{f.icon}</svg>
-                <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
-                  <h3>{f.t}</h3>
-                  <span className="div" />
-                  <p>{f.d}</p>
-                </div>
-              </div>
+              <article key={f.t} className={`reveal func-card ${f.cls}`} style={{ "--c": f.c, "--cl": f.cl ?? f.c } as React.CSSProperties}>
+                <span className="fn-num" aria-hidden="true">{f.n}</span>
+                <span className="fn-ic">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
+                </span>
+                <h3>{f.t}</h3>
+                <p>{f.d}</p>
+                <a className="fn-more" href="/servicios">
+                  Conocer más
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </article>
             ))}
           </div>
         </div>
