@@ -1598,3 +1598,31 @@ body { top: 0 !important; }
 .dark .lead-card p { color: #c3d0d9 !important; }
 .dark .team-area h3 { color: #eaf1f6 !important; }
 .dark .team-area .meta { color: #9fb0bd !important; }
+
+/* ============================================================
+   MODO OSCURO — Recursos (Normativas/ABC), Noticias y Contacto
+   ============================================================ */
+/* Chips de filtro inactivos (estilos en línea blancos) → superficie oscura */
+.dark .flt-chip[aria-pressed="false"],
+.dark .az-btn[aria-pressed="false"],
+.dark .news-chip[aria-pressed="false"] {
+  background: #131c23 !important; color: #c3d0d9 !important; border-color: #2c3942 !important; }
+.dark .flt-chip[aria-pressed="false"] .flt-count {
+  background: rgba(255,255,255,.08) !important; color: #9fb0bd !important; }
+/* Chips activos con color corporativo vivo */
+.dark .flt-chip[aria-pressed="true"],
+.dark .news-chip[aria-pressed="true"] { background: #3B85A5 !important; border-color: #3B85A5 !important; }
+
+/* Normativas: etiqueta de tipo con tinte oscuro (no claro) y código legible */
+.dark .norm-tag { background: rgba(255,255,255,.07) !important; }
+.dark .norm-code { color: #eaf1f6 !important; }
+
+/* Noticias: "actualización catastral multipropósito" en blanco y negrita */
+.dark .news-sub b { color: #ffffff !important; font-weight: 700 !important; }
+.dark .news-grid-head .rule { background: #2c3942 !important; }
+
+/* Contacto: alerta de error, botón restablecer y mensaje de éxito */
+.dark .rec-empty[role="alert"] { background: rgba(216,55,68,.14) !important; color: #ff9d9d !important; }
+.dark .ct-reset { background: #131c23 !important; color: #9fc6e0 !important; border-color: #3B85A5 !important; }
+.dark .ct-reset:hover { background: #1c2a33 !important; }
+.dark .ct-success h3 { color: #eaf1f6 !important; }
