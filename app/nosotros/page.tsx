@@ -23,9 +23,9 @@ const FUNCIONES = [
 const OBJETIVOS = [
   { n: "01", c: "#3B85A5", t: "Mantener actualizada la información catastral de todo el municipio." },
   { n: "02", c: "#4E8654", t: "Garantizar la seguridad jurídica de la propiedad de los ciudadanos." },
-  { n: "03", c: "#8FBE4E", t: "Fortalecer la planeación y el ordenamiento territorial con datos reales." },
-  { n: "04", c: "#F0B63B", t: "Fortalecer las finanzas públicas locales con información justa y equitativa." },
-  { n: "05", c: "#D83744", t: "Acercar el catastro a la ciudadanía con atención oportuna y transparente." },
+  { n: "03", c: "#F0B63B", t: "Fortalecer la planeación y el ordenamiento territorial con datos reales." },
+  { n: "04", c: "#3B85A5", t: "Fortalecer las finanzas públicas locales con información justa y equitativa." },
+  { n: "05", c: "#4E8654", t: "Acercar el catastro a la ciudadanía con atención oportuna y transparente." },
 ];
 
 const ETAPAS = [
@@ -38,9 +38,10 @@ const ETAPAS = [
 export default function NosotrosPage() {
   return (
     <>
-      {/* Banner */}
+      {/* Banner (versión clara y versión adaptada al modo oscuro) */}
       <section className="nos-banner" style={{ background: "#0C222F" }}>
-        <Image src="/assets/banner-bienvenidos.png" alt="Bienvenidos a Tu Territorio — Conectamos personas, transformamos lugares" width={1672} height={941} priority sizes="100vw" style={{ display: "block", width: "100%", height: "auto" }} />
+        <Image src="/assets/banner-bienvenidos.png" alt="Bienvenidos a Tu Territorio — Conectamos personas, transformamos lugares" width={1642} height={584} priority sizes="100vw" className="b-light" />
+        <Image src="/assets/banner-bienvenidos-dark.png" alt="" aria-hidden="true" width={1642} height={584} sizes="100vw" className="b-dark" />
       </section>
 
       {/* Quiénes somos */}
@@ -60,8 +61,7 @@ export default function NosotrosPage() {
       <section className="sec-pad" style={{ background: "#fff" }}>
         <div className="sec-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
-            <span className="eyebrow-b">Lo que hacemos</span>
-            <Editable as="h2" id="nos.func-title" className="h2-nos">Nuestras funciones</Editable>
+            <Editable as="h2" id="nos.func-title" className="h2-nos">Lo que hacemos</Editable>
             <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}><Editable as="span" id="nos.func-intro" multiline>Gestionamos de forma integral el catastro del municipio, desde el levantamiento de la información hasta la atención de cada trámite ciudadano.</Editable></p>
           </div>
           <div className="func-bento">
@@ -76,8 +76,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Misión / Visión */}
-      <section className="sec-pad mv-section" style={{ position: "relative", background: "linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%)", color: "#fff", overflow: "hidden" }}>
-        <div className="nos-glow" />
+      <section className="sec-pad mv-section" style={{ position: "relative", color: "#fff", overflow: "hidden" }}>
         <div className="mv-split reveal">
           <div className="mv-col">
             <h2 className="mv-title">Misión</h2>
@@ -119,7 +118,6 @@ export default function NosotrosPage() {
       <section className="sec-pad" style={{ background: "linear-gradient(180deg,#E8F1F5 0%,#F3F8FA 100%)" }}>
         <div className="sec-wrap">
           <div className="reveal" style={{ textAlign: "center", maxWidth: "44rem", margin: "0 auto 56px" }}>
-            <span className="eyebrow-b">El proceso</span>
             <h2 className="h2-nos">Etapas del proceso catastral</h2>
             <p style={{ margin: "14px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-500)" }}>Así avanzamos, paso a paso, hasta tener un catastro actualizado y al servicio de la gente.</p>
             <span className="ribbon5 center" style={{ marginTop: 18, width: 110, height: 4 }} />
@@ -128,7 +126,7 @@ export default function NosotrosPage() {
             {ETAPAS.map((e, i) => (
               <div key={e.t} className="stair" style={{ "--c": e.c, "--h": `${40 + i * 20}%` } as React.CSSProperties}>
                 <div className="stair-track">
-                  <div className="stair-fill"><span className="stair-num">{i + 1}</span></div>
+                  <div className="stair-fill" />
                 </div>
                 <h3>{e.t}</h3>
                 <p>{e.d}</p>

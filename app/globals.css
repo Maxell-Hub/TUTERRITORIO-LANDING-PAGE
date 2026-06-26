@@ -1551,15 +1551,29 @@ body { top: 0 !important; }
 @media (max-width: 760px) { .etapas-stairs { grid-template-columns: 1fr 1fr; gap: 18px; } .stair-track { height: 180px; } }
 @media (prefers-reduced-motion: reduce) { .stair-fill { transform: scaleY(1); transition: none; } }
 
+/* Banner Nosotros: tamaño responsive y conmutación clara/oscura */
+.nos-banner img { display: block; width: 100%; height: auto; }
+.nos-banner .b-dark { display: none; }
+.dark .nos-banner .b-light { display: none; }
+.dark .nos-banner .b-dark { display: block; }
+
+/* Misión / Visión: fondo distinto — trama diagonal tipo plano sobre degradado corporativo */
+.mv-section {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1.5px, transparent 1.5px 17px),
+    linear-gradient(120deg, #0C222F 0%, #143A4C 55%, #1E5167 100%);
+}
+
 /* ---- Modo oscuro ---- */
-/* Banner: atenuado y fondo acorde a la página */
 .dark .nos-banner { background: #0c1419 !important; }
-.dark .nos-banner img { filter: brightness(.82) saturate(.95); }
-/* Misión/Visión: banda con degradado oscuro (consistente con el hero) */
-.dark .mv-section { background: linear-gradient(135deg,#071019 0%,#0c2330 55%,#123141 100%) !important; }
+/* Misión / Visión: misma trama sobre un degradado más oscuro */
+.dark .mv-section {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1.5px, transparent 1.5px 17px),
+    linear-gradient(120deg, #060f17 0%, #0c2733 55%, #123a4d 100%) !important;
+}
 .dark .mv-line { background: rgba(255,255,255,.16); }
-/* Objetivos: números en blanco y filas sin tarjeta (fondo = página) */
-.dark .obj-num { color: #ffffff !important; }
+/* Objetivos: filas sin tarjeta (fondo = página); los números conservan su color corporativo */
 .dark .obj-row { background: transparent !important; border-color: rgba(255,255,255,.12) !important; }
 .dark .obj-row:hover { background: rgba(255,255,255,.04) !important; }
 .dark .obj-row p { color: #e6edf2 !important; }
