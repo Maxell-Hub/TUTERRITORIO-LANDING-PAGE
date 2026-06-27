@@ -1679,6 +1679,9 @@ body { top: 0 !important; }
 .dark .az-btn[aria-pressed="false"],
 .dark .news-chip[aria-pressed="false"] {
   background: #131c23 !important; color: #c3d0d9 !important; border-color: #2c3942 !important; }
+/* Letra A–Z activa en oscuro → color corporativo (verde), igual que en modo claro */
+.dark .az-btn[aria-pressed="true"] {
+  background: #4E8654 !important; color: #fff !important; border-color: #4E8654 !important; }
 .dark .flt-chip[aria-pressed="false"] .flt-count {
   background: rgba(255,255,255,.08) !important; color: #9fb0bd !important; }
 /* Chips activos con color corporativo vivo */
