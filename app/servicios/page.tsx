@@ -36,6 +36,9 @@ const PHOTOS: Record<string, string> = {
    =========================================================================== */
 const DESIGN: "numero" | "foto" | "grafica" | "icono" = "numero";
 
+/* Colores corporativos para los números (rotan por tarjeta). */
+const BRAND = ["var(--tt-navy-700)", "var(--tt-blue-700)", "var(--tt-green-600)", "var(--tt-lime-500)"];
+
 /* ---- Íconos de línea (estilo Lucide) para las variantes "grafica" e "icono" ---- */
 const ICONS: Record<string, React.ReactNode> = {
   areacatastral: <><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0l-4.6-4.6a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z" /><path d="M7.5 10.5l1.5 1.5M10.5 7.5l2 2M13.5 4.5l1.5 1.5" /></>,
@@ -157,7 +160,7 @@ export default function ServiciosPage() {
           <div className="tr-grid">
             {TRAMITES.map((t, i) => (
               <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}
-                style={DESIGN === "numero" ? ({ ["--accent" as string]: themeOf(t.icon).ink }) : undefined}>
+                style={DESIGN === "numero" ? ({ ["--accent" as string]: BRAND[i % BRAND.length] }) : undefined}>
                 <div className="tr-face">
                   {DESIGN === "numero" && (
                     <div className="tr-numhead">
