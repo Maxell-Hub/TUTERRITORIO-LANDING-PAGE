@@ -1417,7 +1417,9 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 /* ============================================================
    CÍRCULOS FLOTANTES (idioma · tema · experiencia)
    ============================================================ */
-.fab-stack { position: fixed; right: 20px; bottom: 96px; z-index: 120; display: flex; flex-direction: column; gap: 14px; }
+.fab-stack { position: fixed; right: max(20px, env(safe-area-inset-right)); bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  z-index: 120; display: flex; flex-direction: column; gap: 14px;
+  transform: translateZ(0); will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 .fab { position: relative; width: 54px; height: 54px; border-radius: 50%; border: none; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center; color: #fff;
   box-shadow: 0 6px 16px rgba(12,34,47,.20); text-decoration: none;
@@ -1442,7 +1444,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fab-tip::after { content: ""; position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
   border: 6px solid transparent; border-left-color: #0C222F; }
 .fab:hover .fab-tip, .fab:focus-visible .fab-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
-@media (max-width: 560px) { .fab-stack { right: 12px; bottom: 78px; } .fab { width: 50px; height: 50px; } .fab-tip { display: none; } }
+@media (max-width: 560px) { .fab-stack { right: max(12px, env(safe-area-inset-right)); bottom: calc(78px + env(safe-area-inset-bottom, 0px)); } .fab { width: 50px; height: 50px; } .fab-tip { display: none; } }
 @media (prefers-reduced-motion: reduce) { .fab:hover { transform: none; } }
 
 /* Oculta por completo la UI y la animación de Google Translate (la traducción se controla por el círculo) */
