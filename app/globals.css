@@ -884,6 +884,22 @@ img { max-width: 100%; }
 .gl-more { margin: 13px 0 0; display: grid; gap: 11px; }
 @media (max-width: 560px) { .gl-a { padding-left: 18px; } }
 
+/* ABC Catastral — diccionario por letra */
+.gl-dict { display: flex; flex-direction: column; gap: 30px; }
+.gl-lgroup { display: grid; grid-template-columns: 92px 1fr; gap: 4px 26px; align-items: start; }
+.gl-letter { font: 800 3.1rem/1 var(--font-display); letter-spacing: var(--ls-tight); position: sticky; top: 88px; }
+.gl-entries { display: grid; gap: 0; }
+.gl-entry { padding: 16px 0; border-top: 1px solid var(--border-subtle); }
+.gl-entry:first-child { padding-top: 6px; border-top: none; }
+.gl-eterm { margin: 0; font: var(--fw-bold) var(--fs-md)/1.25 var(--font-sans); color: var(--tt-navy-700); }
+.gl-edef { margin: 5px 0 0; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); max-width: 72ch; }
+.gl-entry .term-toggle { margin-top: 10px; }
+.gl-entry .gl-more { margin-top: 11px; }
+@media (max-width: 620px) {
+  .gl-lgroup { grid-template-columns: 1fr; gap: 2px; }
+  .gl-letter { position: static; font-size: 2.2rem; padding-bottom: 4px; border-bottom: 2px solid currentColor; width: max-content; margin-bottom: 6px; }
+}
+
 /* ============================================================
    NOTICIAS (sala de prensa)
    ============================================================ */
@@ -1699,6 +1715,9 @@ body { top: 0 !important; }
 .dark .gl-q:hover { background: rgba(255,255,255,.04); }
 .dark .gl-term { color: #e6edf2; }
 .dark .gl-def { color: #c3d0d9; }
+.dark .gl-entry { border-top-color: #2f3d47; }
+.dark .gl-eterm { color: #e6edf2; }
+.dark .gl-edef { color: #c3d0d9; }
 
 /* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
    fondo de la página, igual que el hero de Nuestro Equipo */
