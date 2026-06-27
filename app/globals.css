@@ -180,14 +180,14 @@ img { max-width: 100%; }
 .mn-drop a:hover { background: var(--tt-gray-50); }
 
 /* ---- Menú móvil (hamburguesa + panel lateral) ---- */
-.nav-burger { display: none; flex: none; width: 48px; height: 48px; border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-button); background: #fff; cursor: pointer; padding: 0; flex-direction: column;
-  align-items: center; justify-content: center; gap: 5px; box-shadow: var(--shadow-xs);
-  transition: background .2s var(--ease-soft), border-color .2s var(--ease-soft), box-shadow .2s var(--ease-soft); }
-.nav-burger:hover { background: var(--tt-navy-700); border-color: var(--tt-navy-700); box-shadow: var(--shadow-sm); }
-.nav-burger span { display: block; width: 22px; height: 2.5px; border-radius: 2px; background: var(--tt-navy-700);
+.nav-burger { display: none; flex: none; width: 44px; height: 44px; border: none;
+  border-radius: var(--radius-button); background: none; cursor: pointer; padding: 0; flex-direction: column;
+  align-items: center; justify-content: center; gap: 5px; box-shadow: none;
+  transition: opacity .2s var(--ease-soft); }
+.nav-burger:hover { opacity: .65; }
+.nav-burger span { display: block; width: 24px; height: 2.5px; border-radius: 2px; background: #0C222F;
   transition: background .2s var(--ease-soft); }
-.nav-burger:hover span { background: #fff; }
+.dark .nav-burger span { background: #fff; }
 
 .nav-overlay { position: fixed; inset: 0; background: rgba(12,34,47,.55); backdrop-filter: blur(2px);
   z-index: 90; opacity: 0; visibility: hidden; transition: opacity .3s var(--ease-soft), visibility .3s; }
