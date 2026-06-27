@@ -769,16 +769,21 @@ img { max-width: 100%; }
 .tr-facemeta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
 .tr-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: var(--radius-pill);
   background: var(--tt-gray-50); border: 1px solid var(--border-subtle); font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans); color: var(--tt-gray-700); }
-.tr-detail { position: absolute; inset: 0; background: var(--grad-hero); color: #fff; padding: 20px 20px 18px;
-  display: flex; flex-direction: column; gap: 9px; transform: translateY(100%); opacity: 0;
-  transition: transform .34s var(--ease-soft), opacity .2s; pointer-events: none; }
+/* Panel de documentos (hover) — claro por defecto, con el acento de la tarjeta */
+.tr-detail { position: absolute; inset: 0; background: #fff; color: var(--tt-gray-700); padding: 18px 18px 16px;
+  display: flex; flex-direction: column; gap: 11px; transform: translateY(100%); opacity: 0;
+  transition: transform .34s var(--ease-soft), opacity .2s; pointer-events: none;
+  border-top: 3px solid var(--accent, var(--tt-blue-700)); box-shadow: inset 0 0 0 1px var(--border-subtle); }
 .tr-card:hover .tr-detail, .tr-card:focus-within .tr-detail { transform: translateY(0); opacity: 1; pointer-events: auto; }
-.tr-detail .lbl { flex: none; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--tt-lime-400); }
-.tr-reqs { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0; padding: 0 4px 0 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.tr-detail .lbl { flex: none; display: flex; align-items: center; gap: 7px; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans);
+  letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--accent, var(--tt-blue-700));
+  padding-bottom: 9px; border-bottom: 1px solid var(--border-subtle); }
+.tr-detail .lbl::before { content: ""; width: 14px; height: 2px; border-radius: 2px; background: currentColor; }
+.tr-reqs { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0; padding: 0 4px 0 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .tr-reqs::-webkit-scrollbar { width: 5px; }
-.tr-reqs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.32); border-radius: 4px; }
-.tr-reqs li { display: flex; gap: 7px; font: var(--fw-regular) var(--fs-xs)/1.4 var(--font-sans); color: rgba(255,255,255,.92); }
-.tr-reqs li svg { flex: none; margin-top: 1px; }
+.tr-reqs::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 38%, transparent); border-radius: 4px; }
+.tr-reqs li { display: flex; gap: 8px; font: var(--fw-regular) var(--fs-xs)/1.45 var(--font-sans); color: var(--tt-gray-700); }
+.tr-reqs li svg { flex: none; margin-top: 1px; color: var(--accent, var(--tt-blue-700)); }
 
 /* ============================================================
    RECURSOS — Normativas + Glosario
@@ -1682,6 +1687,9 @@ body { top: 0 !important; }
 .dark .ct-map-frame iframe { filter: invert(0.92) hue-rotate(180deg) saturate(0.82) brightness(0.92) contrast(0.95); }
 
 /* MODO OSCURO — Servicios: panel de detalle (hover) y nota de precios */
-.dark .tr-detail { background: linear-gradient(140deg, #0d2029 0%, #123a4d 100%); }
-.dark .tr-detail .lbl { color: #74BAD3; }
+.dark .tr-detail { background: #0f171d; color: #fff; border-top-color: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.dark .tr-detail .lbl { color: #fff; border-bottom-color: rgba(255,255,255,.2); }
+.dark .tr-reqs li { color: rgba(255,255,255,.94); }
+.dark .tr-reqs li svg { color: #fff; }
+.dark .tr-reqs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.34); }
 .dark .serv-note { background: rgba(59,133,165,.10) !important; border-color: rgba(59,133,165,.30) !important; color: #c3d0d9 !important; }
