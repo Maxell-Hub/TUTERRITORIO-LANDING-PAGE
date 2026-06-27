@@ -144,7 +144,8 @@ export default function Header() {
           {/* Logos (izquierda) */}
           <div className="brand-logos">
             <a href="/" aria-label="Ir al inicio" style={{ display: "inline-flex" }}>
-              <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" className="logo-tt" />
+              <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" className="logo-tt logo-light-only" />
+              <img src="/assets/logo-tuterritorio-v-blanco.png" alt="" aria-hidden="true" className="logo-tt logo-dark-only" />
             </a>
             <span className="brand-sep" />
             <a
@@ -154,7 +155,8 @@ export default function Header() {
               aria-label="Alcaldía de Valledupar — Catastro (abre en una pestaña nueva)"
               style={{ display: "inline-flex" }}
             >
-              <img src="/assets/logo-catastro-vpar.png" alt="Alcaldía de Valledupar — Catastro" className="logo-cat" />
+              <img src="/assets/logo-catastro-vpar.png" alt="Alcaldía de Valledupar — Catastro" className="logo-cat logo-light-only" />
+              <img src="/assets/logo-catastro-vpar-blanco.png" alt="" aria-hidden="true" className="logo-cat logo-dark-only" />
             </a>
           </div>
 

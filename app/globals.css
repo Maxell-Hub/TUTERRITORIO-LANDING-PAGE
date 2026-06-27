@@ -68,7 +68,7 @@ img { max-width: 100%; }
 .brand-sep { width: 1px; height: 44px; background: var(--border-subtle); }
 /* Logos del header (tamaño responsivo) */
 .logo-tt { height: 66px; width: auto; object-fit: contain; display: block; }
-.logo-cat { height: 56px; width: 136px; object-fit: cover; display: block; margin-bottom: 12px; }
+.logo-cat { height: 56px; width: 136px; object-fit: contain; object-position: left center; display: block; margin-bottom: 6px; }
 @media (max-width: 700px) {
   .brand-logos { gap: 10px; }
   .brand-sep { height: 38px; }
@@ -398,13 +398,13 @@ img { max-width: 100%; }
 .footer-marks { display: flex; align-items: center; gap: 16px; }
 .footer-marks .sep { width: 1px; height: 48px; background: var(--tt-green-600); }
 .footer-card h3 { margin: 22px 0 16px; font: var(--fw-bold) var(--fs-lg)/1.2 var(--font-sans); color: var(--tt-green-600); }
-.footer-data { display: grid; gap: 11px; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
+.footer-data { display: grid; gap: 12px; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: var(--tt-gray-700); }
 .footer-data b { color: var(--tt-navy-700); }
 .footer-data a { color: var(--tt-green-600); text-decoration: underline; text-underline-offset: 2px; }
 .footer-social { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
 .gc-social { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--footer-green);
   font: var(--fw-medium) var(--fs-sm)/1 var(--font-sans); }
-.gc-social .ic { width: 34px; height: 34px; border-radius: 50%; background: var(--tt-green-600); display: inline-flex;
+.gc-social .ic { width: 34px; height: 34px; border-radius: 50%; background: var(--tt-green-600); color: #fff; display: inline-flex;
   align-items: center; justify-content: center; flex: none;
   transition: background var(--dur-base) var(--ease-soft), transform var(--dur-base) var(--ease-soft); }
 .gc-social:hover .ic { background: var(--footer-green); transform: translateY(-2px); }
@@ -570,6 +570,9 @@ img { max-width: 100%; }
 @keyframes tt-floatA { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(0,-22px) rotate(6deg); } }
 @keyframes tt-bobA { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(-12px); } }
 @keyframes tt-bobB { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(10px); } }
+@keyframes tt-driftA { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-50%) translate(7px,-13px); } }
+@keyframes tt-driftB { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-50%) translate(-7px,12px); } }
+@keyframes tt-ring { 0% { transform: scale(.85); opacity: .5; } 70% { opacity: 0; } 100% { transform: scale(1.7); opacity: 0; } }
 @keyframes tt-dash { to { stroke-dashoffset: -28; } }
 
 #scrollProg { position: fixed; top: 0; left: 0; height: 3px; width: 100%; transform: scaleX(0);
@@ -593,14 +596,24 @@ img { max-width: 100%; }
 .intro-img { border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-lg); height: clamp(300px,38vw,440px); }
 .intro-img img { display: block; width: 100%; height: 122%; object-fit: cover; }
 
-/* Funciones */
-.func-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 44px; }
-.func-card { position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 14px;
-  padding: 34px 30px; box-shadow: 0 12px 28px rgba(14,34,51,.18); }
-.func-card h3 { margin: 0; font: 700 1.375rem/1.25 var(--font-sans); color: #fff; }
-.func-card .div { display: block; width: 46px; height: 3px; border-radius: 999px; background: rgba(255,255,255,.5); margin: 16px 0 18px; }
-.func-card p { margin: 0; font: 400 1rem/1.6 var(--font-sans); color: rgba(255,255,255,.92); }
-.func-wm { position: absolute; right: -22px; bottom: -28px; width: 182px; height: 182px; opacity: .17; pointer-events: none; }
+/* Funciones — composición Bento en 2 filas (cada fila: 1 ancha + 2 angostas) */
+.func-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 44px; align-items: stretch; }
+.fn-lg { grid-column: span 2; }
+.fn-sm { grid-column: span 1; }
+.func-card { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;
+  background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 12px; padding: 32px 30px;
+  box-shadow: 0 6px 20px rgba(12,34,47,.06);
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s cubic-bezier(.22,1,.36,1),
+    background-color .35s ease, border-color .35s ease; }
+.func-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: var(--c); }
+.func-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(12,34,47,.12); }
+.fn-lg { min-height: 210px; }
+.func-card h3 { margin: 0; letter-spacing: -.01em;
+  font: 700 clamp(1.35rem,1.9vw,1.75rem)/1.2 var(--font-sans); color: #0C222F; }
+.func-card p { margin: 12px 0 0; max-width: 48ch;
+  font: 400 1rem/1.7 var(--font-sans); color: #51606b; }
+@media (max-width: 1040px) { .func-bento { grid-template-columns: 1fr 1fr; } .fn-lg, .fn-md, .fn-sm { grid-column: auto; } }
+@media (max-width: 640px) { .func-bento { grid-template-columns: 1fr; } }
 
 /* Mensaje */
 .nos-glow { position: absolute; top: -50px; right: -30px; width: 240px; height: 240px; border-radius: 50%;
@@ -651,8 +664,9 @@ img { max-width: 100%; }
 .hero-net { position: relative; height: 420px; }
 .net-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .net-lines g { animation: tt-dash 2.6s linear infinite; }
-.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; border: 4px solid #fff; }
+.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.5); }
+.net-node::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor;
+  opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
 
 /* Equipo — liderazgo + áreas */
 .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 880px; margin: 0 auto; }
@@ -713,28 +727,64 @@ img { max-width: 100%; }
 
 .tr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 20px; }
 .tr-card { position: relative; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm); overflow: hidden; min-height: 230px; cursor: pointer;
+  box-shadow: var(--shadow-sm); overflow: hidden; min-height: 300px; cursor: pointer;
   transition: box-shadow .3s var(--ease-soft), transform .3s var(--ease-soft), border-color .3s; }
 .tr-card:hover, .tr-card:focus-within { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--tt-blue-500); }
-.tr-face { display: flex; flex-direction: column; gap: 12px; padding: 24px 22px; height: 100%; }
-.tr-ic { width: 46px; height: 46px; border-radius: 12px; background: var(--tt-blue-200); display: inline-flex;
-  align-items: center; justify-content: center; flex: none; color: var(--tt-navy-700); transition: background .3s, color .3s; }
-.tr-card:hover .tr-ic, .tr-card:focus-within .tr-ic { background: var(--tt-navy-700); color: #fff; }
+.tr-face { display: flex; flex-direction: column; height: 100%; }
+/* Portada con foto temática */
+.tr-cover { position: relative; height: 150px; flex: none; overflow: hidden; background: var(--tt-blue-200); }
+.tr-cover-img { object-fit: cover; transition: transform .5s var(--ease-soft); }
+.tr-card:hover .tr-cover-img, .tr-card:focus-within .tr-cover-img { transform: scale(1.06); }
+.tr-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,33,51,0) 45%, rgba(11,33,51,.28) 100%); }
+.tr-cost { position: absolute; left: 12px; bottom: 12px; z-index: 1; padding: 5px 11px; border-radius: var(--radius-pill);
+  font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: .01em; backdrop-filter: blur(4px); box-shadow: var(--shadow-sm); }
+.tr-cost.free { background: var(--tt-lime-400); color: var(--tt-navy-700); }
+.tr-cost.paid { background: rgba(255,255,255,.94); color: var(--tt-navy-700); }
+/* Variante "numero": número índice grande con acento de color */
+.design-numero { min-height: 250px; }
+.design-numero .tr-face { padding-top: 4px; }
+.design-numero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent, var(--tt-blue-700)); z-index: 1; }
+.tr-numhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 20px 6px; }
+.tr-index { font: 800 2.9rem/1 var(--font-sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 82%, #0C222F);
+  position: relative; display: inline-block; }
+.tr-index::after { content: ""; position: absolute; left: 3px; bottom: -7px; width: 26px; height: 3px; border-radius: 3px; background: var(--accent); opacity: .55; }
+.tr-cost-n { flex: none; margin-top: 6px; padding: 5px 11px; border-radius: var(--radius-pill); font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); }
+.tr-cost-n.free { background: color-mix(in srgb, var(--tt-lime-400) 26%, #fff); color: var(--tt-green-600); border: 1px solid color-mix(in srgb, var(--tt-lime-400) 55%, #fff); }
+.tr-cost-n.paid { background: var(--tt-gray-50); color: var(--tt-navy-700); border: 1px solid var(--border-subtle); }
+.design-numero .tr-body { padding-top: 14px; }
+/* Variante "grafica": portada con degradado temático + ilustración */
+.tr-cover-g { display: flex; align-items: center; justify-content: center; }
+.tr-cover-g::after { display: none; }
+.tr-glyph { width: 54px; height: 54px; color: #fff; opacity: .96; z-index: 1; transition: transform .4s var(--ease-soft); }
+.tr-card:hover .tr-glyph, .tr-card:focus-within .tr-glyph { transform: scale(1.08); }
+.tr-glyph-bg { position: absolute; right: -18px; bottom: -22px; width: 118px; height: 118px; color: #fff; opacity: .14; transform: rotate(-8deg); }
+/* Variante "icono": ícono grande a color sobre fondo tenue */
+.tr-iconwrap { height: 116px; flex: none; display: flex; align-items: center; justify-content: center; }
+.tr-glyph-lg { width: 56px; height: 56px; transition: transform .4s var(--ease-soft); }
+.tr-card:hover .tr-glyph-lg, .tr-card:focus-within .tr-glyph-lg { transform: scale(1.1); }
+.tr-tag.free { background: color-mix(in srgb, var(--tt-lime-400) 24%, #fff); border-color: color-mix(in srgb, var(--tt-lime-400) 55%, #fff); color: var(--tt-green-600); }
+.tr-body { display: flex; flex-direction: column; gap: 9px; padding: 18px 20px 20px; flex: 1 1 auto; }
 .tr-title { margin: 0; font: var(--fw-bold) var(--fs-md)/1.25 var(--font-sans); color: var(--tt-navy-700); }
 .tr-desc { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
-.tr-facemeta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 8px; }
+.tr-facemeta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
 .tr-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: var(--radius-pill);
   background: var(--tt-gray-50); border: 1px solid var(--border-subtle); font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans); color: var(--tt-gray-700); }
-.tr-detail { position: absolute; inset: 0; background: var(--grad-hero); color: #fff; padding: 20px 20px 18px;
-  display: flex; flex-direction: column; gap: 9px; transform: translateY(100%); opacity: 0;
-  transition: transform .34s var(--ease-soft), opacity .2s; pointer-events: none; }
+/* Panel de documentos (hover) — fondo oscuro con el acento de la tarjeta */
+.tr-detail { position: absolute; inset: 0; background: linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); color: rgba(255,255,255,.92); padding: 18px 18px 16px;
+  display: flex; flex-direction: column; gap: 11px; transform: translateY(100%); opacity: 0;
+  transition: transform .34s var(--ease-soft), opacity .2s; pointer-events: none;
+  border-top: 3px solid var(--accent, var(--tt-blue-700)); }
 .tr-card:hover .tr-detail, .tr-card:focus-within .tr-detail { transform: translateY(0); opacity: 1; pointer-events: auto; }
-.tr-detail .lbl { flex: none; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--tt-lime-400); }
-.tr-reqs { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0; padding: 0 4px 0 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.tr-detail .lbl { flex: none; display: flex; align-items: center; gap: 7px; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans);
+  letter-spacing: var(--ls-wide); text-transform: uppercase; color: #fff;
+  padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,.18); }
+.tr-detail .lbl::before { content: ""; width: 14px; height: 2px; border-radius: 2px; background: var(--accent, var(--tt-blue-700)); }
+.tr-reqs { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0; padding: 0 4px 0 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .tr-reqs::-webkit-scrollbar { width: 5px; }
 .tr-reqs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.32); border-radius: 4px; }
-.tr-reqs li { display: flex; gap: 7px; font: var(--fw-regular) var(--fs-xs)/1.4 var(--font-sans); color: rgba(255,255,255,.92); }
-.tr-reqs li svg { flex: none; margin-top: 1px; }
+.tr-reqs li { display: flex; gap: 8px; font: var(--fw-regular) var(--fs-xs)/1.45 var(--font-sans); color: rgba(255,255,255,.92); }
+.tr-reqs li svg { flex: none; margin-top: 1px; color: var(--tt-lime-400); }
 
 /* ============================================================
    RECURSOS — Normativas + Glosario
@@ -816,12 +866,48 @@ img { max-width: 100%; }
 @media (max-width: 760px) { .norm-row { grid-template-columns: 1fr; } .norm-link { justify-self: start; } }
 @media (max-width: 640px) { .gl-grid { grid-template-columns: 1fr; } }
 
+/* ABC Catastral — acordeón */
+.gl-acc { --gl-accent: #4E8654; background: #fff; border: 1px solid var(--border-subtle); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-xs); }
+.gl-item + .gl-item { border-top: 1px solid var(--border-subtle); }
+.gl-q { width: 100%; display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: none; border: none; cursor: pointer; text-align: left;
+  transition: background .2s var(--ease-soft); }
+.gl-q:hover { background: color-mix(in srgb, var(--gl-accent) 6%, transparent); }
+.gl-initial { flex: none; width: 32px; height: 32px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center;
+  font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); color: #fff; background: var(--gl-accent); transition: box-shadow .25s var(--ease-soft); }
+.gl-term { flex: 1 1 auto; min-width: 0; font: var(--fw-semibold) var(--fs-md)/1.3 var(--font-sans); color: var(--tt-navy-700); transition: color .2s; }
+.gl-q:hover .gl-term { color: var(--gl-accent); }
+.gl-chev { flex: none; color: var(--tt-gray-500); transition: transform .28s var(--ease-soft), color .2s; }
+.gl-item.open .gl-chev { transform: rotate(180deg); color: var(--gl-accent); }
+.gl-item.open .gl-initial { box-shadow: 0 0 0 4px color-mix(in srgb, var(--gl-accent) 18%, transparent); }
+.gl-a { padding: 0 18px 18px 64px; animation: term-reveal .35s var(--ease-soft); }
+.gl-def { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); max-width: 72ch; }
+.gl-more { margin: 13px 0 0; display: grid; gap: 11px; }
+.gl-more .mf-label { font: var(--fw-bold) var(--fs-sm)/1.35 var(--font-sans); color: var(--tt-navy-700); }
+.gl-more .mf-text { margin: 2px 0 0; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); max-width: 72ch; }
+@media (max-width: 560px) { .gl-a { padding-left: 18px; } }
+
+/* ABC Catastral — diccionario por letra */
+.gl-dict { display: flex; flex-direction: column; gap: 30px; }
+.gl-lgroup { display: grid; grid-template-columns: 92px 1fr; gap: 4px 26px; align-items: start; }
+.gl-letter { font: 800 3.1rem/1 var(--font-display); letter-spacing: var(--ls-tight); position: sticky; top: 88px; }
+.gl-entries { display: grid; gap: 0; }
+.gl-entry { padding: 16px 0; border-top: 1px solid var(--border-subtle); }
+.gl-entry:first-child { padding-top: 6px; border-top: none; }
+.gl-eterm { margin: 0; font: var(--fw-bold) var(--fs-md)/1.25 var(--font-sans); color: var(--tt-navy-700); }
+.gl-edef { margin: 5px 0 0; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); max-width: 72ch; }
+.gl-entry .term-toggle { margin-top: 10px; }
+.gl-entry .gl-more { margin-top: 11px; }
+@media (max-width: 620px) {
+  .gl-lgroup { grid-template-columns: 1fr; gap: 2px; }
+  .gl-letter { position: static; font-size: 2.2rem; padding-bottom: 4px; border-bottom: 2px solid currentColor; width: max-content; margin-bottom: 6px; }
+}
+
 /* ============================================================
    NOTICIAS (sala de prensa)
    ============================================================ */
 .news-header { background: var(--tt-gray-50); padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(1.75rem,3vw,2.5rem); }
 .news-header-inner { max-width: var(--container-wide); margin: 0 auto; }
-.news-header h1 { margin: 14px 0 0; font: var(--fw-bold) var(--fs-2xl)/1.15 var(--font-sans); color: var(--tt-navy-700); }
+.news-header h1 { margin: 14px 0 0; font: var(--fw-bold) 51.2px/1.15 var(--font-sans); color: var(--tt-navy-700); }
 .news-ribbon { width: 130px; height: 5px; border-radius: 3px; margin: 18px 0 16px; background: var(--ribbon); }
 .news-sub { margin: 0; max-width: 720px; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: var(--tt-gray-700); }
 .news-sub b { color: var(--tt-green-600); font-weight: var(--fw-semibold); }
@@ -1291,5 +1377,394 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; justify-content: center; padding: 18px clamp(1rem,5vw,64px); background: var(--footer-green); border-top: 1px solid rgba(255,255,255,.14); }
 .footer-legal a { color: #fff; text-decoration: none; font: var(--fw-semibold) var(--fs-sm)/1.4 var(--font-sans); opacity: .92; }
 .footer-legal a:hover { text-decoration: underline; opacity: 1; }
+/* Enlaces legales siempre en blanco y negrita (evita que alguno salga azul/resaltado) */
+.footer-legal a, .footer-legal a:link, .footer-legal a:visited, .footer-legal a:hover, .footer-legal a:focus, .footer-legal a:active {
+  color: #fff !important; font-weight: var(--fw-bold) !important; opacity: 1; }
 .footer-legal span { color: rgba(255,255,255,.5); }
 @media (prefers-reduced-motion: reduce) { .ext-modal { animation: none; } }
+
+/* ============================================================
+   CÍRCULOS FLOTANTES (idioma · tema · experiencia)
+   ============================================================ */
+.fab-stack { position: fixed; right: 20px; bottom: 96px; z-index: 120; display: flex; flex-direction: column; gap: 14px; }
+.fab { position: relative; width: 54px; height: 54px; border-radius: 50%; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+  box-shadow: 0 6px 16px rgba(12,34,47,.20); text-decoration: none;
+  transition: transform .22s var(--ease-soft), box-shadow .22s var(--ease-soft), background .2s; }
+.fab:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(12,34,47,.26); }
+.fab:active { transform: translateY(-1px) scale(.96); }
+/* Colores planos corporativos */
+.fab-lang { background: #3B85A5; }
+.fab-lang:hover { background: #357791; }
+.fab-theme { background: #0C222F; }
+.fab-theme:hover { background: #15323f; }
+.fab-feedback { background: #4E8654; }
+.fab-feedback:hover { background: #457749; }
+.fab-badge { position: absolute; bottom: -2px; right: -2px; min-width: 21px; height: 19px; padding: 0 5px; border-radius: 10px;
+  background: #F0B63B; color: #0C222F; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,.22); }
+/* Etiqueta que aparece al pasar el cursor / enfocar */
+.fab-tip { position: absolute; right: calc(100% + 13px); top: 50%; transform: translateY(-50%) translateX(7px);
+  background: #0C222F; color: #fff; font: var(--fw-semibold) 12px/1 var(--font-sans); padding: 8px 12px; border-radius: 9px;
+  white-space: nowrap; opacity: 0; pointer-events: none; box-shadow: 0 8px 20px rgba(0,0,0,.28);
+  transition: opacity .2s var(--ease-soft), transform .2s var(--ease-soft); }
+.fab-tip::after { content: ""; position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
+  border: 6px solid transparent; border-left-color: #0C222F; }
+.fab:hover .fab-tip, .fab:focus-visible .fab-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+@media (max-width: 560px) { .fab-stack { right: 12px; bottom: 78px; } .fab { width: 50px; height: 50px; } .fab-tip { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fab:hover { transform: none; } }
+
+/* Oculta por completo la UI y la animación de Google Translate (la traducción se controla por el círculo) */
+.goog-te-banner-frame, .goog-te-banner, iframe.skiptranslate, .skiptranslate > iframe,
+.goog-te-spinner-pos, #goog-gt-tt, .goog-te-balloon-frame, .jfk-bubble, .goog-tooltip, .goog-tooltip:hover {
+  display: none !important; visibility: hidden !important; }
+body { top: 0 !important; position: static !important; }
+/* El gadget debe renderizarse para que el widget funcione; se oculta fuera de pantalla (no display:none) */
+#google_translate_element { position: absolute !important; left: -9999px !important; top: 0 !important; height: 0 !important; overflow: hidden !important; }
+/* Sin resaltado ni transición al traducir (evita el parpadeo/animación) */
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+font[style] { background: none !important; box-shadow: none !important; transition: none !important; }
+.dark .fab-tip { background: #25323c; }
+.dark .fab-tip::after { border-left-color: #25323c; }
+
+/* ============================================================
+   MODO OSCURO (primer corte — superficies principales)
+   ============================================================ */
+.dark { color-scheme: dark;
+  --text-body:#e6edf2; --tt-gray-900:#e6edf2; --tt-gray-700:#c3d0d9; --tt-gray-500:#9fb0bd;
+  --tt-gray-300:#3a4751; --tt-gray-200:#2b3742; --tt-gray-100:#1a242c; --tt-gray-50:#161f26;
+  --tt-ink:#f0f5f8; --border-subtle:#2c3942; }
+.dark body { background:#0c1419; }
+.dark .brand-row-bg, .dark .mainnav, .dark .mainnav.is-stuck { background:#0f171d; border-color:#2c3942; }
+.dark .section-gray, .dark .news-header, .dark .rec-section, .dark .pq-section, .dark .legal-hero { background:#0f171d; }
+.dark .visor { background:linear-gradient(180deg,#0f171d 0%,#0c1419 100%); }
+.dark .ct-card, .dark .pq-form, .dark .term-card, .dark .news-card, .dark .feat-card,
+.dark .mn-drop, .dark .cm-tip, .dark .legal-meta, .dark .privacy-notice, .dark .ext-modal,
+.dark .func-card, .dark .glass-card, .dark .lead-card, .dark .team-area, .dark .search-results,
+.dark .pq-input, .dark .ct-input, .dark .enlace-row {
+  background:#131c23 !important; border-color:#2c3942 !important; color:var(--text-body); }
+.dark .sec-title, .dark .visor h2, .dark .legal-wrap h1, .dark .legal-body h2, .dark .legal-body h3,
+.dark .ct-card h2, .dark .pq-form h2, .dark .term-name, .dark .enlace-body .et,
+.dark .news-card-body h3, .dark .sitemap-group h2, .dark .pq-label, .dark .ct-field label {
+  color:#e9f1f6 !important; }
+.dark .mn-link { color:#c3d0d9; }
+.dark .mn-link.on, .dark .mn-link:hover { color:#fff; }
+.dark .pq-input::placeholder, .dark .ct-input::placeholder { color:#7d8d99; }
+.dark .legal-table thead th { background:#1f2c35; }
+.dark .legal-table th[scope="row"] { background:#11191f; color:#e9f1f6; }
+
+/* ============================================================
+   MODO OSCURO — barrido completo (cubre estilos en línea)
+   ============================================================ */
+/* Secciones claras → oscuras */
+.dark .serv-section, .dark .ct-form-section, .dark .news-feat-section, .dark .news-grid-section,
+.dark .ct-map-section, .dark .nos-section, .dark .obj-section, .dark .sec-pad,
+.dark .rec-section, .dark .rec-section.blue, .dark .rec-section.green, .dark .equipo-section {
+  background: #0f171d !important; }
+.dark .visor { background: linear-gradient(180deg,#0f171d 0%,#0c1419 100%) !important; }
+.dark .section-gray { background: #0f171d !important; }
+
+/* Tarjetas / superficies blancas → oscuras */
+.dark .tr-card, .dark .etapa-card, .dark .gl-search, .dark .ct-sede-card, .dark .nav-drawer,
+.dark .route-loading, .dark .ne-foot, .dark .obj-row, .dark .az-btn, .dark .news-chip,
+.dark .gc-search, .dark .pq-chip, .dark .sr-item, .dark .gl-toolbar, .dark .term-card,
+.dark .news-card, .dark .feat-card, .dark .ct-card, .dark .pq-form,
+.dark .lead-card, .dark .team-area, .dark .mn-drop, .dark .cm-tip, .dark .search-results,
+.dark .legal-meta, .dark .privacy-notice, .dark .ext-modal {
+  background: #131c23 !important; border-color: #2c3942 !important; }
+
+/* Encabezados → claros (incluye color en línea con var navy) */
+.dark h1, .dark h2, .dark h3, .dark h4 { color: #eaf1f6 !important; }
+
+/* Texto e inline-vars que no flipean solos */
+.dark .ed, .dark .term-def, .dark .news-card-body p, .dark .feat-body p,
+.dark .legal-body p, .dark .legal-list, .dark .legal-meta { color: #c3d0d9 !important; }
+
+/* Campos de formulario y buscador */
+.dark input, .dark textarea, .dark select {
+  background: #131c23 !important; color: var(--text-body) !important; border-color: #2c3942 !important; }
+.dark input::placeholder, .dark textarea::placeholder { color: #7d8d99 !important; }
+.dark .gc-search .seg { background: #1f2c35 !important; color: #9fc6e0 !important; }
+.dark .pq-radios .pq-chip { color: #c3d0d9; }
+
+/* Enlaces dentro de contenido */
+.dark .legal-body a, .dark .privacy-notice a, .dark .footer-data a, .dark .mn-drop a, .dark .sitemap-group a { color: #6fb3d6 !important; }
+
+/* Bordes / separadores */
+.dark .brand-sep, .dark .footer-marks .sep, .dark .legal-body h2, .dark .news-chip { border-color: #2c3942 !important; }
+
+/* Encabezado del sitio */
+.dark .brand-row-bg, .dark .mainnav, .dark .mainnav.is-stuck { background: #0f171d !important; }
+.dark .mn-link { color: #c3d0d9; }
+.dark .mn-link.on, .dark .mn-link:hover { color: #fff; }
+
+/* Footer verde: se mantiene el verde corporativo; el título a verde claro */
+.dark .footer-card h3 { color: #bfe3a0 !important; }
+
+/* Logos del header: versión normal en claro, versión blanca en oscuro */
+.logo-dark-only { display: none; }
+.dark .logo-light-only { display: none; }
+.dark .logo-dark-only { display: block; }
+
+/* ============================================================
+   MODO OSCURO — ajustes (submenús, buscador, sectores, footer)
+   ============================================================ */
+/* Submenús (dropdown del menú): texto blanco */
+.dark .mn-drop a { color: #eaf1f6 !important; }
+.dark .mn-drop a:hover { background: #1c2a33 !important; color: #ffffff !important; }
+
+/* Buscador: texto y placeholder en blanco */
+.dark .gc-search input { color: #ffffff !important; }
+.dark .gc-search input::placeholder { color: #aab8c2 !important; }
+
+/* Tooltip de sectores: texto claro, eyebrow legible y punta oscura */
+.dark .cm-tip { background: #131c23 !important; }
+.dark .cm-tip .ct-name, .dark .cm-tip .ct-use { color: #eaf1f6 !important; }
+.dark .cm-tip .ct-label { color: #9fb0bd !important; }
+.dark .cm-tip .ct-zone { color: color-mix(in srgb, var(--c) 62%, #ffffff) !important; }
+.dark .cm-tip::after { background: #131c23 !important; border-color: #2c3942 !important; }
+
+/* Footer: tarjeta blanca → oscura y verde → verde oscuro acorde al modo */
+.dark .site-footer { background: #12231a !important; }
+.dark .footer-card { background: #131c23 !important; box-shadow: 0 12px 32px rgba(0,0,0,.45) !important; }
+.dark .footer-legal { background: #12231a !important; border-top-color: rgba(255,255,255,.10) !important; }
+.dark .footer-data { color: #c3d0d9 !important; }
+.dark .footer-data b { color: #eaf1f6 !important; }
+.dark .footer-data a { color: #8fd6a3 !important; }
+.dark .footer-card h3 { color: #bfe3a0 !important; }
+
+/* ============================================================
+   MODO OSCURO — ajustes adicionales (buscador, sectores, footer)
+   ============================================================ */
+/* Buscador: título de resultados en blanco */
+.dark .sr-title { color: #ffffff !important; }
+
+/* Sectores: "6 sectores catastrales" y textos de los chulitos → blanco y negrita */
+.dark .visor p b, .dark .visor-list .txt { color: #ffffff !important; font-weight: 700 !important; }
+
+/* Footer: "Sede Principal" en blanco; rayita divisoria blanca; correos en blanco y negrita */
+.dark .footer-card h3 { color: #ffffff !important; }
+.dark .footer-marks .sep { background: #ffffff !important; }
+.dark .footer-data a { color: #ffffff !important; font-weight: 700 !important; }
+
+/* Instagram: círculo blanco, ícono azul (modo oscuro) y texto blanco */
+.dark .gc-social { color: #ffffff !important; }
+.dark .gc-social .ic { background: #ffffff !important; color: #4E97B6 !important; }
+.dark .gc-social:hover .ic { background: #e6f1f7 !important; transform: translateY(-2px); }
+
+/* ============================================================
+   MODO OSCURO — Hero (Inicio): fondo más oscuro y acorde
+   ============================================================ */
+.dark .hero { background: linear-gradient(135deg, #070e15 0%, #0b1f2a 45%, #103040 100%) !important; }
+.dark .hm-fade { background: linear-gradient(90deg, #070e15 0%, #070e15 58%, rgba(7,14,21,.85) 68%, rgba(7,14,21,.5) 80%, rgba(7,14,21,.2) 90%, rgba(7,14,21,0) 100%) !important; }
+.dark .hero-map img { filter: brightness(.62) saturate(.9); }
+.dark .hero-eyebrow { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.20); color: #ffffff; }
+.dark .hero h1 { color: #f3f7fa !important; }
+.dark .hero p { color: rgba(226,236,242,.88); }
+.dark .hero-feat { color: rgba(226,236,242,.92); }
+
+/* MODO OSCURO — Visor geográfico: subtítulo y rayita en blanco */
+.dark .visor-tag { color: #ffffff !important; font-weight: 700 !important; }
+.dark .visor-tag .ln { background: #ffffff !important; }
+
+/* ============================================================
+   MODO OSCURO — barrido global de subtítulos y textos en negrita azul
+   ============================================================ */
+/* Subtítulos tipo etiqueta (eyebrow/kicker/tag) → blanco en todas las páginas */
+.dark .eyebrow,
+.dark .eyebrow-b,
+.dark .legal-eyebrow,
+.dark .ne-doc-tag,
+.dark .visor-tag,
+.dark [style*="--tt-blue-700"] { color: #ffffff !important; }
+.dark .visor-tag .ln { background: #ffffff !important; }
+
+/* Texto en negrita de color azul/navy dentro del contenido → blanco y negrita */
+.dark [style*="--tt-navy-700"] { color: #ffffff !important; }
+.dark b[style*="--tt-navy"],
+.dark b[style*="--tt-blue"] { color: #ffffff !important; font-weight: 700 !important; }
+
+/* Sección "Hacia dónde trabajamos" (los números): fondo acorde al cuerpo de la página */
+.dark .sec-pad:has(.obj-grid) { background: #0c1419 !important; }
+
+/* ============================================================
+   MODO OSCURO — Funciones (Bento): superficies y acentos legibles
+   ============================================================ */
+.dark .func-card { background: #131c23 !important; border-color: #2c3942 !important; box-shadow: 0 10px 26px rgba(0,0,0,.4) !important; }
+.dark .func-card:hover { box-shadow: 0 16px 34px rgba(0,0,0,.55) !important; }
+/* Acento superior fuerte y vivo tambien en oscuro */
+.dark .func-card::before { background: color-mix(in srgb, var(--c) 86%, #ffffff); height: 5px; }
+.dark .func-card h3 { color: #eaf1f6 !important; }
+.dark .func-card p { color: #c3d0d9 !important; }
+
+/* ============================================================
+   Transición suave entre modo claro y oscuro
+   ============================================================ */
+/* Solo elementos sin transición propia (no pisar el hover de tarjetas/menús) */
+@media (prefers-reduced-motion: no-preference) {
+  body, .sec-pad, .site-footer, .footer-card, .footer-legal, .brand-row-bg,
+  .visor, .section-gray, .rec-section, .pq-section, .legal-hero, .news-header,
+  h1, h2, h3, h4, h5, h6, p, li, label, b, strong, .eyebrow, .eyebrow-b, .visor-tag, .visor-tag .ln {
+    transition: background-color .35s ease, border-color .35s ease, color .3s ease;
+  }
+  .func-card { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s cubic-bezier(.22,1,.36,1),
+    background-color .35s ease, border-color .35s ease; }
+  .func-card h3, .func-card p, .func-card::before { transition: background-color .35s ease, color .3s ease; }
+}
+
+/* ============================================================
+   Nosotros — Misión/Visión (2 columnas) y Etapas (escalera)
+   ============================================================ */
+/* Misión / Visión: título + texto divididos por línea vertical sutil */
+.mv-split { position: relative; display: grid; grid-template-columns: 1fr 1px 1fr; gap: clamp(28px,5vw,68px);
+  max-width: 1080px; margin: 0 auto; align-items: start; }
+.mv-line { align-self: stretch; width: 1px; background: rgba(255,255,255,.20); }
+.mv-title { margin: 0; font: 800 clamp(1.7rem,3vw,2.2rem)/1.05 var(--font-sans); letter-spacing: -.02em; color: #fff; }
+.mv-accent { display: block; width: 56px; height: 4px; border-radius: 999px; margin: 16px 0 20px; background: var(--ribbon); }
+.mv-text { margin: 0; font: 400 clamp(1rem,1.4vw,1.125rem)/1.7 var(--font-sans); color: rgba(255,255,255,.85); max-width: 42ch; }
+@media (max-width: 760px) {
+  .mv-split { grid-template-columns: 1fr; gap: 0; }
+  .mv-line { display: none; }
+  .mv-col + .mv-col { margin-top: 34px; padding-top: 34px; border-top: 1px solid rgba(255,255,255,.18); }
+}
+
+/* Etapas del proceso: barras verticales que crecen (escalera) */
+.etapas-stairs { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(14px,2.2vw,26px); align-items: start; }
+.stair { display: flex; flex-direction: column; }
+.stair-track { height: 240px; display: flex; align-items: flex-end; }
+.stair-fill { position: relative; width: 100%; height: var(--h); min-height: 64px; border-radius: 16px 16px 0 0;
+  background: var(--c);
+  box-shadow: 0 8px 18px rgba(14,34,51,.10);
+  transform: scaleY(0); transform-origin: bottom; transition: transform .75s cubic-bezier(.22,1,.36,1); }
+.reveal.in .stair-fill { transform: scaleY(1); }
+.etapas-stairs .stair:nth-child(1) .stair-fill { transition-delay: .05s; }
+.etapas-stairs .stair:nth-child(2) .stair-fill { transition-delay: .18s; }
+.etapas-stairs .stair:nth-child(3) .stair-fill { transition-delay: .31s; }
+.etapas-stairs .stair:nth-child(4) .stair-fill { transition-delay: .44s; }
+.stair-num { position: absolute; top: 14px; left: 0; right: 0; text-align: center; font: 800 1.5rem/1 var(--font-sans); color: #fff; opacity: .92; }
+.stair h3 { margin: 20px 0 0; font: 700 1.2rem/1.25 var(--font-sans); color: var(--tt-navy-700); }
+.stair p { margin: 9px 0 0; font: 400 .9375rem/1.55 var(--font-sans); color: var(--tt-gray-500); }
+@media (max-width: 760px) { .etapas-stairs { grid-template-columns: 1fr 1fr; gap: 18px; } .stair-track { height: 180px; } }
+@media (prefers-reduced-motion: reduce) { .stair-fill { transform: scaleY(1); transition: none; } }
+
+/* Banner Nosotros: tamaño responsive y conmutación clara/oscura */
+.nos-banner img { display: block; width: 100%; height: auto; }
+.nos-banner .b-dark { display: none; }
+.dark .nos-banner .b-light { display: none; }
+.dark .nos-banner .b-dark { display: block; }
+
+/* Misión / Visión: degradado corporativo limpio (sin trama) */
+.mv-section { background: linear-gradient(125deg, #0C222F 0%, #163F52 55%, #1E5167 100%); }
+
+/* ---- Modo oscuro ---- */
+.dark .nos-banner { background: #0c1419 !important; }
+/* Misión / Visión: el fondo se funde con el fondo oscuro de la página */
+.dark .mv-section { background: linear-gradient(180deg, #0c1419 0%, #0f242e 50%, #0c1419 100%) !important; }
+.dark .mv-line { background: rgba(255,255,255,.16); }
+/* Objetivos: filas sin tarjeta (fondo = página); números corporativos aclarados para legibilidad */
+.dark .obj-row { background: transparent !important; border-color: rgba(255,255,255,.12) !important; }
+.dark .obj-row:hover { background: rgba(255,255,255,.04) !important; }
+.dark .obj-row p { color: #e6edf2 !important; }
+.dark .obj-num { color: color-mix(in srgb, var(--oc) 72%, #ffffff) !important; }
+/* Etapas: texto claro y barras con efecto luminiscente (degradado + glow corporativo) */
+.dark .stair h3 { color: #eaf1f6 !important; }
+.dark .stair p { color: #c3d0d9 !important; }
+.dark .stair-fill {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 70%, #ffffff) 0%, var(--c) 100%);
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--c) 48%, transparent); }
+
+/* MODO OSCURO — Enlaces de interés: flechas de los círculos en blanco */
+.dark .enlace-arrow { color: #ffffff !important; border-color: rgba(255,255,255,.28) !important; }
+
+/* ============================================================
+   Equipo — monograma de área (en vez de icono) y modo oscuro
+   ============================================================ */
+.team-area .ic.mono { color: #ffffff; font: 800 1.25rem/1 var(--font-sans); letter-spacing: .02em; }
+@media (prefers-reduced-motion: reduce) { .net-node::after { animation: none !important; opacity: 0; } }
+
+/* Modo oscuro */
+.dark .equipo-hero { background: #0c1419; }
+.dark .lead-card h3 { color: #ffffff !important; font-weight: 700 !important; }
+.dark .avatar-grid .cap { color: #ffffff !important; font-weight: 700 !important; }
+.dark .avatar-grid .cap .role { color: #b9c6d0 !important; font-weight: 500 !important; }
+.dark .lead-card p { color: #c3d0d9 !important; }
+.dark .team-area h3 { color: #eaf1f6 !important; }
+.dark .team-area .meta { color: #9fb0bd !important; }
+
+/* ============================================================
+   MODO OSCURO — Recursos (Normativas/ABC), Noticias y Contacto
+   ============================================================ */
+/* Chips de filtro inactivos (estilos en línea blancos) → superficie oscura */
+.dark .flt-chip[aria-pressed="false"],
+.dark .az-btn[aria-pressed="false"],
+.dark .news-chip[aria-pressed="false"] {
+  background: #131c23 !important; color: #c3d0d9 !important; border-color: #2c3942 !important; }
+/* Letra A–Z activa en oscuro → color corporativo (verde), igual que en modo claro */
+.dark .az-btn[aria-pressed="true"] {
+  background: #4E8654 !important; color: #fff !important; border-color: #4E8654 !important; }
+.dark .flt-chip[aria-pressed="false"] .flt-count {
+  background: rgba(255,255,255,.08) !important; color: #9fb0bd !important; }
+/* Chips activos con color corporativo vivo */
+.dark .flt-chip[aria-pressed="true"],
+.dark .news-chip[aria-pressed="true"] { background: #3B85A5 !important; border-color: #3B85A5 !important; }
+
+/* Normativas: etiqueta de tipo con tinte oscuro (no claro) y código legible */
+.dark .norm-tag { background: rgba(255,255,255,.07) !important; }
+.dark .norm-code { color: #eaf1f6 !important; }
+
+/* Noticias: "actualización catastral multipropósito" en blanco y negrita */
+.dark .news-sub b { color: #ffffff !important; font-weight: 700 !important; }
+.dark .news-grid-head .rule { background: #2c3942 !important; }
+
+/* Contacto: alerta de error, botón restablecer y mensaje de éxito */
+.dark .rec-empty[role="alert"] { background: rgba(216,55,68,.14) !important; color: #ff9d9d !important; }
+.dark .ct-reset { background: #131c23 !important; color: #9fc6e0 !important; border-color: #3B85A5 !important; }
+.dark .ct-reset:hover { background: #1c2a33 !important; }
+.dark .ct-success h3 { color: #eaf1f6 !important; }
+
+/* MODO OSCURO — Trámites (Servicios), Normativas, ABC y Contacto: fondo fundido con la página */
+/* Se incluyen los selectores compuestos .rec-section.blue/.green para ganar en especificidad */
+.dark .serv-section,
+.dark .rec-section, .dark .rec-section.blue, .dark .rec-section.green,
+.dark .ct-form-section, .dark .ct-map-section { background: #0c1419 !important; }
+/* Opción B — tarjetas de Trámites, Normativas y ABC fundidas con el fondo,
+   definidas solo por su borde (todo plano y unificado) */
+.dark .tr-card, .dark .norm-row, .dark .term-card {
+  background: #0c1419 !important; border-color: #2f3d47 !important; box-shadow: none !important; }
+.dark .tr-card:hover, .dark .tr-card:focus-within,
+.dark .norm-row:hover, .dark .term-card:hover {
+  background: #111b22 !important; border-color: #3B85A5 !important; box-shadow: 0 10px 26px rgba(0,0,0,.4) !important; }
+/* ABC Catastral — acordeón en modo oscuro */
+.dark .gl-acc { background: #0c1419; border-color: #2f3d47; box-shadow: none; }
+.dark .gl-item + .gl-item { border-top-color: #2f3d47; }
+.dark .gl-q:hover { background: rgba(255,255,255,.04); }
+.dark .gl-term { color: #e6edf2; }
+.dark .gl-def { color: #c3d0d9; }
+.dark .gl-entry { border-top-color: #2f3d47; }
+.dark .gl-eterm { color: #e6edf2; }
+.dark .gl-edef { color: #c3d0d9; }
+.dark .gl-more .mf-label { color: #e6edf2; }
+.dark .gl-more .mf-text { color: #c3d0d9; }
+/* El contenedor del buscador no debe tener caja propia: se funde con el fondo de la página */
+.dark .gl-toolbar { background: transparent !important; border-color: transparent !important; }
+
+/* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
+   fondo de la página, igual que el hero de Nuestro Equipo */
+.dark .serv-banner, .dark .rec-hero, .dark .ct-hero { background: #0c1419 !important; }
+
+/* MODO OSCURO — Contacto: la curva blanca (ct-swoosh) se funde con el fondo */
+.dark .ct-swoosh path { fill: #0c1419 !important; }
+
+/* MODO OSCURO — Mapa de Google (embed sin tema oscuro oficial): se oscurece con
+   un filtro de inversión + corrección de tono para integrarlo al modo oscuro */
+.dark .ct-map-frame iframe { filter: invert(0.92) hue-rotate(180deg) saturate(0.82) brightness(0.92) contrast(0.95); }
+
+/* MODO OSCURO — Servicios: panel de detalle (hover) y nota de precios */
+.dark .tr-detail { background: #25323c; color: #fff; border-top-color: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.dark .tr-detail .lbl { color: #fff; border-bottom-color: rgba(255,255,255,.2); }
+.dark .tr-reqs li { color: rgba(255,255,255,.94); }
+.dark .tr-reqs li svg { color: #fff; }
+.dark .tr-reqs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.34); }
+/* Número corporativo: se aclara en oscuro para mantener contraste y el tono de marca */
+.dark .design-numero .tr-index { color: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 60%, #ffffff); }
+.dark .serv-note { background: rgba(59,133,165,.10) !important; border-color: rgba(59,133,165,.30) !important; color: #c3d0d9 !important; }

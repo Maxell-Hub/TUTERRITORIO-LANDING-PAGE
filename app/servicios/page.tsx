@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
@@ -8,8 +9,38 @@ export const metadata: Metadata = {
     "Trámites y productos catastrales de Tuterritorio (Catastro de Valledupar): actualiza, corrige y consulta información de predios y propietarios.",
 };
 
-/* ---- Mapa de íconos (line, estilo Lucide) tomado del handoff ---- */
-const P = (d: string) => <path d={d} />;
+/* ---- Foto temática por tipo de trámite (cada tarjeta lleva su imagen) ----
+   Imágenes de Unsplash (licencia libre), optimizadas por next/image. */
+const U = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=640&q=70`;
+const PHOTOS: Record<string, string> = {
+  areacatastral: U("photo-1448630360428-65456885c650"), // vista aérea urbana
+  arearegistral: U("photo-1500382017468-9049fed747ef"), // campos / terreno rural
+  desenglobe: U("photo-1574323347407-f5e1ad6d020b"),    // parcelas aéreas divididas
+  englobe: U("photo-1524661135-423995f22d0b"),           // mapa / territorio
+  inscripcion: U("photo-1568605114967-8130f3a36994"),    // casa / vivienda
+  revision: U("photo-1554224155-6726b3ff858f"),          // avalúo / finanzas
+  destino: U("photo-1486406146926-c627a92ad1ab"),        // edificios / uso del suelo
+  direccion: U("photo-1560518883-ce09059eeffa"),         // vivienda / dirección
+  nombre: U("photo-1450101499163-c8848c66ca85"),         // firmar / escribir
+  documento: U("photo-1554224154-26032ffc0d07"),         // documentos
+  propietario: U("photo-1582407947304-fd86f028f716"),    // llaves / propietario
+  matricula: U("photo-1486325212027-8081e485255e"),      // plano / blueprint
+};
+
+/* ===========================================================================
+   DISEÑO DE LA TARJETA — cambia este valor para probar cada estilo:
+     "numero"  → número índice grande con acento de color (sin íconos ni fotos)
+     "foto"    → portada con fotografía real (Unsplash)
+     "grafica" → portada con degradado temático + ilustración (sin fotos)
+     "icono"   → ícono grande a color sobre fondo tenue (sin fotos)
+   =========================================================================== */
+const DESIGN: "numero" | "foto" | "grafica" | "icono" = "numero";
+
+/* Colores corporativos para los números (rotan por tarjeta):
+   verde, azul y amarillo (sin el azul oscuro). */
+const BRAND = ["#4E8654", "#3B85A5", "#F0B63B"];
+
+/* ---- Íconos de línea (estilo Lucide) para las variantes "grafica" e "icono" ---- */
 const ICONS: Record<string, React.ReactNode> = {
   areacatastral: <><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0l-4.6-4.6a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z" /><path d="M7.5 10.5l1.5 1.5M10.5 7.5l2 2M13.5 4.5l1.5 1.5" /></>,
   arearegistral: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M10.5 13.5 8 16l-.5 2.5 2.5-.5 2.5-2.5a1 1 0 0 0 0-1.4l-.6-.6a1 1 0 0 0-1.4 0Z" /></>,
@@ -24,12 +55,28 @@ const ICONS: Record<string, React.ReactNode> = {
   propietario: <><path d="M16 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
   matricula: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M9 13h6M9 17h4" /></>,
 };
-
-const Icon = ({ name }: { name: string }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const BigIcon = ({ name }: { name: string }) => (
+  <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     {ICONS[name] ?? <circle cx="12" cy="12" r="9" />}
   </svg>
 );
+
+/* ---- Tema de color por tipo de trámite (degradado para "grafica", tinte para "icono") ---- */
+const THEMES: Record<string, { grad: string; tint: string; ink: string }> = {
+  areacatastral: { grad: "linear-gradient(135deg,#2a7fc0,#0b2133)", tint: "#e3eef8", ink: "#1d6fb8" },
+  arearegistral: { grad: "linear-gradient(135deg,#2fa873,#0e5a3a)", tint: "#e1f3ea", ink: "#1f8b56" },
+  desenglobe:    { grad: "linear-gradient(135deg,#2ba0c0,#11475e)", tint: "#e0f1f6", ink: "#1c84a3" },
+  englobe:       { grad: "linear-gradient(135deg,#4884cc,#1b3a66)", tint: "#e6edf9", ink: "#2f63ad" },
+  inscripcion:   { grad: "linear-gradient(135deg,#36b07c,#155e3f)", tint: "#e2f4ec", ink: "#1f9162" },
+  revision:      { grad: "linear-gradient(135deg,#e0a534,#9a6410)", tint: "#fbf0d9", ink: "#b27d18" },
+  destino:       { grad: "linear-gradient(135deg,#5b8def,#22357f)", tint: "#e7ecfb", ink: "#3f63c9" },
+  direccion:     { grad: "linear-gradient(135deg,#2bb6a8,#115e58)", tint: "#dff4f1", ink: "#1b938a" },
+  nombre:        { grad: "linear-gradient(135deg,#7090c8,#2b3f6b)", tint: "#e8edf7", ink: "#4d6aa6" },
+  documento:     { grad: "linear-gradient(135deg,#5180b8,#1f3a5c)", tint: "#e5edf6", ink: "#3a679c" },
+  propietario:   { grad: "linear-gradient(135deg,#3fae70,#155e3a)", tint: "#e2f3ea", ink: "#22925d" },
+  matricula:     { grad: "linear-gradient(135deg,#647596,#2b3548)", tint: "#eaedf3", ink: "#4d5b78" },
+};
+const themeOf = (k: string) => THEMES[k] ?? THEMES.matricula;
 
 /* ---- Documentos compartidos (texto exacto del handoff/PDF) ---- */
 const docSolicitud = "Solicitud del trámite con datos de notificación (celular, correo y dirección)";
@@ -75,7 +122,7 @@ const Clock = () => (
   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
 );
 const Check = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--tt-lime-400)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
 );
 
 export default function ServiciosPage() {
@@ -113,14 +160,42 @@ export default function ServiciosPage() {
 
           <div className="tr-grid">
             {TRAMITES.map((t, i) => (
-              <div className="tr-card" key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}>
+              <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}
+                style={DESIGN === "numero" ? ({ ["--accent" as string]: BRAND[i % BRAND.length] }) : undefined}>
                 <div className="tr-face">
-                  <span className="tr-ic"><Icon name={t.icon} /></span>
-                  <h3 className="tr-title">{t.title}</h3>
-                  <p className="tr-desc">{t.desc}</p>
-                  <div className="tr-facemeta">
-                    <span className="tr-tag"><Clock /> {t.tiempo}</span>
-                    <span className="tr-tag">{t.costo}</span>
+                  {DESIGN === "numero" && (
+                    <div className="tr-numhead">
+                      <span className="tr-index">{String(i + 1).padStart(2, "0")}</span>
+                      <span className={`tr-cost-n ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                    </div>
+                  )}
+                  {DESIGN === "foto" && (
+                    <div className="tr-cover">
+                      <Image className="tr-cover-img" src={PHOTOS[t.icon] ?? PHOTOS.matricula} alt="" fill sizes="(max-width: 700px) 100vw, 320px" />
+                      <span className={`tr-cost ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                    </div>
+                  )}
+                  {DESIGN === "grafica" && (
+                    <div className="tr-cover tr-cover-g" style={{ background: themeOf(t.icon).grad }}>
+                      <span className="tr-glyph-bg" aria-hidden="true"><BigIcon name={t.icon} /></span>
+                      <span className="tr-glyph"><BigIcon name={t.icon} /></span>
+                      <span className={`tr-cost ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                    </div>
+                  )}
+                  {DESIGN === "icono" && (
+                    <div className="tr-iconwrap" style={{ background: themeOf(t.icon).tint, color: themeOf(t.icon).ink }}>
+                      <span className="tr-glyph-lg"><BigIcon name={t.icon} /></span>
+                    </div>
+                  )}
+                  <div className="tr-body">
+                    <h3 className="tr-title">{t.title}</h3>
+                    <p className="tr-desc">{t.desc}</p>
+                    <div className="tr-facemeta">
+                      <span className="tr-tag"><Clock /> {t.tiempo}</span>
+                      {DESIGN === "icono" && (
+                        <span className={`tr-tag ${t.costo === "Sin costo" ? "free" : ""}`}>{t.costo}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="tr-detail">
