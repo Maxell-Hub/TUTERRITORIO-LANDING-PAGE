@@ -332,6 +332,25 @@ img { max-width: 100%; }
   transition: background .3s var(--ease-soft), color .3s var(--ease-soft), border-color .3s var(--ease-soft), transform .3s var(--ease-soft); }
 .enlace-row:hover .enlace-arrow { background: var(--accent); border-color: var(--accent); color: #fff; transform: rotate(-45deg) scale(1.05); }
 
+/* ---- SERVICIOS EN LÍNEA (grilla de tarjetas, estilo portal catastral) ---- */
+.sec-sub { margin: 12px 0 0; max-width: 60ch; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: var(--tt-gray-700); }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px,1fr)); gap: 20px; }
+.svc-card { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 28px 24px 24px; border-radius: 16px;
+  background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs); text-decoration: none; overflow: hidden;
+  transition: transform .3s var(--ease-soft), box-shadow .3s var(--ease-soft), border-color .3s var(--ease-soft); }
+.svc-card::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease-soft); }
+.svc-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 40%, var(--border-subtle)); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-ic { width: 54px; height: 54px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; flex: none;
+  background: color-mix(in srgb, var(--accent) 14%, #fff); color: var(--accent); transition: background .3s var(--ease-soft), color .3s var(--ease-soft); }
+.svc-card:hover .svc-ic { background: var(--accent); color: #fff; }
+.svc-title { margin: 4px 0 0; font: var(--fw-bold) var(--fs-lg)/1.25 var(--font-sans); color: var(--tt-navy-700); }
+.svc-desc { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.55 var(--font-sans); color: var(--tt-gray-700); }
+.svc-link { margin-top: auto; padding-top: 8px; display: inline-flex; align-items: center; gap: 7px; font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); color: var(--accent); }
+.svc-link svg { transition: transform .3s var(--ease-soft); }
+.svc-card:hover .svc-link svg { transform: translateX(4px); }
+
 /* ---- VISOR GEOGRÁFICO ---- */
 .visor { position: relative; background: linear-gradient(180deg, #ffffff 0%, #f5f7f9 100%); overflow: hidden;
   padding: clamp(2.2rem,4.2vw,3.4rem) clamp(1rem,5vw,61px) 145px; }
@@ -1775,6 +1794,12 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .tr-card:hover, .dark .tr-card:focus-within,
 .dark .norm-row:hover, .dark .term-card:hover {
   background: #111b22 !important; border-color: #3B85A5 !important; box-shadow: 0 10px 26px rgba(0,0,0,.4) !important; }
+/* Servicios en línea (Home) en modo oscuro */
+.dark .svc-card { background: #0c1419; border-color: #2f3d47; box-shadow: none; }
+.dark .svc-card:hover { background: #111b22; }
+.dark .svc-title { color: #e6edf2; }
+.dark .svc-desc, .dark .sec-sub { color: #c3d0d9; }
+.dark .svc-ic { background: color-mix(in srgb, var(--accent) 26%, #0c1419); }
 /* ABC Catastral — acordeón en modo oscuro */
 .dark .gl-acc { background: #0c1419; border-color: #2f3d47; box-shadow: none; }
 .dark .gl-item + .gl-item { border-top-color: #2f3d47; }
