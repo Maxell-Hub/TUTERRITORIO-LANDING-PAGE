@@ -1388,21 +1388,21 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
    ============================================================ */
 .fab-stack { position: fixed; right: 20px; bottom: 96px; z-index: 120; display: flex; flex-direction: column; gap: 14px; }
 .fab { position: relative; width: 54px; height: 54px; border-radius: 50%; border: none; cursor: pointer;
-  display: inline-flex; align-items: center; justify-content: center; color: #fff; isolation: isolate;
-  box-shadow: 0 10px 24px rgba(12,34,47,.30), inset 0 0 0 1px rgba(255,255,255,.16); text-decoration: none;
-  transition: transform .26s var(--ease-soft), box-shadow .26s var(--ease-soft), filter .2s; }
-/* Brillo sutil tipo esfera */
-.fab::before { content: ""; position: absolute; inset: 0; border-radius: 50%; z-index: -1; pointer-events: none;
-  background: radial-gradient(125% 125% at 30% 22%, rgba(255,255,255,.34), rgba(255,255,255,0) 56%); }
-.fab:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(12,34,47,.38), inset 0 0 0 1px rgba(255,255,255,.24); filter: saturate(1.06) brightness(1.03); }
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+  box-shadow: 0 6px 16px rgba(12,34,47,.20); text-decoration: none;
+  transition: transform .22s var(--ease-soft), box-shadow .22s var(--ease-soft), background .2s; }
+.fab:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(12,34,47,.26); }
 .fab:active { transform: translateY(-1px) scale(.96); }
-.fab svg { position: relative; }
-.fab-lang { background: linear-gradient(145deg, #4E97B6 0%, #2A6580 100%); }
-.fab-theme { background: linear-gradient(145deg, #2A5A70 0%, #0C222F 100%); }
-.fab-feedback { background: linear-gradient(145deg, #5BA06A 0%, #3E6E44 100%); }
+/* Colores planos corporativos */
+.fab-lang { background: #3B85A5; }
+.fab-lang:hover { background: #357791; }
+.fab-theme { background: #0C222F; }
+.fab-theme:hover { background: #15323f; }
+.fab-feedback { background: #4E8654; }
+.fab-feedback:hover { background: #457749; }
 .fab-badge { position: absolute; bottom: -2px; right: -2px; min-width: 21px; height: 19px; padding: 0 5px; border-radius: 10px;
-  background: linear-gradient(145deg, #F4C24A, #E0A92E); color: #0C222F; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
-  box-shadow: 0 2px 7px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.4); }
+  background: #F0B63B; color: #0C222F; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,.22); }
 /* Etiqueta que aparece al pasar el cursor / enfocar */
 .fab-tip { position: absolute; right: calc(100% + 13px); top: 50%; transform: translateY(-50%) translateX(7px);
   background: #0C222F; color: #fff; font: var(--fw-semibold) 12px/1 var(--font-sans); padding: 8px 12px; border-radius: 9px;
