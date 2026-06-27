@@ -882,6 +882,8 @@ img { max-width: 100%; }
 .gl-a { padding: 0 18px 18px 64px; animation: term-reveal .35s var(--ease-soft); }
 .gl-def { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); max-width: 72ch; }
 .gl-more { margin: 13px 0 0; display: grid; gap: 11px; }
+.gl-more .mf-label { font: var(--fw-bold) var(--fs-sm)/1.35 var(--font-sans); color: var(--tt-navy-700); }
+.gl-more .mf-text { margin: 2px 0 0; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); max-width: 72ch; }
 @media (max-width: 560px) { .gl-a { padding-left: 18px; } }
 
 /* ABC Catastral — diccionario por letra */
@@ -1718,6 +1720,8 @@ body { top: 0 !important; }
 .dark .gl-entry { border-top-color: #2f3d47; }
 .dark .gl-eterm { color: #e6edf2; }
 .dark .gl-edef { color: #c3d0d9; }
+.dark .gl-more .mf-label { color: #e6edf2; }
+.dark .gl-more .mf-text { color: #c3d0d9; }
 
 /* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
    fondo de la página, igual que el hero de Nuestro Equipo */
