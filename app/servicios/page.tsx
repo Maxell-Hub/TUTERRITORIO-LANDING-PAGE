@@ -29,11 +29,12 @@ const PHOTOS: Record<string, string> = {
 
 /* ===========================================================================
    DISEÑO DE LA TARJETA — cambia este valor para probar cada estilo:
+     "numero"  → número índice grande con acento de color (sin íconos ni fotos)
      "foto"    → portada con fotografía real (Unsplash)
      "grafica" → portada con degradado temático + ilustración (sin fotos)
      "icono"   → ícono grande a color sobre fondo tenue (sin fotos)
    =========================================================================== */
-const DESIGN: "foto" | "grafica" | "icono" = "grafica";
+const DESIGN: "numero" | "foto" | "grafica" | "icono" = "numero";
 
 /* ---- Íconos de línea (estilo Lucide) para las variantes "grafica" e "icono" ---- */
 const ICONS: Record<string, React.ReactNode> = {
@@ -155,8 +156,15 @@ export default function ServiciosPage() {
 
           <div className="tr-grid">
             {TRAMITES.map((t, i) => (
-              <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}>
+              <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}
+                style={DESIGN === "numero" ? ({ ["--accent" as string]: themeOf(t.icon).ink }) : undefined}>
                 <div className="tr-face">
+                  {DESIGN === "numero" && (
+                    <div className="tr-numhead">
+                      <span className="tr-index">{String(i + 1).padStart(2, "0")}</span>
+                      <span className={`tr-cost-n ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                    </div>
+                  )}
                   {DESIGN === "foto" && (
                     <div className="tr-cover">
                       <Image className="tr-cover-img" src={PHOTOS[t.icon] ?? PHOTOS.matricula} alt="" fill sizes="(max-width: 700px) 100vw, 320px" />

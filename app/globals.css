@@ -740,6 +740,18 @@ img { max-width: 100%; }
   font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: .01em; backdrop-filter: blur(4px); box-shadow: var(--shadow-sm); }
 .tr-cost.free { background: var(--tt-lime-400); color: var(--tt-navy-700); }
 .tr-cost.paid { background: rgba(255,255,255,.94); color: var(--tt-navy-700); }
+/* Variante "numero": número índice grande con acento de color */
+.design-numero { min-height: 250px; }
+.design-numero .tr-face { padding-top: 4px; }
+.design-numero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent, var(--tt-blue-700)); z-index: 1; }
+.tr-numhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 20px 6px; }
+.tr-index { font: 800 2.9rem/1 var(--font-sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--accent);
+  position: relative; display: inline-block; }
+.tr-index::after { content: ""; position: absolute; left: 3px; bottom: -7px; width: 26px; height: 3px; border-radius: 3px; background: var(--accent); opacity: .55; }
+.tr-cost-n { flex: none; margin-top: 6px; padding: 5px 11px; border-radius: var(--radius-pill); font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); }
+.tr-cost-n.free { background: color-mix(in srgb, var(--tt-lime-400) 26%, #fff); color: var(--tt-green-600); border: 1px solid color-mix(in srgb, var(--tt-lime-400) 55%, #fff); }
+.tr-cost-n.paid { background: var(--tt-gray-50); color: var(--tt-navy-700); border: 1px solid var(--border-subtle); }
+.design-numero .tr-body { padding-top: 14px; }
 /* Variante "grafica": portada con degradado temático + ilustración */
 .tr-cover-g { display: flex; align-items: center; justify-content: center; }
 .tr-cover-g::after { display: none; }
