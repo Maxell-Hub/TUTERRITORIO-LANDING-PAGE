@@ -10,8 +10,6 @@ import { useScrollToHash } from "@/lib/useScrollToHash";
 
 const norm = (s: string) => (s || "").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 
-const BADGES = ["var(--tt-blue-700)", "var(--tt-green-600)", "var(--tt-teal-600)", "var(--tt-navy-700)", "var(--tt-amber-600)", "var(--tt-red-500)"];
-
 const PencilIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
 );
@@ -130,36 +128,36 @@ export default function Glosario() {
       </div>
 
       {terms.length > 0 ? (
-        <div className="gl-grid">
-          {terms.map((t, i) => {
+        <div className="gl-acc">
+          {terms.map((t) => {
             const more = t.more || [];
-            const expandable = more.length > 0 || t.def.length > 130;
             const open = openTerm === t.term;
             return (
-              <div id={t.id} className="term-card" key={t.id}>
-                <span className="term-badge" style={{ background: BADGES[i % BADGES.length] }}>{t.initial}</span>
-                <h3 className="term-name">{t.term}</h3>
-                <p className={`term-def${expandable && !open ? " term-clamp" : ""}`}>{t.def}</p>
-                {open && more.length > 0 && (
-                  <div className="term-more">
-                    {more.map((f, j) => (
-                      <div key={j}>
-                        <div className="mf-label">{f.label}</div>
-                        <div className="mf-text">{f.text}</div>
+              <div id={t.id} className={`gl-item${open ? " open" : ""}`} key={t.id}>
+                <button className="gl-q" onClick={() => setOpenTerm(open ? null : t.term)} aria-expanded={open}>
+                  <span className="gl-initial">{t.initial}</span>
+                  <span className="gl-term">{t.term}</span>
+                  <svg className="gl-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                </button>
+                {open && (
+                  <div className="gl-a">
+                    <p className="gl-def">{t.def}</p>
+                    {more.length > 0 && (
+                      <div className="gl-more">
+                        {more.map((f, j) => (
+                          <div key={j}>
+                            <div className="mf-label">{f.label}</div>
+                            <div className="mf-text">{f.text}</div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                )}
-                {expandable && (
-                  <button className="term-toggle" onClick={() => setOpenTerm(open ? null : t.term)} aria-expanded={open}>
-                    {open ? "Ver menos" : "Ver más"}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: open ? "rotate(180deg)" : "none" }}><path d="m6 9 6 6 6-6" /></svg>
-                  </button>
-                )}
-                {isAdmin && (
-                  <div className="adm-actions" style={{ marginTop: 12 }}>
-                    <button className="adm-btn ghost sm" onClick={() => setEditing(t)}><PencilIcon /> Editar</button>
-                    <button className="adm-btn danger sm" onClick={() => handleDelete(t.id)}><TrashIcon /></button>
+                    )}
+                    {isAdmin && (
+                      <div className="adm-actions" style={{ marginTop: 14 }}>
+                        <button className="adm-btn ghost sm" onClick={() => setEditing(t)}><PencilIcon /> Editar</button>
+                        <button className="adm-btn danger sm" onClick={() => handleDelete(t.id)}><TrashIcon /></button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
