@@ -740,6 +740,17 @@ img { max-width: 100%; }
   font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: .01em; backdrop-filter: blur(4px); box-shadow: var(--shadow-sm); }
 .tr-cost.free { background: var(--tt-lime-400); color: var(--tt-navy-700); }
 .tr-cost.paid { background: rgba(255,255,255,.94); color: var(--tt-navy-700); }
+/* Variante "grafica": portada con degradado temático + ilustración */
+.tr-cover-g { display: flex; align-items: center; justify-content: center; }
+.tr-cover-g::after { display: none; }
+.tr-glyph { width: 54px; height: 54px; color: #fff; opacity: .96; z-index: 1; transition: transform .4s var(--ease-soft); }
+.tr-card:hover .tr-glyph, .tr-card:focus-within .tr-glyph { transform: scale(1.08); }
+.tr-glyph-bg { position: absolute; right: -18px; bottom: -22px; width: 118px; height: 118px; color: #fff; opacity: .14; transform: rotate(-8deg); }
+/* Variante "icono": ícono grande a color sobre fondo tenue */
+.tr-iconwrap { height: 116px; flex: none; display: flex; align-items: center; justify-content: center; }
+.tr-glyph-lg { width: 56px; height: 56px; transition: transform .4s var(--ease-soft); }
+.tr-card:hover .tr-glyph-lg, .tr-card:focus-within .tr-glyph-lg { transform: scale(1.1); }
+.tr-tag.free { background: color-mix(in srgb, var(--tt-lime-400) 24%, #fff); border-color: color-mix(in srgb, var(--tt-lime-400) 55%, #fff); color: var(--tt-green-600); }
 .tr-body { display: flex; flex-direction: column; gap: 9px; padding: 18px 20px 20px; flex: 1 1 auto; }
 .tr-title { margin: 0; font: var(--fw-bold) var(--fs-md)/1.25 var(--font-sans); color: var(--tt-navy-700); }
 .tr-desc { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
