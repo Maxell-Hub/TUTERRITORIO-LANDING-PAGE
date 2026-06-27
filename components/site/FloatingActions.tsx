@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // URL del Google Form de "Cuéntanos tu experiencia". Reemplázala por la real.
 const FEEDBACK_URL = "https://forms.gle/REEMPLAZAR-CON-TU-FORMULARIO";
@@ -16,11 +17,33 @@ export default function FloatingActions() {
   const [dark, setDark] = useState(false);
   const [lang, setLang] = useState<"es" | "en">("es");
 
+  const pathname = usePathname();
+
   useEffect(() => {
     setMounted(true);
     setDark(document.documentElement.classList.contains("dark"));
     setLang(readLang());
   }, []);
+
+  // Al navegar (Next cambia de página sin recargar), el contenido nuevo aparece
+  // en español hasta que Google lo retraduce. Reaplicamos la traducción para que
+  // la página se mantenga completamente traducida sin volver al español.
+  useEffect(() => {
+    if (readLang() !== "en") return;
+    let tries = 0;
+    const id = window.setInterval(() => {
+      const sel = document.querySelector("select.goog-te-combo") as HTMLSelectElement | null;
+      if (sel) {
+        if (sel.value !== "en") {
+          sel.value = "en";
+          sel.dispatchEvent(new Event("change"));
+        }
+        window.clearInterval(id);
+      }
+      if (++tries > 25) window.clearInterval(id);
+    }, 120);
+    return () => window.clearInterval(id);
+  }, [pathname]);
 
   function toggleTheme() {
     const isDark = document.documentElement.classList.toggle("dark");
@@ -54,6 +77,7 @@ export default function FloatingActions() {
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
         <span className="fab-badge">{mounted ? (lang === "es" ? "EN" : "ES") : ""}</span>
+        <span className="fab-tip">{lang === "es" ? "English" : "Español"}</span>
       </button>
 
       {/* Tema claro / oscuro */}
@@ -70,6 +94,7 @@ export default function FloatingActions() {
         ) : (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
         )}
+        <span className="fab-tip">{mounted && dark ? "Modo claro" : "Modo oscuro"}</span>
       </button>
 
       {/* Cuéntanos tu experiencia (Google Form) */}
@@ -82,6 +107,7 @@ export default function FloatingActions() {
         title="Cuéntanos tu experiencia"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M8 10h.01M12 10h.01M16 10h.01" /></svg>
+        <span className="fab-tip">Cuéntanos tu experiencia</span>
       </a>
     </div>
   );

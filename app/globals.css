@@ -1377,35 +1377,55 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; justify-content: center; padding: 18px clamp(1rem,5vw,64px); background: var(--footer-green); border-top: 1px solid rgba(255,255,255,.14); }
 .footer-legal a { color: #fff; text-decoration: none; font: var(--fw-semibold) var(--fs-sm)/1.4 var(--font-sans); opacity: .92; }
 .footer-legal a:hover { text-decoration: underline; opacity: 1; }
+/* Enlaces legales siempre en blanco y negrita (evita que alguno salga azul/resaltado) */
+.footer-legal a, .footer-legal a:link, .footer-legal a:visited, .footer-legal a:hover, .footer-legal a:focus, .footer-legal a:active {
+  color: #fff !important; font-weight: var(--fw-bold) !important; opacity: 1; }
 .footer-legal span { color: rgba(255,255,255,.5); }
 @media (prefers-reduced-motion: reduce) { .ext-modal { animation: none; } }
 
 /* ============================================================
    CÍRCULOS FLOTANTES (idioma · tema · experiencia)
    ============================================================ */
-.fab-stack { position: fixed; right: 18px; bottom: 96px; z-index: 120; display: flex; flex-direction: column; gap: 14px; }
-.fab { position: relative; width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
-  display: inline-flex; align-items: center; justify-content: center; color: #fff;
-  box-shadow: 0 8px 22px rgba(14,34,51,.28); text-decoration: none;
-  transition: transform .2s var(--ease-soft), box-shadow .2s var(--ease-soft); }
-.fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 28px rgba(14,34,51,.34); }
-.fab:active { transform: scale(.96); }
-.fab-lang { background: var(--tt-blue-700); }
-.fab-theme { background: var(--tt-navy-700); }
-.fab-feedback { background: var(--tt-green-600); }
-.fab-badge { position: absolute; bottom: -3px; right: -3px; min-width: 20px; height: 18px; padding: 0 4px; border-radius: 9px;
-  background: var(--tt-amber-500); color: var(--tt-navy-900); font: var(--fw-bold) 10px/18px var(--font-sans); text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,.25); }
-@media (max-width: 560px) { .fab-stack { right: 12px; bottom: 78px; } .fab { width: 48px; height: 48px; } }
+.fab-stack { position: fixed; right: 20px; bottom: 96px; z-index: 120; display: flex; flex-direction: column; gap: 14px; }
+.fab { position: relative; width: 54px; height: 54px; border-radius: 50%; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff; isolation: isolate;
+  box-shadow: 0 10px 24px rgba(12,34,47,.30), inset 0 0 0 1px rgba(255,255,255,.16); text-decoration: none;
+  transition: transform .26s var(--ease-soft), box-shadow .26s var(--ease-soft), filter .2s; }
+/* Brillo sutil tipo esfera */
+.fab::before { content: ""; position: absolute; inset: 0; border-radius: 50%; z-index: -1; pointer-events: none;
+  background: radial-gradient(125% 125% at 30% 22%, rgba(255,255,255,.34), rgba(255,255,255,0) 56%); }
+.fab:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(12,34,47,.38), inset 0 0 0 1px rgba(255,255,255,.24); filter: saturate(1.06) brightness(1.03); }
+.fab:active { transform: translateY(-1px) scale(.96); }
+.fab svg { position: relative; }
+.fab-lang { background: linear-gradient(145deg, #4E97B6 0%, #2A6580 100%); }
+.fab-theme { background: linear-gradient(145deg, #2A5A70 0%, #0C222F 100%); }
+.fab-feedback { background: linear-gradient(145deg, #5BA06A 0%, #3E6E44 100%); }
+.fab-badge { position: absolute; bottom: -2px; right: -2px; min-width: 21px; height: 19px; padding: 0 5px; border-radius: 10px;
+  background: linear-gradient(145deg, #F4C24A, #E0A92E); color: #0C222F; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
+  box-shadow: 0 2px 7px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.4); }
+/* Etiqueta que aparece al pasar el cursor / enfocar */
+.fab-tip { position: absolute; right: calc(100% + 13px); top: 50%; transform: translateY(-50%) translateX(7px);
+  background: #0C222F; color: #fff; font: var(--fw-semibold) 12px/1 var(--font-sans); padding: 8px 12px; border-radius: 9px;
+  white-space: nowrap; opacity: 0; pointer-events: none; box-shadow: 0 8px 20px rgba(0,0,0,.28);
+  transition: opacity .2s var(--ease-soft), transform .2s var(--ease-soft); }
+.fab-tip::after { content: ""; position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
+  border: 6px solid transparent; border-left-color: #0C222F; }
+.fab:hover .fab-tip, .fab:focus-visible .fab-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+@media (max-width: 560px) { .fab-stack { right: 12px; bottom: 78px; } .fab { width: 50px; height: 50px; } .fab-tip { display: none; } }
 @media (prefers-reduced-motion: reduce) { .fab:hover { transform: none; } }
 
-/* Oculta la barra/UI de Google Translate (la traducción se controla por el círculo) */
-.goog-te-banner-frame, .skiptranslate > iframe { display: none !important; }
-body { top: 0 !important; }
+/* Oculta por completo la UI y la animación de Google Translate (la traducción se controla por el círculo) */
+.goog-te-banner-frame, .goog-te-banner, iframe.skiptranslate, .skiptranslate > iframe,
+.goog-te-spinner-pos, #goog-gt-tt, .goog-te-balloon-frame, .jfk-bubble, .goog-tooltip, .goog-tooltip:hover {
+  display: none !important; visibility: hidden !important; }
+body { top: 0 !important; position: static !important; }
 /* El gadget debe renderizarse para que el widget funcione; se oculta fuera de pantalla (no display:none) */
 #google_translate_element { position: absolute !important; left: -9999px !important; top: 0 !important; height: 0 !important; overflow: hidden !important; }
-.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+/* Sin resaltado ni transición al traducir (evita el parpadeo/animación) */
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
+font[style] { background: none !important; box-shadow: none !important; transition: none !important; }
+.dark .fab-tip { background: #25323c; }
+.dark .fab-tip::after { border-left-color: #25323c; }
 
 /* ============================================================
    MODO OSCURO (primer corte — superficies principales)
