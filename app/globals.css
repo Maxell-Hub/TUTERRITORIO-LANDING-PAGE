@@ -1688,7 +1688,7 @@ body { top: 0 !important; }
 .dark .ct-map-frame iframe { filter: invert(0.92) hue-rotate(180deg) saturate(0.82) brightness(0.92) contrast(0.95); }
 
 /* MODO OSCURO — Servicios: panel de detalle (hover) y nota de precios */
-.dark .tr-detail { background: #0c1419; color: #fff; border-top-color: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.dark .tr-detail { background: #25323c; color: #fff; border-top-color: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
 .dark .tr-detail .lbl { color: #fff; border-bottom-color: rgba(255,255,255,.2); }
 .dark .tr-reqs li { color: rgba(255,255,255,.94); }
 .dark .tr-reqs li svg { color: #fff; }
