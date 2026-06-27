@@ -835,7 +835,7 @@ img { max-width: 100%; }
    ============================================================ */
 .news-header { background: var(--tt-gray-50); padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(1.75rem,3vw,2.5rem); }
 .news-header-inner { max-width: var(--container-wide); margin: 0 auto; }
-.news-header h1 { margin: 14px 0 0; font: var(--fw-bold) var(--fs-2xl)/1.15 var(--font-sans); color: var(--tt-navy-700); }
+.news-header h1 { margin: 14px 0 0; font: var(--fw-bold) 51.2px/1.15 var(--font-sans); color: var(--tt-navy-700); }
 .news-ribbon { width: 130px; height: 5px; border-radius: 3px; margin: 18px 0 16px; background: var(--ribbon); }
 .news-sub { margin: 0; max-width: 720px; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: var(--tt-gray-700); }
 .news-sub b { color: var(--tt-green-600); font-weight: var(--fw-semibold); }
