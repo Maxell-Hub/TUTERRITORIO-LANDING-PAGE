@@ -36,8 +36,9 @@ const PHOTOS: Record<string, string> = {
    =========================================================================== */
 const DESIGN: "numero" | "foto" | "grafica" | "icono" = "numero";
 
-/* Colores corporativos para los números (rotan por tarjeta). */
-const BRAND = ["var(--tt-navy-700)", "var(--tt-blue-700)", "var(--tt-green-600)", "var(--tt-lime-500)"];
+/* Colores corporativos para los números (rotan por tarjeta):
+   verde, azul, amarillo y azul oscuro. */
+const BRAND = ["#4E8654", "#3B85A5", "#F0B63B", "#0C222F"];
 
 /* ---- Íconos de línea (estilo Lucide) para las variantes "grafica" e "icono" ---- */
 const ICONS: Record<string, React.ReactNode> = {
