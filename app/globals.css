@@ -180,14 +180,14 @@ img { max-width: 100%; }
 .mn-drop a:hover { background: var(--tt-gray-50); }
 
 /* ---- Menú móvil (hamburguesa + panel lateral) ---- */
-.nav-burger { display: none; flex: none; width: 48px; height: 48px; border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-button); background: #fff; cursor: pointer; padding: 0; flex-direction: column;
-  align-items: center; justify-content: center; gap: 5px; box-shadow: var(--shadow-xs);
-  transition: background .2s var(--ease-soft), border-color .2s var(--ease-soft), box-shadow .2s var(--ease-soft); }
-.nav-burger:hover { background: var(--tt-navy-700); border-color: var(--tt-navy-700); box-shadow: var(--shadow-sm); }
-.nav-burger span { display: block; width: 22px; height: 2.5px; border-radius: 2px; background: var(--tt-navy-700);
+.nav-burger { display: none; flex: none; width: 44px; height: 44px; border: none;
+  border-radius: var(--radius-button); background: none; cursor: pointer; padding: 0; flex-direction: column;
+  align-items: center; justify-content: center; gap: 5px; box-shadow: none;
+  transition: opacity .2s var(--ease-soft); }
+.nav-burger:hover { opacity: .65; }
+.nav-burger span { display: block; width: 24px; height: 2.5px; border-radius: 2px; background: #0C222F;
   transition: background .2s var(--ease-soft); }
-.nav-burger:hover span { background: #fff; }
+.dark .nav-burger span { background: #fff; }
 
 .nav-overlay { position: fixed; inset: 0; background: rgba(12,34,47,.55); backdrop-filter: blur(2px);
   z-index: 90; opacity: 0; visibility: hidden; transition: opacity .3s var(--ease-soft), visibility .3s; }
@@ -1026,7 +1026,7 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
 .ct-sede-foot { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px; border-top: 1px solid var(--border-subtle); }
 .ct-sede-pin { width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--tt-navy-700); display: flex; align-items: center; justify-content: center; }
 
-.ct-map-section { background: var(--tt-gray-100); padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(4.5rem,9vw,8rem); }
+.ct-map-section { background: var(--tt-gray-100); padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(3.5rem,6vw,6rem); }
 .ct-map-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
 .ct-map-head h2 { margin: 0 0 12px; font: var(--fw-bold) var(--fs-xl)/1.25 var(--font-sans); color: var(--tt-navy-700); }
 .ct-maps-btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: var(--radius-button);
@@ -1035,6 +1035,37 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
 .ct-map-frame { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-subtle); }
 .ct-map-frame iframe { width: 100%; height: 420px; border: 0; display: block; }
 @media (max-width: 560px) { .ct-row2 { grid-template-columns: 1fr; } }
+/* Contacto — responsive para tablet, celular y pantallas pequeñas */
+@media (max-width: 900px) {
+  .ct-hero-grid { gap: 24px; }
+  .ct-grid { gap: 28px; }
+}
+@media (max-width: 760px) {
+  .ct-hero { padding-bottom: clamp(4rem,8vw,5.5rem); }
+  .ct-hero h1 { font-size: var(--fs-3xl); }
+  .ct-hero p { max-width: 100%; }
+  .ct-scene { height: 240px; }
+  .ct-badge { width: 116px; height: 116px; }
+  .ct-badge svg { width: 50px; height: 50px; }
+}
+@media (max-width: 480px) {
+  .ct-hero h1 { font-size: var(--fs-2xl); }
+  .ct-hero .ribbon { margin-bottom: 18px; }
+  .ct-sede h2, .ct-map-head h2 { font-size: var(--fs-xl); }
+  .ct-scene { height: 200px; }
+  .ct-badge { width: 104px; height: 104px; }
+  .ct-badge svg { width: 46px; height: 46px; }
+  .ct-cta { width: 100%; justify-content: center; }
+  .ct-map-head { align-items: flex-start; }
+  .ct-maps-btn { width: 100%; justify-content: center; }
+  .ct-sede-card img { height: 220px !important; }
+  .ct-map-frame iframe { height: 300px; }
+  .ct-map-section { padding-bottom: clamp(3rem,8vw,3.75rem); }
+}
+@media (max-width: 360px) {
+  .ct-hero h1 { font-size: 1.9rem; }
+  .ct-scene { height: 178px; }
+}
 @media (prefers-reduced-motion: reduce) { .ct-ripple, .ct-badge, .ct-bubble, .ct-arc, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; } }
 
 /* ============================================================
