@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const SITE_URL = "https://tuterritorio.gov.co";
+
 /**
  * Plantilla compartida de las páginas de Transparencia. Reutiliza el patrón
  * visual de las páginas legales (.legal-hero / .legal-wrap / .legal-body) para
@@ -16,8 +18,19 @@ export function TPage({
   eyebrow?: string;
   children: React.ReactNode;
 }) {
+  // Datos estructurados de ruta de exploración (Inicio › Transparencia › sección).
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Transparencia y acceso a la información pública", item: `${SITE_URL}/transparencia` },
+      { "@type": "ListItem", position: 3, name: title },
+    ],
+  };
   return (
     <section className="legal-hero t-hero">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <div className="legal-wrap">
         <Link href="/transparencia" className="t-back">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
