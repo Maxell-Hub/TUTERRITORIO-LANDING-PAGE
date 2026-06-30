@@ -1,27 +1,41 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
-type Item = { title: string; text: string; href: string; cat: string };
+type Item = {
+  title: string;
+  titleEn?: string;
+  desc?: string;
+  descEn?: string;
+  keywords?: string; // solo para coincidencias (no se muestra)
+  href: string;
+  cat: string;
+  catEn?: string;
+};
 
 const norm = (s: string) =>
   (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
-/** Páginas y secciones fijas del sitio. El campo `text` incluye palabras clave
- *  en español e inglés para que la búsqueda funcione también al cambiar de idioma. */
+function readLang(): "es" | "en" {
+  if (typeof document === "undefined") return "es";
+  const m = document.cookie.match(/googtrans=\/[a-z]{2}\/([a-z]{2})/);
+  return m && m[1] === "en" ? "en" : "es";
+}
+
+/** Páginas y secciones fijas del sitio, con texto en español e inglés. */
 const STATIC_ITEMS: Item[] = [
-  { title: "Inicio", text: "consulta tu predio catastro multipropósito valledupar avalúo impuesto predial linderos área · home consult your property cadastre cadastral appraisal property tax boundaries area", href: "/", cat: "Inicio" },
-  { title: "Nosotros", text: "quiénes somos misión visión funciones objetivos proceso catastral gestor · about us who we are mission vision functions objectives cadastral manager", href: "/nosotros", cat: "Nosotros" },
-  { title: "Nuestro equipo", text: "liderazgo equipo técnico topografía jurídica sistemas atención al ciudadano integrantes · our team staff leadership members technical legal", href: "/nosotros/equipo", cat: "Nosotros" },
-  { title: "Trámites y servicios", text: "incorporación de área rectificación desenglobe englobe inscripción de predio avalúo catastral cambio de destino cambio de propietario certificado plano predial carta catastral ficha predial · procedures services formalities area rectification property registration appraisal change of owner cadastral certificate", href: "/servicios", cat: "Servicios" },
-  { title: "Atención a la ciudadanía", text: "atención al ciudadano canales de atención servicios trámites pqrsd carta de trato digno preguntas frecuentes · citizen attention customer service channels procedures faq", href: "/atencion-ciudadania", cat: "Atención" },
-  { title: "Transparencia", text: "transparencia y acceso a la información pública contratación planeación datos abiertos participa · transparency access to public information contracting planning open data participate accountability", href: "/transparencia", cat: "Transparencia" },
-  { title: "Normativas", text: "leyes decretos resoluciones acuerdos marco legal catastro igac · regulations laws decrees resolutions legal framework", href: "/recursos/normativas", cat: "Recursos" },
-  { title: "ABC Catastral", text: "glosario términos definiciones conceptos catastro abc · glossary terms definitions concepts cadastral", href: "/recursos/glosario", cat: "Recursos" },
-  { title: "Noticias", text: "sala de prensa actualización catastral comunidad avalúos trámites · news press room updates community", href: "/noticias", cat: "Noticias" },
-  { title: "Contactos", text: "dirección teléfono correo sede horario de atención mapa ubicación · contact address phone email office opening hours map location", href: "/contactos", cat: "Contactos" },
-  { title: "PQRSD", text: "peticiones quejas reclamos sugerencias denuncias radicar solicitud · complaints claims requests petitions suggestions reports file a request", href: "/pqrsd", cat: "Contactos" },
+  { title: "Inicio", titleEn: "Home", desc: "Consulta tu predio: linderos, área y avalúo.", descEn: "Check your property: boundaries, area and appraisal.", keywords: "catastro multipropósito impuesto predial · cadastre property tax", href: "/", cat: "Inicio", catEn: "Home" },
+  { title: "Nosotros", titleEn: "About us", desc: "Quiénes somos, misión y funciones.", descEn: "Who we are, mission and functions.", keywords: "gestor catastral objetivos · cadastral manager mission vision", href: "/nosotros", cat: "Nosotros", catEn: "About" },
+  { title: "Nuestro equipo", titleEn: "Our team", desc: "El equipo de Tuterritorio.", descEn: "The Tuterritorio team.", keywords: "liderazgo integrantes técnico jurídico · staff leadership members", href: "/nosotros/equipo", cat: "Nosotros", catEn: "About" },
+  { title: "Trámites y servicios", titleEn: "Procedures and services", desc: "Trámites y productos catastrales.", descEn: "Cadastral procedures and products.", keywords: "incorporación rectificación desenglobe englobe inscripción avalúo cambio de propietario certificado · area registration change of owner certificate", href: "/servicios", cat: "Servicios", catEn: "Services" },
+  { title: "Atención a la ciudadanía", titleEn: "Citizen services", desc: "Canales de atención, trámites y PQRSD.", descEn: "Service channels, procedures and complaints.", keywords: "carta de trato digno preguntas frecuentes · customer service channels faq", href: "/atencion-ciudadania", cat: "Atención", catEn: "Attention" },
+  { title: "Transparencia", titleEn: "Transparency", desc: "Transparencia y acceso a la información pública.", descEn: "Transparency and access to public information.", keywords: "contratación planeación datos abiertos participa · contracting planning open data participate", href: "/transparencia", cat: "Transparencia", catEn: "Transparency" },
+  { title: "Normativas", titleEn: "Regulations", desc: "Leyes, decretos y resoluciones.", descEn: "Laws, decrees and resolutions.", keywords: "acuerdos marco legal igac · legal framework", href: "/recursos/normativas", cat: "Recursos", catEn: "Resources" },
+  { title: "ABC Catastral", titleEn: "Cadastral glossary", desc: "Glosario de términos catastrales.", descEn: "Glossary of cadastral terms.", keywords: "definiciones conceptos abc · definitions concepts", href: "/recursos/glosario", cat: "Recursos", catEn: "Resources" },
+  { title: "Noticias", titleEn: "News", desc: "Sala de prensa y novedades.", descEn: "Press room and updates.", keywords: "actualización catastral comunidad · press updates community", href: "/noticias", cat: "Noticias", catEn: "News" },
+  { title: "Contactos", titleEn: "Contact", desc: "Dirección, teléfono, correo y horario.", descEn: "Address, phone, email and opening hours.", keywords: "sede mapa ubicación atención · office hours map location", href: "/contactos", cat: "Contactos", catEn: "Contact" },
+  { title: "PQRSD", titleEn: "Complaints (PQRSD)", desc: "Radica peticiones, quejas y reclamos.", descEn: "File petitions, complaints and claims.", keywords: "sugerencias denuncias solicitud · requests suggestions reports", href: "/pqrsd", cat: "Contactos", catEn: "Contact" },
 ];
 
 export default function SearchBar() {
@@ -29,7 +43,15 @@ export default function SearchBar() {
   const [q, setQ] = useState("");
   const [focused, setFocused] = useState(false);
   const [dynamic, setDynamic] = useState<Item[]>([]);
+  const [lang, setLang] = useState<"es" | "en">("es");
   const loadedRef = useRef(false);
+
+  useEffect(() => setLang(readLang()), []);
+
+  // Muestra el campo correcto según el idioma activo.
+  const dTitle = (it: Item) => (lang === "en" && it.titleEn ? it.titleEn : it.title);
+  const dDesc = (it: Item) => (lang === "en" && it.descEn ? it.descEn : it.desc || "");
+  const dCat = (it: Item) => (lang === "en" && it.catEn ? it.catEn : it.cat);
 
   // Carga (una sola vez, al enfocar) el contenido editable para incluirlo.
   async function loadIndex() {
@@ -43,10 +65,10 @@ export default function SearchBar() {
         fetch("/api/content/equipo").then((r) => r.json()).catch(() => []),
       ]);
       const items: Item[] = [];
-      if (Array.isArray(noticias)) noticias.forEach((n: { id?: string; titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, text: n.extracto || "", href: n.id ? `/noticias#${n.id}` : "/noticias", cat: "Noticia" }));
-      if (Array.isArray(normativas)) normativas.forEach((n: { id?: string; code?: string; desc?: string }) => n?.code && items.push({ title: n.code, text: n.desc || "", href: n.id ? `/recursos/normativas#${n.id}` : "/recursos/normativas", cat: "Normativa" }));
-      if (Array.isArray(glosario)) glosario.forEach((t: { id?: string; term?: string; def?: string }) => t?.term && items.push({ title: t.term, text: t.def || "", href: t.id ? `/recursos/glosario#${t.id}` : "/recursos/glosario", cat: "Glosario" }));
-      if (Array.isArray(equipo)) equipo.forEach((m: { id?: string; name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, text: `${m.role || ""} ${m.area || ""}`, href: m.id ? `/nosotros/equipo#${m.id}` : "/nosotros/equipo", cat: "Equipo" }));
+      if (Array.isArray(noticias)) noticias.forEach((n: { id?: string; titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, desc: n.extracto || "", href: n.id ? `/noticias#${n.id}` : "/noticias", cat: "Noticia" }));
+      if (Array.isArray(normativas)) normativas.forEach((n: { id?: string; code?: string; desc?: string }) => n?.code && items.push({ title: n.code, desc: n.desc || "", href: n.id ? `/recursos/normativas#${n.id}` : "/recursos/normativas", cat: "Normativa" }));
+      if (Array.isArray(glosario)) glosario.forEach((t: { id?: string; term?: string; def?: string }) => t?.term && items.push({ title: t.term, desc: t.def || "", href: t.id ? `/recursos/glosario#${t.id}` : "/recursos/glosario", cat: "Glosario" }));
+      if (Array.isArray(equipo)) equipo.forEach((m: { id?: string; name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, desc: `${m.role || ""} ${m.area || ""}`, href: m.id ? `/nosotros/equipo#${m.id}` : "/nosotros/equipo", cat: "Equipo" }));
       setDynamic(items);
     } catch {
       /* ignore */
@@ -60,11 +82,10 @@ export default function SearchBar() {
     const all = [...STATIC_ITEMS, ...dynamic];
     return all
       .map((it) => {
-        const hayTitle = norm(it.title);
-        const hay = hayTitle + " " + norm(it.text) + " " + norm(it.cat);
+        const hayTitle = norm(`${it.title} ${it.titleEn || ""}`);
+        const hay = hayTitle + " " + norm(`${it.desc || ""} ${it.descEn || ""} ${it.keywords || ""} ${it.cat} ${it.catEn || ""}`);
         const matches = words.every((w) => hay.includes(w));
         if (!matches) return null;
-        // Prioriza coincidencias en el título.
         const score = words.every((w) => hayTitle.includes(w)) ? 0 : 1;
         return { it, score };
       })
@@ -115,10 +136,10 @@ export default function SearchBar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={(e) => { e.preventDefault(); go(r.href); }}
               >
-                <span className="sr-cat">{r.cat}</span>
+                <span className="sr-cat">{dCat(r)}</span>
                 <span className="sr-body">
-                  <span className="sr-title">{r.title}</span>
-                  {r.text && <span className="sr-snippet">{r.text}</span>}
+                  <span className="sr-title">{dTitle(r)}</span>
+                  {dDesc(r) && <span className="sr-snippet">{dDesc(r)}</span>}
                 </span>
               </a>
             ))

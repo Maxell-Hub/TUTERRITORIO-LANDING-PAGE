@@ -1506,7 +1506,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fab-feedback { --c: #4E8654; background: var(--c); }
 .fab-feedback:hover { background: #457749; }
 .fab-badge { position: absolute; bottom: -2px; right: -2px; min-width: 21px; height: 19px; padding: 0 5px; border-radius: 10px;
-  background: #F0B63B; color: #fff; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
+  background: #F0B63B; color: #EDEDED; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.22); }
 /* Etiqueta que aparece al pasar el cursor / enfocar */
 /* La etiqueta toma el color de su propio círculo (--c) */
