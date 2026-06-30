@@ -70,7 +70,10 @@ export default function ExternalLink({
               {" "}<b>tuterritorio.gov.co</b>. Tuterritorio no se hace responsable de su contenido ni
               de sus políticas de privacidad.
             </p>
-            <p className="ext-modal-url">{href}</p>
+            <p className="ext-modal-url" title={href}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+              <span>{href}</span>
+            </p>
             <div className="ext-modal-actions">
               <button ref={cancelRef} type="button" className="ext-cancel" onClick={() => setOpen(false)}>
                 Cancelar
@@ -82,7 +85,8 @@ export default function ExternalLink({
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
               >
-                Continuar al sitio externo
+                Continuar
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><path d="M15 3h6v6" /><path d="M10 14 21 3" /></svg>
               </a>
             </div>
           </div>
