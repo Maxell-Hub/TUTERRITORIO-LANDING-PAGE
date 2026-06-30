@@ -16,6 +16,7 @@ export default function FloatingActions() {
   const [mounted, setMounted] = useState(false);
   const [dark, setDark] = useState(false);
   const [lang, setLang] = useState<"es" | "en">("es");
+  const [langSpin, setLangSpin] = useState(false);
 
   const pathname = usePathname();
 
@@ -70,13 +71,16 @@ export default function FloatingActions() {
   }
 
   function toggleLang() {
+    if (langSpin) return;
     const next = lang === "es" ? "en" : "es";
     const value = `/es/${next}`;
     // Cookie que lee el widget de Google Translate (con y sin dominio).
     document.cookie = `googtrans=${value};path=/`;
     const host = window.location.hostname;
     document.cookie = `googtrans=${value};path=/;domain=.${host}`;
-    window.location.reload();
+    // Deja ver el giro del ícono antes de recargar.
+    setLangSpin(true);
+    window.setTimeout(() => window.location.reload(), 340);
   }
 
   return (
@@ -89,7 +93,7 @@ export default function FloatingActions() {
         aria-label={lang === "es" ? "Cambiar idioma a inglés" : "Cambiar idioma a español"}
         title={lang === "es" ? "English" : "Español"}
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+        <svg className={`fab-ic${langSpin ? " spin" : ""}`} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
         <span className="fab-badge">{mounted ? (lang === "es" ? "EN" : "ES") : ""}</span>
         <span className="fab-tip">{lang === "es" ? "English" : "Español"}</span>
       </button>
@@ -104,9 +108,9 @@ export default function FloatingActions() {
         title={dark ? "Modo claro" : "Modo oscuro"}
       >
         {mounted && dark ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+          <svg key="sun" className="fab-ic-swap" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
         ) : (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+          <svg key="moon" className="fab-ic-swap" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
         )}
         <span className="fab-tip">{mounted && dark ? "Modo claro" : "Modo oscuro"}</span>
       </button>
