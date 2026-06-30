@@ -1,0 +1,53 @@
+import Link from "next/link";
+
+/**
+ * Plantilla compartida de las páginas de Transparencia. Reutiliza el patrón
+ * visual de las páginas legales (.legal-hero / .legal-wrap / .legal-body) para
+ * mantener la coherencia del sitio sin crear estilos nuevos.
+ */
+export function TPage({
+  title,
+  lead,
+  eyebrow = "Transparencia y acceso a la información pública",
+  children,
+}: {
+  title: string;
+  lead?: string;
+  eyebrow?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="legal-hero">
+      <div className="legal-wrap">
+        <Link href="/transparencia" className="t-back">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+          Volver a Transparencia
+        </Link>
+        <span className="legal-eyebrow">{eyebrow}</span>
+        <h1>{title}</h1>
+        {lead && <p className="legal-lead">{lead}</p>}
+        <div className="legal-body">{children}</div>
+      </div>
+    </section>
+  );
+}
+
+/** Apartado con título (h2) dentro de una página de Transparencia. */
+export function Apartado({ titulo, id, children }: { titulo: string; id?: string; children: React.ReactNode }) {
+  return (
+    <>
+      <h2 id={id}>{titulo}</h2>
+      {children}
+    </>
+  );
+}
+
+/** Enlace a un recurso/página que YA existe en el sitio (reutilización). */
+export function RecursoExistente({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <p className="t-reuse">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5" /><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19" /></svg>
+      <Link href={href}>{children}</Link>
+    </p>
+  );
+}
