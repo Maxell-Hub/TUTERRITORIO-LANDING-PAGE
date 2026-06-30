@@ -1421,6 +1421,12 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .pend-ic { flex: none; color: var(--tt-amber-600); margin-top: 1px; }
 .pend-title { margin: 0; font: var(--fw-bold) var(--fs-sm)/1.3 var(--font-sans); color: var(--tt-navy-700); }
 .pend-desc { margin: 3px 0 0; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
+/* Apartados de Transparencia / Atención como paneles ordenados */
+.t-apt { margin-top: 16px; background: #fff; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow-xs); }
+.legal-body .t-apt:first-child { margin-top: 26px; }
+.t-apt-title { margin: 0 !important; padding: 0 !important; border: 0 !important; font: var(--fw-bold) var(--fs-lg)/1.3 var(--font-sans) !important; color: var(--tt-navy-700); }
+.t-apt-body { margin-top: 4px; }
+.t-apt-body p { margin-top: 8px; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); }
 
 /* Casilla de consentimiento */
 .consent-label { display: flex; align-items: flex-start; gap: 11px; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); cursor: pointer; }
@@ -1580,7 +1586,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .t-card:hover .t-num { background: color-mix(in srgb, var(--accent) 70%, #ffffff); color: #0C222F; }
 .dark .t-card-go { border-color: #2f3d47; color: color-mix(in srgb, var(--accent) 62%, #ffffff); }
 .dark .t-card:hover .t-card-go { background: color-mix(in srgb, var(--accent) 70%, #ffffff); border-color: transparent; color: #0C222F; }
-.dark .pend-card { background: #131c23; border-color: #2f3d47; border-left-color: var(--tt-amber-500); }
+.dark .t-apt { background: #131c23; border-color: #2f3d47; box-shadow: none; }
+.dark .t-apt-body p { color: #c3d0d9; }
+.dark .pend-card { background: #0f171d; border-color: #2f3d47; border-left-color: var(--tt-amber-500); }
 .dark .pend-title { color: #e6edf2; }
 .dark .pend-desc { color: #c3d0d9; }
 .dark .t-reuse a, .dark .t-extlink a, .dark .t-back { color: #6fb3d6 !important; }

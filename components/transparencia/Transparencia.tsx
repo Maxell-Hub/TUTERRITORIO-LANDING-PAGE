@@ -32,13 +32,14 @@ export function TPage({
   );
 }
 
-/** Apartado con título (h2) dentro de una página de Transparencia. */
+/** Apartado con título (h2) dentro de una página de Transparencia.
+ *  Se presenta como un panel/tarjeta para una lectura clara y organizada. */
 export function Apartado({ titulo, id, children }: { titulo: string; id?: string; children: React.ReactNode }) {
   return (
-    <>
-      <h2 id={id}>{titulo}</h2>
-      {children}
-    </>
+    <section className="t-apt" id={id}>
+      <h2 className="t-apt-title">{titulo}</h2>
+      <div className="t-apt-body">{children}</div>
+    </section>
   );
 }
 
