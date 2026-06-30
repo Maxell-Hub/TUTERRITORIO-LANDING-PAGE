@@ -4,6 +4,7 @@
  * - Se eliminaron los enlaces de políticas redundantes.
  */
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer id="contacto" className="site-footer">
       <div className="footer-wrap">
@@ -53,6 +54,10 @@ export default function Footer() {
         <span aria-hidden="true">·</span>
         <a href="/mapa-del-sitio">Mapa del sitio</a>
       </nav>
+
+      <p className="footer-copy">
+        © {year} Tuterritorio — Catastro Multipropósito de Valledupar. Todos los derechos reservados.
+      </p>
 
     </footer>
   );

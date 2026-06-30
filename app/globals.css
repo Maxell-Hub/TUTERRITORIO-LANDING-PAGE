@@ -37,6 +37,11 @@ body { margin: 0; font-family: var(--font-sans); color: var(--text-body); backgr
 a { color: inherit; }
 img { max-width: 100%; }
 
+/* En móvil reducimos la base tipográfica para que la información no se vea tan
+   grande ni apiñada en pantallas pequeñas (todo escala en rem proporcionalmente). */
+@media (max-width: 600px) { html { font-size: 93.75%; } }
+@media (max-width: 380px) { html { font-size: 90%; } }
+
 /* Accesibilidad: enlace para saltar al contenido */
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--tt-navy-700); color: #fff;
   padding: 10px 16px; border-radius: 0 0 8px 0; font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); }
@@ -799,7 +804,7 @@ img { max-width: 100%; }
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans);
   letter-spacing: var(--ls-wide); text-transform: uppercase; color: #fff; }
 
-.rec-section { padding: clamp(3.2rem,6vw,5.2rem) clamp(1rem,5vw,64px); }
+.rec-section { padding: clamp(3.2rem,6vw,5.2rem) clamp(1rem,5vw,64px) clamp(5.5rem,9vw,7rem); }
 .rec-section.blue { background: linear-gradient(180deg,#fff 0%,#eef5f8 100%); }
 .rec-section.green { background: linear-gradient(180deg,#f4f8f4 0%,#e7f0e8 100%); }
 .rec-wrap { max-width: var(--container-max); margin: 0 auto; }
@@ -919,7 +924,7 @@ img { max-width: 100%; }
 
 .news-feat-section { background: #fff; padding: clamp(2rem,4vw,3rem) clamp(1rem,5vw,64px) 0; }
 /* Si la destacada es la última sección (sin "Más noticias"), deja aire antes del footer */
-.news-feat-section:last-child { padding-bottom: clamp(4.5rem,9vw,8rem); }
+.news-feat-section:last-child { padding-bottom: clamp(5.5rem,9vw,8rem); }
 .feat-card { display: grid; grid-template-columns: 1.15fr 1fr; max-width: var(--container-wide); margin: 0 auto; background: #fff;
   border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none;
   box-shadow: var(--shadow-md); transition: transform .5s var(--ease-soft), box-shadow .5s var(--ease-soft); }
@@ -936,7 +941,7 @@ img { max-width: 100%; }
 .news-leer { display: inline-flex; align-items: center; gap: 8px; font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); color: var(--tt-blue-700); transition: gap .28s var(--ease-soft); }
 .feat-card:hover .news-leer, .news-card:hover .news-leer { gap: 12px; }
 
-.news-grid-section { background: #fff; padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(4.5rem,9vw,8rem); }
+.news-grid-section { background: #fff; padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(5.5rem,9vw,8rem); }
 .news-grid-inner { max-width: var(--container-wide); margin: 0 auto; }
 .news-grid-head { margin-bottom: 28px; }
 .news-grid-head h2 { margin: 0; font: var(--fw-semibold) var(--fs-xl)/1.2 var(--font-sans); color: var(--tt-gray-900); }
@@ -1026,7 +1031,7 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
 .ct-sede-foot { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px; border-top: 1px solid var(--border-subtle); }
 .ct-sede-pin { width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--tt-navy-700); display: flex; align-items: center; justify-content: center; }
 
-.ct-map-section { background: var(--tt-gray-100); padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(3.5rem,6vw,6rem); }
+.ct-map-section { background: var(--tt-gray-100); padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px) clamp(5.5rem,8vw,6.5rem); }
 .ct-map-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
 .ct-map-head h2 { margin: 0 0 12px; font: var(--fw-bold) var(--fs-xl)/1.25 var(--font-sans); color: var(--tt-navy-700); }
 .ct-maps-btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: var(--radius-button);
@@ -1411,6 +1416,10 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 /* Enlaces legales siempre en blanco y negrita (evita que alguno salga azul/resaltado) */
 .footer-legal a, .footer-legal a:link, .footer-legal a:visited, .footer-legal a:hover, .footer-legal a:focus, .footer-legal a:active {
   color: #fff !important; font-weight: var(--fw-bold) !important; opacity: 1; }
+/* Todos los derechos reservados */
+.footer-copy { margin: 0; padding: 0 clamp(1rem,5vw,64px) 20px; text-align: center; background: var(--footer-green);
+  font: var(--fw-regular) var(--fs-xs)/1.6 var(--font-sans); color: rgba(255,255,255,.72); }
+.dark .footer-copy { background: #12231a !important; color: rgba(255,255,255,.6); }
 .footer-legal span { color: rgba(255,255,255,.5); }
 @media (prefers-reduced-motion: reduce) { .ext-modal { animation: none; } }
 
@@ -1512,6 +1521,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 /* Texto e inline-vars que no flipean solos */
 .dark .ed, .dark .term-def, .dark .news-card-body p, .dark .feat-body p,
 .dark .legal-body p, .dark .legal-list, .dark .legal-meta { color: #c3d0d9 !important; }
+/* Etiquetas en negrita de la nota y código: estaban en azul oscuro → blanco en oscuro */
+.dark .legal-meta b, .dark .legal-body b, .dark .legal-body strong { color: #eaf1f6 !important; }
+.dark .legal-body code { color: #eaf1f6 !important; background: rgba(255,255,255,.08) !important; }
 
 /* Campos de formulario y buscador */
 .dark input, .dark textarea, .dark select {

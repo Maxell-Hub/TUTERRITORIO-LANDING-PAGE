@@ -25,6 +25,20 @@ export default function FloatingActions() {
     setLang(readLang());
   }, []);
 
+  // Si el usuario no ha elegido tema manualmente, sigue el modo del sistema en vivo.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = (e: MediaQueryListEvent) => {
+      try {
+        if (localStorage.getItem("tt-theme")) return; // respeta la elección manual
+      } catch { /* ignore */ }
+      document.documentElement.classList.toggle("dark", e.matches);
+      setDark(e.matches);
+    };
+    mq.addEventListener?.("change", onChange);
+    return () => mq.removeEventListener?.("change", onChange);
+  }, []);
+
   // Al navegar (Next cambia de página sin recargar), el contenido nuevo aparece
   // en español hasta que Google lo retraduce. Reaplicamos la traducción para que
   // la página se mantenga completamente traducida sin volver al español.

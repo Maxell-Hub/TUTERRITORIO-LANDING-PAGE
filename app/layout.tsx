@@ -118,10 +118,11 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <body>
-        {/* Aplica el tema guardado antes de pintar (evita parpadeo claro→oscuro) */}
+        {/* Aplica el tema antes de pintar (evita parpadeo). Usa la preferencia
+            guardada si existe; si no, sigue el modo del sistema operativo. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem('tt-theme')==='dark')document.documentElement.classList.add('dark');}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('tt-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');}catch(e){}`,
           }}
         />
         <script
