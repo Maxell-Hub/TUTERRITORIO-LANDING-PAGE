@@ -185,6 +185,7 @@ export default function Header() {
                   <a
                     href={item.href}
                     className={`mn-link${isActive(item) ? " on" : ""}`}
+                    aria-current={isActive(item) ? "page" : undefined}
                   >
                     {item.label}
                     <svg className="mn-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
@@ -265,6 +266,7 @@ export default function Header() {
               <a
                 href={item.href}
                 className={`nd-link${isActive(item) ? " on" : ""}`}
+                aria-current={isActive(item) ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}

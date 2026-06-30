@@ -21,8 +21,9 @@ const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] 
   { n: "10", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
 ];
 
-/* Colores corporativos que rotan por tarjeta. */
-const T_COLORS = ["#3B85A5", "#4E8654", "#F0B63B", "#0C222F"];
+/* Colores corporativos que rotan por tarjeta. Se evita el amarillo como relleno
+   porque no alcanza el contraste mínimo (texto blanco sobre amarillo). */
+const T_COLORS = ["#3B85A5", "#4E8654", "#2F6B86", "#0C222F"];
 
 export default function TransparenciaPage() {
   return (
