@@ -124,7 +124,7 @@ export default function FloatingActions() {
         aria-label="Cuéntanos tu experiencia (abre un formulario externo)"
         title="Cuéntanos tu experiencia"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><path d="M9 9h.01" /><path d="M15 9h.01" /></svg>
+        <img src="/assets/comentario.png" alt="" className="fab-img" width={28} height={28} />
         <span className="fab-tip">Cuéntanos tu experiencia</span>
       </a>
     </div>

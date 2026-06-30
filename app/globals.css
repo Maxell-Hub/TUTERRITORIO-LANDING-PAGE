@@ -1506,6 +1506,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fab-theme { --c: #0C222F; background: var(--c); }
 .fab-theme:hover { background: #15323f; }
 .fab-feedback { --c: #4E8654; background: var(--c); }
+.fab-img { width: 28px; height: 28px; object-fit: contain; display: block; }
 .fab-feedback:hover { background: #457749; }
 .fab-badge { position: absolute; bottom: -2px; right: -2px; min-width: 21px; height: 19px; padding: 0 5px; border-radius: 10px;
   background: #fff; color: #0C222F; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
