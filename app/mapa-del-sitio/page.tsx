@@ -19,11 +19,28 @@ const GRUPOS: { titulo: string; enlaces: { href: string; label: string }[] }[] =
     ],
   },
   {
-    titulo: "Trámites y atención",
+    titulo: "Atención y servicios a la ciudadanía",
     enlaces: [
+      { href: "/atencion-ciudadania", label: "Atención a la ciudadanía" },
       { href: "/servicios", label: "Trámites y servicios" },
       { href: "/pqrsd", label: "Radica tu PQRSD" },
       { href: "/contactos", label: "Contáctenos" },
+    ],
+  },
+  {
+    titulo: "Transparencia y acceso a la información pública",
+    enlaces: [
+      { href: "/transparencia", label: "Inicio de Transparencia" },
+      { href: "/transparencia/informacion-entidad", label: "Información de la entidad" },
+      { href: "/transparencia/normativa", label: "Normativa" },
+      { href: "/transparencia/contratacion", label: "Contratación" },
+      { href: "/transparencia/planeacion", label: "Planeación, presupuesto e informes" },
+      { href: "/transparencia/tramites", label: "Trámites y servicios" },
+      { href: "/transparencia/participa", label: "Participa" },
+      { href: "/transparencia/datos-abiertos", label: "Datos abiertos" },
+      { href: "/transparencia/grupos-interes", label: "Información para grupos de interés" },
+      { href: "/transparencia/reporte-informacion", label: "Obligación de reporte de información" },
+      { href: "/transparencia/proteccion-datos", label: "Protección de datos personales" },
     ],
   },
   {

@@ -32,7 +32,19 @@ const NAV: NavItem[] = [
       { label: "Nuestro Equipo", href: "/nosotros/equipo" },
     ],
   },
-  { label: "Servicios", href: "/servicios", target: "#tramites", match: "/servicios" },
+  {
+    label: "Atención a la ciudadanía",
+    href: "/atencion-ciudadania",
+    match: "/atencion-ciudadania",
+    drop: [
+      { label: "Atención y servicios", href: "/atencion-ciudadania" },
+      { label: "Trámites y servicios", href: "/servicios" },
+      { label: "Canales de atención", href: "/contactos" },
+      { label: "Radica tu PQRSD", href: "/pqrsd" },
+    ],
+  },
+  { label: "Transparencia", href: "/transparencia", match: "/transparencia" },
+  { label: "Participa", href: "/transparencia/participa", match: "/transparencia/participa" },
   {
     label: "Recursos",
     href: "/recursos/normativas",
@@ -43,7 +55,6 @@ const NAV: NavItem[] = [
     ],
   },
   { label: "Noticias", href: "/noticias", match: "/noticias" },
-  { label: "Contacto", href: "/contactos", match: "/contactos" },
 ];
 
 export default function Header() {
@@ -89,10 +100,16 @@ export default function Header() {
     };
   }, []);
 
-  // Marca activo según la página actual: en Inicio siempre "Inicio";
-  // en las demás, por prefijo de ruta.
+  // Marca activo según la página actual: en Inicio siempre "Inicio"; en las
+  // demás, por el prefijo de ruta MÁS específico (evita doble resaltado cuando
+  // una ruta es prefijo de otra, p. ej. /transparencia vs /transparencia/participa).
+  const bestMatchLen = isHome
+    ? 0
+    : NAV.reduce((best, it) => (it.match && pathname.startsWith(it.match) && it.match.length > best ? it.match.length : best), 0);
   const isActive = (item: NavItem) =>
-    isHome ? item.href === "/" : !!item.match && pathname.startsWith(item.match);
+    isHome
+      ? item.href === "/"
+      : !!item.match && pathname.startsWith(item.match) && item.match.length === bestMatchLen;
 
   // Cierra el menú móvil al cambiar de ruta.
   useEffect(() => {
