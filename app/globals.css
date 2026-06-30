@@ -1499,14 +1499,14 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fab:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(12,34,47,.26); }
 .fab:active { transform: translateY(-1px) scale(.96); }
 /* Colores planos corporativos (cada círculo expone su color en --c) */
-.fab-lang { --c: #2F6B86; background: var(--c); }
-.fab-lang:hover { background: #275a72; }
+.fab-lang { --c: #244C5E; background: var(--c); }
+.fab-lang:hover { background: #1d3e4d; }
 .fab-theme { --c: #0C222F; background: var(--c); }
 .fab-theme:hover { background: #15323f; }
 .fab-feedback { --c: #4E8654; background: var(--c); }
 .fab-feedback:hover { background: #457749; }
 .fab-badge { position: absolute; bottom: -2px; right: -2px; min-width: 21px; height: 19px; padding: 0 5px; border-radius: 10px;
-  background: #fff; color: #0C222F; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
+  background: #F0B63B; color: #fff; font: var(--fw-extra) 10px/19px var(--font-sans); text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.22); }
 /* Etiqueta que aparece al pasar el cursor / enfocar */
 /* La etiqueta toma el color de su propio círculo (--c) */
