@@ -1392,8 +1392,15 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .privacy-notice a { color: var(--tt-blue-700); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- TRANSPARENCIA (reutiliza el patrón legal) ---- */
-.t-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); color: var(--tt-blue-700); text-decoration: none; }
+.t-back { display: flex; width: max-content; max-width: 100%; align-items: center; gap: 6px; margin: 0 0 22px; font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); color: var(--tt-blue-700); text-decoration: none; }
 .t-back:hover { text-decoration: underline; }
+/* Encabezado de las subsecciones de Transparencia: más aire, nada pegado */
+.t-hero .legal-eyebrow { display: block; }
+.t-hero h1 { margin-top: 14px; }
+.t-hero .legal-lead { margin-top: 14px; max-width: 60ch; }
+.t-hero .legal-body { margin-top: 28px; }
+.t-hero .t-apt { margin-top: 18px; }
+.t-hero .legal-body .t-apt:first-child { margin-top: 4px; }
 .t-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 18px; margin-top: 32px; }
 .t-card { --accent: var(--tt-blue-700); position: relative; display: flex; align-items: center; gap: 16px; padding: 22px 22px 22px 24px; border-radius: 16px;
   background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs); text-decoration: none; overflow: hidden;
