@@ -21,6 +21,9 @@ const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] 
   { n: "10", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
 ];
 
+/* Colores corporativos que rotan por tarjeta. */
+const T_COLORS = ["#3B85A5", "#4E8654", "#F0B63B", "#0C222F"];
+
 export default function TransparenciaPage() {
   return (
     <section className="legal-hero">
@@ -33,14 +36,16 @@ export default function TransparenciaPage() {
         </p>
 
         <div className="t-grid">
-          {SUBSECCIONES.map((s) => (
-            <Link key={s.href} href={s.href} className="t-card">
+          {SUBSECCIONES.map((s, i) => (
+            <Link key={s.href} href={s.href} className="t-card" style={{ ["--accent" as string]: T_COLORS[i % T_COLORS.length] }}>
               <span className="t-num">{s.n}</span>
               <span className="t-card-body">
                 <span className="t-card-title">{s.titulo}</span>
                 <span className="t-card-desc">{s.desc}</span>
               </span>
-              <svg className="t-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              <span className="t-card-go" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
             </Link>
           ))}
         </div>

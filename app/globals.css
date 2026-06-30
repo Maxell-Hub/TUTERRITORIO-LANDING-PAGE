@@ -1394,18 +1394,25 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 /* ---- TRANSPARENCIA (reutiliza el patrón legal) ---- */
 .t-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); color: var(--tt-blue-700); text-decoration: none; }
 .t-back:hover { text-decoration: underline; }
-.t-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-top: 30px; }
-.t-card { position: relative; display: flex; align-items: flex-start; gap: 15px; padding: 20px 22px; border-radius: 14px;
-  background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs); text-decoration: none;
+.t-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 18px; margin-top: 32px; }
+.t-card { --accent: var(--tt-blue-700); position: relative; display: flex; align-items: center; gap: 16px; padding: 22px 22px 22px 24px; border-radius: 16px;
+  background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs); text-decoration: none; overflow: hidden;
   transition: transform .25s var(--ease-soft), box-shadow .25s var(--ease-soft), border-color .25s var(--ease-soft); }
-.t-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--tt-blue-500); }
-.t-num { flex: none; width: 34px; height: 34px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center;
-  background: color-mix(in srgb, var(--tt-blue-700) 12%, #fff); color: var(--tt-blue-700); font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); }
+.t-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent);
+  transform: scaleY(0); transform-origin: top; transition: transform .3s var(--ease-soft); }
+.t-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 45%, var(--border-subtle)); }
+.t-card:hover::before { transform: scaleY(1); }
+.t-num { flex: none; width: 46px; height: 46px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--accent) 13%, #fff); color: color-mix(in srgb, var(--accent) 82%, #0C222F);
+  font: var(--fw-extra) var(--fs-lg)/1 var(--font-sans); letter-spacing: -.02em; transition: background .25s var(--ease-soft), color .25s var(--ease-soft); }
+.t-card:hover .t-num { background: var(--accent); color: #fff; }
 .t-card-body { display: flex; flex-direction: column; gap: 4px; flex: 1 1 auto; min-width: 0; }
 .t-card-title { font: var(--fw-bold) var(--fs-md)/1.25 var(--font-sans); color: var(--tt-navy-700); }
 .t-card-desc { font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
-.t-card-arrow { flex: none; color: var(--tt-blue-700); margin-top: 4px; transition: transform .25s var(--ease-soft); }
-.t-card:hover .t-card-arrow { transform: translateX(4px); }
+.t-card-go { flex: none; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--border-subtle); align-self: center;
+  display: inline-flex; align-items: center; justify-content: center; color: var(--accent);
+  transition: background .25s var(--ease-soft), color .25s var(--ease-soft), border-color .25s var(--ease-soft), transform .25s var(--ease-soft); }
+.t-card:hover .t-card-go { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateX(3px); }
 .t-reuse, .t-extlink { display: flex; align-items: center; gap: 9px; margin: 12px 0 0; font: var(--fw-semibold) var(--fs-base)/1.4 var(--font-sans); }
 .t-reuse svg, .t-extlink svg { flex: none; color: var(--tt-blue-700); }
 .t-reuse a, .t-extlink a { color: var(--tt-blue-700); text-decoration: underline; text-underline-offset: 2px; }
@@ -1550,15 +1557,18 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .legal-body code { color: #eaf1f6 !important; background: rgba(255,255,255,.08) !important; }
 /* Transparencia en modo oscuro */
 .dark .t-card { background: #131c23; border-color: #2f3d47; box-shadow: none; }
-.dark .t-card:hover { border-color: #3B85A5; }
+.dark .t-card:hover { border-color: color-mix(in srgb, var(--accent) 55%, #2f3d47); }
 .dark .t-card-title { color: #e6edf2; }
 .dark .t-card-desc { color: #c3d0d9; }
-.dark .t-num { background: rgba(111,179,214,.16); color: #6fb3d6; }
+.dark .t-num { background: color-mix(in srgb, var(--accent) 24%, #131c23); color: color-mix(in srgb, var(--accent) 62%, #ffffff); }
+.dark .t-card:hover .t-num { background: color-mix(in srgb, var(--accent) 70%, #ffffff); color: #0C222F; }
+.dark .t-card-go { border-color: #2f3d47; color: color-mix(in srgb, var(--accent) 62%, #ffffff); }
+.dark .t-card:hover .t-card-go { background: color-mix(in srgb, var(--accent) 70%, #ffffff); border-color: transparent; color: #0C222F; }
 .dark .pend-card { background: #131c23; border-color: #2f3d47; border-left-color: var(--tt-amber-500); }
 .dark .pend-title { color: #e6edf2; }
 .dark .pend-desc { color: #c3d0d9; }
 .dark .t-reuse a, .dark .t-extlink a, .dark .t-back { color: #6fb3d6 !important; }
-.dark .t-card-arrow, .dark .t-reuse svg, .dark .t-extlink svg { color: #6fb3d6; }
+.dark .t-reuse svg, .dark .t-extlink svg { color: #6fb3d6; }
 
 /* Campos de formulario y buscador */
 .dark input, .dark textarea, .dark select {
