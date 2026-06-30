@@ -1872,7 +1872,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
    fondo de la página, igual que el hero de Nuestro Equipo */
-.dark .serv-banner, .dark .rec-hero, .dark .ct-hero { background: #0c1419 !important; }
+.dark .serv-banner, .dark .rec-hero, .dark .ct-hero, .dark .pq-hero { background: #0c1419 !important; }
+/* En oscuro, atenúa los halos de color del hero de PQRSD para que se funda con la página */
+.dark .pq-hero-deco { opacity: .4; }
 
 /* MODO OSCURO — Contacto: la curva blanca (ct-swoosh) se funde con el fondo */
 .dark .ct-swoosh path { fill: #0c1419 !important; }
