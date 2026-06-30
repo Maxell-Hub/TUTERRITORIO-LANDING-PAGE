@@ -8,17 +8,20 @@ type Item = { title: string; text: string; href: string; cat: string };
 const norm = (s: string) =>
   (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
-/** Páginas y secciones fijas del sitio. */
+/** Páginas y secciones fijas del sitio. El campo `text` incluye palabras clave
+ *  en español e inglés para que la búsqueda funcione también al cambiar de idioma. */
 const STATIC_ITEMS: Item[] = [
-  { title: "Inicio", text: "consulta tu predio catastro multipropósito valledupar avalúo impuesto predial linderos área", href: "/", cat: "Inicio" },
-  { title: "Nosotros", text: "quiénes somos misión visión funciones objetivos proceso catastral gestor", href: "/nosotros", cat: "Nosotros" },
-  { title: "Nuestro equipo", text: "liderazgo equipo técnico topografía jurídica sistemas atención al ciudadano integrantes", href: "/nosotros/equipo", cat: "Nosotros" },
-  { title: "Trámites y servicios", text: "incorporación de área rectificación desenglobe englobe inscripción de predio avalúo catastral cambio de destino cambio de propietario certificado plano predial carta catastral ficha predial", href: "/servicios", cat: "Servicios" },
-  { title: "Normativas", text: "leyes decretos resoluciones acuerdos marco legal catastro igac", href: "/recursos/normativas", cat: "Recursos" },
-  { title: "ABC Catastral", text: "glosario términos definiciones conceptos catastro abc", href: "/recursos/glosario", cat: "Recursos" },
-  { title: "Noticias", text: "sala de prensa actualización catastral comunidad avalúos trámites", href: "/noticias", cat: "Noticias" },
-  { title: "Contactos", text: "dirección teléfono correo sede horario de atención mapa ubicación", href: "/contactos", cat: "Contactos" },
-  { title: "PQRSD", text: "peticiones quejas reclamos sugerencias denuncias radicar solicitud", href: "/pqrsd", cat: "Contactos" },
+  { title: "Inicio", text: "consulta tu predio catastro multipropósito valledupar avalúo impuesto predial linderos área · home consult your property cadastre cadastral appraisal property tax boundaries area", href: "/", cat: "Inicio" },
+  { title: "Nosotros", text: "quiénes somos misión visión funciones objetivos proceso catastral gestor · about us who we are mission vision functions objectives cadastral manager", href: "/nosotros", cat: "Nosotros" },
+  { title: "Nuestro equipo", text: "liderazgo equipo técnico topografía jurídica sistemas atención al ciudadano integrantes · our team staff leadership members technical legal", href: "/nosotros/equipo", cat: "Nosotros" },
+  { title: "Trámites y servicios", text: "incorporación de área rectificación desenglobe englobe inscripción de predio avalúo catastral cambio de destino cambio de propietario certificado plano predial carta catastral ficha predial · procedures services formalities area rectification property registration appraisal change of owner cadastral certificate", href: "/servicios", cat: "Servicios" },
+  { title: "Atención a la ciudadanía", text: "atención al ciudadano canales de atención servicios trámites pqrsd carta de trato digno preguntas frecuentes · citizen attention customer service channels procedures faq", href: "/atencion-ciudadania", cat: "Atención" },
+  { title: "Transparencia", text: "transparencia y acceso a la información pública contratación planeación datos abiertos participa · transparency access to public information contracting planning open data participate accountability", href: "/transparencia", cat: "Transparencia" },
+  { title: "Normativas", text: "leyes decretos resoluciones acuerdos marco legal catastro igac · regulations laws decrees resolutions legal framework", href: "/recursos/normativas", cat: "Recursos" },
+  { title: "ABC Catastral", text: "glosario términos definiciones conceptos catastro abc · glossary terms definitions concepts cadastral", href: "/recursos/glosario", cat: "Recursos" },
+  { title: "Noticias", text: "sala de prensa actualización catastral comunidad avalúos trámites · news press room updates community", href: "/noticias", cat: "Noticias" },
+  { title: "Contactos", text: "dirección teléfono correo sede horario de atención mapa ubicación · contact address phone email office opening hours map location", href: "/contactos", cat: "Contactos" },
+  { title: "PQRSD", text: "peticiones quejas reclamos sugerencias denuncias radicar solicitud · complaints claims requests petitions suggestions reports file a request", href: "/pqrsd", cat: "Contactos" },
 ];
 
 export default function SearchBar() {
