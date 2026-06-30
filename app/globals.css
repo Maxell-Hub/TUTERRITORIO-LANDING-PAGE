@@ -1469,9 +1469,12 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 /* Enlaces legales siempre en blanco y negrita (evita que alguno salga azul/resaltado) */
 .footer-legal a, .footer-legal a:link, .footer-legal a:visited, .footer-legal a:hover, .footer-legal a:focus, .footer-legal a:active {
   color: #fff !important; font-weight: var(--fw-bold) !important; opacity: 1; }
-/* Todos los derechos reservados */
+/* Aviso de responsabilidad + Todos los derechos reservados */
+.footer-resp { margin: 0; padding: 4px clamp(1rem,5vw,64px) 6px; text-align: center; background: var(--footer-green);
+  font: var(--fw-regular) var(--fs-xs)/1.6 var(--font-sans); color: rgba(255,255,255,.82); }
 .footer-copy { margin: 0; padding: 0 clamp(1rem,5vw,64px) 20px; text-align: center; background: var(--footer-green);
   font: var(--fw-regular) var(--fs-xs)/1.6 var(--font-sans); color: rgba(255,255,255,.72); }
+.dark .footer-resp { background: #12231a !important; color: rgba(255,255,255,.7); }
 .dark .footer-copy { background: #12231a !important; color: rgba(255,255,255,.6); }
 .footer-legal span { color: rgba(255,255,255,.5); }
 @media (prefers-reduced-motion: reduce) { .ext-modal { animation: none; } }

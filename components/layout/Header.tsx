@@ -136,7 +136,7 @@ export default function Header() {
       {/* gov.co top bar */}
       <div className="govco-bar">
         <div className="govco-bar-row">
-          <a href="https://www.gov.co" aria-label="Portal del Estado Colombiano gov.co" style={{ display: "inline-flex", alignItems: "center" }}>
+          <a href="https://www.gov.co" target="_blank" rel="noopener noreferrer" aria-label="Portal del Estado Colombiano gov.co (abre en una pestaña nueva)" style={{ display: "inline-flex", alignItems: "center" }}>
             <img src="/assets/govco-white.png" alt="gov.co" style={{ height: 32, display: "block" }} />
           </a>
           {user && (

@@ -55,6 +55,9 @@ export default function Footer() {
         <a href="/mapa-del-sitio">Mapa del sitio</a>
       </nav>
 
+      <p className="footer-resp">
+        Los contenidos de este sitio están bajo la responsabilidad de Tuterritorio, gestor catastral del municipio de Valledupar.
+      </p>
       <p className="footer-copy">
         © {year} Tuterritorio — Catastro Multipropósito de Valledupar. Todos los derechos reservados.
       </p>
