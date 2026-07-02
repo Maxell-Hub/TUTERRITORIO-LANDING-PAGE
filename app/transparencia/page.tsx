@@ -35,7 +35,6 @@ export default function TransparenciaPage() {
   return (
     <section className="legal-hero">
       <div className="legal-wrap">
-        <span className="legal-eyebrow">Transparencia</span>
         <h1>Transparencia y acceso a la información pública</h1>
         <p className="legal-lead">
           Información pública de Tuterritorio, gestor catastral del municipio de Valledupar, organizada conforme a la
