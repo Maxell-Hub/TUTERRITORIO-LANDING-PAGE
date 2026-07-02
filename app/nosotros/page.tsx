@@ -50,7 +50,7 @@ export default function NosotrosPage() {
         <div className="sec-wrap">
           <div className="reveal" data-dir="left" style={{ maxWidth: "54rem" }}>
             <span className="eyebrow-b">Nosotros</span>
-            <h1 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.6vw,2.6rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}><Editable as="span" id="nos.title">Un Catastro moderno al servicio de Valledupar</Editable></h1>
+            <h1 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.6vw,2.6rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}><Editable as="span" id="nos.title">Un catastro moderno al servicio de Valledupar</Editable></h1>
             <span className="ribbon5" style={{ margin: "18px 0 0" }} />
             <p style={{ margin: "26px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "var(--tt-gray-700)" }}>Tuterritorio S.A.S es el operador del <b style={{ color: "var(--tt-navy-700)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.</p>
             <p style={{ margin: "18px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}><Editable as="span" id="nos.intro2" multiline>Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.</Editable></p>
@@ -62,7 +62,7 @@ export default function NosotrosPage() {
       <section className="sec-pad" style={{ background: "linear-gradient(180deg,#E8F1F5 0%,#F3F8FA 100%)" }}>
         <div className="sec-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
-            <Editable as="h2" id="nos.func-title" className="h2-nos">Lo Que Hacemos</Editable>
+            <Editable as="h2" id="nos.func-title" className="h2-nos">Lo que hacemos</Editable>
             <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}><Editable as="span" id="nos.func-intro" multiline>Gestionamos de forma integral el catastro del municipio, desde el levantamiento de la información hasta la atención de cada trámite ciudadano.</Editable></p>
           </div>
           <div className="func-bento">
