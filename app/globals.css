@@ -1560,6 +1560,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .ct-card h2, .dark .pq-form h2, .dark .term-name, .dark .enlace-body .et,
 .dark .news-card-body h3, .dark .sitemap-group h2, .dark .pq-label, .dark .ct-field label {
   color:#e9f1f6 !important; }
+.dark .pq-legend { color:#fff !important; }
 .dark .mn-link { color:#c3d0d9; }
 .dark .mn-link.on, .dark .mn-link:hover { color:#fff; }
 .dark .pq-input::placeholder, .dark .ct-input::placeholder { color:#7d8d99; }
