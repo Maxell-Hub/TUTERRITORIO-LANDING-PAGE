@@ -30,30 +30,41 @@ export default function ContactosPage() {
             </a>
           </div>
 
-          {/* Escena animada: plano catastral con el pin de "encuéntranos"
-              sobre el predio ámbar, en el lenguaje del imagotipo */}
+          {/* Escena animada: tu mensaje viaja en avión de papel por una ruta
+              punteada hasta el pin de nuestra sede */}
           <div className="ct-scene" aria-hidden="true">
-            <svg className="ct-map" viewBox="0 0 440 380" fill="none">
-              {/* Hoja del plano */}
-              <rect x="28" y="44" width="384" height="292" rx="18" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.25)" strokeWidth="1.5" />
-              {/* Predios tintados */}
-              <path className="ctm-parcel" d="M164 142 L284 152 L288 224 L168 236 Z" fill="#F0B63B" />
-              <path d="M40 146 L140 140 L146 238 L40 230 Z" fill="#8FBE4E" fillOpacity=".22" />
-              <path d="M304 152 L400 144 L400 226 L308 224 Z" fill="#59A9C4" fillOpacity=".2" />
-              {/* Calles */}
-              <g stroke="rgba(255,255,255,.3)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M28 138 L152 130 L294 142 L412 132" />
-                <path d="M28 240 L158 248 L298 234 L412 246" />
-                <path d="M148 44 L152 130 L158 248 L150 336" />
-                <path d="M290 44 L294 142 L298 234 L304 336" />
+            <svg className="ct-map" viewBox="0 0 440 340" fill="none">
+              {/* Ruta de vuelo punteada (el guion fluye hacia la sede) */}
+              <path
+                id="ct-vuelo"
+                className="ctp-route"
+                d="M104 242 C 168 168, 236 216, 278 172 C 302 147, 316 126, 326 108"
+                stroke="rgba(255,255,255,.4)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeDasharray="3 11"
+              />
+              {/* Mensaje de origen: burbuja de chat que flota */}
+              <g className="ctp-bubble">
+                <rect x="40" y="212" width="70" height="50" rx="13" fill="#fff" />
+                <path d="M58 262 l-9 14 18-5 Z" fill="#fff" />
+                <g stroke="var(--tt-blue-700)" strokeWidth="3" strokeLinecap="round">
+                  <path d="M54 230 h42" />
+                  <path d="M54 243 h26" />
+                </g>
               </g>
-              {/* Sombra, ondas de ubicación y pin */}
-              <ellipse className="ctm-shadow" cx="226" cy="194" rx="13" ry="4.5" fill="rgba(0,0,0,.32)" />
-              <circle className="ctm-ring" cx="226" cy="190" r="24" stroke="#F0B63B" strokeWidth="2" />
-              <circle className="ctm-ring r2" cx="226" cy="190" r="24" stroke="#F0B63B" strokeWidth="2" />
-              <g className="ctm-pin">
-                <path d="M226 106c-21 0-36 15-36 35 0 24 36 49 36 49s36-25 36-49c0-20-15-35-36-35Z" fill="var(--tt-amber-500)" stroke="#0C222F" strokeWidth="3" />
-                <circle cx="226" cy="142" r="12" fill="#0C222F" />
+              {/* Destino: nuestra sede (pin) con ondas de llegada */}
+              <circle className="ctp-ring" cx="348" cy="88" r="42" stroke="var(--tt-amber-500)" strokeWidth="2" />
+              <circle className="ctp-ring r2" cx="348" cy="88" r="42" stroke="var(--tt-amber-500)" strokeWidth="2" />
+              <circle cx="348" cy="88" r="36" fill="#fff" />
+              <path d="M348 68c-9.4 0-17 7.3-17 16.3 0 11.6 17 25.7 17 25.7s17-14.1 17-25.7c0-9-7.6-16.3-17-16.3Z" fill="var(--tt-green-600)" />
+              <circle cx="348" cy="85" r="6" fill="#fff" />
+              {/* Avión de papel que recorre la ruta */}
+              <g className="ctp-plane">
+                <polygon points="2,0 -24,11 -14,0 -24,-11" fill="var(--tt-amber-500)" stroke="#0C222F" strokeWidth="2" strokeLinejoin="round" />
+                <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#ct-vuelo" />
+                </animateMotion>
               </g>
             </svg>
           </div>

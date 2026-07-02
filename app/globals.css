@@ -423,7 +423,7 @@ img { max-width: 100%; }
 
 /* ---- PQRSD (hero + formulario) ---- */
 .pq-hero { position: relative; isolation: isolate; color: #fff; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base);
+  background: var(--hero-parcelas) no-repeat right -150px top -80px / 740px auto, var(--hero-base);
   padding: clamp(3rem,5.5vw,4.4rem) clamp(1rem,5vw,64px) clamp(3.4rem,6vw,4.8rem); }
 /* Cinta multicolor institucional en el borde inferior */
 .pq-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; z-index: 1; background: var(--ribbon); }
@@ -557,7 +557,8 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
   .hero-blobA, .hero-blobB, .cm-dot.on::after,
-  .nos-glow, .net-node, .net-lines, [data-parallax] { animation: none !important; transform: none !important; }
+  .nos-glow, [data-parallax] { animation: none !important; transform: none !important; }
+  .eq-anillo, .eq-persona, .eq-centro::after { animation: none !important; }
   #scrollProg { display: none; }
   html { scroll-behavior: auto; }
 }
@@ -651,23 +652,41 @@ img { max-width: 100%; }
   box-shadow: 0 10px 30px rgba(0,0,0,.3); cursor: pointer; transition: transform .3s cubic-bezier(.22,1,.36,1), background .3s; }
 .video-frame:hover .video-play { transform: translate(-50%,-50%) scale(1.08); background: #fff; }
 
-/* Equipo — hero: el equipo (personas) sobre el plano del territorio */
+/* Equipo — hero: el equipo orbitando el territorio (imagotipo al centro) */
 .equipo-hero { position: relative; overflow: hidden; min-height: 450px; display: flex; align-items: center;
-  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base); color: #fff;
+  background: linear-gradient(150deg,#0C222F 0%,#122E3D 55%,#163A4C 100%); color: #fff;
   padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
 .equipo-hero-grid { position: relative; max-width: 1200px; margin: 0 auto; display: grid;
   grid-template-columns: 1.05fr .95fr; gap: clamp(2rem,5vw,4rem); align-items: center; }
 .equipo-hero h1 { margin: 20px 0 0; font: 800 clamp(2rem,4.4vw,3.2rem)/1.12 var(--font-sans); letter-spacing: -0.02em; color: #fff; }
 .equipo-hero h1 .cy { color: #59A9C4; }
 .equipo-hero p { margin: 20px 0 0; max-width: 42rem; font: 400 1.125rem/1.65 var(--font-sans); color: rgba(255,255,255,.82); }
-.hero-net { position: relative; height: 420px; }
-.net-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-/* Solo los recorridos entre personas llevan el flujo animado del guion */
-.net-lines .net-routes { animation: tt-dash 2.6s linear infinite; }
-.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.5);
-  display: flex; align-items: center; justify-content: center; }
-.net-node::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor;
-  opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
+.hero-net { position: relative; height: 420px; display: flex; align-items: center; justify-content: center; }
+/* Órbitas: el imagotipo al centro y las personas girando en dos anillos.
+   El anillo gira; cada persona contragira lo mismo para quedar siempre derecha. */
+.eq-orbita { position: relative; width: min(420px, 92%); aspect-ratio: 1; }
+.eq-centro { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 118px; height: 118px;
+  border-radius: 50%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.28);
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 44px rgba(4,14,20,.45); }
+.eq-centro img { width: 64px; height: 64px; object-fit: contain; }
+.eq-centro::after { content: ""; position: absolute; inset: -4px; border-radius: 50%;
+  border: 2px solid rgba(240,182,59,.75); opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
+.eq-anillo { position: absolute; border: 1.5px dashed rgba(255,255,255,.22); border-radius: 50%;
+  animation: eq-girar linear infinite; }
+.eq-anillo.a1 { inset: 19%; animation-duration: 30s; }
+.eq-anillo.a2 { inset: 0; animation-duration: 48s; }
+@keyframes eq-girar { to { transform: rotate(360deg); } }
+.eq-radio { position: absolute; inset: 0; transform: rotate(var(--rot)); }
+.eq-persona { position: absolute; top: 0; left: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,.5);
+  display: flex; align-items: center; justify-content: center;
+  transform: translate(-50%,-50%) rotate(calc(-1 * var(--rot)));
+  animation: eq-derecha linear infinite; }
+.eq-anillo.a1 .eq-persona { animation-duration: 30s; }
+.eq-anillo.a2 .eq-persona { animation-duration: 48s; }
+@keyframes eq-derecha {
+  from { transform: translate(-50%,-50%) rotate(calc(-1 * var(--rot))); }
+  to { transform: translate(-50%,-50%) rotate(calc(-1 * var(--rot) - 360deg)); }
+}
 
 /* Equipo — liderazgo + áreas */
 .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 880px; margin: 0 auto; }
@@ -707,7 +726,7 @@ img { max-width: 100%; }
    SERVICIOS — Trámites catastrales (banner + grilla con hover)
    ============================================================ */
 .serv-banner { position: relative; color: #fff; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base); }
+  background: var(--hero-parcelas) no-repeat right -170px top -110px / 700px auto, var(--hero-base); }
 /* Los blobs difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
 .serv-banner .blobA, .serv-banner .blobB { display: none; }
 .serv-banner-row { position: relative; max-width: var(--container-wide); margin: 0 auto;
@@ -790,7 +809,7 @@ img { max-width: 100%; }
    RECURSOS — Normativas + Glosario
    ============================================================ */
 .rec-hero { position: relative; color: #fff; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base);
+  background: var(--hero-parcelas) no-repeat right -150px top -90px / 720px auto, var(--hero-base);
   padding: clamp(2.8rem,6vw,4.4rem) clamp(1rem,5vw,64px); }
 /* Los destellos difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
 .rec-glow { display: none; }
@@ -966,7 +985,7 @@ img { max-width: 100%; }
 @keyframes ct-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
 .ct-hero { position: relative; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base);
+  background: var(--hero-parcelas) no-repeat right -150px top -70px / 740px auto, var(--hero-base);
   padding: clamp(3rem,6vw,5.5rem) clamp(1rem,5vw,64px) clamp(5rem,8vw,7rem); }
 /* La trama de puntos se retiró: el fondo ahora usa la trama catastral de la marca */
 .ct-halftone { display: none; }
@@ -982,24 +1001,20 @@ img { max-width: 100%; }
   transition: transform var(--dur-base) var(--ease-soft); }
 .ct-cta:hover { transform: translateY(-2px); }
 
-/* Escena del hero: un plano catastral con el pin de "encuéntranos" sobre el
-   predio ámbar, en el mismo lenguaje del imagotipo y de la trama de fondo */
+/* Escena del hero: tu mensaje (burbuja) viaja en avión de papel por una ruta
+   punteada hasta el pin de nuestra sede */
 .ct-scene { position: relative; height: 340px; display: flex; align-items: center; justify-content: center; }
 .ct-map { width: min(430px, 100%); height: auto; display: block; filter: drop-shadow(0 24px 40px rgba(4,14,20,.35)); }
-/* El predio ámbar "respira" mientras el pin lo señala */
-.ctm-parcel { animation: ctm-parcel 3.6s var(--ease-soft) infinite; }
-@keyframes ctm-parcel { 0%,100% { fill-opacity: .55; } 50% { fill-opacity: .9; } }
-/* Ondas de ubicación que emanan del punto del pin */
-.ctm-ring { transform-box: fill-box; transform-origin: center; animation: ctm-ring 3.6s ease-out infinite; }
-.ctm-ring.r2 { animation-delay: 1.8s; }
-@keyframes ctm-ring { 0% { transform: scale(.3); opacity: .85; } 70% { opacity: 0; } 100% { transform: scale(1.75); opacity: 0; } }
-/* El pin cae al cargar y luego flota suavemente */
-.ctm-pin { animation: ctm-drop .7s var(--ease-soft) both, ctm-float 3.6s var(--ease-soft) .7s infinite; }
-@keyframes ctm-drop { from { transform: translateY(-46px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-@keyframes ctm-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-/* Sombra del pin: se encoge cuando el pin sube */
-.ctm-shadow { transform-box: fill-box; transform-origin: center; animation: ctm-shadow 3.6s var(--ease-soft) .7s infinite; }
-@keyframes ctm-shadow { 0%,100% { opacity: .32; transform: scale(1); } 50% { opacity: .16; transform: scale(.72); } }
+/* La ruta punteada fluye hacia la sede (dasharray 3+11 = 14; el offset -28 de
+   tt-dash son 2 periodos exactos, para que el bucle no salte) */
+.ctp-route { animation: tt-dash 1.6s linear infinite; }
+/* La burbuja del mensaje flota suavemente */
+.ctp-bubble { animation: ctp-bob 4.5s var(--ease-soft) infinite; }
+@keyframes ctp-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+/* Ondas de llegada alrededor de la sede */
+.ctp-ring { transform-box: fill-box; transform-origin: center; animation: ctp-ring 3s ease-out infinite; }
+.ctp-ring.r2 { animation-delay: 1.5s; }
+@keyframes ctp-ring { 0% { transform: scale(.4); opacity: .8; } 70% { opacity: 0; } 100% { transform: scale(1.55); opacity: 0; } }
 
 .ct-form-section { background: #fff; padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
 .ct-grid { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 40px; align-items: start; }
@@ -1077,8 +1092,8 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
   .ct-scene { height: 190px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ctm-parcel, .ctm-pin, .ctm-shadow, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; }
-  .ctm-ring { display: none; }
+  .ctp-route, .ctp-bubble, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; }
+  .ctp-ring, .ctp-plane { display: none; }
 }
 
 /* ============================================================
@@ -1828,9 +1843,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
    Equipo — monograma de área (en vez de icono) y modo oscuro
    ============================================================ */
 .team-area .ic.mono { color: #ffffff; font: 800 1.25rem/1 var(--font-sans); letter-spacing: .02em; }
-@media (prefers-reduced-motion: reduce) { .net-node::after { animation: none !important; opacity: 0; } }
-
-/* Modo oscuro (el hero toma su fondo de --hero-base; la trama se conserva) */
+/* Modo oscuro */
+.dark .equipo-hero { background: #0c1419; }
 .dark .lead-card h3 { color: #ffffff !important; font-weight: 700 !important; }
 .dark .avatar-grid .cap { color: #ffffff !important; font-weight: 700 !important; }
 .dark .avatar-grid .cap .role { color: #b9c6d0 !important; font-weight: 500 !important; }
