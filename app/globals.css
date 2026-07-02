@@ -557,8 +557,7 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
   .hero-blobA, .hero-blobB, .cm-dot.on::after,
-  .nos-glow, [data-parallax] { animation: none !important; transform: none !important; }
-  .eq-anillo, .eq-persona, .eq-centro::after { animation: none !important; }
+  .nos-glow, .net-node, .net-lines, [data-parallax] { animation: none !important; transform: none !important; }
   #scrollProg { display: none; }
   html { scroll-behavior: auto; }
 }
@@ -652,7 +651,7 @@ img { max-width: 100%; }
   box-shadow: 0 10px 30px rgba(0,0,0,.3); cursor: pointer; transition: transform .3s cubic-bezier(.22,1,.36,1), background .3s; }
 .video-frame:hover .video-play { transform: translate(-50%,-50%) scale(1.08); background: #fff; }
 
-/* Equipo — hero: el equipo orbitando el territorio (imagotipo al centro) */
+/* Equipo — hero red de personas */
 .equipo-hero { position: relative; overflow: hidden; min-height: 450px; display: flex; align-items: center;
   background: linear-gradient(150deg,#0C222F 0%,#122E3D 55%,#163A4C 100%); color: #fff;
   padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
@@ -661,32 +660,12 @@ img { max-width: 100%; }
 .equipo-hero h1 { margin: 20px 0 0; font: 800 clamp(2rem,4.4vw,3.2rem)/1.12 var(--font-sans); letter-spacing: -0.02em; color: #fff; }
 .equipo-hero h1 .cy { color: #59A9C4; }
 .equipo-hero p { margin: 20px 0 0; max-width: 42rem; font: 400 1.125rem/1.65 var(--font-sans); color: rgba(255,255,255,.82); }
-.hero-net { position: relative; height: 420px; display: flex; align-items: center; justify-content: center; }
-/* Órbitas: el imagotipo al centro y las personas girando en dos anillos.
-   El anillo gira; cada persona contragira lo mismo para quedar siempre derecha. */
-.eq-orbita { position: relative; width: min(420px, 92%); aspect-ratio: 1; }
-.eq-centro { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 118px; height: 118px;
-  border-radius: 50%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.28);
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 44px rgba(4,14,20,.45); }
-.eq-centro img { width: 64px; height: 64px; object-fit: contain; }
-.eq-centro::after { content: ""; position: absolute; inset: -4px; border-radius: 50%;
-  border: 2px solid rgba(240,182,59,.75); opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
-.eq-anillo { position: absolute; border: 1.5px dashed rgba(255,255,255,.22); border-radius: 50%;
-  animation: eq-girar linear infinite; }
-.eq-anillo.a1 { inset: 19%; animation-duration: 30s; }
-.eq-anillo.a2 { inset: 0; animation-duration: 48s; }
-@keyframes eq-girar { to { transform: rotate(360deg); } }
-.eq-radio { position: absolute; inset: 0; transform: rotate(var(--rot)); }
-.eq-persona { position: absolute; top: 0; left: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,.5);
-  display: flex; align-items: center; justify-content: center;
-  transform: translate(-50%,-50%) rotate(calc(-1 * var(--rot)));
-  animation: eq-derecha linear infinite; }
-.eq-anillo.a1 .eq-persona { animation-duration: 30s; }
-.eq-anillo.a2 .eq-persona { animation-duration: 48s; }
-@keyframes eq-derecha {
-  from { transform: translate(-50%,-50%) rotate(calc(-1 * var(--rot))); }
-  to { transform: translate(-50%,-50%) rotate(calc(-1 * var(--rot) - 360deg)); }
-}
+.hero-net { position: relative; height: 420px; }
+.net-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.net-lines g { animation: tt-dash 2.6s linear infinite; }
+.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.5); }
+.net-node::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor;
+  opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
 
 /* Equipo — liderazgo + áreas */
 .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 880px; margin: 0 auto; }
@@ -981,6 +960,10 @@ img { max-width: 100%; }
    CONTÁCTENOS (hero animado + formulario + mapa)
    ============================================================ */
 @keyframes ct-ripple { 0% { transform: scale(.35); opacity: .55; } 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes ct-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes ct-float1 { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-16px) translateX(6px); } }
+@keyframes ct-float2 { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(14px) translateX(-8px); } }
+@keyframes ct-dash { to { stroke-dashoffset: -64; } }
 @keyframes ct-pop { 0% { transform: scale(.4); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes ct-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -1001,20 +984,11 @@ img { max-width: 100%; }
   transition: transform var(--dur-base) var(--ease-soft); }
 .ct-cta:hover { transform: translateY(-2px); }
 
-/* Escena del hero: tu mensaje (burbuja) viaja en avión de papel por una ruta
-   punteada hasta el pin de nuestra sede */
 .ct-scene { position: relative; height: 340px; display: flex; align-items: center; justify-content: center; }
-.ct-map { width: min(430px, 100%); height: auto; display: block; filter: drop-shadow(0 24px 40px rgba(4,14,20,.35)); }
-/* La ruta punteada fluye hacia la sede (dasharray 3+11 = 14; el offset -28 de
-   tt-dash son 2 periodos exactos, para que el bucle no salte) */
-.ctp-route { animation: tt-dash 1.6s linear infinite; }
-/* La burbuja del mensaje flota suavemente */
-.ctp-bubble { animation: ctp-bob 4.5s var(--ease-soft) infinite; }
-@keyframes ctp-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-/* Ondas de llegada alrededor de la sede */
-.ctp-ring { transform-box: fill-box; transform-origin: center; animation: ctp-ring 3s ease-out infinite; }
-.ctp-ring.r2 { animation-delay: 1.5s; }
-@keyframes ctp-ring { 0% { transform: scale(.4); opacity: .8; } 70% { opacity: 0; } 100% { transform: scale(1.55); opacity: 0; } }
+.ct-ripple { position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--tt-teal-500); animation: ct-ripple 3.2s cubic-bezier(.22,1,.36,1) infinite; }
+.ct-badge { position: relative; z-index: 2; width: 132px; height: 132px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-blue);
+  display: flex; align-items: center; justify-content: center; animation: ct-bob 4s var(--ease-soft) infinite; }
+.ct-bubble { position: absolute; z-index: 3; border-radius: 14px; padding: 11px 14px; box-shadow: var(--shadow-md); }
 
 .ct-form-section { background: #fff; padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
 .ct-grid { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 40px; align-items: start; }
@@ -1071,15 +1045,17 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
   .ct-hero { padding-bottom: clamp(4rem,8vw,5.5rem); }
   .ct-hero h1 { font-size: var(--fs-3xl); }
   .ct-hero p { max-width: 100%; }
-  .ct-scene { height: 260px; }
-  .ct-map { width: min(340px, 100%); }
+  .ct-scene { height: 240px; }
+  .ct-badge { width: 116px; height: 116px; }
+  .ct-badge svg { width: 50px; height: 50px; }
 }
 @media (max-width: 480px) {
   .ct-hero h1 { font-size: var(--fs-2xl); }
   .ct-hero .ribbon { margin-bottom: 18px; }
   .ct-sede h2, .ct-map-head h2 { font-size: var(--fs-xl); }
-  .ct-scene { height: 220px; }
-  .ct-map { width: min(290px, 100%); }
+  .ct-scene { height: 200px; }
+  .ct-badge { width: 104px; height: 104px; }
+  .ct-badge svg { width: 46px; height: 46px; }
   .ct-cta { width: 100%; justify-content: center; }
   .ct-map-head { align-items: flex-start; }
   .ct-maps-btn { width: 100%; justify-content: center; }
@@ -1089,12 +1065,9 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
 }
 @media (max-width: 360px) {
   .ct-hero h1 { font-size: 1.9rem; }
-  .ct-scene { height: 190px; }
+  .ct-scene { height: 178px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .ctp-route, .ctp-bubble, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; }
-  .ctp-ring, .ctp-plane { display: none; }
-}
+@media (prefers-reduced-motion: reduce) { .ct-ripple, .ct-badge, .ct-bubble, .ct-arc, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; } }
 
 /* ============================================================
    AUTENTICACIÓN Y ADMINISTRACIÓN (login, sesión, edición)
@@ -1843,6 +1816,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
    Equipo — monograma de área (en vez de icono) y modo oscuro
    ============================================================ */
 .team-area .ic.mono { color: #ffffff; font: 800 1.25rem/1 var(--font-sans); letter-spacing: .02em; }
+@media (prefers-reduced-motion: reduce) { .net-node::after { animation: none !important; opacity: 0; } }
+
 /* Modo oscuro */
 .dark .equipo-hero { background: #0c1419; }
 .dark .lead-card h3 { color: #ffffff !important; font-weight: 700 !important; }

@@ -30,43 +30,20 @@ export default function ContactosPage() {
             </a>
           </div>
 
-          {/* Escena animada: tu mensaje viaja en avión de papel por una ruta
-              punteada hasta el pin de nuestra sede */}
+          {/* Escena animada de contacto */}
           <div className="ct-scene" aria-hidden="true">
-            <svg className="ct-map" viewBox="0 0 440 340" fill="none">
-              {/* Ruta de vuelo punteada (el guion fluye hacia la sede) */}
-              <path
-                id="ct-vuelo"
-                className="ctp-route"
-                d="M104 242 C 168 168, 236 216, 278 172 C 302 147, 316 126, 326 108"
-                stroke="rgba(255,255,255,.4)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeDasharray="3 11"
-              />
-              {/* Mensaje de origen: burbuja de chat que flota */}
-              <g className="ctp-bubble">
-                <rect x="40" y="212" width="70" height="50" rx="13" fill="#fff" />
-                <path d="M58 262 l-9 14 18-5 Z" fill="#fff" />
-                <g stroke="var(--tt-blue-700)" strokeWidth="3" strokeLinecap="round">
-                  <path d="M54 230 h42" />
-                  <path d="M54 243 h26" />
-                </g>
-              </g>
-              {/* Destino: nuestra sede (pin) con ondas de llegada */}
-              <circle className="ctp-ring" cx="348" cy="88" r="42" stroke="var(--tt-amber-500)" strokeWidth="2" />
-              <circle className="ctp-ring r2" cx="348" cy="88" r="42" stroke="var(--tt-amber-500)" strokeWidth="2" />
-              <circle cx="348" cy="88" r="36" fill="#fff" />
-              <path d="M348 68c-9.4 0-17 7.3-17 16.3 0 11.6 17 25.7 17 25.7s17-14.1 17-25.7c0-9-7.6-16.3-17-16.3Z" fill="var(--tt-green-600)" />
-              <circle cx="348" cy="85" r="6" fill="#fff" />
-              {/* Avión de papel que recorre la ruta */}
-              <g className="ctp-plane">
-                <polygon points="2,0 -24,11 -14,0 -24,-11" fill="var(--tt-amber-500)" stroke="#0C222F" strokeWidth="2" strokeLinejoin="round" />
-                <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
-                  <mpath href="#ct-vuelo" />
-                </animateMotion>
-              </g>
+            <svg width="320" height="320" viewBox="0 0 320 320" style={{ position: "absolute", opacity: 0.5 }}>
+              <circle className="ct-arc" cx="160" cy="160" r="120" fill="none" stroke="var(--tt-amber-500)" strokeWidth="2" strokeDasharray="6 10" strokeLinecap="round" style={{ animation: "ct-dash 3s linear infinite" }} />
             </svg>
+            <div className="ct-badge">
+              <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="var(--tt-blue-700)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M8 9h8" /><path d="M8 13h5" /></svg>
+            </div>
+            <div className="ct-bubble" style={{ top: 30, right: 28, background: "var(--tt-amber-500)", borderRadius: "14px 14px 14px 4px", animation: "ct-float1 5s var(--ease-soft) infinite" }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tt-navy-900)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+            </div>
+            <div className="ct-bubble" style={{ bottom: 44, left: 22, background: "var(--tt-green-600)", borderRadius: "14px 14px 4px 14px", animation: "ct-float2 6s var(--ease-soft) infinite" }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" /></svg>
+            </div>
           </div>
         </div>
       </section>

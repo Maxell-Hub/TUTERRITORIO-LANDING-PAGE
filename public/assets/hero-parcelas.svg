@@ -2,8 +2,7 @@
   <!--
     Trama catastral de la marca: calles ligeramente quebradas que forman predios,
     como en el imagotipo de Tuterritorio. Tres predios tintados (verde, azul y el
-    ámbar de acento) y el resto solo delineado. Se usa como fondo de los heros,
-    asomando por el costado derecho.
+    ámbar de acento) y el resto solo delineado. Se usa como fondo de los heros.
   -->
   <!-- Predios tintados (eco del imagotipo) -->
   <path d="M374 358 L528 348 L538 522 L356 504 Z" fill="#F0B63B" fill-opacity=".45"/>
