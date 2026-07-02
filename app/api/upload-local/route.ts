@@ -2,12 +2,24 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { promises as fs } from "fs";
 import path from "path";
+import { put } from "@vercel/blob";
 import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
+import { isBlobConfigured } from "@/lib/store";
 
 /**
- * Respaldo de subida para entornos con disco escribible (desarrollo local o
- * servidor Node propio). Guarda el archivo en public/uploads y devuelve su ruta.
- * En Vercel (serverless) esto no funciona; ahí se usa /api/upload (Vercel Blob).
+ * Subida de archivos del panel (imágenes de noticias/equipo).
+ *
+ * - En Vercel / con el store de Blob conectado (BLOB_STORE_ID o
+ *   BLOB_READ_WRITE_TOKEN): sube con `put()` del SDK, el MISMO mecanismo que
+ *   ya persiste el contenido editable. Funciona con el modelo nuevo de store
+ *   conectado, que solo expone BLOB_STORE_ID (no hace falta el token de subida
+ *   directa que exige /api/upload).
+ * - En local / servidor Node con disco escribible (sin Blob): guarda el archivo
+ *   en public/uploads y devuelve su ruta.
+ *
+ * Nota: al pasar por la función serverless, el cuerpo está limitado a ~4.5 MB
+ * en Vercel. Para imágenes de la web es suficiente; para archivos mayores se
+ * usaría la subida directa (/api/upload), que requiere BLOB_READ_WRITE_TOKEN.
  */
 
 const MAX_BYTES = 20 * 1024 * 1024;
@@ -67,8 +79,32 @@ export async function POST(req: Request) {
     );
   }
 
+  const filename = safeName(file.name || "archivo.bin");
+
+  // 1) Con Blob conectado (Vercel): sube con put() — mismo mecanismo que el contenido.
+  if (isBlobConfigured) {
+    try {
+      const buf = Buffer.from(await file.arrayBuffer());
+      const token = process.env.BLOB_READ_WRITE_TOKEN;
+      const blob = await put(`uploads/${filename}`, buf, {
+        access: "public",
+        contentType: file.type || undefined,
+        addRandomSuffix: true,
+        ...(token ? { token } : {}),
+      });
+      return NextResponse.json({ url: blob.url });
+    } catch (err) {
+      const detail = err instanceof Error ? err.message : String(err);
+      console.error("[upload] Error al subir a Blob:", detail);
+      return NextResponse.json(
+        { error: "No se pudo subir la imagen al almacenamiento. Intenta de nuevo." },
+        { status: 502 }
+      );
+    }
+  }
+
+  // 2) Sin Blob (local / servidor Node con disco escribible): guarda en public/uploads.
   try {
-    const filename = safeName(file.name || "archivo.bin");
     const buf = Buffer.from(await file.arrayBuffer());
     const dir = path.join(process.cwd(), "public", "uploads");
     await fs.mkdir(dir, { recursive: true });
