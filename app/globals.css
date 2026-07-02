@@ -423,7 +423,7 @@ img { max-width: 100%; }
 
 /* ---- PQRSD (hero + formulario) ---- */
 .pq-hero { position: relative; isolation: isolate; color: #fff; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat right -150px top -80px / 740px auto, var(--hero-base);
+  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base);
   padding: clamp(3rem,5.5vw,4.4rem) clamp(1rem,5vw,64px) clamp(3.4rem,6vw,4.8rem); }
 /* Cinta multicolor institucional en el borde inferior */
 .pq-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; z-index: 1; background: var(--ribbon); }
@@ -651,9 +651,9 @@ img { max-width: 100%; }
   box-shadow: 0 10px 30px rgba(0,0,0,.3); cursor: pointer; transition: transform .3s cubic-bezier(.22,1,.36,1), background .3s; }
 .video-frame:hover .video-play { transform: translate(-50%,-50%) scale(1.08); background: #fff; }
 
-/* Equipo — hero red de personas */
+/* Equipo — hero: el equipo (personas) sobre el plano del territorio */
 .equipo-hero { position: relative; overflow: hidden; min-height: 450px; display: flex; align-items: center;
-  background: linear-gradient(150deg,#0C222F 0%,#122E3D 55%,#163A4C 100%); color: #fff;
+  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base); color: #fff;
   padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
 .equipo-hero-grid { position: relative; max-width: 1200px; margin: 0 auto; display: grid;
   grid-template-columns: 1.05fr .95fr; gap: clamp(2rem,5vw,4rem); align-items: center; }
@@ -662,8 +662,10 @@ img { max-width: 100%; }
 .equipo-hero p { margin: 20px 0 0; max-width: 42rem; font: 400 1.125rem/1.65 var(--font-sans); color: rgba(255,255,255,.82); }
 .hero-net { position: relative; height: 420px; }
 .net-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.net-lines g { animation: tt-dash 2.6s linear infinite; }
-.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.5); }
+/* Solo los recorridos entre personas llevan el flujo animado del guion */
+.net-lines .net-routes { animation: tt-dash 2.6s linear infinite; }
+.net-node { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.5);
+  display: flex; align-items: center; justify-content: center; }
 .net-node::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor;
   opacity: 0; animation: tt-ring 3.4s ease-out infinite; }
 
@@ -705,7 +707,7 @@ img { max-width: 100%; }
    SERVICIOS — Trámites catastrales (banner + grilla con hover)
    ============================================================ */
 .serv-banner { position: relative; color: #fff; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat right -170px top -110px / 700px auto, var(--hero-base); }
+  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base); }
 /* Los blobs difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
 .serv-banner .blobA, .serv-banner .blobB { display: none; }
 .serv-banner-row { position: relative; max-width: var(--container-wide); margin: 0 auto;
@@ -788,7 +790,7 @@ img { max-width: 100%; }
    RECURSOS — Normativas + Glosario
    ============================================================ */
 .rec-hero { position: relative; color: #fff; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat right -150px top -90px / 720px auto, var(--hero-base);
+  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base);
   padding: clamp(2.8rem,6vw,4.4rem) clamp(1rem,5vw,64px); }
 /* Los destellos difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
 .rec-glow { display: none; }
@@ -960,15 +962,11 @@ img { max-width: 100%; }
    CONTÁCTENOS (hero animado + formulario + mapa)
    ============================================================ */
 @keyframes ct-ripple { 0% { transform: scale(.35); opacity: .55; } 100% { transform: scale(1.9); opacity: 0; } }
-@keyframes ct-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-@keyframes ct-float1 { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-16px) translateX(6px); } }
-@keyframes ct-float2 { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(14px) translateX(-8px); } }
-@keyframes ct-dash { to { stroke-dashoffset: -64; } }
 @keyframes ct-pop { 0% { transform: scale(.4); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes ct-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
 .ct-hero { position: relative; overflow: hidden;
-  background: var(--hero-parcelas) no-repeat right -150px top -70px / 740px auto, var(--hero-base);
+  background: var(--hero-parcelas) no-repeat center top / cover, var(--hero-base);
   padding: clamp(3rem,6vw,5.5rem) clamp(1rem,5vw,64px) clamp(5rem,8vw,7rem); }
 /* La trama de puntos se retiró: el fondo ahora usa la trama catastral de la marca */
 .ct-halftone { display: none; }
@@ -984,11 +982,24 @@ img { max-width: 100%; }
   transition: transform var(--dur-base) var(--ease-soft); }
 .ct-cta:hover { transform: translateY(-2px); }
 
+/* Escena del hero: un plano catastral con el pin de "encuéntranos" sobre el
+   predio ámbar, en el mismo lenguaje del imagotipo y de la trama de fondo */
 .ct-scene { position: relative; height: 340px; display: flex; align-items: center; justify-content: center; }
-.ct-ripple { position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--tt-teal-500); animation: ct-ripple 3.2s cubic-bezier(.22,1,.36,1) infinite; }
-.ct-badge { position: relative; z-index: 2; width: 132px; height: 132px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-blue);
-  display: flex; align-items: center; justify-content: center; animation: ct-bob 4s var(--ease-soft) infinite; }
-.ct-bubble { position: absolute; z-index: 3; border-radius: 14px; padding: 11px 14px; box-shadow: var(--shadow-md); }
+.ct-map { width: min(430px, 100%); height: auto; display: block; filter: drop-shadow(0 24px 40px rgba(4,14,20,.35)); }
+/* El predio ámbar "respira" mientras el pin lo señala */
+.ctm-parcel { animation: ctm-parcel 3.6s var(--ease-soft) infinite; }
+@keyframes ctm-parcel { 0%,100% { fill-opacity: .55; } 50% { fill-opacity: .9; } }
+/* Ondas de ubicación que emanan del punto del pin */
+.ctm-ring { transform-box: fill-box; transform-origin: center; animation: ctm-ring 3.6s ease-out infinite; }
+.ctm-ring.r2 { animation-delay: 1.8s; }
+@keyframes ctm-ring { 0% { transform: scale(.3); opacity: .85; } 70% { opacity: 0; } 100% { transform: scale(1.75); opacity: 0; } }
+/* El pin cae al cargar y luego flota suavemente */
+.ctm-pin { animation: ctm-drop .7s var(--ease-soft) both, ctm-float 3.6s var(--ease-soft) .7s infinite; }
+@keyframes ctm-drop { from { transform: translateY(-46px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes ctm-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+/* Sombra del pin: se encoge cuando el pin sube */
+.ctm-shadow { transform-box: fill-box; transform-origin: center; animation: ctm-shadow 3.6s var(--ease-soft) .7s infinite; }
+@keyframes ctm-shadow { 0%,100% { opacity: .32; transform: scale(1); } 50% { opacity: .16; transform: scale(.72); } }
 
 .ct-form-section { background: #fff; padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
 .ct-grid { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 40px; align-items: start; }
@@ -1045,17 +1056,15 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
   .ct-hero { padding-bottom: clamp(4rem,8vw,5.5rem); }
   .ct-hero h1 { font-size: var(--fs-3xl); }
   .ct-hero p { max-width: 100%; }
-  .ct-scene { height: 240px; }
-  .ct-badge { width: 116px; height: 116px; }
-  .ct-badge svg { width: 50px; height: 50px; }
+  .ct-scene { height: 260px; }
+  .ct-map { width: min(340px, 100%); }
 }
 @media (max-width: 480px) {
   .ct-hero h1 { font-size: var(--fs-2xl); }
   .ct-hero .ribbon { margin-bottom: 18px; }
   .ct-sede h2, .ct-map-head h2 { font-size: var(--fs-xl); }
-  .ct-scene { height: 200px; }
-  .ct-badge { width: 104px; height: 104px; }
-  .ct-badge svg { width: 46px; height: 46px; }
+  .ct-scene { height: 220px; }
+  .ct-map { width: min(290px, 100%); }
   .ct-cta { width: 100%; justify-content: center; }
   .ct-map-head { align-items: flex-start; }
   .ct-maps-btn { width: 100%; justify-content: center; }
@@ -1065,9 +1074,12 @@ textarea.ct-input { height: auto; padding: 14px 16px; line-height: 1.5; resize: 
 }
 @media (max-width: 360px) {
   .ct-hero h1 { font-size: 1.9rem; }
-  .ct-scene { height: 178px; }
+  .ct-scene { height: 190px; }
 }
-@media (prefers-reduced-motion: reduce) { .ct-ripple, .ct-badge, .ct-bubble, .ct-arc, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .ctm-parcel, .ctm-pin, .ctm-shadow, .ct-success-ring .ring, .ct-success-ring .disc { animation: none !important; }
+  .ctm-ring { display: none; }
+}
 
 /* ============================================================
    AUTENTICACIÓN Y ADMINISTRACIÓN (login, sesión, edición)
@@ -1818,8 +1830,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .team-area .ic.mono { color: #ffffff; font: 800 1.25rem/1 var(--font-sans); letter-spacing: .02em; }
 @media (prefers-reduced-motion: reduce) { .net-node::after { animation: none !important; opacity: 0; } }
 
-/* Modo oscuro */
-.dark .equipo-hero { background: #0c1419; }
+/* Modo oscuro (el hero toma su fondo de --hero-base; la trama se conserva) */
 .dark .lead-card h3 { color: #ffffff !important; font-weight: 700 !important; }
 .dark .avatar-grid .cap { color: #ffffff !important; font-weight: 700 !important; }
 .dark .avatar-grid .cap .role { color: #b9c6d0 !important; font-weight: 500 !important; }

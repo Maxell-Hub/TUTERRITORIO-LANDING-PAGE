@@ -1,20 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" fill="none">
   <!--
-    Trama catastral de la marca: calles ligeramente quebradas que forman predios,
-    como en el imagotipo de Tuterritorio. Tres predios tintados (verde, azul y el
-    ámbar de acento) y el resto solo delineado. Se usa como fondo de los heros.
+    Trama catastral de la marca, versión extendida a lo ancho del hero: calles
+    ligeramente quebradas que forman predios, como en el imagotipo de
+    Tuterritorio. Algunos predios tintados (verde, azul y el ámbar de acento)
+    y el resto solo delineado. Se usa como fondo de los heros de página.
   -->
   <!-- Predios tintados (eco del imagotipo) -->
-  <path d="M374 358 L528 348 L538 522 L356 504 Z" fill="#F0B63B" fill-opacity=".45"/>
-  <path d="M182 164 L326 158 L346 332 L172 326 Z" fill="#8FBE4E" fill-opacity=".13"/>
-  <path d="M570 176 L726 164 L726 330 L554 320 Z" fill="#59A9C4" fill-opacity=".12"/>
+  <path d="M748 380 L914 360 L926 556 L738 548 Z" fill="#F0B63B" fill-opacity=".4"/>
+  <path d="M340 158 L524 170 L516 340 L356 350 Z" fill="#8FBE4E" fill-opacity=".12"/>
+  <path d="M1140 160 L1322 168 L1314 338 L1152 348 Z" fill="#59A9C4" fill-opacity=".11"/>
+  <path d="M140 370 L330 378 L318 552 L154 558 Z" fill="#8FBE4E" fill-opacity=".08"/>
+  <path d="M950 152 L1112 158 L1124 346 L940 340 Z" fill="#59A9C4" fill-opacity=".06"/>
   <!-- Calles -->
   <g stroke="#FFFFFF" stroke-opacity=".09" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-    <path d="M150 -20 L168 150 L158 340 L172 530 L160 740"/>
-    <path d="M350 -20 L338 144 L360 346 L342 516 L352 740"/>
-    <path d="M540 -20 L556 162 L540 334 L552 536 L528 740"/>
-    <path d="M-20 158 L168 150 L338 144 L556 162 L740 150"/>
-    <path d="M-20 352 L158 340 L360 346 L540 334 L740 344"/>
-    <path d="M-20 522 L172 530 L342 516 L552 536 L740 528"/>
+    <path d="M120 -20 L134 148 L126 356 L140 572 L128 780"/>
+    <path d="M340 -20 L326 142 L344 364 L330 566 L342 780"/>
+    <path d="M522 -20 L538 156 L528 352 L544 576 L530 780"/>
+    <path d="M740 -20 L726 146 L736 368 L724 562 L738 780"/>
+    <path d="M922 -20 L936 152 L926 346 L940 570 L928 780"/>
+    <path d="M1138 -20 L1126 144 L1140 362 L1128 568 L1142 780"/>
+    <path d="M1322 -20 L1336 154 L1326 350 L1340 574 L1330 780"/>
+    <path d="M-20 158 L134 148 L326 142 L538 156 L726 146 L936 152 L1126 144 L1336 154 L1460 148"/>
+    <path d="M-20 352 L126 356 L344 364 L528 352 L736 368 L926 346 L1140 362 L1326 350 L1460 358"/>
+    <path d="M-20 562 L140 572 L330 566 L544 576 L724 562 L940 570 L1128 568 L1340 574 L1460 566"/>
   </g>
 </svg>
