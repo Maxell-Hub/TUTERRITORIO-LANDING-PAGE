@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" fill="none">
+  <!--
+    Trama catastral de la marca: calles ligeramente quebradas que forman predios,
+    como en el imagotipo de Tuterritorio. Tres predios tintados (verde, azul y el
+    ámbar de acento) y el resto solo delineado. Se usa como fondo de los heros.
+  -->
+  <!-- Predios tintados (eco del imagotipo) -->
+  <path d="M374 358 L528 348 L538 522 L356 504 Z" fill="#F0B63B" fill-opacity=".45"/>
+  <path d="M182 164 L326 158 L346 332 L172 326 Z" fill="#8FBE4E" fill-opacity=".13"/>
+  <path d="M570 176 L726 164 L726 330 L554 320 Z" fill="#59A9C4" fill-opacity=".12"/>
+  <!-- Calles -->
+  <g stroke="#FFFFFF" stroke-opacity=".09" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 -20 L168 150 L158 340 L172 530 L160 740"/>
+    <path d="M350 -20 L338 144 L360 346 L342 516 L352 740"/>
+    <path d="M540 -20 L556 162 L540 334 L552 536 L528 740"/>
+    <path d="M-20 158 L168 150 L338 144 L556 162 L740 150"/>
+    <path d="M-20 352 L158 340 L360 346 L540 334 L740 344"/>
+    <path d="M-20 522 L172 530 L342 516 L552 536 L740 528"/>
+  </g>
+</svg>

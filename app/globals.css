@@ -18,6 +18,10 @@
   --text-body:var(--tt-gray-900); --border-subtle:var(--tt-gray-200);
   --ribbon:linear-gradient(90deg,#1E5167 0%,#1E5167 25%,#3B85A5 25%,#3B85A5 50%,#4E8654 50%,#4E8654 75%,#F0B63B 75%,#F0B63B 100%);
   --grad-hero:linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%);
+  /* Fondo de los heros de página: azul profundo casi plano + trama catastral de la marca
+     (calles y predios como en el imagotipo, ver /assets/hero-parcelas.svg) */
+  --hero-base:linear-gradient(168deg,#123648 0%,#0C222F 55%,#0A1B24 100%);
+  --hero-parcelas:url("/assets/hero-parcelas.svg");
   --font-sans:var(--font-inter),ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-display:var(--font-inter),ui-sans-serif,system-ui,sans-serif;
   --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700; --fw-extra:800;
@@ -419,22 +423,12 @@ img { max-width: 100%; }
 
 /* ---- PQRSD (hero + formulario) ---- */
 .pq-hero { position: relative; isolation: isolate; color: #fff; overflow: hidden;
-  background:
-    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--tt-green-500) 30%, transparent) 0%, transparent 46%),
-    radial-gradient(120% 130% at 0% 100%, color-mix(in srgb, var(--tt-blue-500) 26%, transparent) 0%, transparent 50%),
-    var(--grad-hero);
+  background: var(--hero-parcelas) no-repeat right -150px top -80px / 740px auto, var(--hero-base);
   padding: clamp(3rem,5.5vw,4.4rem) clamp(1rem,5vw,64px) clamp(3.4rem,6vw,4.8rem); }
-/* Brillo diagonal sutil para dar profundidad */
-.pq-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
-  background: linear-gradient(115deg, transparent 0%, transparent 40%, rgba(255,255,255,.07) 52%, transparent 64%, transparent 100%); }
 /* Cinta multicolor institucional en el borde inferior */
 .pq-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; z-index: 1; background: var(--ribbon); }
-/* Halos de color corporativos suaves */
-.pq-hero-deco { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
-.pq-hero-deco::before { content: ""; position: absolute; top: -42%; right: -6%; width: 520px; height: 520px; border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--tt-green-500) 50%, transparent) 0%, transparent 66%); }
-.pq-hero-deco::after { content: ""; position: absolute; bottom: -55%; left: -8%; width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--tt-blue-600) 42%, transparent) 0%, transparent 68%); }
+/* Los halos difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
+.pq-hero-deco { display: none; }
 .pq-hero-inner { position: relative; z-index: 2; max-width: var(--container-wide); margin: 0 auto; }
 .pq-hero h1 { margin: 18px 0 0; font: var(--fw-extra) clamp(2rem,4.4vw,3rem)/1.05 var(--font-display); letter-spacing: var(--ls-tight); color: #fff; }
 .pq-hero p { margin: 14px 0 0; max-width: 40em; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: rgba(255,255,255,.82); }
@@ -710,11 +704,10 @@ img { max-width: 100%; }
 /* ============================================================
    SERVICIOS — Trámites catastrales (banner + grilla con hover)
    ============================================================ */
-.serv-banner { position: relative; background: linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); color: #fff; overflow: hidden; }
-.serv-banner .blobA { position: absolute; top: -90px; right: -40px; width: 360px; height: 360px;
-  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; background: radial-gradient(circle at 35% 35%, rgba(89,169,196,.30), rgba(89,169,196,0) 70%); pointer-events: none; }
-.serv-banner .blobB { position: absolute; bottom: -120px; left: 8%; width: 300px; height: 300px;
-  border-radius: 58% 42% 37% 63% / 56% 59% 41% 44%; background: radial-gradient(circle at 50% 50%, rgba(157,195,61,.18), rgba(157,195,61,0) 70%); pointer-events: none; }
+.serv-banner { position: relative; color: #fff; overflow: hidden;
+  background: var(--hero-parcelas) no-repeat right -170px top -110px / 700px auto, var(--hero-base); }
+/* Los blobs difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
+.serv-banner .blobA, .serv-banner .blobB { display: none; }
 .serv-banner-row { position: relative; max-width: var(--container-wide); margin: 0 auto;
   padding: clamp(2.4rem,5vw,3.6rem) clamp(1rem,5vw,64px); display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
 .serv-banner h1 { margin: 18px 0 0; font: var(--fw-extra) clamp(2.1rem,4.4vw,3.1rem)/1.04 var(--font-display); letter-spacing: var(--ls-tight); color: #fff; }
@@ -794,9 +787,11 @@ img { max-width: 100%; }
 /* ============================================================
    RECURSOS — Normativas + Glosario
    ============================================================ */
-.rec-hero { position: relative; background: var(--grad-hero); color: #fff; overflow: hidden;
+.rec-hero { position: relative; color: #fff; overflow: hidden;
+  background: var(--hero-parcelas) no-repeat right -150px top -90px / 720px auto, var(--hero-base);
   padding: clamp(2.8rem,6vw,4.4rem) clamp(1rem,5vw,64px); }
-.rec-glow { position: absolute; pointer-events: none; }
+/* Los destellos difuminados se retiraron: el fondo ahora usa la trama catastral de la marca */
+.rec-glow { display: none; }
 .rec-hero-inner { position: relative; z-index: 1; max-width: var(--container-wide); margin: 0 auto; }
 .rec-hero h1 { margin: 18px 0 0; max-width: 22ch; font: var(--fw-extra) clamp(2.1rem,4.6vw,3.2rem)/1.06 var(--font-display); letter-spacing: var(--ls-tight); color: #fff; }
 .rec-hero p { margin: 16px 0 0; max-width: 52ch; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: rgba(255,255,255,.82); }
@@ -972,10 +967,11 @@ img { max-width: 100%; }
 @keyframes ct-pop { 0% { transform: scale(.4); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes ct-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
-.ct-hero { position: relative; overflow: hidden; background: var(--grad-hero);
+.ct-hero { position: relative; overflow: hidden;
+  background: var(--hero-parcelas) no-repeat right -150px top -70px / 740px auto, var(--hero-base);
   padding: clamp(3rem,6vw,5.5rem) clamp(1rem,5vw,64px) clamp(5rem,8vw,7rem); }
-.ct-halftone { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.10) 1.5px, transparent 1.6px);
-  background-size: 22px 22px; opacity: .6; pointer-events: none; }
+/* La trama de puntos se retiró: el fondo ahora usa la trama catastral de la marca */
+.ct-halftone { display: none; }
 .ct-swoosh { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 90px; display: block; }
 .ct-hero-grid { position: relative; max-width: var(--container-max); margin: 0 auto; display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 48px; align-items: center; }
@@ -1546,7 +1542,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark { color-scheme: dark;
   --text-body:#e6edf2; --tt-gray-900:#e6edf2; --tt-gray-700:#c3d0d9; --tt-gray-500:#9fb0bd;
   --tt-gray-300:#3a4751; --tt-gray-200:#2b3742; --tt-gray-100:#1a242c; --tt-gray-50:#161f26;
-  --tt-ink:#f0f5f8; --border-subtle:#2c3942; }
+  --tt-ink:#f0f5f8; --border-subtle:#2c3942;
+  /* Heros: mismo fondo que la página en oscuro; la trama catastral se mantiene */
+  --hero-base:linear-gradient(#0c1419,#0c1419); }
 .dark body { background:#0c1419; }
 .dark .brand-row-bg, .dark .mainnav, .dark .mainnav.is-stuck { background:#0f171d; border-color:#2c3942; }
 .dark .section-gray, .dark .news-header, .dark .rec-section, .dark .pq-section, .dark .legal-hero { background:#0f171d; }
@@ -1888,9 +1886,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* MODO OSCURO — heros iniciales (Servicios, Recursos, Contacto) fundidos con el
    fondo de la página, igual que el hero de Nuestro Equipo */
-.dark .serv-banner, .dark .rec-hero, .dark .ct-hero, .dark .pq-hero { background: #0c1419 !important; }
-/* En oscuro, atenúa los halos de color del hero de PQRSD para que se funda con la página */
-.dark .pq-hero-deco { opacity: .4; }
+/* (los heros de Servicios, Recursos, Contacto y PQRSD toman su fondo oscuro de
+   --hero-base, definida arriba en .dark; la trama catastral se conserva) */
 
 /* MODO OSCURO — Contacto: la curva blanca (ct-swoosh) se funde con el fondo */
 .dark .ct-swoosh path { fill: #0c1419 !important; }
