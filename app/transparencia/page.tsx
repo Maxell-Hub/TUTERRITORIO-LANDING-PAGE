@@ -21,9 +21,16 @@ const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] 
   { n: "10", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
 ];
 
-/* Colores corporativos que rotan por tarjeta. Se evita el amarillo como relleno
-   porque no alcanza el contraste mínimo (texto blanco sobre amarillo). */
-const T_COLORS = ["#3B85A5", "#4E8654", "#2F6B86", "#0C222F"];
+/* Colores corporativos que se alternan por tarjeta (número). Se excluye el azul
+   oscuro (#0C222F). Cada color lleva su color de texto para el relleno al pasar
+   el cursor: sobre el amarillo y el turquesa (claros) el texto va oscuro para
+   mantener el contraste; sobre azul y verde va blanco. */
+const T_COLORS: { accent: string; fg: string }[] = [
+  { accent: "#3B85A5", fg: "#ffffff" }, // azul corporativo
+  { accent: "#4E8654", fg: "#ffffff" }, // verde corporativo
+  { accent: "#F0B63B", fg: "#0C222F" }, // amarillo (acento)
+  { accent: "#59A9C4", fg: "#0C222F" }, // turquesa
+];
 
 export default function TransparenciaPage() {
   return (
@@ -37,8 +44,10 @@ export default function TransparenciaPage() {
         </p>
 
         <div className="t-grid">
-          {SUBSECCIONES.map((s, i) => (
-            <Link key={s.href} href={s.href} className="t-card" style={{ ["--accent" as string]: T_COLORS[i % T_COLORS.length] }}>
+          {SUBSECCIONES.map((s, i) => {
+            const c = T_COLORS[i % T_COLORS.length];
+            return (
+            <Link key={s.href} href={s.href} className="t-card" style={{ ["--accent" as string]: c.accent, ["--num-fg" as string]: c.fg }}>
               <span className="t-num">{s.n}</span>
               <span className="t-card-body">
                 <span className="t-card-title">{s.titulo}</span>
@@ -48,7 +57,8 @@ export default function TransparenciaPage() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </span>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

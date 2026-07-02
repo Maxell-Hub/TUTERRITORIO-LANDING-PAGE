@@ -1408,14 +1408,14 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .t-num { flex: none; width: 46px; height: 46px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
   background: color-mix(in srgb, var(--accent) 13%, #fff); color: color-mix(in srgb, var(--accent) 82%, #0C222F);
   font: var(--fw-extra) var(--fs-lg)/1 var(--font-sans); letter-spacing: -.02em; transition: background .25s var(--ease-soft), color .25s var(--ease-soft); }
-.t-card:hover .t-num { background: var(--accent); color: #fff; }
+.t-card:hover .t-num { background: var(--accent); color: var(--num-fg, #fff); }
 .t-card-body { display: flex; flex-direction: column; gap: 4px; flex: 1 1 auto; min-width: 0; }
 .t-card-title { font: var(--fw-bold) var(--fs-md)/1.25 var(--font-sans); color: var(--tt-navy-700); }
 .t-card-desc { font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
 .t-card-go { flex: none; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--border-subtle); align-self: center;
   display: inline-flex; align-items: center; justify-content: center; color: var(--accent);
   transition: background .25s var(--ease-soft), color .25s var(--ease-soft), border-color .25s var(--ease-soft), transform .25s var(--ease-soft); }
-.t-card:hover .t-card-go { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateX(3px); }
+.t-card:hover .t-card-go { background: var(--accent); border-color: var(--accent); color: var(--num-fg, #fff); transform: translateX(3px); }
 .t-reuse, .t-extlink { display: flex; align-items: center; gap: 9px; margin: 12px 0 0; font: var(--fw-semibold) var(--fs-base)/1.4 var(--font-sans); }
 .t-reuse svg, .t-extlink svg { flex: none; color: var(--tt-blue-700); }
 .t-reuse a, .t-extlink a { color: var(--tt-blue-700); text-decoration: underline; text-underline-offset: 2px; }
