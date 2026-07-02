@@ -42,7 +42,7 @@ export default function Splash({ onFinish }: { onFinish?: () => void }) {
       <div className="splash-brand">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="splash-mark" src="/assets/logo-imagotipo-tr.png" alt="Tuterritorio" />
-        <span className="splash-word">Tuterritorio</span>
+        <span className="splash-word notranslate" translate="no">Tuterritorio</span>
       </div>
       <span className="splash-bar"><span /></span>
     </div>

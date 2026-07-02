@@ -31,8 +31,8 @@ export default function Hero() {
           <h1>
             Conoce tu predio,<br />
             asegura{" "}
-            <span className="hero-tu">
-              <span className="green">Tuterritorio</span>
+            <span className="hero-tu" translate="no">
+              <span className="green notranslate">Tuterritorio</span>
             </span>
           </h1>
           <Editable as="p" id="home.intro" multiline>
