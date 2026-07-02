@@ -28,9 +28,6 @@ export default function EquipoPage() {
         <div style={{ position: "absolute", bottom: -140, left: -80, width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle at 50% 50%, rgba(89,169,196,.16), rgba(89,169,196,0) 70%)", pointerEvents: "none" }} />
         <div className="equipo-hero-grid">
           <div className="reveal">
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 999, background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.18)", font: "700 0.75rem/1 var(--font-sans)", letterSpacing: "0.04em", textTransform: "uppercase", color: "#74BAD3" }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#74BAD3" }} /> Nuestro equipo
-            </span>
             <h1>Detrás de cada predio,<br /><span className="cy">hay un equipo</span> que lo hace posible</h1>
             <Editable as="p" id="equipo.intro" multiline>Un equipo humano y comprometido que trabaja cada día para que conocer y cuidar tu territorio sea más fácil, cercano y transparente.</Editable>
             <span className="ribbon5" style={{ margin: "26px 0 0", width: 140 }} />
