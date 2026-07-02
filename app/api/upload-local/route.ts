@@ -12,6 +12,18 @@ import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
 const MAX_BYTES = 20 * 1024 * 1024;
 
+// Solo se aceptan los mismos formatos que la ruta de Vercel Blob (/api/upload).
+// Evita subir HTML/SVG/JS que se servirían desde el propio origen (XSS almacenado).
+const ALLOWED_EXT = new Set(["jpg", "jpeg", "png", "webp", "gif", "avif", "pdf"]);
+const ALLOWED_MIME = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "image/avif",
+  "application/pdf",
+]);
+
 function safeName(original: string): string {
   const ext = (original.split(".").pop() || "bin").toLowerCase().replace(/[^a-z0-9]/g, "") || "bin";
   const base =
@@ -44,6 +56,15 @@ export async function POST(req: Request) {
   if (!file) return NextResponse.json({ error: "No se recibió ningún archivo" }, { status: 400 });
   if (file.size > MAX_BYTES) {
     return NextResponse.json({ error: "El archivo no puede superar los 20 MB" }, { status: 400 });
+  }
+
+  // Allowlist de formato: extensión y tipo MIME declarado deben estar permitidos.
+  const ext = (file.name?.split(".").pop() || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (!ALLOWED_EXT.has(ext) || !ALLOWED_MIME.has(file.type)) {
+    return NextResponse.json(
+      { error: "Tipo de archivo no permitido. Formatos aceptados: JPG, PNG, WebP, GIF, AVIF o PDF." },
+      { status: 415 }
+    );
   }
 
   try {

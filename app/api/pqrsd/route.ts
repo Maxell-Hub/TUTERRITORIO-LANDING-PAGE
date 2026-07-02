@@ -20,11 +20,26 @@ const FROM = process.env.PQRSD_FROM || process.env.CONTACT_FROM || "Tuterritorio
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Longitud máxima por campo (anti-abuso y Res. 1519/2020, Anexo 3 num. 5.ii).
+const MAX_LEN: Record<string, number> = {
+  tipo: 40,
+  nombre: 120,
+  tipoDocumento: 30,
+  documento: 20,
+  correo: 254,
+  telefono: 30,
+  direccion: 200,
+  asunto: 200,
+  descripcion: 5000,
+};
+
 const esc = (s: unknown) =>
   String(s ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
 export async function POST(req: Request) {
   // Anti-spam/abuso: máx. 5 radicaciones por IP cada 10 minutos.
@@ -55,6 +70,15 @@ export async function POST(req: Request) {
   if (faltantes.length) {
     return NextResponse.json(
       { ok: false, error: `Faltan campos obligatorios: ${faltantes.join(", ")}` },
+      { status: 422 }
+    );
+  }
+
+  // Validación de longitud máxima por campo.
+  const excedidos = Object.keys(MAX_LEN).filter((k) => String(body[k] ?? "").length > MAX_LEN[k]);
+  if (excedidos.length) {
+    return NextResponse.json(
+      { ok: false, error: `Campos demasiado largos: ${excedidos.join(", ")}` },
       { status: 422 }
     );
   }
@@ -143,7 +167,8 @@ export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     // Sin clave configurada (p. ej. en local): no se envía, pero no se rompe.
-    console.warn("[PQRSD] RESEND_API_KEY no configurada — el correo NO se envió.", { nombre, correo, asunto });
+    // No se registran datos personales en los logs (minimización, Ley 1581/2012).
+    console.warn("[PQRSD] RESEND_API_KEY no configurada — el correo NO se envió.");
     return NextResponse.json({ ok: true, warning: "email-no-configurado" }, { status: 200 });
   }
 
@@ -153,7 +178,8 @@ export async function POST(req: Request) {
       from: FROM,
       to: [TO],
       replyTo: String(body.correo),
-      subject: `PQRSD ${tipo} — ${nombre}`,
+      // El asunto no es HTML: se usa el valor sin escapar (Resend lo codifica).
+      subject: `PQRSD ${String(body.tipo).trim()} — ${String(body.nombre).trim()}`,
       html,
       text,
     });

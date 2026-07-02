@@ -3,6 +3,20 @@
 Auditoría de seguridad por capas, cambios aplicados, plan pendiente, análisis de
 rendimiento y recomendaciones de mantenimiento. Resumen ágil.
 
+> **Auditoría 2026-07:** ver el informe completo (7 áreas, cruce con la
+> Res. MinTIC 1519/2020 Anexo 3 y Ley 1581/2012) en `AUDITORIA-2026-07.md`.
+> Correcciones rápidas aplicadas: allowlist de formatos en `/api/upload-local`,
+> límites de longitud por campo y escape de comillas en `contacto`/`pqrsd`,
+> logs sin datos personales, y cabecera `X-XSS-Protection: 0`.
+>
+> **Excepciones documentadas (cumplimiento Res. 1519, Anexo 3 num. 14):**
+> - `X-XSS-Protection` se fija en `0`: el auditor XSS de los navegadores fue
+>   retirado (llegaba a crear vulnerabilidades); la protección real la da la CSP.
+> - `Public-Key-Pins` (HPKP) no se implementa: retirada de todos los navegadores;
+>   su función la cubren HSTS + la CA de Vercel/Let's Encrypt.
+> - El script de Google Translate no lleva SRI: Google lo sirve con contenido
+>   rotativo (SRI inviable). Mitigado con la allowlist estricta de la CSP.
+
 ---
 
 ## 1. Infraestructura y puertos

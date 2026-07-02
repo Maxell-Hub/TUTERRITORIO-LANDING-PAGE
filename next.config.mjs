@@ -27,6 +27,10 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  // "0" es el valor seguro recomendado hoy: el auditor XSS de los navegadores fue
+  // retirado (llegaba a crear vulnerabilidades); la protección real la da la CSP.
+  // Se fija explícitamente por cumplimiento de la Res. MinTIC 1519/2020 (Anexo 3, num. 14).
+  { key: "X-XSS-Protection", value: "0" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
 ];
 

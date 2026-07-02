@@ -17,11 +17,22 @@ const REQUIRED = ["nombre", "cedula", "correo", "mensaje", "autorizacion"];
 const TO = "contactenos@tuterritorio.gov.co";
 const FROM = process.env.CONTACT_FROM || "Tuterritorio <no-responder@tuterritorio.gov.co>";
 
+// Longitud máxima por campo (anti-abuso y Res. 1519/2020, Anexo 3 num. 5.ii).
+const MAX_LEN: Record<string, number> = {
+  nombre: 120,
+  cedula: 20,
+  correo: 254,
+  telefono: 30,
+  mensaje: 5000,
+};
+
 const esc = (s: unknown) =>
   String(s ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
 export async function POST(req: Request) {
   // Anti-spam/abuso: máx. 5 envíos por IP cada 10 minutos.
@@ -50,6 +61,15 @@ export async function POST(req: Request) {
   });
   if (faltantes.length) {
     return NextResponse.json({ ok: false, error: `Faltan campos: ${faltantes.join(", ")}` }, { status: 422 });
+  }
+
+  // Validación de longitud máxima por campo.
+  const excedidos = Object.keys(MAX_LEN).filter((k) => String(body[k] ?? "").length > MAX_LEN[k]);
+  if (excedidos.length) {
+    return NextResponse.json(
+      { ok: false, error: `Campos demasiado largos: ${excedidos.join(", ")}` },
+      { status: 422 }
+    );
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(body.correo))) {
@@ -137,7 +157,8 @@ export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     // Sin clave configurada (p. ej. en local): no se envía, pero no se rompe.
-    console.warn("[CONTACTO] RESEND_API_KEY no configurada — el correo NO se envió.", { nombre, correo });
+    // No se registran datos personales en los logs (minimización, Ley 1581/2012).
+    console.warn("[CONTACTO] RESEND_API_KEY no configurada — el correo NO se envió.");
     return NextResponse.json({ ok: true, warning: "email-no-configurado" }, { status: 200 });
   }
 
@@ -147,7 +168,8 @@ export async function POST(req: Request) {
       from: FROM,
       to: [TO],
       replyTo: String(body.correo),
-      subject: `Contacto Tuterritorio — ${nombre}`,
+      // El asunto no es HTML: se usa el valor sin escapar (Resend lo codifica).
+      subject: `Contacto Tuterritorio — ${String(body.nombre).trim()}`,
       html,
       text,
     });
