@@ -1,10 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Carga el widget de Google Translate (oculto). La traducción ES↔EN se controla
  * desde el círculo flotante de idioma vía la cookie `googtrans` + recarga.
+ *
+ * Además, en modo inglés protege términos que NO deben traducirse (marca,
+ * siglas, gov.co, correos) envolviéndolos en <span class="notranslate"> ANTES
+ * de que Google traduzca. Así se evitan incongruencias como "Tuterritorio"
+ * convertido en "Your Territory". En español no se toca nada del DOM.
  */
 declare global {
   interface Window {
@@ -13,8 +19,84 @@ declare global {
   }
 }
 
+/** Términos que deben permanecer en su forma original en la versión en inglés. */
+const TERM_SOURCE =
+  // correos electrónicos
+  "([\\w.+-]+@[\\w-]+\\.[\\w.-]+)" +
+  // dominios y siglas con punto
+  "|\\b(gov\\.co|datos\\.gov\\.co)\\b" +
+  // marca
+  "|\\bTuterritorio\\b" +
+  // siglas institucionales / catastrales
+  "|\\b(PQRSD|SECOP|SUIT|NPN|IGAC|SNR|RUNT|SISBÉN|SISBEN|SUIP|NIT|RUT|SIG)\\b";
+
+function isEnglish(): boolean {
+  if (typeof document === "undefined") return false;
+  return /googtrans=\/[a-z]{2}\/en/.test(document.cookie);
+}
+
+/** Envuelve los términos protegidos en spans notranslate dentro del texto visible. */
+function protectTerms(): void {
+  if (typeof document === "undefined" || !document.body) return;
+
+  const matcher = new RegExp(TERM_SOURCE, "g");
+  const test = new RegExp(TERM_SOURCE);
+
+  const skip = (el: Element | null): boolean =>
+    !!el?.closest(
+      ".notranslate,[translate='no'],script,style,noscript,textarea,input," +
+        ".edt,.edt-area,[contenteditable='true'],#google_translate_element,.skiptranslate,font"
+    );
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const value = node.nodeValue;
+      if (!value || !test.test(value)) return NodeFilter.FILTER_REJECT;
+      if (skip(node.parentElement)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+
+  const targets: Text[] = [];
+  let current: Node | null;
+  while ((current = walker.nextNode())) targets.push(current as Text);
+
+  for (const node of targets) {
+    const text = node.nodeValue || "";
+    matcher.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let last = 0;
+    let m: RegExpExecArray | null;
+    while ((m = matcher.exec(text))) {
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const span = document.createElement("span");
+      span.className = "notranslate";
+      span.setAttribute("translate", "no");
+      span.textContent = m[0];
+      frag.appendChild(span);
+      last = m.index + m[0].length;
+      if (matcher.lastIndex === m.index) matcher.lastIndex++; // evita bucles en coincidencias vacías
+    }
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode?.replaceChild(frag, node);
+  }
+}
+
+/** Ejecuta protectTerms varias veces para ganarle a la traducción de Google. */
+function protectSoon(): number[] {
+  if (!isEnglish()) return [];
+  protectTerms();
+  return [150, 400, 900].map((d) => window.setTimeout(protectTerms, d));
+}
+
 export default function GoogleTranslate() {
+  const pathname = usePathname();
+
   useEffect(() => {
+    // 1) Protege los términos antes de que Google cargue y traduzca.
+    const timers = protectSoon();
+
+    // 2) Carga el widget de Google Translate (una sola vez).
     window.googleTranslateElementInit = () => {
       if (window.google?.translate?.TranslateElement) {
         new window.google.translate.TranslateElement(
@@ -29,7 +111,16 @@ export default function GoogleTranslate() {
       s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       document.body.appendChild(s);
     }
+
+    return () => timers.forEach((t) => window.clearTimeout(t));
   }, []);
+
+  // Al navegar (Next cambia de página sin recargar), reaplica la protección
+  // sobre el contenido nuevo antes de que Google lo retraduzca.
+  useEffect(() => {
+    const timers = protectSoon();
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, [pathname]);
 
   return <div id="google_translate_element" aria-hidden="true" />;
 }
