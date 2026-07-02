@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-// URL del Google Form de "Cuéntanos tu experiencia". Reemplázala por la real.
-const FEEDBACK_URL = "https://forms.gle/REEMPLAZAR-CON-TU-FORMULARIO";
+// URL del formulario "Cuéntanos tu experiencia" (Microsoft Forms).
+const FEEDBACK_URL = "https://forms.cloud.microsoft/r/mzV01zMgtG";
 
 function readLang(): "es" | "en" {
   if (typeof document === "undefined") return "es";
