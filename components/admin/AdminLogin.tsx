@@ -48,7 +48,7 @@ export default function AdminLogin() {
 
       <div className="admin-auth-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="admin-logo" src="/assets/logo-imagotipo.png" alt="Tuterritorio" />
+        <img className="admin-logo" src="/assets/logo-imagotipo-tr.png" alt="Tuterritorio" />
         <span className="admin-ribbon" />
 
         <h1 className="admin-welcome">¡Bienvenido a Tuterritorio!</h1>
