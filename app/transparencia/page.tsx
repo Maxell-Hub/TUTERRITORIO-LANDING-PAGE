@@ -26,10 +26,9 @@ const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] 
    el cursor: sobre el amarillo y el turquesa (claros) el texto va oscuro para
    mantener el contraste; sobre azul y verde va blanco. */
 const T_COLORS: { accent: string; fg: string }[] = [
-  { accent: "#3B85A5", fg: "#ffffff" }, // azul corporativo
   { accent: "#4E8654", fg: "#ffffff" }, // verde corporativo
+  { accent: "#3B85A5", fg: "#ffffff" }, // azul corporativo
   { accent: "#F0B63B", fg: "#0C222F" }, // amarillo (acento)
-  { accent: "#59A9C4", fg: "#0C222F" }, // turquesa
 ];
 
 export default function TransparenciaPage() {
