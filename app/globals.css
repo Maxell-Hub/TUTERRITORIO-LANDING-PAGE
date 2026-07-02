@@ -1908,3 +1908,51 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 /* Número corporativo: se aclara en oscuro para mantener contraste y el tono de marca */
 .dark .design-numero .tr-index { color: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 60%, #ffffff); }
 .dark .serv-note { background: rgba(59,133,165,.10) !important; border-color: rgba(59,133,165,.30) !important; color: #c3d0d9 !important; }
+
+/* ============================================================
+   MODO OSCURO — Login del panel (/acceso) y pantalla de carga
+   ============================================================ */
+/* Fondo: degradado profundo acorde al modo oscuro del sitio (antes turquesa claro) */
+.dark .admin-auth {
+  background: linear-gradient(150deg, #060d12 0%, #0b1620 42%, #10222c 74%, #163544 100%); }
+/* Puntitos del fondo un poco más tenues sobre el degradado oscuro */
+.dark .admin-auth::before { opacity: .28; }
+/* Halos de color: se atenúan para no encandilar en oscuro */
+.dark .admin-blob.a { background: radial-gradient(circle, rgba(143,190,78,.26), rgba(143,190,78,0) 70%); }
+.dark .admin-blob.b { background: radial-gradient(circle, rgba(89,169,196,.24), rgba(89,169,196,0) 70%); }
+.dark .admin-blob.c { background: radial-gradient(circle, rgba(240,182,59,.16), rgba(240,182,59,0) 70%); }
+/* Tarjeta blanca → superficie oscura */
+.dark .admin-auth-card {
+  background: #131c23; border-color: #2c3942;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+/* Textos de la tarjeta */
+.dark .admin-welcome { color: #eaf1f6; }
+.dark .admin-sub { color: #9fb0bd; }
+.dark .fld span { color: #e9f1f6; }
+/* Campos: un tono más oscuro que la tarjeta para que se distingan */
+.dark .fld input { background: #0f171d !important; color: var(--text-body) !important; border-color: #2c3942 !important; }
+.dark .fld input::placeholder { color: #7d8d99 !important; }
+.dark .fld input:focus { border-color: #59a9c4 !important; box-shadow: 0 0 0 3px rgba(89,169,196,.25) !important; }
+/* Botón mostrar/ocultar contraseña */
+.dark .pass-toggle { color: #9fb0bd; }
+.dark .pass-toggle:hover { color: #eaf1f6; background: #1a2630; }
+/* Botón Ingresar: se aclara para destacar sobre la tarjeta oscura */
+.dark .login-submit { background: linear-gradient(135deg, #2f7d97 0%, #59a9c4 100%); }
+.dark .login-submit:hover { background: linear-gradient(135deg, #367f9a 0%, #6cb6cf 100%); }
+/* Mensaje de error */
+.dark .login-error { background: rgba(214,69,69,.16); color: #f2a3a3; border-color: rgba(214,69,69,.3); }
+
+/* ---- Pantalla de carga (splash) en modo oscuro ---- */
+.dark .splash {
+  background:
+    radial-gradient(58% 46% at 50% 40%, #12222c 0%, rgba(18,34,44,0) 72%),
+    linear-gradient(160deg, #0c1419 0%, #0b1620 52%, #0a141b 100%); }
+.dark .splash::before {
+  background: radial-gradient(circle, rgba(89,169,196,.16), rgba(89,169,196,0) 68%); }
+.dark .splash-word { color: #eaf1f6; }
+.dark .splash-bar { background: rgba(255,255,255,.1); }
+/* Halos de color del splash: un poco más contenidos en oscuro */
+.dark .splash-blob.a { background: radial-gradient(circle, rgba(89,169,196,.34), rgba(89,169,196,0) 70%); }
+.dark .splash-blob.b { background: radial-gradient(circle, rgba(143,190,78,.30), rgba(143,190,78,0) 70%); }
+.dark .splash-blob.c { background: radial-gradient(circle, rgba(240,182,59,.20), rgba(240,182,59,0) 70%); }
+.dark .splash-blob.d { background: radial-gradient(circle, rgba(59,133,165,.22), rgba(59,133,165,0) 70%); }
