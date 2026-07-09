@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Glosario from "@/components/recursos/Glosario";
 import Editable from "@/components/admin/Editable";
+import PhotoSlot from "@/components/site/PhotoSlot";
 
 export const metadata: Metadata = {
   title: "ABC Catastral",
@@ -25,6 +26,10 @@ export default function GlosarioPage() {
 
       <section id="glosario" className="rec-section green">
         <div className="rec-wrap">
+          <div className="photoslot-row" style={{ marginBottom: 32 }}>
+            <PhotoSlot label="Un plano predial real" hint="Ilustra conceptos como lindero, área y nomenclatura" ratio="4 / 3" />
+            <PhotoSlot label="Placa de nomenclatura o predio" hint="Imagen ilustrativa de un concepto catastral" ratio="4 / 3" />
+          </div>
           <Glosario />
         </div>
       </section>

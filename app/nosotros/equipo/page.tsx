@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
 import EquipoTeam from "@/components/nosotros/EquipoTeam";
+import PhotoSlot from "@/components/site/PhotoSlot";
 
 export const metadata: Metadata = {
   title: "Nuestro Equipo",
@@ -46,6 +47,13 @@ export default function EquipoPage() {
               <span key={i} className="net-node" style={{ left: `${n.l}%`, top: `${n.t}%`, width: n.s, height: n.s, color: n.c, background: `radial-gradient(circle at 34% 30%, ${n.hl}, ${n.c})`, boxShadow: n.sh, animation: `${n.a} ease-in-out infinite` }} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Foto grupal del equipo (marcador de previsualización) */}
+      <section className="sec-pad" style={{ background: "#fff", paddingBottom: 0 }}>
+        <div className="sec-wrap" style={{ maxWidth: 1040 }}>
+          <PhotoSlot label="Nuestro equipo completo" hint="Foto grupal de todo el equipo de Tuterritorio" ratio="16 / 9" />
         </div>
       </section>
 

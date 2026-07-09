@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Editable from "@/components/admin/Editable";
+import PhotoSlot from "@/components/site/PhotoSlot";
 
 export const metadata: Metadata = {
   title: "Trámites y servicios",
@@ -146,6 +147,13 @@ export default function ServiciosPage() {
             <span style={{ font: "800 clamp(2rem,4vw,2.8rem)/1 var(--font-sans)", color: "var(--tt-lime-400)" }}>17</span>
             <span style={{ font: "500 0.875rem/1.3 var(--font-sans)", color: "rgba(255,255,255,.86)" }}>trámites y<br />productos</span>
           </div>
+        </div>
+      </section>
+
+      {/* Foto de contexto (marcador de previsualización) */}
+      <section style={{ background: "#fff", padding: "clamp(2rem,4vw,3rem) clamp(1rem,5vw,64px) 0" }}>
+        <div style={{ maxWidth: "var(--container-wide)", margin: "0 auto" }}>
+          <PhotoSlot label="Atención de un trámite catastral" hint="Contexto: entrega de un producto o atención de una solicitud en la sede" ratio="16 / 9" />
         </div>
       </section>
 

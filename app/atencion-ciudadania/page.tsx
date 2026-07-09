@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Apartado } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
+import PhotoSlot from "@/components/site/PhotoSlot";
 
 export const metadata: Metadata = {
   title: "Atención y servicios a la ciudadanía",
@@ -43,6 +44,10 @@ export default function AtencionCiudadaniaPage() {
         <p className="legal-lead">
           Todos los canales para hacer trámites, comunicarte con nosotros y ejercer tus derechos, en un solo lugar.
         </p>
+
+        <div style={{ margin: "30px 0 10px" }}>
+          <PhotoSlot label="Atención al ciudadano" hint="Un funcionario orientando a una persona en el mostrador de atención" ratio="16 / 9" />
+        </div>
 
         <div className="t-grid">
           {ACCESOS.map((a) => (
