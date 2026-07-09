@@ -240,6 +240,17 @@ img { max-width: 100%; }
   border-radius: 50%; background: var(--tt-blue-500); transform: translateY(-50%); }
 .nd-sub a:hover { background: var(--tt-gray-50); color: var(--tt-navy-700); }
 
+/* Grupos con submenús: botón desplegable (colapsado por defecto) */
+.nd-toggle { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  width: 100%; background: none; border: none; cursor: pointer; text-align: left;
+  font: var(--fw-semibold) var(--fs-base)/1.2 var(--font-sans); }
+.nd-caret { flex: none; color: var(--tt-gray-500); transition: transform .24s var(--ease-soft); }
+.nd-group.open > .nd-toggle .nd-caret { transform: rotate(180deg); }
+.nd-group.open > .nd-toggle { color: var(--tt-navy-700); }
+.nd-group.open > .nd-toggle .nd-caret { color: var(--tt-navy-700); }
+.nd-sub-main { font-weight: var(--fw-semibold) !important; color: var(--tt-navy-700) !important; }
+.nd-sub-main::before { background: var(--tt-amber-500) !important; }
+
 /* Buscador dentro del menú móvil (compacto) */
 .nav-drawer-search { padding: 14px 14px 6px; }
 .nav-drawer-search .gc-search-wrap { display: block; max-width: none; width: 100%; }

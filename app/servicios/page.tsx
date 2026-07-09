@@ -118,6 +118,10 @@ const TRAMITES: Tramite[] = [
 
 const period = (s: string) => (s.trim().endsWith(".") ? s : s + ".");
 
+/* Muestra el costo; a los productos con precio les agrega "*" que remite a la
+   nota (los valores los fija y recauda la Alcaldía de Valledupar). */
+const showCost = (c: string) => (c === "Sin costo" ? c : `${c}*`);
+
 const Clock = () => (
   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
 );
@@ -166,20 +170,20 @@ export default function ServiciosPage() {
                   {DESIGN === "numero" && (
                     <div className="tr-numhead">
                       <span className="tr-index">{String(i + 1).padStart(2, "0")}</span>
-                      <span className={`tr-cost-n ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                      <span className={`tr-cost-n ${t.costo === "Sin costo" ? "free" : "paid"}`}>{showCost(t.costo)}</span>
                     </div>
                   )}
                   {DESIGN === "foto" && (
                     <div className="tr-cover">
                       <Image className="tr-cover-img" src={PHOTOS[t.icon] ?? PHOTOS.matricula} alt="" fill sizes="(max-width: 700px) 100vw, 320px" />
-                      <span className={`tr-cost ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                      <span className={`tr-cost ${t.costo === "Sin costo" ? "free" : "paid"}`}>{showCost(t.costo)}</span>
                     </div>
                   )}
                   {DESIGN === "grafica" && (
                     <div className="tr-cover tr-cover-g" style={{ background: themeOf(t.icon).grad }}>
                       <span className="tr-glyph-bg" aria-hidden="true"><BigIcon name={t.icon} /></span>
                       <span className="tr-glyph"><BigIcon name={t.icon} /></span>
-                      <span className={`tr-cost ${t.costo === "Sin costo" ? "free" : "paid"}`}>{t.costo}</span>
+                      <span className={`tr-cost ${t.costo === "Sin costo" ? "free" : "paid"}`}>{showCost(t.costo)}</span>
                     </div>
                   )}
                   {DESIGN === "icono" && (
@@ -193,7 +197,7 @@ export default function ServiciosPage() {
                     <div className="tr-facemeta">
                       <span className="tr-tag"><Clock /> {t.tiempo}</span>
                       {DESIGN === "icono" && (
-                        <span className={`tr-tag ${t.costo === "Sin costo" ? "free" : ""}`}>{t.costo}</span>
+                        <span className={`tr-tag ${t.costo === "Sin costo" ? "free" : ""}`}>{showCost(t.costo)}</span>
                       )}
                     </div>
                   </div>
@@ -212,7 +216,7 @@ export default function ServiciosPage() {
 
           <p className="serv-note">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
-            <Editable as="span" id="serv.precio-nota">Los valores de los trámites y productos catastrales son establecidos por la Alcaldía de Valledupar y pueden variar según la vigencia.</Editable>
+            <Editable as="span" id="serv.precio-nota">Los valores señalados con * son establecidos por la Alcaldía de Valledupar y se consignan y/o pagan directamente a la Alcaldía de Valledupar, a través de su cuenta bancaria oficial o de los datáfonos dispuestos por la Alcaldía.</Editable>
           </p>
         </div>
       </section>

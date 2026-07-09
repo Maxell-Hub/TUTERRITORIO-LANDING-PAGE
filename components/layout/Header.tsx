@@ -61,6 +61,7 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openGroups, setOpenGroups] = useState<string[]>([]);
   const [stuck, setStuck] = useState(false);
   const [returning, setReturning] = useState(false);
   const [navH, setNavH] = useState(0);
@@ -111,10 +112,14 @@ export default function Header() {
       ? item.href === "/"
       : !!item.match && pathname.startsWith(item.match) && item.match.length === bestMatchLen;
 
-  // Cierra el menú móvil al cambiar de ruta.
+  // Cierra el menú móvil (y colapsa los submenús) al cambiar de ruta.
   useEffect(() => {
     setMenuOpen(false);
+    setOpenGroups([]);
   }, [pathname]);
+
+  const toggleGroup = (label: string) =>
+    setOpenGroups((g) => (g.includes(label) ? g.filter((l) => l !== label) : [...g, label]));
 
   // Bloquea el scroll del body y permite cerrar con Escape mientras el menú está abierto.
   useEffect(() => {
@@ -261,27 +266,53 @@ export default function Header() {
           <SearchBar />
         </div>
         <nav className="nav-drawer-list">
-          {NAV.map((item) => (
-            <div key={item.label} className="nd-group">
-              <a
-                href={item.href}
-                className={`nd-link${isActive(item) ? " on" : ""}`}
-                aria-current={isActive(item) ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-              {item.drop && (
-                <div className="nd-sub">
-                  {item.drop.map((d) => (
-                    <a href={d.href} key={d.label} onClick={() => setMenuOpen(false)}>
-                      {d.label}
+          {NAV.map((item) => {
+            const expanded = openGroups.includes(item.label);
+            return (
+              <div key={item.label} className={`nd-group${item.drop ? " has-sub" : ""}${expanded ? " open" : ""}`}>
+                {item.drop ? (
+                  <button
+                    type="button"
+                    className={`nd-link nd-toggle${isActive(item) ? " on" : ""}`}
+                    aria-expanded={expanded}
+                    aria-controls={`nd-sub-${item.label}`}
+                    onClick={() => toggleGroup(item.label)}
+                  >
+                    {item.label}
+                    <svg className="nd-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                ) : (
+                  <a
+                    href={item.href}
+                    className={`nd-link${isActive(item) ? " on" : ""}`}
+                    aria-current={isActive(item) ? "page" : undefined}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )}
+                {item.drop && (
+                  <div id={`nd-sub-${item.label}`} className="nd-sub" hidden={!expanded}>
+                    <a
+                      href={item.href}
+                      className="nd-sub-main"
+                      aria-current={isActive(item) ? "page" : undefined}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Ver todo: {item.label}
                     </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+                    {item.drop.map((d) => (
+                      <a href={d.href} key={d.label} onClick={() => setMenuOpen(false)}>
+                        {d.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </nav>
       </aside>
     </header>
