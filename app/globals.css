@@ -66,6 +66,10 @@ img { max-width: 100%; }
 .govco-bar { background: var(--govco-blue); color: #fff; height: 48px; }
 .govco-bar-row { max-width: var(--container-wide); margin: 0 auto; display: flex; align-items: center;
   justify-content: space-between; gap: 12px; padding: 9px clamp(1rem,5vw,64px); height: 48px; }
+/* En celular el logo gov.co se reduce (manteniendo proporción). */
+@media (max-width: 640px) {
+  .govco-logo { width: 78.68px !important; height: 24px !important; }
+}
 .gc-auth { font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); color: #fff; text-decoration: none; }
 .gc-auth:hover { text-decoration: underline; text-underline-offset: 3px; }
 
