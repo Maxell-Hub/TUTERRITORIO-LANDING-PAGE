@@ -293,16 +293,8 @@ export default function Header() {
                     {item.label}
                   </a>
                 )}
-                {item.drop && (
-                  <div id={`nd-sub-${item.label}`} className="nd-sub" hidden={!expanded}>
-                    <a
-                      href={item.href}
-                      className="nd-sub-main"
-                      aria-current={isActive(item) ? "page" : undefined}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Ver todo: {item.label}
-                    </a>
+                {item.drop && expanded && (
+                  <div id={`nd-sub-${item.label}`} className="nd-sub">
                     {item.drop.map((d) => (
                       <a href={d.href} key={d.label} onClick={() => setMenuOpen(false)}>
                         {d.label}

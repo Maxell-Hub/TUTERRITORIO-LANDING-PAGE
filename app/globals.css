@@ -248,8 +248,6 @@ img { max-width: 100%; }
 .nd-group.open > .nd-toggle .nd-caret { transform: rotate(180deg); }
 .nd-group.open > .nd-toggle { color: var(--tt-navy-700); }
 .nd-group.open > .nd-toggle .nd-caret { color: var(--tt-navy-700); }
-.nd-sub-main { font-weight: var(--fw-semibold) !important; color: var(--tt-navy-700) !important; }
-.nd-sub-main::before { background: var(--tt-amber-500) !important; }
 
 /* Buscador dentro del menú móvil (compacto) */
 .nav-drawer-search { padding: 14px 14px 6px; }
