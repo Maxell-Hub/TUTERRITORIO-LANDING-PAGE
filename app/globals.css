@@ -63,9 +63,13 @@ img { max-width: 100%; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ---- gov.co top bar ---- */
-.govco-bar { background: var(--govco-blue); color: #fff; height: 60px; }
+.govco-bar { background: var(--govco-blue); color: #fff; height: 48px; }
 .govco-bar-row { max-width: var(--container-wide); margin: 0 auto; display: flex; align-items: center;
-  justify-content: space-between; gap: 12px; padding: 9px clamp(1rem,5vw,64px); height: 60px; }
+  justify-content: space-between; gap: 12px; padding: 9px clamp(1rem,5vw,64px); height: 48px; }
+/* En celular el logo gov.co se reduce (manteniendo proporción). */
+@media (max-width: 640px) {
+  .govco-logo { width: 78.68px !important; height: 24px !important; }
+}
 .gc-auth { font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); color: #fff; text-decoration: none; }
 .gc-auth:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -239,6 +243,15 @@ img { max-width: 100%; }
 .nd-sub a::before { content: ""; position: absolute; left: 4px; top: 50%; width: 5px; height: 5px;
   border-radius: 50%; background: var(--tt-blue-500); transform: translateY(-50%); }
 .nd-sub a:hover { background: var(--tt-gray-50); color: var(--tt-navy-700); }
+
+/* Grupos con submenús: botón desplegable (colapsado por defecto) */
+.nd-toggle { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  width: 100%; background: none; border: none; cursor: pointer; text-align: left;
+  font: var(--fw-semibold) var(--fs-base)/1.2 var(--font-sans); }
+.nd-caret { flex: none; color: var(--tt-gray-500); transition: transform .24s var(--ease-soft); }
+.nd-group.open > .nd-toggle .nd-caret { transform: rotate(180deg); }
+.nd-group.open > .nd-toggle { color: var(--tt-navy-700); }
+.nd-group.open > .nd-toggle .nd-caret { color: var(--tt-navy-700); }
 
 /* Buscador dentro del menú móvil (compacto) */
 .nav-drawer-search { padding: 14px 14px 6px; }
@@ -1585,6 +1598,15 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .legal-meta, .dark .privacy-notice, .dark .ext-modal {
   background: #131c23 !important; border-color: #2c3942 !important; }
 
+/* Menú lateral móvil en modo oscuro (enlaces, submenús, bordes y hover) */
+.dark .nd-group { border-bottom-color: #2c3942 !important; }
+.dark .nd-link { color: #eaf1f6 !important; }
+.dark .nd-link:hover, .dark .nd-sub a:hover { background: rgba(255,255,255,.06) !important; color: #ffffff !important; }
+.dark .nd-link.on { background: rgba(59,133,165,.22) !important; color: #eaf1f6 !important; }
+.dark .nd-caret { color: #9fb2bd !important; }
+.dark .nd-group.open > .nd-toggle, .dark .nd-group.open > .nd-toggle .nd-caret { color: #ffffff !important; }
+.dark .nd-sub a { color: #c3d0d9 !important; }
+
 /* Encabezados → claros (incluye color en línea con var navy) */
 .dark h1, .dark h2, .dark h3, .dark h4 { color: #eaf1f6 !important; }
 
@@ -1692,7 +1714,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
    MODO OSCURO — Hero (Inicio): fondo más oscuro y acorde
    ============================================================ */
 .dark .hero { background: linear-gradient(135deg, #070e15 0%, #0b1f2a 45%, #103040 100%) !important; }
-.dark .hm-fade { background: linear-gradient(90deg, #070e15 0%, #070e15 58%, rgba(7,14,21,.85) 68%, rgba(7,14,21,.5) 80%, rgba(7,14,21,.2) 90%, rgba(7,14,21,0) 100%) !important; }
+.dark .hm-fade { background: linear-gradient(90deg, #070e15 0%, #070e15 30%, rgba(7,14,21,.85) 44%, rgba(7,14,21,.6) 56%, rgba(7,14,21,.35) 68%, rgba(7,14,21,.15) 82%, rgba(7,14,21,0) 96%) !important; }
 .dark .hero-map img { filter: brightness(.62) saturate(.9); }
 .dark .hero-eyebrow { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.20); color: #ffffff; }
 .dark .hero h1 { color: #f3f7fa !important; }
