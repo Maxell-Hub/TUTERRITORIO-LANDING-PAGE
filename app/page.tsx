@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import EnlacesInteres from "@/components/home/EnlacesInteres";
+import ConfidenceBand from "@/components/home/ConfidenceBand";
 import VisorGeografico from "@/components/home/VisorGeografico";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function HomePage() {
     <>
       <Hero />
       <EnlacesInteres />
+      <ConfidenceBand />
       <VisorGeografico />
     </>
   );

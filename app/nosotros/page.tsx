@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Editable from "@/components/admin/Editable";
+import PhotoSlot from "@/components/site/PhotoSlot";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -55,6 +56,9 @@ export default function NosotrosPage() {
             <p style={{ margin: "26px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "var(--tt-gray-700)" }}>Tuterritorio S.A.S es el operador del <b style={{ color: "var(--tt-navy-700)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.</p>
             <p style={{ margin: "18px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}><Editable as="span" id="nos.intro2" multiline>Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.</Editable></p>
           </div>
+          <div className="reveal" style={{ marginTop: 44, maxWidth: 1040 }}>
+            <PhotoSlot label="Fachada de la sede" hint="Panorámica del edificio con la señalización visible (Edificio Caja Agraria)" ratio="16 / 9" />
+          </div>
         </div>
       </section>
 
@@ -72,6 +76,9 @@ export default function NosotrosPage() {
                 <p>{f.d}</p>
               </article>
             ))}
+          </div>
+          <div className="reveal" style={{ marginTop: 24 }}>
+            <PhotoSlot label="Trabajo en campo" hint="Topógrafo con equipo GPS o estación total durante un levantamiento predial" ratio="21 / 9" />
           </div>
         </div>
       </section>
@@ -161,6 +168,10 @@ export default function NosotrosPage() {
                 Tu navegador no soporta la reproducción de video.
               </video>
             </div>
+          </div>
+          <div className="reveal photoslot-row" style={{ marginTop: 24 }}>
+            <PhotoSlot label="Sala de atención al ciudadano" hint="El espacio donde recibes al público" ratio="3 / 2" />
+            <PhotoSlot label="Área de trabajo del equipo" hint="Escritorios, planos y equipo técnico" ratio="3 / 2" />
           </div>
         </div>
       </section>
