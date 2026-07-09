@@ -1594,6 +1594,15 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .legal-meta, .dark .privacy-notice, .dark .ext-modal {
   background: #131c23 !important; border-color: #2c3942 !important; }
 
+/* Menú lateral móvil en modo oscuro (enlaces, submenús, bordes y hover) */
+.dark .nd-group { border-bottom-color: #2c3942 !important; }
+.dark .nd-link { color: #eaf1f6 !important; }
+.dark .nd-link:hover, .dark .nd-sub a:hover { background: rgba(255,255,255,.06) !important; color: #ffffff !important; }
+.dark .nd-link.on { background: rgba(59,133,165,.22) !important; color: #eaf1f6 !important; }
+.dark .nd-caret { color: #9fb2bd !important; }
+.dark .nd-group.open > .nd-toggle, .dark .nd-group.open > .nd-toggle .nd-caret { color: #ffffff !important; }
+.dark .nd-sub a { color: #c3d0d9 !important; }
+
 /* Encabezados → claros (incluye color en línea con var navy) */
 .dark h1, .dark h2, .dark h3, .dark h4 { color: #eaf1f6 !important; }
 
