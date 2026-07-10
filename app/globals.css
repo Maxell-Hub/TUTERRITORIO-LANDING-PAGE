@@ -1507,7 +1507,8 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fq-search svg { flex: none; color: var(--tt-gray-500); }
 .fq-search input { flex: 1; min-width: 0; border: none; outline: none; background: transparent;
   font: var(--fw-regular) var(--fs-base)/1.2 var(--font-sans); color: var(--tt-gray-900); }
-.fq-search input::placeholder { color: var(--tt-gray-500); }
+/* Placeholder con la tipografía del sitio (Inter) y un punto más pequeño */
+.fq-search input::placeholder { color: var(--tt-gray-500); font: var(--fw-regular) var(--fs-sm)/1.2 var(--font-sans); opacity: 1; }
 .fq-search input::-webkit-search-cancel-button { display: none; }
 .fq-clear { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px;
   border: none; border-radius: 50%; background: var(--tt-gray-200); color: var(--tt-gray-700); cursor: pointer;
