@@ -8,11 +8,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/mapa-del-sitio" },
 };
 
-const GRUPOS: { titulo: string; desc: string; accent: string; enlaces: { href: string; label: string }[] }[] = [
+const GRUPOS: { titulo: string; accent: string; enlaces: { href: string; label: string }[] }[] = [
   {
     titulo: "Institucional",
-    desc: "Quiénes somos, nuestro equipo y las novedades de la entidad.",
-    accent: "#0C222F",
+    accent: "#163A4C",
     enlaces: [
       { href: "/", label: "Inicio" },
       { href: "/nosotros", label: "Nosotros" },
@@ -22,7 +21,6 @@ const GRUPOS: { titulo: string; desc: string; accent: string; enlaces: { href: s
   },
   {
     titulo: "Atención y servicios a la ciudadanía",
-    desc: "Trámites, canales de atención y radicación de solicitudes.",
     accent: "#3B85A5",
     enlaces: [
       { href: "/atencion-ciudadania", label: "Atención a la ciudadanía" },
@@ -34,7 +32,6 @@ const GRUPOS: { titulo: string; desc: string; accent: string; enlaces: { href: s
   },
   {
     titulo: "Recursos",
-    desc: "Material de consulta para entender el catastro y su marco legal.",
     accent: "#4E8654",
     enlaces: [
       { href: "/recursos/normativas", label: "Normativas" },
@@ -43,8 +40,7 @@ const GRUPOS: { titulo: string; desc: string; accent: string; enlaces: { href: s
   },
   {
     titulo: "Transparencia y acceso a la información pública",
-    desc: "Información pública de la entidad según la Ley 1712 de 2014 y la Resolución 1519 de 2020.",
-    accent: "#F0B63B",
+    accent: "#B9831A",
     enlaces: [
       { href: "/transparencia", label: "Inicio de Transparencia" },
       { href: "/transparencia/informacion-entidad", label: "Información de la entidad" },
@@ -61,7 +57,6 @@ const GRUPOS: { titulo: string; desc: string; accent: string; enlaces: { href: s
   },
   {
     titulo: "Información legal",
-    desc: "Políticas y condiciones de uso de este sitio web.",
     accent: "#6C757D",
     enlaces: [
       { href: "/politica-tratamiento-datos", label: "Política de tratamiento de datos" },
@@ -83,21 +78,15 @@ export default function MapaDelSitioPage() {
         </p>
 
         <div className="legal-body">
-          <nav aria-label="Mapa del sitio" className="sitemap-index">
+          <nav aria-label="Mapa del sitio" className="sitemap-grid">
             {GRUPOS.map((g) => (
               <section key={g.titulo} className="sitemap-group" style={{ ["--accent" as string]: g.accent }}>
-                <div className="sitemap-head">
-                  <h2>{g.titulo}</h2>
-                  <span className="sitemap-count">{g.enlaces.length} {g.enlaces.length === 1 ? "página" : "páginas"}</span>
-                </div>
-                <p className="sitemap-desc">{g.desc}</p>
+                <h2>{g.titulo}</h2>
+                <span className="sitemap-bar" aria-hidden="true" />
                 <ul>
                   {g.enlaces.map((e) => (
                     <li key={e.href}>
-                      <Link href={e.href}>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                        {e.label}
-                      </Link>
+                      <Link href={e.href}>{e.label}</Link>
                     </li>
                   ))}
                 </ul>

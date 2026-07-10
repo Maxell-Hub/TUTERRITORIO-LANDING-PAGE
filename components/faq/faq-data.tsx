@@ -6,14 +6,13 @@ import Link from "next/link";
  * usada en los datos estructurados FAQPage (schema.org) y en la búsqueda.
  */
 export type Faq = { id: string; q: string; a: React.ReactNode; aText: string };
-export type FaqGrupo = { titulo: string; corto: string; accent: string; icon: React.ReactNode; faqs: Faq[] };
+export type FaqGrupo = { titulo: string; corto: string; accent: string; faqs: Faq[] };
 
 export const FAQ_GRUPOS: FaqGrupo[] = [
   {
     titulo: "Trámites catastrales",
     corto: "Trámites",
     accent: "#3B85A5",
-    icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M9 13h6M9 17h4" /></>,
     faqs: [
       {
         id: "docs-tramite",
@@ -81,7 +80,6 @@ export const FAQ_GRUPOS: FaqGrupo[] = [
     titulo: "Avalúo catastral e impuesto predial",
     corto: "Avalúos e impuesto",
     accent: "#4E8654",
-    icon: <><path d="M3 21h18M5 21V10l7-5 7 5v11" /><path d="M9 21v-6h6v6" /><path d="M3 10h18" /></>,
     faqs: [
       {
         id: "que-es-avaluo",
@@ -130,7 +128,6 @@ export const FAQ_GRUPOS: FaqGrupo[] = [
     titulo: "PQRSD y atención a la ciudadanía",
     corto: "PQRSD",
     accent: "#F0B63B",
-    icon: <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M8 10h.01M12 10h.01M16 10h.01" /></>,
     faqs: [
       {
         id: "radicar-pqrsd",
@@ -178,7 +175,6 @@ export const FAQ_GRUPOS: FaqGrupo[] = [
     titulo: "Sobre la entidad",
     corto: "La entidad",
     accent: "#2A5A70",
-    icon: <><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 9h.01M15 9h.01M9 12h.01M15 12h.01M9 15h.01M15 15h.01" /></>,
     faqs: [
       {
         id: "que-es-tuterritorio",

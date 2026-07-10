@@ -30,12 +30,7 @@ export default function PreguntasFrecuentesPage() {
       {/* Hero institucional con la trama catastral de la marca */}
       <section className="fq-hero">
         <div className="fq-hero-inner">
-          <span className="rec-eyebrow">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--tt-lime-400)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" /><path d="M9.2 9a2.8 2.8 0 0 1 5.5.7c0 1.8-2.7 2.3-2.7 3.8" /><path d="M12 17h.01" />
-            </svg>
-            Atención a la ciudadanía
-          </span>
+          <span className="rec-eyebrow">Atención a la ciudadanía</span>
           <h1>Preguntas frecuentes</h1>
           <span className="fq-hero-ribbon" aria-hidden="true" />
           <p>

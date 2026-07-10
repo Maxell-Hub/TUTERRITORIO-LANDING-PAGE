@@ -68,9 +68,6 @@ export default function FaqExplorer() {
           aria-pressed={tab === "Todas"}
           style={{ ["--accent" as string]: "#163A4C" }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" />
-          </svg>
           Todas
           <span className="fq-tab-count">{total}</span>
         </button>
@@ -83,7 +80,6 @@ export default function FaqExplorer() {
             aria-pressed={tab === g.titulo}
             style={{ ["--accent" as string]: g.accent }}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{g.icon}</svg>
             {g.corto}
             <span className="fq-tab-count">{g.faqs.length}</span>
           </button>
@@ -128,9 +124,6 @@ export default function FaqExplorer() {
         </div>
       ) : (
         <div className="fq-none">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /><path d="M8.5 11h5" />
-          </svg>
           <p>No encontramos preguntas que coincidan con <b>«{query}»</b>{tab !== "Todas" ? " en esta categoría" : ""}.</p>
           <button type="button" onClick={() => { setQuery(""); setTab("Todas"); }}>Ver todas las preguntas</button>
         </div>
@@ -143,10 +136,7 @@ export default function FaqExplorer() {
           <p>Escríbenos y te responderemos dentro de los términos de ley.</p>
         </div>
         <div className="fq-cta-actions">
-          <Link href="/pqrsd" className="fq-cta-btn solid">
-            Radica tu PQRSD
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          </Link>
+          <Link href="/pqrsd" className="fq-cta-btn solid">Radica tu PQRSD</Link>
           <Link href="/contactos" className="fq-cta-btn ghost">Canales de atención</Link>
         </div>
       </div>
