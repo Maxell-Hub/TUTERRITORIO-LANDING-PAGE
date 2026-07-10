@@ -13,6 +13,10 @@ const TONE: Record<string, { accent: string; soft: string }> = {
   Decreto: { accent: "var(--tt-green-600)", soft: "color-mix(in srgb, var(--tt-green-600) 13%, #fff)" },
   Resolución: { accent: "var(--tt-amber-600)", soft: "color-mix(in srgb, var(--tt-amber-500) 18%, #fff)" },
   Acuerdo: { accent: "var(--tt-teal-600)", soft: "color-mix(in srgb, var(--tt-teal-600) 13%, #fff)" },
+  Política: { accent: "var(--tt-navy-600)", soft: "color-mix(in srgb, var(--tt-navy-600) 11%, #fff)" },
+  Manual: { accent: "var(--tt-green-700)", soft: "color-mix(in srgb, var(--tt-green-700) 12%, #fff)" },
+  Reglamento: { accent: "var(--tt-blue-800)", soft: "color-mix(in srgb, var(--tt-blue-800) 11%, #fff)" },
+  Acta: { accent: "var(--tt-teal-500)", soft: "color-mix(in srgb, var(--tt-teal-500) 14%, #fff)" },
 };
 const fallbackTone = { accent: "var(--tt-gray-500)", soft: "var(--tt-gray-100)" };
 
@@ -22,6 +26,10 @@ function typeOf(code: string): string {
   if (c.startsWith("ley")) return "Ley";
   if (c.startsWith("decreto")) return "Decreto";
   if (c.startsWith("resoluci")) return "Resolución";
+  if (c.startsWith("pol")) return "Política";
+  if (c.startsWith("manual")) return "Manual";
+  if (c.startsWith("reglamento")) return "Reglamento";
+  if (c.startsWith("acta")) return "Acta";
   if (c.includes("acuerdo") || c.includes("estatuto")) return "Acuerdo";
   return "Norma";
 }
@@ -32,16 +40,15 @@ function yearOf(code: string): number {
   return m ? Number(m[0]) : 0;
 }
 
-/** Categoría temática de la norma. Si viene con la categorización anterior
- *  (por tipo: Leyes/Decretos/…) — p. ej. datos ya guardados desde el panel —
- *  se deduce el tema a partir de su nombre y descripción. */
+/** Categoría de la norma (estilo normograma). Si viene con una categorización
+ *  anterior — p. ej. datos ya guardados desde el panel — se deduce a partir de
+ *  su nombre y descripción. */
 function catOf(n: Norm): string {
   if (NORM_CATEGORIES.includes(n.cat)) return n.cat;
   const t = `${n.code} ${n.desc}`.toLowerCase();
-  if (/datos personales/.test(t)) return "Protección de datos";
-  if (/predial|tributari|fiscos/.test(t)) return "Impuesto predial";
-  if (/municipal|acuerdo/.test(t)) return "Normativa municipal";
-  return "Gestión catastral";
+  if (/manual|pol[ií]tica|reglamento|protocolo|c[oó]digo de/.test(t)) return "Manuales, políticas y reglamentos";
+  if (/\bacta\b|interna/.test(t)) return "Resoluciones y actas internas";
+  return "Normas generales aplicables";
 }
 
 const PencilIcon = () => (
@@ -166,7 +173,7 @@ export default function Normativas() {
           })}
         </div>
       ) : (
-        <div className="rec-empty">No hay normativas en esta categoría.</div>
+        <div className="rec-empty">Aún no hay documentos publicados en esta categoría.</div>
       )}
 
       {(creating || editing) && (
