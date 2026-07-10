@@ -83,15 +83,21 @@ export default function MapaDelSitioPage() {
         </p>
 
         <div className="legal-body">
-          <nav aria-label="Mapa del sitio" className="sitemap-grid">
+          <nav aria-label="Mapa del sitio" className="sitemap-index">
             {GRUPOS.map((g) => (
               <section key={g.titulo} className="sitemap-group" style={{ ["--accent" as string]: g.accent }}>
-                <h2>{g.titulo}</h2>
+                <div className="sitemap-head">
+                  <h2>{g.titulo}</h2>
+                  <span className="sitemap-count">{g.enlaces.length} {g.enlaces.length === 1 ? "página" : "páginas"}</span>
+                </div>
                 <p className="sitemap-desc">{g.desc}</p>
                 <ul>
                   {g.enlaces.map((e) => (
                     <li key={e.href}>
-                      <Link href={e.href}>{e.label}</Link>
+                      <Link href={e.href}>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        {e.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
