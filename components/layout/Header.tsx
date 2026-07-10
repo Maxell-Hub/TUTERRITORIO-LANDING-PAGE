@@ -41,6 +41,7 @@ const NAV: NavItem[] = [
       { label: "Trámites y servicios", href: "/servicios" },
       { label: "Canales de atención", href: "/contactos" },
       { label: "Radica tu PQRSD", href: "/pqrsd" },
+      { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
     ],
   },
   { label: "Transparencia", href: "/transparencia", match: "/transparencia" },

@@ -17,6 +17,17 @@ const DOC_RULES: Record<string, { mode: "num" | "alnum"; min: number; max: numbe
 const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const NOMBRE_RE = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{2,}(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ.]{1,}){1,}$/;
 
+/* ---- Anexos (documentos de soporte) ---- */
+const MAX_FILES = 3;
+const MAX_TOTAL_BYTES = 4 * 1024 * 1024; // 4 MB en total (límite del servidor)
+const FILE_EXTS = ["pdf", "jpg", "jpeg", "png", "webp", "doc", "docx"];
+const FILE_ACCEPT = FILE_EXTS.map((e) => `.${e}`).join(",");
+
+const fmtSize = (b: number) =>
+  b >= 1024 * 1024 ? `${(b / (1024 * 1024)).toFixed(1)} MB` : `${Math.max(1, Math.round(b / 1024))} KB`;
+
+const extOf = (name: string) => (name.split(".").pop() || "").toLowerCase();
+
 type Values = {
   tipo: string;
   nombre: string;
@@ -120,10 +131,43 @@ export default function PqrsdForm() {
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
   const [touched, setTouched] = useState<Partial<Record<keyof Values, boolean>>>({});
+  const [archivos, setArchivos] = useState<File[]>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [ok, setOk] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const honeyRef = useRef<HTMLInputElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  function addFiles(list: FileList | null) {
+    if (!list || list.length === 0) return;
+    setFileError(null);
+    let next = [...archivos];
+    for (const f of Array.from(list)) {
+      if (next.some((x) => x.name === f.name && x.size === f.size)) continue; // duplicado
+      if (!FILE_EXTS.includes(extOf(f.name))) {
+        setFileError(`"${f.name}" no está permitido. Formatos: PDF, JPG, PNG, WEBP, DOC y DOCX.`);
+        continue;
+      }
+      if (next.length >= MAX_FILES) {
+        setFileError(`Puedes adjuntar máximo ${MAX_FILES} archivos.`);
+        break;
+      }
+      next = [...next, f];
+    }
+    const total = next.reduce((s, f) => s + f.size, 0);
+    if (total > MAX_TOTAL_BYTES) {
+      setFileError(`Los anexos no pueden superar ${fmtSize(MAX_TOTAL_BYTES)} en total.`);
+      return;
+    }
+    setArchivos(next);
+    if (fileRef.current) fileRef.current.value = ""; // permite volver a elegir el mismo archivo
+  }
+
+  function removeFile(i: number) {
+    setArchivos((a) => a.filter((_, j) => j !== i));
+    setFileError(null);
+  }
 
   function setField(name: keyof Values, raw: string) {
     const value = filterInput(name, raw, name === "documento" ? values.tipoDocumento : "");
@@ -169,12 +213,14 @@ export default function PqrsdForm() {
 
     setSending(true);
     try {
-      const res = await fetch("/api/pqrsd", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        // Prueba del consentimiento: fecha y hora exactas de la autorización (Ley 1581/2012).
-        body: JSON.stringify({ ...values, autorizacion: "Sí", autorizacionFecha: new Date().toISOString() }),
-      });
+      // Se envía como multipart/form-data para incluir los anexos.
+      const fd = new FormData();
+      for (const [k, v] of Object.entries(values)) fd.append(k, String(v));
+      fd.set("autorizacion", "Sí");
+      // Prueba del consentimiento: fecha y hora exactas de la autorización (Ley 1581/2012).
+      fd.set("autorizacionFecha", new Date().toISOString());
+      for (const f of archivos) fd.append("archivos", f, f.name);
+      const res = await fetch("/api/pqrsd", { method: "POST", body: fd });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json?.error || "No se pudo radicar. Intenta de nuevo.");
       setOk(true);
@@ -190,6 +236,8 @@ export default function PqrsdForm() {
     setValues(EMPTY);
     setErrors({});
     setTouched({});
+    setArchivos([]);
+    setFileError(null);
     setOk(false);
   }
 
@@ -356,6 +404,46 @@ export default function PqrsdForm() {
           ? <span className="pq-error">{errors.descripcion}</span>
           : <span className="pq-hint">Mínimo 20 caracteres.</span>}
       </label>
+
+      {/* Anexos: documentos de soporte de la solicitud */}
+      <div className="pq-field" style={{ marginTop: 18 }}>
+        <span className="pq-label">Documentos y anexos <span style={{ fontWeight: 400, color: "var(--tt-gray-500)" }}>(opcional)</span></span>
+        <input
+          ref={fileRef}
+          id="pq-archivos"
+          type="file"
+          multiple
+          accept={FILE_ACCEPT}
+          className="sr-only pq-file-input"
+          onChange={(e) => addFiles(e.target.files)}
+        />
+        <label htmlFor="pq-archivos" className="pq-drop">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M17 8l-5-5-5 5" /><path d="M12 3v12" />
+          </svg>
+          <span><b>Adjunta tus documentos</b> — haz clic para seleccionarlos</span>
+          <span className="pq-drop-hint">Hasta {MAX_FILES} archivos ({fmtSize(MAX_TOTAL_BYTES)} en total) · PDF, JPG, PNG, WEBP, DOC, DOCX</span>
+        </label>
+        {archivos.length > 0 && (
+          <ul className="pq-filelist" aria-label="Archivos adjuntos">
+            {archivos.map((f, i) => (
+              <li key={`${f.name}-${f.size}`} className="pq-fileitem">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" />
+                </svg>
+                <span className="pq-filename">{f.name}</span>
+                <span className="pq-filesize">{fmtSize(f.size)}</span>
+                <button type="button" className="pq-fileremove" aria-label={`Quitar ${f.name}`} onClick={() => removeFile(i)}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {fileError
+          ? <span className="pq-error" role="alert">{fileError}</span>
+          : <span className="pq-hint">Adjunta soportes como la cédula, escrituras, certificados o fotos relacionadas con tu solicitud.</span>}
+      </div>
 
       <div style={{ marginTop: 22 }}><PrivacyNotice /></div>
 

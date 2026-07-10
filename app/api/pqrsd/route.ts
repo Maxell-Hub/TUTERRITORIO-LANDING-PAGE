@@ -41,6 +41,22 @@ const esc = (s: unknown) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+// Anexos: allowlist de extensiones/MIME (alineada con /api/upload) y límites de tamaño.
+const MAX_FILES = 3;
+const MAX_TOTAL_BYTES = 4 * 1024 * 1024; // 4 MB en total (límite de cuerpo en serverless)
+const FILE_EXTS = new Set(["pdf", "jpg", "jpeg", "png", "webp", "doc", "docx"]);
+const FILE_MIMES = new Set([
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+]);
+const extOf = (name: string) => (name.split(".").pop() || "").toLowerCase();
+/** Evita encabezados/HTML raros en el nombre del archivo adjunto. */
+const safeName = (name: string) => name.replace(/[^\w.\-() áéíóúüñÁÉÍÓÚÜÑ]/g, "_").slice(0, 120);
+
 export async function POST(req: Request) {
   // Anti-spam/abuso: máx. 5 radicaciones por IP cada 10 minutos.
   if (!rateLimit(`pqrsd:${clientIp(req)}`, 5, 10 * 60_000)) {
@@ -50,11 +66,46 @@ export async function POST(req: Request) {
     );
   }
 
+  // Acepta multipart/form-data (formulario con anexos) y JSON (compatibilidad).
   let body: Record<string, unknown>;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ ok: false, error: "JSON inválido" }, { status: 400 });
+  const files: File[] = [];
+  const contentType = req.headers.get("content-type") || "";
+  if (contentType.includes("multipart/form-data")) {
+    let fd: FormData;
+    try {
+      fd = await req.formData();
+    } catch {
+      return NextResponse.json({ ok: false, error: "Formulario inválido" }, { status: 400 });
+    }
+    body = {};
+    for (const [k, v] of fd.entries()) {
+      if (k === "archivos") {
+        if (v instanceof File && v.size > 0) files.push(v);
+      } else {
+        body[k] = String(v);
+      }
+    }
+    // Validación de anexos: cantidad, tipo y tamaño total.
+    if (files.length > MAX_FILES) {
+      return NextResponse.json({ ok: false, error: `Máximo ${MAX_FILES} archivos adjuntos.` }, { status: 422 });
+    }
+    const invalid = files.find((f) => !FILE_EXTS.has(extOf(f.name)) || (f.type && !FILE_MIMES.has(f.type)));
+    if (invalid) {
+      return NextResponse.json(
+        { ok: false, error: "Tipo de archivo no permitido. Formatos: PDF, JPG, PNG, WEBP, DOC y DOCX." },
+        { status: 415 }
+      );
+    }
+    const total = files.reduce((s, f) => s + f.size, 0);
+    if (total > MAX_TOTAL_BYTES) {
+      return NextResponse.json({ ok: false, error: "Los anexos superan el tamaño máximo (4 MB en total)." }, { status: 413 });
+    }
+  } else {
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ ok: false, error: "JSON inválido" }, { status: 400 });
+    }
   }
 
   // Anti-spam: honeypot relleno = bot (respuesta neutra).
@@ -103,12 +154,17 @@ export async function POST(req: Request) {
     ? new Date(String(body.autorizacionFecha)).toLocaleString("es-CO", { timeZone: "America/Bogota", dateStyle: "medium", timeStyle: "short" })
     : "—";
 
+  const anexosTxt = files.length
+    ? files.map((f) => `- ${f.name} (${Math.max(1, Math.round(f.size / 1024))} KB)`).join("\n")
+    : "Sin anexos";
+
   const text =
     `Nueva PQRSD — Tuterritorio\n\n` +
     `Tipo: ${body.tipo}\nNombre: ${body.nombre}\n` +
     `Documento: ${body.tipoDocumento} ${body.documento}\n` +
     `Correo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\nDirección: ${body.direccion || "—"}\n\n` +
     `Asunto: ${body.asunto}\n\nDescripción:\n${body.descripcion}\n\n` +
+    `Anexos:\n${anexosTxt}\n\n` +
     `Autorización de tratamiento de datos: Sí (vía web)\nFecha y hora del consentimiento: ${consentAt}`;
 
   const row = (label: string, value: string, link?: string) => `
@@ -148,6 +204,12 @@ export async function POST(req: Request) {
             </table>
             <div style="margin-top:24px;color:#6C757D;font-size:12px;font-weight:bold;letter-spacing:.5px;text-transform:uppercase;">Descripción</div>
             <div style="margin-top:8px;background:#f6f9fa;border-left:4px solid #3B85A5;border-radius:8px;padding:16px 18px;color:#333333;font-size:15px;line-height:1.7;">${descripcion}</div>
+            <div style="margin-top:20px;color:#6C757D;font-size:12px;font-weight:bold;letter-spacing:.5px;text-transform:uppercase;">Anexos (${files.length})</div>
+            <div style="margin-top:8px;background:#f6f9fa;border-left:4px solid #4E8654;border-radius:8px;padding:12px 18px;color:#333333;font-size:14px;line-height:1.8;">${
+              files.length
+                ? files.map((f) => `📎 ${esc(f.name)} <span style="color:#6C757D;">(${Math.max(1, Math.round(f.size / 1024))} KB)</span>`).join("<br>")
+                : "El ciudadano no adjuntó documentos."
+            }</div>
             <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;"><tr>
               <td style="border-radius:10px;background:#163A4C;">
                 <a href="mailto:${correo}?subject=Respuesta%20a%20tu%20PQRSD%20-%20Tuterritorio" style="display:inline-block;padding:13px 28px;color:#ffffff;text-decoration:none;font-weight:bold;font-size:14px;">Responder a ${nombre}</a>
@@ -174,6 +236,13 @@ export async function POST(req: Request) {
 
   try {
     const resend = new Resend(apiKey);
+    // Los anexos del ciudadano viajan como adjuntos del correo.
+    const attachments = await Promise.all(
+      files.map(async (f) => ({
+        filename: safeName(f.name),
+        content: Buffer.from(await f.arrayBuffer()),
+      }))
+    );
     const { error } = await resend.emails.send({
       from: FROM,
       to: [TO],
@@ -182,6 +251,7 @@ export async function POST(req: Request) {
       subject: `PQRSD ${String(body.tipo).trim()} — ${String(body.nombre).trim()}`,
       html,
       text,
+      ...(attachments.length ? { attachments } : {}),
     });
     if (error) throw new Error(error.message);
   } catch (e) {

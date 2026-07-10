@@ -80,7 +80,7 @@ const themeOf = (k: string) => THEMES[k] ?? THEMES.matricula;
 
 /* ---- Documentos compartidos (texto exacto del handoff/PDF) ---- */
 const docSolicitud = "Solicitud del trámite con datos de notificación (celular, correo y dirección)";
-const docIdentidad = "Copia del documento de identidad del propietario";
+const docIdentidad = "Fotocopia de la cédula de quien realiza el trámite (propietario, poseedor u ocupante, según el caso)";
 const docEscritura = "Copia de la escritura pública";
 const docCLT = "Copia del certificado de libertad y tradición actualizado";
 const docCLT30 = "Copia del certificado de libertad y tradición actualizado (no mayor a 30 días)";
@@ -90,7 +90,7 @@ const ph = "PH: copia de la escritura del reglamento de propiedad horizontal, su
 
 type Tramite = { icon: string; title: string; desc: string; tiempo: string; costo: string; reqs: string[] };
 
-const productosDocs = ["Fotocopia de la cédula", "Certificado de libertad y tradición o recibo del impuesto predial"];
+const productosDocs = ["Fotocopia de la cédula de quien solicita el producto (propietario, poseedor u ocupante, según el caso)", "Certificado de libertad y tradición o recibo del impuesto predial"];
 
 const TRAMITES: Tramite[] = [
   // Sin costo — Hasta 2 meses
@@ -99,7 +99,8 @@ const TRAMITES: Tramite[] = [
   { icon: "desenglobe", title: "Desenglobe", desc: "División de un predio en dos o más inmuebles independientes.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docCLT, docEscritura, planos, ph, docPredioRural] },
   { icon: "englobe", title: "Englobe", desc: "Unificación de dos o más predios en un solo inmueble.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docCLT, docEscritura, planos, ph, docPredioRural] },
   { icon: "inscripcion", title: "Inscripción de predio", desc: "Registro inicial de un predio o mejora dentro de la información catastral.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT30, "Copia de escritura pública o resolución de adjudicación", docPredioRural] },
-  { icon: "revision", title: "Avalúo catastral", desc: "Revisión del avalúo catastral; debe presentarse por escrito indicando la(s) vigencia(s) objeto de petición.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: ["Solicitud por escrito con precisión de la(s) vigencia(s) objeto de petición", "Pruebas que fundamenten las variaciones por cambios físicos, valorización o cambios de uso o mercado inmobiliario", "Planos, certificaciones de autoridades, orto/aerofotografías, avalúos comerciales o escrituras que demuestren los cambios"] },
+  // Sin costo — Hasta 3 meses
+  { icon: "revision", title: "Avalúo catastral", desc: "Revisión del avalúo catastral; debe presentarse por escrito indicando la(s) vigencia(s) objeto de petición.", tiempo: "Hasta 3 meses", costo: "Sin costo", reqs: ["Solicitud por escrito con precisión de la(s) vigencia(s) objeto de petición", "Pruebas que fundamenten las variaciones por cambios físicos, valorización o cambios de uso o mercado inmobiliario", "Planos, certificaciones de autoridades, orto/aerofotografías, avalúos comerciales o escrituras que demuestren los cambios"] },
   // Sin costo — Hasta 1 mes
   { icon: "destino", title: "Cambio de destino", desc: "Actualización del uso o destino económico asignado al predio.", tiempo: "Hasta 1 mes", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT] },
   // Sin costo — Hasta 15 días
@@ -110,6 +111,7 @@ const TRAMITES: Tramite[] = [
   // Productos catastrales — Con costo, Hasta 15 días
   { icon: "matricula", title: "Certificado plano predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$52.500", reqs: productosDocs },
   { icon: "documento", title: "Certificado catastral especial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$52.200", reqs: productosDocs },
+  { icon: "revision", title: "Certificado catastral de avalúo", desc: "Certificación oficial del avalúo catastral vigente del predio, para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "Consultar valor", reqs: productosDocs },
   { icon: "matricula", title: "Fotocopia de la ficha predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$68.500", reqs: productosDocs },
   { icon: "areacatastral", title: "Carta catastral urbana", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$57.900", reqs: productosDocs },
   { icon: "arearegistral", title: "Carta catastral rural", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$76.400", reqs: productosDocs },
@@ -143,7 +145,7 @@ export default function ServiciosPage() {
             <p style={{ margin: 0, maxWidth: "44em", font: "400 1.125rem/1.6 var(--font-sans)", color: "rgba(255,255,255,.84)" }}><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta información de predios y propietarios de manera ágil, segura y confiable.</Editable></p>
           </div>
           <div className="serv-count">
-            <span style={{ font: "800 clamp(2rem,4vw,2.8rem)/1 var(--font-sans)", color: "var(--tt-lime-400)" }}>17</span>
+            <span style={{ font: "800 clamp(2rem,4vw,2.8rem)/1 var(--font-sans)", color: "var(--tt-lime-400)" }}>{TRAMITES.length}</span>
             <span style={{ font: "500 0.875rem/1.3 var(--font-sans)", color: "rgba(255,255,255,.86)" }}>trámites y<br />productos</span>
           </div>
         </div>

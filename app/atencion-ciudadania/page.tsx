@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Apartado } from "@/components/transparencia/Transparencia";
+import { Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
 
 export const metadata: Metadata = {
@@ -63,7 +63,8 @@ export default function AtencionCiudadaniaPage() {
 
         <div className="legal-body">
           <Apartado titulo="Preguntas frecuentes">
-            <PendienteContenido titulo="Preguntas frecuentes" descripcion="Listado de preguntas frecuentes de la ciudadanía, pendiente de cargar por la entidad." />
+            <p>Respuestas a las dudas más comunes de la ciudadanía sobre trámites catastrales, avalúos, impuesto predial y PQRSD.</p>
+            <RecursoExistente href="/preguntas-frecuentes">Ver preguntas frecuentes</RecursoExistente>
           </Apartado>
 
           <Apartado titulo="Carta de trato digno al ciudadano">

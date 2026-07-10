@@ -61,22 +61,25 @@ export const DEFAULT_NOTICIAS: News[] = [
 
 export type Norm = { id: string; cat: string; code: string; desc: string; href: string };
 
-export const NORM_CATEGORIES = ["Leyes", "Decretos", "Resoluciones", "Acuerdos"];
+/** Categorización temática (lo que la norma significa para el ciudadano),
+ *  en lugar de la anterior por tipo de norma (Leyes/Decretos/…). */
+export const NORM_CATEGORIES = ["Gestión catastral", "Impuesto predial", "Protección de datos", "Normativa municipal"];
 
+/* Ordenadas de más reciente a más antigua (las normas municipales sin año, al final). */
 export const DEFAULT_NORMATIVAS: Norm[] = [
-  { id: "norm-001", cat: "Leyes", code: "Ley 1955 de 2019", desc: "Plan Nacional de Desarrollo 2018–2022. Establece el catastro multipropósito y su prestación como servicio público.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=93970" },
-  { id: "norm-002", cat: "Leyes", code: "Ley 14 de 1983", desc: "Fortalece los fiscos municipales y fija las bases técnicas para la formación y el avalúo catastral.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=267" },
-  { id: "norm-003", cat: "Leyes", code: "Ley 44 de 1990", desc: "Crea el Impuesto Predial Unificado y regula su liquidación a partir del avalúo catastral.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=296" },
-  { id: "norm-004", cat: "Leyes", code: "Ley 1581 de 2012", desc: "Régimen general de protección de datos personales, aplicable al tratamiento de la información catastral.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" },
-  { id: "norm-005", cat: "Decretos", code: "Decreto 1983 de 2019", desc: "Reglamenta la prestación del servicio público de gestión catastral con enfoque multipropósito.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=102767" },
-  { id: "norm-006", cat: "Decretos", code: "Decreto 148 de 2020", desc: "Reglamenta la gestión catastral y define los roles de gestores y operadores catastrales.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=108609" },
-  { id: "norm-007", cat: "Decretos", code: "Decreto 1170 de 2015", desc: "Decreto Único Reglamentario del sector administrativo de información estadística (DANE–IGAC).", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=77345" },
-  { id: "norm-008", cat: "Resoluciones", code: "Resolución 1149 de 2021 — IGAC", desc: "Adopta las especificaciones técnicas para los productos de la gestión catastral multipropósito.", href: "https://www.igac.gov.co" },
-  { id: "norm-009", cat: "Resoluciones", code: "Resolución 509 de 2020 — IGAC", desc: "Establece las condiciones para la habilitación de los gestores catastrales en el territorio nacional.", href: "https://www.igac.gov.co" },
-  { id: "norm-010", cat: "Resoluciones", code: "Resolución 388 de 2020 — IGAC", desc: "Define las especificaciones técnicas para el levantamiento y los productos catastrales.", href: "https://www.igac.gov.co" },
-  { id: "norm-011", cat: "Resoluciones", code: "Resolución 471 de 2020 — IGAC", desc: "Fija los estándares y procedimientos para el levantamiento catastral con enfoque multipropósito.", href: "https://www.igac.gov.co" },
-  { id: "norm-012", cat: "Acuerdos", code: "Acuerdo Municipal — Gestor Catastral", desc: "Habilita a Valledupar para asumir la gestión catastral de su territorio a través de Tuterritorio.", href: "#" },
-  { id: "norm-013", cat: "Acuerdos", code: "Estatuto Tributario Municipal", desc: "Regula el Impuesto Predial Unificado y demás tributos del municipio de Valledupar.", href: "#" },
+  { id: "norm-008", cat: "Gestión catastral", code: "Resolución 1149 de 2021 — IGAC", desc: "Adopta las especificaciones técnicas para los productos de la gestión catastral multipropósito.", href: "https://www.igac.gov.co" },
+  { id: "norm-006", cat: "Gestión catastral", code: "Decreto 148 de 2020", desc: "Reglamenta la gestión catastral y define los roles de gestores y operadores catastrales.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=108609" },
+  { id: "norm-009", cat: "Gestión catastral", code: "Resolución 509 de 2020 — IGAC", desc: "Establece las condiciones para la habilitación de los gestores catastrales en el territorio nacional.", href: "https://www.igac.gov.co" },
+  { id: "norm-010", cat: "Gestión catastral", code: "Resolución 388 de 2020 — IGAC", desc: "Define las especificaciones técnicas para el levantamiento y los productos catastrales.", href: "https://www.igac.gov.co" },
+  { id: "norm-011", cat: "Gestión catastral", code: "Resolución 471 de 2020 — IGAC", desc: "Fija los estándares y procedimientos para el levantamiento catastral con enfoque multipropósito.", href: "https://www.igac.gov.co" },
+  { id: "norm-001", cat: "Gestión catastral", code: "Ley 1955 de 2019", desc: "Plan Nacional de Desarrollo 2018–2022. Establece el catastro multipropósito y su prestación como servicio público.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=93970" },
+  { id: "norm-005", cat: "Gestión catastral", code: "Decreto 1983 de 2019", desc: "Reglamenta la prestación del servicio público de gestión catastral con enfoque multipropósito.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=102767" },
+  { id: "norm-007", cat: "Gestión catastral", code: "Decreto 1170 de 2015", desc: "Decreto Único Reglamentario del sector administrativo de información estadística (DANE–IGAC).", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=77345" },
+  { id: "norm-004", cat: "Protección de datos", code: "Ley 1581 de 2012", desc: "Régimen general de protección de datos personales, aplicable al tratamiento de la información catastral.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" },
+  { id: "norm-003", cat: "Impuesto predial", code: "Ley 44 de 1990", desc: "Crea el Impuesto Predial Unificado y regula su liquidación a partir del avalúo catastral.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=296" },
+  { id: "norm-002", cat: "Impuesto predial", code: "Ley 14 de 1983", desc: "Fortalece los fiscos municipales y fija las bases técnicas para la formación y el avalúo catastral.", href: "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=267" },
+  { id: "norm-012", cat: "Normativa municipal", code: "Acuerdo Municipal — Gestor Catastral", desc: "Habilita a Valledupar para asumir la gestión catastral de su territorio a través de Tuterritorio.", href: "#" },
+  { id: "norm-013", cat: "Impuesto predial", code: "Estatuto Tributario Municipal", desc: "Regula el Impuesto Predial Unificado y demás tributos del municipio de Valledupar.", href: "#" },
 ];
 
 /* ------------------------------------------------------------------ */

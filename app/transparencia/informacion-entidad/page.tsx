@@ -39,7 +39,37 @@ export default function InformacionEntidadPage() {
       </Apartado>
 
       <Apartado titulo="1.6 Entes que ejercen control sobre la entidad">
-        <PendienteContenido titulo="Organismos de control y vigilancia" descripcion="Listado de entes de control que vigilan a la entidad, pendiente de cargar por la entidad." />
+        <p>
+          Como gestor catastral, Tuterritorio está sujeto a la regulación y a la inspección, vigilancia y
+          control de las siguientes entidades del orden nacional:
+        </p>
+        <div className="ente-grid">
+          <article className="ente-card">
+            <span className="ente-sigla" style={{ ["--accent" as string]: "#4E8654" }}>IGAC</span>
+            <h3>Instituto Geográfico Agustín Codazzi</h3>
+            <p>
+              Máxima autoridad catastral del país. Regula la gestión catastral con enfoque multipropósito,
+              habilita a los gestores catastrales y define las especificaciones técnicas del servicio
+              (Ley 1955 de 2019 y Decreto 148 de 2020).
+            </p>
+            <a href="https://www.igac.gov.co" target="_blank" rel="noopener noreferrer">
+              www.igac.gov.co
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+          </article>
+          <article className="ente-card">
+            <span className="ente-sigla" style={{ ["--accent" as string]: "#3B85A5" }}>SNR</span>
+            <h3>Superintendencia de Notariado y Registro</h3>
+            <p>
+              Ejerce la inspección, vigilancia y control sobre los gestores y operadores catastrales en la
+              prestación del servicio público de gestión catastral (Decreto 148 de 2020).
+            </p>
+            <a href="https://www.supernotariado.gov.co" target="_blank" rel="noopener noreferrer">
+              www.supernotariado.gov.co
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+          </article>
+        </div>
       </Apartado>
     </TPage>
   );

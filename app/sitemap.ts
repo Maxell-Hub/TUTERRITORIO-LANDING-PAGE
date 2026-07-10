@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/servicios", priority: 0.9, freq: "monthly" },
     { path: "/pqrsd", priority: 0.9, freq: "monthly" },
     { path: "/atencion-ciudadania", priority: 0.8, freq: "monthly" },
+    { path: "/preguntas-frecuentes", priority: 0.7, freq: "monthly" },
     { path: "/contactos", priority: 0.8, freq: "monthly" },
     { path: "/nosotros", priority: 0.7, freq: "monthly" },
     { path: "/nosotros/equipo", priority: 0.6, freq: "monthly" },
