@@ -37,14 +37,15 @@ export const FAQ_GRUPOS: FaqGrupo[] = [
         a: (
           <>
             Depende del tipo de trámite: las rectificaciones sencillas (nombre, documento, dirección y
-            cambio de propietario) tardan <b>hasta 15 días</b>; el cambio de destino <b>hasta 1 mes</b>;
-            los trámites que requieren revisión técnica (englobe, desenglobe, áreas e inscripciones){" "}
-            <b>hasta 2 meses</b>, y la revisión del <b>avalúo catastral hasta 3 meses</b>. El tiempo de
-            cada trámite aparece en su tarjeta en <Link href="/servicios">Trámites y servicios</Link>.
+            cambio de propietario) tardan <b>hasta 15 días hábiles</b>; el cambio de destino{" "}
+            <b>hasta 30 días hábiles</b>; los trámites que requieren revisión técnica (englobe,
+            desenglobe, áreas e inscripciones) <b>hasta 60 días hábiles</b>, y la revisión del{" "}
+            <b>avalúo catastral hasta 90 días hábiles</b>. El tiempo de cada trámite aparece en su
+            tarjeta en <Link href="/servicios">Trámites y servicios</Link>.
           </>
         ),
         aText:
-          "Depende del tipo de trámite: las rectificaciones sencillas (nombre, documento, dirección y cambio de propietario) tardan hasta 15 días; el cambio de destino hasta 1 mes; los trámites que requieren revisión técnica (englobe, desenglobe, áreas e inscripciones) hasta 2 meses, y la revisión del avalúo catastral hasta 3 meses.",
+          "Depende del tipo de trámite: las rectificaciones sencillas (nombre, documento, dirección y cambio de propietario) tardan hasta 15 días hábiles; el cambio de destino hasta 30 días hábiles; los trámites que requieren revisión técnica (englobe, desenglobe, áreas e inscripciones) hasta 60 días hábiles, y la revisión del avalúo catastral hasta 90 días hábiles.",
       },
       {
         id: "costo-tramite",
@@ -103,11 +104,11 @@ export const FAQ_GRUPOS: FaqGrupo[] = [
           <>
             Sí. La solicitud se presenta <b>por escrito</b>, indicando la(s) vigencia(s) objeto de la
             petición y acompañada de las pruebas que fundamenten la variación (planos, certificaciones,
-            avalúos comerciales o escrituras). El trámite tarda <b>hasta 3 meses</b> y no tiene costo.
+            avalúos comerciales o escrituras). El trámite tarda <b>hasta 90 días hábiles</b> y no tiene costo.
           </>
         ),
         aText:
-          "Sí. La solicitud se presenta por escrito, indicando la(s) vigencia(s) objeto de la petición y acompañada de las pruebas que fundamenten la variación. El trámite tarda hasta 3 meses y no tiene costo.",
+          "Sí. La solicitud se presenta por escrito, indicando la(s) vigencia(s) objeto de la petición y acompañada de las pruebas que fundamenten la variación. El trámite tarda hasta 90 días hábiles y no tiene costo.",
       },
       {
         id: "cobro-predial",

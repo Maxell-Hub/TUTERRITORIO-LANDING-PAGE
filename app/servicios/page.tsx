@@ -93,29 +93,29 @@ type Tramite = { icon: string; title: string; desc: string; tiempo: string; cost
 const productosDocs = ["Fotocopia de la cédula de quien solicita el producto (propietario, poseedor u ocupante, según el caso)", "Certificado de libertad y tradición o recibo del impuesto predial"];
 
 const TRAMITES: Tramite[] = [
-  // Sin costo — Hasta 2 meses
-  { icon: "areacatastral", title: "Incorporación de área", desc: "Registro inicial del área de un predio dentro de la base catastral.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docEscritura, docCLT, docPredioRural] },
-  { icon: "arearegistral", title: "Rectificación de área", desc: "Corrección del área del terreno cuando difiere de la realidad física o registral.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docEscritura, docCLT, docPredioRural] },
-  { icon: "desenglobe", title: "Desenglobe", desc: "División de un predio en dos o más inmuebles independientes.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docCLT, docEscritura, planos, ph, docPredioRural] },
-  { icon: "englobe", title: "Englobe", desc: "Unificación de dos o más predios en un solo inmueble.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docCLT, docEscritura, planos, ph, docPredioRural] },
-  { icon: "inscripcion", title: "Inscripción de predio", desc: "Registro inicial de un predio o mejora dentro de la información catastral.", tiempo: "Hasta 2 meses", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT30, "Copia de escritura pública o resolución de adjudicación", docPredioRural] },
-  // Sin costo — Hasta 3 meses
-  { icon: "revision", title: "Avalúo catastral", desc: "Revisión del avalúo catastral; debe presentarse por escrito indicando la(s) vigencia(s) objeto de petición.", tiempo: "Hasta 3 meses", costo: "Sin costo", reqs: ["Solicitud por escrito con precisión de la(s) vigencia(s) objeto de petición", "Pruebas que fundamenten las variaciones por cambios físicos, valorización o cambios de uso o mercado inmobiliario", "Planos, certificaciones de autoridades, orto/aerofotografías, avalúos comerciales o escrituras que demuestren los cambios"] },
-  // Sin costo — Hasta 1 mes
-  { icon: "destino", title: "Cambio de destino", desc: "Actualización del uso o destino económico asignado al predio.", tiempo: "Hasta 1 mes", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT] },
-  // Sin costo — Hasta 15 días
-  { icon: "direccion", title: "Rectificación de dirección", desc: "Corrección de la dirección o nomenclatura registrada del predio.", tiempo: "Hasta 15 días", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, "Certificado de nomenclatura"] },
-  { icon: "nombre", title: "Rectificación de nombre", desc: "Corrección del nombre del propietario en la base catastral.", tiempo: "Hasta 15 días", costo: "Sin costo", reqs: [docSolicitud, docIdentidad] },
-  { icon: "documento", title: "Rectificación de documento de identidad", desc: "Corrección del número o tipo de documento del propietario.", tiempo: "Hasta 15 días", costo: "Sin costo", reqs: [docSolicitud, docIdentidad] },
-  { icon: "propietario", title: "Cambio de propietario", desc: "Actualización catastral cuando el predio cambia de dueño.", tiempo: "Hasta 15 días", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT30] },
-  // Productos catastrales — Con costo, Hasta 15 días
-  { icon: "matricula", title: "Certificado plano predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$52.500", reqs: productosDocs },
-  { icon: "documento", title: "Certificado catastral especial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$52.200", reqs: productosDocs },
-  { icon: "revision", title: "Certificado catastral de avalúo", desc: "Certificación oficial del avalúo catastral vigente del predio, para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "Consultar valor", reqs: productosDocs },
-  { icon: "matricula", title: "Fotocopia de la ficha predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$68.500", reqs: productosDocs },
-  { icon: "areacatastral", title: "Carta catastral urbana", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$57.900", reqs: productosDocs },
-  { icon: "arearegistral", title: "Carta catastral rural", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$76.400", reqs: productosDocs },
-  { icon: "inscripcion", title: "Certificado catastral nacional", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días", costo: "$10.000", reqs: productosDocs },
+  // Sin costo — Hasta 60 días hábiles
+  { icon: "areacatastral", title: "Incorporación de área", desc: "Registro inicial del área de un predio dentro de la base catastral.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docEscritura, docCLT, docPredioRural] },
+  { icon: "arearegistral", title: "Rectificación de área", desc: "Corrección del área del terreno cuando difiere de la realidad física o registral.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docEscritura, docCLT, docPredioRural] },
+  { icon: "desenglobe", title: "Desenglobe", desc: "División de un predio en dos o más inmuebles independientes.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docCLT, docEscritura, planos, ph, docPredioRural] },
+  { icon: "englobe", title: "Englobe", desc: "Unificación de dos o más predios en un solo inmueble.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docCLT, docEscritura, planos, ph, docPredioRural] },
+  { icon: "inscripcion", title: "Inscripción de predio", desc: "Registro inicial de un predio o mejora dentro de la información catastral.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT30, "Copia de escritura pública o resolución de adjudicación", docPredioRural] },
+  // Sin costo — Hasta 90 días hábiles
+  { icon: "revision", title: "Avalúo catastral", desc: "Revisión del avalúo catastral; debe presentarse por escrito indicando la(s) vigencia(s) objeto de petición.", tiempo: "Hasta 90 días hábiles", costo: "Sin costo", reqs: ["Solicitud por escrito con precisión de la(s) vigencia(s) objeto de petición", "Pruebas que fundamenten las variaciones por cambios físicos, valorización o cambios de uso o mercado inmobiliario", "Planos, certificaciones de autoridades, orto/aerofotografías, avalúos comerciales o escrituras que demuestren los cambios"] },
+  // Sin costo — Hasta 30 días hábiles
+  { icon: "destino", title: "Cambio de destino", desc: "Actualización del uso o destino económico asignado al predio.", tiempo: "Hasta 30 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT] },
+  // Sin costo — Hasta 15 días hábiles
+  { icon: "direccion", title: "Rectificación de dirección", desc: "Corrección de la dirección o nomenclatura registrada del predio.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, "Certificado de nomenclatura"] },
+  { icon: "nombre", title: "Rectificación de nombre", desc: "Corrección del nombre del propietario en la base catastral.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad] },
+  { icon: "documento", title: "Rectificación de documento de identidad", desc: "Corrección del número o tipo de documento del propietario.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad] },
+  { icon: "propietario", title: "Cambio de propietario", desc: "Actualización catastral cuando el predio cambia de dueño.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [docSolicitud, docIdentidad, docCLT30] },
+  // Productos catastrales — Con costo, Hasta 15 días hábiles (salvo indicación)
+  { icon: "matricula", title: "Certificado plano predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$52.500", reqs: productosDocs },
+  { icon: "documento", title: "Certificado catastral especial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$52.200", reqs: productosDocs },
+  { icon: "revision", title: "Certificado avalúo catastral", desc: "Certificación oficial del avalúo catastral vigente del predio, para descarga o entrega física.", tiempo: "Hasta 5 días hábiles", costo: "$52.200", reqs: productosDocs },
+  { icon: "matricula", title: "Fotocopia de la ficha predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$68.500", reqs: productosDocs },
+  { icon: "areacatastral", title: "Carta catastral urbana", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$57.900", reqs: productosDocs },
+  { icon: "arearegistral", title: "Carta catastral rural", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$76.400", reqs: productosDocs },
+  { icon: "inscripcion", title: "Certificado catastral nacional", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$10.000", reqs: productosDocs },
 ];
 
 const period = (s: string) => (s.trim().endsWith(".") ? s : s + ".");
