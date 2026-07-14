@@ -29,7 +29,7 @@ export default function EquipoPage() {
         <div className="equipo-hero-grid">
           <div className="reveal">
             <h1>Detrás de cada predio,<br /><span className="cy">hay un equipo</span> que lo hace posible</h1>
-            <Editable as="p" id="equipo.intro" multiline>Un equipo humano y comprometido que trabaja cada día para que conocer y cuidar tu territorio sea más fácil, cercano y transparente.</Editable>
+            <Editable as="p" id="equipo.intro" multiline>Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.</Editable>
             <span className="ribbon5" style={{ margin: "26px 0 0", width: 140 }} />
           </div>
 

@@ -46,7 +46,8 @@ export default function EnlacesInteres() {
         </div>
 
         <div className="enlaces-list">
-          {LINKS.map((l) => {
+          {LINKS.map((l, i) => {
+            const rowClass = `enlace-row reveal${i === 0 ? " enlace-row--feat" : ""}`;
             const inner = (
               <>
                 <span className="enlace-num">{l.n}</span>
@@ -59,11 +60,11 @@ export default function EnlacesInteres() {
             );
             // Enlaces externos (no-.gov.co) → aviso de salida del sitio oficial.
             return l.external ? (
-              <ExternalLink key={l.n} href={l.href} className="enlace-row reveal" ariaLabel={l.title} style={{ ["--accent" as string]: l.accent }}>
+              <ExternalLink key={l.n} href={l.href} className={rowClass} ariaLabel={l.title} style={{ ["--accent" as string]: l.accent }}>
                 {inner}
               </ExternalLink>
             ) : (
-              <a key={l.n} href={l.href} className="enlace-row reveal" style={{ ["--accent" as string]: l.accent }}>
+              <a key={l.n} href={l.href} className={rowClass} style={{ ["--accent" as string]: l.accent }}>
                 {inner}
               </a>
             );

@@ -29,11 +29,26 @@
   --fs-xl:1.75rem; --fs-2xl:2.25rem; --fs-3xl:3rem; --fs-4xl:4rem;
   --ls-tight:-0.02em; --ls-wide:0.04em;
   --container-max:1200px; --container-wide:1400px;
-  --radius-sm:6px; --radius-md:10px; --radius-lg:15px; --radius-pill:999px; --radius-button:12px;
-  --shadow-xs:0 1px 2px rgba(14,34,51,.06); --shadow-sm:0 2px 8px rgba(14,34,51,.08);
-  --shadow-md:0 6px 22px rgba(14,34,51,.10); --shadow-lg:0 14px 36px rgba(14,34,51,.14);
-  --shadow-blue:0 10px 30px rgba(59,133,165,.28);
-  --ease-soft:cubic-bezier(.4,0,.2,1); --dur-base:.28s;
+  /* Radios: escala propia (no los 4/8/16 de librería). El botón es apenas más
+     recto que la tarjeta para que se lea como control y no como "pastilla". */
+  --radius-sm:7px; --radius-md:12px; --radius-lg:18px; --radius-xl:26px; --radius-pill:999px; --radius-button:10px;
+  /* Sombras en dos capas teñidas del navy de marca: una de contacto (corta,
+     nítida) y una ambiental (larga, difusa con spread negativo). Evita el
+     "halo gris" genérico de una sola capa. */
+  --shadow-xs:0 1px 2px rgba(12,34,47,.05);
+  --shadow-sm:0 1px 2px rgba(12,34,47,.05), 0 4px 14px -6px rgba(12,34,47,.10);
+  --shadow-md:0 2px 4px rgba(12,34,47,.04), 0 14px 30px -12px rgba(12,34,47,.16);
+  --shadow-lg:0 4px 10px rgba(12,34,47,.05), 0 28px 56px -20px rgba(12,34,47,.24);
+  --shadow-blue:0 12px 30px -8px rgba(59,133,165,.32);
+  /* Movimiento: salida rápida y aterrizaje suave (easeOutCubic), no la curva
+     estándar de Material. --ease-spring solo para detalles pequeños. */
+  --ease-soft:cubic-bezier(.33,1,.68,1); --ease-spring:cubic-bezier(.3,1.35,.55,1);
+  --dur-fast:.16s; --dur-base:.3s; --dur-slow:.55s;
+  /* Espaciado fluido con nombre (antes cada sección improvisaba su clamp) */
+  --sp-2:clamp(.75rem,1vw,1rem); --sp-3:clamp(1rem,1.6vw,1.5rem);
+  --sp-4:clamp(1.5rem,2.4vw,2.25rem); --sp-5:clamp(2.25rem,3.4vw,3.25rem);
+  --sp-6:clamp(3.25rem,6vw,5.25rem);
+  --section-x:clamp(1rem,5vw,64px);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -265,7 +280,7 @@ img { max-width: 100%; }
 /* ---- HERO ---- */
 .hero { position: relative; background: var(--grad-hero); color: #fff; overflow: hidden;
   min-height: clamp(560px,82vh,760px); display: flex; align-items: center;
-  padding: clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,64px); }
+  padding: var(--sp-6) var(--section-x); }
 .hero-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.12) 1.5px, transparent 1.6px);
   background-size: 20px 20px; opacity: .5; pointer-events: none; }
 .hero-blobA { position: absolute; top: -60px; right: 6%; width: 280px; height: 280px;
@@ -317,13 +332,37 @@ img { max-width: 100%; }
 .hero-ribbon { display: block; height: 5px; width: 140px; border-radius: var(--radius-pill); background: var(--ribbon); margin-top: 32px; }
 
 /* ---- ENLACES DE INTERÉS ---- */
-.section-gray { background: var(--tt-gray-50); padding: clamp(3rem,6vw,5rem) clamp(1rem,5vw,64px); }
+.section-gray { background: var(--tt-gray-50); padding: var(--sp-6) var(--section-x); }
 .section-inner { max-width: var(--container-max); margin: 0 auto; }
-.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 34px; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-5); }
 .eyebrow { font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--tt-blue-700); }
 .sec-title { margin: 10px 0 0; font: var(--fw-bold) clamp(1.9rem,3.6vw,2.6rem)/1.12 var(--font-sans); color: var(--tt-navy-700); }
 .ribbon-bar { display: block; height: 5px; width: 120px; border-radius: var(--radius-pill); background: var(--ribbon); }
-.enlaces-list { display: grid; gap: 14px; }
+/* Composición asimétrica: la tarjeta destacada (consulta de predio) ocupa la
+   columna izquierda completa; las otras dos se apilan a la derecha. */
+.enlaces-list { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: var(--sp-3); }
+.enlace-row--feat { grid-row: 1 / span 2; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
+  align-items: start; padding: clamp(26px,3.4vw,40px); }
+.enlace-row--feat .enlace-num { font-size: clamp(3.2rem,7vw,5rem); }
+.enlace-row--feat .enlace-body { align-self: center; }
+.enlace-row--feat .enlace-body .et { font-size: clamp(1.4rem,2.6vw,1.9rem); }
+.enlace-row--feat .enlace-body .ed { margin-top: 10px; font-size: var(--fs-base); max-width: 38ch; }
+.enlace-row--feat .enlace-arrow { justify-self: end; }
+/* En la destacada el acento corre por el borde superior, no el lateral */
+.enlace-row--feat::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 5px;
+  transform: scaleX(0); transform-origin: left; }
+.enlace-row--feat:hover { transform: translateY(-6px); }
+.enlace-row--feat:hover::before { transform: scaleX(1); }
+@media (max-width: 900px) {
+  .enlaces-list { grid-template-columns: 1fr; }
+  .enlace-row--feat { grid-row: auto; grid-template-columns: auto 1fr auto; grid-template-rows: none; }
+  .enlace-row--feat .enlace-num { font-size: clamp(2.4rem,5vw,3.4rem); }
+  .enlace-row--feat .enlace-body .et { font-size: clamp(1.1rem,2vw,1.4rem); }
+  .enlace-row--feat::before { left: 0; right: auto; top: 0; bottom: 0; width: 5px; height: auto;
+    transform: scaleY(0); transform-origin: top; }
+  .enlace-row--feat:hover { transform: translateX(7px); }
+  .enlace-row--feat:hover::before { transform: scaleY(1); }
+}
 .enlace-row { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center;
   gap: clamp(14px,3vw,40px); text-decoration: none; padding: clamp(20px,3vw,30px) clamp(20px,3vw,34px);
   border-radius: 18px; background: #fff; border: 1px solid var(--border-subtle); overflow: hidden;
@@ -346,7 +385,7 @@ img { max-width: 100%; }
 
 /* ---- VISOR GEOGRÁFICO ---- */
 .visor { position: relative; background: linear-gradient(180deg, #ffffff 0%, #f5f7f9 100%); overflow: hidden;
-  padding: clamp(2.2rem,4.2vw,3.4rem) clamp(1rem,5vw,61px) 145px; }
+  padding: var(--sp-6) var(--section-x) 145px; }
 .visor-dots { position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(rgba(12,34,47,.045) 1.2px, transparent 1.3px); background-size: 24px 24px; }
 .visor-inner { position: relative; z-index: 1; max-width: var(--container-wide); margin: 0 auto; }
@@ -2247,3 +2286,29 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* Etiqueta "modo edición" y píldora de acción sobre fondo oscuro */
 .dark .adm-flag { background: rgba(240,182,59,.16); color: #f6cf7b; }
+
+/* ============================================================
+   MICROINTERACCIONES — sistema unificado de estados
+   Elevación breve al pasar (hover), presión al pulsar (active).
+   Curvas y duraciones tomadas de los tokens (--ease-soft/--dur-*).
+   ============================================================ */
+.pq-submit, .ct-submit, .ct-cta, .ct-reset, .norm-link, .login-submit, .ct-maps-btn, .fq-none button {
+  transition: transform var(--dur-fast) var(--ease-soft), box-shadow var(--dur-base) var(--ease-soft),
+    background var(--dur-base) var(--ease-soft), color var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft);
+}
+.pq-submit:hover, .ct-submit:hover, .ct-cta:hover, .norm-link:hover,
+.login-submit:hover, .ct-maps-btn:hover, .fq-none button:hover {
+  transform: translateY(-1px); box-shadow: var(--shadow-sm);
+}
+.pq-submit:active, .ct-submit:active, .ct-cta:active, .ct-reset:active, .norm-link:active,
+.login-submit:active, .ct-maps-btn:active, .fq-none button:active, .gc-search .go-btn:active {
+  transform: translateY(0) scale(.98); transition-duration: var(--dur-fast); box-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pq-submit, .ct-submit, .ct-cta, .ct-reset, .norm-link, .login-submit, .ct-maps-btn, .fq-none button,
+  .pq-submit:hover, .ct-submit:hover, .ct-cta:hover, .norm-link:hover, .login-submit:hover,
+  .ct-maps-btn:hover, .fq-none button:hover, .enlace-row:hover, .enlace-row--feat:hover {
+    transform: none;
+  }
+}

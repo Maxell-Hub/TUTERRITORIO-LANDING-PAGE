@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 // Acentos con colores corporativos vivos (azul · verde · amarillo).
 const FUNCIONES = [
   { n: "01", c: "#3B85A5", cls: "fn-lg", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar." },
-  { n: "02", c: "#4E8654", cls: "fn-sm", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos." },
+  { n: "02", c: "#4E8654", cls: "fn-sm", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral que sirve de base para trámites y tributos." },
   { n: "03", c: "#F0B63B", cls: "fn-sm", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal." },
-  { n: "04", c: "#3B85A5", cls: "fn-sm", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio." },
-  { n: "05", c: "#4E8654", cls: "fn-sm", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras." },
-  { n: "06", c: "#F0B63B", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable." },
+  { n: "04", c: "#3B85A5", cls: "fn-sm", t: "Información para la planeación", d: "Entregamos los datos con los que el municipio ordena su territorio y toma decisiones." },
+  { n: "05", c: "#4E8654", cls: "fn-sm", t: "Atención a la ciudadanía", d: "Respondemos cada consulta y solicitud con lenguaje claro y tiempos definidos." },
+  { n: "06", c: "#F0B63B", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para que la información catastral y la municipal siempre coincidan." },
 ];
 
 // Tonos distintos, todos derivados de la paleta corporativa (azul oscuro · azul · verde · amarillo · azul claro)
@@ -50,7 +50,7 @@ export default function NosotrosPage() {
         <div className="sec-wrap">
           <div className="reveal" data-dir="left" style={{ maxWidth: "54rem" }}>
             <span className="eyebrow-b">Nosotros</span>
-            <h1 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.6vw,2.6rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}><Editable as="span" id="nos.title">Un catastro moderno al servicio de Valledupar</Editable></h1>
+            <h1 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.6vw,2.6rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}><Editable as="span" id="nos.title">El catastro de Valledupar, al día y en un solo lugar</Editable></h1>
             <span className="ribbon5" style={{ margin: "18px 0 0" }} />
             <p style={{ margin: "26px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "var(--tt-gray-700)" }}>Tuterritorio S.A.S es el operador del <b style={{ color: "var(--tt-navy-700)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.</p>
             <p style={{ margin: "18px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}><Editable as="span" id="nos.intro2" multiline>Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.</Editable></p>
@@ -63,7 +63,7 @@ export default function NosotrosPage() {
         <div className="sec-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <Editable as="h2" id="nos.func-title" className="h2-nos">Lo que hacemos</Editable>
-            <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}><Editable as="span" id="nos.func-intro" multiline>Gestionamos de forma integral el catastro del municipio, desde el levantamiento de la información hasta la atención de cada trámite ciudadano.</Editable></p>
+            <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}><Editable as="span" id="nos.func-intro" multiline>Nos ocupamos de todo el ciclo catastral del municipio: del levantamiento de la información en campo a la respuesta de cada trámite ciudadano.</Editable></p>
           </div>
           <div className="func-bento">
             {FUNCIONES.map((f) => (
@@ -82,13 +82,13 @@ export default function NosotrosPage() {
           <div className="mv-col">
             <h2 className="mv-title">Misión</h2>
             <span className="mv-accent" aria-hidden="true" />
-            <p className="mv-text"><Editable as="span" id="nos.mision" multiline>Gestionar de manera integral el catastro multipropósito de Valledupar, generando información predial confiable y actualizada al servicio de la ciudadanía y la administración municipal.</Editable></p>
+            <p className="mv-text"><Editable as="span" id="nos.mision" multiline>Operar el catastro multipropósito de Valledupar y mantener la información de cada predio completa, actualizada y disponible para la ciudadanía y la administración municipal.</Editable></p>
           </div>
           <span className="mv-line" aria-hidden="true" />
           <div className="mv-col">
             <h2 className="mv-title">Visión</h2>
             <span className="mv-accent" aria-hidden="true" />
-            <p className="mv-text"><Editable as="span" id="nos.vision" multiline>Ser un catastro moderno, transparente y cercano, que impulse el desarrollo, la equidad y la planeación sostenible del territorio de Valledupar.</Editable></p>
+            <p className="mv-text"><Editable as="span" id="nos.vision" multiline>Que cualquier persona en Valledupar pueda conocer y confiar en la información de su predio, y que el municipio planee su territorio sobre datos reales.</Editable></p>
           </div>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function NosotrosPage() {
               <h2 style={{ margin: "14px 0 0", font: "700 clamp(1.9rem,3.4vw,2.5rem)/1.15 var(--font-sans)", color: "var(--tt-navy-700)" }}>Conoce dónde te atendemos</h2>
               <span className="ribbon5" style={{ margin: "18px 0 0" }} />
               <p style={{ margin: "24px 0 0", font: "400 1.125rem/1.65 var(--font-sans)", color: "var(--tt-gray-700)" }}>Te invitamos a recorrer las oficinas y los espacios donde trabajamos cada día al servicio de la ciudadanía de Valledupar.</p>
-              <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}>Un equipo cercano y comprometido, listo para acompañarte en cada consulta y trámite catastral.</p>
+              <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}>Aquí atendemos en persona cada consulta y trámite catastral, de lunes a viernes.</p>
             </div>
             {/* Video vertical (9:16) de las instalaciones */}
             <div className="reveal video-frame" data-dir="right">

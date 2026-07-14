@@ -21,12 +21,12 @@ export default function Footer() {
           </div>
 
           <h3>Sede Principal</h3>
-          <div className="footer-data">
+          <address className="footer-data" style={{ fontStyle: "normal" }}>
             <div><b>NIT:</b> 901996731-8</div>
             <div><b>Dirección:</b> Calle 16 #9-48, Edificio Caja Agraria - Oficina 1301 Valledupar, Cesar</div>
             <div><b>Horario de atención:</b> Lunes a Viernes de 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</div>
             <div style={{ marginTop: 6 }}><b>Correo contacto:</b> <a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></div>
-          </div>
+          </address>
 
           {/* Footer limpio: SOLO Instagram */}
           <div className="footer-social">

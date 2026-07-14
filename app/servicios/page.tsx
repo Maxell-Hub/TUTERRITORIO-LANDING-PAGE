@@ -142,7 +142,7 @@ export default function ServiciosPage() {
             </span>
             <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
             <span style={{ display: "block", height: 5, width: 132, borderRadius: 999, background: "var(--ribbon)", margin: "18px 0" }} />
-            <p style={{ margin: 0, maxWidth: "44em", font: "400 1.125rem/1.6 var(--font-sans)", color: "rgba(255,255,255,.84)" }}><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta información de predios y propietarios de manera ágil, segura y confiable.</Editable></p>
+            <p style={{ margin: 0, maxWidth: "44em", font: "400 1.125rem/1.6 var(--font-sans)", color: "rgba(255,255,255,.84)" }}><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
           </div>
           <div className="serv-count">
             <span style={{ font: "800 clamp(2rem,4vw,2.8rem)/1 var(--font-sans)", color: "var(--tt-lime-400)" }}>{TRAMITES.length}</span>
