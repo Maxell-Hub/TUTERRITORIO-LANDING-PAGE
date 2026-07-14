@@ -341,28 +341,6 @@ img { max-width: 100%; }
 /* Composición asimétrica: la tarjeta destacada (consulta de predio) ocupa la
    columna izquierda completa; las otras dos se apilan a la derecha. */
 .enlaces-list { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: var(--sp-3); }
-.enlace-row--feat { grid-row: 1 / span 2; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
-  align-items: start; padding: clamp(26px,3.4vw,40px); }
-.enlace-row--feat .enlace-num { font-size: clamp(3.2rem,7vw,5rem); }
-.enlace-row--feat .enlace-body { align-self: center; }
-.enlace-row--feat .enlace-body .et { font-size: clamp(1.4rem,2.6vw,1.9rem); }
-.enlace-row--feat .enlace-body .ed { margin-top: 10px; font-size: var(--fs-base); max-width: 38ch; }
-.enlace-row--feat .enlace-arrow { justify-self: end; }
-/* En la destacada el acento corre por el borde superior, no el lateral */
-.enlace-row--feat::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 5px;
-  transform: scaleX(0); transform-origin: left; }
-.enlace-row--feat:hover { transform: translateY(-6px); }
-.enlace-row--feat:hover::before { transform: scaleX(1); }
-@media (max-width: 900px) {
-  .enlaces-list { grid-template-columns: 1fr; }
-  .enlace-row--feat { grid-row: auto; grid-template-columns: auto 1fr auto; grid-template-rows: none; }
-  .enlace-row--feat .enlace-num { font-size: clamp(2.4rem,5vw,3.4rem); }
-  .enlace-row--feat .enlace-body .et { font-size: clamp(1.1rem,2vw,1.4rem); }
-  .enlace-row--feat::before { left: 0; right: auto; top: 0; bottom: 0; width: 5px; height: auto;
-    transform: scaleY(0); transform-origin: top; }
-  .enlace-row--feat:hover { transform: translateX(7px); }
-  .enlace-row--feat:hover::before { transform: scaleY(1); }
-}
 .enlace-row { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center;
   gap: clamp(14px,3vw,40px); text-decoration: none; padding: clamp(20px,3vw,30px) clamp(20px,3vw,34px);
   border-radius: 18px; background: #fff; border: 1px solid var(--border-subtle); overflow: hidden;
@@ -382,6 +360,30 @@ img { max-width: 100%; }
   display: flex; align-items: center; justify-content: center; color: var(--tt-navy-700); flex: none;
   transition: background .3s var(--ease-soft), color .3s var(--ease-soft), border-color .3s var(--ease-soft), transform .3s var(--ease-soft); }
 .enlace-row:hover .enlace-arrow { background: var(--accent); border-color: var(--accent); color: #fff; transform: rotate(-45deg) scale(1.05); }
+/* Tarjeta destacada: contenido apilado en vertical (número → texto → flecha).
+   Va después de las reglas base de .enlace-row para ganar el empate de especificidad. */
+.enlace-row--feat { grid-row: 1 / span 2; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
+  align-items: start; padding: clamp(26px,3.4vw,40px); }
+.enlace-row--feat .enlace-num { font-size: clamp(3.2rem,7vw,5rem); }
+.enlace-row--feat .enlace-body { align-self: center; }
+.enlace-row--feat .enlace-body .et { font-size: clamp(1.4rem,2.6vw,1.9rem); }
+.enlace-row--feat .enlace-body .ed { margin-top: 10px; font-size: var(--fs-base); max-width: 38ch; }
+.enlace-row--feat .enlace-arrow { justify-self: end; }
+/* En la destacada el acento corre por el borde superior, no el lateral */
+.enlace-row--feat::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 5px;
+  transform: scaleX(0); transform-origin: left; }
+.enlace-row--feat:hover { transform: translateY(-6px); }
+.enlace-row--feat:hover::before { transform: scaleX(1); }
+@media (max-width: 900px) {
+  .enlaces-list { grid-template-columns: 1fr; }
+  .enlace-row--feat { grid-row: auto; grid-template-columns: auto 1fr auto; grid-template-rows: none; align-items: center; }
+  .enlace-row--feat .enlace-num { font-size: clamp(2.4rem,5vw,3.4rem); }
+  .enlace-row--feat .enlace-body .et { font-size: clamp(1.1rem,2vw,1.4rem); }
+  .enlace-row--feat::before { left: 0; right: auto; top: 0; bottom: 0; width: 5px; height: auto;
+    transform: scaleY(0); transform-origin: top; }
+  .enlace-row--feat:hover { transform: translateX(7px); }
+  .enlace-row--feat:hover::before { transform: scaleY(1); }
+}
 
 /* ---- VISOR GEOGRÁFICO ---- */
 .visor { position: relative; background: linear-gradient(180deg, #ffffff 0%, #f5f7f9 100%); overflow: hidden;
