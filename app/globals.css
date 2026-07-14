@@ -363,12 +363,12 @@ img { max-width: 100%; }
 /* Tarjeta destacada: contenido apilado en vertical (número → texto → flecha).
    Va después de las reglas base de .enlace-row para ganar el empate de especificidad. */
 .enlace-row--feat { grid-row: 1 / span 2; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
-  align-items: start; padding: clamp(26px,3.4vw,40px); }
-.enlace-row--feat .enlace-num { font-size: clamp(3.2rem,7vw,5rem); }
+  align-items: start; justify-items: center; text-align: center; padding: clamp(26px,3.4vw,40px); }
+.enlace-row--feat .enlace-num { font-size: clamp(3.2rem,7vw,5rem); min-width: 0; }
 .enlace-row--feat .enlace-body { align-self: center; }
 .enlace-row--feat .enlace-body .et { font-size: clamp(1.4rem,2.6vw,1.9rem); }
-.enlace-row--feat .enlace-body .ed { margin-top: 10px; font-size: var(--fs-base); max-width: 38ch; }
-.enlace-row--feat .enlace-arrow { justify-self: end; }
+.enlace-row--feat .enlace-body .ed { margin: 10px auto 0; font-size: var(--fs-base); max-width: 38ch; }
+.enlace-row--feat .enlace-arrow { justify-self: center; }
 /* En la destacada el acento corre por el borde superior, no el lateral */
 .enlace-row--feat::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 5px;
   transform: scaleX(0); transform-origin: left; }
@@ -376,7 +376,8 @@ img { max-width: 100%; }
 .enlace-row--feat:hover::before { transform: scaleX(1); }
 @media (max-width: 900px) {
   .enlaces-list { grid-template-columns: 1fr; }
-  .enlace-row--feat { grid-row: auto; grid-template-columns: auto 1fr auto; grid-template-rows: none; align-items: center; }
+  .enlace-row--feat { grid-row: auto; grid-template-columns: auto 1fr auto; grid-template-rows: none;
+    align-items: center; justify-items: stretch; text-align: left; }
   .enlace-row--feat .enlace-num { font-size: clamp(2.4rem,5vw,3.4rem); }
   .enlace-row--feat .enlace-body .et { font-size: clamp(1.1rem,2vw,1.4rem); }
   .enlace-row--feat::before { left: 0; right: auto; top: 0; bottom: 0; width: 5px; height: auto;
