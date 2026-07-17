@@ -46,7 +46,16 @@ const nextConfig = {
   },
   // Cabeceras de seguridad aplicadas a todas las rutas.
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      // El video institucional es contenido de apoyo, no tiene página propia
+      // de reproducción: se le indica a Google que no lo indexe como video
+      // (resuelve el aviso "El vídeo no está en una página de visualización").
+      {
+        source: "/assets/instalaciones.mp4",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
   },
 };
 

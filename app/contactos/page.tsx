@@ -56,7 +56,7 @@ export default function ContactosPage() {
           <div className="ct-sede">
             <h2 style={{ marginBottom: 16 }}>Nuestra sede</h2>
             <div className="ct-sede-card">
-              <img src="/assets/img-caja.jpg" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }} />
+              <img src="/assets/img-caja.jpg" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" loading="lazy" decoding="async" width={1300} height={865} style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }} />
               <div className="ct-sede-foot">
                 <span className="ct-sede-pin">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
