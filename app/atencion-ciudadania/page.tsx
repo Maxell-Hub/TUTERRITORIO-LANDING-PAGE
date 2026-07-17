@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
 
 export const metadata: Metadata = {
@@ -34,45 +33,147 @@ const ACCESOS: { icon: React.ReactNode; accent: string; href: string; title: str
   },
 ];
 
+/** Estilos compartidos de las tarjetas blancas del grid de canales. */
+const cardStyle: React.CSSProperties = {
+  background: "var(--tt-white)",
+  border: "1px solid var(--border-subtle)",
+  borderRadius: 16,
+  padding: 24,
+  boxShadow: "var(--shadow-sm)",
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
+  textDecoration: "none",
+};
+
+/**
+ * Atención a la ciudadanía — estructura del diseño ATG:
+ * hero fotográfico tintado → grid de canales → feature de preguntas
+ * frecuentes → panel de carta de trato digno → franja de cierre con CTA.
+ */
 export default function AtencionCiudadaniaPage() {
   return (
-    <section className="legal-hero">
-      <div className="legal-wrap">
-        <span className="legal-eyebrow">Atención a la ciudadanía</span>
-        <h1>Atención y servicios a la ciudadanía</h1>
-        <p className="legal-lead">
+    <>
+      {/* 1 · Hero fotográfico */}
+      <section
+        className="atg-hero"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}
+      >
+        <span className="atg-eyebrow">Atención <b>a la ciudadanía</b></span>
+        <h1>
+          Atención y servicios<br />a la ciudadanía
+        </h1>
+        <p className="sub">
           Todos los canales para hacer trámites, comunicarte con nosotros y ejercer tus derechos, en un solo lugar.
         </p>
-
-        <div className="t-grid">
-          {ACCESOS.map((a) => (
-            <Link key={a.href} href={a.href} className="t-card" style={{ ["--accent" as string]: a.accent }}>
-              <span className="t-num" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{a.icon}</svg>
-              </span>
-              <span className="t-card-body">
-                <span className="t-card-title">{a.title}</span>
-                <span className="t-card-desc">{a.desc}</span>
-              </span>
-              <span className="t-card-go" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </span>
-            </Link>
-          ))}
+        <div className="atg-cta-row">
+          <a className="atg-pill" href="/pqrsd">Radica tu PQRSD</a>
+          <a className="atg-pill ghost" href="/contactos">Canales de atención</a>
         </div>
+      </section>
 
-        <div className="legal-body">
-          <Apartado titulo="Preguntas frecuentes">
-            <p>Respuestas a las dudas más comunes de la ciudadanía sobre trámites catastrales, avalúos, impuesto predial y PQRSD.</p>
-            <RecursoExistente href="/preguntas-frecuentes">Ver preguntas frecuentes</RecursoExistente>
-          </Apartado>
+      {/* 2 · Grid de canales de atención */}
+      <section className="atg-band" id="canales">
+        <div className="atg-wrap">
+          <div className="reveal" style={{ textAlign: "center", marginBottom: 44 }}>
+            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · Canales de atención</span>
+            <h2>Elige cómo quieres que te atendamos</h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 24 }}>
+            {ACCESOS.map((a) => (
+              <Link key={a.href} href={a.href} className="reveal" style={cardStyle}>
+                <span
+                  aria-hidden="true"
+                  style={{ width: 44, height: 44, borderRadius: 12, display: "inline-flex", alignItems: "center", justifyContent: "center", background: a.accent, color: "#fff" }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{a.icon}</svg>
+                </span>
+                <span style={{ font: "700 17px/1.3 var(--font-sans)", letterSpacing: "-0.01em", color: "var(--tt-navy-700)" }}>{a.title}</span>
+                <span style={{ font: "400 13.5px/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}>{a.desc}</span>
+              </Link>
+            ))}
 
-          <Apartado titulo="Carta de trato digno al ciudadano">
-            <p>Documento que describe los derechos de los ciudadanos y los medios para garantizarlos en su relación con la entidad (Ley 1437 de 2011, art. 7).</p>
-            <PendienteContenido titulo="Carta de trato digno" descripcion="Documento pendiente de cargar por la entidad." />
-          </Apartado>
+            {/* Sede, horarios y correo (datos oficiales del pie de página) */}
+            <div className="reveal" style={cardStyle}>
+              <span
+                aria-hidden="true"
+                style={{ width: 44, height: 44, borderRadius: 12, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#FC8803", color: "#fff" }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+              </span>
+              <span style={{ font: "700 17px/1.3 var(--font-sans)", letterSpacing: "-0.01em", color: "var(--tt-navy-700)" }}>Sede y horarios</span>
+              <span style={{ font: "400 13.5px/1.65 var(--font-sans)", color: "var(--tt-gray-500)" }}>
+                Calle 16 #9-48, Edificio Caja Agraria — Oficina 1301, Valledupar (Cesar).<br />
+                Lunes a viernes de 8:00 a. m. a 12:00 m. y de 2:00 p. m. a 6:00 p. m.<br />
+                <a href="mailto:contactenos@tuterritorio.gov.co" style={{ color: "var(--tt-blue-700)" }}>contactenos@tuterritorio.gov.co</a>
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* 3 · Feature: preguntas frecuentes */}
+      <section className="atg-band" id="preguntas-frecuentes">
+        <div className="atg-wrap">
+          <div className="atg-feature flip">
+            <div className="atg-copy reveal">
+              <span className="atg-eyebrow"><b>02</b> · Preguntas frecuentes</span>
+              <h2>Resuelve tus dudas sin salir de casa</h2>
+              <p>
+                Respuestas a las dudas más comunes de la ciudadanía sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
+              </p>
+              <ul>
+                <li>Trámites catastrales y avalúos</li>
+                <li>Impuesto predial</li>
+                <li>PQRSD y canales de atención</li>
+              </ul>
+              <a className="atg-pill" href="/preguntas-frecuentes">Ver preguntas frecuentes</a>
+            </div>
+            <div className="atg-visual reveal">
+              <div className="atg-mock">
+                <div className="atg-mock-bar" aria-hidden="true">
+                  <span className="d" /><span className="d" /><span className="d" />
+                  <span className="title">preguntas-frecuentes — tuterritorio.gov.co</span>
+                </div>
+                {/* IMAGEN PENDIENTE: foto de atención al público en ventanilla de la sede */}
+                <div style={{ height: 300, background: "var(--tt-gray-200)" }} role="img" aria-label="Imagen pendiente: atención al público en ventanilla" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 · Panel: carta de trato digno */}
+      <section className="atg-band" id="carta-trato-digno">
+        <div className="atg-wrap">
+          <div className="atg-panel">
+            <div className="atg-copy reveal">
+              <span className="atg-eyebrow"><b>03</b> · Carta de trato digno</span>
+              <h2>Tus derechos, por escrito</h2>
+              <p>
+                Documento que describe los derechos de los ciudadanos y los medios para garantizarlos en su relación con la entidad (Ley 1437 de 2011, art. 7).
+              </p>
+              <PendienteContenido titulo="Carta de trato digno" descripcion="Documento pendiente de cargar por la entidad." />
+            </div>
+            <img className="photo" src="/assets/atg/foto-alcaldia.jpg" alt="Fachada de la Alcaldía de Valledupar" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </section>
+
+      {/* 5 · Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+      >
+        <div className="atg-wrap">
+          <span className="atg-eyebrow">Estamos <b>para servirte</b></span>
+          <h2>¿No encontraste lo que buscabas?</h2>
+          <p>
+            Radica tu petición, queja, reclamo, sugerencia o denuncia: cada solicitud queda con radicado y tiempos de respuesta según la ley.
+          </p>
+          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
+        </div>
+      </section>
+    </>
   );
 }

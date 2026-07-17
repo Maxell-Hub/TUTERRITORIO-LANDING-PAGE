@@ -74,18 +74,17 @@ export default function NoticiasList() {
 
   return (
     <>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}>
+        <span className="atg-eyebrow">Sala de prensa · <b className="notranslate" translate="no">Tuterritorio</b></span>
+        <h1>Noticias</h1>
+        <p className="sub">
+          Sigue de cerca los avances de la <b>actualización catastral multipropósito</b> de Valledupar:
+          operativos de campo, nuevos avalúos y los trámites que mantienen tu predio al día.
+        </p>
+      </section>
+
       <section className="news-header">
         <div className="news-header-inner">
-          <span style={{ font: "700 0.75rem/1 var(--font-sans)", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--tt-blue-700)" }}>
-            Sala de prensa · Tuterritorio
-          </span>
-          <h1>Noticias</h1>
-          <div className="news-ribbon" />
-          <p className="news-sub">
-            Sigue de cerca los avances de la <b>actualización catastral multipropósito</b> de Valledupar:
-            operativos de campo, nuevos avalúos y los trámites que mantienen tu predio al día.
-          </p>
-
           {isAdmin && (
             <div className="adm-bar" style={{ padding: "14px 0 0" }}>
               <span className="adm-flag">Modo administrador</span>

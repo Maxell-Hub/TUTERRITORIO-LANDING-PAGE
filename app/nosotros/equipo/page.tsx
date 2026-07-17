@@ -9,48 +9,50 @@ export const metadata: Metadata = {
     "Conoce al equipo humano de Tuterritorio: liderazgo y equipo técnico interdisciplinario que opera el catastro de Valledupar.",
 };
 
-// Nodos de la red (sin íconos): círculos con colores corporativos, deriva suave y anillo pulsante.
-const NODES = [
-  { l: 50, t: 50, s: 96, c: "#3B85A5", hl: "#74BAD3", a: "tt-driftA 7s",   sh: "0 16px 36px rgba(59,133,165,.42)" },
-  { l: 20, t: 22, s: 60, c: "#4E8654", hl: "#86C28D", a: "tt-driftB 6.2s", sh: "0 12px 26px rgba(78,134,84,.38)" },
-  { l: 82, t: 20, s: 58, c: "#1E5167", hl: "#4A86A1", a: "tt-driftA 6.8s", sh: "0 12px 26px rgba(30,81,103,.42)" },
-  { l: 86, t: 74, s: 64, c: "#F0B63B", hl: "#F8D689", a: "tt-driftB 7.4s", sh: "0 12px 26px rgba(240,182,59,.44)" },
-  { l: 18, t: 78, s: 54, c: "#4E8654", hl: "#86C28D", a: "tt-driftA 6.5s", sh: "0 10px 22px rgba(78,134,84,.36)" },
-  { l: 14, t: 50, s: 46, c: "#3B85A5", hl: "#74BAD3", a: "tt-driftB 5.8s", sh: "0 9px 20px rgba(59,133,165,.38)" },
-];
-
+/**
+ * Nuestro Equipo — estructura del diseño ATG:
+ * hero fotográfico tintado → liderazgo (banda) → equipo técnico (banda)
+ * → franja fotográfica de cierre. Las bandas del equipo las renderiza
+ * EquipoTeam (miembros administrables desde el modo administrador).
+ */
 export default function EquipoPage() {
   return (
     <>
-      {/* Hero Equipo */}
-      <section className="equipo-hero">
-        <div style={{ position: "absolute", top: -120, right: -40, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle at 50% 50%, rgba(240,182,59,.20), rgba(240,182,59,0) 70%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -140, left: -80, width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle at 50% 50%, rgba(89,169,196,.16), rgba(89,169,196,0) 70%)", pointerEvents: "none" }} />
-        <div className="equipo-hero-grid">
-          <div className="reveal">
-            <h1>Detrás de cada predio,<br /><span className="cy">hay un equipo</span> que lo hace posible</h1>
-            <Editable as="p" id="equipo.intro" multiline>Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.</Editable>
-            <span className="ribbon5" style={{ margin: "26px 0 0", width: 140 }} />
-          </div>
-
-          <div className="hero-net reveal">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="net-lines">
-              <g stroke="rgba(89,169,196,.45)" strokeWidth="0.4" fill="none" strokeLinecap="round" strokeDasharray="2 2.4">
-                <line x1="50" y1="50" x2="20" y2="22" /><line x1="50" y1="50" x2="82" y2="20" />
-                <line x1="50" y1="50" x2="86" y2="74" /><line x1="50" y1="50" x2="18" y2="78" />
-                <line x1="50" y1="50" x2="14" y2="50" /><line x1="20" y1="22" x2="82" y2="20" />
-                <line x1="86" y1="74" x2="18" y2="78" />
-              </g>
-            </svg>
-            {NODES.map((n, i) => (
-              <span key={i} className="net-node" style={{ left: `${n.l}%`, top: `${n.t}%`, width: n.s, height: n.s, color: n.c, background: `radial-gradient(circle at 34% 30%, ${n.hl}, ${n.c})`, boxShadow: n.sh, animation: `${n.a} ease-in-out infinite` }} />
-            ))}
-          </div>
+      {/* 1 · Hero fotográfico */}
+      {/* IMAGEN PENDIENTE: foto grupal del equipo de Tuterritorio (en la sede o en campo)
+          para reemplazar foto-archivo.jpg como fondo del hero. */}
+      <section
+        className="atg-hero"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-archivo.jpg)" }}
+      >
+        <span className="atg-eyebrow">Nosotros · <b>Nuestro equipo</b></span>
+        <h1>
+          Detrás de cada predio,<br />hay <span className="b">un equipo</span> que lo hace posible
+        </h1>
+        <Editable as="p" id="equipo.intro" className="sub" multiline>
+          Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.
+        </Editable>
+        <div className="atg-cta-row">
+          <a className="atg-pill" href="#liderazgo">Conoce el liderazgo</a>
+          <a className="atg-pill ghost" href="#equipo-tecnico">Ver el equipo técnico</a>
         </div>
       </section>
 
-      {/* Liderazgo + Equipo técnico (editable por el administrador) */}
+      {/* 2-3 · Liderazgo + Equipo técnico (editable por el administrador) */}
       <EquipoTeam />
+
+      {/* 4 · Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+      >
+        <div className="atg-wrap">
+          <span className="atg-eyebrow">Trabajamos <b>para ti</b></span>
+          <h2>Un equipo que responde por tu predio</h2>
+          <p>En campo y en oficina, cada integrante trabaja para que la información catastral de Valledupar sea confiable y esté al día.</p>
+          <a className="atg-pill" href="/contactos">Contáctanos</a>
+        </div>
+      </section>
     </>
   );
 }

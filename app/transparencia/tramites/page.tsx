@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TPage, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
+import { TPageATG, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
 import ExternalLink from "@/components/common/ExternalLink";
 
 export const metadata: Metadata = {
@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 
 export default function TramitesTransparenciaPage() {
   return (
-    <TPage
+    <TPageATG
       title="Trámites y servicios"
       lead="Trámites y servicios catastrales disponibles para la ciudadanía."
+      eyebrow="Sección 5"
     >
       <Apartado titulo="5.1 Listado de trámites y servicios">
         <p>El listado completo de trámites y productos catastrales (con requisitos, tiempos y costos) está publicado en la sección de Trámites y servicios del sitio.</p>
@@ -27,6 +28,6 @@ export default function TramitesTransparenciaPage() {
           </ExternalLink>
         </p>
       </Apartado>
-    </TPage>
+    </TPageATG>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TPage, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
+import { TPageATG, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
 
 export const metadata: Metadata = {
   title: "Protección de datos personales — Transparencia",
@@ -9,9 +9,10 @@ export const metadata: Metadata = {
 
 export default function ProteccionDatosPage() {
   return (
-    <TPage
+    <TPageATG
       title="Protección de datos personales"
       lead="Tratamiento de datos personales conforme a la Ley 1581 de 2012."
+      eyebrow="Sección 10"
     >
       <Apartado titulo="10.1 Política de Tratamiento de Datos Personales">
         <p>Tuterritorio cuenta con su Política de Tratamiento de Datos Personales, donde se describen las finalidades, los derechos de los titulares y los canales para ejercerlos.</p>
@@ -22,6 +23,6 @@ export default function ProteccionDatosPage() {
         <p>Los titulares pueden conocer, actualizar, rectificar y solicitar la supresión de sus datos, así como revocar la autorización, a través de los canales oficiales de la entidad.</p>
         <RecursoExistente href="/contactos">Canales de atención</RecursoExistente>
       </Apartado>
-    </TPage>
+    </TPageATG>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TPage, Apartado } from "@/components/transparencia/Transparencia";
+import { TPageATG, Apartado } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
 import ExternalLink from "@/components/common/ExternalLink";
 
@@ -11,9 +11,10 @@ export const metadata: Metadata = {
 
 export default function ContratacionPage() {
   return (
-    <TPage
+    <TPageATG
       title="Contratación"
       lead="Información sobre la actividad contractual de la entidad."
+      eyebrow="Sección 3"
     >
       <Apartado titulo="3.1 Plan Anual de Adquisiciones (PAA)">
         <PendienteContenido titulo="Plan Anual de Adquisiciones" descripcion="PAA de la vigencia pendiente de cargar por la entidad." />
@@ -31,6 +32,6 @@ export default function ContratacionPage() {
           </ExternalLink>
         </p>
       </Apartado>
-    </TPage>
+    </TPageATG>
   );
 }

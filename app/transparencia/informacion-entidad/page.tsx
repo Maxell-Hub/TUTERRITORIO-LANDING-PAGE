@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TPage, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
+import { TPageATG, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
 
 export const metadata: Metadata = {
@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 
 export default function InformacionEntidadPage() {
   return (
-    <TPage
+    <TPageATG
       title="Información de la entidad"
       lead="Datos básicos de Tuterritorio como gestor catastral del municipio de Valledupar."
+      eyebrow="Sección 1"
     >
       <Apartado titulo="1.1 Mecanismos de contacto">
         <p>Los canales oficiales de atención (correo, teléfono y formulario) están disponibles en la página de contacto.</p>
@@ -71,6 +72,6 @@ export default function InformacionEntidadPage() {
           </article>
         </div>
       </Apartado>
-    </TPage>
+    </TPageATG>
   );
 }

@@ -22,12 +22,12 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
-// Sin íconos: cada área se identifica con su monograma (letra) sobre el color corporativo.
+// Sin íconos: cada área se identifica con su monograma (letra) sobre el color de la paleta ATG.
 const AREAS: { key: string; c: string; meta: string; mono: string }[] = [
-  { key: "Topografía y campo", c: "#3B85A5", mono: "T", meta: "Levantamiento, reconocimiento predial y verificación de linderos" },
-  { key: "Jurídica", c: "#4E8654", mono: "J", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad" },
-  { key: "Sistemas y datos", c: "#F0B63B", mono: "S", meta: "Información geográfica, bases de datos y plataformas digitales" },
-  { key: "Atención al ciudadano", c: "#1E5167", mono: "A", meta: "Orientación, recepción de solicitudes y acompañamiento" },
+  { key: "Topografía y campo", c: "#005FC0", mono: "T", meta: "Levantamiento, reconocimiento predial y verificación de linderos" },
+  { key: "Jurídica", c: "#5DA108", mono: "J", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad" },
+  { key: "Sistemas y datos", c: "#FC8803", mono: "S", meta: "Información geográfica, bases de datos y plataformas digitales" },
+  { key: "Atención al ciudadano", c: "#152A40", mono: "A", meta: "Orientación, recepción de solicitudes y acompañamiento" },
 ];
 
 export default function EquipoTeam() {
@@ -81,12 +81,11 @@ export default function EquipoTeam() {
   return (
     <>
       {/* Liderazgo */}
-      <section className="sec-pad" style={{ background: "#fff" }}>
-        <div className="sec-wrap">
-          <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 40px", textAlign: "center" }}>
-            <span className="eyebrow-b">Liderazgo</span>
-            <Editable as="h2" id="equipo.lead-title" className="h2-nos">Quienes orientan nuestra gestión</Editable>
-            <span className="ribbon5 center" style={{ marginTop: 18, width: 110, height: 4 }} />
+      <section className="atg-band" id="liderazgo">
+        <div className="atg-wrap">
+          <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 44px", textAlign: "center" }}>
+            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · Liderazgo</span>
+            <Editable as="h2" id="equipo.lead-title">Quienes orientan nuestra gestión</Editable>
           </div>
 
           {isAdmin && (
@@ -99,7 +98,7 @@ export default function EquipoTeam() {
           <div className="lead-grid">
             {lead.map((m) => (
               <div id={m.id} key={m.id} className="member lift lead-card">
-                <div className="lead-photo" style={{ background: "linear-gradient(135deg,#1E5167,#0C222F)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                <div className="lead-photo" style={{ background: "linear-gradient(135deg,var(--tt-navy-600),var(--tt-navy-900))", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
                   {m.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={m.photo} alt={m.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
@@ -108,7 +107,7 @@ export default function EquipoTeam() {
                   )}
                 </div>
                 <div style={{ padding: "26px 24px 30px" }}>
-                  <h3 style={{ margin: 0, font: "700 1.3125rem/1.25 var(--font-sans)", color: "var(--tt-navy-700)" }}>{m.name}</h3>
+                  <h3 style={{ margin: 0, font: "700 1.3125rem/1.25 var(--font-sans)", color: "var(--tt-ink)" }}>{m.name}</h3>
                   <p style={{ margin: "6px 0 0", font: "400 0.9375rem/1.4 var(--font-sans)", color: "var(--tt-gray-500)" }}>{m.role}</p>
                   {isAdmin && (
                     <div className="adm-actions" style={{ marginTop: 14 }}>
@@ -125,18 +124,18 @@ export default function EquipoTeam() {
       </section>
 
       {/* Equipo técnico */}
-      <section className="sec-pad" style={{ background: "var(--tt-gray-50)", paddingBottom: "clamp(5rem,9vw,8rem)" }}>
-        <div className="sec-wrap">
+      <section className="atg-band" id="equipo-tecnico">
+        <div className="atg-wrap">
           <div className="reveal" style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
             <div style={{ maxWidth: "46rem" }}>
-              <span className="eyebrow-b">Equipo técnico</span>
-              <Editable as="h2" id="equipo.tech-title" className="h2-nos">Un equipo interdisciplinario</Editable>
-              <p style={{ margin: "16px 0 0", font: "400 1.0625rem/1.6 var(--font-sans)", color: "var(--tt-gray-700)" }}>
+              <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>02</b> · Equipo técnico</span>
+              <Editable as="h2" id="equipo.tech-title">Un equipo interdisciplinario</Editable>
+              <p style={{ margin: "16px 0 0", font: "400 0.9375rem/1.7 var(--font-sans)", color: "var(--tt-gray-500)" }}>
                 <Editable as="span" id="equipo.tech-intro" multiline>Profesionales organizados por áreas de especialidad, trabajando de forma coordinada en cada etapa del proceso catastral.</Editable>
               </p>
             </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <span style={{ font: "800 clamp(2.6rem,5vw,3.6rem)/1 var(--font-sans)", color: "#3B85A5" }}>{techCount}</span>
+              <span style={{ font: "800 clamp(2.6rem,5vw,3.6rem)/1 var(--font-sans)", fontVariantNumeric: "tabular-nums", color: "var(--tt-blue-600)" }}>{techCount}</span>
               <span style={{ font: "600 0.9375rem/1.2 var(--font-sans)", color: "var(--tt-gray-500)" }}>profesionales</span>
             </div>
           </div>

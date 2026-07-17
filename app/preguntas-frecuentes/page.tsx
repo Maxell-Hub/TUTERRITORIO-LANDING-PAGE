@@ -27,17 +27,14 @@ export default function PreguntasFrecuentesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* Hero institucional con la trama catastral de la marca */}
-      <section className="fq-hero">
-        <div className="fq-hero-inner">
-          <span className="rec-eyebrow">Atención a la ciudadanía</span>
-          <h1>Preguntas frecuentes</h1>
-          <span className="fq-hero-ribbon" aria-hidden="true" />
-          <p>
-            Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
-            Busca por palabra clave o explora por categoría.
-          </p>
-        </div>
+      {/* Hero fotográfico ATG */}
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}>
+        <span className="atg-eyebrow">Atención <b>a la ciudadanía</b></span>
+        <h1>Preguntas frecuentes</h1>
+        <p className="sub">
+          Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
+          Busca por palabra clave o explora por categoría.
+        </p>
       </section>
 
       {/* Buscador, pestañas y acordeones (interactivo) */}

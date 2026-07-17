@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TPage, Apartado } from "@/components/transparencia/Transparencia";
+import { TPageATG, Apartado } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
 
 export const metadata: Metadata = {
@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 
 export default function PlaneacionPage() {
   return (
-    <TPage
+    <TPageATG
       title="Planeación, presupuesto e informes"
       lead="Instrumentos de planeación y rendición de cuentas de la entidad."
+      eyebrow="Sección 4"
     >
       <Apartado titulo="4.1 Plan de acción">
         <PendienteContenido titulo="Plan de acción anual" descripcion="Plan de acción de la vigencia pendiente de cargar por la entidad." />
@@ -29,6 +30,6 @@ export default function PlaneacionPage() {
       <Apartado titulo="4.4 Informes de gestión">
         <PendienteContenido titulo="Informes de gestión y resultados" descripcion="Informes de gestión pendientes de cargar por la entidad." />
       </Apartado>
-    </TPage>
+    </TPageATG>
   );
 }

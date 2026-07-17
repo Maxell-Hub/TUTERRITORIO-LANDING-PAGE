@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TPage, Apartado } from "@/components/transparencia/Transparencia";
+import { TPageATG, Apartado } from "@/components/transparencia/Transparencia";
 import PendienteContenido from "@/components/common/PendienteContenido";
 import ExternalLink from "@/components/common/ExternalLink";
 
@@ -11,9 +11,10 @@ export const metadata: Metadata = {
 
 export default function DatosAbiertosPage() {
   return (
-    <TPage
+    <TPageATG
       title="Datos abiertos"
       lead="Conjuntos de datos que la entidad publica en formato abierto y reutilizable."
+      eyebrow="Sección 7"
     >
       <Apartado titulo="7.1 Portal de datos abiertos del Estado">
         <p>Los conjuntos de datos abiertos de la entidad se publican en el portal oficial datos.gov.co.</p>
@@ -27,6 +28,6 @@ export default function DatosAbiertosPage() {
       <Apartado titulo="7.2 Listado de conjuntos de datos publicados">
         <PendienteContenido titulo="Inventario de datos abiertos" descripcion="Listado de conjuntos de datos publicados, pendiente de cargar por la entidad." />
       </Apartado>
-    </TPage>
+    </TPageATG>
   );
 }

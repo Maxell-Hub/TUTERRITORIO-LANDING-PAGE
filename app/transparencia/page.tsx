@@ -21,44 +21,58 @@ const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] 
   { n: "10", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
 ];
 
-/* Colores corporativos que se alternan por tarjeta (número). Se excluye el azul
-   oscuro (#0C222F). Cada color lleva su color de texto para el relleno al pasar
-   el cursor: sobre el amarillo y el turquesa (claros) el texto va oscuro para
-   mantener el contraste; sobre azul y verde va blanco. */
-const T_COLORS: { accent: string; fg: string }[] = [
-  { accent: "#4E8654", fg: "#ffffff" }, // verde corporativo
-  { accent: "#3B85A5", fg: "#ffffff" }, // azul corporativo
-  { accent: "#F0B63B", fg: "#0C222F" }, // amarillo (acento)
-];
-
+/**
+ * Hub de Transparencia — estructura ATG: hero fotográfico tintado
+ * (foto de la Alcaldía) seguido de una banda con el índice de secciones
+ * como grid de tarjetas enlazadas.
+ */
 export default function TransparenciaPage() {
   return (
-    <section className="legal-hero">
-      <div className="legal-wrap">
+    <>
+      <section
+        className="atg-hero"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}
+      >
+        <span className="atg-eyebrow">Transparencia · <b>Ley 1712 de 2014</b></span>
         <h1>Transparencia y acceso a la información pública</h1>
-        <p className="legal-lead">
+        <p className="sub">
           Información pública de Tuterritorio, gestor catastral del municipio de Valledupar, organizada conforme a la
           Resolución MinTIC 1519 de 2020 y la Ley 1712 de 2014.
         </p>
+      </section>
 
-        <div className="t-grid">
-          {SUBSECCIONES.map((s, i) => {
-            const c = T_COLORS[i % T_COLORS.length];
-            return (
-            <Link key={s.href} href={s.href} className="t-card" style={{ ["--accent" as string]: c.accent, ["--num-fg" as string]: c.fg }}>
-              <span className="t-num">{s.n}</span>
-              <span className="t-card-body">
-                <span className="t-card-title">{s.titulo}</span>
-                <span className="t-card-desc">{s.desc}</span>
-              </span>
-              <span className="t-card-go" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </span>
-            </Link>
-            );
-          })}
+      <section className="atg-band">
+        <div className="atg-wrap">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
+            {SUBSECCIONES.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                style={{
+                  display: "block",
+                  background: "var(--tt-white)",
+                  border: "1px solid var(--border-subtle)",
+                  borderRadius: 16,
+                  padding: 24,
+                  boxShadow: "var(--shadow-sm)",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                <span style={{ display: "block", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", color: "var(--tt-blue-700)", marginBottom: 10 }}>
+                  {s.n.padStart(2, "0")}
+                </span>
+                <span style={{ display: "block", fontSize: 17, fontWeight: 700, lineHeight: 1.3, color: "var(--tt-navy-700)" }}>
+                  {s.titulo}
+                </span>
+                <span style={{ display: "block", marginTop: 6, fontSize: 14, lineHeight: 1.6, color: "var(--tt-gray-500)" }}>
+                  {s.desc}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
