@@ -9,12 +9,16 @@ export const metadata: Metadata = {
 
 export default function AccesibilidadPage() {
   return (
-    <section className="legal-hero">
-      <div className="legal-wrap">
-        <span className="legal-eyebrow">Accesibilidad</span>
+    <>
+      {/* Hero fotográfico ATG */}
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}>
+        <span className="atg-eyebrow">Accesibilidad <b>para todas las personas</b></span>
         <h1>Declaración de Accesibilidad</h1>
-        <p className="legal-lead">Tuterritorio — Catastro Multipropósito de Valledupar</p>
+        <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
+      </section>
 
+      <section className="legal-hero">
+        <div className="legal-wrap">
         <ul className="legal-meta">
           <li><b>Última actualización:</b> 25 de junio de 2026</li>
           <li><b>Estándar de referencia:</b> WCAG 2.1 nivel AA · NTC 5854</li>
@@ -64,7 +68,8 @@ export default function AccesibilidadPage() {
             Daremos respuesta a tu reporte dentro de los términos de ley aplicables a las PQRSD.
           </p>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

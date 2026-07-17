@@ -9,6 +9,12 @@ export const metadata: Metadata = {
     "Trámites y productos catastrales de Tuterritorio (Catastro de Valledupar): actualiza, corrige y consulta información de predios y propietarios.",
 };
 
+/**
+ * Servicios — estructura del diseño ATG:
+ * hero fotográfico tintado → banda con la grilla de trámites
+ * → franja fotográfica de cierre con CTA a PQRSD.
+ */
+
 /* ---- Foto temática por tipo de trámite (cada tarjeta lleva su imagen) ----
    Imágenes de Unsplash (licencia libre), optimizadas por next/image. */
 const U = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=640&q=70`;
@@ -130,37 +136,32 @@ const Check = () => (
 export default function ServiciosPage() {
   return (
     <>
-      {/* Banner de título */}
-      <section className="serv-banner">
-        <div className="blobA" />
-        <div className="blobB" />
-        <div className="serv-banner-row">
-          <div style={{ maxWidth: "40rem" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", borderRadius: 999, background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.22)", font: "700 0.75rem/1 var(--font-sans)", letterSpacing: "0.04em", textTransform: "uppercase", color: "#fff" }}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--tt-lime-400)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg>
-              Catastro Multipropósito · Valledupar
-            </span>
-            <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
-            <span style={{ display: "block", height: 5, width: 132, borderRadius: 999, background: "var(--ribbon)", margin: "18px 0" }} />
-            <p style={{ margin: 0, maxWidth: "44em", font: "400 1.125rem/1.6 var(--font-sans)", color: "rgba(255,255,255,.84)" }}><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
-          </div>
-          <div className="serv-count">
-            <span style={{ font: "800 clamp(2rem,4vw,2.8rem)/1 var(--font-sans)", color: "var(--tt-lime-400)" }}>{TRAMITES.length}</span>
-            <span style={{ font: "500 0.875rem/1.3 var(--font-sans)", color: "rgba(255,255,255,.86)" }}>trámites y<br />productos</span>
-          </div>
+      {/* 1 · Hero fotográfico */}
+      <section
+        className="atg-hero"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-finca.jpg)" }}
+      >
+        <span className="atg-eyebrow">Catastro Multipropósito · <b>Valledupar</b></span>
+        <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
+        <p className="sub"><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
+        <div className="atg-cta-row">
+          <a className="atg-pill" href="#tramites">Ver los trámites</a>
+          <a className="atg-pill ghost" href="/pqrsd">Radicar una PQRSD</a>
         </div>
       </section>
 
-      {/* Grilla de trámites */}
-      <section id="tramites" className="serv-section">
-        <div style={{ maxWidth: "var(--container-wide)", margin: "0 auto" }}>
-          <div className="serv-head">
-            <span className="bar" />
+      {/* 2 · Banda: grilla de trámites */}
+      <section className="atg-band" id="tramites">
+        <div className="atg-wrap">
+          <div className="reveal" style={{ maxWidth: "46rem" }}>
+            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · {TRAMITES.length} trámites y productos</span>
             <Editable as="h2" id="serv.section-title">Selecciona el trámite que necesitas</Editable>
-            <span style={{ marginLeft: 6, font: "500 0.875rem/1 var(--font-sans)", color: "var(--tt-gray-500)" }}>Pasa el cursor (o enfoca con teclado) sobre cada tarjeta para ver los documentos requeridos.</span>
+            <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.7, color: "var(--tt-gray-500)" }}>
+              Pasa el cursor (o enfoca con teclado) sobre cada tarjeta para ver los documentos requeridos.
+            </p>
           </div>
 
-          <div className="tr-grid">
+          <div className="tr-grid" style={{ marginTop: 44 }}>
             {TRAMITES.map((t, i) => (
               <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}
                 style={DESIGN === "numero" ? ({ ["--accent" as string]: BRAND[i % BRAND.length] }) : undefined}>
@@ -216,6 +217,19 @@ export default function ServiciosPage() {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
             <Editable as="span" id="serv.precio-nota">Los valores de los productos catastrales son establecidos por la Alcaldía de Valledupar, entidad ante la cual se realiza el pago de forma directa mediante su cuenta bancaria oficial o los datáfonos dispuestos para tal fin.</Editable>
           </p>
+        </div>
+      </section>
+
+      {/* 3 · Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+      >
+        <div className="atg-wrap">
+          <span className="atg-eyebrow">¿Necesitas <b>algo más</b>?</span>
+          <h2>¿No encontraste lo que buscabas?</h2>
+          <p>Radica tu petición, queja, reclamo, sugerencia o denuncia. Cada solicitud queda con radicado y tiempos de respuesta según la ley.</p>
+          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
         </div>
       </section>
     </>

@@ -8,24 +8,50 @@ export const metadata: Metadata = {
     "Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio, catastro de Valledupar.",
 };
 
+/**
+ * PQRSD — estructura del diseño ATG:
+ * hero fotográfico tintado → banda con el formulario de radicación
+ * → franja fotográfica de cierre con CTA a preguntas frecuentes.
+ */
 export default function PqrsdPage() {
   return (
     <>
-      <section className="pq-hero">
-        <div className="pq-hero-deco" aria-hidden="true" />
-        <div className="pq-hero-inner">
-          <span className="hero-eyebrow">Atención a la ciudadanía</span>
-          <h1>Radica tu PQRSD</h1>
-          <p>
-            Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio.
-            Completa el formulario y nuestro equipo dará trámite a tu solicitud.
-          </p>
+      {/* 1 · Hero fotográfico */}
+      <section
+        className="atg-hero"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-archivo.jpg)" }}
+      >
+        <span className="atg-eyebrow">Atención a la <b>ciudadanía</b></span>
+        <h1>Radica tu PQRSD</h1>
+        <p className="sub">
+          Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio.
+          Completa el formulario y nuestro equipo dará trámite a tu solicitud.
+        </p>
+        <div className="atg-cta-row">
+          <a className="atg-pill" href="#formulario">Diligenciar el formulario</a>
+          <a className="atg-pill ghost" href="/preguntas-frecuentes">Preguntas frecuentes</a>
         </div>
       </section>
 
-      <section className="pq-section">
-        <div className="pq-form-wrap">
-          <PqrsdForm />
+      {/* 2 · Banda: formulario de radicación */}
+      <section className="atg-band" id="formulario">
+        <div className="atg-wrap">
+          <div className="reveal" style={{ maxWidth: 880, margin: "0 auto" }}>
+            <PqrsdForm />
+          </div>
+        </div>
+      </section>
+
+      {/* 3 · Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}
+      >
+        <div className="atg-wrap">
+          <span className="atg-eyebrow">¿Tienes <b>dudas</b>?</span>
+          <h2>Resuelve tus dudas antes de radicar</h2>
+          <p>Consulta el ABC catastral y las respuestas a las preguntas más comunes sobre trámites, avalúos y el catastro de Valledupar.</p>
+          <a className="atg-pill" href="/preguntas-frecuentes">Ver preguntas frecuentes</a>
         </div>
       </section>
     </>

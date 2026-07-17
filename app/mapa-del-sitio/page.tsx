@@ -69,15 +69,19 @@ const GRUPOS: { titulo: string; accent: string; enlaces: { href: string; label: 
 
 export default function MapaDelSitioPage() {
   return (
-    <section className="legal-hero">
-      <div className="legal-wrap">
-        <span className="legal-eyebrow">Navegación</span>
+    <>
+      {/* Hero fotográfico ATG */}
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}>
+        <span className="atg-eyebrow">Navegación <b>del sitio</b></span>
         <h1>Mapa del sitio</h1>
-        <p className="legal-lead">
+        <p className="sub">
           Índice organizado de todas las secciones y páginas del sitio de Tuterritorio, agrupadas por tema.
         </p>
+      </section>
 
-        <div className="legal-body">
+      <section className="legal-hero">
+        <div className="legal-wrap">
+          <div className="legal-body">
           <nav aria-label="Mapa del sitio" className="sitemap-grid">
             {GRUPOS.map((g) => (
               <section key={g.titulo} className="sitemap-group" style={{ ["--accent" as string]: g.accent }}>
@@ -93,8 +97,9 @@ export default function MapaDelSitioPage() {
               </section>
             ))}
           </nav>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

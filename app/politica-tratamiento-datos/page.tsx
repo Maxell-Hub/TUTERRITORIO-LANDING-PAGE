@@ -9,12 +9,16 @@ export const metadata: Metadata = {
 
 export default function PoliticaDatosPage() {
   return (
-    <section className="legal-hero">
-      <div className="legal-wrap">
-        <span className="legal-eyebrow">Protección de datos personales</span>
+    <>
+      {/* Hero fotográfico ATG */}
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}>
+        <span className="atg-eyebrow">Protección <b>de datos personales</b></span>
         <h1>Política de Tratamiento y Protección de Datos Personales</h1>
-        <p className="legal-lead">Tuterritorio — Catastro Multipropósito de Valledupar</p>
+        <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
+      </section>
 
+      <section className="legal-hero">
+        <div className="legal-wrap">
         <ul className="legal-meta">
           <li><b>Última actualización:</b> 25 de junio de 2026</li>
           <li><b>Versión:</b> 1.0</li>
@@ -144,7 +148,8 @@ export default function PoliticaDatosPage() {
             legales. Cambios sustanciales se comunican en el sitio web.
           </p>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

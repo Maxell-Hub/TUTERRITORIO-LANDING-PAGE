@@ -9,12 +9,16 @@ export const metadata: Metadata = {
 
 export default function TerminosPage() {
   return (
-    <section className="legal-hero">
-      <div className="legal-wrap">
-        <span className="legal-eyebrow">Términos legales</span>
+    <>
+      {/* Hero fotográfico ATG */}
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}>
+        <span className="atg-eyebrow">Términos <b>legales</b></span>
         <h1>Términos y Condiciones de Uso</h1>
-        <p className="legal-lead">Tuterritorio — Catastro Multipropósito de Valledupar</p>
+        <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
+      </section>
 
+      <section className="legal-hero">
+        <div className="legal-wrap">
         <ul className="legal-meta">
           <li><b>Última actualización:</b> 25 de junio de 2026</li>
           <li><b>Entidad:</b> Tuterritorio (NIT 901.996.731-8)</li>
@@ -85,7 +89,8 @@ export default function TerminosPage() {
             {" "}· (605) 5885761 Ext. 100.
           </p>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
