@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
+import EnlacesInteres from "@/components/home/EnlacesInteres";
 
 export const metadata: Metadata = {
   title: { absolute: "Tuterritorio — Catastro Multipropósito de Valledupar" },
@@ -67,7 +68,7 @@ export default function HomePage() {
       </section>
 
       {/* 3 · Feature invertida: trámites */}
-      <section className="atg-band" id="tramites">
+      <section className="atg-band" id="tramites-detalle">
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
@@ -92,48 +93,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4 · Declaración centrada */}
-      <section className="atg-statement">
-        <div className="atg-wrap">
-          <span className="atg-eyebrow">La sinergia <b>A · T · G</b></span>
-          <h2>Una sinergia que transforma la gestión catastral</h2>
-          <Editable as="p" id="home.sinergia-p" multiline>
-            Cada territorio tiene tres pilares. Tuterritorio los integra en un ecosistema digital único, para que la información catastral de Valledupar deje de estar dispersa y se convierta en una herramienta de decisión.
-          </Editable>
-        </div>
-      </section>
-
-      {/* 5 · Tres pilares con foto */}
-      <section className="atg-band">
-        <div className="atg-wrap">
-          <div className="atg-pillars">
-            <article className="atg-pcard a reveal">
-              <div className="pfoto" role="img" aria-label="Fachada de la Alcaldía de Valledupar" />
-              <div className="pbox">
-                <h3>Autoridad local</h3>
-                <p>La que decide. Trámites, resoluciones e indicadores en un solo lugar para la ciudadanía y la administración de Valledupar.</p>
-                <a className="more" href="/nosotros"><span className="line" aria-hidden="true" /><em>Conocer más</em></a>
-              </div>
-            </article>
-            <article className="atg-pcard t reveal">
-              <div className="pfoto" role="img" aria-label="Predio rural con corrales y cercas de madera" />
-              <div className="pbox">
-                <h3>Terrenos</h3>
-                <p>Los que sustentan el desarrollo. Cada predio con su información física, jurídica y económica unificada y trazable.</p>
-                <a className="more" href="/servicios"><span className="line" aria-hidden="true" /><em>Conocer más</em></a>
-              </div>
-            </article>
-            <article className="atg-pcard g reveal">
-              <div className="pfoto" role="img" aria-label="Río Guatapurí entre rocas y vegetación" />
-              <div className="pbox">
-                <h3>Geografía</h3>
-                <p>La que lo define todo. Cartografía viva sobre estándares geoespaciales, conectada con la realidad del territorio.</p>
-                <a className="more" href="/#visor"><span className="line" aria-hidden="true" /><em>Conocer más</em></a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      {/* 4 · Enlaces de interés (información original del sitio) */}
+      <EnlacesInteres />
 
       {/* 6 · Cifras */}
       <section className="atg-band atg-stats-band">
