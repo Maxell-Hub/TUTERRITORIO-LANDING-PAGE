@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 import RevealManager from "@/components/motion/RevealManager";
 import AuthProvider from "@/components/auth/AuthProvider";
@@ -10,11 +10,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import FloatingActions from "@/components/site/FloatingActions";
 import GoogleTranslate from "@/components/site/GoogleTranslate";
 
-// Inter auto-hospedada por Next (no se llama a Google Fonts en runtime)
-const inter = Inter({
+// Sora auto-hospedada por Next (tipografía del diseño ATG; no se llama a Google Fonts en runtime)
+const sora = Sora({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-inter",
+  variable: "--font-sora",
   display: "swap",
 });
 
@@ -116,7 +116,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={sora.variable}>
       <body>
         {/* Aplica el tema antes de pintar (evita parpadeo). Usa la preferencia
             guardada si existe; si no, sigue el modo del sistema operativo. */}

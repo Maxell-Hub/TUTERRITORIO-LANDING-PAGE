@@ -4,26 +4,29 @@
    ============================================================ */
 
 :root {
-  --tt-navy-900:#0C222F; --tt-navy-800:#0C222F; --tt-navy-700:#163A4C; --tt-navy-600:#2A5A70;
-  --tt-blue-800:#2F6B86; --tt-blue-700:#3B85A5; --tt-blue-600:#4E97B6; --tt-blue-500:#6BAFCC;
-  --tt-blue-200:#CBE0E9; --tt-blue-ink:#2A6580;
-  --tt-teal-600:#3B85A5; --tt-teal-500:#59A9C4;
-  --tt-green-700:#3E6E44; --tt-green-600:#4E8654; --tt-green-500:#6AA070;
-  --tt-lime-500:#8FBE4E; --tt-lime-400:#A7CF66;
-  --tt-amber-500:#F0B63B; --tt-amber-600:#B9831A;
+  /* Paleta ATG_HUB — Azul #005FC0 · Verde #5DA108 · Naranja #FC8803
+     sobre grises fríos (ground #EDF0F3, tinta #152A40). */
+  --tt-navy-900:#0F2233; --tt-navy-800:#12283C; --tt-navy-700:#152A40; --tt-navy-600:#2C4A6B;
+  --tt-blue-800:#00488F; --tt-blue-700:#005FC0; --tt-blue-600:#1E74D0; --tt-blue-500:#5EA1E8;
+  --tt-blue-200:#C9DFF5; --tt-blue-ink:#00488F;
+  --tt-teal-600:#005FC0; --tt-teal-500:#5EA1E8;
+  --tt-green-700:#3F7006; --tt-green-600:#4E8A05; --tt-green-500:#5DA108;
+  --tt-lime-500:#7CC434; --tt-lime-400:#9AD65C;
+  --tt-amber-500:#FC8803; --tt-amber-600:#DD7100;
   --tt-red-500:#D83744; --tt-red-600:#C0392B;
-  --govco-blue:#00339A; --footer-green:#2E5E38;
-  --tt-white:#FFFFFF; --tt-gray-50:#F8F9FA; --tt-gray-100:#F2F2F2; --tt-gray-200:#E2E6E9;
-  --tt-gray-300:#DEE2E6; --tt-gray-500:#6C757D; --tt-gray-700:#4B4B4B; --tt-gray-900:#333333; --tt-ink:#1A1A1A;
-  --text-body:var(--tt-gray-900); --border-subtle:var(--tt-gray-200);
-  --ribbon:linear-gradient(90deg,#1E5167 0%,#1E5167 25%,#3B85A5 25%,#3B85A5 50%,#4E8654 50%,#4E8654 75%,#F0B63B 75%,#F0B63B 100%);
-  --grad-hero:linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%);
-  /* Fondo de los heros de página: azul profundo casi plano + trama catastral de la marca
-     (calles y predios como en el imagotipo, ver /assets/hero-parcelas.svg) */
-  --hero-base:linear-gradient(168deg,#123648 0%,#0C222F 55%,#0A1B24 100%);
+  --govco-blue:#00339A; --footer-green:#152A40;
+  --tt-white:#FFFFFF; --tt-gray-50:#F5F7F9; --tt-gray-100:#EDF0F3; --tt-gray-200:#DCE2E8;
+  --tt-gray-300:#DCE2E8; --tt-gray-500:#54667A; --tt-gray-700:#3D4F63; --tt-gray-900:#152A40; --tt-ink:#152A40;
+  --text-body:#2C3E52; --border-subtle:var(--tt-gray-200);
+  --ribbon:linear-gradient(90deg,#005FC0 0%,#005FC0 33.3%,#5DA108 33.3%,#5DA108 66.6%,#FC8803 66.6%,#FC8803 100%);
+  --grad-hero:linear-gradient(135deg,#0F2233 0%,#152A40 40%,#00488F 100%);
+  /* Fondo de los heros de página: tinta ATG profunda + trama catastral de la marca */
+  --hero-base:linear-gradient(168deg,#1C3A56 0%,#152A40 55%,#0F2233 100%);
   --hero-parcelas:url("/assets/hero-parcelas.svg");
-  --font-sans:var(--font-inter),ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-display:var(--font-inter),ui-sans-serif,system-ui,sans-serif;
+  --photo-tint:rgba(13,30,48,.60);
+  --font-sans:var(--font-sora),"Segoe UI",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --font-display:var(--font-sora),"Segoe UI",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"Cascadia Code",Consolas,"SF Mono",Menlo,monospace;
   --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700; --fw-extra:800;
   --fs-xs:0.75rem; --fs-sm:0.875rem; --fs-base:1rem; --fs-md:1.125rem; --fs-lg:1.375rem;
   --fs-xl:1.75rem; --fs-2xl:2.25rem; --fs-3xl:3rem; --fs-4xl:4rem;
@@ -35,11 +38,11 @@
   /* Sombras en dos capas teñidas del navy de marca: una de contacto (corta,
      nítida) y una ambiental (larga, difusa con spread negativo). Evita el
      "halo gris" genérico de una sola capa. */
-  --shadow-xs:0 1px 2px rgba(12,34,47,.05);
-  --shadow-sm:0 1px 2px rgba(12,34,47,.05), 0 4px 14px -6px rgba(12,34,47,.10);
-  --shadow-md:0 2px 4px rgba(12,34,47,.04), 0 14px 30px -12px rgba(12,34,47,.16);
-  --shadow-lg:0 4px 10px rgba(12,34,47,.05), 0 28px 56px -20px rgba(12,34,47,.24);
-  --shadow-blue:0 12px 30px -8px rgba(59,133,165,.32);
+  --shadow-xs:0 1px 2px rgba(21,42,64,.06);
+  --shadow-sm:0 1px 2px rgba(21,42,64,.06), 0 4px 12px rgba(21,42,64,.06);
+  --shadow-md:0 2px 6px rgba(21,42,64,.07), 0 18px 40px rgba(21,42,64,.12);
+  --shadow-lg:0 4px 10px rgba(21,42,64,.07), 0 28px 56px -16px rgba(21,42,64,.22);
+  --shadow-blue:0 12px 30px -8px rgba(0,95,192,.32);
   /* Movimiento: salida rápida y aterrizaje suave (easeOutCubic), no la curva
      estándar de Material. --ease-spring solo para detalles pequeños. */
   --ease-soft:cubic-bezier(.33,1,.68,1); --ease-spring:cubic-bezier(.3,1.35,.55,1);
@@ -2318,3 +2321,179 @@ font[style] { background: none !important; box-shadow: none !important; transiti
     transform: none;
   }
 }
+
+/* ============================================================
+   SISTEMA ATG — componentes del rediseño (estructura del
+   artefacto "ATG — Donde el catastro de Colombia se conecta").
+   Secciones "band" separadas por líneas finas, hero fotográfico
+   tintado, pastillas, tarjetas con foto y caja superpuesta.
+   ============================================================ */
+.atg-wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 720px) { .atg-wrap { padding: 0 20px; } }
+
+.atg-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--tt-gray-500);
+}
+.atg-eyebrow b { color: var(--tt-amber-600); font-weight: 400; }
+
+.atg-pill {
+  display: inline-block;
+  font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+  padding: 11px 26px; border-radius: 999px;
+  background: var(--tt-blue-700); color: #fff;
+  text-decoration: none; border: none; cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--dur-base) var(--ease-soft), transform var(--dur-fast) var(--ease-soft);
+}
+.atg-pill:hover { background: var(--tt-blue-800); transform: translateY(-1px); }
+.atg-pill:active { transform: scale(.97); }
+.atg-pill.ghost { background: var(--tt-white); color: var(--tt-ink); border: 1px solid var(--tt-gray-300); box-shadow: none; }
+.atg-pill.ghost:hover { background: var(--tt-gray-100); }
+
+/* --- Hero fotográfico con tinte --- */
+.atg-hero {
+  padding: 132px 24px 140px; text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/atg/foto-territorio.jpg");
+  background-size: cover; background-position: center 65%;
+}
+@media (max-width: 720px) { .atg-hero { padding: 88px 20px 96px; } }
+.atg-hero .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 20px; }
+.atg-hero .atg-eyebrow b { color: var(--tt-amber-500); }
+.atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
+.atg-hero h1 .b { color: #6FB3FF; }
+.atg-hero .sub { color: rgba(255,255,255,.87); font-size: 16.5px; line-height: 1.7; max-width: 52ch; margin: 0 auto 36px; }
+.atg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.atg-hero .atg-pill { background: #005FC0; color: #fff; }
+.atg-hero .atg-pill:hover { background: #00488F; }
+.atg-hero .atg-pill.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.55); }
+.atg-hero .atg-pill.ghost:hover { background: rgba(255,255,255,.14); }
+
+/* --- Bandas --- */
+.atg-band { border-bottom: 1px solid var(--border-subtle); padding: 88px 0; background: var(--tt-gray-100); }
+@media (max-width: 720px) { .atg-band { padding: 60px 0; } }
+.atg-band h2, .atg-statement h2, .atg-photo-band h2 {
+  font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; text-wrap: balance; margin: 0;
+  font-size: clamp(25px,3.2vw,34px); color: var(--tt-navy-700);
+}
+
+/* --- Feature: visual + copy --- */
+.atg-feature { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; }
+.atg-feature.flip { grid-template-columns: 5fr 7fr; }
+@media (max-width: 900px) {
+  .atg-feature, .atg-feature.flip { grid-template-columns: 1fr; gap: 36px; }
+  .atg-feature .atg-visual { order: 2; } .atg-feature .atg-copy { order: 1; }
+}
+.atg-copy { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.atg-copy p { color: var(--tt-gray-500); max-width: 48ch; margin: 0; line-height: 1.7; }
+.atg-copy ul { margin: 0; padding-left: 18px; color: var(--tt-gray-500); font-size: 13.5px; display: flex; flex-direction: column; gap: 6px; }
+.atg-copy .atg-pill { margin-top: 10px; }
+
+/* --- Mock tipo ventana --- */
+.atg-mock { background: var(--tt-white); border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--shadow-md); overflow: hidden; }
+.atg-mock-bar { display: flex; align-items: center; gap: 7px; padding: 11px 16px; border-bottom: 1px solid var(--border-subtle); background: var(--tt-gray-50); }
+.atg-mock-bar .d { width: 9px; height: 9px; border-radius: 50%; background: var(--tt-gray-300); opacity: .9; }
+.atg-mock-bar .title { font-family: var(--font-mono); font-size: 11px; color: var(--tt-gray-500); margin-left: 8px; letter-spacing: .04em; }
+.atg-map-body { position: relative; height: 320px; background: var(--tt-gray-50) url("/assets/atg/foto-ortofoto.jpg") center/cover; }
+.atg-layers { position: absolute; left: 14px; top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.atg-layers span {
+  font-size: 11px; font-weight: 600; color: var(--tt-ink);
+  background: rgba(255,255,255,.94); border: 1px solid var(--border-subtle); border-radius: 8px;
+  padding: 5px 10px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 7px;
+}
+.atg-layers i { font-style: normal; font-size: 10px; color: var(--tt-green-600); }
+.atg-mock-photo { display: block; width: 100%; height: auto; }
+
+/* --- Declaración centrada --- */
+.atg-statement { text-align: center; padding: 96px 0; border-bottom: 1px solid var(--border-subtle); background: var(--tt-gray-100); }
+@media (max-width: 720px) { .atg-statement { padding: 64px 0; } }
+.atg-statement .atg-eyebrow { display: block; margin-bottom: 18px; }
+.atg-statement h2 { max-width: 26ch; margin: 0 auto 16px; font-size: clamp(26px,3.6vw,38px); }
+.atg-statement p { color: var(--tt-gray-500); max-width: 60ch; margin: 0 auto; font-size: 15.5px; line-height: 1.7; }
+
+/* --- Tarjetas pilar: foto vertical + caja superpuesta --- */
+.atg-pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 56px 52px; }
+@media (max-width: 960px) { .atg-pillars { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 56px; } }
+.atg-pcard { position: relative; }
+.atg-pcard.a { --acc-ink: var(--tt-blue-700); }
+.atg-pcard.t { --acc-ink: var(--tt-green-600); }
+.atg-pcard.g { --acc-ink: var(--tt-amber-600); }
+.atg-pcard .pfoto { width: 88%; aspect-ratio: 3/4; background-size: cover; background-position: center; border-radius: 8px; box-shadow: var(--shadow-md); }
+.atg-pcard.a .pfoto { background-image: url("/assets/atg/foto-alcaldia.jpg"); background-position: 30% center; }
+.atg-pcard.t .pfoto { background-image: url("/assets/atg/foto-finca.jpg"); }
+.atg-pcard.g .pfoto { background-image: url("/assets/atg/foto-rio.jpg"); }
+.atg-pcard .pbox {
+  position: relative; width: 88%; margin: -46% 0 0 auto;
+  background: var(--tt-white); border: 1px solid var(--border-subtle);
+  border-radius: 24px 24px 0 24px; padding: 26px 24px 22px;
+  box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 11px; min-height: 15.5rem;
+}
+.atg-pcard h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; margin: 0; color: var(--acc-ink); }
+.atg-pcard .pbox p { font-size: 13.5px; color: var(--tt-gray-500); margin: 0; line-height: 1.7; }
+.atg-pcard .more {
+  margin-top: auto; align-self: flex-end; display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--acc-ink); text-decoration: none;
+}
+.atg-pcard .more .line { width: 36px; height: 2px; background: currentColor; transition: width .25s ease; }
+.atg-pcard .more:hover .line { width: 54px; }
+.atg-pcard .more:hover { text-decoration: underline; text-underline-offset: 3px; }
+.atg-pcard .more em { font-style: normal; }
+
+/* --- Cifras --- */
+.atg-stats-band { text-align: center; }
+.atg-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
+@media (max-width: 720px) { .atg-stats { grid-template-columns: 1fr; gap: 38px; } }
+.atg-stat .n {
+  font-size: clamp(34px,4.5vw,48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+  font-variant-numeric: tabular-nums; color: var(--tt-blue-800);
+}
+.atg-stat:nth-child(2) .n { color: var(--tt-green-600); }
+.atg-stat:nth-child(3) .n { color: var(--tt-amber-600); }
+.atg-stat .d { font-size: 13.5px; color: var(--tt-gray-500); margin: 8px auto 0; max-width: 26ch; }
+
+/* --- Panel grande con foto --- */
+.atg-panel {
+  background: var(--tt-white); border: 1px solid var(--border-subtle); border-radius: 16px;
+  box-shadow: var(--shadow-md); display: grid; grid-template-columns: 5fr 7fr; overflow: hidden;
+}
+@media (max-width: 900px) { .atg-panel { grid-template-columns: 1fr; } }
+.atg-panel .atg-copy { padding: 48px 44px; justify-content: center; }
+@media (max-width: 720px) { .atg-panel .atg-copy { padding: 32px 24px; } }
+.atg-panel .photo { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 300px; border-left: 1px solid var(--border-subtle); }
+@media (max-width: 900px) { .atg-panel .photo { border-left: none; border-top: 1px solid var(--border-subtle); min-height: 240px; } }
+
+/* --- Franja fotográfica de cierre --- */
+.atg-photo-band {
+  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/atg/foto-banderas.jpg");
+  background-size: cover; background-position: center 30%;
+  padding: 110px 0; text-align: center;
+}
+@media (max-width: 720px) { .atg-photo-band { padding: 72px 0; } }
+.atg-photo-band .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 16px; }
+.atg-photo-band .atg-eyebrow b { color: var(--tt-amber-500); }
+.atg-photo-band h2 { color: #fff; max-width: 24ch; margin: 0 auto 14px; font-size: clamp(26px,3.8vw,40px); }
+.atg-photo-band p { color: rgba(255,255,255,.85); max-width: 54ch; margin: 0 auto 30px; font-size: 15px; line-height: 1.7; }
+.atg-photo-band .atg-pill { background: #fff; color: #152A40; }
+.atg-photo-band .atg-pill:hover { background: #E4E9EE; }
+
+/* --- Modo oscuro de las secciones ATG --- */
+.dark .atg-band, .dark .atg-statement { background: #0D141C; border-color: #22303F; }
+.dark .atg-hero { border-color: #22303F; }
+.dark .atg-band h2, .dark .atg-statement h2 { color: #E0E9F2; }
+.dark .atg-eyebrow { color: #93A5B8; }
+.dark .atg-copy p, .dark .atg-copy ul, .dark .atg-statement p, .dark .atg-stat .d { color: #93A5B8; }
+.dark .atg-mock, .dark .atg-panel, .dark .atg-pcard .pbox { background: #16202C; border-color: #22303F; }
+.dark .atg-mock-bar { background: #121C27; border-color: #22303F; }
+.dark .atg-layers span { background: rgba(22,32,44,.92); border-color: #22303F; color: #E0E9F2; }
+.dark .atg-pcard .pbox p { color: #93A5B8; }
+.dark .atg-pill.ghost { background: #16202C; color: #E0E9F2; border-color: #3A4C60; }
+.dark .atg-pill.ghost:hover { background: #121C27; }
+.dark .atg-pill { background: #1E74D0; }
+.dark .atg-pill:hover { background: #005FC0; }
+.dark .atg-stat .n { color: #8AB9F0; }
+.dark .atg-stat:nth-child(2) .n { color: #8ED14B; }
+.dark .atg-stat:nth-child(3) .n { color: #FDA13B; }
+.dark .atg-panel .photo { border-color: #22303F; }
