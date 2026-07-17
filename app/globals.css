@@ -4,26 +4,25 @@
    ============================================================ */
 
 :root {
-  /* Paleta ATG_HUB — Azul #005FC0 · Verde #5DA108 · Naranja #FC8803
-     sobre grises fríos (ground #EDF0F3, tinta #152A40). */
-  --tt-navy-900:#0F2233; --tt-navy-800:#12283C; --tt-navy-700:#152A40; --tt-navy-600:#2C4A6B;
-  --tt-blue-800:#00488F; --tt-blue-700:#005FC0; --tt-blue-600:#1E74D0; --tt-blue-500:#5EA1E8;
-  --tt-blue-200:#C9DFF5; --tt-blue-ink:#00488F;
-  --tt-teal-600:#005FC0; --tt-teal-500:#5EA1E8;
-  --tt-green-700:#3F7006; --tt-green-600:#4E8A05; --tt-green-500:#5DA108;
-  --tt-lime-500:#7CC434; --tt-lime-400:#9AD65C;
-  --tt-amber-500:#FC8803; --tt-amber-600:#DD7100;
+  /* Paleta corporativa Tuterritorio (estructura y componentes al estilo ATG) */
+  --tt-navy-900:#0C222F; --tt-navy-800:#0C222F; --tt-navy-700:#163A4C; --tt-navy-600:#2A5A70;
+  --tt-blue-800:#2F6B86; --tt-blue-700:#3B85A5; --tt-blue-600:#4E97B6; --tt-blue-500:#6BAFCC;
+  --tt-blue-200:#CBE0E9; --tt-blue-ink:#2A6580;
+  --tt-teal-600:#3B85A5; --tt-teal-500:#59A9C4;
+  --tt-green-700:#3E6E44; --tt-green-600:#4E8654; --tt-green-500:#6AA070;
+  --tt-lime-500:#8FBE4E; --tt-lime-400:#A7CF66;
+  --tt-amber-500:#F0B63B; --tt-amber-600:#B9831A;
   --tt-red-500:#D83744; --tt-red-600:#C0392B;
   --govco-blue:#00339A; --footer-green:#2E5E38;
-  --tt-white:#FFFFFF; --tt-gray-50:#F5F7F9; --tt-gray-100:#EDF0F3; --tt-gray-200:#DCE2E8;
-  --tt-gray-300:#DCE2E8; --tt-gray-500:#54667A; --tt-gray-700:#3D4F63; --tt-gray-900:#152A40; --tt-ink:#152A40;
-  --text-body:#2C3E52; --border-subtle:var(--tt-gray-200);
-  --ribbon:linear-gradient(90deg,#005FC0 0%,#005FC0 33.3%,#5DA108 33.3%,#5DA108 66.6%,#FC8803 66.6%,#FC8803 100%);
-  --grad-hero:linear-gradient(135deg,#0F2233 0%,#152A40 40%,#00488F 100%);
-  /* Fondo de los heros de página: tinta ATG profunda + trama catastral de la marca */
-  --hero-base:linear-gradient(168deg,#1C3A56 0%,#152A40 55%,#0F2233 100%);
+  --tt-white:#FFFFFF; --tt-gray-50:#F8F9FA; --tt-gray-100:#F2F2F2; --tt-gray-200:#E2E6E9;
+  --tt-gray-300:#DEE2E6; --tt-gray-500:#6C757D; --tt-gray-700:#4B4B4B; --tt-gray-900:#333333; --tt-ink:#1A1A1A;
+  --text-body:var(--tt-gray-900); --border-subtle:var(--tt-gray-200);
+  --ribbon:linear-gradient(90deg,#1E5167 0%,#1E5167 25%,#3B85A5 25%,#3B85A5 50%,#4E8654 50%,#4E8654 75%,#F0B63B 75%,#F0B63B 100%);
+  --grad-hero:linear-gradient(135deg,#0C222F 0%,#0E2A39 36%,#1E5167 76%,#3B85A5 100%);
+  /* Fondo de los heros de página: azul profundo + trama catastral de la marca */
+  --hero-base:linear-gradient(168deg,#123648 0%,#0C222F 55%,#0A1B24 100%);
   --hero-parcelas:url("/assets/hero-parcelas.svg");
-  --photo-tint:rgba(13,30,48,.60);
+  --photo-tint:rgba(12,34,47,.62);
   --font-sans:var(--font-sora),"Segoe UI",ui-sans-serif,system-ui,-apple-system,sans-serif;
   --font-display:var(--font-sora),"Segoe UI",ui-sans-serif,system-ui,sans-serif;
   --font-mono:"Cascadia Code",Consolas,"SF Mono",Menlo,monospace;
@@ -38,11 +37,11 @@
   /* Sombras en dos capas teñidas del navy de marca: una de contacto (corta,
      nítida) y una ambiental (larga, difusa con spread negativo). Evita el
      "halo gris" genérico de una sola capa. */
-  --shadow-xs:0 1px 2px rgba(21,42,64,.06);
-  --shadow-sm:0 1px 2px rgba(21,42,64,.06), 0 4px 12px rgba(21,42,64,.06);
-  --shadow-md:0 2px 6px rgba(21,42,64,.07), 0 18px 40px rgba(21,42,64,.12);
-  --shadow-lg:0 4px 10px rgba(21,42,64,.07), 0 28px 56px -16px rgba(21,42,64,.22);
-  --shadow-blue:0 12px 30px -8px rgba(0,95,192,.32);
+  --shadow-xs:0 1px 2px rgba(12,34,47,.05);
+  --shadow-sm:0 1px 2px rgba(12,34,47,.05), 0 4px 14px -6px rgba(12,34,47,.10);
+  --shadow-md:0 2px 4px rgba(12,34,47,.04), 0 14px 30px -12px rgba(12,34,47,.16);
+  --shadow-lg:0 4px 10px rgba(12,34,47,.05), 0 28px 56px -20px rgba(12,34,47,.24);
+  --shadow-blue:0 12px 30px -8px rgba(59,133,165,.32);
   /* Movimiento: salida rápida y aterrizaje suave (easeOutCubic), no la curva
      estándar de Material. --ease-spring solo para detalles pequeños. */
   --ease-soft:cubic-bezier(.33,1,.68,1); --ease-spring:cubic-bezier(.3,1.35,.55,1);
@@ -390,7 +389,7 @@ img { max-width: 100%; }
 }
 
 /* ---- VISOR GEOGRÁFICO ---- */
-.visor { position: relative; background: linear-gradient(180deg, #ffffff 0%, #f5f7f9 100%); overflow: hidden;
+.visor { position: relative; background: linear-gradient(180deg, #ffffff 0%, #F8F9FA 100%); overflow: hidden;
   padding: var(--sp-6) var(--section-x) 145px; }
 .visor-dots { position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(rgba(12,34,47,.045) 1.2px, transparent 1.3px); background-size: 24px 24px; }
@@ -1435,7 +1434,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* Páginas legales (política, accesibilidad, términos, mapa) */
-.legal-hero { background: linear-gradient(180deg,#fff 0%,#f5f7f9 100%); padding: clamp(2.2rem,5vw,3.6rem) clamp(1rem,5vw,64px) clamp(3.5rem,7vw,6rem); }
+.legal-hero { background: linear-gradient(180deg,#fff 0%,#F8F9FA 100%); padding: clamp(2.2rem,5vw,3.6rem) clamp(1rem,5vw,64px) clamp(3.5rem,7vw,6rem); }
 .legal-wrap { max-width: 880px; margin: 0 auto; }
 .legal-eyebrow { display: inline-block; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--tt-blue-700); }
 .legal-wrap h1 { margin: 12px 0 0; font: var(--fw-extra) clamp(1.9rem,4vw,2.8rem)/1.15 var(--font-display); letter-spacing: var(--ls-tight); color: var(--tt-navy-700); }
@@ -1542,7 +1541,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fq-hero-ribbon { display: block; height: 5px; width: 132px; border-radius: 999px; background: var(--ribbon); margin: 18px auto 0; }
 .fq-hero p { margin: 16px auto 0; max-width: 52ch; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: rgba(255,255,255,.84); }
 
-.fq-section { background: linear-gradient(180deg,#fff 0%,#f5f7f9 100%); padding: 0 clamp(1rem,5vw,64px) clamp(3.5rem,7vw,6rem); }
+.fq-section { background: linear-gradient(180deg,#fff 0%,#F8F9FA 100%); padding: 0 clamp(1rem,5vw,64px) clamp(3.5rem,7vw,6rem); }
 .fq-body { max-width: 880px; margin: 0 auto; }
 
 /* Buscador flotante que "muerde" el hero */
@@ -2363,11 +2362,11 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 20px; }
 .atg-hero .atg-eyebrow b { color: var(--tt-amber-500); }
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
-.atg-hero h1 .b { color: #6FB3FF; }
+.atg-hero h1 .b { color: #A7CF66; }
 .atg-hero .sub { color: rgba(255,255,255,.87); font-size: 16.5px; line-height: 1.7; max-width: 52ch; margin: 0 auto 36px; }
 .atg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.atg-hero .atg-pill { background: #005FC0; color: #fff; }
-.atg-hero .atg-pill:hover { background: #00488F; }
+.atg-hero .atg-pill { background: #3B85A5; color: #fff; }
+.atg-hero .atg-pill:hover { background: #2F6B86; }
 .atg-hero .atg-pill.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.55); }
 .atg-hero .atg-pill.ghost:hover { background: rgba(255,255,255,.14); }
 
@@ -2476,24 +2475,24 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-photo-band .atg-eyebrow b { color: var(--tt-amber-500); }
 .atg-photo-band h2 { color: #fff; max-width: 24ch; margin: 0 auto 14px; font-size: clamp(26px,3.8vw,40px); }
 .atg-photo-band p { color: rgba(255,255,255,.85); max-width: 54ch; margin: 0 auto 30px; font-size: 15px; line-height: 1.7; }
-.atg-photo-band .atg-pill { background: #fff; color: #152A40; }
-.atg-photo-band .atg-pill:hover { background: #E4E9EE; }
+.atg-photo-band .atg-pill { background: #fff; color: #163A4C; }
+.atg-photo-band .atg-pill:hover { background: #E2E6E9; }
 
 /* --- Modo oscuro de las secciones ATG --- */
-.dark .atg-band, .dark .atg-statement { background: #0D141C; border-color: #22303F; }
-.dark .atg-hero { border-color: #22303F; }
-.dark .atg-band h2, .dark .atg-statement h2 { color: #E0E9F2; }
-.dark .atg-eyebrow { color: #93A5B8; }
-.dark .atg-copy p, .dark .atg-copy ul, .dark .atg-statement p, .dark .atg-stat .d { color: #93A5B8; }
-.dark .atg-mock, .dark .atg-panel, .dark .atg-pcard .pbox { background: #16202C; border-color: #22303F; }
-.dark .atg-mock-bar { background: #121C27; border-color: #22303F; }
-.dark .atg-layers span { background: rgba(22,32,44,.92); border-color: #22303F; color: #E0E9F2; }
-.dark .atg-pcard .pbox p { color: #93A5B8; }
-.dark .atg-pill.ghost { background: #16202C; color: #E0E9F2; border-color: #3A4C60; }
-.dark .atg-pill.ghost:hover { background: #121C27; }
-.dark .atg-pill { background: #1E74D0; }
-.dark .atg-pill:hover { background: #005FC0; }
-.dark .atg-stat .n { color: #8AB9F0; }
-.dark .atg-stat:nth-child(2) .n { color: #8ED14B; }
-.dark .atg-stat:nth-child(3) .n { color: #FDA13B; }
-.dark .atg-panel .photo { border-color: #22303F; }
+.dark .atg-band, .dark .atg-statement { background: #0c1419; border-color: #2f3d47; }
+.dark .atg-hero { border-color: #2f3d47; }
+.dark .atg-band h2, .dark .atg-statement h2 { color: #eaf1f6; }
+.dark .atg-eyebrow { color: #9fb0bd; }
+.dark .atg-copy p, .dark .atg-copy ul, .dark .atg-statement p, .dark .atg-stat .d { color: #9fb0bd; }
+.dark .atg-mock, .dark .atg-panel, .dark .atg-pcard .pbox { background: #131c23; border-color: #2f3d47; }
+.dark .atg-mock-bar { background: #0f171d; border-color: #2f3d47; }
+.dark .atg-layers span { background: rgba(19,28,35,.92); border-color: #2f3d47; color: #eaf1f6; }
+.dark .atg-pcard .pbox p { color: #9fb0bd; }
+.dark .atg-pill.ghost { background: #131c23; color: #eaf1f6; border-color: #3a4751; }
+.dark .atg-pill.ghost:hover { background: #0f171d; }
+.dark .atg-pill { background: #3B85A5; }
+.dark .atg-pill:hover { background: #3B85A5; }
+.dark .atg-stat .n { color: #74bad3; }
+.dark .atg-stat:nth-child(2) .n { color: #A7CF66; }
+.dark .atg-stat:nth-child(3) .n { color: #F0B63B; }
+.dark .atg-panel .photo { border-color: #2f3d47; }

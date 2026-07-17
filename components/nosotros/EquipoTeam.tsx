@@ -24,10 +24,10 @@ const Plus = () => (
 
 // Sin íconos: cada área se identifica con su monograma (letra) sobre el color de la paleta ATG.
 const AREAS: { key: string; c: string; meta: string; mono: string }[] = [
-  { key: "Topografía y campo", c: "#005FC0", mono: "T", meta: "Levantamiento, reconocimiento predial y verificación de linderos" },
-  { key: "Jurídica", c: "#5DA108", mono: "J", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad" },
-  { key: "Sistemas y datos", c: "#FC8803", mono: "S", meta: "Información geográfica, bases de datos y plataformas digitales" },
-  { key: "Atención al ciudadano", c: "#152A40", mono: "A", meta: "Orientación, recepción de solicitudes y acompañamiento" },
+  { key: "Topografía y campo", c: "#3B85A5", mono: "T", meta: "Levantamiento, reconocimiento predial y verificación de linderos" },
+  { key: "Jurídica", c: "#4E8654", mono: "J", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad" },
+  { key: "Sistemas y datos", c: "#F0B63B", mono: "S", meta: "Información geográfica, bases de datos y plataformas digitales" },
+  { key: "Atención al ciudadano", c: "#163A4C", mono: "A", meta: "Orientación, recepción de solicitudes y acompañamiento" },
 ];
 
 export default function EquipoTeam() {
