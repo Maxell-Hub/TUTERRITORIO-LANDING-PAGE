@@ -10,13 +10,13 @@ export default function Footer() {
       <div className="footer-wrap">
         <div className="footer-card">
           <div className="footer-top">
-            <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" className="logo-light-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
-            <img src="/assets/logo-tuterritorio-v-blanco.png" alt="" aria-hidden="true" className="logo-dark-only" loading="lazy" decoding="async" style={{ height: 92, width: "auto", objectFit: "contain" }} />
+            <img src="/assets/logo-tuterritorio-v.png" alt="Tuterritorio" className="logo-light-only" loading="lazy" decoding="async" width={320} height={284} style={{ height: 92, width: "auto", objectFit: "contain" }} />
+            <img src="/assets/logo-tuterritorio-v-blanco.png" alt="" aria-hidden="true" className="logo-dark-only" loading="lazy" decoding="async" width={320} height={284} style={{ height: 92, width: "auto", objectFit: "contain" }} />
             <div className="footer-marks">
-              <img src="/assets/escudo-valledupar.png" alt="Escudo de Valledupar" loading="lazy" decoding="async" style={{ height: 60, display: "block" }} />
+              <img src="/assets/escudo-valledupar.png" alt="Escudo de Valledupar" loading="lazy" decoding="async" width={120} height={195} style={{ height: 60, width: "auto", display: "block" }} />
               <span className="sep" />
-              <img src="/assets/escudo-colombia-new.png" alt="Escudo de Colombia" loading="lazy" decoding="async" style={{ height: 56, display: "block" }} />
-              <img src="/assets/bandera-tricolor.png" alt="Bandera de Colombia" loading="lazy" decoding="async" style={{ height: 34, display: "block" }} />
+              <img src="/assets/escudo-colombia-new.png" alt="Escudo de Colombia" loading="lazy" decoding="async" width={49} height={102} style={{ height: 56, width: "auto", display: "block" }} />
+              <img src="/assets/bandera-tricolor.png" alt="Bandera de Colombia" loading="lazy" decoding="async" width={261} height={178} style={{ height: 34, width: "auto", display: "block" }} />
             </div>
           </div>
 

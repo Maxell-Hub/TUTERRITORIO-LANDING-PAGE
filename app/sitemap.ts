@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://tuterritorio.gov.co";
+const SITE_URL = "https://www.tuterritorio.gov.co";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

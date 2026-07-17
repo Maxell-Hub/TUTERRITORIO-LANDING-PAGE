@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://tuterritorio.gov.co";
+const SITE_URL = "https://www.tuterritorio.gov.co";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,8 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // No indexar el panel admin ni las rutas de API.
-        disallow: ["/admin", "/api/"],
+        // No indexar el panel admin, las rutas de API ni las páginas
+        // intermedias de protección de correos de Cloudflare.
+        disallow: ["/admin", "/api/", "/cdn-cgi/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

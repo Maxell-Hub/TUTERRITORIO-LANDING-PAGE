@@ -93,6 +93,11 @@ export default function GoogleTranslate() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // El widget solo hace falta cuando la cookie pide inglés (al cambiar de
+    // idioma la página se recarga, así que este efecto vuelve a evaluarse).
+    // En español no se descargan los ~100 KB de scripts de Google Translate.
+    if (!isEnglish()) return;
+
     // 1) Protege los términos antes de que Google cargue y traduzca.
     const timers = protectSoon();
 
@@ -122,5 +127,7 @@ export default function GoogleTranslate() {
     return () => timers.forEach((t) => window.clearTimeout(t));
   }, [pathname]);
 
-  return <div id="google_translate_element" aria-hidden="true" />;
+  // `inert` evita que el <select> interno del widget sea enfocable con teclado
+  // (un elemento aria-hidden no debe contener descendientes enfocables).
+  return <div id="google_translate_element" aria-hidden="true" inert />;
 }

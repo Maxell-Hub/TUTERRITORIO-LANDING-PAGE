@@ -18,7 +18,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://tuterritorio.gov.co";
+const SITE_URL = "https://www.tuterritorio.gov.co";
 const SITE_NAME = "Tuterritorio";
 const DESCRIPTION =
   "Catastro Multipropósito de Valledupar. Consulta la información de tu predio (linderos, área y avalúo), realiza trámites catastrales, radica tu PQRSD y consulta el impuesto predial. Operado por Tuterritorio.";
