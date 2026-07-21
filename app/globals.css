@@ -477,6 +477,10 @@ img { max-width: 100%; }
 .footer-marks { display: flex; align-items: center; gap: 16px; }
 .footer-marks .sep { width: 1px; height: 48px; background: var(--tt-green-600); }
 .footer-card h3 { margin: 22px 0 16px; font: var(--fw-bold) var(--fs-lg)/1.2 var(--font-sans); color: var(--tt-green-600); }
+/* Versión del sitio, discreta en la esquina inferior derecha de la tarjeta */
+.footer-version { position: absolute; right: 18px; bottom: 12px;
+  font: var(--fw-semibold) var(--fs-xs)/1 var(--font-mono); color: var(--tt-gray-500); }
+.dark .footer-version { color: #9fb0bd; }
 .footer-data { display: grid; gap: 12px; font: var(--fw-regular) var(--fs-md)/1.6 var(--font-sans); color: var(--tt-gray-700); }
 .footer-data b { color: var(--tt-navy-700); }
 .footer-data a { color: var(--tt-green-600); text-decoration: underline; text-underline-offset: 2px; }

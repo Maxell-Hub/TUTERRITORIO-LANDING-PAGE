@@ -3,6 +3,15 @@
  * - Solo red social Instagram (se eliminaron X y Facebook).
  * - Se eliminaron los enlaces de políticas redundantes.
  */
+/**
+ * Versión del sitio (versionado semántico MAYOR.MENOR.PARCHE):
+ * - PARCHE: correcciones y ajustes finos (encuadres, espaciados, colores puntuales).
+ * - MENOR: secciones o funcionalidades nuevas que suman sin romper lo existente.
+ * - MAYOR: rediseños o cambios que transforman el sitio por completo.
+ * Se muestra en la esquina inferior derecha de la tarjeta del footer.
+ */
+const SITE_VERSION = "2.5.0";
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -41,6 +50,8 @@ export default function Footer() {
               Instagram
             </a>
           </div>
+
+          <span className="footer-version" aria-label={`Versión del sitio ${SITE_VERSION}`}>v{SITE_VERSION}</span>
         </div>
       </div>
 
