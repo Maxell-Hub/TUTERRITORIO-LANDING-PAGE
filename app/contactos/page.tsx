@@ -56,7 +56,7 @@ export default function ContactosPage() {
           </div>
 
           <div className="atg-mock reveal" style={{ marginTop: 40 }}>
-            <iframe title="Mapa Sede Tuterritorio" src={MAP_SRC} loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ display: "block", width: "100%", height: 420, border: 0 }} />
+            <iframe title="Mapa Sede Tuterritorio" className="map-embed" src={MAP_SRC} loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ display: "block", width: "100%", height: 420, border: 0 }} />
           </div>
         </div>
       </section>

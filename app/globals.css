@@ -2549,6 +2549,10 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-photo-band .atg-pill { background: #fff; color: #163A4C; }
 .atg-photo-band .atg-pill:hover { background: #E2E6E9; }
 
+/* Google Maps embebido: en modo oscuro se invierte el mapa para que se vea
+   con tema oscuro (el iframe gratuito no ofrece dark mode nativo) */
+.dark .map-embed { filter: invert(92%) hue-rotate(180deg) contrast(92%) saturate(85%); }
+
 /* --- Modo oscuro de las secciones ATG --- */
 .dark .atg-band, .dark .atg-statement { background: #0c1419; border-color: #2f3d47; }
 .dark .atg-hero { border-color: #2f3d47; }
