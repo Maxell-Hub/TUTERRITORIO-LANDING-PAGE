@@ -51,7 +51,6 @@ export default function HomePage() {
                 <li>Zonas físicas, económicas y usos del suelo por capas</li>
                 <li>Consulta ciudadana del predio en línea</li>
               </ul>
-              <a className="atg-pill" href="/servicios">Consulta tu predio</a>
             </div>
           </div>
         </div>
