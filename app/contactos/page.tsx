@@ -27,38 +27,7 @@ export default function ContactosPage() {
         </div>
       </section>
 
-      {/* 2 · Canales de atención: tarjetas de datos de contacto */}
-      <section className="atg-band">
-        <div className="atg-wrap">
-          <div style={{ textAlign: "center", marginBottom: 44 }}>
-            <h2>Todos los canales, a tu alcance</h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 24 }}>
-            <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
-              <div className="atg-copy">
-                <p>Edificio Caja Agraria — Oficina 1301, Calle 16 #9-48, en pleno centro de Valledupar, Cesar.</p>
-              </div>
-            </div>
-            <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
-              <div className="atg-copy">
-                <p>Lunes a viernes de 8:00 a.m. a 6:00 p.m.</p>
-              </div>
-            </div>
-            <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
-              <div className="atg-copy">
-                <p><a href="mailto:contactenos@tuterritorio.gov.co" style={{ color: "inherit" }}>contactenos@tuterritorio.gov.co</a></p>
-              </div>
-            </div>
-            <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
-              <div className="atg-copy">
-                <p>(605) 5885761 Ext. 100</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3 · Formulario de contacto */}
+      {/* 2 · Formulario de contacto */}
       <section className="atg-band" id="formulario">
         <div className="atg-wrap">
           <div style={{ textAlign: "center", marginBottom: 44 }}>
