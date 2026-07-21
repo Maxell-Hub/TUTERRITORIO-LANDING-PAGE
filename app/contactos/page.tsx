@@ -15,7 +15,7 @@ export default function ContactosPage() {
   return (
     <>
       {/* 1 · Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales.jpg)", backgroundPosition: "center 55%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales.jpg)", backgroundPosition: "center 9%" }}>
         <h1>Contáctenos</h1>
         <p className="sub">
           Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio
