@@ -41,7 +41,7 @@ export default function ParticipaPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-banderas.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-socializacion.jpg)", backgroundPosition: "center 62%" }}
       >
         <h1>
           Tu voz también<br />construye el territorio

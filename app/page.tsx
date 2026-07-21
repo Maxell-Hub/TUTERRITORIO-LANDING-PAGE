@@ -19,7 +19,7 @@ export default function HomePage() {
   return (
     <>
       {/* 1 · Hero fotográfico */}
-      <section className="atg-hero" id="consultar">
+      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
         <h1>
           Conoce tu predio,<br />asegura <span className="b notranslate" translate="no">Tuterritorio</span>
         </h1>
