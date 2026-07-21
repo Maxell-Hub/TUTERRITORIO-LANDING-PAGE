@@ -15,7 +15,7 @@ export default function ContactosPage() {
   return (
     <>
       {/* 1 · Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales.jpg)", backgroundPosition: "center 55%" }}>
         <h1>Contáctenos</h1>
         <p className="sub">
           Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio
@@ -89,6 +89,18 @@ export default function ContactosPage() {
           <div className="atg-mock reveal" style={{ marginTop: 40 }}>
             <iframe title="Mapa Sede Tuterritorio" src={MAP_SRC} loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ display: "block", width: "100%", height: 420, border: 0 }} />
           </div>
+        </div>
+      </section>
+
+      {/* Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco.jpg)", backgroundPosition: "center 45%" }}
+      >
+        <div className="atg-wrap">
+          <h2>También puedes radicar en línea</h2>
+          <p>Si prefieres no desplazarte, radica tu petición, queja o reclamo desde cualquier lugar y haz seguimiento con tu número de radicado.</p>
+          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
         </div>
       </section>
     </>

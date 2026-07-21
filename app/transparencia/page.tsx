@@ -72,6 +72,18 @@ export default function TransparenciaPage() {
           </div>
         </div>
       </section>
+
+      {/* Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-centro.jpg)", backgroundPosition: "center 45%" }}
+      >
+        <div className="atg-wrap">
+          <h2>La información pública, al alcance de todos</h2>
+          <p>Si no encuentras un documento o necesitas más información, escríbenos: cada solicitud queda con radicado y tiempos de respuesta según la ley.</p>
+          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
+        </div>
+      </section>
     </>
   );
 }

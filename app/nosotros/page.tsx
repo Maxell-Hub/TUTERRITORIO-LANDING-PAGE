@@ -237,7 +237,7 @@ export default function NosotrosPage() {
       {/* 9 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-rio.jpg)", backgroundPosition: "center 50%" }}
       >
         <div className="atg-wrap">
           <h2>Visítanos en nuestra sede principal</h2>

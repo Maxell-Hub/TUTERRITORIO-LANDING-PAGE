@@ -28,7 +28,7 @@ export default function PreguntasFrecuentesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-preguntas.jpg)", backgroundPosition: "center 55%" }}>
         <h1>Preguntas frecuentes</h1>
         <p className="sub">
           Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
@@ -39,6 +39,18 @@ export default function PreguntasFrecuentesPage() {
       {/* Buscador, pestañas y acordeones (interactivo) */}
       <section className="fq-section">
         <FaqExplorer />
+      </section>
+
+      {/* Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-poporos.jpg)", backgroundPosition: "center 55%" }}
+      >
+        <div className="atg-wrap">
+          <h2>¿No encontraste tu respuesta?</h2>
+          <p>Escríbenos por cualquiera de nuestros canales y un miembro del equipo resolverá tu duda sobre tu predio o tu trámite.</p>
+          <a className="atg-pill" href="/contactos">Contáctanos</a>
+        </div>
       </section>
     </>
   );

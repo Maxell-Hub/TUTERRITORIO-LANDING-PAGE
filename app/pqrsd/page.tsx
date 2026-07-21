@@ -19,7 +19,7 @@ export default function PqrsdPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica.jpg)", backgroundPosition: "center 30%" }}
       >
         <h1>Radica tu PQRSD</h1>
         <p className="sub">
@@ -44,7 +44,7 @@ export default function PqrsdPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-juglares.jpg)", backgroundPosition: "center 60%" }}
       >
         <div className="atg-wrap">
           <h2>Resuelve tus dudas antes de radicar</h2>

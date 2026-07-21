@@ -43,7 +43,7 @@ export default function EquipoPage() {
       {/* 4 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mulata.jpg)", backgroundPosition: "center 42%" }}
       >
         <div className="atg-wrap">
           <h2>Un equipo que responde por tu predio</h2>

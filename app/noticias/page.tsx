@@ -9,5 +9,21 @@ export const metadata: Metadata = {
 };
 
 export default function NoticiasPage() {
-  return <NoticiasList />;
+  return (
+    <>
+      <NoticiasList />
+
+      {/* Franja fotográfica de cierre */}
+      <section
+        className="atg-photo-band"
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-musicos.jpg)", backgroundPosition: "center 55%" }}
+      >
+        <div className="atg-wrap">
+          <h2>El territorio también es noticia</h2>
+          <p>Sigue de cerca los avances de la actualización catastral, los operativos de campo y las jornadas con la comunidad de Valledupar.</p>
+          <a className="atg-pill" href="/contactos">Contáctanos</a>
+        </div>
+      </section>
+    </>
+  );
 }

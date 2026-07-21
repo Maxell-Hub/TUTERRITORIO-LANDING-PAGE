@@ -120,7 +120,7 @@ export default function ParticipaPage() {
       {/* 5 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-iglesia.jpg)", backgroundPosition: "center 40%" }}
       >
         <div className="atg-wrap">
           <h2>La participación fortalece el catastro</h2>
