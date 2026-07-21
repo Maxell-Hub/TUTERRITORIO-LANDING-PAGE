@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function GlosarioPage() {
   return (
     <>
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-recursos.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-recursos.jpg)", backgroundPosition: "center 15%" }}>
         <h1>ABC Catastral</h1>
         <Editable as="p" id="glos.hero-intro" className="sub" multiline>Entiende los términos clave del catastro multipropósito explicados en lenguaje claro. Busca por palabra o filtra por inicial.</Editable>
       </section>
@@ -26,7 +26,7 @@ export default function GlosarioPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-pilonera.jpg)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-pilonera.jpg)", backgroundPosition: "center 60%" }}
       >
         <div className="atg-wrap">
           <h2>Aplica lo aprendido en tu trámite</h2>

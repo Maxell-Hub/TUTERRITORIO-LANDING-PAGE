@@ -221,7 +221,7 @@ export default function ServiciosPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-plaza.jpg)", backgroundPosition: "center 60%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-plaza.jpg)", backgroundPosition: "center 10%" }}
       >
         <div className="atg-wrap">
           <h2>¿No encontraste lo que buscabas?</h2>
