@@ -56,7 +56,7 @@ export default function NosotrosPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-nosotros.jpg)", backgroundSize: "135% auto", backgroundPosition: "12% 40%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-nosotros.jpg)", backgroundPosition: "center 48%" }}
       >
         <h1>
           <Editable as="span" id="nos.title">El catastro de Valledupar, al día y en un solo lugar</Editable>
