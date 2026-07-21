@@ -2383,6 +2383,21 @@ font[style] { background: none !important; box-shadow: none !important; transiti
   0% { transform: translateX(-50px); opacity: 0; }
   100% { transform: translateX(0); opacity: 1; }
 }
+/* Tras la entrada, brillo degradado permanente sobre el texto (shimmer).
+   El degradado empieza y termina en el mismo verde para que el bucle sea continuo. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .atg-hero h1 .b {
+    background: linear-gradient(90deg, #6AA070, #8FBE4E 22%, #59A9C4 46%, #8FBE4E 72%, #6AA070);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: fade-in-left .8s cubic-bezier(.39,.575,.565,1) .25s both,
+      tu-shimmer 6s linear 1.05s infinite;
+  }
+}
+@keyframes tu-shimmer { to { background-position: 220% center; } }
 @media (prefers-reduced-motion: reduce) { .atg-hero h1 .b { animation: none; } }
 .atg-hero .sub { color: rgba(255,255,255,.87); font-size: 16.5px; line-height: 1.7; max-width: 52ch; margin: 0 auto 36px; }
 .atg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
