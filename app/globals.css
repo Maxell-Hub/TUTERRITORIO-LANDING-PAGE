@@ -2384,6 +2384,15 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
 /* Acento verde del titular de los heros (estático en todas las páginas) */
 .atg-hero h1 .b { color: #4E8654; display: inline-block; }
+/* Entrada de la página completa: el contenido de cada ruta aparece con
+   fade + subida al navegar (el wrapper .page-enter se remonta en app/template.tsx) */
+.page-enter { animation: page-enter .55s var(--ease-soft) both; }
+@keyframes page-enter {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } }
+
 /* Entrada escalonada del texto del hero en TODAS las páginas
    (titular → párrafo → botones). En el Inicio, además, "Tuterritorio"
    se desliza desde la izquierda cuando el titular ya está en su sitio. */
