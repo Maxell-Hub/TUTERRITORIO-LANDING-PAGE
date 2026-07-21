@@ -863,21 +863,21 @@ img { max-width: 100%; }
 .tr-facemeta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
 .tr-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: var(--radius-pill);
   background: var(--tt-gray-50); border: 1px solid var(--border-subtle); font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans); color: var(--tt-gray-700); }
-/* Panel de documentos (hover) — fondo oscuro con el acento de la tarjeta */
-.tr-detail { position: absolute; inset: 0; background: linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); color: rgba(255,255,255,.92); padding: 18px 18px 16px;
+/* Panel de documentos (hover) — claro en modo claro (el oscuro se define en .dark) */
+.tr-detail { position: absolute; inset: 0; background: linear-gradient(120deg,#ffffff 0%,#f1f6f9 100%); color: var(--tt-gray-900); padding: 18px 18px 16px;
   display: flex; flex-direction: column; gap: 11px; transform: translateY(100%); opacity: 0;
   transition: transform .34s var(--ease-soft), opacity .2s; pointer-events: none;
   border-top: 3px solid var(--accent, var(--tt-blue-700)); }
 .tr-card:hover .tr-detail, .tr-card:focus-within .tr-detail { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .tr-detail .lbl { flex: none; display: flex; align-items: center; gap: 7px; font: var(--fw-bold) var(--fs-xs)/1 var(--font-sans);
-  letter-spacing: var(--ls-wide); text-transform: uppercase; color: #fff;
-  padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,.18); }
+  letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--tt-navy-700);
+  padding-bottom: 9px; border-bottom: 1px solid rgba(12,34,47,.14); }
 .tr-detail .lbl::before { content: ""; width: 14px; height: 2px; border-radius: 2px; background: var(--accent, var(--tt-blue-700)); }
 .tr-reqs { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0; padding: 0 4px 0 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .tr-reqs::-webkit-scrollbar { width: 5px; }
-.tr-reqs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.32); border-radius: 4px; }
-.tr-reqs li { display: flex; gap: 8px; font: var(--fw-regular) var(--fs-xs)/1.45 var(--font-sans); color: rgba(255,255,255,.92); }
-.tr-reqs li svg { flex: none; margin-top: 1px; color: var(--tt-lime-400); }
+.tr-reqs::-webkit-scrollbar-thumb { background: rgba(12,34,47,.25); border-radius: 4px; }
+.tr-reqs li { display: flex; gap: 8px; font: var(--fw-regular) var(--fs-xs)/1.45 var(--font-sans); color: var(--tt-gray-700); }
+.tr-reqs li svg { flex: none; margin-top: 1px; color: var(--tt-green-600); }
 
 /* ============================================================
    RECURSOS — Normativas + Glosario
@@ -2155,6 +2155,12 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .tr-card:hover, .dark .tr-card:focus-within,
 .dark .norm-row:hover, .dark .term-card:hover {
   background: #111b22 !important; border-color: #3B85A5 !important; box-shadow: 0 10px 26px rgba(0,0,0,.4) !important; }
+/* Panel de documentos (hover) en oscuro: degradado navy con texto blanco */
+.dark .tr-detail { background: linear-gradient(120deg,#0C222F 0%,#163A4C 42%,#2A6580 100%); color: rgba(255,255,255,.92); }
+.dark .tr-detail .lbl { color: #fff; border-bottom-color: rgba(255,255,255,.18); }
+.dark .tr-reqs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.32); }
+.dark .tr-reqs li { color: rgba(255,255,255,.92); }
+.dark .tr-reqs li svg { color: #A7CF66; }
 /* ABC Catastral — acordeón en modo oscuro */
 .dark .gl-acc { background: #0c1419; border-color: #2f3d47; box-shadow: none; }
 .dark .gl-item + .gl-item { border-top-color: #2f3d47; }
