@@ -81,7 +81,7 @@ img { max-width: 100%; }
 
 /* ---- gov.co top bar ---- */
 .govco-bar { background: var(--govco-blue); color: #fff; height: 48px; }
-.govco-bar-row { max-width: var(--container-wide); margin: 0 auto; display: flex; align-items: center;
+.govco-bar-row { max-width: 1560px; margin: 0 auto; display: flex; align-items: center;
   justify-content: space-between; gap: 12px; padding: 9px clamp(1rem,5vw,64px); height: 48px; }
 /* En celular el logo gov.co se reduce (manteniendo proporción). */
 @media (max-width: 640px) {
@@ -173,7 +173,7 @@ img { max-width: 100%; }
 .mainnav.is-returning { animation: nav-return .4s var(--ease-soft); }
 @keyframes nav-return { from { opacity: .2; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .mainnav.is-stuck, .mainnav.is-returning { animation: none; } }
-.mainnav-row { max-width: var(--container-wide); margin: 0 auto; display: flex; align-items: center;
+.mainnav-row { max-width: 1560px; margin: 0 auto; display: flex; align-items: center;
   justify-content: space-between; gap: clamp(12px,2vw,28px); padding: 8px clamp(1rem,5vw,64px); min-height: 70px; }
 /* Menú centrado entre logos y buscador */
 .mainnav-links { flex: 1; display: flex; align-items: center; justify-content: center; gap: 2px; }
@@ -186,6 +186,19 @@ img { max-width: 100%; }
 /* Placeholder con el mismo tamaño y fuente que los textos del menú de navegación */
 .mainnav-actions .gc-search input::placeholder { font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--tt-gray-500); opacity: 1; }
 .mainnav-actions .gc-search .go-btn { width: 38px; height: 38px; }
+/* Pantallas medianas: se compactan logos, enlaces y buscador para que toda la
+   barra quepa dentro del contenedor y el menú se vea centrado (sin desbordes). */
+@media (min-width: 1361px) and (max-width: 1600px) {
+  .mainnav-row { gap: clamp(10px,1.5vw,24px); }
+  .brand-logos { gap: 10px; }
+  .logo-tt { height: 56px; }
+  .logo-cat { height: 50px; width: 120px; }
+  .mn-link { padding: 12px 9px; }
+  .mn-link::after { left: 9px; right: 9px; }
+  .mainnav-actions .gc-search-wrap { width: clamp(200px,16vw,280px); }
+  .mainnav-actions .gc-search .seg { display: none; }
+  .mainnav-actions .gc-search input { padding: 0 6px 0 16px; }
+}
 .mn-item { position: relative; display: flex; }
 .mn-link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 12px 13px;
   font: var(--fw-semibold) 0.8125rem/1 var(--font-sans); color: var(--tt-gray-700); text-decoration: none;
@@ -619,8 +632,9 @@ img { max-width: 100%; }
   .hm-fade { background: linear-gradient(90deg, #0C222F 0%, #0C222F 60%, rgba(12,34,47,.8) 69%, rgba(12,34,47,.55) 78%, rgba(12,34,47,.3) 87%, rgba(12,34,47,.1) 94%, rgba(12,34,47,0) 100%); }
 }
 @media (max-width: 900px) { .visor-grid { grid-template-columns: 1fr; } }
-/* Barra unificada: al estrecharse, se oculta el menú-centro y el buscador y aparece la hamburguesa */
-@media (max-width: 1100px) {
+/* Barra unificada: al estrecharse, se oculta el menú-centro y el buscador y aparece la hamburguesa.
+   El corte es a 1360px porque por debajo los 7 enlaces + buscador ya no caben sin desbordarse. */
+@media (max-width: 1360px) {
   .mainnav-links { display: none; }
   .mainnav-actions .gc-search-wrap { display: none !important; }
   .nav-burger { display: inline-flex; }
