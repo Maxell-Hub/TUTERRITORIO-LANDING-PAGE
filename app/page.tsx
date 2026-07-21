@@ -86,7 +86,7 @@ export default function HomePage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/atg/foto-archivo.jpg" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/foto-archivo.jpg" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function HomePage() {
               </ul>
               <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
             </div>
-            <img className="photo" src="/assets/atg/foto-panoramica.jpg" alt="Panorámica de Valledupar con la Sierra Nevada al fondo" loading="lazy" decoding="async" />
+            <img className="photo" src="/assets/foto-panoramica.jpg" alt="Panorámica de Valledupar con la Sierra Nevada al fondo" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>

@@ -41,7 +41,7 @@ export default function ParticipaPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-banderas.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-banderas.jpg)" }}
       >
         <span className="atg-eyebrow">Transparencia · <b>Participa</b></span>
         <h1>
@@ -120,7 +120,7 @@ export default function ParticipaPage() {
               </p>
               <PendienteContenido titulo="Rendición de cuentas a la ciudadanía" descripcion="Cronograma e informes de rendición de cuentas pendientes de cargar por la entidad." />
             </div>
-            <img className="photo" src="/assets/atg/foto-alcaldia.jpg" alt="Fachada de la Alcaldía de Valledupar" loading="lazy" decoding="async" />
+            <img className="photo" src="/assets/foto-alcaldia.jpg" alt="Fachada de la Alcaldía de Valledupar" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -128,7 +128,7 @@ export default function ParticipaPage() {
       {/* 5 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
           <span className="atg-eyebrow">Participa <b>en Tuterritorio</b></span>

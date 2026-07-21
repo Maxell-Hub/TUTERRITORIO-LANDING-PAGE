@@ -28,7 +28,7 @@ export default function PreguntasFrecuentesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
         <span className="atg-eyebrow">Atención <b>a la ciudadanía</b></span>
         <h1>Preguntas frecuentes</h1>
         <p className="sub">

@@ -139,7 +139,7 @@ export default function ServiciosPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-finca.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-finca.jpg)" }}
       >
         <span className="atg-eyebrow">Catastro Multipropósito · <b>Valledupar</b></span>
         <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
@@ -223,7 +223,7 @@ export default function ServiciosPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
           <span className="atg-eyebrow">¿Necesitas <b>algo más</b>?</span>

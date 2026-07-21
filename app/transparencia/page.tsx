@@ -31,7 +31,7 @@ export default function TransparenciaPage() {
     <>
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}
       >
         <span className="atg-eyebrow">Transparencia · <b>Ley 1712 de 2014</b></span>
         <h1>Transparencia y acceso a la información pública</h1>

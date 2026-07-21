@@ -57,7 +57,7 @@ export default function AtencionCiudadaniaPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
       >
         <span className="atg-eyebrow">Atención <b>a la ciudadanía</b></span>
         <h1>
@@ -155,7 +155,7 @@ export default function AtencionCiudadaniaPage() {
               </p>
               <PendienteContenido titulo="Carta de trato digno" descripcion="Documento pendiente de cargar por la entidad." />
             </div>
-            <img className="photo" src="/assets/atg/foto-alcaldia.jpg" alt="Fachada de la Alcaldía de Valledupar" loading="lazy" decoding="async" />
+            <img className="photo" src="/assets/foto-alcaldia.jpg" alt="Fachada de la Alcaldía de Valledupar" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -163,7 +163,7 @@ export default function AtencionCiudadaniaPage() {
       {/* 5 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
           <span className="atg-eyebrow">Estamos <b>para servirte</b></span>

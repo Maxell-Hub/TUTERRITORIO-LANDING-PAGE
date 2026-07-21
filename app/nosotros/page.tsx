@@ -56,7 +56,7 @@ export default function NosotrosPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}
       >
         <span className="atg-eyebrow">Nosotros · <b>Catastro Multipropósito</b></span>
         <h1>
@@ -83,7 +83,7 @@ export default function NosotrosPage() {
                 </div>
                 <img
                   className="atg-mock-photo"
-                  src="/assets/atg/foto-banderas.jpg"
+                  src="/assets/foto-banderas.jpg"
                   alt="Banderas de Colombia, el Cesar y Valledupar en la sede de Tuterritorio"
                   width={1200}
                   height={800}
@@ -256,7 +256,7 @@ export default function NosotrosPage() {
       {/* 9 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
       >
         <div className="atg-wrap">
           <span className="atg-eyebrow">Estamos <b>para atenderte</b></span>

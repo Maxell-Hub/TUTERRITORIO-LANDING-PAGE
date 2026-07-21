@@ -19,7 +19,7 @@ export default function PqrsdPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-archivo.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
       >
         <span className="atg-eyebrow">Atención a la <b>ciudadanía</b></span>
         <h1>Radica tu PQRSD</h1>
@@ -45,7 +45,7 @@ export default function PqrsdPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-panoramica.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
       >
         <div className="atg-wrap">
           <span className="atg-eyebrow">¿Tienes <b>dudas</b>?</span>

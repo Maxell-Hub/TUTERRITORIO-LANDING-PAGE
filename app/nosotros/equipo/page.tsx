@@ -23,7 +23,7 @@ export default function EquipoPage() {
           para reemplazar foto-archivo.jpg como fondo del hero. */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-archivo.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
       >
         <span className="atg-eyebrow">Nosotros · <b>Nuestro equipo</b></span>
         <h1>
@@ -44,7 +44,7 @@ export default function EquipoPage() {
       {/* 4 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-territorio.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
           <span className="atg-eyebrow">Trabajamos <b>para ti</b></span>

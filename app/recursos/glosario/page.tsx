@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function GlosarioPage() {
   return (
     <>
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-finca.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-finca.jpg)" }}>
         <span className="atg-eyebrow">Recursos · <b>Términos clave</b></span>
         <h1>ABC Catastral</h1>
         <Editable as="p" id="glos.hero-intro" className="sub" multiline>Entiende los términos clave del catastro multipropósito explicados en lenguaje claro. Busca por palabra o filtra por inicial.</Editable>

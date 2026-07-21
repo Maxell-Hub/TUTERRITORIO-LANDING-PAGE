@@ -71,7 +71,7 @@ export default function MapaDelSitioPage() {
   return (
     <>
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/atg/foto-alcaldia.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}>
         <span className="atg-eyebrow">Navegación <b>del sitio</b></span>
         <h1>Mapa del sitio</h1>
         <p className="sub">
