@@ -2377,7 +2377,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero .atg-eyebrow b { color: var(--tt-amber-500); }
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
 /* "Tuterritorio" del titular: entra con fade-in-left (Animista) al cargar */
-.atg-hero h1 .b { color: #A7CF66; display: inline-block;
+.atg-hero h1 .b { color: #4E8654; display: inline-block;
   animation: fade-in-left .8s cubic-bezier(.39,.575,.565,1) .25s both; }
 @keyframes fade-in-left {
   0% { transform: translateX(-50px); opacity: 0; }
