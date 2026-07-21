@@ -75,7 +75,6 @@ export default function NoticiasList() {
   return (
     <>
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}>
-        <span className="atg-eyebrow">Sala de prensa · <b className="notranslate" translate="no">Tuterritorio</b></span>
         <h1>Noticias</h1>
         <p className="sub">
           Sigue de cerca los avances de la <b>actualización catastral multipropósito</b> de Valledupar:

@@ -21,7 +21,6 @@ export default function PqrsdPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
       >
-        <span className="atg-eyebrow">Atención a la <b>ciudadanía</b></span>
         <h1>Radica tu PQRSD</h1>
         <p className="sub">
           Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio.
@@ -48,7 +47,6 @@ export default function PqrsdPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
       >
         <div className="atg-wrap">
-          <span className="atg-eyebrow">¿Tienes <b>dudas</b>?</span>
           <h2>Resuelve tus dudas antes de radicar</h2>
           <p>Consulta el ABC catastral y las respuestas a las preguntas más comunes sobre trámites, avalúos y el catastro de Valledupar.</p>
           <a className="atg-pill" href="/preguntas-frecuentes">Ver preguntas frecuentes</a>

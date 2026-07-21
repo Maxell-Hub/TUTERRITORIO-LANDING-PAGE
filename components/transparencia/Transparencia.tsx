@@ -80,7 +80,6 @@ export function TPageATG({
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-        <span className="atg-eyebrow">Transparencia · <b>{eyebrow}</b></span>
         <h1>{title}</h1>
         {lead && <p className="sub">{lead}</p>}
       </section>

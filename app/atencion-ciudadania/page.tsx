@@ -59,7 +59,6 @@ export default function AtencionCiudadaniaPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
       >
-        <span className="atg-eyebrow">Atención <b>a la ciudadanía</b></span>
         <h1>
           Atención y servicios<br />a la ciudadanía
         </h1>
@@ -76,7 +75,6 @@ export default function AtencionCiudadaniaPage() {
       <section className="atg-band" id="canales">
         <div className="atg-wrap">
           <div className="reveal" style={{ textAlign: "center", marginBottom: 44 }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · Canales de atención</span>
             <h2>Elige cómo quieres que te atendamos</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 24 }}>
@@ -117,7 +115,6 @@ export default function AtencionCiudadaniaPage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>02</b> · Preguntas frecuentes</span>
               <h2>Resuelve tus dudas sin salir de casa</h2>
               <p>
                 Respuestas a las dudas más comunes de la ciudadanía sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
@@ -131,10 +128,6 @@ export default function AtencionCiudadaniaPage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-mock-bar" aria-hidden="true">
-                  <span className="d" /><span className="d" /><span className="d" />
-                  <span className="title">preguntas-frecuentes — tuterritorio.gov.co</span>
-                </div>
                 {/* IMAGEN PENDIENTE: foto de atención al público en ventanilla de la sede */}
                 <div style={{ height: 300, background: "var(--tt-gray-200)" }} role="img" aria-label="Imagen pendiente: atención al público en ventanilla" />
               </div>
@@ -148,7 +141,6 @@ export default function AtencionCiudadaniaPage() {
         <div className="atg-wrap">
           <div className="atg-panel">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>03</b> · Carta de trato digno</span>
               <h2>Tus derechos, por escrito</h2>
               <p>
                 Documento que describe los derechos de los ciudadanos y los medios para garantizarlos en su relación con la entidad (Ley 1437 de 2011, art. 7).
@@ -166,7 +158,6 @@ export default function AtencionCiudadaniaPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
-          <span className="atg-eyebrow">Estamos <b>para servirte</b></span>
           <h2>¿No encontraste lo que buscabas?</h2>
           <p>
             Radica tu petición, queja, reclamo, sugerencia o denuncia: cada solicitud queda con radicado y tiempos de respuesta según la ley.

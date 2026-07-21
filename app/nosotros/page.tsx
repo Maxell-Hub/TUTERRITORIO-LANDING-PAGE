@@ -58,7 +58,6 @@ export default function NosotrosPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}
       >
-        <span className="atg-eyebrow">Nosotros · <b>Catastro Multipropósito</b></span>
         <h1>
           <Editable as="span" id="nos.title">El catastro de Valledupar, al día y en un solo lugar</Editable>
         </h1>
@@ -77,10 +76,6 @@ export default function NosotrosPage() {
           <div className="atg-feature">
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-mock-bar" aria-hidden="true">
-                  <span className="d" /><span className="d" /><span className="d" />
-                  <span className="title">nosotros — tuterritorio.gov.co</span>
-                </div>
                 <img
                   className="atg-mock-photo"
                   src="/assets/foto-banderas.jpg"
@@ -93,7 +88,6 @@ export default function NosotrosPage() {
               </div>
             </div>
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>01</b> · Quiénes somos</span>
               <h2>El operador del Catastro Multipropósito de Valledupar</h2>
               <p>
                 Tuterritorio S.A.S es el operador del <b style={{ color: "var(--tt-ink)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.
@@ -113,7 +107,6 @@ export default function NosotrosPage() {
       <section className="atg-band" id="mision-vision">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>02</b> · Misión y visión</span>
             <h2>Lo que nos mueve cada día</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24, marginTop: 40 }}>
@@ -137,7 +130,6 @@ export default function NosotrosPage() {
       <section className="atg-band" id="funciones">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>03</b> · Nuestras funciones</span>
             <Editable as="h2" id="nos.func-title">Lo que hacemos</Editable>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.7, color: "var(--tt-gray-500)" }}>
               <Editable as="span" id="nos.func-intro" multiline>Nos ocupamos de todo el ciclo catastral del municipio: del levantamiento de la información en campo a la respuesta de cada trámite ciudadano.</Editable>
@@ -160,17 +152,12 @@ export default function NosotrosPage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>04</b> · Objetivos</span>
               <h2>Hacia dónde trabajamos</h2>
               <p>Cinco compromisos que orientan nuestra gestión catastral y nuestro servicio diario a la ciudadanía de Valledupar.</p>
               <a className="atg-pill" href="/servicios">Ver los trámites</a>
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-mock-bar" aria-hidden="true">
-                  <span className="d" /><span className="d" /><span className="d" />
-                  <span className="title">objetivos — tuterritorio.gov.co</span>
-                </div>
                 <div style={{ padding: "10px 24px" }}>
                   {OBJETIVOS.map((o, i) => (
                     <div
@@ -191,7 +178,6 @@ export default function NosotrosPage() {
       {/* 6 · Declaración: el proceso catastral */}
       <section className="atg-statement">
         <div className="atg-wrap">
-          <span className="atg-eyebrow">El proceso <b>catastral</b></span>
           <h2>Etapas del Proceso Catastral</h2>
           <p>Así avanzamos, paso a paso, hasta tener un catastro actualizado y al servicio de la gente.</p>
         </div>
@@ -217,7 +203,6 @@ export default function NosotrosPage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>05</b> · Nuestras instalaciones</span>
               <h2>Conoce dónde te atendemos</h2>
               <p>Te invitamos a recorrer las oficinas y los espacios donde trabajamos cada día al servicio de la ciudadanía de Valledupar.</p>
               <ul>
@@ -228,10 +213,6 @@ export default function NosotrosPage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-mock-bar" aria-hidden="true">
-                  <span className="d" /><span className="d" /><span className="d" />
-                  <span className="title">instalaciones — tuterritorio.gov.co</span>
-                </div>
                 <div style={{ display: "flex", justifyContent: "center", padding: 20, background: "var(--tt-gray-50)" }}>
                   {/* Video vertical (9:16) de las instalaciones */}
                   <div style={{ position: "relative", width: "min(100%, 300px)", aspectRatio: "9 / 16", borderRadius: 10, overflow: "hidden", background: "#0C222F" }}>
@@ -259,7 +240,6 @@ export default function NosotrosPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}
       >
         <div className="atg-wrap">
-          <span className="atg-eyebrow">Estamos <b>para atenderte</b></span>
           <h2>Visítanos en nuestra sede principal</h2>
           <p>Aquí atendemos en persona cada consulta y trámite catastral, de lunes a viernes.</p>
           <a className="atg-pill" href="/contactos">Cómo llegar</a>

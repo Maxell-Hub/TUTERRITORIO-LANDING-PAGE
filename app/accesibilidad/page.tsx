@@ -12,7 +12,6 @@ export default function AccesibilidadPage() {
     <>
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}>
-        <span className="atg-eyebrow">Accesibilidad <b>para todas las personas</b></span>
         <h1>Declaración de Accesibilidad</h1>
         <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
       </section>

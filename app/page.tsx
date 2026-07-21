@@ -20,7 +20,6 @@ export default function HomePage() {
     <>
       {/* 1 · Hero fotográfico */}
       <section className="atg-hero" id="consultar">
-        <Editable as="span" id="home.eyebrow" className="atg-eyebrow">Catastro Multipropósito · Valledupar</Editable>
         <h1>
           Conoce tu predio,<br />asegura <span className="b notranslate" translate="no">Tuterritorio</span>
         </h1>
@@ -39,20 +38,11 @@ export default function HomePage() {
           <div className="atg-feature">
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-mock-bar" aria-hidden="true">
-                  <span className="d" /><span className="d" /><span className="d" />
-                  <span className="title">visor — tuterritorio.gov.co</span>
-                </div>
                 <div className="atg-map-body" role="img" aria-label="Ortofoto de Valledupar con la malla predial">
-                  <div className="atg-layers" aria-hidden="true">
-                    <span><i>●</i> Predios</span>
-                    <span><i>●</i> Ortofoto_Valledupar_1</span>
-                  </div>
                 </div>
               </div>
             </div>
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>01</b> · Visor geográfico</span>
               <h2>Todo el territorio, en un visor vivo</h2>
               <Editable as="p" id="home.visor-p" multiline>
                 Cartografía predial completa de Valledupar: 6 sectores catastrales en el área urbana, 25 corregimientos en zona rural y resguardos indígenas en la Sierra Nevada.
@@ -72,7 +62,6 @@ export default function HomePage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>02</b> · Trámites catastrales</span>
               <h2>Tus trámites, con requisitos y tiempos claros</h2>
               <Editable as="p" id="home.tramites-p" multiline>
                 Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.
@@ -121,7 +110,6 @@ export default function HomePage() {
         <div className="atg-wrap">
           <div className="atg-panel">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>03</b> · Atención a la ciudadanía</span>
               <h2>Estamos para atenderte</h2>
               <Editable as="p" id="home.atencion-p" multiline>
                 Radica tus peticiones, quejas, reclamos, sugerencias y denuncias, o visítanos en la sede principal. Cada solicitud queda con radicado y tiempos de respuesta según la ley.
@@ -141,7 +129,6 @@ export default function HomePage() {
       {/* 8 · Franja fotográfica de cierre */}
       <section className="atg-photo-band">
         <div className="atg-wrap">
-          <span className="atg-eyebrow">Hecho <b>para Valledupar</b></span>
           <h2>Hecho para el territorio de Valledupar</h2>
           <Editable as="p" id="home.cierre-p" multiline>
             Del área urbana a los corregimientos de la Sierra Nevada, Tuterritorio acompaña al municipio en su camino hacia un catastro multipropósito, moderno y eficiente.

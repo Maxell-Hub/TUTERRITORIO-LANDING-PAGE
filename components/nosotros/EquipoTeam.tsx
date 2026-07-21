@@ -84,7 +84,6 @@ export default function EquipoTeam() {
       <section className="atg-band" id="liderazgo">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 44px", textAlign: "center" }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · Liderazgo</span>
             <Editable as="h2" id="equipo.lead-title">Quienes orientan nuestra gestión</Editable>
           </div>
 
@@ -128,7 +127,6 @@ export default function EquipoTeam() {
         <div className="atg-wrap">
           <div className="reveal" style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
             <div style={{ maxWidth: "46rem" }}>
-              <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>02</b> · Equipo técnico</span>
               <Editable as="h2" id="equipo.tech-title">Un equipo interdisciplinario</Editable>
               <p style={{ margin: "16px 0 0", font: "400 0.9375rem/1.7 var(--font-sans)", color: "var(--tt-gray-500)" }}>
                 <Editable as="span" id="equipo.tech-intro" multiline>Profesionales organizados por áreas de especialidad, trabajando de forma coordinada en cada etapa del proceso catastral.</Editable>

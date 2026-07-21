@@ -29,7 +29,6 @@ export default function PreguntasFrecuentesPage() {
 
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
-        <span className="atg-eyebrow">Atención <b>a la ciudadanía</b></span>
         <h1>Preguntas frecuentes</h1>
         <p className="sub">
           Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD.

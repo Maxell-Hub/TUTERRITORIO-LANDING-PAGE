@@ -16,7 +16,6 @@ export default function ContactosPage() {
     <>
       {/* 1 · Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
-        <span className="atg-eyebrow">Estamos <b>para servirte</b></span>
         <h1>Contáctenos</h1>
         <p className="sub">
           Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio
@@ -32,31 +31,26 @@ export default function ContactosPage() {
       <section className="atg-band">
         <div className="atg-wrap">
           <div style={{ textAlign: "center", marginBottom: 44 }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 16 }}><b>01</b> · Canales de atención</span>
             <h2>Todos los canales, a tu alcance</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 24 }}>
             <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
               <div className="atg-copy">
-                <span className="atg-eyebrow"><b>Dirección</b></span>
                 <p>Edificio Caja Agraria — Oficina 1301, Calle 16 #9-48, en pleno centro de Valledupar, Cesar.</p>
               </div>
             </div>
             <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
               <div className="atg-copy">
-                <span className="atg-eyebrow"><b>Horario</b></span>
                 <p>Lunes a viernes de 8:00 a.m. a 6:00 p.m.</p>
               </div>
             </div>
             <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
               <div className="atg-copy">
-                <span className="atg-eyebrow"><b>Correo</b></span>
                 <p><a href="mailto:contactenos@tuterritorio.gov.co" style={{ color: "inherit" }}>contactenos@tuterritorio.gov.co</a></p>
               </div>
             </div>
             <div className="atg-mock reveal" style={{ padding: "26px 24px" }}>
               <div className="atg-copy">
-                <span className="atg-eyebrow"><b>Teléfono</b></span>
                 <p>(605) 5885761 Ext. 100</p>
               </div>
             </div>
@@ -68,7 +62,6 @@ export default function ContactosPage() {
       <section className="atg-band" id="formulario">
         <div className="atg-wrap">
           <div style={{ textAlign: "center", marginBottom: 44 }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 16 }}><b>02</b> · Escríbenos</span>
             <h2>Cuéntanos qué necesitas</h2>
           </div>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
@@ -82,7 +75,6 @@ export default function ContactosPage() {
         <div className="atg-wrap">
           <div className="atg-panel reveal">
             <div className="atg-copy">
-              <span className="atg-eyebrow"><b>03</b> · Nuestra sede</span>
               <h2>Edificio Caja Agraria — Oficina 1301</h2>
               <p>Calle 16 #9-48, en pleno centro de Valledupar, Cesar.</p>
               <ul>
@@ -95,10 +87,6 @@ export default function ContactosPage() {
           </div>
 
           <div className="atg-mock reveal" style={{ marginTop: 40 }}>
-            <div className="atg-mock-bar" aria-hidden="true">
-              <span className="d" /><span className="d" /><span className="d" />
-              <span className="title">mapa — Calle 16 #9-48</span>
-            </div>
             <iframe title="Mapa Sede Tuterritorio" src={MAP_SRC} loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ display: "block", width: "100%", height: 420, border: 0 }} />
           </div>
         </div>

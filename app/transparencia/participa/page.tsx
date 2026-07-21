@@ -43,7 +43,6 @@ export default function ParticipaPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-banderas.jpg)" }}
       >
-        <span className="atg-eyebrow">Transparencia · <b>Participa</b></span>
         <h1>
           Tu voz también<br />construye el territorio
         </h1>
@@ -60,7 +59,6 @@ export default function ParticipaPage() {
       <section className="atg-band" id="fases">
         <div className="atg-wrap">
           <div className="reveal" style={{ textAlign: "center", marginBottom: 44 }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · Fases de participación</span>
             <h2>Participa en cada fase de la gestión</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 24 }}>
@@ -83,7 +81,6 @@ export default function ParticipaPage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>02</b> · Control social</span>
               <h2>6.4 Control y evaluación de la gestión</h2>
               <p>
                 Puedes ejercer control social y presentar peticiones, quejas, reclamos, sugerencias y denuncias a través del canal de PQRSD.
@@ -96,10 +93,6 @@ export default function ParticipaPage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-mock-bar" aria-hidden="true">
-                  <span className="d" /><span className="d" /><span className="d" />
-                  <span className="title">pqrsd — tuterritorio.gov.co</span>
-                </div>
                 {/* IMAGEN PENDIENTE: foto de audiencia pública o mesa de participación ciudadana */}
                 <div style={{ height: 300, background: "var(--tt-gray-200)" }} role="img" aria-label="Imagen pendiente: audiencia pública o mesa de participación ciudadana" />
               </div>
@@ -113,7 +106,6 @@ export default function ParticipaPage() {
         <div className="atg-wrap">
           <div className="atg-panel">
             <div className="atg-copy reveal">
-              <span className="atg-eyebrow"><b>03</b> · Rendición de cuentas</span>
               <h2>6.5 Rendición de cuentas</h2>
               <p>
                 Cronograma e informes con los que la entidad rinde cuentas de su gestión ante la ciudadanía.
@@ -131,7 +123,6 @@ export default function ParticipaPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
-          <span className="atg-eyebrow">Participa <b>en Tuterritorio</b></span>
           <h2>La participación fortalece el catastro</h2>
           <p>
             Tus aportes, observaciones y solicitudes ayudan a construir un catastro multipropósito más transparente y cercano a la ciudadanía.

@@ -141,7 +141,6 @@ export default function ServiciosPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-finca.jpg)" }}
       >
-        <span className="atg-eyebrow">Catastro Multipropósito · <b>Valledupar</b></span>
         <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
         <p className="sub"><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
         <div className="atg-cta-row">
@@ -154,7 +153,6 @@ export default function ServiciosPage() {
       <section className="atg-band" id="tramites">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
-            <span className="atg-eyebrow" style={{ display: "block", marginBottom: 14 }}><b>01</b> · {TRAMITES.length} trámites y productos</span>
             <Editable as="h2" id="serv.section-title">Selecciona el trámite que necesitas</Editable>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.7, color: "var(--tt-gray-500)" }}>
               Pasa el cursor (o enfoca con teclado) sobre cada tarjeta para ver los documentos requeridos.
@@ -226,7 +224,6 @@ export default function ServiciosPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
-          <span className="atg-eyebrow">¿Necesitas <b>algo más</b>?</span>
           <h2>¿No encontraste lo que buscabas?</h2>
           <p>Radica tu petición, queja, reclamo, sugerencia o denuncia. Cada solicitud queda con radicado y tiempos de respuesta según la ley.</p>
           <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>

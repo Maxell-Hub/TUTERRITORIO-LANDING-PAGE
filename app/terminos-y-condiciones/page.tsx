@@ -12,7 +12,6 @@ export default function TerminosPage() {
     <>
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}>
-        <span className="atg-eyebrow">Términos <b>legales</b></span>
         <h1>Términos y Condiciones de Uso</h1>
         <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
       </section>

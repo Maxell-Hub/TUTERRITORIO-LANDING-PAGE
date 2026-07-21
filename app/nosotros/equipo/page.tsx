@@ -25,7 +25,6 @@ export default function EquipoPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
       >
-        <span className="atg-eyebrow">Nosotros · <b>Nuestro equipo</b></span>
         <h1>
           Detrás de cada predio,<br />hay <span className="b">un equipo</span> que lo hace posible
         </h1>
@@ -47,7 +46,6 @@ export default function EquipoPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-territorio.jpg)" }}
       >
         <div className="atg-wrap">
-          <span className="atg-eyebrow">Trabajamos <b>para ti</b></span>
           <h2>Un equipo que responde por tu predio</h2>
           <p>En campo y en oficina, cada integrante trabaja para que la información catastral de Valledupar sea confiable y esté al día.</p>
           <a className="atg-pill" href="/contactos">Contáctanos</a>
