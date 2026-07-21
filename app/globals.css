@@ -2376,7 +2376,14 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 20px; }
 .atg-hero .atg-eyebrow b { color: var(--tt-amber-500); }
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
-.atg-hero h1 .b { color: #A7CF66; }
+/* "Tuterritorio" del titular: entra con fade-in-left (Animista) al cargar */
+.atg-hero h1 .b { color: #A7CF66; display: inline-block;
+  animation: fade-in-left .8s cubic-bezier(.39,.575,.565,1) .25s both; }
+@keyframes fade-in-left {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .atg-hero h1 .b { animation: none; } }
 .atg-hero .sub { color: rgba(255,255,255,.87); font-size: 16.5px; line-height: 1.7; max-width: 52ch; margin: 0 auto 36px; }
 .atg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .atg-hero .atg-pill { background: #3B85A5; color: #fff; }
