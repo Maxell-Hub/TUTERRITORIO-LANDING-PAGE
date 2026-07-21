@@ -2384,16 +2384,15 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
 /* Acento verde del titular de los heros (estático en todas las páginas) */
 .atg-hero h1 .b { color: #4E8654; display: inline-block; }
-/* SOLO en el Inicio (#consultar): todo el texto del hero entra escalonado
-   (eyebrow → titular → párrafo → botones) y "Tuterritorio" se desliza desde
-   la izquierda cuando el titular ya está en su sitio. */
-#consultar .atg-eyebrow, #consultar h1, #consultar .sub, #consultar .atg-cta-row {
+/* Entrada escalonada del texto del hero en TODAS las páginas
+   (titular → párrafo → botones). En el Inicio, además, "Tuterritorio"
+   se desliza desde la izquierda cuando el titular ya está en su sitio. */
+.atg-hero h1, .atg-hero .sub, .atg-hero .atg-cta-row {
   animation: hero-rise .7s cubic-bezier(.39,.575,.565,1) both;
 }
-#consultar .atg-eyebrow { animation-delay: .1s; }
-#consultar h1 { animation-delay: .25s; }
-#consultar .sub { animation-delay: .45s; }
-#consultar .atg-cta-row { animation-delay: .6s; }
+.atg-hero h1 { animation-delay: .25s; }
+.atg-hero .sub { animation-delay: .45s; }
+.atg-hero .atg-cta-row { animation-delay: .6s; }
 @keyframes hero-rise {
   0% { transform: translateY(24px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
@@ -2423,8 +2422,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
   100% { background-position: 200% center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .atg-hero h1 .b, #consultar h1 .b, #consultar .atg-eyebrow, #consultar h1,
-  #consultar .sub, #consultar .atg-cta-row { animation: none; }
+  .atg-hero h1 .b, #consultar h1 .b, .atg-hero h1,
+  .atg-hero .sub, .atg-hero .atg-cta-row { animation: none; }
 }
 .atg-hero .sub { color: rgba(255,255,255,.87); font-size: 16.5px; line-height: 1.7; max-width: 52ch; margin: 0 auto 36px; }
 .atg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
