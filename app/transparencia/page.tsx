@@ -31,7 +31,7 @@ export default function TransparenciaPage() {
     <>
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)", backgroundPosition: "center 22%" }}
       >
         <h1>Transparencia y acceso a la información pública</h1>
         <p className="sub">

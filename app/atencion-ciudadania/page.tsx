@@ -57,7 +57,7 @@ export default function AtencionCiudadaniaPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-atencion.jpg)", backgroundPosition: "center 38%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-atencion.jpg)", backgroundPosition: "center 15%" }}
       >
         <h1>
           Atención y servicios<br />a la ciudadanía

@@ -71,7 +71,7 @@ export default function MapaDelSitioPage() {
   return (
     <>
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)", backgroundPosition: "center 22%" }}>
         <h1>Mapa del sitio</h1>
         <p className="sub">
           Índice organizado de todas las secciones y páginas del sitio de Tuterritorio, agrupadas por tema.
