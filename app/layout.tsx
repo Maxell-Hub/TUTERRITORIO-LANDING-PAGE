@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import RevealManager from "@/components/motion/RevealManager";
 import AuthProvider from "@/components/auth/AuthProvider";
@@ -10,11 +10,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import FloatingActions from "@/components/site/FloatingActions";
 import GoogleTranslate from "@/components/site/GoogleTranslate";
 
-// Sora auto-hospedada por Next (tipografía del diseño ATG; no se llama a Google Fonts en runtime)
-const sora = Sora({
+// Outfit auto-hospedada por Next (no se llama a Google Fonts en runtime)
+const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sora",
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -116,7 +116,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={sora.variable}>
+    <html lang="es" className={outfit.variable}>
       <body>
         {/* Aplica el tema antes de pintar (evita parpadeo). Usa la preferencia
             guardada si existe; si no, sigue el modo del sistema operativo. */}
