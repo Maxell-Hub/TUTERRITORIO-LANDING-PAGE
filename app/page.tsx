@@ -105,28 +105,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7 · Panel: atención y PQRSD */}
-      <section className="atg-band" id="pqrsd-panel">
-        <div className="atg-wrap">
-          <div className="atg-panel">
-            <div className="atg-copy reveal">
-              <h2>Estamos para atenderte</h2>
-              <Editable as="p" id="home.atencion-p" multiline>
-                Radica tus peticiones, quejas, reclamos, sugerencias y denuncias, o visítanos en la sede principal. Cada solicitud queda con radicado y tiempos de respuesta según la ley.
-              </Editable>
-              <ul>
-                <li>PQRSD en línea con radicado inmediato</li>
-                <li>Preguntas frecuentes y ABC catastral</li>
-                <li>Lunes a viernes de 8:00 a.m. a 6:00 p.m.</li>
-              </ul>
-              <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
-            </div>
-            <img className="photo" src="/assets/foto-panoramica.jpg" alt="Panorámica de Valledupar con la Sierra Nevada al fondo" loading="lazy" decoding="async" />
-          </div>
-        </div>
-      </section>
-
-      {/* 8 · Franja fotográfica de cierre */}
+      {/* 7 · Franja fotográfica de cierre */}
       <section className="atg-photo-band">
         <div className="atg-wrap">
           <h2>Hecho para el territorio de Valledupar</h2>
