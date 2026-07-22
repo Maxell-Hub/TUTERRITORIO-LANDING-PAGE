@@ -127,7 +127,9 @@ export default function AtencionCiudadaniaPage() {
               <p>
                 Documento que describe los derechos de los ciudadanos y los medios para garantizarlos en su relación con la entidad (Ley 1437 de 2011, art. 7).
               </p>
-              <PendienteContenido titulo="Carta de trato digno" descripcion="Documento pendiente de cargar por la entidad." />
+              <a className="atg-pill" href="/docs/carta-trato-digno.pdf" target="_blank" rel="noopener noreferrer">
+                Ver la carta de trato digno (PDF)
+              </a>
             </div>
             <img className="photo" src="/assets/foto-digno.jpg" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
           </div>
