@@ -2596,8 +2596,6 @@ font[style] { background: none !important; box-shadow: none !important; transiti
   background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas.jpg");
   background-size: cover; background-position: center 30%;
   padding: 110px 0; text-align: center;
-  /* La foto de la franja no se descarga hasta que el usuario se acerca a ella */
-  content-visibility: auto; contain-intrinsic-size: auto 420px;
 }
 @media (max-width: 720px) { .atg-photo-band { padding: 72px 0; } }
 .atg-photo-band .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 16px; }
