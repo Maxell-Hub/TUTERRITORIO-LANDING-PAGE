@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.7] - 2026-07-22
+
+### Cambiado
+- Nueva fotografía del hero de Normativas (resoluciones del Municipio), optimizada de 2.2MB PNG a 160KB JPG + variante móvil de 47KB.
+
 ## [2.7.6] - 2026-07-22
 
 ### Añadido
