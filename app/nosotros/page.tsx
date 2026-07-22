@@ -216,7 +216,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 7 · Etapas: diagrama de 4 fases (círculos solapados + listas numeradas) */}
-      <section className="atg-band band-white" id="proceso">
+      <section className="atg-band" id="proceso"> {/* mismo fondo gris que la cabecera de Etapas: secciones unificadas */}
         <div className="atg-wrap">
           <div className="fases-grid">
             {(() => {

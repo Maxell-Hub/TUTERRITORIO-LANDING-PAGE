@@ -19,11 +19,9 @@ export default function EquipoPage() {
   return (
     <>
       {/* 1 · Hero fotográfico */}
-      {/* IMAGEN PENDIENTE: foto grupal del equipo de Tuterritorio (en la sede o en campo)
-          para reemplazar foto-archivo.jpg como fondo del hero. */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-equipo.jpg)", backgroundPosition: "center 40%" }}
       >
         <h1>
           Detrás de cada predio,<br />hay <span style={{ color: "#fff" }}>un equipo</span> que lo hace posible

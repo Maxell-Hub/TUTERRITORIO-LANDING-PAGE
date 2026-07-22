@@ -2516,7 +2516,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-mock-photo { display: block; width: 100%; height: auto; }
 
 /* --- Declaración centrada --- */
-.atg-statement { text-align: center; padding: 96px 0; border-bottom: 1px solid var(--border-subtle); background: var(--tt-gray-100); }
+/* Sin borde inferior: fluye unificada con la banda de círculos que la sigue */
+.atg-statement { text-align: center; padding: 96px 0 24px; background: var(--tt-gray-100); }
 @media (max-width: 720px) { .atg-statement { padding: 64px 0; } }
 .atg-statement .atg-eyebrow { display: block; margin-bottom: 18px; }
 .atg-statement h2 { max-width: 26ch; margin: 0 auto 16px; font-size: clamp(26px,3.6vw,38px); }
@@ -2621,8 +2622,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .fase-tag { display: flex; align-items: center; gap: 10px; margin: 0 0 20px;
   font: 800 clamp(17px,1.5vw,21px)/1 var(--font-display); letter-spacing: -0.01em; color: var(--tt-navy-700); }
 .fase-tag::before, .fase-tag::after { content: ""; flex: 1; border-top: 2px dotted var(--tt-gray-300); }
+/* Cuadrado redondeado (4 lados), en alusión al imagotipo de Tuterritorio */
 .fase-circle { position: relative; width: calc(100% + 40px); margin: 0 -20px; aspect-ratio: 1/1;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center;
+  border-radius: 24%; display: flex; align-items: center; justify-content: center; text-align: center;
   color: #fff; font: 700 clamp(19px,1.9vw,27px)/1.15 var(--font-display); letter-spacing: -0.01em; padding: 16px; }
 .fase-list { margin: 26px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 13px; }
 .fase-list li { display: flex; gap: 9px; font: 400 14px/1.6 var(--font-sans); color: var(--tt-gray-700); }
