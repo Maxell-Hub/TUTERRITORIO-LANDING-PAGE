@@ -2444,6 +2444,10 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero .atg-pill:hover { background: #2F6B86; }
 .atg-hero .atg-pill.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.55); }
 .atg-hero .atg-pill.ghost:hover { background: rgba(255,255,255,.14); }
+/* El hero del INICIO va más grande: titular, párrafo y botones */
+#consultar h1 { font-size: clamp(38px,6vw,66px); }
+#consultar .sub { font-size: 18.5px; max-width: 56ch; }
+#consultar .atg-cta-row .atg-pill { font-size: 16px; padding: 14px 30px; }
 
 /* --- Bandas --- */
 .atg-band { border-bottom: 1px solid var(--border-subtle); padding: 88px 0; background: var(--tt-gray-100); }
