@@ -142,7 +142,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 3 · Misión y visión */}
-      <section className="atg-band band-blue" id="mision-vision">
+      <section className="atg-band band-dark" id="mision-vision">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <h2>Lo que nos mueve cada día</h2>
@@ -185,7 +185,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 5 · Feature invertida: objetivos */}
-      <section className="atg-band band-green" id="objetivos">
+      <section className="atg-band band-white" id="objetivos">
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">

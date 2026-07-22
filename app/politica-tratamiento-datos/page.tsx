@@ -11,7 +11,7 @@ export default function PoliticaDatosPage() {
   return (
     <>
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)", backgroundPosition: "center 22%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-politica.jpg)", backgroundPosition: "center 50%" }}>
         <h1>Política de Tratamiento y Protección de Datos Personales</h1>
         <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
       </section>

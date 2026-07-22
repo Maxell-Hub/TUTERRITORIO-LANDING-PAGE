@@ -1476,6 +1476,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .legal-list-alpha { list-style: lower-alpha; }
 .legal-list-disc { list-style: disc; }
 .legal-note { margin: 16px 0 0; padding: 12px 16px; background: color-mix(in srgb, var(--tt-amber-500) 12%, #fff); border: 1px solid var(--tt-amber-500); border-radius: 10px; font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-navy-700); }
+.dark .legal-note { background: color-mix(in srgb, var(--tt-amber-500) 14%, #131c23); border-color: var(--tt-amber-600); color: #eaf1f6; }
 .legal-table { width: 100%; margin: 16px 0 0; border-collapse: collapse; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); }
 .legal-table th, .legal-table td { text-align: left; padding: 11px 14px; border: 1px solid var(--border-subtle); vertical-align: top; color: var(--tt-gray-700); }
 .legal-table thead th { background: var(--tt-navy-700); color: #fff; font-weight: var(--fw-bold); }
@@ -2603,6 +2604,10 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .atg-band.band-white { background: #0f171d; }
 .dark .atg-band.band-blue { background: linear-gradient(180deg, #0f171d 0%, #0c1419 100%); }
 .dark .atg-band.band-green { background: #0c1419; }
+/* Banda oscura destacada (navy) incluso en modo claro */
+.atg-band.band-dark { background: linear-gradient(135deg, #0C222F 0%, #163A4C 100%); border-color: #163A4C; }
+.atg-band.band-dark h2 { color: #fff; }
+.dark .atg-band.band-dark { background: linear-gradient(135deg, #0c1419 0%, #131c23 100%); }
 
 /* Etapas del Proceso Catastral (Nosotros) — 4 fases como círculos solapados
    con listas numeradas debajo, al estilo diagrama de fases, en colores corporativos */
