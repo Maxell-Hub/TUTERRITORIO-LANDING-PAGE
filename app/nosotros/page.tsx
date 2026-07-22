@@ -18,7 +18,7 @@ export const metadata: Metadata = {
  */
 
 // Acentos ATG (azul · verde · naranja) que ciclan en tarjetas y numeraciones.
-const ACC = ["var(--tt-blue-600)", "var(--tt-green-500)", "var(--tt-amber-500)"];
+const ACC = ["#3B85A5", "#4E8654", "#F0B63B"];
 
 const FUNCIONES = [
   { n: "01", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar." },
@@ -171,12 +171,12 @@ export default function NosotrosPage() {
               <Editable as="span" id="nos.func-intro" multiline>Nos ocupamos de todo el ciclo catastral del municipio: del levantamiento de la información en campo a la respuesta de cada trámite ciudadano.</Editable>
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24, marginTop: 44 }}>
+          <div className="func-grid">
             {FUNCIONES.map((f, i) => (
-              <article key={f.n} className="atg-mock reveal" style={card}>
-                <span style={{ ...cardNum, color: ACC[i % ACC.length] }}>{f.n}</span>
-                <h3 style={cardH3}>{f.t}</h3>
-                <p style={cardP}>{f.d}</p>
+              <article key={f.n} className="func-item reveal" style={{ ["--accent" as string]: ACC[i % ACC.length] }}>
+                <span className="n">{f.n}</span>
+                <h3>{f.t}</h3>
+                <p>{f.d}</p>
               </article>
             ))}
           </div>
@@ -193,19 +193,14 @@ export default function NosotrosPage() {
               <a className="atg-pill" href="/servicios">Ver los trámites</a>
             </div>
             <div className="atg-visual reveal">
-              <div className="atg-mock">
-                <div style={{ padding: "10px 24px" }}>
-                  {OBJETIVOS.map((o, i) => (
-                    <div
-                      key={o.n}
-                      style={{ display: "flex", gap: 18, alignItems: "baseline", padding: "15px 0", borderBottom: i < OBJETIVOS.length - 1 ? "1px solid var(--border-subtle)" : "none" }}
-                    >
-                      <span style={{ ...cardNum, color: ACC[i % ACC.length] }}>{o.n}</span>
-                      <p style={{ ...cardP, fontSize: 14 }}>{o.t}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <ol className="obj-timeline">
+                {OBJETIVOS.map((o, i) => (
+                  <li key={o.n} className="obj-step" style={{ ["--accent" as string]: ACC[i % ACC.length] }}>
+                    <span className="obj-dot">{i + 1}</span>
+                    <p>{o.t}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
@@ -258,21 +253,19 @@ export default function NosotrosPage() {
               <a className="atg-pill" href="/contactos">Contáctanos</a>
             </div>
             <div className="atg-visual reveal">
-              <div className="atg-mock">
-                <div style={{ display: "flex", justifyContent: "center", padding: 20, background: "var(--tt-gray-50)" }}>
-                  {/* Video vertical (9:16) de las instalaciones */}
-                  <div style={{ position: "relative", width: "min(100%, 300px)", aspectRatio: "9 / 16", borderRadius: 10, overflow: "hidden", background: "#0C222F" }}>
-                    <video
-                      controls
-                      playsInline
-                      preload="metadata"
-                      aria-label="Video de las instalaciones de Tuterritorio"
-                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                    >
-                      <source src="/assets/instalaciones.mp4" type="video/mp4" />
-                      Tu navegador no soporta la reproducción de video.
-                    </video>
-                  </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                {/* Video vertical (9:16) de las instalaciones, sin caja de fondo */}
+                <div style={{ position: "relative", width: "min(100%, 320px)", aspectRatio: "9 / 16", borderRadius: 16, overflow: "hidden", background: "#0C222F", boxShadow: "var(--shadow-lg)" }}>
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    aria-label="Video de las instalaciones de Tuterritorio"
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                  >
+                    <source src="/assets/instalaciones.mp4" type="video/mp4" />
+                    Tu navegador no soporta la reproducción de video.
+                  </video>
                 </div>
               </div>
             </div>

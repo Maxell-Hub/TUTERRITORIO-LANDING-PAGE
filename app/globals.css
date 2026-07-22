@@ -2577,6 +2577,30 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-photo-band .atg-pill { background: #fff; color: #163A4C; }
 .atg-photo-band .atg-pill:hover { background: #E2E6E9; }
 
+/* Lo que hacemos (Nosotros) — lista editorial con barra de acento superior */
+.func-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 38px 40px; margin-top: 44px; }
+@media (max-width: 980px) { .func-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .func-grid { grid-template-columns: 1fr; } }
+.func-item { border-top: 3px solid var(--accent, var(--tt-blue-700)); padding-top: 16px; }
+.func-item .n { font: 700 12px/1 var(--font-mono); letter-spacing: .15em; color: var(--accent, var(--tt-blue-700)); }
+.func-item h3 { margin: 10px 0 8px; font: 700 17px/1.3 var(--font-sans); letter-spacing: -0.01em; color: var(--tt-ink); }
+.func-item p { margin: 0; font: 400 13.5px/1.7 var(--font-sans); color: var(--tt-gray-500); }
+.dark .func-item h3 { color: #eaf1f6; }
+.dark .func-item p { color: #9fb0bd; }
+
+/* Hacia dónde trabajamos (Nosotros) — línea de tiempo vertical de compromisos */
+.obj-timeline { position: relative; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.obj-step { position: relative; display: flex; gap: 18px; padding: 0 0 26px; }
+.obj-step::before { content: ""; position: absolute; left: 21px; top: 46px; bottom: 2px; width: 2px; background: var(--border-subtle); }
+.obj-step:last-child { padding-bottom: 0; }
+.obj-step:last-child::before { display: none; }
+.obj-dot { position: relative; z-index: 1; flex: none; width: 44px; height: 44px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent, var(--tt-blue-700)); color: #fff; font: 800 15px/1 var(--font-sans); box-shadow: var(--shadow-sm); }
+.obj-step p { margin: 10px 0 0; font: 400 14.5px/1.65 var(--font-sans); color: var(--tt-gray-700); }
+.dark .obj-step::before { background: #2f3d47; }
+.dark .obj-step p { color: #9fb0bd; }
+
 /* Etapas del Proceso Catastral (Nosotros) — 4 fases como círculos solapados
    con listas numeradas debajo, al estilo diagrama de fases, en colores corporativos */
 .fases-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
