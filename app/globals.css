@@ -2374,10 +2374,11 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-pill:active { transform: scale(.97); }
 .atg-pill.ghost { background: var(--tt-white); color: var(--tt-ink); border: 1px solid var(--tt-gray-300); box-shadow: none; }
 .atg-pill.ghost:hover { background: var(--tt-gray-100); }
-/* Botones en modo oscuro: el sólido aclara al pasar el cursor (en claro oscurece)
-   y el ghost deja el fondo blanco por uno transparente con texto claro */
-.dark .atg-pill { background: #3B85A5; color: #fff; box-shadow: none; }
-.dark .atg-pill:hover { background: #4E97B6; }
+/* Botones en modo oscuro: el sólido CAMBIA a azul claro con texto navy
+   (se nota el cambio de tema) y aclara aún más al pasar el cursor;
+   el ghost deja el fondo blanco por uno transparente con texto claro */
+.dark .atg-pill { background: #59A9C4; color: #0C222F; box-shadow: none; }
+.dark .atg-pill:hover { background: #6BAFCC; }
 .dark .atg-pill.ghost { background: transparent; color: #eaf1f6; border-color: #3d4d58; }
 .dark .atg-pill.ghost:hover { background: rgba(255,255,255,.08); }
 /* Sobre los heros con foto, el ghost mantiene su borde claro visible */
@@ -2589,10 +2590,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .atg-mock-bar { background: #0f171d; border-color: #2f3d47; }
 .dark .atg-layers span { background: rgba(19,28,35,.92); border-color: #2f3d47; color: #eaf1f6; }
 .dark .atg-pcard .pbox p { color: #9fb0bd; }
-.dark .atg-pill.ghost { background: #131c23; color: #eaf1f6; border-color: #3a4751; }
-.dark .atg-pill.ghost:hover { background: #0f171d; }
-.dark .atg-pill { background: #3B85A5; }
-.dark .atg-pill:hover { background: #3B85A5; }
+/* (Los estilos oscuros de .atg-pill viven junto a la definición del botón.) */
 .dark .atg-stat .n { color: #74bad3; }
 .dark .atg-stat:nth-child(2) .n { color: #A7CF66; }
 .dark .atg-stat:nth-child(3) .n { color: #F0B63B; }

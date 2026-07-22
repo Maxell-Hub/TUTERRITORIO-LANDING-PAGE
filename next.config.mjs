@@ -5,9 +5,12 @@
 //  - Vercel Analytics / Speed Insights (va.vercel-scripts.com, vitals)
 //  - mapa de Google embebido (frame www.google.com)
 //  - imágenes propias, data:, blob: y https (el admin puede pegar URLs)
+// En desarrollo Next.js necesita 'unsafe-eval' (source maps / Fast Refresh);
+// en producción NO se incluye, la política queda igual de estricta.
+const devEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://www.gstatic.com https://www.google.com https://apis.google.com",
+  `script-src 'self' 'unsafe-inline'${devEval} https://va.vercel-scripts.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://www.gstatic.com https://www.google.com https://apis.google.com`,
   "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://www.gstatic.com https://fonts.gstatic.com",
