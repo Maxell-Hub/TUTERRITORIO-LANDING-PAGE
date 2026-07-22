@@ -1504,7 +1504,7 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .t-hero .legal-body { margin-top: 28px; }
 .t-hero .t-apt { margin-top: 18px; }
 .t-hero .legal-body .t-apt:first-child { margin-top: 4px; }
-.t-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 18px; margin-top: 32px; }
+.t-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(430px,100%),1fr)); gap: 18px; margin-top: 32px; }
 .t-card { --accent: var(--tt-blue-700); position: relative; display: flex; align-items: center; gap: 16px; padding: 22px 22px 22px 24px; border-radius: 16px;
   background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs); text-decoration: none; overflow: hidden;
   transition: transform .25s var(--ease-soft), box-shadow .25s var(--ease-soft), border-color .25s var(--ease-soft); }
