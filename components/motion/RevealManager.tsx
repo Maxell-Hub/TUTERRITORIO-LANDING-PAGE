@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Animaciones de scroll del sitio:
@@ -8,8 +9,12 @@ import { useEffect } from "react";
  *  - #scrollProg: barra de progreso superior (si existe en la página).
  *  - [data-parallax]: leve desplazamiento parallax (si existe).
  * Respeta prefers-reduced-motion.
+ * Se re-ejecuta en CADA cambio de ruta: en la navegación cliente los .reveal
+ * de la página nueva no existían al montar, y sin re-observarlos quedaban
+ * invisibles (opacidad 0) al volver a una página.
  */
 export default function RevealManager() {
+  const pathname = usePathname();
   useEffect(() => {
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
@@ -75,7 +80,7 @@ export default function RevealManager() {
         window.removeEventListener("resize", onScroll);
       }
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
