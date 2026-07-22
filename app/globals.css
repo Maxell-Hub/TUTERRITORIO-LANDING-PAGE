@@ -2640,8 +2640,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .fase-tag { display: flex; align-items: center; gap: 10px; margin: 0 0 20px;
   font: 800 clamp(17px,1.5vw,21px)/1 var(--font-display); letter-spacing: -0.01em; color: var(--tt-navy-700); }
 .fase-tag::before, .fase-tag::after { content: ""; flex: 1; border-top: 2px dotted var(--tt-gray-300); }
-/* Cuadrado redondeado (4 lados), en alusión al imagotipo de Tuterritorio */
-.fase-circle { position: relative; width: calc(100% + 40px); margin: 0 -20px; aspect-ratio: 1/1;
+/* Cuadrado redondeado (4 lados), en alusión al imagotipo de Tuterritorio,
+   con aire entre uno y otro (ya no se solapan) */
+.fase-circle { position: relative; width: 100%; margin: 0; aspect-ratio: 1/1;
   border-radius: 24%; display: flex; align-items: center; justify-content: center; text-align: center;
   color: #fff; font: 700 clamp(19px,1.9vw,27px)/1.15 var(--font-display); letter-spacing: -0.01em; padding: 16px; }
 .fase-list { margin: 26px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 13px; }
