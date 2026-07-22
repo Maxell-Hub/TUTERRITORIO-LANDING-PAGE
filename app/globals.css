@@ -1718,8 +1718,8 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fab-lang { --c: #F0B63B; background: var(--c); }
 .fab-lang:hover { background: #e0a92e; }
 .fab-lang .fab-tip { color: #fff; }
-.fab-theme { --c: #0C222F; background: var(--c); }
-.fab-theme:hover { background: #15323f; }
+.fab-theme { --c: #3B85A5; background: var(--c); }
+.fab-theme:hover { background: #347794; }
 .fab-feedback { --c: #4E8654; background: var(--c); }
 .fab-img { width: 28px; height: 28px; object-fit: contain; display: block; }
 .fab-feedback:hover { background: #457749; }
@@ -2552,6 +2552,15 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-photo-band p { color: rgba(255,255,255,.85); max-width: 54ch; margin: 0 auto 30px; font-size: 15px; line-height: 1.7; }
 .atg-photo-band .atg-pill { background: #fff; color: #163A4C; }
 .atg-photo-band .atg-pill:hover { background: #E2E6E9; }
+
+/* Tarjetas de fases de participación (Participa 6.1–6.5) */
+.fase-card { background: #fff; border: 1px solid var(--border-subtle); border-radius: 16px;
+  padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 14px; }
+.fase-card h3 { margin: 0; font: 700 16.5px/1.35 var(--font-sans); letter-spacing: -0.01em; color: var(--tt-navy-700); }
+.fase-card p { margin: 0; font: 400 14.5px/1.6 var(--font-sans); color: var(--tt-gray-700); }
+.dark .fase-card { background: #131c23; border-color: #2f3d47; box-shadow: none; }
+.dark .fase-card h3 { color: #eaf1f6; }
+.dark .fase-card p { color: #9fb0bd; }
 
 /* Google Maps embebido: en modo oscuro se invierte el mapa para que se vea
    con tema oscuro (el iframe gratuito no ofrece dark mode nativo) */
