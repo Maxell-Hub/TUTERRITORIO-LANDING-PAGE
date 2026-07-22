@@ -37,11 +37,47 @@ const OBJETIVOS = [
   { n: "05", t: "Acercar el catastro a la ciudadanía con atención oportuna y transparente." },
 ];
 
-const ETAPAS = [
-  { n: "01", t: "Formación", d: "Identificación, recolección e incorporación inicial de la información de la totalidad de los predios." },
-  { n: "02", t: "Actualización", d: "Identificación, recolección y registro de cambios o inconsistencias en los predios durante un periodo determinado." },
-  { n: "03", t: "Conservación", d: "Mantenimiento permanente y gestión continua de la base de información catastral." },
-  { n: "04", t: "Difusión", d: "Disponibilidad y acceso a la información catastral para su consulta y uso por parte de los ciudadanos." },
+/* Etapas del proceso catastral como diagrama de 4 fases (círculos en colores
+   corporativos con lista numerada continua debajo de cada fase). */
+const ETAPAS: { fase: string; titulo: string; color: string; items: string[] }[] = [
+  {
+    fase: "Etapa 1",
+    titulo: "Formación",
+    color: "#3B85A5",
+    items: [
+      "Identificación física, jurídica y económica de la totalidad de los predios del municipio.",
+      "Recolección de la información predial en campo y en oficina.",
+      "Incorporación inicial de los predios a la base catastral.",
+    ],
+  },
+  {
+    fase: "Etapa 2",
+    titulo: "Actualización",
+    color: "#4E8654",
+    items: [
+      "Identificación de cambios o inconsistencias en los predios.",
+      "Recolección y verificación de las novedades durante un periodo determinado.",
+      "Registro de los cambios en la base de información catastral.",
+    ],
+  },
+  {
+    fase: "Etapa 3",
+    titulo: "Conservación",
+    color: "#F0B63B",
+    items: [
+      "Mantenimiento permanente de la base de información catastral.",
+      "Gestión continua de trámites, mutaciones y rectificaciones.",
+    ],
+  },
+  {
+    fase: "Etapa 4",
+    titulo: "Difusión",
+    color: "#163A4C",
+    items: [
+      "Disponibilidad de la información catastral para su consulta.",
+      "Acceso y uso de la información por parte de los ciudadanos y las entidades.",
+    ],
+  },
 ];
 
 // Tarjeta caja blanca sobre banda gris (reusa .atg-mock para heredar el modo oscuro).
@@ -183,17 +219,27 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* 7 · Etapas: grid de tarjetas */}
+      {/* 7 · Etapas: diagrama de 4 fases (círculos solapados + listas numeradas) */}
       <section className="atg-band" id="proceso">
         <div className="atg-wrap">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 24 }}>
-            {ETAPAS.map((e, i) => (
-              <article key={e.n} className="atg-mock reveal" style={card}>
-                <span style={{ ...cardNum, color: ACC[i % ACC.length] }}>{e.n}</span>
-                <h3 style={cardH3}>{e.t}</h3>
-                <p style={cardP}>{e.d}</p>
-              </article>
-            ))}
+          <div className="fases-grid">
+            {(() => {
+              let paso = 0;
+              return ETAPAS.map((e, i) => (
+                <div key={e.fase} className="fase-col reveal">
+                  <p className="fase-tag">{e.fase}</p>
+                  <div className="fase-circle" style={{ background: e.color, zIndex: i + 1 }}>{e.titulo}</div>
+                  <ul className="fase-list">
+                    {e.items.map((it) => {
+                      paso += 1;
+                      return (
+                        <li key={it}><b>{paso}.</b> {it}</li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ));
+            })()}
           </div>
         </div>
       </section>
