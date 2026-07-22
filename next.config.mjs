@@ -58,6 +58,17 @@ const nextConfig = {
         source: "/assets/instalaciones.mp4",
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
+      // Caché de las imágenes y documentos estáticos: 1 día en el navegador y
+      // hasta 7 días servibles mientras revalida (los archivos casi nunca cambian;
+      // si se reemplaza uno, el visitante lo ve como máximo un día después).
+      {
+        source: "/assets/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+      },
+      {
+        source: "/docs/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+      },
     ];
   },
 };

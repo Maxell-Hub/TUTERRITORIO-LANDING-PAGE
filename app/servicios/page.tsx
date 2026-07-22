@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Editable from "@/components/admin/Editable";
+import TramitesBuscador from "@/components/servicios/TramitesBuscador";
+
+/** Texto de búsqueda normalizado (sin tildes) para el filtro de trámites. */
+const buscarDe = (t: { title: string; desc: string; reqs: string[]; costo: string }) =>
+  `${t.title} ${t.desc} ${t.reqs.join(" ")} ${t.costo}`.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
 export const metadata: Metadata = {
   title: "Trámites y servicios",
@@ -136,10 +141,13 @@ const Check = () => (
 export default function ServiciosPage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-tramites.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-tramites-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-tramites.jpg)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-tramites.jpg)", ["--hero-m" as string]: "url(/assets/foto-tramites-m.jpg)", backgroundPosition: "center 45%" }}
       >
         <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
         <p className="sub"><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
@@ -155,13 +163,16 @@ export default function ServiciosPage() {
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <Editable as="h2" id="serv.section-title">Selecciona el trámite que necesitas</Editable>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.7, color: "var(--tt-gray-500)" }}>
-              Pasa el cursor (o enfoca con teclado) sobre cada tarjeta para ver los documentos requeridos.
+              ¿Quieres saber qué necesitas? Haz clic o pasa el cursor sobre un trámite para ver sus documentos y requisitos.
             </p>
           </div>
 
-          <div className="tr-grid" style={{ marginTop: 44 }}>
+          {/* Buscador en vivo de trámites */}
+          <TramitesBuscador />
+
+          <div className="tr-grid" style={{ marginTop: 32 }}>
             {TRAMITES.map((t, i) => (
-              <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}
+              <div className={`tr-card design-${DESIGN}`} key={i} tabIndex={0} data-buscar={buscarDe(t)} aria-label={`${t.title}. ${t.tiempo}, ${t.costo}.`}
                 style={DESIGN === "numero" ? ({ ["--accent" as string]: BRAND[i % BRAND.length] }) : undefined}>
                 <div className="tr-face">
                   {DESIGN === "numero" && (

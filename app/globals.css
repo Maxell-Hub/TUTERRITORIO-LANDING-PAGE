@@ -484,6 +484,11 @@ img { max-width: 100%; }
 .footer-wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 40px 2px; text-align: center; }
 .footer-card { position: relative; z-index: 3; background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
   margin: -66px auto 56px; padding: clamp(1.6rem,3vw,2.6rem) clamp(1.6rem,3vw,3rem); width: 945px; max-width: 100%; text-align: left; }
+/* En pantallas angostas la tarjeta NO se monta sobre la sección anterior:
+   queda con aire para que nunca tape el texto del contenido */
+@media (max-width: 900px) {
+  .footer-card { margin: 28px auto 44px; }
+}
 .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .footer-marks { display: flex; align-items: center; gap: 16px; }
 .footer-marks .sep { width: 1px; height: 48px; background: var(--tt-green-600); }
@@ -834,6 +839,13 @@ img { max-width: 100%; }
 .serv-note svg { flex: none; margin-top: 2px; color: var(--tt-blue-700); }
 
 .tr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 20px; }
+/* Buscador de trámites (usa el estilo del buscador de FAQ) */
+.trb { margin-top: 28px; max-width: 560px; }
+.trb .fq-search { background: #fff; }
+.trb-meta { margin: 10px 0 0; font: 400 13px/1.5 var(--font-sans); color: var(--tt-gray-500); }
+.dark .trb .fq-search { background: #0f171d; border-color: #2f3d47; }
+.dark .trb .fq-search input { color: #eaf1f6; }
+.dark .trb-meta { color: #9fb0bd; }
 .tr-card { position: relative; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm); overflow: hidden; min-height: 300px; cursor: pointer;
   transition: box-shadow .3s var(--ease-soft), transform .3s var(--ease-soft), border-color .3s; }
@@ -2413,7 +2425,11 @@ font[style] { background: none !important; box-shadow: none !important; transiti
   background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-territorio.jpg");
   background-size: cover; background-position: center 65%;
 }
-@media (max-width: 720px) { .atg-hero { padding: 88px 20px 96px; } }
+@media (max-width: 720px) {
+  .atg-hero { padding: 88px 20px 96px; }
+  /* En celular el hero usa la variante liviana -m.jpg (cada página define --hero-m) */
+  .atg-hero { background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), var(--hero-m) !important; }
+}
 .atg-hero .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 20px; }
 .atg-hero .atg-eyebrow b { color: var(--tt-amber-500); }
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }
@@ -2580,6 +2596,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
   background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas.jpg");
   background-size: cover; background-position: center 30%;
   padding: 110px 0; text-align: center;
+  /* La foto de la franja no se descarga hasta que el usuario se acerca a ella */
+  content-visibility: auto; contain-intrinsic-size: auto 420px;
 }
 @media (max-width: 720px) { .atg-photo-band { padding: 72px 0; } }
 .atg-photo-band .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 16px; }

@@ -14,8 +14,11 @@ const MAP_SRC =
 export default function ContactosPage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-canales.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-canales-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales.jpg)", backgroundPosition: "center 9%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales.jpg)", ["--hero-m" as string]: "url(/assets/foto-canales-m.jpg)", backgroundPosition: "center 9%" }}>
         <h1>Contáctenos</h1>
         <p className="sub">
           Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio

@@ -77,7 +77,7 @@ export function TPageATG({
     <>
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)", backgroundPosition: "center 22%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)", ["--hero-m" as string]: "url(/assets/foto-alcaldia-m.jpg)", backgroundPosition: "center 22%" }}
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
         <h1>{title}</h1>

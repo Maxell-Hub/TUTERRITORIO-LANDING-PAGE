@@ -18,8 +18,11 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-panoramica.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-panoramica-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
-      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)" }}>
+      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)", ["--hero-m" as string]: "url(/assets/foto-panoramica-m.jpg)" }}>
         <h1>
           {/* El espacio vive DENTRO del span notranslate: Google recorta el espacio
               del texto traducido y "ensure" quedaba pegado a "Tuterritorio". */}
@@ -29,7 +32,6 @@ export default function HomePage() {
           Consulta la información catastral oficial de tu propiedad en Valledupar como linderos, área, avalúo y estado de tus trámites en un solo lugar.
         </Editable>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="/servicios">Consulta tu predio</a>
           <a className="atg-pill ghost" href="/#visor">Conocer la plataforma</a>
         </div>
       </section>

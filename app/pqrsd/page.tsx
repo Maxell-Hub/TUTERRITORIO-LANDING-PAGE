@@ -16,10 +16,13 @@ export const metadata: Metadata = {
 export default function PqrsdPage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-radica.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-radica-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica.jpg)", backgroundPosition: "center 30%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica.jpg)", ["--hero-m" as string]: "url(/assets/foto-radica-m.jpg)", backgroundPosition: "center 30%" }}
       >
         <h1>Radica tu PQRSD</h1>
         <p className="sub">

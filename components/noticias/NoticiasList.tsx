@@ -74,7 +74,10 @@ export default function NoticiasList() {
 
   return (
     <>
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-noticias.jpg)", backgroundPosition: "center 58%" }}>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-noticias.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-noticias-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-noticias.jpg)", ["--hero-m" as string]: "url(/assets/foto-noticias-m.jpg)", backgroundPosition: "center 58%" }}>
         <h1>Noticias</h1>
         <p className="sub">
           Sigue de cerca los avances de la <b>actualización catastral multipropósito</b> de Valledupar:

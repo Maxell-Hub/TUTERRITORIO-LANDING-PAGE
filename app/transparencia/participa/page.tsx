@@ -39,12 +39,15 @@ export default function ParticipaPage() {
 
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-socializacion.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-socializacion-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
 
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-socializacion.jpg)", backgroundPosition: "center 62%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-socializacion.jpg)", ["--hero-m" as string]: "url(/assets/foto-socializacion-m.jpg)", backgroundPosition: "center 62%" }}
       >
         <h1>
           Tu voz también<br />construye el territorio

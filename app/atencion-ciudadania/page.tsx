@@ -40,10 +40,13 @@ const ACCESOS: { accent: string; href: string; title: string; desc: string }[] =
 export default function AtencionCiudadaniaPage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-atencion.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-atencion-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-atencion.jpg)", backgroundPosition: "center 15%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-atencion.jpg)", ["--hero-m" as string]: "url(/assets/foto-atencion-m.jpg)", backgroundPosition: "center 15%" }}
       >
         <h1>
           Atención y servicios<br />a la ciudadanía

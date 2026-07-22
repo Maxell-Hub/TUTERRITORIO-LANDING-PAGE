@@ -91,10 +91,13 @@ const cardP: CSSProperties = { margin: 0, fontSize: 13.5, lineHeight: 1.7, color
 export default function NosotrosPage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-nosotros.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-nosotros-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-nosotros.jpg)", backgroundPosition: "center 48%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-nosotros.jpg)", ["--hero-m" as string]: "url(/assets/foto-nosotros-m.jpg)", backgroundPosition: "center 48%" }}
       >
         <h1>
           <Editable as="span" id="nos.title">El catastro de Valledupar, al día y en un solo lugar</Editable>

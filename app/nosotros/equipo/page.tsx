@@ -18,10 +18,13 @@ export const metadata: Metadata = {
 export default function EquipoPage() {
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
+      <link rel="preload" as="image" href="/assets/foto-equipo.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-equipo-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-equipo.jpg)", backgroundPosition: "center 40%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-equipo.jpg)", ["--hero-m" as string]: "url(/assets/foto-equipo-m.jpg)", backgroundPosition: "center 40%" }}
       >
         <h1>
           Detrás de cada predio,<br />hay <span style={{ color: "#fff" }}>un equipo</span> que lo hace posible
