@@ -10,7 +10,7 @@
  * - MAYOR: rediseños o cambios que transforman el sitio por completo.
  * Se muestra en la esquina inferior derecha de la tarjeta del footer.
  */
-const SITE_VERSION = "2.6.3";
+const SITE_VERSION = "2.6.4";
 
 export default function Footer() {
   const year = new Date().getFullYear();
