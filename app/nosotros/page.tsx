@@ -107,17 +107,17 @@ export default function NosotrosPage() {
       </section>
 
       {/* 2 · Feature: quiénes somos */}
-      <section className="atg-band" id="quienes-somos">
+      <section className="atg-band band-white" id="quienes-somos">
         <div className="atg-wrap">
           <div className="atg-feature">
             <div className="atg-visual reveal">
               <div className="atg-mock">
                 <img
                   className="atg-mock-photo"
-                  src="/assets/foto-banderas.jpg"
-                  alt="Banderas de Colombia, el Cesar y Valledupar en la sede de Tuterritorio"
-                  width={1200}
-                  height={800}
+                  src="/assets/foto-catastro.jpg"
+                  alt="Sala de atención de Tuterritorio con los pendones de la Oficina de Catastro de Valledupar"
+                  width={1600}
+                  height={1067}
                   loading="lazy"
                   decoding="async"
                 />
@@ -140,7 +140,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 3 · Misión y visión */}
-      <section className="atg-band" id="mision-vision">
+      <section className="atg-band band-blue" id="mision-vision">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <h2>Lo que nos mueve cada día</h2>
@@ -163,7 +163,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 4 · Funciones: grid de tarjetas */}
-      <section className="atg-band" id="funciones">
+      <section className="atg-band" id="funciones"> {/* gris por defecto */}
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <Editable as="h2" id="nos.func-title">Lo que hacemos</Editable>
@@ -171,12 +171,12 @@ export default function NosotrosPage() {
               <Editable as="span" id="nos.func-intro" multiline>Nos ocupamos de todo el ciclo catastral del municipio: del levantamiento de la información en campo a la respuesta de cada trámite ciudadano.</Editable>
             </p>
           </div>
-          <div className="func-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24, marginTop: 44 }}>
             {FUNCIONES.map((f, i) => (
-              <article key={f.n} className="func-item reveal" style={{ ["--accent" as string]: ACC[i % ACC.length] }}>
-                <span className="n">{f.n}</span>
-                <h3>{f.t}</h3>
-                <p>{f.d}</p>
+              <article key={f.n} className="atg-mock reveal" style={card}>
+                <span style={{ ...cardNum, color: ACC[i % ACC.length] }}>{f.n}</span>
+                <h3 style={cardH3}>{f.t}</h3>
+                <p style={cardP}>{f.d}</p>
               </article>
             ))}
           </div>
@@ -184,7 +184,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 5 · Feature invertida: objetivos */}
-      <section className="atg-band" id="objetivos">
+      <section className="atg-band band-green" id="objetivos">
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
@@ -196,7 +196,7 @@ export default function NosotrosPage() {
               <ol className="obj-timeline">
                 {OBJETIVOS.map((o, i) => (
                   <li key={o.n} className="obj-step" style={{ ["--accent" as string]: ACC[i % ACC.length] }}>
-                    <span className="obj-dot">{i + 1}</span>
+                    <span className="obj-dot" aria-hidden="true" />
                     <p>{o.t}</p>
                   </li>
                 ))}
@@ -215,7 +215,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 7 · Etapas: diagrama de 4 fases (círculos solapados + listas numeradas) */}
-      <section className="atg-band" id="proceso">
+      <section className="atg-band band-white" id="proceso">
         <div className="atg-wrap">
           <div className="fases-grid">
             {(() => {
@@ -240,7 +240,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* 8 · Feature invertida: instalaciones con video */}
-      <section className="atg-band" id="instalaciones">
+      <section className="atg-band band-blue" id="instalaciones">
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
