@@ -22,7 +22,7 @@ export default function PqrsdPage() {
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica.jpg)", ["--hero-m" as string]: "url(/assets/foto-radica-m.jpg)", backgroundPosition: "center 30%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica.jpg)", ["--hero-m" as string]: "url(/assets/foto-radica-m.jpg)", backgroundPosition: "center 15%" }}
       >
         <h1>Radica tu PQRSD</h1>
         <p className="sub">
