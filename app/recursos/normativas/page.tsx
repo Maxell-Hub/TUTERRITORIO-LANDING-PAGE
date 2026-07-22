@@ -29,7 +29,7 @@ export default function NormativasPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-madres.jpg)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-madres.jpg)", ["--band-m" as string]: "url(/assets/foto-madres-m.jpg)", backgroundPosition: "center 45%" }}
       >
         <div className="atg-wrap">
           <h2>¿Términos que no conoces?</h2>

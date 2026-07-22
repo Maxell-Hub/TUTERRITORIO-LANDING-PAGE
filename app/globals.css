@@ -1659,18 +1659,16 @@ textarea.ne-input { resize: vertical; min-height: 96px; }
 .fq-none button:hover { background: var(--tt-blue-800); }
 
 /* CTA final */
+/* CTA final del FAQ — tarjeta navy sólida al estilo de las bandas oscuras
+   del rediseño, con los botones pill corporativos del sitio */
 .fq-cta { margin-top: 30px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
-  padding: 24px 26px; border-radius: 18px; color: #fff;
-  background: var(--hero-parcelas) no-repeat right -230px top -190px / 620px auto, var(--grad-hero); }
+  padding: 28px 30px; border-radius: 18px; color: #fff;
+  background: linear-gradient(135deg, #0C222F 0%, #163A4C 100%); }
 .fq-cta h2 { margin: 0; font: var(--fw-bold) var(--fs-lg)/1.25 var(--font-sans); color: #fff; }
 .fq-cta p { margin: 6px 0 0; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: rgba(255,255,255,.82); }
 .fq-cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.fq-cta-btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 999px;
-  font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); text-decoration: none; transition: background .2s var(--ease-soft), transform .2s var(--ease-soft); }
-.fq-cta-btn.solid { background: var(--tt-green-600); color: #fff; }
-.fq-cta-btn.solid:hover { background: var(--tt-green-500); transform: translateY(-1px); }
-.fq-cta-btn.ghost { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.35); color: #fff; }
-.fq-cta-btn.ghost:hover { background: rgba(255,255,255,.2); }
+.fq-cta .atg-pill.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+.fq-cta .atg-pill.ghost:hover { background: rgba(255,255,255,.14); }
 
 /* Casilla de consentimiento */
 .consent-label { display: flex; align-items: flex-start; gap: 11px; font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); cursor: pointer; }
@@ -1917,10 +1915,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .fq-cta { background: #131c23; border: 1px solid #2f3d47; }
 .dark .fq-cta h2 { color: #eaf1f6 !important; }
 .dark .fq-cta p { color: #c3d0d9; }
-.dark .fq-cta-btn.solid { background: var(--tt-green-600); color: #fff; }
-.dark .fq-cta-btn.solid:hover { background: var(--tt-green-500); }
-.dark .fq-cta-btn.ghost { background: rgba(255,255,255,.06); border-color: #3a4751; color: #eaf1f6; }
-.dark .fq-cta-btn.ghost:hover { background: rgba(255,255,255,.12); border-color: #4a5a66; }
+.dark .fq-cta .atg-pill.ghost { background: transparent; border-color: #3a4751; color: #eaf1f6; }
+.dark .fq-cta .atg-pill.ghost:hover { background: rgba(255,255,255,.12); }
 /* Anexos del PQRSD en modo oscuro */
 .dark .pq-drop { background: #0f171d; border-color: #3a4751; color: #c3d0d9; }
 .dark .pq-drop:hover { background: #13222b; border-color: var(--tt-green-500); }
@@ -2522,6 +2518,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-mock-bar .d { width: 9px; height: 9px; border-radius: 50%; background: var(--tt-gray-300); opacity: .9; }
 .atg-mock-bar .title { font-family: var(--font-mono); font-size: 11px; color: var(--tt-gray-500); margin-left: 8px; letter-spacing: .04em; }
 .atg-map-body { position: relative; height: 320px; background: var(--tt-gray-50) url("/assets/foto-ortofoto.jpg") center/cover; }
+@media (max-width: 720px) { .atg-map-body { background-image: url("/assets/foto-ortofoto-m.jpg"); } }
 .atg-layers { position: absolute; left: 14px; top: 14px; display: flex; flex-direction: column; gap: 6px; }
 .atg-layers span {
   font-size: 11px; font-weight: 600; color: var(--tt-ink);
@@ -2593,9 +2590,14 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* --- Franja fotográfica de cierre --- */
 .atg-photo-band {
+  --band-m: url("/assets/foto-banderas-m.jpg"); /* default: la franja del Inicio */
   background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas.jpg");
   background-size: cover; background-position: center 30%;
   padding: 110px 0; text-align: center;
+}
+/* En celular la franja usa su variante liviana -m.jpg (cada página define --band-m) */
+@media (max-width: 720px) {
+  .atg-photo-band { background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), var(--band-m) !important; }
 }
 @media (max-width: 720px) { .atg-photo-band { padding: 72px 0; } }
 .atg-photo-band .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 16px; }

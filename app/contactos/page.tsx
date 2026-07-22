@@ -55,7 +55,7 @@ export default function ContactosPage() {
               </ul>
               <a className="atg-pill" href="https://maps.app.goo.gl/M3GqdiRtVDRVe9NFA" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
             </div>
-            <img className="photo" src="/assets/img-caja.jpg" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" loading="lazy" decoding="async" width={1300} height={865} />
+            <img className="photo" src="/assets/img-caja.jpg" srcSet="/assets/img-caja-m.jpg 860w, /assets/img-caja.jpg 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" loading="lazy" decoding="async" width={1300} height={865} />
           </div>
 
           <div className="atg-mock reveal" style={{ marginTop: 40 }}>
@@ -67,7 +67,7 @@ export default function ContactosPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco.jpg)", backgroundPosition: "center 30%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco.jpg)", ["--band-m" as string]: "url(/assets/foto-obelisco-m.jpg)", backgroundPosition: "center 30%" }}
       >
         <div className="atg-wrap">
           <h2>También puedes radicar en línea</h2>

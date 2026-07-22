@@ -47,7 +47,7 @@ export default function PreguntasFrecuentesPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-poporos.jpg)", backgroundPosition: "center 55%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-poporos.jpg)", ["--band-m" as string]: "url(/assets/foto-poporos-m.jpg)", backgroundPosition: "center 55%" }}
       >
         <div className="atg-wrap">
           <h2>¿No encontraste tu respuesta?</h2>

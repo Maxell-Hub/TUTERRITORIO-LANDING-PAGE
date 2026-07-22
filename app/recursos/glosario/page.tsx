@@ -29,7 +29,7 @@ export default function GlosarioPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-pilonera.jpg)", backgroundPosition: "center 37%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-pilonera.jpg)", ["--band-m" as string]: "url(/assets/foto-pilonera-m.jpg)", backgroundPosition: "center 37%" }}
       >
         <div className="atg-wrap">
           <h2>Aplica lo aprendido en tu trámite</h2>

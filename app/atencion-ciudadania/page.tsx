@@ -114,7 +114,7 @@ export default function AtencionCiudadaniaPage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/foto-dudas.jpg" alt="Ciudadano de Valledupar caminando por el centro de la ciudad" width={1600} height={1065} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/foto-dudas.jpg" srcSet="/assets/foto-dudas-m.jpg 860w, /assets/foto-dudas.jpg 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano de Valledupar caminando por el centro de la ciudad" width={1600} height={1065} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function AtencionCiudadaniaPage() {
                 Ver la carta de trato digno (PDF)
               </a>
             </div>
-            <img className="photo" src="/assets/foto-digno.jpg" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
+            <img className="photo" src="/assets/foto-digno.jpg" srcSet="/assets/foto-digno-m.jpg 860w, /assets/foto-digno.jpg 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -142,7 +142,7 @@ export default function AtencionCiudadaniaPage() {
       {/* 5 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mayo.jpg)", backgroundPosition: "center 55%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mayo.jpg)", ["--band-m" as string]: "url(/assets/foto-mayo-m.jpg)", backgroundPosition: "center 55%" }}
       >
         <div className="atg-wrap">
           <h2>¿No encontraste lo que buscabas?</h2>

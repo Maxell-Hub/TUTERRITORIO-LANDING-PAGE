@@ -119,7 +119,7 @@ export default function NosotrosPage() {
               <div className="atg-mock">
                 <img
                   className="atg-mock-photo"
-                  src="/assets/foto-catastro.jpg"
+                  src="/assets/foto-catastro.jpg" srcSet="/assets/foto-catastro-m.jpg 860w, /assets/foto-catastro.jpg 1600w" sizes="(max-width: 900px) 100vw, 640px"
                   alt="Sala de atención de Tuterritorio con los pendones de la Oficina de Catastro de Valledupar"
                   width={1600}
                   height={1067}
@@ -280,7 +280,7 @@ export default function NosotrosPage() {
       {/* 9 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-rio.jpg)", backgroundPosition: "center 50%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-rio.jpg)", ["--band-m" as string]: "url(/assets/foto-rio-m.jpg)", backgroundPosition: "center 50%" }}
       >
         <div className="atg-wrap">
           <h2>Visítanos en nuestra sede principal</h2>

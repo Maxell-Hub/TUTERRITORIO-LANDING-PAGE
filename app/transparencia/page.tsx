@@ -77,7 +77,7 @@ export default function TransparenciaPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-centro.jpg)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-centro.jpg)", ["--band-m" as string]: "url(/assets/foto-centro-m.jpg)", backgroundPosition: "center 45%" }}
       >
         <div className="atg-wrap">
           <h2>La información pública, al alcance de todos</h2>

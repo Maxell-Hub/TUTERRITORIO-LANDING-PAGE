@@ -136,8 +136,8 @@ export default function FaqExplorer() {
           <p>Escríbenos y te responderemos dentro de los términos de ley.</p>
         </div>
         <div className="fq-cta-actions">
-          <Link href="/pqrsd" className="fq-cta-btn solid">Radica tu PQRSD</Link>
-          <Link href="/contactos" className="fq-cta-btn ghost">Canales de atención</Link>
+          <Link href="/pqrsd" className="atg-pill">Radica tu PQRSD</Link>
+          <Link href="/contactos" className="atg-pill ghost">Canales de atención</Link>
         </div>
       </div>
     </div>

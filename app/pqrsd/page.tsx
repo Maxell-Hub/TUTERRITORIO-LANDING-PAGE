@@ -47,7 +47,7 @@ export default function PqrsdPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-juglares.jpg)", backgroundPosition: "center 83%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-juglares.jpg)", ["--band-m" as string]: "url(/assets/foto-juglares-m.jpg)", backgroundPosition: "center 83%" }}
       >
         <div className="atg-wrap">
           <h2>Resuelve tus dudas antes de radicar</h2>

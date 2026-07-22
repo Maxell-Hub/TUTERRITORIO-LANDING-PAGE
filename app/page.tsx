@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/foto-archivo.jpg" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/foto-archivo.jpg" srcSet="/assets/foto-archivo-m.jpg 860w, /assets/foto-archivo.jpg 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
