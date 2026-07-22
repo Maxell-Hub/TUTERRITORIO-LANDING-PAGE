@@ -26,7 +26,7 @@ export default function EquipoPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-archivo.jpg)" }}
       >
         <h1>
-          Detrás de cada predio,<br />hay <span className="b">un equipo</span> que lo hace posible
+          Detrás de cada predio,<br />hay <span style={{ color: "#fff" }}>un equipo</span> que lo hace posible
         </h1>
         <Editable as="p" id="equipo.intro" className="sub" multiline>
           Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.

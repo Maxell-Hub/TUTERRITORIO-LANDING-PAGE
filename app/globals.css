@@ -1761,6 +1761,12 @@ body { top: 0 !important; position: static !important; }
 /* Sin resaltado ni transición al traducir (evita el parpadeo/animación) */
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
 font[style] { background: none !important; box-shadow: none !important; transition: none !important; }
+/* Widget NUEVO de Google Translate: oculta el logo flotante, la atribución
+   "Traducido por Google", el spinner y los tooltips (clases VIpgJd-*) */
+.VIpgJd-ZVi9od-l4eHX-hSRGPd, .VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO, .VIpgJd-ZVi9od-xl07Ob-OEVmcd, .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q,
+.VIpgJd-suEOdc, #goog-gt-votingHiddenPane, .goog-te-gadget-icon, .goog-logo-link,
+.goog-te-gadget img { display: none !important; visibility: hidden !important; }
 .dark .fab-tip::after { border-left-color: #25323c; }
 
 /* ============================================================

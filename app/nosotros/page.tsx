@@ -20,13 +20,15 @@ export const metadata: Metadata = {
 // Acentos ATG (azul · verde · naranja) que ciclan en tarjetas y numeraciones.
 const ACC = ["#3B85A5", "#4E8654", "#F0B63B"];
 
+// Bento en 2 filas: cada fila lleva 1 tarjeta ancha (fn-lg) + 2 angostas (fn-sm).
+// Acentos con colores corporativos vivos (azul · verde · amarillo).
 const FUNCIONES = [
-  { n: "01", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar." },
-  { n: "02", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral que sirve de base para trámites y tributos." },
-  { n: "03", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal." },
-  { n: "04", t: "Información para la planeación", d: "Entregamos los datos con los que el municipio ordena su territorio y toma decisiones." },
-  { n: "05", t: "Atención a la ciudadanía", d: "Respondemos cada consulta y solicitud con lenguaje claro y tiempos definidos." },
-  { n: "06", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para que la información catastral y la municipal siempre coincidan." },
+  { n: "01", c: "#3B85A5", cls: "fn-lg", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar." },
+  { n: "02", c: "#4E8654", cls: "fn-sm", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos." },
+  { n: "03", c: "#F0B63B", cls: "fn-sm", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal." },
+  { n: "04", c: "#3B85A5", cls: "fn-sm", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio." },
+  { n: "05", c: "#4E8654", cls: "fn-sm", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras." },
+  { n: "06", c: "#F0B63B", cls: "fn-lg", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable." },
 ];
 
 const OBJETIVOS = [
@@ -171,12 +173,11 @@ export default function NosotrosPage() {
               <Editable as="span" id="nos.func-intro" multiline>Nos ocupamos de todo el ciclo catastral del municipio: del levantamiento de la información en campo a la respuesta de cada trámite ciudadano.</Editable>
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24, marginTop: 44 }}>
-            {FUNCIONES.map((f, i) => (
-              <article key={f.n} className="atg-mock reveal" style={card}>
-                <span style={{ ...cardNum, color: ACC[i % ACC.length] }}>{f.n}</span>
-                <h3 style={cardH3}>{f.t}</h3>
-                <p style={cardP}>{f.d}</p>
+          <div className="func-bento">
+            {FUNCIONES.map((f) => (
+              <article key={f.t} className={`reveal func-card ${f.cls}`} style={{ ["--c" as string]: f.c }}>
+                <h3>{f.t}</h3>
+                <p>{f.d}</p>
               </article>
             ))}
           </div>
