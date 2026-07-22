@@ -2388,8 +2388,11 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .atg-pill:hover { background: #6BAFCC; }
 .dark .atg-pill.ghost { background: transparent; color: #eaf1f6; border-color: #3d4d58; }
 .dark .atg-pill.ghost:hover { background: rgba(255,255,255,.08); }
+/* Los sólidos de los heros también cambian en oscuro (su regla propia les ganaba) */
+.dark .atg-hero .atg-pill { background: #59A9C4; color: #0C222F; }
+.dark .atg-hero .atg-pill:hover { background: #6BAFCC; }
 /* Sobre los heros con foto, el ghost mantiene su borde claro visible */
-.dark .atg-hero .atg-pill.ghost { color: #fff; border-color: rgba(255,255,255,.55); }
+.dark .atg-hero .atg-pill.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
 .dark .atg-hero .atg-pill.ghost:hover { background: rgba(255,255,255,.14); }
 
 /* --- Hero fotográfico con tinte --- */

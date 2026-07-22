@@ -1,16 +1,16 @@
-/**
- * Footer institucional global. Idéntico al de INICIO pero LIMPIO:
+﻿/**
+ * Footer institucional global. IdÃ©ntico al de INICIO pero LIMPIO:
  * - Solo red social Instagram (se eliminaron X y Facebook).
- * - Se eliminaron los enlaces de políticas redundantes.
+ * - Se eliminaron los enlaces de polÃ­ticas redundantes.
  */
 /**
- * Versión del sitio (versionado semántico MAYOR.MENOR.PARCHE):
+ * VersiÃ³n del sitio (versionado semÃ¡ntico MAYOR.MENOR.PARCHE):
  * - PARCHE: correcciones y ajustes finos (encuadres, espaciados, colores puntuales).
  * - MENOR: secciones o funcionalidades nuevas que suman sin romper lo existente.
- * - MAYOR: rediseños o cambios que transforman el sitio por completo.
+ * - MAYOR: rediseÃ±os o cambios que transforman el sitio por completo.
  * Se muestra en la esquina inferior derecha de la tarjeta del footer.
  */
-const SITE_VERSION = "2.6.0";
+const SITE_VERSION = "2.6.1";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -32,8 +32,8 @@ export default function Footer() {
           <h3>Sede Principal</h3>
           <address className="footer-data" style={{ fontStyle: "normal" }}>
             <div><b>NIT:</b> 901996731-8</div>
-            <div><b>Dirección:</b> Calle 16 #9-48, Edificio Caja Agraria - Oficina 1301 Valledupar, Cesar</div>
-            <div><b>Horario de atención:</b> Lunes a Viernes de 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</div>
+            <div><b>DirecciÃ³n:</b> Calle 16 #9-48, Edificio Caja Agraria - Oficina 1301 Valledupar, Cesar</div>
+            <div><b>Horario de atenciÃ³n:</b> Lunes a Viernes de 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</div>
             <div style={{ marginTop: 6 }}><b>Correo contacto:</b> <a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></div>
           </address>
 
@@ -51,26 +51,26 @@ export default function Footer() {
             </a>
           </div>
 
-          <span className="footer-version" aria-label={`Versión del sitio ${SITE_VERSION}`}>v{SITE_VERSION}</span>
+          <span className="footer-version" aria-label={`VersiÃ³n del sitio ${SITE_VERSION}`}>v{SITE_VERSION}</span>
         </div>
       </div>
 
       {/* Enlaces legales obligatorios */}
       <nav className="footer-legal" aria-label="Enlaces legales">
-        <a href="/politica-tratamiento-datos">Política de privacidad</a>
-        <span aria-hidden="true">·</span>
-        <a href="/terminos-y-condiciones">Términos y condiciones</a>
-        <span aria-hidden="true">·</span>
+        <a href="/politica-tratamiento-datos">PolÃ­tica de privacidad</a>
+        <span aria-hidden="true">Â·</span>
+        <a href="/terminos-y-condiciones">TÃ©rminos y condiciones</a>
+        <span aria-hidden="true">Â·</span>
         <a href="/accesibilidad">Accesibilidad</a>
-        <span aria-hidden="true">·</span>
+        <span aria-hidden="true">Â·</span>
         <a href="/mapa-del-sitio">Mapa del sitio</a>
       </nav>
 
       <p className="footer-resp">
-        Los contenidos de este sitio están bajo la responsabilidad de <span translate="no" className="notranslate">Tuterritorio</span>, gestor catastral del municipio de Valledupar.
+        Los contenidos de este sitio estÃ¡n bajo la responsabilidad de <span translate="no" className="notranslate">Tuterritorio</span>, gestor catastral del municipio de Valledupar.
       </p>
       <p className="footer-copy">
-        © {year} <span translate="no" className="notranslate">Tuterritorio</span> — Catastro Multipropósito de Valledupar. Todos los derechos reservados.
+        Â© {year} <span translate="no" className="notranslate">Tuterritorio</span> â€” Catastro MultipropÃ³sito de Valledupar. Todos los derechos reservados.
       </p>
 
     </footer>
