@@ -6,7 +6,10 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
-- Fusión de la rama `staging-2` (rediseño completo) a producción, pendiente de aprobación.
+## [2.7.4-produccion] - 2026-07-22
+
+### Publicado
+- 🚀 **El rediseño completo (v2.0.0 → v2.7.4) se fusionó a `main` y quedó publicado en producción** en https://www.tuterritorio.gov.co (69 commits, 163 archivos).
 
 ## [2.7.4] - 2026-07-22
 
