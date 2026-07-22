@@ -121,6 +121,17 @@ El sitio entero se rediseñó con una nueva estructura visual: heros fotográfic
 
 ![Nosotros — después del rediseño](docs/changelog/despues-nosotros.jpg)
 
+| Página | Antes | Después |
+|---|---|---|
+| Atención a la ciudadanía | ![antes](docs/changelog/antes-atencion.jpg) | ![después](docs/changelog/despues-atencion.jpg) |
+| Transparencia | ![antes](docs/changelog/antes-transparencia.jpg) | ![después](docs/changelog/despues-transparencia.jpg) |
+| Participa | ![antes](docs/changelog/antes-participa.jpg) | ![después](docs/changelog/despues-participa.jpg) |
+| Recursos (Normativas) | ![antes](docs/changelog/antes-recursos.jpg) | ![después](docs/changelog/despues-recursos.jpg) |
+| Noticias | ![antes](docs/changelog/antes-noticias.jpg) | ![después](docs/changelog/despues-noticias.jpg) |
+| Trámites y servicios | ![antes](docs/changelog/antes-servicios.jpg) | ![después](docs/changelog/despues-servicios.jpg) |
+
+> La versión detallada de esta documentación, con cada versión individual y todas las capturas, está en el archivo Word `Documentacion-Versiones-Tuterritorio-2026-07-22.docx`.
+
 ### Añadido
 - Nueva estructura en las 44 páginas: Inicio, Nosotros, Equipo, Atención, Transparencia (hub + 9 subpáginas), Participa, Recursos, Noticias, Servicios, PQRSD, Contactos, mapa del sitio y legales.
 
