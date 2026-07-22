@@ -111,8 +111,7 @@ export default function AtencionCiudadaniaPage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                {/* IMAGEN PENDIENTE: foto de atención al público en ventanilla de la sede */}
-                <div style={{ height: 300, background: "var(--tt-gray-200)" }} role="img" aria-label="Imagen pendiente: atención al público en ventanilla" />
+                <img className="atg-mock-photo" src="/assets/foto-dudas.jpg" alt="Ciudadano de Valledupar caminando por el centro de la ciudad" width={1600} height={1065} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -130,7 +129,7 @@ export default function AtencionCiudadaniaPage() {
               </p>
               <PendienteContenido titulo="Carta de trato digno" descripcion="Documento pendiente de cargar por la entidad." />
             </div>
-            <img className="photo" src="/assets/foto-alcaldia.jpg" alt="Fachada de la Alcaldía de Valledupar" loading="lazy" decoding="async" />
+            <img className="photo" src="/assets/foto-digno.jpg" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
