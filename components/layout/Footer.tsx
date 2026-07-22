@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Footer institucional global. Idéntico al de INICIO pero LIMPIO:
  * - Solo red social Instagram (se eliminaron X y Facebook).
  * - Se eliminaron los enlaces de políticas redundantes.
@@ -10,7 +10,7 @@
  * - MAYOR: rediseños o cambios que transforman el sitio por completo.
  * Se muestra en la esquina inferior derecha de la tarjeta del footer.
  */
-const SITE_VERSION = "2.6.11";
+const SITE_VERSION = "2.6.12";
 
 export default function Footer() {
   const year = new Date().getFullYear();

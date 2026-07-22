@@ -94,6 +94,8 @@ img { max-width: 100%; }
   background: #fff; color: var(--govco-blue); font: 700 12px/1 var(--font-sans); letter-spacing: .02em;
   transition: background .2s var(--ease-soft); }
 .gc-lang:hover span { background: #dbe6fb; }
+/* Sobre la barra azul Cobalt el foco de teclado va en blanco para máximo contraste */
+.govco-bar :focus-visible { outline-color: #fff; }
 .gc-auth { font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans); color: #fff; text-decoration: none; }
 .gc-auth:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -249,9 +251,11 @@ img { max-width: 100%; }
   visibility: hidden; }
 .nav-drawer.open { transform: translateX(0); visibility: visible; }
 
-/* Cabecera con el degradado institucional y la cinta multicolor de marca */
+/* Cabecera del menú móvil: color sólido corporativo con la cinta de marca */
+.nav-drawer { border-radius: 18px 0 0 18px; }
 .nav-drawer-head { position: relative; display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 22px 22px; background: var(--grad-hero); color: #fff; }
+  padding: 20px 22px 22px; background: #0C222F; color: #fff; }
+.dark .nav-drawer-head { background: #0f171d; }
 .nav-drawer-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
   background: var(--ribbon); }
 .nav-drawer-title { font: var(--fw-extra) var(--fs-md)/1 var(--font-display); letter-spacing: var(--ls-tight);
