@@ -13,9 +13,9 @@ export default function NormativasPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-normativas2.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-normativas2-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-normativas2.jpg)", ["--hero-m" as string]: "url(/assets/foto-normativas2-m.jpg)" }}>
+      <link rel="preload" as="image" href="/assets/foto-normativas3.jpg" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-normativas3-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-normativas3.jpg)", ["--hero-m" as string]: "url(/assets/foto-normativas3-m.jpg)" }}>
         <h1>Normativas</h1>
         <Editable as="p" id="norm.hero-intro" className="sub" multiline>Leyes, decretos, resoluciones y acuerdos que regulan la gestión catastral en Colombia y su aplicación en Valledupar. Consulta y descarga la norma que necesitas.</Editable>
       </section>

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.9] - 2026-07-22
+
+### Cambiado
+- La foto del hero de Normativas se publica con desenfoque: el texto legal de las resoluciones deja de ser legible (y el archivo baja a 46KB).
+
 ## [2.7.7] - 2026-07-22
 
 ### Cambiado
