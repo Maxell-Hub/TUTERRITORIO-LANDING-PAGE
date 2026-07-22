@@ -157,7 +157,7 @@ export const TEAM_AREAS = [
 ];
 
 export const DEFAULT_EQUIPO: Member[] = [
-  { id: "m-l1", name: "Nombre Apellido", role: "Directora(or) General", area: "Liderazgo" },
+  { id: "m-l1", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Liderazgo", photo: "/assets/equipo/lulia-maestre.jpg" },
   { id: "m-l2", name: "Nombre Apellido", role: "Jefe de la Oficina de Gestión Catastral", area: "Liderazgo" },
   { id: "m-t1", name: "Nombre Apellido", role: "Topógrafo", area: "Topografía y campo" },
   { id: "m-t2", name: "Nombre Apellido", role: "Reconocedor predial", area: "Topografía y campo" },

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.6] - 2026-07-22
+
+### Añadido
+- Foto y datos de la Gerente, Lulia Cristina Maestre Arcia, en la sección "Quienes orientan nuestra gestión" de Nuestro Equipo.
+
 ## [2.7.5] - 2026-07-22
 
 ### Eliminado
