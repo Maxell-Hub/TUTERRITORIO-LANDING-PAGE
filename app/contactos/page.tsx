@@ -64,7 +64,7 @@ export default function ContactosPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco.jpg)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco.jpg)", backgroundPosition: "center 30%" }}
       >
         <div className="atg-wrap">
           <h2>También puedes radicar en línea</h2>
