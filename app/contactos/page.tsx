@@ -48,7 +48,7 @@ export default function ContactosPage() {
               <p>Calle 16 #9-48, en pleno centro de Valledupar, Cesar.</p>
               <ul>
                 <li>Atención presencial de lunes a viernes</li>
-                <li>De 8:00 a.m. a 6:00 p.m.</li>
+                <li>De 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</li>
               </ul>
               <a className="atg-pill" href="https://maps.app.goo.gl/M3GqdiRtVDRVe9NFA" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
             </div>
