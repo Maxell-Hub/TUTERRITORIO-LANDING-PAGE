@@ -21,10 +21,19 @@ const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] 
   { n: "10", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
 ];
 
+/* Colores corporativos que se alternan por tarjeta (número), como en el diseño
+   original del sitio. El texto del relleno al pasar el cursor es blanco en
+   TODAS las tarjetas (incluidas las amarillas, a pedido del usuario). */
+const T_COLORS: { accent: string; fg: string }[] = [
+  { accent: "#4E8654", fg: "#ffffff" }, // verde corporativo
+  { accent: "#3B85A5", fg: "#ffffff" }, // azul corporativo
+  { accent: "#F0B63B", fg: "#ffffff" }, // amarillo (acento)
+];
+
 /**
- * Hub de Transparencia — estructura ATG: hero fotográfico tintado
- * (foto de la Alcaldía) seguido de una banda con el índice de secciones
- * como grid de tarjetas enlazadas.
+ * Hub de Transparencia — hero fotográfico ATG seguido del índice de secciones
+ * con las tarjetas del diseño original del sitio (t-card: número de color,
+ * borde de acento y flecha, con hover que rellena el número).
  */
 export default function TransparenciaPage() {
   return (
@@ -42,33 +51,22 @@ export default function TransparenciaPage() {
 
       <section className="atg-band">
         <div className="atg-wrap">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
-            {SUBSECCIONES.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                style={{
-                  display: "block",
-                  background: "var(--tt-white)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: 16,
-                  padding: 24,
-                  boxShadow: "var(--shadow-sm)",
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                <span style={{ display: "block", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", color: "var(--tt-blue-700)", marginBottom: 10 }}>
-                  {s.n.padStart(2, "0")}
-                </span>
-                <span style={{ display: "block", fontSize: 17, fontWeight: 700, lineHeight: 1.3, color: "var(--tt-navy-700)" }}>
-                  {s.titulo}
-                </span>
-                <span style={{ display: "block", marginTop: 6, fontSize: 14, lineHeight: 1.6, color: "var(--tt-gray-500)" }}>
-                  {s.desc}
-                </span>
-              </Link>
-            ))}
+          <div className="t-grid" style={{ marginTop: 0 }}>
+            {SUBSECCIONES.map((s, i) => {
+              const c = T_COLORS[i % T_COLORS.length];
+              return (
+                <Link key={s.href} href={s.href} className="t-card reveal" style={{ ["--accent" as string]: c.accent, ["--num-fg" as string]: c.fg }}>
+                  <span className="t-num">{s.n}</span>
+                  <span className="t-card-body">
+                    <span className="t-card-title">{s.titulo}</span>
+                    <span className="t-card-desc">{s.desc}</span>
+                  </span>
+                  <span className="t-card-go" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

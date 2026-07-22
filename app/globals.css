@@ -2374,6 +2374,15 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-pill:active { transform: scale(.97); }
 .atg-pill.ghost { background: var(--tt-white); color: var(--tt-ink); border: 1px solid var(--tt-gray-300); box-shadow: none; }
 .atg-pill.ghost:hover { background: var(--tt-gray-100); }
+/* Botones en modo oscuro: el sólido aclara al pasar el cursor (en claro oscurece)
+   y el ghost deja el fondo blanco por uno transparente con texto claro */
+.dark .atg-pill { background: #3B85A5; color: #fff; box-shadow: none; }
+.dark .atg-pill:hover { background: #4E97B6; }
+.dark .atg-pill.ghost { background: transparent; color: #eaf1f6; border-color: #3d4d58; }
+.dark .atg-pill.ghost:hover { background: rgba(255,255,255,.08); }
+/* Sobre los heros con foto, el ghost mantiene su borde claro visible */
+.dark .atg-hero .atg-pill.ghost { color: #fff; border-color: rgba(255,255,255,.55); }
+.dark .atg-hero .atg-pill.ghost:hover { background: rgba(255,255,255,.14); }
 
 /* --- Hero fotográfico con tinte --- */
 .atg-hero {
