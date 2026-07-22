@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.5] - 2026-07-22
+
+### Eliminado
+- El rótulo "Accesos rápidos" y la línea multicolor junto al título "Enlaces de interés" del Inicio.
+
 ## [2.7.4-produccion] - 2026-07-22
 
 ### Publicado

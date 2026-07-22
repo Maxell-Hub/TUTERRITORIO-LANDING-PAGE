@@ -38,11 +38,7 @@ export default function EnlacesInteres() {
     <section id="tramites" className="section-gray">
       <div className="section-inner">
         <div className="sec-head reveal">
-          <div>
-            <span className="eyebrow">Accesos rápidos</span>
-            <h2 className="sec-title">Enlaces de interés</h2>
-          </div>
-          <span className="ribbon-bar" />
+          <h2 className="sec-title">Enlaces de interés</h2>
         </div>
 
         <div className="enlaces-list">
