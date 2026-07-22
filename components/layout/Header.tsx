@@ -58,10 +58,34 @@ const NAV: NavItem[] = [
   { label: "Noticias", href: "/noticias", match: "/noticias" },
 ];
 
+/** Idioma activo según la cookie del traductor (googtrans). */
+function readLang(): "es" | "en" {
+  if (typeof document === "undefined") return "es";
+  const m = document.cookie.match(/googtrans=\/[a-z]{2}\/([a-z]{2})/);
+  return m && m[1] === "en" ? "en" : "es";
+}
+
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState<"es" | "en">("es");
+  const [langBusy, setLangBusy] = useState(false);
+
+  useEffect(() => setLang(readLang()), []);
+
+  // Cambio de idioma (traducción del sitio): fija la cookie que lee el
+  // widget de Google Translate y recarga para aplicarla.
+  function toggleLang() {
+    if (langBusy) return;
+    const next = lang === "es" ? "en" : "es";
+    const value = `/es/${next}`;
+    document.cookie = `googtrans=${value};path=/`;
+    const host = window.location.hostname;
+    document.cookie = `googtrans=${value};path=/;domain=.${host}`;
+    setLangBusy(true);
+    window.setTimeout(() => window.location.reload(), 120);
+  }
   const [openGroups, setOpenGroups] = useState<string[]>([]);
   const [stuck, setStuck] = useState(false);
   const [returning, setReturning] = useState(false);
@@ -139,24 +163,37 @@ export default function Header() {
 
   return (
     <header id="top">
-      {/* gov.co top bar */}
+      {/* Barra superior GOV.CO (lineamientos: 56px, Cobalt #0943B5, logo 136×24 → gov.co/home) */}
       <div className="govco-bar">
         <div className="govco-bar-row">
-          <a href="https://www.gov.co" target="_blank" rel="noopener noreferrer" aria-label="Portal del Estado Colombiano gov.co (abre en una pestaña nueva)" style={{ display: "inline-flex", alignItems: "center" }}>
-            <img src="/assets/govco-white.png" alt="gov.co" className="govco-logo" style={{ width: 98.35, height: 30, display: "block" }} />
+          <a href="https://www.gov.co/home/" target="_blank" rel="noopener noreferrer" aria-label="Portal del Estado Colombiano GOV.CO (abre en una pestaña nueva)" className="govco-home">
+            <img src="/assets/logo-govco.svg" alt="GOV.CO" className="govco-logo" width={136} height={24} style={{ display: "block" }} />
           </a>
-          {user && (
-            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-              <span className="gc-welcome">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" />
-                </svg>
-                Bienvenido, admin
-              </span>
-              <span style={{ width: 1, height: 18, background: "rgba(255,255,255,.45)" }} />
-              <button type="button" className="gc-auth gc-auth-btn" onClick={() => logout()}>Cerrar sesión</button>
-            </div>
-          )}
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            {user && (
+              <>
+                <span className="gc-welcome">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                  Bienvenido, admin
+                </span>
+                <span style={{ width: 1, height: 18, background: "rgba(255,255,255,.45)" }} />
+                <button type="button" className="gc-auth gc-auth-btn" onClick={() => logout()}>Cerrar sesión</button>
+              </>
+            )}
+            {/* Botón de idioma alineado a la derecha (traducción ES/EN) */}
+            <button
+              type="button"
+              className="gc-lang notranslate"
+              translate="no"
+              onClick={toggleLang}
+              aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
+              title={lang === "es" ? "English" : "Español"}
+            >
+              <span>{lang === "es" ? "EN" : "ES"}</span>
+            </button>
+          </div>
         </div>
       </div>
 

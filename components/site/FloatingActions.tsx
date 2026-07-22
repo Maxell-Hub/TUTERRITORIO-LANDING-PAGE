@@ -15,15 +15,12 @@ function readLang(): "es" | "en" {
 export default function FloatingActions() {
   const [mounted, setMounted] = useState(false);
   const [dark, setDark] = useState(false);
-  const [lang, setLang] = useState<"es" | "en">("es");
-  const [langSpin, setLangSpin] = useState(false);
 
   const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
     setDark(document.documentElement.classList.contains("dark"));
-    setLang(readLang());
   }, []);
 
   // Si el usuario no ha elegido tema manualmente, sigue el modo del sistema en vivo.
@@ -70,33 +67,9 @@ export default function FloatingActions() {
     setDark(isDark);
   }
 
-  function toggleLang() {
-    if (langSpin) return;
-    const next = lang === "es" ? "en" : "es";
-    const value = `/es/${next}`;
-    // Cookie que lee el widget de Google Translate (con y sin dominio).
-    document.cookie = `googtrans=${value};path=/`;
-    const host = window.location.hostname;
-    document.cookie = `googtrans=${value};path=/;domain=.${host}`;
-    // Deja ver el giro del ícono antes de recargar.
-    setLangSpin(true);
-    window.setTimeout(() => window.location.reload(), 340);
-  }
-
   return (
     <div className="fab-stack" aria-label="Acciones rápidas">
-      {/* Idioma */}
-      <button
-        type="button"
-        className="fab fab-lang"
-        onClick={toggleLang}
-        aria-label={lang === "es" ? "Cambiar idioma a inglés" : "Cambiar idioma a español"}
-        title={lang === "es" ? "English" : "Español"}
-      >
-        <svg className={`fab-ic${langSpin ? " spin" : ""}`} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-        <span className="fab-badge">{mounted ? (lang === "es" ? "EN" : "ES") : ""}</span>
-        <span className="fab-tip">{lang === "es" ? "English" : "Español"}</span>
-      </button>
+      {/* El cambio de idioma vive ahora en la barra superior GOV.CO (Header). */}
 
       {/* Tema claro / oscuro */}
       <button
