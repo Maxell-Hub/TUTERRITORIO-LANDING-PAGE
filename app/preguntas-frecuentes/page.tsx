@@ -26,12 +26,12 @@ export default function PreguntasFrecuentesPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-preguntas.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-preguntas-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-preguntas2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-preguntas2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-preguntas.webp)", ["--hero-m" as string]: "url(/assets/foto-preguntas-m.webp)", backgroundPosition: "center 55%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-preguntas2.webp)", ["--hero-m" as string]: "url(/assets/foto-preguntas2-m.webp)", backgroundPosition: "center 55%" }}>
         <h1>Preguntas frecuentes</h1>
         <p className="sub">
           Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
@@ -47,7 +47,7 @@ export default function PreguntasFrecuentesPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-poporos.webp)", ["--band-m" as string]: "url(/assets/foto-poporos-m.webp)", backgroundPosition: "center 55%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-poporos2.webp)", ["--band-m" as string]: "url(/assets/foto-poporos2-m.webp)", backgroundPosition: "center 55%" }}
       >
         <div className="atg-wrap">
           <h2>¿No encontraste tu respuesta?</h2>

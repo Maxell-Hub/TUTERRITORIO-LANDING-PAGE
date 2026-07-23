@@ -15,7 +15,7 @@ export default function DatosAbiertosPage() {
       title="Datos abiertos"
       lead="Conjuntos de datos que la entidad publica en formato abierto y reutilizable."
       eyebrow="Sección 7"
-      photo="foto-cantante"
+      photo="foto-cantante2"
       photoPos="center 50%"
     >
       <Apartado titulo="7.1 Portal de datos abiertos del Estado">

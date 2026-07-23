@@ -14,7 +14,7 @@ export default function ReporteInformacionPage() {
       title="Obligación de reporte de información"
       lead="Información que la entidad reporta a organismos de control y entidades del Estado en cumplimiento de la ley."
       eyebrow="Sección 9"
-      photo="foto-cacique"
+      photo="foto-cacique2"
       photoPos="center 55%"
     >
       <Apartado titulo="9.1 Información reportada por la entidad">

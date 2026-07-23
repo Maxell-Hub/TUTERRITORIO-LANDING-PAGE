@@ -92,12 +92,12 @@ export default function NosotrosPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-nosotros.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-nosotros-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-nosotros2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-nosotros2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-nosotros.webp)", ["--hero-m" as string]: "url(/assets/foto-nosotros-m.webp)", backgroundPosition: "center 48%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-nosotros2.webp)", ["--hero-m" as string]: "url(/assets/foto-nosotros2-m.webp)", backgroundPosition: "center 48%" }}
       >
         <h1>
           <Editable as="span" id="nos.title">El catastro de Valledupar, al día y en un solo lugar</Editable>
@@ -119,7 +119,7 @@ export default function NosotrosPage() {
               <div className="atg-mock">
                 <img
                   className="atg-mock-photo"
-                  src="/assets/foto-catastro.webp" srcSet="/assets/foto-catastro-m.webp 860w, /assets/foto-catastro.webp 1600w" sizes="(max-width: 900px) 100vw, 640px"
+                  src="/assets/foto-catastro2.webp" srcSet="/assets/foto-catastro2-m.webp 860w, /assets/foto-catastro2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px"
                   alt="Sala de atención de Tuterritorio con los pendones de la Oficina de Catastro de Valledupar"
                   width={1600}
                   height={1067}
@@ -280,7 +280,7 @@ export default function NosotrosPage() {
       {/* 9 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-rio.webp)", ["--band-m" as string]: "url(/assets/foto-rio-m.webp)", backgroundPosition: "center 50%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-rio2.webp)", ["--band-m" as string]: "url(/assets/foto-rio2-m.webp)", backgroundPosition: "center 50%" }}
       >
         <div className="atg-wrap">
           <h2>Visítanos en nuestra sede principal</h2>

@@ -14,7 +14,7 @@ export default function TramitesTransparenciaPage() {
       title="Trámites y servicios"
       lead="Trámites y servicios catastrales disponibles para la ciudadanía."
       eyebrow="Sección 5"
-      photo="foto-terminal"
+      photo="foto-terminal2"
       photoPos="center 58%"
     >
       <Apartado titulo="5.1 Listado de trámites y servicios">

@@ -13,7 +13,7 @@ export default function ProteccionDatosPage() {
       title="Protección de datos personales"
       lead="Tratamiento de datos personales conforme a la Ley 1581 de 2012."
       eyebrow="Sección 10"
-      photo="foto-hernando"
+      photo="foto-hernando2"
       photoPos="center 38%"
     >
       <Apartado titulo="10.1 Política de Tratamiento de Datos Personales">

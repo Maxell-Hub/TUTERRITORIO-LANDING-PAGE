@@ -41,12 +41,12 @@ export default function AtencionCiudadaniaPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-atencion.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-atencion-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-atencion2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-atencion2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-atencion.webp)", ["--hero-m" as string]: "url(/assets/foto-atencion-m.webp)", backgroundPosition: "center 15%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-atencion2.webp)", ["--hero-m" as string]: "url(/assets/foto-atencion2-m.webp)", backgroundPosition: "center 15%" }}
       >
         <h1>
           Atención y servicios<br />a la ciudadanía
@@ -114,7 +114,7 @@ export default function AtencionCiudadaniaPage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/foto-dudas.webp" srcSet="/assets/foto-dudas-m.webp 860w, /assets/foto-dudas.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano de Valledupar caminando por el centro de la ciudad" width={1600} height={1065} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/foto-dudas2.webp" srcSet="/assets/foto-dudas2-m.webp 860w, /assets/foto-dudas2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano de Valledupar caminando por el centro de la ciudad" width={1600} height={1065} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function AtencionCiudadaniaPage() {
                 Ver la carta de trato digno (PDF)
               </a>
             </div>
-            <img className="photo" src="/assets/foto-digno.webp" srcSet="/assets/foto-digno-m.webp 860w, /assets/foto-digno.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
+            <img className="photo" src="/assets/foto-digno2.webp" srcSet="/assets/foto-digno2-m.webp 860w, /assets/foto-digno2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -142,7 +142,7 @@ export default function AtencionCiudadaniaPage() {
       {/* 5 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mayo.webp)", ["--band-m" as string]: "url(/assets/foto-mayo-m.webp)", backgroundPosition: "center 55%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mayo2.webp)", ["--band-m" as string]: "url(/assets/foto-mayo2-m.webp)", backgroundPosition: "center 55%" }}
       >
         <div className="atg-wrap">
           <h2>¿No encontraste lo que buscabas?</h2>

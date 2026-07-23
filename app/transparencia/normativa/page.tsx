@@ -14,7 +14,7 @@ export default function NormativaPage() {
       title="Normativa"
       lead="Marco legal que regula la gestión catastral y su aplicación en Valledupar."
       eyebrow="Sección 2"
-      photo="foto-sirena"
+      photo="foto-sirena2"
       photoPos="center 55%"
     >
       <Apartado titulo="2.1 Normas generales y reglamentarias">

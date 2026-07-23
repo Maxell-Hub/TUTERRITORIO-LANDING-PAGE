@@ -2431,7 +2431,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-hero {
   padding: 132px 24px 140px; text-align: center;
   border-bottom: 1px solid var(--border-subtle);
-  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-territorio.webp");
+  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-territorio2.webp");
   background-size: cover; background-position: center 65%;
 }
 @media (max-width: 720px) {
@@ -2538,8 +2538,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-mock-bar { display: flex; align-items: center; gap: 7px; padding: 11px 16px; border-bottom: 1px solid var(--border-subtle); background: var(--tt-gray-50); }
 .atg-mock-bar .d { width: 9px; height: 9px; border-radius: 50%; background: var(--tt-gray-300); opacity: .9; }
 .atg-mock-bar .title { font-family: var(--font-mono); font-size: 11px; color: var(--tt-gray-500); margin-left: 8px; letter-spacing: .04em; }
-.atg-map-body { position: relative; height: 320px; background: var(--tt-gray-50) url("/assets/foto-ortofoto.webp") center/cover; }
-@media (max-width: 720px) { .atg-map-body { background-image: url("/assets/foto-ortofoto-m.webp"); } }
+.atg-map-body { position: relative; height: 320px; background: var(--tt-gray-50) url("/assets/foto-ortofoto2.webp") center/cover; }
+@media (max-width: 720px) { .atg-map-body { background-image: url("/assets/foto-ortofoto2-m.webp"); } }
 .atg-layers { position: absolute; left: 14px; top: 14px; display: flex; flex-direction: column; gap: 6px; }
 .atg-layers span {
   font-size: 11px; font-weight: 600; color: var(--tt-ink);
@@ -2565,9 +2565,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-pcard.t { --acc-ink: var(--tt-green-600); }
 .atg-pcard.g { --acc-ink: var(--tt-amber-600); }
 .atg-pcard .pfoto { width: 88%; aspect-ratio: 3/4; background-size: cover; background-position: center; border-radius: 8px; box-shadow: var(--shadow-md); }
-.atg-pcard.a .pfoto { background-image: url("/assets/foto-alcaldia.webp"); background-position: 30% center; }
-.atg-pcard.t .pfoto { background-image: url("/assets/foto-finca.jpg"); }
-.atg-pcard.g .pfoto { background-image: url("/assets/foto-rio.webp"); }
+.atg-pcard.a .pfoto { background-image: url("/assets/foto-alcaldia2.webp"); background-position: 30% center; }
+.atg-pcard.t .pfoto { background-image: url("/assets/foto-finca2.webp"); }
+.atg-pcard.g .pfoto { background-image: url("/assets/foto-rio2.webp"); }
 .atg-pcard .pbox {
   position: relative; width: 88%; margin: -46% 0 0 auto;
   background: var(--tt-white); border: 1px solid var(--border-subtle);
@@ -2611,7 +2611,7 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* --- Franja fotográfica de cierre --- */
 .atg-photo-band {
-  --band-m: url("/assets/foto-banderas2-m.webp"); /* default: la franja del Inicio */
+  --band-m: url("/assets/foto-banderas2-m2.webp"); /* default: la franja del Inicio */
   background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas2.webp");
   background-size: cover; background-position: center 30%;
   padding: 110px 0; text-align: center;

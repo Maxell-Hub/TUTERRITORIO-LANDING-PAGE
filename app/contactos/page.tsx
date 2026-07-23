@@ -15,10 +15,10 @@ export default function ContactosPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-canales.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-canales-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-canales2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-canales2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales.jpg)", ["--hero-m" as string]: "url(/assets/foto-canales-m.webp)", backgroundPosition: "center 9%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-canales2.webp)", ["--hero-m" as string]: "url(/assets/foto-canales2-m.webp)", backgroundPosition: "center 9%" }}>
         <h1>Contáctenos</h1>
         <p className="sub">
           Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio
@@ -55,7 +55,7 @@ export default function ContactosPage() {
               </ul>
               <a className="atg-pill" href="https://maps.app.goo.gl/M3GqdiRtVDRVe9NFA" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
             </div>
-            <img className="photo" src="/assets/img-caja.webp" srcSet="/assets/img-caja-m.webp 860w, /assets/img-caja.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" loading="lazy" decoding="async" width={1300} height={865} />
+            <img className="photo" src="/assets/img-caja2.webp" srcSet="/assets/img-caja2-m.webp 860w, /assets/img-caja2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" loading="lazy" decoding="async" width={1300} height={865} />
           </div>
 
           <div className="atg-mock reveal" style={{ marginTop: 40 }}>
@@ -67,7 +67,7 @@ export default function ContactosPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco.jpg)", ["--band-m" as string]: "url(/assets/foto-obelisco-m.jpg)", backgroundPosition: "center 30%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-obelisco2.webp)", ["--band-m" as string]: "url(/assets/foto-obelisco2-m.webp)", backgroundPosition: "center 30%" }}
       >
         <div className="atg-wrap">
           <h2>También puedes radicar en línea</h2>

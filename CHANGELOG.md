@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.6] - 2026-07-23
+
+### Cambiado
+- Mejora de calidad de las fotos de TODO el sitio: 44 fotos regeneradas desde sus mejores fuentes (30 desde los originales de alta resolución, 14 desde el historial) a calidad 85 en escritorio y variantes móviles más nítidas de 1080px a calidad 78 (antes 860px a 72, que se veían borrosas en pantallas de alta densidad). Nombres renovados (sufijo 2) para saltar la caché inmutable; versiones anteriores eliminadas.
+
 ## [2.8.5] - 2026-07-23
 
 ### Cambiado

@@ -16,7 +16,7 @@ export default function NoticiasPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-musicos.webp)", ["--band-m" as string]: "url(/assets/foto-musicos-m.webp)", backgroundPosition: "center 55%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-musicos2.webp)", ["--band-m" as string]: "url(/assets/foto-musicos2-m.webp)", backgroundPosition: "center 55%" }}
       >
         <div className="atg-wrap">
           <h2>El territorio también es noticia</h2>

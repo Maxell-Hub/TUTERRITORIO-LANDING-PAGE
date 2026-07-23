@@ -15,7 +15,7 @@ export default function ContratacionPage() {
       title="Contratación"
       lead="Información sobre la actividad contractual de la entidad."
       eyebrow="Sección 3"
-      photo="foto-viajero"
+      photo="foto-viajero2"
       photoPos="center 52%"
     >
       <Apartado titulo="3.1 Plan Anual de Adquisiciones (PAA)">

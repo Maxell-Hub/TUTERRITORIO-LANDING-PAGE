@@ -14,7 +14,7 @@ export default function GruposInteresPage() {
       title="Información para grupos de interés"
       lead="Contenidos dirigidos a poblaciones y grupos de interés específicos."
       eyebrow="Sección 8"
-      photo="foto-valledupar"
+      photo="foto-valledupar2"
       photoPos="center 48%"
     >
       <Apartado titulo="8.1 Información dirigida a niños, niñas y adolescentes">

@@ -17,12 +17,12 @@ export default function PqrsdPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-radica.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-radica-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-radica2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-radica2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica.webp)", ["--hero-m" as string]: "url(/assets/foto-radica-m.webp)", backgroundPosition: "center 15%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-radica2.webp)", ["--hero-m" as string]: "url(/assets/foto-radica2-m.webp)", backgroundPosition: "center 15%" }}
       >
         <h1>Radica tu PQRSD</h1>
         <p className="sub">
@@ -47,7 +47,7 @@ export default function PqrsdPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-juglares.jpg)", ["--band-m" as string]: "url(/assets/foto-juglares-m.webp)", backgroundPosition: "center 83%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-juglares2.webp)", ["--band-m" as string]: "url(/assets/foto-juglares2-m.webp)", backgroundPosition: "center 83%" }}
       >
         <div className="atg-wrap">
           <h2>Resuelve tus dudas antes de radicar</h2>

@@ -14,7 +14,7 @@ export default function PlaneacionPage() {
       title="Planeación, presupuesto e informes"
       lead="Instrumentos de planeación y rendición de cuentas de la entidad."
       eyebrow="Sección 4"
-      photo="foto-alfonso"
+      photo="foto-alfonso2"
       photoPos="center 48%"
     >
       <Apartado titulo="4.1 Plan de acción">

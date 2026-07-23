@@ -19,12 +19,12 @@ export default function EquipoPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-equipo.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-equipo-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-equipo2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-equipo2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-equipo.webp)", ["--hero-m" as string]: "url(/assets/foto-equipo-m.webp)", backgroundPosition: "center 40%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-equipo2.webp)", ["--hero-m" as string]: "url(/assets/foto-equipo2-m.webp)", backgroundPosition: "center 40%" }}
       >
         <h1>
           Detrás de cada predio,<br />hay <span style={{ color: "#fff" }}>un equipo</span> que lo hace posible
@@ -44,7 +44,7 @@ export default function EquipoPage() {
       {/* 4 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mulata.webp)", ["--band-m" as string]: "url(/assets/foto-mulata-m.webp)", backgroundPosition: "center 42%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mulata2.webp)", ["--band-m" as string]: "url(/assets/foto-mulata2-m.webp)", backgroundPosition: "center 42%" }}
       >
         <div className="atg-wrap">
           <h2>Un equipo que responde por tu predio</h2>

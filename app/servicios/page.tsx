@@ -145,12 +145,12 @@ export default function ServiciosPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-tramites.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-tramites-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-tramites2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-tramites2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-tramites.webp)", ["--hero-m" as string]: "url(/assets/foto-tramites-m.webp)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-tramites2.webp)", ["--hero-m" as string]: "url(/assets/foto-tramites2-m.webp)", backgroundPosition: "center 45%" }}
       >
         <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
         <p className="sub"><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
@@ -235,7 +235,7 @@ export default function ServiciosPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-plaza.webp)", ["--band-m" as string]: "url(/assets/foto-plaza-m.webp)", backgroundPosition: "center 10%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-plaza2.webp)", ["--band-m" as string]: "url(/assets/foto-plaza2-m.webp)", backgroundPosition: "center 10%" }}
       >
         <div className="atg-wrap">
           <h2>¿No encontraste lo que buscabas?</h2>
