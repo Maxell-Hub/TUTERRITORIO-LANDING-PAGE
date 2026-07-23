@@ -19,10 +19,10 @@ export default function HomePage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-panoramica.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-panoramica-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-panoramica.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-panoramica-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
-      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.jpg)", ["--hero-m" as string]: "url(/assets/foto-panoramica-m.jpg)" }}>
+      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica.webp)", ["--hero-m" as string]: "url(/assets/foto-panoramica-m.webp)" }}>
         <h1>
           {/* El espacio vive DENTRO del span notranslate: Google recorta el espacio
               del texto traducido y "ensure" quedaba pegado a "Tuterritorio". */}
@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/foto-archivo.jpg" srcSet="/assets/foto-archivo-m.jpg 860w, /assets/foto-archivo.jpg 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/foto-archivo.webp" srcSet="/assets/foto-archivo-m.webp 860w, /assets/foto-archivo.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>

@@ -2603,8 +2603,8 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* --- Franja fotográfica de cierre --- */
 .atg-photo-band {
-  --band-m: url("/assets/foto-banderas-m.jpg"); /* default: la franja del Inicio */
-  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas.jpg");
+  --band-m: url("/assets/foto-banderas-m.webp"); /* default: la franja del Inicio */
+  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas.webp");
   background-size: cover; background-position: center 30%;
   padding: 110px 0; text-align: center;
 }

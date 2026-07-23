@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.16] - 2026-07-23
+
+### Cambiado
+- Mejoras de rendimiento móvil (PageSpeed): el CSS ahora va incrustado en el HTML (elimina la solicitud que bloqueaba el primer renderizado ~300 ms), las fotos del Inicio pasan a WebP (hero, archivo y banda de banderas: hasta 43% más livianas), la caché de /assets y /docs sube a 1 año inmutable (regla: renombrar el archivo al reemplazarlo) y el JavaScript deja de incluir polyfills para navegadores antiguos (browserslist moderno).
+
 ## [2.7.15] - 2026-07-23
 
 ### Añadido

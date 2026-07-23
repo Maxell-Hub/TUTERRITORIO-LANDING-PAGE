@@ -40,6 +40,11 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Inserta el CSS en el HTML en vez de un <link> bloqueante: elimina la
+    // solicitud que bloquea el primer renderizado (~300 ms en 4G lenta).
+    inlineCss: true,
+  },
   images: {
     // Sirve AVIF/WebP automáticamente (mucho más livianos).
     formats: ["image/avif", "image/webp"],
@@ -58,16 +63,16 @@ const nextConfig = {
         source: "/assets/instalaciones.mp4",
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
-      // Caché de las imágenes y documentos estáticos: 1 día en el navegador y
-      // hasta 7 días servibles mientras revalida (los archivos casi nunca cambian;
-      // si se reemplaza uno, el visitante lo ve como máximo un día después).
+      // Caché de las imágenes y documentos estáticos: 1 año e inmutable.
+      // REGLA: al reemplazar un archivo hay que RENOMBRARLO (p. ej. foto-x2.jpg);
+      // con el mismo nombre el navegador/CDN seguiría sirviendo la copia vieja.
       {
         source: "/assets/:path*",
-        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
       {
         source: "/docs/:path*",
-        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
     ];
   },
