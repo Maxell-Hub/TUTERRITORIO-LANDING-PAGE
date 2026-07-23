@@ -21,9 +21,9 @@ export default function HomePage() {
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
       <link rel="preload" as="image" href="/assets/foto-panoramica2.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-panoramica2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-panoramica3-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
-      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica2.webp)", ["--hero-m" as string]: "url(/assets/foto-panoramica2-m.webp)" }}>
+      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-panoramica2.webp)", ["--hero-m" as string]: "url(/assets/foto-panoramica3-m.webp)" }}>
         <h1>
           {/* El espacio vive DENTRO del span notranslate: Google recorta el espacio
               del texto traducido y "ensure" quedaba pegado a "Tuterritorio". */}
@@ -43,7 +43,8 @@ export default function HomePage() {
           <div className="atg-feature">
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <div className="atg-map-body" role="img" aria-label="Ortofoto de Valledupar con la malla predial">
+                <div className="atg-map-body">
+                  <img src="/assets/foto-ortofoto2.webp" srcSet="/assets/foto-ortofoto2-m.webp 1080w, /assets/foto-ortofoto2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ortofoto de Valledupar con la malla predial" loading="lazy" decoding="async" width={1600} height={1067} />
                 </div>
               </div>
             </div>

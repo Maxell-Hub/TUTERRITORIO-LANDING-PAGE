@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.8] - 2026-07-23
+
+### Cambiado
+- Rendimiento móvil: la ortofoto del visor del Inicio pasa de fondo CSS (se descargaba siempre, 155KB compitiendo con el hero) a imagen con carga diferida; el hero móvil del Inicio se afinó a 64KB (1000px q72, misma nitidez bajo el tinte); y las animaciones de entrada son más ágiles en celular (la página se ve completa antes, mejora el Speed Index).
+
 ## [2.8.7] - 2026-07-23
 
 ### Corregido
