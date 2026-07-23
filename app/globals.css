@@ -2611,9 +2611,9 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 
 /* --- Franja fotográfica de cierre --- */
 .atg-photo-band {
-  --band-m: url("/assets/foto-banderas-m.webp"); /* default: la franja del Inicio */
-  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas.webp");
-  background-size: cover; background-position: center 30%;
+  --band-m: url("/assets/foto-banderas2-m.webp"); /* default: la franja del Inicio */
+  background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), url("/assets/foto-banderas2.webp");
+  background-size: cover; background-position: center 48%;
   padding: 110px 0; text-align: center;
 }
 /* En celular la franja usa su variante liviana -m.jpg (cada página define --band-m) */

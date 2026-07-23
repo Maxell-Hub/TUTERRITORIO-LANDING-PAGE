@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.3] - 2026-07-23
+
+### Cambiado
+- Nueva fotografía de la franja de cierre del Inicio: las banderas de los corregimientos al atardecer, encuadrada al centro de las astas. Optimizada de 6,3MB a 117KB en escritorio y 40KB en móvil (WebP, nombre nuevo foto-banderas2 para saltar la caché); las versiones anteriores se eliminaron.
+
 ## [2.8.2] - 2026-07-23
 
 ### Corregido
