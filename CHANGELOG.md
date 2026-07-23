@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.1] - 2026-07-23
+
+### Corregido
+- Toda navegación por clic o tap (por ejemplo, las tarjetas 1–10 de Transparencia) ahora arranca al principio de la página destino, sin importar dónde estaba el scroll. Se respetan las excepciones correctas: los enlaces con ancla (#sección) van a su ancla y el botón atrás del navegador sigue restaurando la posición anterior.
+
 ## [2.8.0] - 2026-07-23
 
 ### Añadido
