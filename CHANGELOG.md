@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.14] - 2026-07-23
+
+### Corregido
+- En la versión en inglés ya no se pegan las palabras a los términos protegidos ("ofTuterritorio", "theTuterritorio", "filePQRSD"): los espacios vecinos se conservan dentro de las cápsulas que Google Translate no traduce.
+- El elemento "Participa" del menú ahora se muestra como "Participate" en la versión en inglés (Google lo trataba como nombre propio y no lo traducía).
+
 ## [2.7.13] - 2026-07-23
 
 ### Corregido

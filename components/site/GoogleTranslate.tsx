@@ -68,13 +68,26 @@ function protectTerms(): void {
     let last = 0;
     let m: RegExpExecArray | null;
     while ((m = matcher.exec(text))) {
-      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      // Los espacios vecinos se meten DENTRO de la cápsula notranslate como NBSP:
+      // Google recorta los espacios de los fragmentos que traduce y las palabras
+      // quedaban pegadas al término protegido ("theTuterritorio", "filePQRSD").
+      let before = text.slice(last, m.index);
+      let lead = "";
+      if (/\s$/.test(before)) { before = before.replace(/\s+$/, ""); lead = " "; }
+      if (before) frag.appendChild(document.createTextNode(before));
+      let end = m.index + m[0].length;
+      let trail = "";
+      if (/^\s/.test(text.slice(end))) {
+        const ws = text.slice(end).match(/^\s+/)![0];
+        end += ws.length;
+        trail = " ";
+      }
       const span = document.createElement("span");
       span.className = "notranslate";
       span.setAttribute("translate", "no");
-      span.textContent = m[0];
+      span.textContent = lead + m[0] + trail;
       frag.appendChild(span);
-      last = m.index + m[0].length;
+      last = end;
       if (matcher.lastIndex === m.index) matcher.lastIndex++; // evita bucles en coincidencias vacías
     }
     if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));

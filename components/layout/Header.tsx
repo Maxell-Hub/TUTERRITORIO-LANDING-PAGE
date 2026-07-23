@@ -74,6 +74,10 @@ export default function Header() {
 
   useEffect(() => setLang(readLang()), []);
 
+  // Google Translate trata "Participa" como nombre propio y no lo traduce:
+  // en inglés lo servimos ya traducido (y protegido para que no lo toque).
+  const navLabel = (label: string) => (lang === "en" && label === "Participa" ? "Participate" : label);
+
   // Cambio de idioma (traducción del sitio): fija la cookie que lee el
   // widget de Google Translate y recarga para aplicarla.
   function toggleLang() {
@@ -230,7 +234,7 @@ export default function Header() {
                     className={`mn-link${isActive(item) ? " on" : ""}`}
                     aria-current={isActive(item) ? "page" : undefined}
                   >
-                    {item.label}
+                    {navLabel(item.label)}
                     <svg className="mn-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d="m6 9 6 6 6-6" />
                     </svg>
@@ -248,7 +252,7 @@ export default function Header() {
                   className={`mn-link${isActive(item) ? " on" : ""}`}
                   aria-current={isActive(item) ? "page" : undefined}
                 >
-                  {item.label}
+                  {navLabel(item.label)}
                 </a>
               )
             )}
@@ -316,7 +320,7 @@ export default function Header() {
                     aria-controls={`nd-sub-${item.label}`}
                     onClick={() => toggleGroup(item.label)}
                   >
-                    {item.label}
+                    {navLabel(item.label)}
                     <svg className="nd-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="m6 9 6 6 6-6" />
                     </svg>
@@ -328,7 +332,7 @@ export default function Header() {
                     aria-current={isActive(item) ? "page" : undefined}
                     onClick={() => setMenuOpen(false)}
                   >
-                    {item.label}
+                    {navLabel(item.label)}
                   </a>
                 )}
                 {item.drop && expanded && (
