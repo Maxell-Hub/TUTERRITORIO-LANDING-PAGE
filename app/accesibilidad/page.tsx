@@ -12,9 +12,9 @@ export default function AccesibilidadPage() {
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
       <link rel="preload" as="image" href="/assets/foto-accesibilidad.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-accesibilidad-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-accesibilidad-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-accesibilidad.jpg)", ["--hero-m" as string]: "url(/assets/foto-accesibilidad-m.jpg)", backgroundPosition: "center 50%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-accesibilidad.jpg)", ["--hero-m" as string]: "url(/assets/foto-accesibilidad-m.webp)", backgroundPosition: "center 50%" }}>
         <h1>Declaración de Accesibilidad</h1>
         <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
       </section>

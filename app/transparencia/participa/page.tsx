@@ -41,13 +41,13 @@ export default function ParticipaPage() {
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
       <link rel="preload" as="image" href="/assets/foto-socializacion.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-socializacion-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-socializacion-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
 
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-socializacion.jpg)", ["--hero-m" as string]: "url(/assets/foto-socializacion-m.jpg)", backgroundPosition: "center 62%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-socializacion.jpg)", ["--hero-m" as string]: "url(/assets/foto-socializacion-m.webp)", backgroundPosition: "center 62%" }}
       >
         <h1>
           Tu voz también<br />construye el territorio
@@ -95,7 +95,7 @@ export default function ParticipaPage() {
       {/* 3 · Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-iglesia.jpg)", ["--band-m" as string]: "url(/assets/foto-iglesia-m.jpg)", backgroundPosition: "center 8%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-iglesia.webp)", ["--band-m" as string]: "url(/assets/foto-iglesia-m.webp)", backgroundPosition: "center 8%" }}
       >
         <div className="atg-wrap">
           <h2>La participación fortalece el catastro</h2>

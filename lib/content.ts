@@ -41,7 +41,7 @@ export const DEFAULT_NOTICIAS: News[] = [
       "Inicia la actualización catastral 2026 en las comunas del norte de Valledupar",
     extracto:
       "Los equipos de reconocimiento predial de Tuterritorio comenzaron el levantamiento de información en las comunas 5 y 6. El operativo actualizará linderos, áreas y destino económico de más de 18.000 predios urbanos.",
-    imagen: "/assets/valledupar-panorama.jpg",
+    imagen: "/assets/valledupar-panorama.webp",
   },
   {
     id: "n-2026-05-30",

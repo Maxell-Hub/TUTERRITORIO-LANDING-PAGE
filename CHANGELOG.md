@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.17] - 2026-07-23
+
+### Cambiado
+- Rendimiento en computador: las fotos de TODO el sitio (heros, bandas e imágenes de contenido, 58 archivos) pasan a WebP donde el formato gana; 11 fotos que ya estaban mejor comprimidas en JPG se conservan tal cual. Verificado que las 90 referencias del código apuntan a archivos existentes y que las 10 páginas principales cargan su hero sin errores.
+
 ## [2.7.16] - 2026-07-23
 
 ### Cambiado

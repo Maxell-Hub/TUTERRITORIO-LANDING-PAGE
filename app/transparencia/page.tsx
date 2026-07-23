@@ -39,11 +39,11 @@ export default function TransparenciaPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-alcaldia.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-alcaldia-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-alcaldia.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-alcaldia-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.jpg)", ["--hero-m" as string]: "url(/assets/foto-alcaldia-m.jpg)", backgroundPosition: "center 22%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.webp)", ["--hero-m" as string]: "url(/assets/foto-alcaldia-m.webp)", backgroundPosition: "center 22%" }}
       >
         <h1>Transparencia y acceso a la información pública</h1>
         <p className="sub">
@@ -77,7 +77,7 @@ export default function TransparenciaPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-centro.jpg)", ["--band-m" as string]: "url(/assets/foto-centro-m.jpg)", backgroundPosition: "center 45%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-centro.webp)", ["--band-m" as string]: "url(/assets/foto-centro-m.webp)", backgroundPosition: "center 45%" }}
       >
         <div className="atg-wrap">
           <h2>La información pública, al alcance de todos</h2>

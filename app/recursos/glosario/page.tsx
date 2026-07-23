@@ -13,9 +13,9 @@ export default function GlosarioPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-recursos.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-recursos-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-recursos.jpg)", ["--hero-m" as string]: "url(/assets/foto-recursos-m.jpg)", backgroundPosition: "center 40%" }}>
+      <link rel="preload" as="image" href="/assets/foto-recursos.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-recursos-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-recursos.webp)", ["--hero-m" as string]: "url(/assets/foto-recursos-m.webp)", backgroundPosition: "center 40%" }}>
         <h1>ABC Catastral</h1>
         <Editable as="p" id="glos.hero-intro" className="sub" multiline>Entiende los términos clave del catastro multipropósito explicados en lenguaje claro. Busca por palabra o filtra por inicial.</Editable>
       </section>
@@ -29,7 +29,7 @@ export default function GlosarioPage() {
       {/* Franja fotográfica de cierre */}
       <section
         className="atg-photo-band"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-pilonera.jpg)", ["--band-m" as string]: "url(/assets/foto-pilonera-m.jpg)", backgroundPosition: "center 37%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-pilonera.webp)", ["--band-m" as string]: "url(/assets/foto-pilonera-m.webp)", backgroundPosition: "center 37%" }}
       >
         <div className="atg-wrap">
           <h2>Aplica lo aprendido en tu trámite</h2>

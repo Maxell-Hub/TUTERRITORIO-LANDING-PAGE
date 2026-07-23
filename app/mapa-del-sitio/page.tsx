@@ -71,10 +71,10 @@ export default function MapaDelSitioPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/foto-mapa.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-mapa-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-mapa.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-mapa-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mapa.jpg)", ["--hero-m" as string]: "url(/assets/foto-mapa-m.jpg)", backgroundPosition: "center 35%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-mapa.webp)", ["--hero-m" as string]: "url(/assets/foto-mapa-m.webp)", backgroundPosition: "center 35%" }}>
         <h1>Mapa del sitio</h1>
         <p className="sub">
           Índice organizado de todas las secciones y páginas del sitio de Tuterritorio, agrupadas por tema.

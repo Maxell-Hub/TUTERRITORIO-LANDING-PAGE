@@ -12,9 +12,9 @@ export default function PoliticaDatosPage() {
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
       <link rel="preload" as="image" href="/assets/foto-politica.jpg" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/foto-politica-m.jpg" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/foto-politica-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* Hero fotográfico ATG */}
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-politica.jpg)", ["--hero-m" as string]: "url(/assets/foto-politica-m.jpg)", backgroundPosition: "center 50%" }}>
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-politica.jpg)", ["--hero-m" as string]: "url(/assets/foto-politica-m.webp)", backgroundPosition: "center 50%" }}>
         <h1>Política de Tratamiento y Protección de Datos Personales</h1>
         <p className="sub">Tuterritorio — Catastro Multipropósito de Valledupar</p>
       </section>
