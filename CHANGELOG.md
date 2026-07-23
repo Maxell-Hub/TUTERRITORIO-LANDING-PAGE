@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.20] - 2026-07-23
+
+### Cambiado
+- Pasada completa de responsive móvil: se auditaron las 17 páginas a 390px y 360px (cero desbordamientos horizontales en todas). Las etapas del proceso catastral en Nosotros ahora son compactas en celular (cuadrado de máx. 210px centrado, textos y espacios ajustados) en vez de ocupar casi una pantalla por etapa, y en modo oscuro los cuadrados llevan un contorno sutil para que el navy no se funda con el fondo.
+
 ## [2.7.19] - 2026-07-23
 
 ### Añadido
