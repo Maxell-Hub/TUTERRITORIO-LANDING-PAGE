@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.7] - 2026-07-23
+
+### Corregido
+- "Ver documento" de las resoluciones del IGAC en Normativas ahora lleva al documento oficial en el normograma del IGAC (Resoluciones 1149 de 2021, 509, 388 y 471 de 2020) en vez de a la portada genérica de igac.gov.co. Los enlaces de leyes y decretos en Función Pública se verificaron y siguen vigentes.
+
 ## [2.8.6] - 2026-07-23
 
 ### Cambiado
