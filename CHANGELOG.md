@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.5] - 2026-07-23
+
+### Cambiado
+- Encuadre de la foto de las banderas del Inicio ajustado a center 30%.
+
 ## [2.8.4] - 2026-07-23
 
 ### Cambiado
