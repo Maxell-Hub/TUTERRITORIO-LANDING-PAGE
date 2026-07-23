@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.13] - 2026-07-23
+
+### Corregido
+- Los portátiles pequeños (1081–1360px, incluidos los de 1366px con escala de Windows al 125%) ya no ven el menú de celular: el menú de escritorio se compacta (enlaces, logos y buscador reducidos) y la hamburguesa queda solo para tablets y celulares (≤1080px).
+
 ## [2.7.8 – 2.7.11] - 2026-07-22
 
 ### Cambiado

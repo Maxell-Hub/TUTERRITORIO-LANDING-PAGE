@@ -652,9 +652,22 @@ img { max-width: 100%; }
   .hm-fade { background: linear-gradient(90deg, #0C222F 0%, #0C222F 60%, rgba(12,34,47,.8) 69%, rgba(12,34,47,.55) 78%, rgba(12,34,47,.3) 87%, rgba(12,34,47,.1) 94%, rgba(12,34,47,0) 100%); }
 }
 @media (max-width: 900px) { .visor-grid { grid-template-columns: 1fr; } }
-/* Barra unificada: al estrecharse, se oculta el menú-centro y el buscador y aparece la hamburguesa.
-   El corte es a 1360px porque por debajo los 7 enlaces + buscador ya no caben sin desbordarse. */
-@media (max-width: 1360px) {
+/* Portátiles pequeños (1081–1360px): el menú de escritorio se compacta en vez
+   de pasar a hamburguesa — enlaces más pequeños, buscador angosto y logos reducidos. */
+@media (min-width: 1081px) and (max-width: 1360px) {
+  .mainnav-row { gap: 10px; }
+  .brand-logos { gap: 10px; }
+  .logo-tt { height: 50px; }
+  .logo-cat { height: 46px; width: 108px; }
+  .mn-link { padding: 11px 7px; font-size: 0.75rem; }
+  .mn-link::after { left: 7px; right: 7px; }
+  .mainnav-actions { gap: 8px; }
+  .mainnav-actions .gc-search-wrap { width: clamp(160px,15vw,240px); }
+  .mainnav-actions .gc-search .seg { display: none; }
+  .mainnav-actions .gc-search input { padding: 0 6px 0 14px; }
+}
+/* Barra unificada: por debajo de 1080px (tablets y celulares) aparece la hamburguesa */
+@media (max-width: 1080px) {
   .mainnav-links { display: none; }
   .mainnav-actions .gc-search-wrap { display: none !important; }
   .nav-burger { display: inline-flex; }
