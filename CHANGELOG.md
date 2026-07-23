@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.2] - 2026-07-23
+
+### Corregido
+- El arreglo del scroll (v2.8.1) no funcionaba en producción: el componente dependía del remontaje del template, que en producción no ocurre. Ahora reacciona directamente al cambio de ruta (usePathname), así que al entrar a cualquier sección de Transparencia (1–10) —o a cualquier otra página— la vista siempre arranca desde el principio, también en producción.
+
 ## [2.8.1] - 2026-07-23
 
 ### Corregido
