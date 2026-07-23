@@ -2445,13 +2445,21 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 /* Acento verde del titular de los heros (estático en todas las páginas) */
 .atg-hero h1 .b { color: #4E8654; display: inline-block; }
 /* Entrada de la página completa: el contenido de cada ruta aparece con
-   fade + subida al navegar (el wrapper .page-enter se remonta en app/template.tsx) */
-.page-enter { animation: page-enter .55s var(--ease-soft) both; }
+   fade + subida al navegar (el wrapper .page-enter se remonta en app/template.tsx).
+   El fade va en cada sección (hijos) y NO en el hero fotográfico: si el hero
+   arranca en opacidad 0 el navegador no lo cuenta como pintado y el LCP se
+   retrasa ~0,5s; el hero solo se desliza y su imagen pinta de inmediato. */
+.page-enter > * { animation: page-enter .55s var(--ease-soft); }
+.page-enter > .atg-hero { animation-name: page-enter-slide; }
 @keyframes page-enter {
   0% { opacity: 0; transform: translateY(16px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-@media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } }
+@keyframes page-enter-slide {
+  0% { transform: translateY(16px); }
+  100% { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .page-enter > * { animation: none; } }
 
 /* Entrada escalonada del texto del hero en TODAS las páginas
    (titular → párrafo → botones). En el Inicio, además, "Tuterritorio"

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.18] - 2026-07-23
+
+### Corregido
+- El LCP móvil baja notablemente: la animación de entrada arrancaba TODA la página en opacidad 0, así que el navegador no contaba el hero como pintado hasta ~0,5s después. Ahora el fade lo hace cada sección y el hero fotográfico solo se desliza (su imagen pinta de inmediato); la animación se ve igual. Además el hero móvil del Inicio se recomprimió (foto-panoramica-m2.webp, 780px, 35KB, −19%). Medido en local con 4G lenta: LCP ~0,5s.
+
 ## [2.7.17] - 2026-07-23
 
 ### Cambiado
