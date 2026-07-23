@@ -14,6 +14,8 @@ export default function PlaneacionPage() {
       title="Planeación, presupuesto e informes"
       lead="Instrumentos de planeación y rendición de cuentas de la entidad."
       eyebrow="Sección 4"
+      photo="foto-alfonso"
+      photoPos="center 48%"
     >
       <Apartado titulo="4.1 Plan de acción">
         <PendienteContenido titulo="Plan de acción anual" descripcion="Plan de acción de la vigencia pendiente de cargar por la entidad." />

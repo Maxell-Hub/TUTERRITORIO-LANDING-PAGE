@@ -14,6 +14,8 @@ export default function InformacionEntidadPage() {
       title="Información de la entidad"
       lead="Datos básicos de Tuterritorio como gestor catastral del municipio de Valledupar."
       eyebrow="Sección 1"
+      photo="foto-caja"
+      photoPos="center 45%"
     >
       <Apartado titulo="1.1 Mecanismos de contacto">
         <p>Los canales oficiales de atención (correo, teléfono y formulario) están disponibles en la página de contacto.</p>

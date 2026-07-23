@@ -6,6 +6,14 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.8.0] - 2026-07-23
+
+### Añadido
+- Heros fotográficos con sitios emblemáticos de Valledupar en las 9 subsecciones de Transparencia, cada uno encuadrado en lo más destacado de la foto: 1 Información de la entidad (Vaso Coyabro), 2 Normativa (La Sirena), 3 Contratación (Parque El Viajero), 4 Planeación (Plaza Alfonso López), 5 Trámites (mural de Escalona), 7 Datos abiertos (busto del cantante), 8 Grupos de interés (letras de Valledupar), 9 Reporte de información (Cacique Upar) y 10 Protección de datos (Hernando de Santana). Las 9 fotos se optimizaron de ~106MB a ~1,7MB (WebP escritorio + variante móvil) con precarga del hero para mantener el rendimiento.
+
+### Eliminado
+- Limpieza de la carpeta de assets: 94 archivos huérfanos (15,2MB) que ya no usa ninguna página — versiones JPG reemplazadas por WebP, fotos y logos de pruebas anteriores y duplicados.
+
 ## [2.7.20] - 2026-07-23
 
 ### Cambiado

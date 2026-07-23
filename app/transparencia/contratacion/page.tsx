@@ -15,6 +15,8 @@ export default function ContratacionPage() {
       title="Contratación"
       lead="Información sobre la actividad contractual de la entidad."
       eyebrow="Sección 3"
+      photo="foto-viajero"
+      photoPos="center 52%"
     >
       <Apartado titulo="3.1 Plan Anual de Adquisiciones (PAA)">
         <PendienteContenido titulo="Plan Anual de Adquisiciones" descripcion="PAA de la vigencia pendiente de cargar por la entidad." />

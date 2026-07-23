@@ -14,6 +14,8 @@ export default function TramitesTransparenciaPage() {
       title="Trámites y servicios"
       lead="Trámites y servicios catastrales disponibles para la ciudadanía."
       eyebrow="Sección 5"
+      photo="foto-terminal"
+      photoPos="center 58%"
     >
       <Apartado titulo="5.1 Listado de trámites y servicios">
         <p>El listado completo de trámites y productos catastrales (con requisitos, tiempos y costos) está publicado en la sección de Trámites y servicios del sitio.</p>

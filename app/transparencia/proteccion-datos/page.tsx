@@ -13,6 +13,8 @@ export default function ProteccionDatosPage() {
       title="Protección de datos personales"
       lead="Tratamiento de datos personales conforme a la Ley 1581 de 2012."
       eyebrow="Sección 10"
+      photo="foto-hernando"
+      photoPos="center 38%"
     >
       <Apartado titulo="10.1 Política de Tratamiento de Datos Personales">
         <p>Tuterritorio cuenta con su Política de Tratamiento de Datos Personales, donde se describen las finalidades, los derechos de los titulares y los canales para ejercerlos.</p>

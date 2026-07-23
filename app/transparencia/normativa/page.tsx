@@ -14,6 +14,8 @@ export default function NormativaPage() {
       title="Normativa"
       lead="Marco legal que regula la gestión catastral y su aplicación en Valledupar."
       eyebrow="Sección 2"
+      photo="foto-sirena"
+      photoPos="center 55%"
     >
       <Apartado titulo="2.1 Normas generales y reglamentarias">
         <p>Las leyes, decretos, resoluciones y acuerdos que rigen la gestión catastral están publicados en la sección de Normativas, donde puedes consultarlos y descargarlos.</p>

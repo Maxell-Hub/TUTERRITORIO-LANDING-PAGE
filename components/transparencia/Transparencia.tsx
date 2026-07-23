@@ -55,12 +55,18 @@ export function TPageATG({
   title,
   lead,
   eyebrow,
+  photo = "foto-alcaldia",
+  photoPos = "center 22%",
   children,
 }: {
   title: string;
   lead?: string;
   /** Parte destacada del eyebrow: «Transparencia · <b>{eyebrow}</b>». */
   eyebrow: string;
+  /** Nombre base de la foto del hero en /assets (existe <photo>.webp y <photo>-m.webp). */
+  photo?: string;
+  /** Encuadre del hero: parte más importante de la foto (background-position). */
+  photoPos?: string;
   children: React.ReactNode;
 }) {
   // Datos estructurados de ruta de exploración (Inicio › Transparencia › sección).
@@ -75,9 +81,12 @@ export function TPageATG({
   };
   return (
     <>
+      {/* Precarga del hero (LCP): React eleva estos <link> al <head> */}
+      <link rel="preload" as="image" href={`/assets/${photo}.webp`} media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href={`/assets/${photo}-m.webp`} media="(max-width: 720px)" fetchPriority="high" />
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/foto-alcaldia.webp)", ["--hero-m" as string]: "url(/assets/foto-alcaldia-m.webp)", backgroundPosition: "center 22%" }}
+        style={{ backgroundImage: `linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/${photo}.webp)`, ["--hero-m" as string]: `url(/assets/${photo}-m.webp)`, backgroundPosition: photoPos }}
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
         <h1>{title}</h1>

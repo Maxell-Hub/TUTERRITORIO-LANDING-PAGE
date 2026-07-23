@@ -15,6 +15,8 @@ export default function DatosAbiertosPage() {
       title="Datos abiertos"
       lead="Conjuntos de datos que la entidad publica en formato abierto y reutilizable."
       eyebrow="Sección 7"
+      photo="foto-cantante"
+      photoPos="center 50%"
     >
       <Apartado titulo="7.1 Portal de datos abiertos del Estado">
         <p>Los conjuntos de datos abiertos de la entidad se publican en el portal oficial datos.gov.co.</p>
