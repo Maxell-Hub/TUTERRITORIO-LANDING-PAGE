@@ -30,7 +30,7 @@ const STATIC_ITEMS: Item[] = [
   { title: "Inicio", titleEn: "Home", desc: "Consulta tu predio: linderos, área y avalúo.", descEn: "Check your property: boundaries, area and appraisal.", keywords: "catastro multipropósito impuesto predial visor · cadastre property tax viewer", href: "/", cat: "Inicio", catEn: "Home" },
   { title: "Nosotros", titleEn: "About us", desc: "Quiénes somos, misión, visión, funciones y etapas del proceso catastral.", descEn: "Who we are, mission, vision, functions and cadastral process stages.", keywords: "gestor catastral objetivos operador formación actualización conservación difusión instalaciones video · cadastral manager mission vision stages", href: "/nosotros", cat: "Nosotros", catEn: "About" },
   { title: "Nuestro equipo", titleEn: "Our team", desc: "El equipo de Tuterritorio: liderazgo y equipo técnico.", descEn: "The Tuterritorio team: leadership and technical staff.", keywords: "liderazgo integrantes técnico jurídico · staff leadership members", href: "/nosotros/equipo", cat: "Nosotros", catEn: "About" },
-  { title: "Trámites y servicios", titleEn: "Procedures and services", desc: "Los 18 trámites y productos catastrales, con requisitos, tiempos y costos.", descEn: "The 18 cadastral procedures and products, with requirements, times and costs.", keywords: "incorporación rectificación desenglobe englobe inscripción avalúo mutación cambio de propietario certificado costos · area registration change of owner certificate costs", href: "/servicios", cat: "Servicios", catEn: "Services" },
+  { title: "Trámites y servicios", titleEn: "Procedures and services", desc: "Los 18 trámites y productos catastrales, con requisitos, tiempos y costos.", descEn: "The 18 cadastral procedures and products, with requirements, times and costs.", keywords: "incorporación rectificación desenglobe englobe inscripción avalúo mutación cambio de propietario certificado costos · area registration change of owner certificate costs subdivision merger appraisal valuation address name correction property record urban rural chart free", href: "/servicios", cat: "Servicios", catEn: "Services" },
   { title: "Atención a la ciudadanía", titleEn: "Citizen services", desc: "Canales de atención, preguntas frecuentes y carta de trato digno.", descEn: "Service channels, FAQ and dignified treatment charter.", keywords: "elige cómo quieres que te atendamos sede horarios · customer service channels", href: "/atencion-ciudadania", cat: "Atención", catEn: "Attention" },
   { title: "Carta de trato digno", titleEn: "Dignified treatment charter", desc: "Documento con los derechos de los ciudadanos y los medios para garantizarlos (PDF).", descEn: "Document with citizens' rights and the means to guarantee them (PDF).", keywords: "derechos deberes ley 1437 documento pdf · rights duties charter", href: "/atencion-ciudadania#carta-trato-digno", cat: "Atención", catEn: "Attention" },
   { title: "Preguntas frecuentes", titleEn: "Frequently asked questions", desc: "Respuestas sobre trámites, avalúos, impuesto predial y PQRSD.", descEn: "Answers about procedures, appraisals, property tax and complaints.", keywords: "faq dudas abc cédula catastral tiempos respuestas · faq questions answers", href: "/preguntas-frecuentes", cat: "Atención", catEn: "Attention" },
@@ -71,6 +71,12 @@ export default function SearchBar() {
   const dDesc = (it: Item) => (lang === "en" && it.descEn ? it.descEn : it.desc || "");
   const dCat = (it: Item) => (lang === "en" && it.catEn ? it.catEn : it.cat);
 
+  // Textos de la interfaz del buscador según el idioma (los atributos como
+  // placeholder y aria-label NO los traduce Google Translate).
+  const T = lang === "en"
+    ? { placeholder: "Search the site…", formLabel: "Search the site", inputLabel: "Search terms", button: "Search", empty: (query: string) => `No results found for “${query}”.` }
+    : { placeholder: "Buscar en el sitio…", formLabel: "Buscar en el sitio", inputLabel: "Términos de búsqueda", button: "Buscar", empty: (query: string) => `No encontramos resultados para “${query}”.` };
+
   // Carga (una sola vez, al enfocar) el contenido editable para incluirlo.
   async function loadIndex() {
     if (loadedRef.current) return;
@@ -83,10 +89,10 @@ export default function SearchBar() {
         fetch("/api/content/equipo").then((r) => r.json()).catch(() => []),
       ]);
       const items: Item[] = [];
-      if (Array.isArray(noticias)) noticias.forEach((n: { id?: string; titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, desc: n.extracto || "", href: n.id ? `/noticias#${n.id}` : "/noticias", cat: "Noticia" }));
-      if (Array.isArray(normativas)) normativas.forEach((n: { id?: string; code?: string; desc?: string }) => n?.code && items.push({ title: n.code, desc: n.desc || "", href: n.id ? `/recursos/normativas#${n.id}` : "/recursos/normativas", cat: "Normativa" }));
-      if (Array.isArray(glosario)) glosario.forEach((t: { id?: string; term?: string; def?: string }) => t?.term && items.push({ title: t.term, desc: t.def || "", href: t.id ? `/recursos/glosario#${t.id}` : "/recursos/glosario", cat: "Glosario" }));
-      if (Array.isArray(equipo)) equipo.forEach((m: { id?: string; name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, desc: `${m.role || ""} ${m.area || ""}`, href: m.id ? `/nosotros/equipo#${m.id}` : "/nosotros/equipo", cat: "Equipo" }));
+      if (Array.isArray(noticias)) noticias.forEach((n: { id?: string; titulo?: string; extracto?: string }) => n?.titulo && items.push({ title: n.titulo, desc: n.extracto || "", href: n.id ? `/noticias#${n.id}` : "/noticias", cat: "Noticia", catEn: "News" }));
+      if (Array.isArray(normativas)) normativas.forEach((n: { id?: string; code?: string; desc?: string }) => n?.code && items.push({ title: n.code, desc: n.desc || "", href: n.id ? `/recursos/normativas#${n.id}` : "/recursos/normativas", cat: "Normativa", catEn: "Regulation" }));
+      if (Array.isArray(glosario)) glosario.forEach((t: { id?: string; term?: string; def?: string }) => t?.term && items.push({ title: t.term, desc: t.def || "", href: t.id ? `/recursos/glosario#${t.id}` : "/recursos/glosario", cat: "Glosario", catEn: "Glossary" }));
+      if (Array.isArray(equipo)) equipo.forEach((m: { id?: string; name?: string; role?: string; area?: string }) => m?.name && items.push({ title: m.name, desc: `${m.role || ""} ${m.area || ""}`, href: m.id ? `/nosotros/equipo#${m.id}` : "/nosotros/equipo", cat: "Equipo", catEn: "Team" }));
       setDynamic(items);
     } catch {
       /* ignore */
@@ -128,17 +134,17 @@ export default function SearchBar() {
 
   return (
     <div className="gc-search-wrap">
-      <form className="gc-search" role="search" aria-label="Buscar en el sitio" onSubmit={onSubmit}>
+      <form className="gc-search" role="search" aria-label={T.formLabel} onSubmit={onSubmit}>
         <span className="seg" aria-hidden="true">General</span>
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           onFocus={() => { setFocused(true); loadIndex(); }}
           onBlur={() => setFocused(false)}
-          placeholder="Buscar en el sitio…"
-          aria-label="Términos de búsqueda"
+          placeholder={T.placeholder}
+          aria-label={T.inputLabel}
         />
-        <button type="submit" className="go-btn" title="Buscar" aria-label="Buscar">
+        <button type="submit" className="go-btn" title={T.button} aria-label={T.button}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
         </button>
       </form>
@@ -162,7 +168,7 @@ export default function SearchBar() {
               </a>
             ))
           ) : (
-            <div className="search-empty">No encontramos resultados para “{q}”.</div>
+            <div className="search-empty">{T.empty(q)}</div>
           )}
         </div>
       )}

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.15] - 2026-07-23
+
+### Añadido
+- Los buscadores funcionan por completo en la versión en inglés: el buscador del sitio muestra su interfaz en inglés (placeholder, botón y mensaje de "sin resultados") y etiqueta en inglés las categorías del contenido dinámico (Noticias, Normativas, Glosario y Equipo); el buscador de trámites entiende términos en inglés ("owner", "subdivision", "appraisal", "free", "certificate"…) gracias a un índice bilingüe por trámite, y su interfaz y conteos también se muestran en inglés.
+
 ## [2.7.14] - 2026-07-23
 
 ### Corregido
