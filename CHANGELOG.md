@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.7.19] - 2026-07-23
+
+### Añadido
+- Las cifras del Inicio (+4.340 trámites, 83% efectividad, 6 + 25 sectores) ahora cuentan desde 0 hasta su valor cuando la sección entra en pantalla, con separador de miles y frenado suave al final. Sin JavaScript o con movimiento reducido se muestran fijas.
+
 ## [2.7.18] - 2026-07-23
 
 ### Corregido

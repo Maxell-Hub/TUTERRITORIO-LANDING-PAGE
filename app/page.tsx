@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
 import EnlacesInteres from "@/components/home/EnlacesInteres";
+import CountUp from "@/components/site/CountUp";
 
 export const metadata: Metadata = {
   title: { absolute: "Tuterritorio — Catastro Multipropósito de Valledupar" },
@@ -93,15 +94,15 @@ export default function HomePage() {
         <div className="atg-wrap">
           <div className="atg-stats">
             <div className="atg-stat reveal">
-              <div className="n">+4.340</div>
+              <div className="n"><CountUp value={4340} prefix="+" /></div>
               <div className="d">Trámites finalizados</div>
             </div>
             <div className="atg-stat reveal">
-              <div className="n">83%</div>
+              <div className="n"><CountUp value={83} suffix="%" /></div>
               <div className="d">Efectividad operativa</div>
             </div>
             <div className="atg-stat reveal">
-              <div className="n">6 + 25</div>
+              <div className="n"><CountUp value={6} duration={1200} /> + <CountUp value={25} /></div>
               <div className="d">Sectores urbanos y corregimientos rurales</div>
             </div>
           </div>
