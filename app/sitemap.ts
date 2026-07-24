@@ -1,8 +1,19 @@
 import type { MetadataRoute } from "next";
+import { readContent } from "@/lib/store";
+import { defaultFor, type News } from "@/lib/content";
 
 const SITE_URL = "https://www.tuterritorio.gov.co";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Se regenera cada hora para recoger las noticias nuevas del gestor de contenido.
+export const revalidate = 3600;
+
+/** Fecha de la noticia a partir de su id (n-AAAA-MM-DD…) o del texto de fecha. */
+function fechaNoticia(n: News, fallback: Date): Date {
+  const m = n.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
+  return m ? new Date(+m[1], +m[2] - 1, +m[3]) : fallback;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const pages: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
     { path: "", priority: 1.0, freq: "weekly" },
@@ -34,10 +45,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/mapa-del-sitio", priority: 0.3, freq: "yearly" },
   ];
 
-  return pages.map((p) => ({
+  const estaticas: MetadataRoute.Sitemap = pages.map((p) => ({
     url: `${SITE_URL}${p.path}`,
     lastModified: now,
     changeFrequency: p.freq,
     priority: p.priority,
   }));
+
+  // Una entrada por cada noticia publicada (/noticias/[id]), para que Google
+  // pueda encontrarlas e indexarlas individualmente.
+  let noticias: News[] = [];
+  try {
+    const data = await readContent("noticias", defaultFor("noticias"));
+    if (Array.isArray(data)) noticias = data as News[];
+  } catch {
+    /* si falla la lectura, el sitemap conserva solo las páginas fijas */
+  }
+  const detalleNoticias: MetadataRoute.Sitemap = noticias
+    .filter((n) => n?.id)
+    .map((n) => ({
+      url: `${SITE_URL}/noticias/${n.id}`,
+      lastModified: fechaNoticia(n, now),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+
+  return [...estaticas, ...detalleNoticias];
 }

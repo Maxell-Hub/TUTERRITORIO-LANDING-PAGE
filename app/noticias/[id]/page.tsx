@@ -36,8 +36,33 @@ export default async function NoticiaPage({ params }: Ctx) {
   const parrafos = (noticia.cuerpo?.trim() || noticia.extracto).split(/\n\s*\n/);
   const otras = todas.filter((n) => n.id !== noticia.id).slice(0, 3);
 
+  // Fecha ISO a partir del id (n-AAAA-MM-DD…), para los datos estructurados.
+  const md = noticia.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
+  const fechaISO = md ? `${md[1]}-${md[2]}-${md[3]}` : undefined;
+  const SITE_URL = "https://www.tuterritorio.gov.co";
+  const imagenAbs = noticia.imagen.startsWith("http") ? noticia.imagen : `${SITE_URL}${noticia.imagen}`;
+  // Datos estructurados NewsArticle: ayudan a Google a entender e indexar la noticia.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: noticia.titulo,
+    description: noticia.extracto,
+    articleSection: noticia.categoria,
+    image: [imagenAbs],
+    ...(fechaISO ? { datePublished: fechaISO, dateModified: fechaISO } : {}),
+    articleBody: (noticia.cuerpo?.trim() || noticia.extracto),
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/noticias/${noticia.id}` },
+    author: { "@type": "Organization", name: "Tuterritorio", url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: "Tuterritorio — Catastro Multipropósito de Valledupar",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` },
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Artículo */}
       <section className="atg-band noti-article-band">
         <div className="noti-article">

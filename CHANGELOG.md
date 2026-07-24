@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.11.0] - 2026-07-24
+
+### Añadido
+- Indexación de noticias: el sitemap.xml ahora incluye una entrada por cada noticia (/noticias/[id]) y se regenera cada hora para recoger las nuevas. Además, cada página de noticia lleva datos estructurados NewsArticle (título, imagen, fecha, categoría, cuerpo y editor), para que Google la entienda como artículo y pueda mostrarla en resultados de búsqueda.
+
 ## [2.10.7] - 2026-07-24
 
 ### Cambiado
