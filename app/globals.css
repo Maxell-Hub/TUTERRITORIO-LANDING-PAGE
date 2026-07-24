@@ -838,13 +838,32 @@ img { max-width: 100%; }
 .equipo-lead .person-card { width: 300px; max-width: 100%; }
 .equipo-lead .person-body h4 { font-size: 1.1875rem; }
 
-.equipo-sub { display: flex; align-items: center; gap: 16px; max-width: 720px; margin: 46px auto 26px; }
-.equipo-sub-line { flex: 1; height: 1px; background: var(--border-subtle); }
+.equipo-sub { display: flex; justify-content: center; margin: 0 auto 26px; }
 .equipo-sub-label { font: 700 0.8125rem/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tt-gray-500); }
 
 .equipo-roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 940px; margin: 0 auto; }
 @media (max-width: 900px) { .equipo-roles { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .equipo-roles { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+/* --- Variante organigrama: Gerencia arriba conectada al equipo directivo --- */
+.org { display: flex; flex-direction: column; align-items: center; }
+.org-lead { display: flex; justify-content: center; }
+.org-lead .person-card { width: 264px; max-width: 100%; }
+.org-drop { width: 2px; height: 40px; background: var(--border-subtle); }
+.org .equipo-sub { margin: 22px auto 30px; }
+.org-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 24px; max-width: 920px; width: 100%;
+  position: relative; padding-top: 40px; }
+.org-row::before { content: ""; position: absolute; top: 0; left: 16.66%; right: 16.66%; height: 2px; background: var(--border-subtle); }
+.org-row > * { position: relative; }
+.org-row > *:nth-child(-n+3)::before { content: ""; position: absolute; bottom: 100%; left: 50%; width: 2px; height: 40px;
+  background: var(--border-subtle); transform: translateX(-50%); }
+.dark .org-drop, .dark .org-row::before, .dark .org-row > *:nth-child(-n+3)::before { background: #2f3d47; }
+@media (max-width: 900px) {
+  .org-row { grid-template-columns: repeat(2, 1fr); padding-top: 0; }
+  .org-drop, .org-row::before, .org-row > *::before { display: none; }
+  .org .equipo-sub { margin: 30px auto 24px; }
+}
+@media (max-width: 480px) { .org-row { gap: 16px; } }
 
 .dark .person-card { background: #131c23; border-color: #2f3d47; box-shadow: none; }
 .dark .person-body h4 { color: #eaf1f6; }

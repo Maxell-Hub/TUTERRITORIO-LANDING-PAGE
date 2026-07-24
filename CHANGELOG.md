@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.3] - 2026-07-24
+
+### Cambiado
+- Nueva variante de diseño de Nuestro Equipo en forma de organigrama: la Gerencia encabeza y una línea conecta hacia el equipo directivo, dando la lectura de estructura jerárquica. Las tarjetas conservan la foto grande con el nombre y el cargo debajo.
+
 ## [2.10.2] - 2026-07-24
 
 ### Eliminado

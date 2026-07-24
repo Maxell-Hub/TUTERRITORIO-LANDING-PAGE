@@ -113,33 +113,31 @@ export default function EquipoTeam() {
             </div>
           )}
 
-          {/* Gerencia destacada */}
-          <div className="equipo-lead reveal">
-            {direccion.map((m) => (
-              <PersonCard key={m.id} m={m} isAdmin={isAdmin}
-                onEdit={() => { setCreatingArea(null); setEditing(m); }}
-                onDelete={() => handleDelete(m.id)} />
-            ))}
-            {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
-          </div>
+          {/* Organigrama: Gerencia arriba, conectada al equipo directivo */}
+          <div className="org reveal">
+            <div className="org-lead">
+              {direccion.map((m) => (
+                <PersonCard key={m.id} m={m} isAdmin={isAdmin}
+                  onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                  onDelete={() => handleDelete(m.id)} />
+              ))}
+              {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
+            </div>
 
-          {/* Equipo directivo */}
-          {(directivo.length > 0 || isAdmin) && (
-            <>
-              <div className="equipo-sub reveal">
-                <span className="equipo-sub-line" aria-hidden="true" />
-                <span className="equipo-sub-label">Equipo directivo</span>
-                <span className="equipo-sub-line" aria-hidden="true" />
-              </div>
-              <div className="equipo-roles reveal">
-                {directivo.map((m) => (
-                  <PersonCard key={m.id} m={m} isAdmin={isAdmin}
-                    onEdit={() => { setCreatingArea(null); setEditing(m); }}
-                    onDelete={() => handleDelete(m.id)} />
-                ))}
-              </div>
-            </>
-          )}
+            {(directivo.length > 0 || isAdmin) && (
+              <>
+                <span className="org-drop" aria-hidden="true" />
+                <div className="equipo-sub"><span className="equipo-sub-label">Equipo directivo</span></div>
+                <div className="org-row">
+                  {directivo.map((m) => (
+                    <PersonCard key={m.id} m={m} isAdmin={isAdmin}
+                      onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                      onDelete={() => handleDelete(m.id)} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </section>
 
