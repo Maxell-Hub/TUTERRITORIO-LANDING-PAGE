@@ -152,7 +152,6 @@ export default function Normativas() {
             const tone = TONE[tag] ?? fallbackTone;
             return (
               <div id={n.id} className="norm-row" key={n.id} style={{ borderLeft: `5px solid ${tone.accent}` }}>
-                <span className="norm-tag" style={{ background: tone.soft, color: tone.accent }}>{tag}</span>
                 <div>
                   <div className="norm-code">{n.code}</div>
                   <p className="norm-desc">{n.desc}</p>

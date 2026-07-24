@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.11.3] - 2026-07-24
+
+### Cambiado
+- En Normativas se quitó la etiqueta de tipo (Ley, Decreto, Resolución…) de cada fila. Las normas conservan el color en el borde izquierdo (que sigue indicando el tipo) y los filtros por categoría, de modo que siguen categorizadas pero sin mostrar el rótulo.
+
 ## [2.11.2] - 2026-07-24
 
 ### Cambiado

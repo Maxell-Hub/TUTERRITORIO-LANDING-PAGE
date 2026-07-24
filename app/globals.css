@@ -984,7 +984,7 @@ img { max-width: 100%; }
 .flt-count { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 20px; padding: 0 6px;
   border-radius: var(--radius-pill); font: var(--fw-bold) 11px/1 var(--font-sans); }
 .norm-list { display: grid; gap: 14px; }
-.norm-row { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: clamp(16px,2.5vw,32px); align-items: center;
+.norm-row { position: relative; display: grid; grid-template-columns: 1fr auto; gap: clamp(16px,2.5vw,32px); align-items: center;
   background: #fff; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 22px 26px; box-shadow: var(--shadow-xs);
   transition: transform .26s var(--ease-soft), box-shadow .26s var(--ease-soft); }
 .norm-row:hover { transform: translateX(5px); box-shadow: var(--shadow-md); }
