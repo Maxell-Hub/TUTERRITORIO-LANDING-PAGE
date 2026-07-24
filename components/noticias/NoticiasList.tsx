@@ -13,6 +13,17 @@ const Arrow = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
 );
 
+/* Ordena por fecha real: primero intenta el id (n-AAAA-MM-DD), luego la fecha
+   en español ("12 de junio de 2026"). La más reciente queda de primera. */
+const MESES: Record<string, number> = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
+function fechaDe(n: News): number {
+  const mId = n.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
+  if (mId) return new Date(+mId[1], +mId[2] - 1, +mId[3]).getTime();
+  const mTxt = n.fecha.toLowerCase().match(/(\d{1,2})\s+de\s+([a-záéíóúñ]+)\s+de\s+(\d{4})/);
+  if (mTxt && MESES[mTxt[2]] !== undefined) return new Date(+mTxt[3], MESES[mTxt[2]], +mTxt[1]).getTime();
+  return 0;
+}
+
 const PencilIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
 );
@@ -67,7 +78,8 @@ export default function NoticiasList() {
   useScrollToHash(news);
 
   const chips = ["Todas", ...Array.from(new Set(news.map((n) => n.categoria).filter(Boolean)))];
-  const filtered = cat === "Todas" ? news : news.filter((n) => n.categoria === cat);
+  const ordenadas = [...news].sort((a, b) => fechaDe(b) - fechaDe(a));
+  const filtered = cat === "Todas" ? ordenadas : ordenadas.filter((n) => n.categoria === cat);
   const featured = filtered[0];
   const rest = filtered.slice(1);
   const isAdmin = !!user;
@@ -123,7 +135,7 @@ export default function NoticiasList() {
       {/* Noticia destacada */}
       {featured ? (
         <section className="news-feat-section">
-          <a id={featured.id} href="#" className="feat-card" onClick={(e) => isAdmin && e.preventDefault()}>
+          <a id={featured.id} href={`/noticias/${featured.id}`} className="feat-card" onClick={(e) => isAdmin && e.preventDefault()}>
             {isAdmin && (
               <div className="adm-card-actions">
                 <button className="adm-btn ghost sm" onClick={(e) => { e.preventDefault(); setEditing(featured); }}><PencilIcon /> Editar</button>
@@ -155,10 +167,11 @@ export default function NoticiasList() {
             <div className="news-grid-head">
               <h2>Más noticias</h2>
               <div className="rule" />
+              {rest.length > 2 && <span className="news-strip-hint" aria-hidden="true">Desliza para ver más <Arrow size={14} /></span>}
             </div>
-            <div className="news-grid">
+            <div className="news-strip">
               {rest.map((n) => (
-                <a id={n.id} href="#" className="news-card" key={n.id} onClick={(e) => isAdmin && e.preventDefault()}>
+                <a id={n.id} href={`/noticias/${n.id}`} className="news-card" key={n.id} onClick={(e) => isAdmin && e.preventDefault()}>
                   {isAdmin && (
                     <div className="adm-card-actions">
                       <button className="adm-btn ghost sm" onClick={(e) => { e.preventDefault(); setEditing(n); }}><PencilIcon /></button>

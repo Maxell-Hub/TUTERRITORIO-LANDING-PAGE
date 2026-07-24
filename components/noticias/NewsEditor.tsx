@@ -188,7 +188,12 @@ export default function NewsEditor({ initial, onCancel, onSave }: Props) {
 
           <label className="ne-field">
             <span className="ne-label">Extracto</span>
-            <textarea className="ne-input" rows={4} value={form.extracto} onChange={(e) => set("extracto", e.target.value)} placeholder="Resumen breve que verán los ciudadanos" required />
+            <textarea className="ne-input" rows={3} value={form.extracto} onChange={(e) => set("extracto", e.target.value)} placeholder="Resumen breve que se ve en las tarjetas de la sección" required />
+          </label>
+
+          <label className="ne-field">
+            <span className="ne-label">Texto completo de la noticia</span>
+            <textarea className="ne-input" rows={9} value={form.cuerpo ?? ""} onChange={(e) => set("cuerpo", e.target.value)} placeholder="Cuerpo completo que se muestra al abrir la noticia. Separa los párrafos con una línea en blanco. Si lo dejas vacío, se mostrará el extracto." />
           </label>
         </div>
 

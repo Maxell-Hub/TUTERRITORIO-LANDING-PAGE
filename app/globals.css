@@ -1091,6 +1091,43 @@ img { max-width: 100%; }
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 900px) { .feat-card { grid-template-columns: 1fr; } .feat-imgwrap { min-height: 240px; } }
 
+/* --- Fila de "Más noticias" con scroll horizontal: la destacada (más
+       reciente) queda grande arriba y el resto se recorre deslizando --- */
+.news-strip { display: flex; gap: 22px; overflow-x: auto; padding: 4px 4px 18px;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.news-strip .news-card { flex: 0 0 360px; scroll-snap-align: start; }
+.news-strip::-webkit-scrollbar { height: 8px; }
+.news-strip::-webkit-scrollbar-track { background: var(--tt-gray-100); border-radius: 99px; }
+.news-strip::-webkit-scrollbar-thumb { background: var(--tt-gray-300); border-radius: 99px; }
+.news-strip::-webkit-scrollbar-thumb:hover { background: var(--tt-gray-500); }
+@media (max-width: 700px) { .news-strip .news-card { flex-basis: 80vw; } }
+.news-grid-head { display: grid; grid-template-columns: 1fr auto; align-items: end; }
+.news-grid-head .rule { grid-column: 1 / -1; }
+.news-strip-hint { display: inline-flex; align-items: center; gap: 6px;
+  font: var(--fw-medium) var(--fs-xs)/1 var(--font-sans); color: var(--tt-gray-500); letter-spacing: var(--ls-wide); text-transform: uppercase; }
+.dark .news-strip::-webkit-scrollbar-track { background: #1a252d; }
+.dark .news-strip::-webkit-scrollbar-thumb { background: #2f3d47; }
+.dark .news-strip-hint { color: #9fb0bd; }
+
+/* --- Página de detalle de una noticia (/noticias/[id]) --- */
+.noti-article-band { background: #fff; }
+.noti-article { max-width: 820px; margin: 0 auto; padding-top: 8px; }
+.noti-article .t-back { margin-bottom: 26px; }
+.noti-meta { display: flex; align-items: center; gap: 14px; margin: 18px 0 14px; }
+.noti-meta .news-badge { padding: 6px 12px; border-radius: var(--radius-pill); color: #fff;
+  font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans); letter-spacing: var(--ls-wide); text-transform: uppercase; }
+.noti-article h1 { margin: 0 0 14px; font: var(--fw-semibold) clamp(26px,3.6vw,38px)/1.22 var(--font-sans);
+  letter-spacing: -0.02em; color: var(--tt-ink); }
+.noti-lead { margin: 0 0 26px; font: var(--fw-regular) var(--fs-md)/1.65 var(--font-sans); color: var(--tt-gray-700); }
+.noti-imgwrap { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-md); overflow: hidden;
+  box-shadow: var(--shadow-md); margin-bottom: 30px; }
+.noti-cuerpo p { margin: 0 0 18px; font: var(--fw-regular) 16px/1.8 var(--font-sans); color: var(--tt-gray-700); }
+.noti-foot { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--border-subtle); }
+.dark .noti-article-band { background: #0c1419; }
+.dark .noti-article h1 { color: #eaf1f6; }
+.dark .noti-lead, .dark .noti-cuerpo p { color: #9fb0bd; }
+.dark .noti-foot { border-top-color: #2f3d47; }
+
 /* ============================================================
    CONTÁCTENOS (hero animado + formulario + mapa)
    ============================================================ */

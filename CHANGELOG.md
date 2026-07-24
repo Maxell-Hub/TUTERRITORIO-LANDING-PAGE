@@ -6,6 +6,15 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.9.0] - 2026-07-24
+
+### Añadido
+- Página de detalle para cada noticia (/noticias/[id]): al hacer clic o tap en una tarjeta se abre la noticia completa con su categoría, fecha, imagen grande, texto por párrafos, botón "Volver a Noticias" y un carrusel de otras noticias. El editor del administrador tiene ahora un campo "Texto completo de la noticia".
+- Nueva noticia: "Las mesas colaborativas continúan acercando el Catastro Multipropósito a la comunidad en Valledupar" (24 de julio de 2026, Actualización catastral), con la foto de la jornada en Brisas de La Popa optimizada a WebP.
+
+### Cambiado
+- La sección de Noticias ordena por fecha real: la más reciente es siempre la destacada grande, y las demás van en una fila con scroll horizontal (con indicación "Desliza para ver más"), de modo que al agregar noticias la página no crece hacia abajo.
+
 ## [2.8.8] - 2026-07-23
 
 ### Cambiado
