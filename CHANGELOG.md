@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.11.2] - 2026-07-24
+
+### Cambiado
+- Los resultados de la barra de búsqueda se reorganizaron: la etiqueta de sección (categoría) pasa de estar al lado del contenido a mostrarse arriba en pequeño, de modo que el título y el resumen del resultado ocupan todo el ancho y se leen bien (antes la etiqueta lateral apretaba el texto en el desplegable angosto del encabezado).
+
 ## [2.11.1] - 2026-07-24
 
 ### Cambiado
