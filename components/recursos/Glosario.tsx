@@ -130,6 +130,9 @@ export default function Glosario() {
       <div className="az-row">
         {initials.map((label) => {
           const active = label === letter;
+          // Las letras solas (A, B, … Y, Z) NO se traducen: Google convertiría
+          // "A" en "To" o "Y" en "And" y rompería el índice alfabético.
+          const isLetter = label.length === 1;
           return (
             <button
               key={label}
@@ -142,7 +145,7 @@ export default function Glosario() {
                 border: `1px solid ${active ? "#4E8654" : "var(--border-subtle)"}`,
               }}
             >
-              {label}
+              {isLetter ? <span className="notranslate" translate="no">{label}</span> : label}
             </button>
           );
         })}
@@ -154,7 +157,7 @@ export default function Glosario() {
         <div className="gl-dict">
           {groups.map((g, gi) => (
             <section className="gl-lgroup" key={g.letter}>
-              <div className="gl-letter" aria-hidden="true" style={{ color: LETTER_COLORS[gi % LETTER_COLORS.length] }}>{g.letter}</div>
+              <div className="gl-letter notranslate" translate="no" aria-hidden="true" style={{ color: LETTER_COLORS[gi % LETTER_COLORS.length] }}>{g.letter}</div>
               <div className="gl-entries">
                 {g.items.map((t) => {
                   const more = t.more || [];
@@ -195,7 +198,7 @@ export default function Glosario() {
             return (
               <div id={t.id} className={`gl-item${open ? " open" : ""}`} key={t.id}>
                 <button className="gl-q" onClick={() => setOpenTerm(open ? null : t.term)} aria-expanded={open}>
-                  <span className="gl-initial">{t.initial}</span>
+                  <span className="gl-initial notranslate" translate="no">{t.initial}</span>
                   <span className="gl-term">{t.term}</span>
                   <svg className="gl-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                 </button>

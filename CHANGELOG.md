@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.6] - 2026-07-24
+
+### Corregido
+- En el ABC Catastral, al ver el sitio en inglés las letras del índice y de los encabezados ya no se traducen (antes "A" se convertía en "To" y "Y" en "And", rompiendo el orden alfabético). Las letras permanecen como letras y los términos siguen agrupados correctamente.
+
 ## [2.10.5] - 2026-07-24
 
 ### Cambiado
