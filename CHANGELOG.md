@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.2] - 2026-07-24
+
+### Eliminado
+- Se quitó el texto introductorio bajo "Quienes orientan nuestra gestión" en Nuestro Equipo.
+
 ## [2.10.1] - 2026-07-24
 
 ### Cambiado

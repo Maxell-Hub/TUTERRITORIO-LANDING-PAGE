@@ -103,9 +103,6 @@ export default function EquipoTeam() {
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 40px", textAlign: "center" }}>
             <Editable as="h2" id="equipo.lead-title">Quienes orientan nuestra gestión</Editable>
-            <p style={{ margin: "16px 0 0", font: "400 0.9375rem/1.7 var(--font-sans)", color: "var(--tt-gray-500)" }}>
-              <Editable as="span" id="equipo.lead-intro" multiline>La estructura de Tuterritorio: la Gerencia y las jefaturas que dirigen cada área del catastro multipropósito de Valledupar.</Editable>
-            </p>
           </div>
 
           {isAdmin && (
