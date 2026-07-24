@@ -22,6 +22,14 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
+/** Muestra el nombre como: primer nombre + primer apellido + inicial del
+ *  segundo apellido con punto. Ej.: "Lulia Cristina Maestre Arcia" → "Lulia Maestre A." */
+function nombreCorto(full: string): string {
+  const p = (full || "").trim().split(/\s+/).filter(Boolean);
+  if (p.length <= 2) return full.trim();
+  return `${p[0]} ${p[p.length - 2]} ${p[p.length - 1][0].toUpperCase()}.`;
+}
+
 /** Mosaico Bento: foto (o marcador) con el nombre y el cargo sobre ella.
  *  `lead` = cuadro grande (Gerencia); `wide` = cuadro ancho para rellenar. */
 function BentoTile({ m, lead, wide, isAdmin, onEdit, onDelete }: { m: Member; lead?: boolean; wide?: boolean; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
@@ -34,7 +42,7 @@ function BentoTile({ m, lead, wide, isAdmin, onEdit, onDelete }: { m: Member; le
         <span className="bento-ph"><UserIcon size={lead ? 64 : 46} stroke="rgba(255,255,255,.55)" sw={1.4} /></span>
       )}
       <div className="bento-cap">
-        <h4>{m.name || m.role}</h4>
+        <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
         <p>{m.name ? m.role : "Por designar"}</p>
       </div>
       {isAdmin && (

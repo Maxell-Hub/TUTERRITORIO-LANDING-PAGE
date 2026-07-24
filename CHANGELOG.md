@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.7] - 2026-07-24
+
+### Cambiado
+- Los nombres del equipo se muestran de forma abreviada: primer nombre, primer apellido e inicial del segundo apellido con punto (por ejemplo, "Lulia Cristina Maestre Arcia" se ve como "Lulia Maestre A."). El nombre completo se conserva en los datos.
+
 ## [2.10.6] - 2026-07-24
 
 ### Corregido
