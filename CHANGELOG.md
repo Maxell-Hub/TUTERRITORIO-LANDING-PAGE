@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.4] - 2026-07-24
+
+### Cambiado
+- Nueva variante de Nuestro Equipo en mosaico Bento con cuadros (formato cuadrado): la Gerencia ocupa un cuadro grande 2×2 y las jefaturas cuadros 1×1, con el nombre y el cargo sobre la foto y dos cuadros de acento corporativos que completan el mosaico. En celular queda en dos columnas.
+
 ## [2.10.3] - 2026-07-24
 
 ### Cambiado

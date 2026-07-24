@@ -22,28 +22,26 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
-/** Tarjeta de integrante: foto grande arriba, nombre y cargo debajo. */
-function PersonCard({ m, isAdmin, onEdit, onDelete }: { m: Member; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
+/** Mosaico Bento cuadrado: foto (o marcador) con el nombre y el cargo sobre ella. */
+function BentoTile({ m, lead, isAdmin, onEdit, onDelete }: { m: Member; lead?: boolean; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
   return (
-    <div id={m.id} className="person-card member lift">
-      <div className="person-photo">
-        {m.photo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={m.photo} alt={m.name || m.role} />
-        ) : (
-          <UserIcon size={52} stroke="rgba(255,255,255,.6)" sw={1.4} />
-        )}
-      </div>
-      <div className="person-body">
+    <div id={m.id} className={`bento-tile member${lead ? " lead" : ""}`}>
+      {m.photo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={m.photo} alt={m.name || m.role} />
+      ) : (
+        <span className="bento-ph"><UserIcon size={lead ? 64 : 46} stroke="rgba(255,255,255,.55)" sw={1.4} /></span>
+      )}
+      <div className="bento-cap">
         <h4>{m.name || m.role}</h4>
-        <p className="prole">{m.name ? m.role : "Por designar"}</p>
-        {isAdmin && (
-          <div className="adm-actions" style={{ justifyContent: "center", marginTop: 6 }}>
-            <button className="adm-btn ghost sm" onClick={onEdit} aria-label="Editar"><Pencil /></button>
-            <button className="adm-btn danger sm" onClick={onDelete} aria-label="Eliminar"><Trash /></button>
-          </div>
-        )}
+        <p>{m.name ? m.role : "Por designar"}</p>
       </div>
+      {isAdmin && (
+        <div className="bento-actions">
+          <button className="adm-btn ghost sm" onClick={onEdit} aria-label="Editar"><Pencil /></button>
+          <button className="adm-btn danger sm" onClick={onDelete} aria-label="Eliminar"><Trash /></button>
+        </div>
+      )}
     </div>
   );
 }
@@ -113,30 +111,26 @@ export default function EquipoTeam() {
             </div>
           )}
 
-          {/* Organigrama: Gerencia arriba, conectada al equipo directivo */}
-          <div className="org reveal">
-            <div className="org-lead">
-              {direccion.map((m) => (
-                <PersonCard key={m.id} m={m} isAdmin={isAdmin}
-                  onEdit={() => { setCreatingArea(null); setEditing(m); }}
-                  onDelete={() => handleDelete(m.id)} />
-              ))}
-              {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
-            </div>
-
-            {(directivo.length > 0 || isAdmin) && (
+          {/* Mosaico Bento: la Gerencia como cuadro grande + jefaturas en cuadros */}
+          <div className="team-bento reveal">
+            {direccion.map((m) => (
+              <BentoTile key={m.id} m={m} lead isAdmin={isAdmin}
+                onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                onDelete={() => handleDelete(m.id)} />
+            ))}
+            {directivo.map((m) => (
+              <BentoTile key={m.id} m={m} isAdmin={isAdmin}
+                onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                onDelete={() => handleDelete(m.id)} />
+            ))}
+            {/* Cuadros de acento corporativos que completan el mosaico */}
+            {directivo.length > 0 && (
               <>
-                <span className="org-drop" aria-hidden="true" />
-                <div className="equipo-sub"><span className="equipo-sub-label">Equipo directivo</span></div>
-                <div className="org-row">
-                  {directivo.map((m) => (
-                    <PersonCard key={m.id} m={m} isAdmin={isAdmin}
-                      onEdit={() => { setCreatingArea(null); setEditing(m); }}
-                      onDelete={() => handleDelete(m.id)} />
-                  ))}
-                </div>
+                <span className="bento-tile accent a" aria-hidden="true" />
+                <span className="bento-tile accent b" aria-hidden="true" />
               </>
             )}
+            {direccion.length === 0 && directivo.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin integrantes aún.</p>}
           </div>
         </div>
       </section>
