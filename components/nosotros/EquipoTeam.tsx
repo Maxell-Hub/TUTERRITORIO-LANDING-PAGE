@@ -22,10 +22,11 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
-/** Mosaico Bento cuadrado: foto (o marcador) con el nombre y el cargo sobre ella. */
-function BentoTile({ m, lead, isAdmin, onEdit, onDelete }: { m: Member; lead?: boolean; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
+/** Mosaico Bento: foto (o marcador) con el nombre y el cargo sobre ella.
+ *  `lead` = cuadro grande (Gerencia); `wide` = cuadro ancho para rellenar. */
+function BentoTile({ m, lead, wide, isAdmin, onEdit, onDelete }: { m: Member; lead?: boolean; wide?: boolean; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
   return (
-    <div id={m.id} className={`bento-tile member${lead ? " lead" : ""}`}>
+    <div id={m.id} className={`bento-tile member${lead ? " lead" : ""}${wide ? " wide" : ""}`}>
       {m.photo ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={m.photo} alt={m.name || m.role} />
@@ -118,18 +119,12 @@ export default function EquipoTeam() {
                 onEdit={() => { setCreatingArea(null); setEditing(m); }}
                 onDelete={() => handleDelete(m.id)} />
             ))}
-            {directivo.map((m) => (
+            {directivo.map((m, i) => (
               <BentoTile key={m.id} m={m} isAdmin={isAdmin}
+                wide={i >= directivo.length - 2}
                 onEdit={() => { setCreatingArea(null); setEditing(m); }}
                 onDelete={() => handleDelete(m.id)} />
             ))}
-            {/* Cuadros de acento corporativos que completan el mosaico */}
-            {directivo.length > 0 && (
-              <>
-                <span className="bento-tile accent a" aria-hidden="true" />
-                <span className="bento-tile accent b" aria-hidden="true" />
-              </>
-            )}
             {direccion.length === 0 && directivo.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin integrantes aún.</p>}
           </div>
         </div>

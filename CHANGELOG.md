@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.5] - 2026-07-24
+
+### Cambiado
+- El mosaico Bento de Nuestro Equipo es más ancho y ya no deja espacios vacíos: las dos últimas jefaturas (Coordinador Administrativo y Contador) ocupan cuadros anchos que completan la cuadrícula, sin cuadros de relleno.
+- En Atención a la ciudadanía, el panel "Tus derechos, por escrito" invirtió sus lados: la fotografía queda a la izquierda y el texto con el botón de la carta de trato digno a la derecha.
+
 ## [2.10.4] - 2026-07-24
 
 ### Cambiado

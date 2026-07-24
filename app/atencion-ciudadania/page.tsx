@@ -124,7 +124,8 @@ export default function AtencionCiudadaniaPage() {
       {/* 4 · Panel: carta de trato digno */}
       <section className="atg-band" id="carta-trato-digno">
         <div className="atg-wrap">
-          <div className="atg-panel">
+          <div className="atg-panel flip">
+            <img className="photo" src="/assets/atencion/foto-digno2.webp" srcSet="/assets/atencion/foto-digno2-m.webp 860w, /assets/atencion/foto-digno2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
             <div className="atg-copy reveal">
               <h2>Tus derechos, por escrito</h2>
               <p>
@@ -134,7 +135,6 @@ export default function AtencionCiudadaniaPage() {
                 Ver la carta de trato digno (PDF)
               </a>
             </div>
-            <img className="photo" src="/assets/atencion/foto-digno2.webp" srcSet="/assets/atencion/foto-digno2-m.webp 860w, /assets/atencion/foto-digno2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ciudadano leyendo la prensa en un parque de Valledupar" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
