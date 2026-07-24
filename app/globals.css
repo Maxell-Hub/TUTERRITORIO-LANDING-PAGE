@@ -482,7 +482,10 @@ img { max-width: 100%; }
    negativo) sobresaliendo por encima del verde. Idéntico en todas las páginas. */
 .site-footer { background: var(--footer-green); display: flow-root; }
 .footer-wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 40px 2px; text-align: center; }
-.footer-card { position: relative; z-index: 3; background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+/* Sombra envolvente sutil (además de la de profundidad) para que la tarjeta
+   blanca resalte también cuando la sección de arriba es blanca. */
+.footer-card { position: relative; z-index: 3; background: #fff; border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 1px rgba(12,34,47,.05), 0 2px 12px rgba(12,34,47,.08), var(--shadow-lg);
   margin: -66px auto 56px; padding: clamp(1.6rem,3vw,2.6rem) clamp(1.6rem,3vw,3rem); width: 945px; max-width: 100%; text-align: left; }
 /* En pantallas angostas la tarjeta NO se monta sobre la sección anterior:
    queda con aire para que nunca tape el texto del contenido */

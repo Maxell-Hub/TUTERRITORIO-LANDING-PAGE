@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.9.2] - 2026-07-24
+
+### Cambiado
+- La tarjeta blanca del footer lleva una sombra gris envolvente sutil para que resalte también en las páginas donde la sección de arriba es blanca (antes se confundía con el fondo).
+
 ## [2.9.1] - 2026-07-24
 
 ### Cambiado
