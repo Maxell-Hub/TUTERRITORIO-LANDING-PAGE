@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.0] - 2026-07-24
+
+### Cambiado
+- Nuestro Equipo se rediseñó según la estructura organizacional real: la Gerencia (Lulia Cristina Maestre Arcia) encabeza en una tarjeta destacada con su foto, y debajo, en una grilla de tarjetas con ícono por cargo, el equipo directivo — Profesional de Talento Humano, Jefe Jurídico, Jefe de Sistemas de Información Geográfica, Jefe de Estudios Económicos, Coordinador Administrativo y Contador. Cada tarjeta muestra el cargo y el nombre (o "Por designar" mientras se asigna), es editable desde el panel de administración y se adapta a modo claro/oscuro y a celular.
+
 ## [2.9.4] - 2026-07-24
 
 ### Cambiado

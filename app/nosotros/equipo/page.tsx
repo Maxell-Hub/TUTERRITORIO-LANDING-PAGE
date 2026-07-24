@@ -33,8 +33,8 @@ export default function EquipoPage() {
           Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.
         </Editable>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="#liderazgo">Conoce el liderazgo</a>
-          <a className="atg-pill ghost" href="#equipo-tecnico">Ver el equipo técnico</a>
+          <a className="atg-pill" href="#equipo">Conoce al equipo</a>
+          <a className="atg-pill ghost" href="/contactos">Contáctanos</a>
         </div>
       </section>
 

@@ -154,26 +154,23 @@ export const DEFAULT_GLOSARIO: Term[] = [
 
 export type Member = { id: string; name: string; role: string; area: string; photo?: string };
 
-/** Grupos del equipo. El primero es el liderazgo; el resto son áreas técnicas. */
+/** Grupos del equipo: la Gerencia (destacada) y el equipo directivo. */
 export const TEAM_AREAS = [
-  "Liderazgo",
-  "Topografía y campo",
-  "Jurídica",
-  "Sistemas y datos",
-  "Atención al ciudadano",
+  "Dirección",
+  "Equipo directivo",
 ];
 
+/* Estructura organizacional de Tuterritorio: la Gerencia encabeza y el resto
+ * son las jefaturas y coordinaciones. El nombre es opcional (se completa desde
+ * el panel de administración); si falta, la tarjeta muestra solo el cargo. */
 export const DEFAULT_EQUIPO: Member[] = [
-  { id: "m-l1", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Liderazgo", photo: "/assets/equipo/lulia-maestre.jpg" },
-  { id: "m-l2", name: "Nombre Apellido", role: "Jefe de la Oficina de Gestión Catastral", area: "Liderazgo" },
-  { id: "m-t1", name: "Nombre Apellido", role: "Topógrafo", area: "Topografía y campo" },
-  { id: "m-t2", name: "Nombre Apellido", role: "Reconocedor predial", area: "Topografía y campo" },
-  { id: "m-j1", name: "Nombre Apellido", role: "Abogada(o)", area: "Jurídica" },
-  { id: "m-j2", name: "Nombre Apellido", role: "Analista jurídico", area: "Jurídica" },
-  { id: "m-s1", name: "Nombre Apellido", role: "Ingeniera(o) de sistemas", area: "Sistemas y datos" },
-  { id: "m-s2", name: "Nombre Apellido", role: "Analista SIG", area: "Sistemas y datos" },
-  { id: "m-a1", name: "Nombre Apellido", role: "Atención al ciudadano", area: "Atención al ciudadano" },
-  { id: "m-a2", name: "Nombre Apellido", role: "Orientadora(or)", area: "Atención al ciudadano" },
+  { id: "m-ger", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/lulia-maestre.jpg" },
+  { id: "m-th", name: "", role: "Profesional de Talento Humano", area: "Equipo directivo" },
+  { id: "m-jur", name: "", role: "Jefe Jurídico", area: "Equipo directivo" },
+  { id: "m-sig", name: "", role: "Jefe de Sistemas de Información Geográfica", area: "Equipo directivo" },
+  { id: "m-eco", name: "", role: "Jefe de Estudios Económicos", area: "Equipo directivo" },
+  { id: "m-adm", name: "", role: "Coordinador Administrativo", area: "Equipo directivo" },
+  { id: "m-con", name: "", role: "Contador", area: "Equipo directivo" },
 ];
 
 /**

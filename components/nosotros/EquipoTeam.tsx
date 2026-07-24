@@ -22,13 +22,26 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
-// Sin íconos: cada área se identifica con su monograma (letra) sobre el color de la paleta ATG.
-const AREAS: { key: string; c: string; meta: string; mono: string }[] = [
-  { key: "Topografía y campo", c: "#3B85A5", mono: "T", meta: "Levantamiento, reconocimiento predial y verificación de linderos" },
-  { key: "Jurídica", c: "#4E8654", mono: "J", meta: "Mutaciones, trámites y seguridad jurídica de la propiedad" },
-  { key: "Sistemas y datos", c: "#F0B63B", mono: "S", meta: "Información geográfica, bases de datos y plataformas digitales" },
-  { key: "Atención al ciudadano", c: "#163A4C", mono: "A", meta: "Orientación, recepción de solicitudes y acompañamiento" },
-];
+/* Ícono de línea según el cargo (por palabras clave), con respaldo genérico.
+   Así las jefaturas conocidas muestran un ícono adecuado y cualquier cargo
+   nuevo que agregue el administrador cae en un ícono por defecto. */
+function roleIcon(role: string) {
+  const r = role.toLowerCase();
+  const p = (d: React.ReactNode) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d}</svg>
+  );
+  if (/talento|humano|personal/.test(r)) return p(<><path d="M16 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>);
+  if (/jur[ií]dic|legal|abog/.test(r)) return p(<><path d="M12 3v18" /><path d="M5 7h14" /><path d="m5 7-2 5a3 3 0 0 0 6 0Z" /><path d="m19 7-2 5a3 3 0 0 0 6 0Z" /><path d="M7 21h10" /></>);
+  if (/sistema|geogr[áa]f|sig|informaci[óo]n|dato/.test(r)) return p(<><path d="m3 7 9-4 9 4-9 4Z" /><path d="m3 12 9 4 9-4" /><path d="m3 17 9 4 9-4" /></>);
+  if (/econ[óo]mic|estudio|aval[úu]o|financ/.test(r)) return p(<><path d="M3 3v18h18" /><path d="m7 14 3-3 3 3 5-6" /></>);
+  if (/administrativ|coordinac|gesti[óo]n/.test(r)) return p(<><rect x="4" y="7" width="16" height="13" rx="2" /><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" /></>);
+  if (/contad|contab/.test(r)) return p(<><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 7h6" /><path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01" /></>);
+  if (/geren|direc/.test(r)) return p(<><path d="M12 2 15 8l6 .5-4.5 4 1.4 6L12 15.5 6.1 18.5l1.4-6L3 8.5 9 8Z" /></>);
+  return p(<><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></>);
+}
+
+// Colores corporativos que rotan por tarjeta de cargo.
+const ROLE_COLORS = ["#3B85A5", "#4E8654", "#F0B63B", "#163A4C", "#2F6B86", "#4E8654", "#3B85A5"];
 
 export default function EquipoTeam() {
   const { user, notify } = useAuth();
@@ -75,39 +88,45 @@ export default function EquipoTeam() {
   useScrollToHash(members);
 
   const isAdmin = !!user;
-  const lead = members.filter((m) => m.area === "Liderazgo");
-  const techCount = members.filter((m) => m.area !== "Liderazgo").length;
+  const direccion = members.filter((m) => m.area === "Dirección");
+  const directivo = members.filter((m) => m.area !== "Dirección");
 
   return (
     <>
-      {/* Liderazgo */}
-      <section className="atg-band" id="liderazgo">
+      {/* Estructura del equipo: Gerencia + equipo directivo */}
+      <section className="atg-band" id="equipo">
         <div className="atg-wrap">
-          <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 44px", textAlign: "center" }}>
+          <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 40px", textAlign: "center" }}>
             <Editable as="h2" id="equipo.lead-title">Quienes orientan nuestra gestión</Editable>
+            <p style={{ margin: "16px 0 0", font: "400 0.9375rem/1.7 var(--font-sans)", color: "var(--tt-gray-500)" }}>
+              <Editable as="span" id="equipo.lead-intro" multiline>La estructura de Tuterritorio: la Gerencia y las jefaturas que dirigen cada área del catastro multipropósito de Valledupar.</Editable>
+            </p>
           </div>
 
           {isAdmin && (
             <div className="adm-bar" style={{ justifyContent: "center", padding: "0 0 22px" }}>
               <span className="adm-flag">Modo administrador</span>
-              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Liderazgo"); }}><Plus /> Agregar líder</button>
+              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Dirección"); }}><Plus /> Agregar en Gerencia</button>
+              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Equipo directivo"); }}><Plus /> Agregar cargo</button>
             </div>
           )}
 
-          <div className="lead-grid">
-            {lead.map((m) => (
-              <div id={m.id} key={m.id} className="member lift lead-card">
-                <div className="lead-photo" style={{ background: "linear-gradient(135deg,var(--tt-navy-600),var(--tt-navy-900))", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+          {/* Gerencia destacada */}
+          <div className="equipo-lead reveal">
+            {direccion.map((m) => (
+              <div id={m.id} key={m.id} className="equipo-lead-card">
+                <div className="equipo-lead-photo">
                   {m.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={m.photo} alt={m.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={m.photo} alt={m.name || m.role} />
                   ) : (
-                    <UserIcon size={56} stroke="rgba(255,255,255,.55)" sw={1.5} />
+                    <UserIcon size={54} stroke="rgba(255,255,255,.6)" sw={1.5} />
                   )}
                 </div>
-                <div style={{ padding: "26px 24px 30px" }}>
-                  <h3 style={{ margin: 0, font: "700 1.3125rem/1.25 var(--font-sans)", color: "var(--tt-ink)" }}>{m.name}</h3>
-                  <p style={{ margin: "6px 0 0", font: "400 0.9375rem/1.4 var(--font-sans)", color: "var(--tt-gray-500)" }}>{m.role}</p>
+                <div className="equipo-lead-body">
+                  <span className="equipo-lead-badge">{m.role}</span>
+                  {m.name && <h3>{m.name}</h3>}
+                  <p>Encabeza la gestión catastral de Valledupar y representa a Tuterritorio ante la ciudadanía y los entes de control.</p>
                   {isAdmin && (
                     <div className="adm-actions" style={{ marginTop: 14 }}>
                       <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }}><Pencil /> Editar</button>
@@ -117,68 +136,37 @@ export default function EquipoTeam() {
                 </div>
               </div>
             ))}
-            {lead.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin integrantes de liderazgo aún.</p>}
-          </div>
-        </div>
-      </section>
-
-      {/* Equipo técnico */}
-      <section className="atg-band" id="equipo-tecnico">
-        <div className="atg-wrap">
-          <div className="reveal" style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: 20 }}>
-            <div style={{ maxWidth: "46rem" }}>
-              <Editable as="h2" id="equipo.tech-title">Un equipo interdisciplinario</Editable>
-              <p style={{ margin: "16px 0 0", font: "400 0.9375rem/1.7 var(--font-sans)", color: "var(--tt-gray-500)" }}>
-                <Editable as="span" id="equipo.tech-intro" multiline>Profesionales organizados por áreas de especialidad, trabajando de forma coordinada en cada etapa del proceso catastral.</Editable>
-              </p>
-            </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <span style={{ font: "800 clamp(2.6rem,5vw,3.6rem)/1 var(--font-sans)", fontVariantNumeric: "tabular-nums", color: "var(--tt-blue-600)" }}>{techCount}</span>
-              <span style={{ font: "600 0.9375rem/1.2 var(--font-sans)", color: "var(--tt-gray-500)" }}>profesionales</span>
-            </div>
+            {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
           </div>
 
-          <div className="team-stack">
-            {AREAS.map((area) => {
-              const list = members.filter((m) => m.area === area.key);
-              return (
-                <div key={area.key} className="team-area" style={{ borderLeft: `5px solid ${area.c}` }}>
-                  <div className="head">
-                    <span className="ic mono" style={{ background: area.c }} aria-hidden="true">{area.mono}</span>
-                    <div>
-                      <h3>{area.key}</h3>
-                      <p className="meta">{area.meta} · {list.length} {list.length === 1 ? "integrante" : "integrantes"}</p>
-                    </div>
-                    {isAdmin && (
-                      <button className="adm-btn sm" style={{ marginLeft: "auto" }} onClick={() => { setEditing(null); setCreatingArea(area.key); }}><Plus /> Agregar</button>
-                    )}
-                  </div>
-                  <div className="avatar-grid">
-                    {list.map((m) => (
-                      <div id={m.id} key={m.id} className="member">
-                        <div className="avatar-ph" style={{ position: "relative", overflow: "hidden" }}>
-                          {m.photo ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={m.photo} alt={m.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-                          ) : (
-                            <UserIcon size={34} stroke="#A9B6BF" sw={1.6} />
-                          )}
+          {/* Equipo directivo */}
+          {(directivo.length > 0 || isAdmin) && (
+            <>
+              <div className="equipo-sub reveal">
+                <span className="equipo-sub-line" aria-hidden="true" />
+                <span className="equipo-sub-label">Equipo directivo</span>
+                <span className="equipo-sub-line" aria-hidden="true" />
+              </div>
+              <div className="equipo-roles reveal">
+                {directivo.map((m, i) => {
+                  const c = ROLE_COLORS[i % ROLE_COLORS.length];
+                  return (
+                    <div id={m.id} key={m.id} className="role-card member lift">
+                      <span className="role-ic" style={{ background: c }}>{roleIcon(m.role)}</span>
+                      <h4>{m.role}</h4>
+                      {m.name ? <p className="rname">{m.name}</p> : <p className="rname pend">Por designar</p>}
+                      {isAdmin && (
+                        <div className="adm-actions" style={{ marginTop: 4 }}>
+                          <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }} aria-label="Editar"><Pencil /></button>
+                          <button className="adm-btn danger sm" onClick={() => handleDelete(m.id)} aria-label="Eliminar"><Trash /></button>
                         </div>
-                        <span className="cap">{m.name}<small className="role">{m.role}</small></span>
-                        {isAdmin && (
-                          <div className="adm-actions" style={{ justifyContent: "center", marginTop: 8 }}>
-                            <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }} aria-label="Editar"><Pencil /></button>
-                            <button className="adm-btn danger sm" onClick={() => handleDelete(m.id)} aria-label="Eliminar"><Trash /></button>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                    {list.length === 0 && <div style={{ color: "var(--tt-gray-500)", font: "400 0.9rem/1.4 var(--font-sans)" }}>Sin integrantes aún.</div>}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

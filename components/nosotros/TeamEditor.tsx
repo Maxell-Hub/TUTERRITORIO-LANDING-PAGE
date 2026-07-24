@@ -140,14 +140,14 @@ export default function TeamEditor({ initial, defaultArea, onCancel, onSave }: P
           </div>
 
           <label className="ne-field">
-            <span className="ne-label">Nombre</span>
-            <input className="ne-input" value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="Nombre y apellido" required />
+            <span className="ne-label">Nombre <span style={{ fontWeight: 400, color: "var(--tt-gray-500)" }}>(opcional)</span></span>
+            <input className="ne-input" value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="Nombre y apellido (déjalo vacío si aún no hay)" />
           </label>
 
           <div className="ne-row">
             <label className="ne-field">
               <span className="ne-label">Cargo / perfil</span>
-              <input className="ne-input" value={form.role} onChange={(e) => set("role", e.target.value)} placeholder="Ej: Topógrafa" required />
+              <input className="ne-input" value={form.role} onChange={(e) => set("role", e.target.value)} placeholder="Ej: Jefe Jurídico" required />
             </label>
             <label className="ne-field">
               <span className="ne-label">Área</span>
