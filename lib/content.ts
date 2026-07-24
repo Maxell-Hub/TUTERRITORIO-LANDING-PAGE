@@ -164,7 +164,7 @@ export const TEAM_AREAS = [
  * son las jefaturas y coordinaciones. El nombre es opcional (se completa desde
  * el panel de administración); si falta, la tarjeta muestra solo el cargo. */
 export const DEFAULT_EQUIPO: Member[] = [
-  { id: "m-ger", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/lulia-maestre.jpg" },
+  { id: "m-ger", name: "", role: "Gerente", area: "Dirección" },
   { id: "m-th", name: "", role: "Profesional de Talento Humano", area: "Equipo directivo" },
   { id: "m-jur", name: "", role: "Jefe Jurídico", area: "Equipo directivo" },
   { id: "m-sig", name: "", role: "Jefe de Sistemas de Información Geográfica", area: "Equipo directivo" },

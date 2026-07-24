@@ -1,5 +1,5 @@
 [
-  { "id": "m-ger", "name": "Lulia Cristina Maestre Arcia", "role": "Gerente", "area": "Dirección", "photo": "/assets/equipo/lulia-maestre.jpg" },
+  { "id": "m-ger", "name": "", "role": "Gerente", "area": "Dirección" },
   { "id": "m-th", "name": "", "role": "Profesional de Talento Humano", "area": "Equipo directivo" },
   { "id": "m-jur", "name": "", "role": "Jefe Jurídico", "area": "Equipo directivo" },
   { "id": "m-sig", "name": "", "role": "Jefe de Sistemas de Información Geográfica", "area": "Equipo directivo" },

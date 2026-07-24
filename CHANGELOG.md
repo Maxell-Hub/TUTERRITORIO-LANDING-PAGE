@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.11.1] - 2026-07-24
+
+### Cambiado
+- La tarjeta de Gerencia en Nuestro Equipo queda temporalmente sin foto ni nombre (solo el cargo "Gerente" con "Por designar"), igual que las demás, a la espera de los datos y fotos definitivos del equipo.
+
 ## [2.11.0] - 2026-07-24
 
 ### Añadido
