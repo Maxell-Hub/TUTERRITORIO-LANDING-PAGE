@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.9.4] - 2026-07-24
+
+### Cambiado
+- Nueva fotografía en el hero de Participa: una jornada de socialización del catastro multipropósito con la comunidad (optimizada a WebP, nombre nuevo para saltar la caché).
+
 ## [2.9.3] - 2026-07-24
 
 ### Cambiado
