@@ -74,7 +74,7 @@ export default async function NoticiaPage({ params }: Ctx) {
         <section className="news-grid-section" style={{ paddingTop: 0 }}>
           <div className="news-grid-inner">
             <div className="news-grid-head">
-              <h2>Otras noticias</h2>
+              <h2 style={{ marginTop: 45 }}>Otras noticias</h2>
               <div className="rule" />
             </div>
             <div className="news-strip">

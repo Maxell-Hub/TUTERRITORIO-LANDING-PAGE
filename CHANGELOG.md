@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.9.1] - 2026-07-24
+
+### Cambiado
+- Más aire sobre el título "Otras noticias" en la página de detalle de una noticia (margin-top de 45px).
+
 ## [2.9.0] - 2026-07-24
 
 ### Añadido
