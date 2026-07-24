@@ -22,26 +22,31 @@ const Plus = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
 );
 
-/* Ícono de línea según el cargo (por palabras clave), con respaldo genérico.
-   Así las jefaturas conocidas muestran un ícono adecuado y cualquier cargo
-   nuevo que agregue el administrador cae en un ícono por defecto. */
-function roleIcon(role: string) {
-  const r = role.toLowerCase();
-  const p = (d: React.ReactNode) => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d}</svg>
+/** Tarjeta de integrante: foto grande arriba, nombre y cargo debajo. */
+function PersonCard({ m, isAdmin, onEdit, onDelete }: { m: Member; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
+  return (
+    <div id={m.id} className="person-card member lift">
+      <div className="person-photo">
+        {m.photo ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={m.photo} alt={m.name || m.role} />
+        ) : (
+          <UserIcon size={52} stroke="rgba(255,255,255,.6)" sw={1.4} />
+        )}
+      </div>
+      <div className="person-body">
+        <h4>{m.name || m.role}</h4>
+        <p className="prole">{m.name ? m.role : "Por designar"}</p>
+        {isAdmin && (
+          <div className="adm-actions" style={{ justifyContent: "center", marginTop: 6 }}>
+            <button className="adm-btn ghost sm" onClick={onEdit} aria-label="Editar"><Pencil /></button>
+            <button className="adm-btn danger sm" onClick={onDelete} aria-label="Eliminar"><Trash /></button>
+          </div>
+        )}
+      </div>
+    </div>
   );
-  if (/talento|humano|personal/.test(r)) return p(<><path d="M16 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>);
-  if (/jur[ií]dic|legal|abog/.test(r)) return p(<><path d="M12 3v18" /><path d="M5 7h14" /><path d="m5 7-2 5a3 3 0 0 0 6 0Z" /><path d="m19 7-2 5a3 3 0 0 0 6 0Z" /><path d="M7 21h10" /></>);
-  if (/sistema|geogr[áa]f|sig|informaci[óo]n|dato/.test(r)) return p(<><path d="m3 7 9-4 9 4-9 4Z" /><path d="m3 12 9 4 9-4" /><path d="m3 17 9 4 9-4" /></>);
-  if (/econ[óo]mic|estudio|aval[úu]o|financ/.test(r)) return p(<><path d="M3 3v18h18" /><path d="m7 14 3-3 3 3 5-6" /></>);
-  if (/administrativ|coordinac|gesti[óo]n/.test(r)) return p(<><rect x="4" y="7" width="16" height="13" rx="2" /><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" /></>);
-  if (/contad|contab/.test(r)) return p(<><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 7h6" /><path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01" /></>);
-  if (/geren|direc/.test(r)) return p(<><path d="M12 2 15 8l6 .5-4.5 4 1.4 6L12 15.5 6.1 18.5l1.4-6L3 8.5 9 8Z" /></>);
-  return p(<><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></>);
 }
-
-// Colores corporativos que rotan por tarjeta de cargo.
-const ROLE_COLORS = ["#3B85A5", "#4E8654", "#F0B63B", "#163A4C", "#2F6B86", "#4E8654", "#3B85A5"];
 
 export default function EquipoTeam() {
   const { user, notify } = useAuth();
@@ -114,27 +119,9 @@ export default function EquipoTeam() {
           {/* Gerencia destacada */}
           <div className="equipo-lead reveal">
             {direccion.map((m) => (
-              <div id={m.id} key={m.id} className="equipo-lead-card">
-                <div className="equipo-lead-photo">
-                  {m.photo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={m.photo} alt={m.name || m.role} />
-                  ) : (
-                    <UserIcon size={54} stroke="rgba(255,255,255,.6)" sw={1.5} />
-                  )}
-                </div>
-                <div className="equipo-lead-body">
-                  <span className="equipo-lead-badge">{m.role}</span>
-                  {m.name && <h3>{m.name}</h3>}
-                  <p>Encabeza la gestión catastral de Valledupar y representa a Tuterritorio ante la ciudadanía y los entes de control.</p>
-                  {isAdmin && (
-                    <div className="adm-actions" style={{ marginTop: 14 }}>
-                      <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }}><Pencil /> Editar</button>
-                      <button className="adm-btn danger sm" onClick={() => handleDelete(m.id)}><Trash /></button>
-                    </div>
-                  )}
-                </div>
-              </div>
+              <PersonCard key={m.id} m={m} isAdmin={isAdmin}
+                onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                onDelete={() => handleDelete(m.id)} />
             ))}
             {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
           </div>
@@ -148,22 +135,11 @@ export default function EquipoTeam() {
                 <span className="equipo-sub-line" aria-hidden="true" />
               </div>
               <div className="equipo-roles reveal">
-                {directivo.map((m, i) => {
-                  const c = ROLE_COLORS[i % ROLE_COLORS.length];
-                  return (
-                    <div id={m.id} key={m.id} className="role-card member lift">
-                      <span className="role-ic" style={{ background: c }}>{roleIcon(m.role)}</span>
-                      <h4>{m.role}</h4>
-                      {m.name ? <p className="rname">{m.name}</p> : <p className="rname pend">Por designar</p>}
-                      {isAdmin && (
-                        <div className="adm-actions" style={{ marginTop: 4 }}>
-                          <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }} aria-label="Editar"><Pencil /></button>
-                          <button className="adm-btn danger sm" onClick={() => handleDelete(m.id)} aria-label="Eliminar"><Trash /></button>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                {directivo.map((m) => (
+                  <PersonCard key={m.id} m={m} isAdmin={isAdmin}
+                    onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                    onDelete={() => handleDelete(m.id)} />
+                ))}
               </div>
             </>
           )}

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.10.1] - 2026-07-24
+
+### Cambiado
+- Las tarjetas de Nuestro Equipo pasan a mostrar la foto en grande con el nombre y el cargo debajo, sin descripción y sin ícono por cargo. Mientras no haya foto se muestra un marcador neutro, y el administrador puede subir la foto de cada integrante desde el panel.
+
 ## [2.10.0] - 2026-07-24
 
 ### Cambiado
