@@ -61,7 +61,7 @@ export default function VisorGeografico() {
             className="reveal cm-stage"
             onMouseLeave={() => setActive(null)}
           >
-            <Image className="cm-mapimg is-sectores" src="/assets/Valledupar_Sectores_Catastral.png" alt="Mapa de sectores catastrales de Valledupar" width={1098} height={842} sizes="(max-width: 600px) 100vw, 520px" />
+            <Image className="cm-mapimg is-sectores" src="/assets/global/Valledupar_Sectores_Catastral.png" alt="Mapa de sectores catastrales de Valledupar" width={1098} height={842} sizes="(max-width: 600px) 100vw, 520px" />
 
             {ORDER.map((n) => {
               const d = SC[n];

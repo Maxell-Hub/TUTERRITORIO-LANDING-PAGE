@@ -6,6 +6,17 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.9.3] - 2026-07-24
+
+### Cambiado
+- La carpeta de imágenes (public/assets) quedó organizada en subcarpetas por página: inicio, nosotros, equipo, servicios, atencion, faq, transparencia, recursos, noticias, contactos, pqrsd, legales y una carpeta global para logos, escudos, banderas y fondos compartidos. La raíz ya no tiene fotos sueltas (112 imágenes reubicadas, todas las referencias actualizadas).
+
+### Eliminado
+- Se retiró la noticia "Inicia la actualización catastral 2026 en las comunas del norte de Valledupar" y tres imágenes huérfanas que ya no usaba ninguna página.
+
+### Actualizado
+- La noticia de usuarios atendidos pasa de 2.713 a 5.741 y estrena la infografía oficial "En lo que va del 2026".
+
 ## [2.9.2] - 2026-07-24
 
 ### Cambiado

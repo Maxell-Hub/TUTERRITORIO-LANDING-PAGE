@@ -16,7 +16,7 @@ export default function Hero() {
 
       <div className="hero-map">
         <Image
-          src="/assets/mapa-valledupar-pot.png"
+          src="/assets/global/mapa-valledupar-pot.png"
           alt="Mapa de la estructura ecológica y comunas de Valledupar"
           fill
           priority

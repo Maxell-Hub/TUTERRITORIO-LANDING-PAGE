@@ -97,7 +97,7 @@ export default function FloatingActions() {
         aria-label="Cuéntanos tu experiencia (abre un formulario externo)"
         title="Cuéntanos tu experiencia"
       >
-        <img src="/assets/comentario.png" alt="" className="fab-img" width={28} height={28} />
+        <img src="/assets/global/comentario.png" alt="" className="fab-img" width={28} height={28} />
         <span className="fab-tip">Cuéntanos tu experiencia</span>
       </a>
     </div>

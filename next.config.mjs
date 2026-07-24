@@ -60,7 +60,7 @@ const nextConfig = {
       // de reproducción: se le indica a Google que no lo indexe como video
       // (resuelve el aviso "El vídeo no está en una página de visualización").
       {
-        source: "/assets/instalaciones.mp4",
+        source: "/assets/nosotros/instalaciones.mp4",
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
       // Caché de las imágenes y documentos estáticos: 1 año e inmutable.

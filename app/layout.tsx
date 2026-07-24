@@ -85,7 +85,7 @@ const jsonLd = [
     alternateName: "Catastro Multipropósito de Valledupar",
     url: SITE_URL,
     logo: `${SITE_URL}/icon.png`,
-    image: `${SITE_URL}/assets/banner-bienvenidos.png`,
+    image: `${SITE_URL}/assets/global/banner-bienvenidos.png`,
     description: DESCRIPTION,
     email: "contactenos@tuterritorio.gov.co",
     telephone: "+576055885761",

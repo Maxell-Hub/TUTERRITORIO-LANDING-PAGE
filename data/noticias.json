@@ -6,27 +6,17 @@
     "fecha": "24 de julio de 2026",
     "titulo": "Las mesas colaborativas continúan acercando el Catastro Multipropósito a la comunidad en Valledupar",
     "extracto": "Las jornadas avanzan esta semana en Brisas de La Popa (Comuna 5): orientación personalizada sobre los procesos catastrales y registro de información de las construcciones y ocupaciones del sector.",
-    "imagen": "/assets/noticia-mesas.webp",
+    "imagen": "/assets/noticias/noticia-mesas.webp",
     "cuerpo": "El proceso de Actualización Catastral con Enfoque Multipropósito continúa fortaleciendo su presencia en los barrios de Valledupar a través de las mesas colaborativas, una estrategia que busca acercar el servicio público de catastro a la ciudadanía. Durante esta semana, las jornadas se desarrollan en el sector de Brisas de La Popa, en la Comuna 5, donde los habitantes han recibido orientación personalizada para resolver inquietudes sobre los diferentes procesos catastrales y aportar información relacionada con las construcciones y ocupaciones existentes en el sector.\n\nEstos espacios promueven un trabajo cercano entre la comunidad y el equipo técnico encargado del proceso, permitiendo complementar y validar la información catastral con el apoyo de quienes habitan el territorio. Además de facilitar el acceso a este servicio, las mesas colaborativas y las jornadas de inscripción de informalidad constituyen una oportunidad para que las personas que ocupan o tienen derechos sobre construcciones ubicadas en predios que no cuentan con una situación de propiedad plenamente formalizada puedan registrar y actualizar su información dentro de la base catastral.\n\nEs importante recordar que el catastro no otorga títulos de propiedad, no legaliza predios ni resuelve conflictos de dominio. Su función es recopilar y mantener actualizada la información física, jurídica y económica de los inmuebles, conforme a la realidad observada en el territorio.\n\nLas jornadas continuarán realizándose en diferentes sectores de la ciudad, con el propósito de seguir acercando el catastro multipropósito a más familias vallenatas y consolidar un proceso participativo, transparente y al servicio de la comunidad."
   },
   {
-    "id": "n-2026-06-12",
-    "categoria": "Actualización catastral",
-    "badge": "var(--tt-green-600)",
-    "fecha": "12 de junio de 2026",
-    "titulo": "Inicia la actualización catastral 2026 en las comunas del norte de Valledupar",
-    "extracto": "Los equipos de reconocimiento predial de Tuterritorio comenzaron el levantamiento de información en las comunas 5 y 6. El operativo actualizará linderos, áreas y destino económico de más de 18.000 predios urbanos.",
-    "imagen": "/assets/valledupar-panorama.jpg",
-    "cuerpo": "Los equipos de reconocimiento predial de Tuterritorio comenzaron el levantamiento de información en las comunas 5 y 6 de Valledupar, dando inicio a la actualización catastral 2026. El operativo actualizará linderos, áreas y destino económico de más de 18.000 predios urbanos.\n\nDurante las visitas, el personal de campo — debidamente identificado con carné y chaleco institucional — verifica la información física de cada predio: sus medidas, construcciones, uso y estado. Esta información se contrasta con la base catastral y con la realidad jurídica de cada inmueble para que el catastro refleje fielmente el territorio.\n\nLa actualización catastral es la base de un impuesto predial más justo: predios con información al día pagan según su realidad, y el municipio cuenta con mejores datos para planear obras, servicios e inversión social.\n\nSi tu predio está en las comunas 5 o 6, recibe al equipo de reconocimiento y presenta los documentos de tu inmueble. Cualquier duda puedes resolverla en nuestra sede del Edificio Caja Agraria — Oficina 1301, o a través de los canales de atención de este sitio."
-  },
-  {
-    "id": "n-2026-05-30",
+    "id": "n-2026-07-24-usuarios",
     "categoria": "Comunidad",
     "badge": "var(--tt-teal-500)",
-    "fecha": "30 de mayo de 2026",
-    "titulo": "Tuterritorio ha atendido a 2.713 usuarios en lo que va de 2026",
+    "fecha": "24 de julio de 2026",
+    "titulo": "Tuterritorio ha atendido a 5.741 usuarios en lo que va de 2026",
     "extracto": "La oficina de gestión catastral y los canales en línea acompañan a cada vez más ciudadanos en sus trámites catastrales y de avalúo.",
-    "imagen": "/assets/valledupar-2.png",
-    "cuerpo": "En lo corrido de 2026, Tuterritorio ha atendido a 2.713 usuarios entre la sede principal y los canales en línea. La cifra refleja la confianza creciente de la ciudadanía en el gestor catastral del municipio y el esfuerzo del equipo por dar respuesta oportuna a cada solicitud.\n\nLos trámites más frecuentes son el cambio de propietario, las rectificaciones de área y de datos del propietario, y la expedición de certificados catastrales. Cada trámite tiene definidos sus requisitos y tiempos de respuesta, que puedes consultar en la sección de Trámites y servicios.\n\nRecuerda que también puedes radicar tus peticiones, quejas, reclamos, sugerencias y denuncias a través del formulario PQRSD de este sitio, con radicado inmediato y seguimiento en línea. Nuestro compromiso es que la información catastral de Valledupar esté al día y al servicio de todos."
+    "imagen": "/assets/noticias/noticia-usuarios.webp",
+    "cuerpo": "En lo corrido de 2026, Tuterritorio ha atendido a 5.741 usuarios entre la sede principal y los canales en línea. La cifra refleja la confianza creciente de la ciudadanía en el gestor catastral del municipio y el esfuerzo del equipo por dar respuesta oportuna a cada solicitud.\n\nLos trámites más frecuentes son el cambio de propietario, las rectificaciones de área y de datos del propietario, y la expedición de certificados catastrales. Cada trámite tiene definidos sus requisitos y tiempos de respuesta, que puedes consultar en la sección de Trámites y servicios.\n\nRecuerda que también puedes radicar tus peticiones, quejas, reclamos, sugerencias y denuncias a través del formulario PQRSD de este sitio, con radicado inmediato y seguimiento en línea. Nuestro compromiso es que la información catastral de Valledupar esté al día y al servicio de todos."
   }
 ]
