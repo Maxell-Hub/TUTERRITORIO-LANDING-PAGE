@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.13.1] - 2026-07-27
+
+### Cambiado
+- "Lo que hacemos" se rediseñó como cuatro columnas con un ícono verde arriba y texto corto centrado, separadas por líneas verticales (sin tarjetas ni slider). Se dejaron solo cuatro funciones (Identificación predial, Actualización de avalúos, Trámites y mutaciones, Atención a la ciudadanía) con descripciones más breves.
+
 ## [2.13.0] - 2026-07-27
 
 ### Cambiado

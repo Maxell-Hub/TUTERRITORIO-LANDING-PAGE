@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import Editable from "@/components/admin/Editable";
-import FuncionesSlider from "@/components/nosotros/FuncionesSlider";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -21,15 +20,16 @@ export const metadata: Metadata = {
 // Acentos ATG (azul · verde · naranja) que ciclan en tarjetas y numeraciones.
 const ACC = ["#3B85A5", "#4E8654", "#F0B63B"];
 
-// "Lo que hacemos": cuadrícula uniforme de 6 funciones, cada una con su acento
-// de color corporativo (azul · verde · amarillo) en el borde superior.
-const FUNCIONES = [
-  { n: "01", c: "#3B85A5", t: "Identificación predial", d: "Identificamos física, jurídica y económicamente cada predio del municipio de Valledupar." },
-  { n: "02", c: "#4E8654", t: "Actualización de avalúos", d: "Mantenemos al día el avalúo catastral como base confiable para trámites y tributos." },
-  { n: "03", c: "#F0B63B", t: "Trámites y mutaciones", d: "Gestionamos mutaciones, rectificaciones y demás trámites catastrales con plena validez legal." },
-  { n: "04", c: "#3B85A5", t: "Información para la planeación", d: "Entregamos datos confiables que orientan el ordenamiento y las decisiones del territorio." },
-  { n: "05", c: "#4E8654", t: "Atención a la ciudadanía", d: "Acompañamos al ciudadano en cada consulta y solicitud, con cercanía y respuestas claras." },
-  { n: "06", c: "#F0B63B", t: "Articulación institucional", d: "Trabajamos junto a la Alcaldía de Valledupar para un catastro coordinado y confiable." },
+// "Lo que hacemos": 4 funciones en columnas, con ícono verde arriba y texto
+// corto centrado (separadas por líneas verticales).
+const fi = (d: ReactNode) => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d}</svg>
+);
+const FUNCIONES: { t: string; d: string; ic: ReactNode }[] = [
+  { t: "Identificación predial", d: "Física, jurídica y económica de cada predio.", ic: fi(<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></>) },
+  { t: "Actualización de avalúos", d: "El avalúo catastral al día para trámites y tributos.", ic: fi(<><line x1="6" y1="20" x2="6" y2="14" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="18" y1="20" x2="18" y2="10" /></>) },
+  { t: "Trámites y mutaciones", d: "Mutaciones y rectificaciones con validez legal.", ic: fi(<><path d="m16 3 4 4-4 4" /><path d="M20 7H4" /><path d="m8 21-4-4 4-4" /><path d="M4 17h16" /></>) },
+  { t: "Atención a la ciudadanía", d: "Acompañamiento cercano en cada consulta y solicitud.", ic: fi(<><path d="M16 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>) },
 ];
 
 const OBJETIVOS = [
@@ -177,7 +177,15 @@ export default function NosotrosPage() {
               <Editable as="span" id="nos.func-intro" multiline>Nos ocupamos de todo el ciclo catastral del municipio: del levantamiento de la información en campo a la respuesta de cada trámite ciudadano.</Editable>
             </p>
           </div>
-          <FuncionesSlider items={FUNCIONES} />
+          <div className="cap-row">
+            {FUNCIONES.map((f) => (
+              <div key={f.t} className="cap-item reveal">
+                <span className="cap-ic">{f.ic}</span>
+                <h3>{f.t}</h3>
+                <p>{f.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
