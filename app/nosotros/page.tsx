@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
@@ -83,12 +83,6 @@ const ETAPAS: { fase: string; titulo: string; color: string; items: string[] }[]
   },
 ];
 
-// Tarjeta caja blanca sobre banda gris (reusa .atg-mock para heredar el modo oscuro).
-const card: CSSProperties = { padding: 24, borderRadius: 16, boxShadow: "var(--shadow-sm)" };
-const cardNum: CSSProperties = { fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: ".15em" };
-const cardH3: CSSProperties = { margin: "10px 0 8px", fontSize: 17, fontWeight: 700, letterSpacing: "-0.01em", color: "var(--tt-ink)" };
-const cardP: CSSProperties = { margin: 0, fontSize: 13.5, lineHeight: 1.7, color: "var(--tt-gray-500)" };
-
 export default function NosotrosPage() {
   return (
     <>
@@ -148,22 +142,19 @@ export default function NosotrosPage() {
       {/* 3 · Misión y visión */}
       <section className="atg-band band-dark" id="mision-vision">
         <div className="atg-wrap">
-          <div className="reveal" style={{ maxWidth: "46rem" }}>
-            <h2>Lo que nos mueve cada día</h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24, marginTop: 40 }}>
-            <article className="atg-mock reveal" style={card}>
-              <h3 style={{ ...cardH3, margin: "0 0 10px", fontSize: 19, color: "var(--tt-blue-600)" }}>Misión</h3>
-              <p style={{ ...cardP, fontSize: 14.5 }}>
-                <Editable as="span" id="nos.mision" multiline>Operar el catastro multipropósito de Valledupar y mantener la información de cada predio completa, actualizada y disponible para la ciudadanía y la administración municipal.</Editable>
+          <div className="mv-grid reveal">
+            <div className="mv-col">
+              <h3 className="mv-title">Misión</h3>
+              <p className="mv-text">
+                <Editable as="span" id="nos.mision" multiline>Operar el catastro multipropósito del municipio de Valledupar, manteniendo la información física, jurídica y económica de cada predio completa, actualizada y disponible para la ciudadanía y la administración municipal. Trabajamos para que esos datos sean una base confiable de seguridad jurídica, equidad tributaria y mejor planeación del territorio.</Editable>
               </p>
-            </article>
-            <article className="atg-mock reveal" style={card}>
-              <h3 style={{ ...cardH3, margin: "0 0 10px", fontSize: 19, color: "var(--tt-green-600)" }}>Visión</h3>
-              <p style={{ ...cardP, fontSize: 14.5 }}>
-                <Editable as="span" id="nos.vision" multiline>Que cualquier persona en Valledupar pueda conocer y confiar en la información de su predio, y que el municipio planee su territorio sobre datos reales.</Editable>
+            </div>
+            <div className="mv-col">
+              <h3 className="mv-title">Visión</h3>
+              <p className="mv-text">
+                <Editable as="span" id="nos.vision" multiline>Ser el referente de la gestión catastral en la región: que cualquier persona en Valledupar pueda conocer y confiar en la información de su predio, y que el municipio planifique su territorio y sus finanzas sobre datos reales, actualizados y transparentes, al servicio del desarrollo y el bienestar de toda la ciudad.</Editable>
               </p>
-            </article>
+            </div>
           </div>
         </div>
       </section>

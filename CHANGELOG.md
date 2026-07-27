@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.14.0] - 2026-07-27
+
+### Cambiado
+- La sección de Misión y Visión de Nosotros se rediseñó: se quitó el título "Lo que nos mueve cada día" y los fondos blancos de las tarjetas; ahora ambas van directamente sobre la banda azul, con los títulos "Misión" y "Visión" grandes y centrados, divididos por una línea blanca (vertical en escritorio, horizontal en celular), y con textos más amplios y de mayor tamaño.
+
 ## [2.13.3] - 2026-07-27
 
 ### Cambiado

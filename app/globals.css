@@ -748,6 +748,18 @@ img { max-width: 100%; }
 @media (max-width: 1040px) { .func-bento { grid-template-columns: 1fr 1fr; } .fn-lg, .fn-md, .fn-sm { grid-column: auto; } }
 @media (max-width: 640px) { .func-bento { grid-template-columns: 1fr; } }
 
+/* Misión y Visión: dos columnas sobre la banda azul, con títulos grandes
+   centrados y una línea blanca divisoria (sin tarjetas). */
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 960px; margin: 0 auto; }
+.mv-col { text-align: center; padding: 6px clamp(24px, 4vw, 60px); }
+.mv-col + .mv-col { border-left: 1px solid rgba(255, 255, 255, .3); }
+.mv-title { margin: 0 0 22px; font: 700 clamp(2rem, 3.6vw, 2.75rem)/1.08 var(--font-sans); color: #fff; letter-spacing: -0.02em; }
+.mv-text { margin: 0; font: 400 clamp(1.0625rem, 1.55vw, 1.25rem)/1.8 var(--font-sans); color: rgba(255, 255, 255, .84); }
+@media (max-width: 720px) {
+  .mv-grid { grid-template-columns: 1fr; }
+  .mv-col + .mv-col { border-left: none; border-top: 1px solid rgba(255, 255, 255, .3); margin-top: 14px; padding-top: 40px; }
+}
+
 /* "Lo que hacemos": 4 columnas con ícono verde arriba y texto corto centrado,
    separadas por líneas verticales (sin tarjetas). */
 .cap-row { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
