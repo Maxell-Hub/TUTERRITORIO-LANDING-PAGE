@@ -748,23 +748,29 @@ img { max-width: 100%; }
 @media (max-width: 1040px) { .func-bento { grid-template-columns: 1fr 1fr; } .fn-lg, .fn-md, .fn-sm { grid-column: auto; } }
 @media (max-width: 640px) { .func-bento { grid-template-columns: 1fr; } }
 
-/* "Lo que hacemos": cuadrícula uniforme de tarjetas con ícono por función */
-.func-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
-@media (max-width: 900px) { .func-grid3 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .func-grid3 { grid-template-columns: 1fr; } }
-.func-tile { background: #fff; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 26px 24px;
-  box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 14px;
-  transition: transform .28s var(--ease-soft), box-shadow .28s var(--ease-soft); }
-.func-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.func-tile .fic { width: 52px; height: 52px; border-radius: 14px; flex: none;
-  display: inline-flex; align-items: center; justify-content: center;
-  background: color-mix(in srgb, var(--c) 14%, #fff); color: var(--c); }
-.func-tile h3 { margin: 0; font: 700 1.0625rem/1.3 var(--font-sans); color: var(--tt-navy-700); letter-spacing: -0.01em; }
-.func-tile p { margin: 0; font: 400 0.9375rem/1.6 var(--font-sans); color: var(--tt-gray-500); }
-.dark .func-tile { background: #131c23; border-color: #2f3d47; box-shadow: none; }
-.dark .func-tile h3 { color: #eaf1f6; }
-.dark .func-tile p { color: #9fb0bd; }
-.dark .func-tile .fic { background: color-mix(in srgb, var(--c) 24%, #131c23); }
+/* "Lo que hacemos": slider de tarjetas apiladas (efecto baraja) */
+.cs-wrap { margin-top: 44px; padding: 10px 0 2px; overflow: hidden; }
+.cs { position: relative; max-width: 440px; margin: 0 auto; }
+.cs-cell { position: absolute; inset: 0; will-change: transform;
+  transition: transform .55s cubic-bezier(.25,1,.5,1), opacity .45s ease; }
+.cs-cell.on { position: relative; z-index: 50; }
+.cs-card { position: relative; height: 100%; overflow: hidden;
+  background: #fff; border: 1px solid var(--border-subtle); border-radius: 18px; box-shadow: var(--shadow-lg);
+  padding: 32px 30px 30px; min-height: 232px; }
+.cs-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--c); }
+.cs-num { display: inline-block; font: 800 1.75rem/1 var(--font-sans); color: var(--c); letter-spacing: -0.02em; }
+.cs-card h3 { margin: 14px 0 10px; font: 700 1.375rem/1.25 var(--font-sans); color: var(--tt-ink); letter-spacing: -0.01em; }
+.cs-card p { margin: 0; font: 400 0.9375rem/1.65 var(--font-sans); color: var(--tt-gray-500); }
+.cs-hit { position: absolute; inset: 0; z-index: 2; background: transparent; border: 0; cursor: pointer; }
+.cs-dots { display: flex; justify-content: center; gap: 9px; margin-top: 26px; }
+.cs-dot { width: 9px; height: 9px; border-radius: 999px; border: 0; background: var(--tt-gray-300); cursor: pointer; padding: 0;
+  transition: transform .2s var(--ease-soft), background .2s; }
+.cs-dot.on { transform: scale(1.4); }
+.dark .cs-card { background: #131c23; border-color: #2f3d47; }
+.dark .cs-card h3 { color: #eaf1f6; }
+.dark .cs-card p { color: #9fb0bd; }
+.dark .cs-dot { background: #2f3d47; }
+@media (max-width: 480px) { .cs { max-width: 300px; } .cs-card p { font-size: 0.9rem; } }
 
 /* Mensaje */
 .nos-glow { position: absolute; top: -50px; right: -30px; width: 240px; height: 240px; border-radius: 50%;

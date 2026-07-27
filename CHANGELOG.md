@@ -6,6 +6,16 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.13.0] - 2026-07-27
+
+### Cambiado
+- La sección "Lo que hacemos" de Nosotros pasa a ser un slider de tarjetas apiladas (efecto baraja): la función activa se ve grande al centro y las demás quedan escaladas y desplazadas detrás. Se navega con los puntos, haciendo clic/tap en una tarjeta lateral o deslizando en celular. Sin íconos: cada tarjeta lleva su número en el color corporativo. Modo claro/oscuro y responsive.
+
+## [2.12.1] - 2026-07-27
+
+### Cambiado
+- Se quitaron los íconos de las tarjetas de "Lo que hacemos"; quedan la cuadrícula uniforme con el título, la descripción y un fino acento de color en el borde superior de cada tarjeta.
+
 ## [2.12.0] - 2026-07-27
 
 ### Cambiado
