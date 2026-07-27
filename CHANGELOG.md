@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.12.0] - 2026-07-27
+
+### Cambiado
+- La sección "Lo que hacemos" de Nosotros se reestructuró: pasa de un bento de tarjetas de tamaños mezclados a una cuadrícula uniforme de 3 columnas, y cada una de las 6 funciones estrena un ícono en su color corporativo (identificación predial, avalúos, trámites y mutaciones, planeación, atención y articulación institucional). Se lee más ordenada y clara, con modo claro/oscuro y responsive.
+
 ## [2.11.3] - 2026-07-24
 
 ### Cambiado
