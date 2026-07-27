@@ -132,7 +132,7 @@ export default function NosotrosPage() {
             <div className="atg-copy reveal">
               <h2>El operador Catastral del Municipio de Valledupar</h2>
               <p>
-                Tuterritorio S.A.S es el operador del <b style={{ color: "var(--tt-ink)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.
+                Tuterritorio S.A.S es el operador <b style={{ color: "var(--tt-ink)" }}>Catastral Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.
               </p>
               <ul>
                 <li>Información física, jurídica y económica de cada predio</li>

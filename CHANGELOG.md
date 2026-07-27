@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.13.3] - 2026-07-27
+
+### Cambiado
+- En Nosotros, el párrafo de presentación pasa de "Tuterritorio S.A.S es el operador del Catastro Multipropósito" a "Tuterritorio S.A.S es el operador Catastral Multipropósito".
+
 ## [2.13.2] - 2026-07-27
 
 ### Cambiado
