@@ -25,11 +25,11 @@ const ACC = ["#3B85A5", "#4E8654", "#F0B63B"];
 const fi = (d: ReactNode) => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d}</svg>
 );
-const FUNCIONES: { t: string; d: string; ic: ReactNode }[] = [
-  { t: "Identificación predial", d: "Física, jurídica y económica de cada predio.", ic: fi(<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></>) },
-  { t: "Actualización de avalúos", d: "El avalúo catastral al día para trámites y tributos.", ic: fi(<><line x1="6" y1="20" x2="6" y2="14" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="18" y1="20" x2="18" y2="10" /></>) },
-  { t: "Trámites y mutaciones", d: "Mutaciones y rectificaciones con validez legal.", ic: fi(<><path d="m16 3 4 4-4 4" /><path d="M20 7H4" /><path d="m8 21-4-4 4-4" /><path d="M4 17h16" /></>) },
-  { t: "Atención a la ciudadanía", d: "Acompañamiento cercano en cada consulta y solicitud.", ic: fi(<><path d="M16 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>) },
+const FUNCIONES: { t: string; d: string; c: string; ic: ReactNode }[] = [
+  { t: "Identificación predial", c: "#3B85A5", d: "El predio, definido en lo físico, jurídico y económico.", ic: fi(<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></>) },
+  { t: "Actualización de avalúos", c: "#4E8654", d: "Avalúos vigentes como base de trámites y tributos.", ic: fi(<><line x1="6" y1="20" x2="6" y2="14" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="18" y1="20" x2="18" y2="10" /></>) },
+  { t: "Trámites y mutaciones", c: "#F0B63B", d: "Cada cambio del predio, tramitado con respaldo legal.", ic: fi(<><path d="m16 3 4 4-4 4" /><path d="M20 7H4" /><path d="m8 21-4-4 4-4" /><path d="M4 17h16" /></>) },
+  { t: "Atención a la ciudadanía", c: "#163A4C", d: "Cada consulta atendida con cercanía y claridad.", ic: fi(<><path d="M16 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>) },
 ];
 
 const OBJETIVOS = [
@@ -130,7 +130,7 @@ export default function NosotrosPage() {
               </div>
             </div>
             <div className="atg-copy reveal">
-              <h2>El operador del Catastro Multipropósito de Valledupar</h2>
+              <h2>El operador Catastral del Municipio de Valledupar</h2>
               <p>
                 Tuterritorio S.A.S es el operador del <b style={{ color: "var(--tt-ink)" }}>Catastro Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.
               </p>
@@ -179,7 +179,7 @@ export default function NosotrosPage() {
           </div>
           <div className="cap-row">
             {FUNCIONES.map((f) => (
-              <div key={f.t} className="cap-item reveal">
+              <div key={f.t} className="cap-item reveal" style={{ ["--c" as string]: f.c }}>
                 <span className="cap-ic">{f.ic}</span>
                 <h3>{f.t}</h3>
                 <p>{f.d}</p>

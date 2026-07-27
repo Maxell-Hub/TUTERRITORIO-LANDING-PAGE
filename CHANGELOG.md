@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.13.2] - 2026-07-27
+
+### Cambiado
+- En "Lo que hacemos", cada ícono usa ahora un color corporativo distinto (azul, verde, ámbar y navy) y se reescribieron las cuatro descripciones con el mismo significado pero otra redacción.
+- El título de la sección de Nosotros pasa de "El operador del Catastro Multipropósito de Valledupar" a "El operador Catastral del Municipio de Valledupar".
+
 ## [2.13.1] - 2026-07-27
 
 ### Cambiado

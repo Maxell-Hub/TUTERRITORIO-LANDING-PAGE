@@ -753,10 +753,10 @@ img { max-width: 100%; }
 .cap-row { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
 .cap-item { position: relative; text-align: center; padding: 6px clamp(16px, 2.2vw, 30px); }
 .cap-item:not(:first-child)::before { content: ""; position: absolute; left: 0; top: 12%; bottom: 12%; width: 1px; background: var(--border-subtle); }
-.cap-ic { display: inline-flex; color: var(--tt-green-600); margin-bottom: 18px; }
+.cap-ic { display: inline-flex; color: var(--c); margin-bottom: 18px; }
 .cap-item h3 { margin: 0 0 7px; font: 700 1.0625rem/1.3 var(--font-sans); color: var(--tt-navy-700); letter-spacing: -0.01em; }
 .cap-item p { margin: 0; font: 400 0.9rem/1.55 var(--font-sans); color: var(--tt-gray-500); }
-.dark .cap-ic { color: #bfe3a0; }
+.dark .cap-ic { color: color-mix(in srgb, var(--c) 68%, #fff); }
 .dark .cap-item h3 { color: #eaf1f6; }
 .dark .cap-item p { color: #9fb0bd; }
 .dark .cap-item:not(:first-child)::before { background: #2f3d47; }
