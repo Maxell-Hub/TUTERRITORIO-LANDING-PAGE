@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PqrsdForm from "@/components/pqrsd/PqrsdForm";
 import AvisoGestorModal from "@/components/site/AvisoGestorModal";
+import { AvisoGestorBody } from "@/components/site/AvisoGestorCatastral";
 
 export const metadata: Metadata = {
   title: "Radica tu PQRSD",
@@ -37,7 +38,9 @@ export default function PqrsdPage() {
       </section>
 
       {/* Aviso modal que aparece al entrar a la página */}
-      <AvisoGestorModal nota="Este formulario está destinado a PQRSD de carácter administrativo, atención ciudadana u operaciones de Tuterritorio S.A.S. como Operador Catastral." />
+      <AvisoGestorModal labelledBy="aviso-gestor-titulo">
+        <AvisoGestorBody nota="Este formulario está destinado a PQRSD de carácter administrativo, atención ciudadana u operaciones de Tuterritorio S.A.S. como Operador Catastral." />
+      </AvisoGestorModal>
 
       {/* 2 · Banda: formulario de radicación */}
       <section className="atg-band" id="formulario">

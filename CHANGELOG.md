@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.19.0] - 2026-07-29
+
+### Añadido
+- **Aviso informativo de Trámites y servicios** con el texto del informe jurídico (diferencia de competencias Gestor/Operador, Decreto 148 de 2020, y correo del Gestor). Aparece como **modal al entrar** a la página y también como **tarjeta fija** dentro de la sección. El modal reutiliza el mismo mecanismo del de PQRSD (animación de entrada/salida, cierre con «x», fondo o Escape).
+
 ## [2.18.2] - 2026-07-29
 
 ### Cambiado
