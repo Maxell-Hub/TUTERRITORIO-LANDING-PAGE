@@ -1028,7 +1028,7 @@ img { max-width: 100%; }
 .norm-row:hover .norm-link { background: var(--tt-navy-700); border-color: var(--tt-navy-700); color: #fff; }
 .norm-pending { display: inline-flex; align-items: center; white-space: nowrap; padding: 11px 18px; color: var(--tt-gray-500);
   font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); font-style: italic; }
-.norm-title { font: var(--fw-bold) var(--fs-xl)/1.25 var(--font-sans); color: var(--tt-navy-800); margin: 0 0 20px; }
+.atg-band .norm-title { font: var(--fw-bold) var(--fs-xl)/1.25 var(--font-sans); color: var(--tt-navy-800); margin: 0 0 24px; }
 
 /* Aviso institucional: redirección de trámites catastrales al Gestor */
 .aviso-gestor { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 26px; padding: 22px 24px;
@@ -1073,10 +1073,14 @@ img { max-width: 100%; }
 .dark .aviso-modal { background: #16232c; }
 .dark .aviso-modal__close { background: rgba(255,255,255,.1); color: rgba(255,255,255,.82); }
 .dark .aviso-modal__close:hover { background: rgba(255,255,255,.18); color: #fff; }
+.aviso-modal-overlay.is-closing { animation: avisoModalFadeOut .22s var(--ease-soft) forwards; }
+.aviso-modal-overlay.is-closing .aviso-modal { animation: avisoModalPopOut .22s var(--ease-soft) forwards; }
 @keyframes avisoModalFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes avisoModalPop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes avisoModalFadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes avisoModalPopOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(10px) scale(.97); } }
 @media (max-width: 560px) { .aviso-modal { padding: 30px 20px 24px; } .aviso-modal__content { flex-direction: column; gap: 12px; } }
-@media (prefers-reduced-motion: reduce) { .aviso-modal-overlay, .aviso-modal { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .aviso-modal-overlay, .aviso-modal, .aviso-modal-overlay.is-closing, .aviso-modal-overlay.is-closing .aviso-modal { animation: none; } }
 
 /* Página de búsqueda /buscar */
 .buscar-wrap { max-width: 760px; }

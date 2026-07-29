@@ -6,6 +6,14 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.18.1] - 2026-07-29
+
+### Corregido
+- El título "Normograma del Operador Catastral Multipropósito" no mostraba su separación inferior porque la regla `.atg-band h2` (margin: 0) lo anulaba; se corrige con mayor especificidad y queda separado de los filtros (24 px).
+
+### Añadido
+- El modal del aviso al Gestor (en PQRSD) ahora tiene animación tanto de **entrada** como de **salida** (se atenúa y se contrae al cerrarse por la «x», el fondo o Escape), respetando `prefers-reduced-motion`.
+
 ## [2.18.0] - 2026-07-29
 
 ### Cambiado
