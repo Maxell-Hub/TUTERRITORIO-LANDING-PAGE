@@ -6,6 +6,15 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.17.0] - 2026-07-29
+
+### Añadido
+- **Página de búsqueda `/buscar`**: al pulsar Enter (o el botón) en el buscador del encabezado se abre una página de resultados completa, compartible por URL (`/buscar?q=…`) y con su propio campo para refinar. El índice de búsqueda se extrajo a `lib/searchIndex.ts` para reutilizarlo. Se añade el marcado estructurado `SearchAction` (Sitelinks Searchbox) al JSON-LD del sitio. La página de resultados va con `noindex` (buena práctica SEO).
+- **Disclaimer en Trámites y servicios**: aviso reutilizable que aclara la diferencia Operador/Gestor (Decreto 148 de 2020) y a dónde radicar los trámites formales.
+
+### Cambiado
+- **Textos legales completos** conforme a la revisión jurídica: se reescriben con el texto íntegro del informe la **Política de Tratamiento y Protección de Datos Personales** (12 secciones, enfoque de Operador Catastral), los **Términos y Condiciones de Uso** (11 secciones) y la **Declaración de Accesibilidad Web** (compromiso, medidas técnicas, limitaciones y canales de reporte).
+
 ## [2.16.0] - 2026-07-29
 
 ### Añadido
