@@ -22,3 +22,13 @@ yarn-error.log*
 # Sistema
 .DS_Store
 *.pem
+
+# Artefactos locales de trabajo (no versionar)
+/Diseno-Paginas-PNG/
+/Diseno-Tuterritorio.pdf
+/Diseno-Tuterritorio-Oscuro.pdf
+/tuterritorio-qr.png
+/tuterritorio-qr-simple.png
+/tuterritorio-qr.svg
+*.docx
+/Página Web de Tuterritorio - Historial de Versiones.pdf

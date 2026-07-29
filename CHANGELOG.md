@@ -6,6 +6,16 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.16.0] - 2026-07-29
+
+### Añadido
+- **Aviso institucional en PQRSD**: antes del formulario se muestra un aviso claro que recuerda que Tuterritorio es el Operador Catastral (apoyo técnico) y que los trámites que requieren acto administrativo —mutaciones, rectificaciones, revisiones de avalúo y certificados oficiales— se radican ante el Gestor Catastral (Alcaldía de Valledupar), con el correo oficial habilitado. Componente reutilizable `AvisoGestorCatastral`.
+- **SEO — datos estructurados**: se añade `GovernmentService` (con el catálogo de trámites) en la página de Servicios.
+- **SEO — iconos**: se agregan `favicon.ico`, `apple-icon.png` e íconos PWA de 192 px (incluido uno *maskable*); el manifest y la metadata declaran el juego completo de iconos.
+
+### Cambiado
+- **Corrección institucional**: en todo el sitio donde se describía a Tuterritorio como "gestor catastral" ahora se dice "operador catastral" (inicio, footer, transparencia, FAQ, noticia de usuarios, glosario y palabras clave). Las menciones al Gestor Catastral como el municipio/Alcaldía se mantienen.
+
 ## [2.15.0] - 2026-07-29
 
 ### Cambiado

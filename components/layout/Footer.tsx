@@ -10,7 +10,7 @@
  * - MAYOR: rediseños o cambios que transforman el sitio por completo.
  * Se muestra en la esquina inferior derecha de la tarjeta del footer.
  */
-const SITE_VERSION = "2.15.0";
+const SITE_VERSION = "2.16.0";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -67,7 +67,7 @@ export default function Footer() {
       </nav>
 
       <p className="footer-resp">
-        Los contenidos de este sitio están bajo la responsabilidad de<span translate="no" className="notranslate">{" Tuterritorio"}</span>, gestor catastral del municipio de Valledupar.
+        Los contenidos de este sitio están bajo la responsabilidad de<span translate="no" className="notranslate">{" Tuterritorio"}</span>, operador catastral del municipio de Valledupar.
       </p>
       <p className="footer-copy">
         © {year}<span translate="no" className="notranslate">{" Tuterritorio "}</span>— Catastro Multipropósito de Valledupar. Todos los derechos reservados.

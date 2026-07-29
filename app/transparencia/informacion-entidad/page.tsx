@@ -12,7 +12,7 @@ export default function InformacionEntidadPage() {
   return (
     <TPageATG
       title="Información de la entidad"
-      lead="Datos básicos de Tuterritorio como gestor catastral del municipio de Valledupar."
+      lead="Datos básicos de Tuterritorio como operador catastral del municipio de Valledupar."
       eyebrow="Sección 1"
       photo="transparencia/foto-caja2"
       photoPos="center 45%"
@@ -43,7 +43,7 @@ export default function InformacionEntidadPage() {
 
       <Apartado titulo="1.6 Entes que ejercen control sobre la entidad">
         <p>
-          Como gestor catastral, Tuterritorio está sujeto a la regulación y a la inspección, vigilancia y
+          Como operador catastral, Tuterritorio está sujeto a la regulación y a la inspección, vigilancia y
           control de las siguientes entidades del orden nacional:
         </p>
         <div className="ente-grid">

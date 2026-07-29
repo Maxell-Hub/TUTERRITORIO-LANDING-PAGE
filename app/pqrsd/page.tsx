@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PqrsdForm from "@/components/pqrsd/PqrsdForm";
+import AvisoGestorCatastral from "@/components/site/AvisoGestorCatastral";
 
 export const metadata: Metadata = {
   title: "Radica tu PQRSD",
@@ -35,11 +36,14 @@ export default function PqrsdPage() {
         </div>
       </section>
 
-      {/* 2 · Banda: formulario de radicación */}
+      {/* 2 · Banda: aviso al Gestor + formulario de radicación */}
       <section className="atg-band" id="formulario">
         <div className="atg-wrap">
-          <div className="reveal" style={{ maxWidth: 880, margin: "0 auto" }}>
-            <PqrsdForm />
+          <div style={{ maxWidth: 880, margin: "0 auto" }}>
+            <AvisoGestorCatastral nota="Este formulario está destinado a PQRSD de carácter administrativo, atención ciudadana u operaciones de Tuterritorio S.A.S. como Operador Catastral." />
+            <div className="reveal">
+              <PqrsdForm />
+            </div>
           </div>
         </div>
       </section>

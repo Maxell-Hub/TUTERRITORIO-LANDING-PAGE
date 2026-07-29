@@ -1029,6 +1029,34 @@ img { max-width: 100%; }
 .norm-pending { display: inline-flex; align-items: center; white-space: nowrap; padding: 11px 18px; color: var(--tt-gray-500);
   font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); font-style: italic; }
 .norm-title { font: var(--fw-bold) var(--fs-xl)/1.25 var(--font-sans); color: var(--tt-navy-800); margin: 0 0 22px; }
+
+/* Aviso institucional: redirección de trámites catastrales al Gestor */
+.aviso-gestor { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 26px; padding: 22px 24px;
+  background: color-mix(in srgb, var(--tt-amber-500) 9%, #fff); border: 1px solid color-mix(in srgb, var(--tt-amber-600) 30%, transparent);
+  border-left: 5px solid var(--tt-amber-600); border-radius: 16px; box-shadow: var(--shadow-xs); }
+.aviso-gestor__icon { flex: none; width: 44px; height: 44px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--tt-amber-500) 22%, #fff); color: var(--tt-amber-600); }
+.aviso-gestor__body { min-width: 0; }
+.aviso-gestor__title { font: var(--fw-bold) var(--fs-lg)/1.3 var(--font-sans); color: var(--tt-navy-800); margin: 2px 0 10px; }
+.aviso-gestor__text { font: var(--fw-regular) var(--fs-sm)/1.6 var(--font-sans); color: var(--tt-gray-700); margin: 0 0 10px; }
+.aviso-gestor__text strong { color: var(--tt-navy-800); font-weight: var(--fw-semibold); }
+.aviso-gestor__list { margin: 0 0 14px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.aviso-gestor__list li { font: var(--fw-regular) var(--fs-sm)/1.5 var(--font-sans); color: var(--tt-gray-700); }
+.aviso-gestor__list li::marker { color: var(--tt-amber-600); }
+.aviso-gestor__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.aviso-gestor__cta-label { font: var(--fw-semibold) var(--fs-sm)/1.3 var(--font-sans); color: var(--tt-navy-700); }
+.aviso-gestor__mail { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: var(--radius-pill);
+  background: var(--tt-navy-700); color: #fff; text-decoration: none; font: var(--fw-semibold) var(--fs-sm)/1 var(--font-sans); word-break: break-all;
+  transition: background .2s var(--ease-soft), transform .15s var(--ease-soft); }
+.aviso-gestor__mail:hover { background: var(--tt-navy-800); transform: translateY(-1px); }
+.aviso-gestor__nota { font: var(--fw-medium) var(--fs-xs)/1.5 var(--font-sans); color: var(--tt-gray-500); margin: 14px 0 0; padding-top: 12px;
+  border-top: 1px solid color-mix(in srgb, var(--tt-amber-600) 20%, transparent); }
+.dark .aviso-gestor { background: color-mix(in srgb, var(--tt-amber-500) 13%, #16232c); border-color: color-mix(in srgb, var(--tt-amber-500) 30%, transparent); }
+.dark .aviso-gestor__icon { background: color-mix(in srgb, var(--tt-amber-500) 22%, transparent); color: color-mix(in srgb, var(--tt-amber-500) 75%, #fff); }
+.dark .aviso-gestor__title, .dark .aviso-gestor__text strong { color: #fff; }
+.dark .aviso-gestor__text, .dark .aviso-gestor__list li { color: color-mix(in srgb, #fff 78%, transparent); }
+.dark .aviso-gestor__cta-label { color: color-mix(in srgb, #fff 86%, transparent); }
+@media (max-width: 560px) { .aviso-gestor { flex-direction: column; gap: 12px; padding: 20px; } }
 .rec-empty { text-align: center; padding: 40px; color: var(--tt-gray-500); font: var(--fw-medium) var(--fs-base)/1.5 var(--font-sans); }
 
 /* Glosario */

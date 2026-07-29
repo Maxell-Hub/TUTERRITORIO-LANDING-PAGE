@@ -6,7 +6,7 @@ import CountUp from "@/components/site/CountUp";
 export const metadata: Metadata = {
   title: { absolute: "Tuterritorio — Catastro Multipropósito de Valledupar" },
   description:
-    "Consulta tu predio en Valledupar: linderos, área y avalúo catastral. Realiza trámites catastrales, radica tu PQRSD y consulta el impuesto predial con Tuterritorio, gestor catastral de Valledupar.",
+    "Consulta tu predio en Valledupar: linderos, área y avalúo catastral. Realiza trámites catastrales, radica tu PQRSD y consulta el impuesto predial con Tuterritorio, operador catastral de Valledupar.",
   alternates: { canonical: "/" },
 };
 

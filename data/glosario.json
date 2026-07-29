@@ -14,7 +14,7 @@
   { "id": "g-009", "term": "Conservación catastral", "def": "Conjunto de operaciones que mantienen al día la información catastral entre procesos de formación o actualización." },
   { "id": "g-010", "term": "Destino económico", "def": "Clasificación del uso predominante de un predio (residencial, comercial, industrial, agropecuario, entre otros)." },
   { "id": "g-011", "term": "Formación catastral", "def": "Conjunto de operaciones para identificar, describir y valorar por primera vez los predios de una zona." },
-  { "id": "g-012", "term": "Gestor catastral", "def": "Entidad pública habilitada para prestar el servicio de gestión catastral en un territorio; en Valledupar, Tuterritorio." },
+  { "id": "g-012", "term": "Gestor catastral", "def": "Entidad pública habilitada para prestar el servicio de gestión catastral en un territorio. En Valledupar el gestor catastral es el municipio (Alcaldía), y Tuterritorio actúa como su operador catastral." },
   { "id": "g-013", "term": "IGAC", "def": "Instituto Geográfico Agustín Codazzi; máxima autoridad catastral y reguladora del catastro en Colombia." },
   { "id": "g-014", "term": "Impuesto predial unificado", "def": "Tributo municipal anual que grava la propiedad o posesión de un predio, calculado sobre su avalúo catastral." },
   { "id": "g-015", "term": "Linderos", "def": "Líneas que delimitan un predio y lo separan de los predios vecinos y de los bienes de uso público." },

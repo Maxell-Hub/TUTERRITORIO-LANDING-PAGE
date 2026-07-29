@@ -181,14 +181,14 @@ export const FAQ_GRUPOS: FaqGrupo[] = [
         q: "¿Qué es Tuterritorio?",
         a: (
           <>
-            Es el <b>gestor catastral del municipio de Valledupar</b>: la entidad encargada de operar el
+            Es el <b>operador catastral del municipio de Valledupar</b>: la entidad encargada de operar el
             catastro con enfoque multipropósito, es decir, de mantener actualizada la información física,
             jurídica y económica de los predios del municipio. Conoce más en{" "}
             <Link href="/nosotros">Nosotros</Link>.
           </>
         ),
         aText:
-          "Es el gestor catastral del municipio de Valledupar: la entidad encargada de operar el catastro con enfoque multipropósito, es decir, de mantener actualizada la información física, jurídica y económica de los predios del municipio.",
+          "Es el operador catastral del municipio de Valledupar: la entidad encargada de operar el catastro con enfoque multipropósito, es decir, de mantener actualizada la información física, jurídica y económica de los predios del municipio.",
       },
       {
         id: "catastro-multiproposito",

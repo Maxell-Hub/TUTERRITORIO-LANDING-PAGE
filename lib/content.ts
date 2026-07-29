@@ -58,7 +58,7 @@ export const DEFAULT_NOTICIAS: News[] = [
       "La oficina de gestión catastral y los canales en línea acompañan a cada vez más ciudadanos en sus trámites catastrales y de avalúo.",
     imagen: "/assets/noticias/noticia-usuarios.webp",
     cuerpo:
-      "En lo corrido de 2026, Tuterritorio ha atendido a 5.741 usuarios entre la sede principal y los canales en línea. La cifra refleja la confianza creciente de la ciudadanía en el gestor catastral del municipio y el esfuerzo del equipo por dar respuesta oportuna a cada solicitud.\n\nLos trámites más frecuentes son el cambio de propietario, las rectificaciones de área y de datos del propietario, y la expedición de certificados catastrales. Cada trámite tiene definidos sus requisitos y tiempos de respuesta, que puedes consultar en la sección de Trámites y servicios.\n\nRecuerda que también puedes radicar tus peticiones, quejas, reclamos, sugerencias y denuncias a través del formulario PQRSD de este sitio, con radicado inmediato y seguimiento en línea. Nuestro compromiso es que la información catastral de Valledupar esté al día y al servicio de todos.",
+      "En lo corrido de 2026, Tuterritorio ha atendido a 5.741 usuarios entre la sede principal y los canales en línea. La cifra refleja la confianza creciente de la ciudadanía en el operador catastral del municipio y el esfuerzo del equipo por dar respuesta oportuna a cada solicitud.\n\nLos trámites más frecuentes son el cambio de propietario, las rectificaciones de área y de datos del propietario, y la expedición de certificados catastrales. Cada trámite tiene definidos sus requisitos y tiempos de respuesta, que puedes consultar en la sección de Trámites y servicios.\n\nRecuerda que también puedes radicar tus peticiones, quejas, reclamos, sugerencias y denuncias a través del formulario PQRSD de este sitio, con radicado inmediato y seguimiento en línea. Nuestro compromiso es que la información catastral de Valledupar esté al día y al servicio de todos.",
   },
 ];
 
@@ -124,7 +124,7 @@ export const DEFAULT_GLOSARIO: Term[] = [
   { id: "g-033", term: "Escritura pública", def: "Documento otorgado ante notario que da fe de actos como la compraventa o hipoteca de un inmueble." },
   { id: "g-011", term: "Formación catastral", def: "Conjunto de operaciones para identificar, describir y valorar por primera vez los predios de una zona." },
   { id: "g-034", term: "Georreferenciación", def: "Proceso de asignar coordenadas geográficas reales a un predio o mapa para ubicarlo con exactitud sobre el terreno." },
-  { id: "g-012", term: "Gestor catastral", def: "Entidad pública habilitada para prestar el servicio de gestión catastral en un territorio; en Valledupar, Tuterritorio." },
+  { id: "g-012", term: "Gestor catastral", def: "Entidad pública habilitada para prestar el servicio de gestión catastral en un territorio. En Valledupar el gestor catastral es el municipio (Alcaldía), y Tuterritorio actúa como su operador catastral." },
   { id: "g-013", term: "IGAC", def: "Instituto Geográfico Agustín Codazzi; máxima autoridad catastral y reguladora del catastro en Colombia." },
   { id: "g-014", term: "Impuesto predial unificado", def: "Tributo municipal anual que grava la propiedad o posesión de un predio, calculado sobre su avalúo catastral." },
   { id: "g-035", term: "Interrelación catastro-registro", def: "Vinculación de la información del catastro con la del registro público para que ambos sistemas coincidan sobre cada predio." },

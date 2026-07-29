@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "impuesto predial Valledupar",
     "trámites catastrales",
     "PQRSD Valledupar",
-    "gestor catastral Cesar",
+    "operador catastral Valledupar",
     "Tuterritorio",
     "información predial",
   ],
@@ -73,7 +73,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: { icon: "/icon.png", apple: "/icon.png" },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 // Datos estructurados (JSON-LD) para buscadores: organización gubernamental + sitio web.

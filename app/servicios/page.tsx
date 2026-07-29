@@ -134,6 +134,40 @@ const TRAMITES: Tramite[] = [
 
 const period = (s: string) => (s.trim().endsWith(".") ? s : s + ".");
 
+// Datos estructurados: servicio público catastral + catálogo de trámites.
+const SITE_URL = "https://www.tuterritorio.gov.co";
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "GovernmentService",
+  name: "Trámites y servicios catastrales",
+  serviceType: "Gestión catastral multipropósito",
+  description:
+    "Trámites y productos catastrales de Tuterritorio (Catastro Multipropósito de Valledupar): incorporación y rectificación de área, englobe, desenglobe, cambios de propietario y destino, y certificados catastrales.",
+  url: `${SITE_URL}/servicios`,
+  areaServed: { "@type": "City", name: "Valledupar" },
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: `${SITE_URL}/servicios`,
+    servicePhone: "+576055885761",
+  },
+  provider: {
+    "@type": "GovernmentOrganization",
+    name: "Tuterritorio",
+    url: SITE_URL,
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Catálogo de trámites catastrales",
+    itemListElement: TRAMITES.map((t) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: t.title, description: t.desc },
+      ...(t.costo === "Sin costo"
+        ? { price: 0, priceCurrency: "COP" }
+        : {}),
+    })),
+  },
+};
+
 const Clock = () => (
   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
 );
@@ -144,6 +178,10 @@ const Check = () => (
 export default function ServiciosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
       <link rel="preload" as="image" href="/assets/servicios/foto-tramites2.webp" media="(min-width: 721px)" fetchPriority="high" />
       <link rel="preload" as="image" href="/assets/servicios/foto-tramites2-m.webp" media="(max-width: 720px)" fetchPriority="high" />

@@ -47,7 +47,7 @@ export default function TransparenciaPage() {
       >
         <h1>Transparencia y acceso a la información pública</h1>
         <p className="sub">
-          Información pública de Tuterritorio, gestor catastral del municipio de Valledupar, organizada conforme a la
+          Información pública de Tuterritorio, operador catastral del municipio de Valledupar, organizada conforme a la
           Resolución MinTIC 1519 de 2020 y la Ley 1712 de 2014.
         </p>
       </section>
