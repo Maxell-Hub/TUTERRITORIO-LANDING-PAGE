@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.19.1] - 2026-07-29
+
+### Cambiado
+- En Trámites y servicios el aviso informativo queda **solo como modal** de entrada; se retira la tarjeta fija para no duplicar el contenido.
+- El título de la sección de Normativas pasa a **«Normograma del Gestor Catastral»**.
+
 ## [2.19.0] - 2026-07-29
 
 ### Añadido

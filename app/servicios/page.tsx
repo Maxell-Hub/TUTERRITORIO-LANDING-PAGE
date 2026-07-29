@@ -3,7 +3,7 @@ import Image from "next/image";
 import Editable from "@/components/admin/Editable";
 import TramitesBuscador from "@/components/servicios/TramitesBuscador";
 import AvisoGestorModal from "@/components/site/AvisoGestorModal";
-import AvisoTramitesCard, { AvisoTramitesBody } from "@/components/site/AvisoTramites";
+import { AvisoTramitesBody } from "@/components/site/AvisoTramites";
 
 /** Texto de búsqueda normalizado (sin tildes) para el filtro de trámites.
  *  Incluye los términos en inglés (campo `en`) para que el buscador también
@@ -207,7 +207,6 @@ export default function ServiciosPage() {
       {/* 2 · Banda: grilla de trámites */}
       <section className="atg-band" id="tramites">
         <div className="atg-wrap">
-          <AvisoTramitesCard />
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <Editable as="h2" id="serv.section-title">Selecciona el trámite que necesitas</Editable>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.7, color: "var(--tt-gray-500)" }}>

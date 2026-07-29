@@ -22,7 +22,7 @@ export default function NormativasPage() {
 
       <section id="normativas" className="atg-band">
         <div className="atg-wrap">
-          <h2 className="norm-title">Normograma del Operador Catastral Multipropósito</h2>
+          <h2 className="norm-title">Normograma del Gestor Catastral</h2>
           <Normativas />
         </div>
       </section>
