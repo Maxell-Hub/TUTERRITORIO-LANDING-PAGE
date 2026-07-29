@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.18.2] - 2026-07-29
+
+### Cambiado
+- Se retira el ícono de advertencia del modal de «Radica tu PQRSD» (se conserva en la tarjeta fija de Trámites y servicios).
+
 ## [2.18.1] - 2026-07-29
 
 ### Corregido

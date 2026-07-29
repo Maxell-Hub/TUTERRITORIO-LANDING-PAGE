@@ -1065,6 +1065,7 @@ img { max-width: 100%; }
   background: #fff; border-radius: 18px; border-top: 5px solid var(--tt-amber-600); padding: 32px 30px 28px;
   box-shadow: 0 24px 60px rgba(8,20,28,.35); animation: avisoModalPop .22s var(--ease-soft); }
 .aviso-modal__content { display: flex; gap: 16px; align-items: flex-start; }
+.aviso-modal__content .aviso-gestor__icon { display: none; } /* el modal no muestra el ícono de advertencia */
 .aviso-modal__close { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 10px; border: none; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center; background: var(--tt-gray-100); color: var(--tt-gray-600);
   transition: background .2s var(--ease-soft), color .2s var(--ease-soft); }
