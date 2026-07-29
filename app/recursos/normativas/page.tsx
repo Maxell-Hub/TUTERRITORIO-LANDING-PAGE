@@ -17,11 +17,12 @@ export default function NormativasPage() {
       <link rel="preload" as="image" href="/assets/recursos/foto-normativas5-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/recursos/foto-normativas5.webp)", ["--hero-m" as string]: "url(/assets/recursos/foto-normativas5-m.webp)" }}>
         <h1>Normativas</h1>
-        <Editable as="p" id="norm.hero-intro" className="sub" multiline>Leyes, decretos, resoluciones y acuerdos que regulan la gestión catastral en Colombia y su aplicación en Valledupar. Consulta y descarga la norma que necesitas.</Editable>
+        <Editable as="p" id="norm.hero-intro" className="sub" multiline>Leyes, decretos, resoluciones, acuerdos y demás disposiciones normativas que regulan la Gestión Catastral Multipropósito en Colombia, así como la normativa aplicable a las actividades desarrolladas por el municipio de Valledupar en su calidad de Gestor Catastral. Consulta y descarga la norma que necesitas.</Editable>
       </section>
 
       <section id="normativas" className="atg-band">
         <div className="atg-wrap">
+          <h2 className="norm-title">Normograma de la Gestión Catastral Multipropósito</h2>
           <Normativas />
         </div>
       </section>

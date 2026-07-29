@@ -6,6 +6,13 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.15.0] - 2026-07-29
+
+### Cambiado
+- **Normativas** reorganizadas como *Normograma de la Gestión Catastral Multipropósito* con base en la revisión jurídica: se retiran las normas derogadas (Resoluciones 1149 de 2021, 509 y 388 de 2020) y se incorporan las vigentes con sus descripciones oficiales y enlaces verificados: Decreto 1060 de 2025, Acuerdo 027 de 2024, Ley 2294 de 2023, Resolución Única IGAC 1040 de 2023, Resolución IGAC 486 de 2021, Resolución Conjunta SNR 1101 / IGAC 11344 de 2020, Decreto 148 de 2020, Resolución IGAC 471 de 2020, Ley 1955 de 2019, Decreto 1983 de 2019, Decreto 1170 de 2015, Ley 1712 de 2014, Ley 1581 de 2012, Ley 44 de 1990 y Ley 14 de 1983.
+- El texto introductorio de Normativas se ajusta al del informe jurídico y se añade el título "Normograma de la Gestión Catastral Multipropósito".
+- Las normas sin documento público accesible (Resolución 486 de 2021, Decreto 1060 de 2025 y Acuerdo 027 de 2024) muestran "Documento pendiente" hasta cargar el PDF oficial.
+
 ## [2.14.0] - 2026-07-27
 
 ### Cambiado

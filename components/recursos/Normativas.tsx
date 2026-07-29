@@ -47,7 +47,6 @@ function catOf(n: Norm): string {
   if (NORM_CATEGORIES.includes(n.cat)) return n.cat;
   const t = `${n.code} ${n.desc}`.toLowerCase();
   if (/manual|pol[ií]tica|reglamento|protocolo|c[oó]digo de/.test(t)) return "Manuales, políticas y reglamentos";
-  if (/\bacta\b|interna/.test(t)) return "Resoluciones y actas internas";
   return "Normas generales aplicables";
 }
 
@@ -161,11 +160,13 @@ export default function Normativas() {
                     <button className="adm-btn ghost sm" onClick={() => setEditing(n)}><PencilIcon /> Editar</button>
                     <button className="adm-btn danger sm" onClick={() => handleDelete(n.id)}><TrashIcon /></button>
                   </div>
-                ) : (
+                ) : n.href && n.href !== "#" ? (
                   <a className="norm-link" href={n.href} target="_blank" rel="noopener noreferrer">
                     Ver documento
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
                   </a>
+                ) : (
+                  <span className="norm-pending">Documento pendiente</span>
                 )}
               </div>
             );
