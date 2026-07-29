@@ -6,6 +6,13 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.18.0] - 2026-07-29
+
+### Cambiado
+- **El aviso al Gestor en PQRSD ahora es un modal** que aparece al entrar a «Radica tu PQRSD», con cierre mediante la «x» (esquina superior derecha), clic en el fondo o tecla Escape. En Trámites y servicios se mantiene como tarjeta fija. El texto ahora dice «Gestor Catastral (Municipio de Valledupar)», la etiqueta del correo pasa a «Correo habilitado para la recepción de solicitudes ante el gestor catastral» y se amplió el espaciado del texto.
+- **Normativas**: se corrige el **Decreto 106 de 2025** (antes 1060) y se activan los enlaces oficiales de las tres normas que estaban pendientes: Decreto 106 de 2025, Acuerdo 027 de 2024 y Resolución IGAC 486 de 2021.
+- El título de la sección pasa a **«Normograma del Operador Catastral Multipropósito»** con `margin-bottom` de 20 px.
+
 ## [2.17.0] - 2026-07-29
 
 ### Añadido
