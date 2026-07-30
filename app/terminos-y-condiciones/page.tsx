@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
   title: "Términos y Condiciones de Uso",
@@ -15,8 +16,8 @@ export default function TerminosPage() {
       <link rel="preload" as="image" href="/assets/legales/foto-tratamiento2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/legales/foto-tratamiento2.webp)", ["--hero-m" as string]: "url(/assets/legales/foto-tratamiento2-m.webp)", backgroundPosition: "center 45%" }}>
-        <h1>Términos y Condiciones de Uso del Sitio Web</h1>
-        <p className="sub">Tuterritorio S.A.S — Operador Catastral del Municipio de Valledupar</p>
+        <Editable as="h1" id="legal-term.h1">Términos y Condiciones de Uso del Sitio Web</Editable>
+        <p className="sub"><Editable as="span" id="legal-term.sub">Tuterritorio S.A.S — Operador Catastral del Municipio de Valledupar</Editable></p>
       </section>
 
       <section className="legal-hero">

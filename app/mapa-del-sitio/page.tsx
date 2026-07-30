@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
   title: "Mapa del sitio",
@@ -75,9 +76,9 @@ export default function MapaDelSitioPage() {
       <link rel="preload" as="image" href="/assets/legales/foto-mapa2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/legales/foto-mapa2.webp)", ["--hero-m" as string]: "url(/assets/legales/foto-mapa2-m.webp)", backgroundPosition: "center 35%" }}>
-        <h1>Mapa del sitio</h1>
+        <Editable as="h1" id="mapa.h1">Mapa del sitio</Editable>
         <p className="sub">
-          Índice organizado de todas las secciones y páginas del sitio de Tuterritorio, agrupadas por tema.
+          <Editable as="span" id="mapa.hero-sub" multiline>Índice organizado de todas las secciones y páginas del sitio de Tuterritorio, agrupadas por tema.</Editable>
         </p>
       </section>
 

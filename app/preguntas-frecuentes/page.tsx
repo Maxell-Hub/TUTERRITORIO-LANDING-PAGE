@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Editable from "@/components/admin/Editable";
 import FaqExplorer from "@/components/faq/FaqExplorer";
 import { FAQ_GRUPOS } from "@/components/faq/faq-data";
 
@@ -32,10 +33,9 @@ export default function PreguntasFrecuentesPage() {
 
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/faq/foto-preguntas2.webp)", ["--hero-m" as string]: "url(/assets/faq/foto-preguntas2-m.webp)", backgroundPosition: "center 55%" }}>
-        <h1>Preguntas frecuentes</h1>
+        <Editable as="h1" id="faq.h1">Preguntas frecuentes</Editable>
         <p className="sub">
-          Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD.
-          Busca por palabra clave o explora por categoría.
+          <Editable as="span" id="faq.hero-sub" multiline>Resuelve tus dudas sobre trámites catastrales, avalúos, impuesto predial y PQRSD. Busca por palabra clave o explora por categoría.</Editable>
         </p>
       </section>
 
@@ -50,9 +50,9 @@ export default function PreguntasFrecuentesPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/faq/foto-poporos2.webp)", ["--band-m" as string]: "url(/assets/faq/foto-poporos2-m.webp)", backgroundPosition: "center 55%" }}
       >
         <div className="atg-wrap">
-          <h2>¿No encontraste tu respuesta?</h2>
-          <p>Escríbenos por cualquiera de nuestros canales y un miembro del equipo resolverá tu duda sobre tu predio o tu trámite.</p>
-          <a className="atg-pill" href="/contactos">Contáctanos</a>
+          <Editable as="h2" id="faq.cierre-h2">¿No encontraste tu respuesta?</Editable>
+          <Editable as="p" id="faq.cierre-p" multiline>Escríbenos por cualquiera de nuestros canales y un miembro del equipo resolverá tu duda sobre tu predio o tu trámite.</Editable>
+          <a className="atg-pill" href="/contactos"><Editable as="span" id="faq.cierre-cta">Contáctanos</Editable></a>
         </div>
       </section>
     </>

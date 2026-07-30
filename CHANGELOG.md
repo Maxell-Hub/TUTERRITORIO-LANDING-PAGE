@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.23.0] - 2026-07-30
+
+### Añadido
+- **Edición ampliada (Fase 4 — resto de páginas):** se hace editable el texto plano de las páginas que faltaban: **PQRSD**, **Preguntas frecuentes**, **Noticias**, **Normativas** (título, encabezado del normograma y cierre), **ABC Catastral (glosario)**, **Buscar**, **Mapa del sitio** y el **título y subtítulo** de las páginas legales (Política, Términos, Accesibilidad). Con esto, todo el texto plano del sitio es editable desde el panel de administrador.
+
 ## [2.22.0] - 2026-07-30
 
 ### Añadido

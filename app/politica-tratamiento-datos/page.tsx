@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
   title: "Política de Tratamiento de Datos Personales",
@@ -15,8 +16,8 @@ export default function PoliticaDatosPage() {
       <link rel="preload" as="image" href="/assets/legales/foto-politica2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/legales/foto-politica2.webp)", ["--hero-m" as string]: "url(/assets/legales/foto-politica2-m.webp)", backgroundPosition: "center 50%" }}>
-        <h1>Política de Tratamiento y Protección de Datos Personales</h1>
-        <p className="sub">Tuterritorio S.A.S — Operador Catastral del Municipio de Valledupar</p>
+        <Editable as="h1" id="legal-pol.h1">Política de Tratamiento y Protección de Datos Personales</Editable>
+        <p className="sub"><Editable as="span" id="legal-pol.sub">Tuterritorio S.A.S — Operador Catastral del Municipio de Valledupar</Editable></p>
       </section>
 
       <section className="legal-hero">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Editable from "@/components/admin/Editable";
 import BuscarResults from "@/components/search/BuscarResults";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function BuscarPage() {
   return (
     <section className="atg-band">
       <div className="atg-wrap buscar-wrap">
-        <h1 className="buscar-h1">Buscar en el sitio</h1>
+        <Editable as="h1" id="buscar.h1" className="buscar-h1">Buscar en el sitio</Editable>
         <Suspense fallback={<p className="buscar-empty">Cargando…</p>}>
           <BuscarResults />
         </Suspense>

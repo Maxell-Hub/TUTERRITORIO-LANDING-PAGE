@@ -16,7 +16,7 @@ export default function GlosarioPage() {
       <link rel="preload" as="image" href="/assets/recursos/foto-recursos2.webp" media="(min-width: 721px)" fetchPriority="high" />
       <link rel="preload" as="image" href="/assets/recursos/foto-recursos2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/recursos/foto-recursos2.webp)", ["--hero-m" as string]: "url(/assets/recursos/foto-recursos2-m.webp)", backgroundPosition: "center 40%" }}>
-        <h1>ABC Catastral</h1>
+        <Editable as="h1" id="glos.h1">ABC Catastral</Editable>
         <Editable as="p" id="glos.hero-intro" className="sub" multiline>Entiende los términos clave del catastro multipropósito explicados en lenguaje claro. Busca por palabra o filtra por inicial.</Editable>
       </section>
 
@@ -32,9 +32,9 @@ export default function GlosarioPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/recursos/foto-pilonera2.webp)", ["--band-m" as string]: "url(/assets/recursos/foto-pilonera2-m.webp)", backgroundPosition: "center 37%" }}
       >
         <div className="atg-wrap">
-          <h2>Aplica lo aprendido en tu trámite</h2>
-          <p>Conoce los trámites y productos catastrales disponibles, con sus requisitos y tiempos de respuesta.</p>
-          <a className="atg-pill" href="/servicios">Ver trámites y servicios</a>
+          <Editable as="h2" id="glos.cierre-h2">Aplica lo aprendido en tu trámite</Editable>
+          <Editable as="p" id="glos.cierre-p" multiline>Conoce los trámites y productos catastrales disponibles, con sus requisitos y tiempos de respuesta.</Editable>
+          <a className="atg-pill" href="/servicios"><Editable as="span" id="glos.cierre-cta">Ver trámites y servicios</Editable></a>
         </div>
       </section>
     </>

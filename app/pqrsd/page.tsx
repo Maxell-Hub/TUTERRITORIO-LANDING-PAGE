@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PqrsdForm from "@/components/pqrsd/PqrsdForm";
+import Editable from "@/components/admin/Editable";
 import AvisoGestorModal from "@/components/site/AvisoGestorModal";
 import { AvisoGestorBody } from "@/components/site/AvisoGestorCatastral";
 
@@ -26,14 +27,13 @@ export default function PqrsdPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/pqrsd/foto-radica2.webp)", ["--hero-m" as string]: "url(/assets/pqrsd/foto-radica2-m.webp)", backgroundPosition: "center 15%" }}
       >
-        <h1>Radica tu PQRSD</h1>
+        <Editable as="h1" id="pqrsd.h1">Radica tu PQRSD</Editable>
         <p className="sub">
-          Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio.
-          Completa el formulario y nuestro equipo dará trámite a tu solicitud.
+          <Editable as="span" id="pqrsd.hero-sub" multiline>Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio. Completa el formulario y nuestro equipo dará trámite a tu solicitud.</Editable>
         </p>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="#formulario">Diligenciar el formulario</a>
-          <a className="atg-pill ghost" href="/preguntas-frecuentes">Preguntas frecuentes</a>
+          <a className="atg-pill" href="#formulario"><Editable as="span" id="pqrsd.hero-cta1">Diligenciar el formulario</Editable></a>
+          <a className="atg-pill ghost" href="/preguntas-frecuentes"><Editable as="span" id="pqrsd.hero-cta2">Preguntas frecuentes</Editable></a>
         </div>
       </section>
 
@@ -57,9 +57,9 @@ export default function PqrsdPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/pqrsd/foto-juglares2.webp)", ["--band-m" as string]: "url(/assets/pqrsd/foto-juglares2-m.webp)", backgroundPosition: "center 83%" }}
       >
         <div className="atg-wrap">
-          <h2>Resuelve tus dudas antes de radicar</h2>
-          <p>Consulta el ABC catastral y las respuestas a las preguntas más comunes sobre trámites, avalúos y el catastro de Valledupar.</p>
-          <a className="atg-pill" href="/preguntas-frecuentes">Ver preguntas frecuentes</a>
+          <Editable as="h2" id="pqrsd.cierre-h2">Resuelve tus dudas antes de radicar</Editable>
+          <Editable as="p" id="pqrsd.cierre-p" multiline>Consulta el ABC catastral y las respuestas a las preguntas más comunes sobre trámites, avalúos y el catastro de Valledupar.</Editable>
+          <a className="atg-pill" href="/preguntas-frecuentes"><Editable as="span" id="pqrsd.cierre-cta">Ver preguntas frecuentes</Editable></a>
         </div>
       </section>
     </>
