@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
 import FaqExplorer from "@/components/faq/FaqExplorer";
-import { FAQ_GRUPOS } from "@/components/faq/faq-data";
+import { readContent } from "@/lib/store";
+import { DEFAULT_FAQ } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Preguntas frecuentes",
@@ -10,18 +11,18 @@ export const metadata: Metadata = {
     "Respuestas a las preguntas más frecuentes sobre trámites catastrales, avalúos, impuesto predial y PQRSD ante Tuterritorio — Catastro Multipropósito de Valledupar.",
 };
 
-export default function PreguntasFrecuentesPage() {
+export default async function PreguntasFrecuentesPage() {
+  // Lee las preguntas del contenido editable (o las semillas por defecto).
+  const faqs = await readContent("faq", DEFAULT_FAQ);
   // Datos estructurados FAQPage (schema.org) para los buscadores.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: FAQ_GRUPOS.flatMap((g) =>
-      g.faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.aText },
-      }))
-    ),
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 
   return (

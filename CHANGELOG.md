@@ -6,6 +6,14 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.24.0] - 2026-07-30
+
+### Añadido
+- **Editor dedicado de Preguntas frecuentes:** el FAQ ahora es administrable desde el panel como noticias/equipo/normativas. Se puede **agregar, editar y eliminar** cada pregunta (categoría, pregunta y respuesta) desde el modo administrador, con guardado en el mismo almacén de contenido (`faq`). El JSON-LD FAQPage se genera desde el contenido guardado.
+
+### Cambiado
+- Las 13 preguntas migran de código fijo (`faq-data.tsx`, eliminado) a contenido editable (`DEFAULT_FAQ` en `lib/content.ts` + `data/faq.json`). Las respuestas pasan a texto plano (se conserva toda la información; los enlaces internos quedan como referencia en el texto).
+
 ## [2.23.0] - 2026-07-30
 
 ### Añadido

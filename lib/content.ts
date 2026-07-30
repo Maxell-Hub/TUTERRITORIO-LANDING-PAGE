@@ -184,6 +184,37 @@ export const DEFAULT_EQUIPO: Member[] = [
 export type Overrides = Record<string, string>;
 export const DEFAULT_OVERRIDES: Overrides = {};
 
+/* ------------------------------------------------------------------ */
+/* PREGUNTAS FRECUENTES (FAQ)                                          */
+/* ------------------------------------------------------------------ */
+
+export type Faq = { id: string; cat: string; q: string; a: string };
+
+/** Categorías del FAQ con su etiqueta corta y color de acento. */
+export const FAQ_CATS: { titulo: string; corto: string; accent: string }[] = [
+  { titulo: "Trámites catastrales", corto: "Trámites", accent: "#3B85A5" },
+  { titulo: "Avalúo catastral e impuesto predial", corto: "Avalúos e impuesto", accent: "#4E8654" },
+  { titulo: "PQRSD y atención a la ciudadanía", corto: "PQRSD", accent: "#F0B63B" },
+  { titulo: "Sobre la entidad", corto: "La entidad", accent: "#2A5A70" },
+];
+export const FAQ_CATEGORIES = FAQ_CATS.map((c) => c.titulo);
+
+export const DEFAULT_FAQ: Faq[] = [
+  { id: "docs-tramite", cat: "Trámites catastrales", q: "¿Qué documentos necesito para hacer un trámite catastral?", a: "Para la mayoría de los trámites necesitas la solicitud del trámite con tus datos de notificación (celular, correo y dirección) y la fotocopia de la cédula de quien realiza el trámite (propietario, poseedor u ocupante, según el caso). Según el trámite pueden pedirse además la escritura pública, el certificado de libertad y tradición actualizado o planos. Consulta el detalle de cada trámite en la página de Trámites y servicios." },
+  { id: "tiempos-tramite", cat: "Trámites catastrales", q: "¿Cuánto tarda la respuesta de un trámite?", a: "Depende del tipo de trámite: las rectificaciones sencillas (nombre, documento, dirección y cambio de propietario) tardan hasta 15 días hábiles; el cambio de destino hasta 30 días hábiles; los trámites que requieren revisión técnica (englobe, desenglobe, áreas e inscripciones) hasta 60 días hábiles, y la revisión del avalúo catastral hasta 90 días hábiles. El tiempo de cada trámite aparece en su tarjeta en Trámites y servicios." },
+  { id: "costo-tramite", cat: "Trámites catastrales", q: "¿Los trámites catastrales tienen costo?", a: "No. Los trámites catastrales son gratuitos. Los que tienen costo son los productos catastrales (certificados, cartas catastrales y fichas prediales), cuyos valores son establecidos por la Alcaldía de Valledupar y se pagan directamente a ella mediante su cuenta bancaria oficial o los datáfonos dispuestos para tal fin." },
+  { id: "donde-radicar", cat: "Trámites catastrales", q: "¿Dónde radico mi trámite?", a: "De manera presencial en nuestra sede: Calle 16 #9-48, Edificio Caja Agraria — Oficina 1301, Valledupar (Cesar), de lunes a viernes de 8:00 a. m. a 12:00 m. y de 2:00 p. m. a 6:00 p. m. En Canales de atención encuentras el mapa, el teléfono y el correo institucional." },
+  { id: "que-es-avaluo", cat: "Avalúo catastral e impuesto predial", q: "¿Qué es el avalúo catastral y para qué sirve?", a: "Es el valor oficial que la autoridad catastral asigna a tu predio a partir de sus características físicas, jurídicas y económicas. Sirve, entre otros usos, como base para liquidar el impuesto predial unificado. Encuentras más términos explicados en el ABC Catastral." },
+  { id: "revision-avaluo", cat: "Avalúo catastral e impuesto predial", q: "¿Puedo pedir la revisión del avalúo de mi predio?", a: "Sí. La solicitud se presenta por escrito, indicando la(s) vigencia(s) objeto de la petición y acompañada de las pruebas que fundamenten la variación (planos, certificaciones, avalúos comerciales o escrituras). El trámite tarda hasta 90 días hábiles y no tiene costo." },
+  { id: "cobro-predial", cat: "Avalúo catastral e impuesto predial", q: "¿Tuterritorio cobra el impuesto predial?", a: "No. Tuterritorio determina el avalúo catastral, que es la base del impuesto, pero la liquidación y el recaudo del impuesto predial unificado corresponden a la Alcaldía de Valledupar (Secretaría de Hacienda). Cualquier pago del impuesto se hace directamente ante la Alcaldía." },
+  { id: "radicar-pqrsd", cat: "PQRSD y atención a la ciudadanía", q: "¿Cómo radico una petición, queja, reclamo, sugerencia o denuncia (PQRSD)?", a: "Puedes radicarla en línea desde el formulario de PQRSD del sitio web, sin salir de casa. También puedes hacerlo por los canales de atención (correo institucional o de manera presencial en la sede)." },
+  { id: "anexos-pqrsd", cat: "PQRSD y atención a la ciudadanía", q: "¿Puedo adjuntar documentos a mi PQRSD?", a: "Sí. El formulario permite adjuntar hasta 3 archivos (máximo 4 MB en total) en formatos PDF, JPG, PNG, WEBP, DOC o DOCX: por ejemplo la cédula, escrituras, certificados o fotos que soporten tu solicitud." },
+  { id: "tiempos-pqrsd", cat: "PQRSD y atención a la ciudadanía", q: "¿En cuánto tiempo responden mi PQRSD?", a: "Dentro de los términos de la Ley 1755 de 2015: por regla general, las peticiones se resuelven en 15 días hábiles; las solicitudes de documentos e información en 10 días hábiles, y las consultas en 30 días hábiles, contados desde el día siguiente a la radicación. La respuesta llega al correo que registres en el formulario." },
+  { id: "que-es-tuterritorio", cat: "Sobre la entidad", q: "¿Qué es Tuterritorio?", a: "Es el operador catastral del municipio de Valledupar: la entidad encargada de operar el catastro con enfoque multipropósito, es decir, de mantener actualizada la información física, jurídica y económica de los predios del municipio. Conoce más en la página Nosotros." },
+  { id: "catastro-multiproposito", cat: "Sobre la entidad", q: "¿Qué es el catastro multipropósito?", a: "Es un sistema de información del territorio que integra los datos físicos, jurídicos y económicos de cada predio para múltiples usos públicos: planeación del territorio, seguridad jurídica de la propiedad, finanzas municipales y políticas de desarrollo." },
+  { id: "quien-vigila", cat: "Sobre la entidad", q: "¿Quién vigila y controla a Tuterritorio?", a: "El IGAC (Instituto Geográfico Agustín Codazzi) es la máxima autoridad catastral del país y regula la prestación del servicio, y la SNR (Superintendencia de Notariado y Registro) ejerce la inspección, vigilancia y control sobre los gestores catastrales. Más información en Información de la entidad (Transparencia)." },
+];
+
 /** Devuelve el valor por defecto para una key de contenido conocida. */
 export function defaultFor(key: string): unknown {
   if (key === "noticias") return DEFAULT_NOTICIAS;
@@ -191,5 +222,6 @@ export function defaultFor(key: string): unknown {
   if (key === "glosario") return DEFAULT_GLOSARIO;
   if (key === "equipo") return DEFAULT_EQUIPO;
   if (key === "overrides") return DEFAULT_OVERRIDES;
+  if (key === "faq") return DEFAULT_FAQ;
   return null;
 }
