@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.24.1] - 2026-07-30
+
+### Cambiado
+- **Rediseño de los espacios de edición del administrador** para alinearlos con el diseño del sitio: los modales de todos los editores (noticias, equipo, normativas, glosario y FAQ) quedan más redondeados, con la etiqueta de sección como badge tipo píldora sobre la cabecera navy, botones tipo píldora ATG con elevación al pasar el cursor, campos más suaves y foco azul más marcado, zona de subida más redondeada, y la edición en línea (Editable) con resaltado ámbar más limpio. No cambia ninguna funcionalidad.
+
 ## [2.24.0] - 2026-07-30
 
 ### Añadido
