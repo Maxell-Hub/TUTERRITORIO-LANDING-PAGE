@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function InformacionEntidadPage() {
   return (
     <TPageATG
+      editKey="transp-informacion-entidad"
       title="Información de la entidad"
       lead="Datos básicos de Tuterritorio como operador catastral del municipio de Valledupar."
       eyebrow="Sección 1"

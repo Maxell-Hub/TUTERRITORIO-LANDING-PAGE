@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function TramitesTransparenciaPage() {
   return (
     <TPageATG
+      editKey="transp-tramites"
       title="Trámites y servicios"
       lead="Trámites y servicios catastrales disponibles para la ciudadanía."
       eyebrow="Sección 5"

@@ -199,8 +199,8 @@ export default function ServiciosPage() {
         <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
         <p className="sub"><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="#tramites">Ver los trámites</a>
-          <a className="atg-pill ghost" href="/pqrsd">Radicar una PQRSD</a>
+          <a className="atg-pill" href="#tramites"><Editable as="span" id="serv.hero-cta1">Ver los trámites</Editable></a>
+          <a className="atg-pill ghost" href="/pqrsd"><Editable as="span" id="serv.hero-cta2">Radicar una PQRSD</Editable></a>
         </div>
       </section>
 
@@ -210,7 +210,7 @@ export default function ServiciosPage() {
           <div className="reveal" style={{ maxWidth: "46rem" }}>
             <Editable as="h2" id="serv.section-title">Selecciona el trámite que necesitas</Editable>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.7, color: "var(--tt-gray-500)" }}>
-              ¿Quieres saber qué necesitas? Haz clic o pasa el cursor sobre un trámite para ver sus documentos y requisitos.
+              <Editable as="span" id="serv.section-intro" multiline>¿Quieres saber qué necesitas? Haz clic o pasa el cursor sobre un trámite para ver sus documentos y requisitos.</Editable>
             </p>
           </div>
 
@@ -282,9 +282,9 @@ export default function ServiciosPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/servicios/foto-plaza2.webp)", ["--band-m" as string]: "url(/assets/servicios/foto-plaza2-m.webp)", backgroundPosition: "center 10%" }}
       >
         <div className="atg-wrap">
-          <h2>¿No encontraste lo que buscabas?</h2>
-          <p>Radica tu petición, queja, reclamo, sugerencia o denuncia. Cada solicitud queda con radicado y tiempos de respuesta según la ley.</p>
-          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
+          <Editable as="h2" id="serv.cierre-h2">¿No encontraste lo que buscabas?</Editable>
+          <Editable as="p" id="serv.cierre-p" multiline>Radica tu petición, queja, reclamo, sugerencia o denuncia. Cada solicitud queda con radicado y tiempos de respuesta según la ley.</Editable>
+          <a className="atg-pill" href="/pqrsd"><Editable as="span" id="serv.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>
     </>

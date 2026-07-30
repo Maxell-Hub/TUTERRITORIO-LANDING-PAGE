@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Editable from "@/components/admin/Editable";
 
 const SITE_URL = "https://tuterritorio.gov.co";
 
@@ -11,11 +12,14 @@ export function TPage({
   title,
   lead,
   eyebrow = "Transparencia y acceso a la información pública",
+  editKey,
   children,
 }: {
   title: string;
   lead?: string;
   eyebrow?: string;
+  /** Prefijo de id para hacer editables el título y el lead (p. ej. "transp-normativa"). */
+  editKey?: string;
   children: React.ReactNode;
 }) {
   // Datos estructurados de ruta de exploración (Inicio › Transparencia › sección).
@@ -37,8 +41,8 @@ export function TPage({
           Volver a Transparencia
         </Link>
         <span className="legal-eyebrow">{eyebrow}</span>
-        <h1>{title}</h1>
-        {lead && <p className="legal-lead">{lead}</p>}
+        {editKey ? <Editable as="h1" id={`${editKey}.title`}>{title}</Editable> : <h1>{title}</h1>}
+        {lead && (editKey ? <Editable as="p" id={`${editKey}.lead`} className="legal-lead" multiline>{lead}</Editable> : <p className="legal-lead">{lead}</p>)}
         <div className="legal-body">{children}</div>
       </div>
     </section>
@@ -57,12 +61,15 @@ export function TPageATG({
   eyebrow,
   photo = "foto-alcaldia",
   photoPos = "center 22%",
+  editKey,
   children,
 }: {
   title: string;
   lead?: string;
   /** Parte destacada del eyebrow: «Transparencia · <b>{eyebrow}</b>». */
   eyebrow: string;
+  /** Prefijo de id para hacer editables el título y el lead (p. ej. "transp-normativa"). */
+  editKey?: string;
   /** Nombre base de la foto del hero en /assets (existe <photo>.webp y <photo>-m.webp). */
   photo?: string;
   /** Encuadre del hero: parte más importante de la foto (background-position). */
@@ -89,8 +96,8 @@ export function TPageATG({
         style={{ backgroundImage: `linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/${photo}.webp)`, ["--hero-m" as string]: `url(/assets/${photo}-m.webp)`, backgroundPosition: photoPos }}
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-        <h1>{title}</h1>
-        {lead && <p className="sub">{lead}</p>}
+        {editKey ? <Editable as="h1" id={`${editKey}.title`}>{title}</Editable> : <h1>{title}</h1>}
+        {lead && (editKey ? <Editable as="p" id={`${editKey}.lead`} className="sub" multiline>{lead}</Editable> : <p className="sub">{lead}</p>)}
       </section>
       <section className="atg-band">
         <div className="atg-wrap" style={{ maxWidth: 880 }}>

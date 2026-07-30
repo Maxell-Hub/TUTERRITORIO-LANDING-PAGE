@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function PlaneacionPage() {
   return (
     <TPageATG
+      editKey="transp-planeacion"
       title="Planeación, presupuesto e informes"
       lead="Instrumentos de planeación y rendición de cuentas de la entidad."
       eyebrow="Sección 4"

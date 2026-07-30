@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function GruposInteresPage() {
   return (
     <TPageATG
+      editKey="transp-grupos-interes"
       title="Información para grupos de interés"
       lead="Contenidos dirigidos a poblaciones y grupos de interés específicos."
       eyebrow="Sección 8"

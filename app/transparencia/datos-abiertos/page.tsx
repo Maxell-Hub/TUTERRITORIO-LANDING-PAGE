@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 export default function DatosAbiertosPage() {
   return (
     <TPageATG
+      editKey="transp-datos-abiertos"
       title="Datos abiertos"
       lead="Conjuntos de datos que la entidad publica en formato abierto y reutilizable."
       eyebrow="Sección 7"

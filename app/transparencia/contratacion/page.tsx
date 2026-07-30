@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 export default function ContratacionPage() {
   return (
     <TPageATG
+      editKey="transp-contratacion"
       title="Contratación"
       lead="Información sobre la actividad contractual de la entidad."
       eyebrow="Sección 3"

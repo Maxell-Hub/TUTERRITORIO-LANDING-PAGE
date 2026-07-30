@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function ReporteInformacionPage() {
   return (
     <TPageATG
+      editKey="transp-reporte-informacion"
       title="Obligación de reporte de información"
       lead="Información que la entidad reporta a organismos de control y entidades del Estado en cumplimiento de la ley."
       eyebrow="Sección 9"

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function NormativaPage() {
   return (
     <TPageATG
+      editKey="transp-normativa"
       title="Normativa"
       lead="Marco legal que regula la gestión catastral y su aplicación en Valledupar."
       eyebrow="Sección 2"

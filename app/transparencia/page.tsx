@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
   title: "Transparencia y acceso a la información pública",
@@ -45,10 +46,9 @@ export default function TransparenciaPage() {
         className="atg-hero"
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/transparencia/foto-alcaldia2.webp)", ["--hero-m" as string]: "url(/assets/transparencia/foto-alcaldia2-m.webp)", backgroundPosition: "center 22%" }}
       >
-        <h1>Transparencia y acceso a la información pública</h1>
+        <Editable as="h1" id="transp.h1">Transparencia y acceso a la información pública</Editable>
         <p className="sub">
-          Información pública de Tuterritorio, operador catastral del municipio de Valledupar, organizada conforme a la
-          Resolución MinTIC 1519 de 2020 y la Ley 1712 de 2014.
+          <Editable as="span" id="transp.hero-sub" multiline>Información pública de Tuterritorio, operador catastral del municipio de Valledupar, organizada conforme a la Resolución MinTIC 1519 de 2020 y la Ley 1712 de 2014.</Editable>
         </p>
       </section>
 
@@ -61,8 +61,8 @@ export default function TransparenciaPage() {
                 <Link key={s.href} href={s.href} className="t-card reveal" style={{ ["--accent" as string]: c.accent, ["--num-fg" as string]: c.fg }}>
                   <span className="t-num">{s.n}</span>
                   <span className="t-card-body">
-                    <span className="t-card-title">{s.titulo}</span>
-                    <span className="t-card-desc">{s.desc}</span>
+                    <span className="t-card-title"><Editable as="span" id={`transp.sub-${i}-titulo`}>{s.titulo}</Editable></span>
+                    <span className="t-card-desc"><Editable as="span" id={`transp.sub-${i}-desc`}>{s.desc}</Editable></span>
                   </span>
                   <span className="t-card-go" aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -80,9 +80,9 @@ export default function TransparenciaPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/transparencia/foto-centro2.webp)", ["--band-m" as string]: "url(/assets/transparencia/foto-centro2-m.webp)", backgroundPosition: "center 45%" }}
       >
         <div className="atg-wrap">
-          <h2>La información pública, al alcance de todos</h2>
-          <p>Si no encuentras un documento o necesitas más información, escríbenos: cada solicitud queda con radicado y tiempos de respuesta según la ley.</p>
-          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
+          <Editable as="h2" id="transp.cierre-h2">La información pública, al alcance de todos</Editable>
+          <Editable as="p" id="transp.cierre-p" multiline>Si no encuentras un documento o necesitas más información, escríbenos: cada solicitud queda con radicado y tiempos de respuesta según la ley.</Editable>
+          <a className="atg-pill" href="/pqrsd"><Editable as="span" id="transp.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>
     </>

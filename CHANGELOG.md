@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.22.0] - 2026-07-30
+
+### Añadido
+- **Edición ampliada (Fase 3 — texto plano):** se hace editable el texto sin formato de **Servicios** (subtítulo de la sección, botones y franja de cierre; los 18 trámites van con editor propio aparte) y de toda la sección de **Transparencia**: el hub (título, subtítulo, las 10 tarjetas y el cierre) y el **título y subtítulo de las 10 subpáginas** (vía `editKey` en la plantilla compartida) y todo el texto plano de **Participa**.
+
 ## [2.21.0] - 2026-07-30
 
 ### Añadido

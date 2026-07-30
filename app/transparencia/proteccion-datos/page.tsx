@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function ProteccionDatosPage() {
   return (
     <TPageATG
+      editKey="transp-proteccion-datos"
       title="Protección de datos personales"
       lead="Tratamiento de datos personales conforme a la Ley 1581 de 2012."
       eyebrow="Sección 10"
