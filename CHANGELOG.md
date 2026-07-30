@@ -6,6 +6,14 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.25.0] - 2026-07-30
+
+### Añadido
+- **Editor dedicado del catálogo de trámites:** los 18 trámites y productos catastrales de Servicios ahora son administrables desde el panel (agregar, editar y eliminar), con nombre, descripción, tiempo, costo, documentos requeridos (uno por línea) y palabras clave de búsqueda. Guardado en el almacén de contenido (`tramites`). El JSON-LD `GovernmentService` (catálogo) se genera desde el contenido guardado. Nuevos componentes `TramitesGrid` y `TramiteEditor`; el buscador en vivo de trámites se conserva.
+
+### Cambiado
+- Los 18 trámites migran de código fijo en `app/servicios/page.tsx` a contenido editable (`DEFAULT_TRAMITES` en `lib/content.ts` + `data/tramites.json`).
+
 ## [2.24.1] - 2026-07-30
 
 ### Cambiado

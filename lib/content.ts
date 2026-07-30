@@ -215,6 +215,43 @@ export const DEFAULT_FAQ: Faq[] = [
   { id: "quien-vigila", cat: "Sobre la entidad", q: "¿Quién vigila y controla a Tuterritorio?", a: "El IGAC (Instituto Geográfico Agustín Codazzi) es la máxima autoridad catastral del país y regula la prestación del servicio, y la SNR (Superintendencia de Notariado y Registro) ejerce la inspección, vigilancia y control sobre los gestores catastrales. Más información en Información de la entidad (Transparencia)." },
 ];
 
+/* ------------------------------------------------------------------ */
+/* TRÁMITES Y SERVICIOS                                                */
+/* ------------------------------------------------------------------ */
+
+export type Tramite = { id: string; title: string; desc: string; tiempo: string; costo: string; reqs: string[]; en?: string };
+
+const _docSolicitud = "Solicitud del trámite con datos de notificación (celular, correo y dirección)";
+const _docIdentidad = "Fotocopia de la cédula de quien realiza el trámite (propietario, poseedor u ocupante, según el caso)";
+const _docEscritura = "Copia de la escritura pública";
+const _docCLT = "Copia del certificado de libertad y tradición actualizado";
+const _docCLT30 = "Copia del certificado de libertad y tradición actualizado (no mayor a 30 días)";
+const _docPredioRural = "Plano topográfico con medidas legibles y cuadro de coordenadas en formato DWG versión 2007, georreferenciado en Magna Sirgas (predios rurales)";
+const _planos = "Copia de planos en escala original, aprobados por curaduría u oficina de planeación";
+const _ph = "PH: copia de la escritura del reglamento de propiedad horizontal, sus modificaciones y planos (cuando aplique)";
+const _productosDocs = ["Fotocopia de la cédula de quien solicita el producto (propietario, poseedor u ocupante, según el caso)", "Certificado de libertad y tradición o recibo del impuesto predial"];
+
+export const DEFAULT_TRAMITES: Tramite[] = [
+  { id: "t-incorporacion-area", title: "Incorporación de área", desc: "Registro inicial del área de un predio dentro de la base catastral.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad, _docEscritura, _docCLT, _docPredioRural], en: "area incorporation initial registration of property area cadastral database deed" },
+  { id: "t-rectificacion-area", title: "Rectificación de área", desc: "Corrección del área del terreno cuando difiere de la realidad física o registral.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad, _docEscritura, _docCLT, _docPredioRural], en: "area rectification correction of land area physical registry" },
+  { id: "t-desenglobe", title: "Desenglobe", desc: "División de un predio en dos o más inmuebles independientes.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docCLT, _docEscritura, _planos, _ph, _docPredioRural], en: "subdivision split division of a property into independent parcels" },
+  { id: "t-englobe", title: "Englobe", desc: "Unificación de dos o más predios en un solo inmueble.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docCLT, _docEscritura, _planos, _ph, _docPredioRural], en: "merger consolidation unification of parcels into one property" },
+  { id: "t-inscripcion-predio", title: "Inscripción de predio", desc: "Registro inicial de un predio o mejora dentro de la información catastral.", tiempo: "Hasta 60 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad, _docCLT30, "Copia de escritura pública o resolución de adjudicación", _docPredioRural], en: "property registration enrollment of a parcel or improvement" },
+  { id: "t-avaluo", title: "Avalúo catastral", desc: "Revisión del avalúo catastral; debe presentarse por escrito indicando la(s) vigencia(s) objeto de petición.", tiempo: "Hasta 90 días hábiles", costo: "Sin costo", reqs: ["Solicitud por escrito con precisión de la(s) vigencia(s) objeto de petición", "Pruebas que fundamenten las variaciones por cambios físicos, valorización o cambios de uso o mercado inmobiliario", "Planos, certificaciones de autoridades, orto/aerofotografías, avalúos comerciales o escrituras que demuestren los cambios"], en: "cadastral appraisal valuation review assessment value" },
+  { id: "t-cambio-destino", title: "Cambio de destino", desc: "Actualización del uso o destino económico asignado al predio.", tiempo: "Hasta 30 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad, _docCLT], en: "change of use economic destination land use update" },
+  { id: "t-rectif-direccion", title: "Rectificación de dirección", desc: "Corrección de la dirección o nomenclatura registrada del predio.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad, "Certificado de nomenclatura"], en: "address correction rectification nomenclature street" },
+  { id: "t-rectif-nombre", title: "Rectificación de nombre", desc: "Corrección del nombre del propietario en la base catastral.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad], en: "name correction rectification owner name" },
+  { id: "t-rectif-documento", title: "Rectificación de documento de identidad", desc: "Corrección del número o tipo de documento del propietario.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad], en: "identity document correction id number rectification" },
+  { id: "t-cambio-propietario", title: "Cambio de propietario", desc: "Actualización catastral cuando el predio cambia de dueño.", tiempo: "Hasta 15 días hábiles", costo: "Sin costo", reqs: [_docSolicitud, _docIdentidad, _docCLT30], en: "change of owner ownership transfer new owner" },
+  { id: "t-cert-plano-predial", title: "Certificado plano predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$52.500", reqs: _productosDocs, en: "property plan certificate map blueprint download" },
+  { id: "t-cert-especial", title: "Certificado catastral especial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$52.200", reqs: _productosDocs, en: "special cadastral certificate download" },
+  { id: "t-cert-avaluo", title: "Certificado avalúo catastral", desc: "Certificación oficial del avalúo catastral vigente del predio, para descarga o entrega física.", tiempo: "Hasta 5 días hábiles", costo: "$52.200", reqs: _productosDocs, en: "cadastral appraisal certificate official valuation" },
+  { id: "t-fotocopia-ficha", title: "Fotocopia de la ficha predial", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$68.500", reqs: _productosDocs, en: "property record card copy photocopy" },
+  { id: "t-carta-urbana", title: "Carta catastral urbana", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$57.900", reqs: _productosDocs, en: "urban cadastral map chart city" },
+  { id: "t-carta-rural", title: "Carta catastral rural", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$76.400", reqs: _productosDocs, en: "rural cadastral map chart countryside" },
+  { id: "t-cert-nacional", title: "Certificado catastral nacional", desc: "Producto catastral disponible para descarga o entrega física.", tiempo: "Hasta 15 días hábiles", costo: "$10.000", reqs: _productosDocs, en: "national cadastral certificate download" },
+];
+
 /** Devuelve el valor por defecto para una key de contenido conocida. */
 export function defaultFor(key: string): unknown {
   if (key === "noticias") return DEFAULT_NOTICIAS;
@@ -223,5 +260,6 @@ export function defaultFor(key: string): unknown {
   if (key === "equipo") return DEFAULT_EQUIPO;
   if (key === "overrides") return DEFAULT_OVERRIDES;
   if (key === "faq") return DEFAULT_FAQ;
+  if (key === "tramites") return DEFAULT_TRAMITES;
   return null;
 }
