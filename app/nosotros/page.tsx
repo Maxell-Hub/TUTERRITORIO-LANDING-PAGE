@@ -101,8 +101,8 @@ export default function NosotrosPage() {
           Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.
         </Editable>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="/nosotros/equipo">Conoce al equipo</a>
-          <a className="atg-pill ghost" href="/servicios">Trámites y servicios</a>
+          <a className="atg-pill" href="/nosotros/equipo"><Editable as="span" id="nos.hero-cta1">Conoce al equipo</Editable></a>
+          <a className="atg-pill ghost" href="/servicios"><Editable as="span" id="nos.hero-cta2">Trámites y servicios</Editable></a>
         </div>
       </section>
 
@@ -124,16 +124,16 @@ export default function NosotrosPage() {
               </div>
             </div>
             <div className="atg-copy reveal">
-              <h2>El operador Catastral del Municipio de Valledupar</h2>
+              <Editable as="h2" id="nos.qs-h2">El operador Catastral del Municipio de Valledupar</Editable>
               <p>
                 Tuterritorio S.A.S es el operador <b style={{ color: "var(--tt-ink)" }}>Catastral Multipropósito</b> del municipio de Valledupar. Identificamos, actualizamos y custodiamos la información de cada predio para garantizar seguridad jurídica, equidad y una mejor planeación del territorio.
               </p>
               <ul>
-                <li>Información física, jurídica y económica de cada predio</li>
-                <li>Datos con plena validez legal para trámites y tributos</li>
-                <li>Trabajo articulado con la Alcaldía de Valledupar</li>
+                <Editable as="li" id="nos.qs-li1">Información física, jurídica y económica de cada predio</Editable>
+                <Editable as="li" id="nos.qs-li2">Datos con plena validez legal para trámites y tributos</Editable>
+                <Editable as="li" id="nos.qs-li3">Trabajo articulado con la Alcaldía de Valledupar</Editable>
               </ul>
-              <a className="atg-pill" href="/nosotros/equipo">Conoce al equipo</a>
+              <a className="atg-pill" href="/nosotros/equipo"><Editable as="span" id="nos.qs-cta">Conoce al equipo</Editable></a>
             </div>
           </div>
         </div>
@@ -144,13 +144,13 @@ export default function NosotrosPage() {
         <div className="atg-wrap">
           <div className="mv-grid reveal">
             <div className="mv-col">
-              <h3 className="mv-title">Misión</h3>
+              <h3 className="mv-title"><Editable as="span" id="nos.mision-title">Misión</Editable></h3>
               <p className="mv-text">
                 <Editable as="span" id="nos.mision" multiline>Operar el catastro multipropósito del municipio de Valledupar, manteniendo la información física, jurídica y económica de cada predio completa, actualizada y disponible para la ciudadanía y la administración municipal. Trabajamos para que esos datos sean una base confiable de seguridad jurídica, equidad tributaria y mejor planeación del territorio.</Editable>
               </p>
             </div>
             <div className="mv-col">
-              <h3 className="mv-title">Visión</h3>
+              <h3 className="mv-title"><Editable as="span" id="nos.vision-title">Visión</Editable></h3>
               <p className="mv-text">
                 <Editable as="span" id="nos.vision" multiline>Ser el referente de la gestión catastral en la región: que cualquier persona en Valledupar pueda conocer y confiar en la información de su predio, y que el municipio planifique su territorio y sus finanzas sobre datos reales, actualizados y transparentes, al servicio del desarrollo y el bienestar de toda la ciudad.</Editable>
               </p>
@@ -169,11 +169,11 @@ export default function NosotrosPage() {
             </p>
           </div>
           <div className="cap-row">
-            {FUNCIONES.map((f) => (
+            {FUNCIONES.map((f, i) => (
               <div key={f.t} className="cap-item reveal" style={{ ["--c" as string]: f.c }}>
                 <span className="cap-ic">{f.ic}</span>
-                <h3>{f.t}</h3>
-                <p>{f.d}</p>
+                <h3><Editable as="span" id={`nos.func-${i}-t`}>{f.t}</Editable></h3>
+                <p><Editable as="span" id={`nos.func-${i}-d`}>{f.d}</Editable></p>
               </div>
             ))}
           </div>
@@ -185,16 +185,16 @@ export default function NosotrosPage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <h2>Hacia dónde trabajamos</h2>
-              <p>Cinco compromisos que orientan nuestra gestión catastral y nuestro servicio diario a la ciudadanía de Valledupar.</p>
-              <a className="atg-pill" href="/servicios">Ver los trámites</a>
+              <Editable as="h2" id="nos.obj-h2">Hacia dónde trabajamos</Editable>
+              <Editable as="p" id="nos.obj-p" multiline>Cinco compromisos que orientan nuestra gestión catastral y nuestro servicio diario a la ciudadanía de Valledupar.</Editable>
+              <a className="atg-pill" href="/servicios"><Editable as="span" id="nos.obj-cta">Ver los trámites</Editable></a>
             </div>
             <div className="atg-visual reveal">
               <ol className="obj-timeline">
                 {OBJETIVOS.map((o, i) => (
                   <li key={o.n} className="obj-step" style={{ ["--accent" as string]: ACC[i % ACC.length] }}>
                     <span className="obj-dot" aria-hidden="true" />
-                    <p>{o.t}</p>
+                    <p><Editable as="span" id={`nos.obj-${i}`}>{o.t}</Editable></p>
                   </li>
                 ))}
               </ol>
@@ -206,8 +206,8 @@ export default function NosotrosPage() {
       {/* 6 · Declaración: el proceso catastral */}
       <section className="atg-statement">
         <div className="atg-wrap">
-          <h2>Etapas del Proceso Catastral</h2>
-          <p>Así avanzamos, paso a paso, hasta tener un catastro actualizado y al servicio de la gente.</p>
+          <Editable as="h2" id="nos.etapas-h2">Etapas del Proceso Catastral</Editable>
+          <Editable as="p" id="nos.etapas-p" multiline>Así avanzamos, paso a paso, hasta tener un catastro actualizado y al servicio de la gente.</Editable>
         </div>
       </section>
 
@@ -219,13 +219,13 @@ export default function NosotrosPage() {
               let paso = 0;
               return ETAPAS.map((e, i) => (
                 <div key={e.fase} className="fase-col reveal">
-                  <p className="fase-tag">{e.fase}</p>
-                  <div className="fase-circle" style={{ background: e.color, zIndex: i + 1 }}>{e.titulo}</div>
+                  <p className="fase-tag"><Editable as="span" id={`nos.etapa-${i}-fase`}>{e.fase}</Editable></p>
+                  <div className="fase-circle" style={{ background: e.color, zIndex: i + 1 }}><Editable as="span" id={`nos.etapa-${i}-titulo`}>{e.titulo}</Editable></div>
                   <ul className="fase-list">
-                    {e.items.map((it) => {
+                    {e.items.map((it, j) => {
                       paso += 1;
                       return (
-                        <li key={it}><b>{paso}.</b> {it}</li>
+                        <li key={it}><b>{paso}.</b> <Editable as="span" id={`nos.etapa-${i}-item-${j}`}>{it}</Editable></li>
                       );
                     })}
                   </ul>
@@ -241,13 +241,13 @@ export default function NosotrosPage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <h2>Conoce dónde te atendemos</h2>
-              <p>Te invitamos a recorrer las oficinas y los espacios donde trabajamos cada día al servicio de la ciudadanía de Valledupar.</p>
+              <Editable as="h2" id="nos.inst-h2">Conoce dónde te atendemos</Editable>
+              <Editable as="p" id="nos.inst-p" multiline>Te invitamos a recorrer las oficinas y los espacios donde trabajamos cada día al servicio de la ciudadanía de Valledupar.</Editable>
               <ul>
-                <li>Atención presencial para consultas y trámites catastrales</li>
-                <li>Lunes a viernes en la sede principal</li>
+                <Editable as="li" id="nos.inst-li1">Atención presencial para consultas y trámites catastrales</Editable>
+                <Editable as="li" id="nos.inst-li2">Lunes a viernes en la sede principal</Editable>
               </ul>
-              <a className="atg-pill" href="/contactos">Contáctanos</a>
+              <a className="atg-pill" href="/contactos"><Editable as="span" id="nos.inst-cta">Contáctanos</Editable></a>
             </div>
             <div className="atg-visual reveal">
               <div style={{ display: "flex", justifyContent: "center" }}>
@@ -276,9 +276,9 @@ export default function NosotrosPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/nosotros/foto-rio2.webp)", ["--band-m" as string]: "url(/assets/nosotros/foto-rio2-m.webp)", backgroundPosition: "center 50%" }}
       >
         <div className="atg-wrap">
-          <h2>Visítanos en nuestra sede principal</h2>
-          <p>Aquí atendemos en persona cada consulta y trámite catastral, de lunes a viernes.</p>
-          <a className="atg-pill" href="/contactos">Cómo llegar</a>
+          <Editable as="h2" id="nos.cierre-h2">Visítanos en nuestra sede principal</Editable>
+          <Editable as="p" id="nos.cierre-p" multiline>Aquí atendemos en persona cada consulta y trámite catastral, de lunes a viernes.</Editable>
+          <a className="atg-pill" href="/contactos"><Editable as="span" id="nos.cierre-cta">Cómo llegar</Editable></a>
         </div>
       </section>
     </>

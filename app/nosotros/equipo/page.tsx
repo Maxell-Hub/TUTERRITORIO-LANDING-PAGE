@@ -33,8 +33,8 @@ export default function EquipoPage() {
           Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.
         </Editable>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="#equipo">Conoce al equipo</a>
-          <a className="atg-pill ghost" href="/contactos">Contáctanos</a>
+          <a className="atg-pill" href="#equipo"><Editable as="span" id="equipo.hero-cta1">Conoce al equipo</Editable></a>
+          <a className="atg-pill ghost" href="/contactos"><Editable as="span" id="equipo.hero-cta2">Contáctanos</Editable></a>
         </div>
       </section>
 
@@ -47,9 +47,9 @@ export default function EquipoPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/equipo/foto-mulata2.webp)", ["--band-m" as string]: "url(/assets/equipo/foto-mulata2-m.webp)", backgroundPosition: "center 42%" }}
       >
         <div className="atg-wrap">
-          <h2>Un equipo que responde por tu predio</h2>
-          <p>En campo y en oficina, cada integrante trabaja para que la información catastral de Valledupar sea confiable y esté al día.</p>
-          <a className="atg-pill" href="/contactos">Contáctanos</a>
+          <Editable as="h2" id="equipo.cierre-h2">Un equipo que responde por tu predio</Editable>
+          <Editable as="p" id="equipo.cierre-p" multiline>En campo y en oficina, cada integrante trabaja para que la información catastral de Valledupar sea confiable y esté al día.</Editable>
+          <a className="atg-pill" href="/contactos"><Editable as="span" id="equipo.cierre-cta">Contáctanos</Editable></a>
         </div>
       </section>
     </>

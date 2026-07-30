@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.21.0] - 2026-07-30
+
+### Añadido
+- **Edición ampliada (Fase 2 — texto plano):** se hace editable todo el texto sin formato de **Nosotros** (quiénes somos, "Lo que hacemos" con sus 4 funciones, misión/visión, "Hacia dónde trabajamos" con los 5 objetivos, las 4 etapas del proceso catastral con sus items, instalaciones y cierre) y el **cierre de Nuestro Equipo**. Los datos de arreglos (funciones, objetivos, etapas) quedan editables por elemento.
+
 ## [2.20.0] - 2026-07-30
 
 ### Añadido
