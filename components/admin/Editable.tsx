@@ -146,7 +146,10 @@ export default function Editable({
       className: `${className} edt edt-on`.trim(),
       style: multiline ? { whiteSpace: "pre-line" } : undefined,
       title: "Clic para editar",
-      onClick: () => {
+      onClick: (e: React.MouseEvent) => {
+        // Evita que el clic navegue (si el texto está dentro de un enlace/botón).
+        e.preventDefault();
+        e.stopPropagation();
         setDraft(value);
         setEditing(true);
       },

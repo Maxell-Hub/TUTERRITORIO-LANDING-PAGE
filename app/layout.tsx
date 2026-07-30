@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import RevealManager from "@/components/motion/RevealManager";
 import AuthProvider from "@/components/auth/AuthProvider";
@@ -142,6 +143,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Google Analytics 4 (gtag.js) */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-1W6H8R3KJV" strategy="afterInteractive" />
+        <Script id="ga-gtag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1W6H8R3KJV');`}
+        </Script>
         <AuthProvider>
           <OverridesProvider>
             <SiteChrome>{children}</SiteChrome>

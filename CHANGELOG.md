@@ -6,6 +6,15 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.20.0] - 2026-07-30
+
+### Añadido
+- **Google Analytics 4** (gtag.js, ID G-1W6H8R3KJV) cargado con `next/script` (`afterInteractive`), con la Content-Security-Policy actualizada para permitir `googletagmanager.com` y `google-analytics.com`.
+- **Edición ampliada (Fase 1 — texto plano):** se hace editable desde el panel de administrador todo el texto sin formato de **Inicio, Atención a la ciudadanía y Contactos** (títulos de sección, subtítulos, párrafos, viñetas, etiquetas de cifras, textos de tarjetas y de botones/CTA). El componente `Editable` ahora permite editar también textos que van dentro de enlaces sin que el clic navegue.
+
+### Nota
+- Para que los cambios del administrador se guarden en **producción** es necesario reactivar/conectar el almacenamiento (Vercel Blob) y hacer Redeploy; en local se guardan en `data/*.json`.
+
 ## [2.19.1] - 2026-07-29
 
 ### Cambiado

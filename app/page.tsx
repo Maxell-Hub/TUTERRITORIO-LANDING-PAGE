@@ -33,7 +33,7 @@ export default function HomePage() {
           Consulta la información catastral oficial de tu propiedad en Valledupar como linderos, área, avalúo y estado de tus trámites en un solo lugar.
         </Editable>
         <div className="atg-cta-row">
-          <a className="atg-pill ghost" href="/#visor">Conocer la plataforma</a>
+          <a className="atg-pill ghost" href="/#visor"><Editable as="span" id="home.cta-visor">Conocer la plataforma</Editable></a>
         </div>
       </section>
 
@@ -49,13 +49,13 @@ export default function HomePage() {
               </div>
             </div>
             <div className="atg-copy reveal">
-              <h2>Todo el territorio, en un visor vivo</h2>
+              <Editable as="h2" id="home.visor-h2">Todo el territorio, en un visor vivo</Editable>
               <Editable as="p" id="home.visor-p" multiline>
                 Cartografía predial completa de Valledupar: 6 sectores catastrales en el área urbana, 25 corregimientos en zona rural y resguardos indígenas en la Sierra Nevada.
               </Editable>
               <ul>
-                <li>Zonas físicas, económicas y usos del suelo por capas</li>
-                <li>Consulta ciudadana del predio en línea</li>
+                <Editable as="li" id="home.visor-li1">Zonas físicas, económicas y usos del suelo por capas</Editable>
+                <Editable as="li" id="home.visor-li2">Consulta ciudadana del predio en línea</Editable>
               </ul>
             </div>
           </div>
@@ -67,16 +67,16 @@ export default function HomePage() {
         <div className="atg-wrap">
           <div className="atg-feature flip">
             <div className="atg-copy reveal">
-              <h2>Tus trámites, con requisitos y tiempos claros</h2>
+              <Editable as="h2" id="home.tramites-h2">Tus trámites, con requisitos y tiempos claros</Editable>
               <Editable as="p" id="home.tramites-p" multiline>
                 Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.
               </Editable>
               <ul>
-                <li>Mutaciones, englobes, desenglobes y rectificaciones</li>
-                <li>Radica tu PQRSD y consulta su estado en línea</li>
-                <li>Atención presencial en la sede principal</li>
+                <Editable as="li" id="home.tramites-li1">Mutaciones, englobes, desenglobes y rectificaciones</Editable>
+                <Editable as="li" id="home.tramites-li2">Radica tu PQRSD y consulta su estado en línea</Editable>
+                <Editable as="li" id="home.tramites-li3">Atención presencial en la sede principal</Editable>
               </ul>
-              <a className="atg-pill" href="/servicios">Ver los trámites</a>
+              <a className="atg-pill" href="/servicios"><Editable as="span" id="home.cta-tramites">Ver los trámites</Editable></a>
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
@@ -96,15 +96,15 @@ export default function HomePage() {
           <div className="atg-stats">
             <div className="atg-stat reveal">
               <div className="n"><CountUp value={4340} prefix="+" /></div>
-              <div className="d">Trámites finalizados</div>
+              <Editable as="div" id="home.stat1-d" className="d">Trámites finalizados</Editable>
             </div>
             <div className="atg-stat reveal">
               <div className="n"><CountUp value={83} suffix="%" /></div>
-              <div className="d">Efectividad operativa</div>
+              <Editable as="div" id="home.stat2-d" className="d">Efectividad operativa</Editable>
             </div>
             <div className="atg-stat reveal">
               <div className="n"><CountUp value={6} duration={1200} /> + <CountUp value={25} /></div>
-              <div className="d">Sectores urbanos y corregimientos rurales</div>
+              <Editable as="div" id="home.stat3-d" className="d">Sectores urbanos y corregimientos rurales</Editable>
             </div>
           </div>
         </div>
@@ -113,11 +113,11 @@ export default function HomePage() {
       {/* 7 · Franja fotográfica de cierre */}
       <section className="atg-photo-band">
         <div className="atg-wrap">
-          <h2>Hecho para el territorio de Valledupar</h2>
+          <Editable as="h2" id="home.cierre-h2">Hecho para el territorio de Valledupar</Editable>
           <Editable as="p" id="home.cierre-p" multiline>
             Del área urbana a los corregimientos de la Sierra Nevada, Tuterritorio acompaña al municipio en su camino hacia un catastro multipropósito, moderno y eficiente.
           </Editable>
-          <a className="atg-pill" href="/contactos">Contáctanos</a>
+          <a className="atg-pill" href="/contactos"><Editable as="span" id="home.cta-contacto">Contáctanos</Editable></a>
         </div>
       </section>
     </>

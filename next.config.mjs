@@ -10,11 +10,11 @@
 const devEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${devEval} https://va.vercel-scripts.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://www.gstatic.com https://www.google.com https://apis.google.com`,
+  `script-src 'self' 'unsafe-inline'${devEval} https://va.vercel-scripts.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://www.gstatic.com https://www.google.com https://apis.google.com https://www.googletagmanager.com`,
   "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://www.gstatic.com https://fonts.gstatic.com",
-  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://translate.googleapis.com https://translate-pa.googleapis.com https://translate.google.com https://www.google.com",
+  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://translate.googleapis.com https://translate-pa.googleapis.com https://translate.google.com https://www.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
   "frame-src 'self' https://www.google.com https://maps.google.com https://translate.google.com https://translate.googleapis.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",

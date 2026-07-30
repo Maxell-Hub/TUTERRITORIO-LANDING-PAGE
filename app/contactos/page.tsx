@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactoForm from "@/components/contacto/ContactoForm";
+import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
   title: "Contáctenos",
@@ -19,14 +20,13 @@ export default function ContactosPage() {
       <link rel="preload" as="image" href="/assets/contactos/foto-canales2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico ATG */}
       <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/contactos/foto-canales2.webp)", ["--hero-m" as string]: "url(/assets/contactos/foto-canales2-m.webp)", backgroundPosition: "center 9%" }}>
-        <h1>Contáctenos</h1>
+        <Editable as="h1" id="cont.h1">Contáctenos</Editable>
         <p className="sub">
-          Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio
-          y un miembro de nuestro equipo te responderá. También puedes visitarnos en nuestra sede principal.
+          <Editable as="span" id="cont.hero-sub" multiline>Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio y un miembro de nuestro equipo te responderá. También puedes visitarnos en nuestra sede principal.</Editable>
         </p>
         <div className="atg-cta-row">
-          <a className="atg-pill" href="#formulario">Escríbenos</a>
-          <a className="atg-pill ghost" href="#mapa">Cómo llegar</a>
+          <a className="atg-pill" href="#formulario"><Editable as="span" id="cont.hero-cta1">Escríbenos</Editable></a>
+          <a className="atg-pill ghost" href="#mapa"><Editable as="span" id="cont.hero-cta2">Cómo llegar</Editable></a>
         </div>
       </section>
 
@@ -34,7 +34,7 @@ export default function ContactosPage() {
       <section className="atg-band" id="formulario">
         <div className="atg-wrap">
           <div style={{ textAlign: "center", marginBottom: 44 }}>
-            <h2>Cuéntanos qué necesitas</h2>
+            <Editable as="h2" id="cont.form-h2">Cuéntanos qué necesitas</Editable>
           </div>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <ContactoForm />
@@ -47,13 +47,13 @@ export default function ContactosPage() {
         <div className="atg-wrap">
           <div className="atg-panel reveal">
             <div className="atg-copy">
-              <h2>Edificio Caja Agraria — Oficina 1301</h2>
-              <p>Calle 16 #9-48, en pleno centro de Valledupar, Cesar.</p>
+              <Editable as="h2" id="cont.sede-h2">Edificio Caja Agraria — Oficina 1301</Editable>
+              <Editable as="p" id="cont.sede-p">Calle 16 #9-48, en pleno centro de Valledupar, Cesar.</Editable>
               <ul>
-                <li>Atención presencial de lunes a viernes</li>
-                <li>De 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</li>
+                <Editable as="li" id="cont.sede-li1">Atención presencial de lunes a viernes</Editable>
+                <Editable as="li" id="cont.sede-li2">De 8:00 a.m. - 12:00 m. y 2:00 p.m. - 6:00 p.m.</Editable>
               </ul>
-              <a className="atg-pill" href="https://maps.app.goo.gl/M3GqdiRtVDRVe9NFA" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+              <a className="atg-pill" href="https://maps.app.goo.gl/M3GqdiRtVDRVe9NFA" target="_blank" rel="noopener noreferrer"><Editable as="span" id="cont.sede-cta">Ver en Google Maps</Editable></a>
             </div>
             <img className="photo" src="/assets/contactos/img-caja2.webp" srcSet="/assets/contactos/img-caja2-m.webp 860w, /assets/contactos/img-caja2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Sede de Tuterritorio — Edificio Caja Agraria, Valledupar" loading="lazy" decoding="async" width={1300} height={865} />
           </div>
@@ -70,9 +70,9 @@ export default function ContactosPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/contactos/foto-obelisco2.webp)", ["--band-m" as string]: "url(/assets/contactos/foto-obelisco2-m.webp)", backgroundPosition: "center 30%" }}
       >
         <div className="atg-wrap">
-          <h2>También puedes radicar en línea</h2>
-          <p>Si prefieres no desplazarte, radica tu petición, queja o reclamo desde cualquier lugar y haz seguimiento con tu número de radicado.</p>
-          <a className="atg-pill" href="/pqrsd">Radicar una PQRSD</a>
+          <Editable as="h2" id="cont.cierre-h2">También puedes radicar en línea</Editable>
+          <Editable as="p" id="cont.cierre-p" multiline>Si prefieres no desplazarte, radica tu petición, queja o reclamo desde cualquier lugar y haz seguimiento con tu número de radicado.</Editable>
+          <a className="atg-pill" href="/pqrsd"><Editable as="span" id="cont.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>
     </>
