@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.27.1] - 2026-08-05
+
+### Añadido
+- En Nuestro Equipo se agrega el cargo **"Jefe de la Oficina de Gestión Catastral"** junto al Gerente, en el grupo de Dirección (dos tarjetas destacadas lado a lado).
+
 ## [2.27.0] - 2026-08-05
 
 ### Cambiado
