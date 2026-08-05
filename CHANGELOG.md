@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.27.0] - 2026-08-05
+
+### Cambiado
+- **Nuevo diseño de Nuestro Equipo** (a partir de la referencia del usuario): la Gerencia como tarjetas con foto grande arriba y una banda con el nombre y el cargo debajo; el equipo directivo con un encabezado ("Equipo directivo" + título y subtítulo editables + contador de cargos) y una grilla de tarjetas con foto arriba y nombre/cargo debajo. Se retiran los íconos de iniciales y se resuelve para modo claro y oscuro.
+
 ## [2.26.1] - 2026-08-05
 
 ### Cambiado
