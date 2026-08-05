@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.26.1] - 2026-08-05
+
+### Cambiado
+- **Nuestro Equipo** ajustado al diseño de estructura organizacional: la Gerencia como tarjeta destacada (foto + cargo + nombre + reseña) y las jefaturas en una grilla de tarjetas con ícono de color por cargo, bajo el divisor "Equipo directivo". Se conservan los nombres abreviados y la edición desde el panel.
+
 ## [2.26.0] - 2026-08-05
 
 ### Cambiado
