@@ -855,32 +855,34 @@ img { max-width: 100%; }
 .avatar-grid .cap { display: flex; flex-direction: column; gap: 2px; font: 600 0.8125rem/1.3 var(--font-sans); color: var(--tt-navy-700); }
 .avatar-grid .cap .role { font: 500 0.6875rem/1.25 var(--font-sans); color: var(--tt-gray-500); }
 
-/* --- Nuestro Equipo: mosaico Bento (cuadros, con algunos anchos para rellenar) --- */
-.team-bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr;
-  gap: 18px; max-width: 1060px; margin: 0 auto; grid-auto-flow: dense; }
-.bento-tile { position: relative; overflow: hidden; border-radius: 20px; aspect-ratio: 1 / 1;
-  background: linear-gradient(150deg, var(--tt-navy-600), var(--tt-navy-900));
-  box-shadow: var(--shadow-sm); transition: transform .28s var(--ease-soft), box-shadow .28s var(--ease-soft); }
-.bento-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.bento-tile.lead { grid-column: span 2; grid-row: span 2; }
-.bento-tile.wide { grid-column: span 2; aspect-ratio: 2 / 1; }
-.bento-tile > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.bento-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.bento-cap { position: absolute; inset: auto 0 0 0; padding: 16px 16px 15px;
-  background: linear-gradient(to top, rgba(6,18,26,.9) 8%, rgba(6,18,26,.5) 55%, transparent);
-  color: #fff; }
-.bento-cap h4 { margin: 0; font: 700 0.9375rem/1.25 var(--font-sans); color: #fff; letter-spacing: -0.01em; }
-.bento-cap p { margin: 3px 0 0; font: 500 0.75rem/1.3 var(--font-sans); color: rgba(255,255,255,.82); }
-.bento-tile.lead .bento-cap { padding: 22px 22px 20px; }
-.bento-tile.lead .bento-cap h4 { font-size: 1.375rem; line-height: 1.2; }
-.bento-tile.lead .bento-cap p { font-size: 0.9375rem; margin-top: 5px; }
-.bento-tile.wide .bento-cap h4 { font-size: 1.0625rem; }
-.bento-actions { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; z-index: 2; }
+/* --- Nuestro Equipo: tarjetas con foto grande, nombre y cargo debajo --- */
+.person-card { background: #fff; border: 1px solid var(--border-subtle); border-radius: 18px;
+  overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+.person-photo { position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--tt-navy-600), var(--tt-navy-900)); }
+.person-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.person-body { padding: 18px 18px 22px; text-align: center; }
+.person-body h4 { margin: 0; font: 700 1.0625rem/1.28 var(--font-sans); color: var(--tt-ink); letter-spacing: -0.01em; }
+.person-body .prole { margin: 5px 0 0; font: 500 0.875rem/1.4 var(--font-sans); color: var(--tt-gray-500); }
 
-@media (max-width: 720px) {
-  .team-bento { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .bento-tile.wide { grid-column: span 2; aspect-ratio: 2 / 1; }
-}
+/* Gerencia destacada: la misma tarjeta pero con foto más grande y centrada */
+.equipo-lead { display: flex; justify-content: center; margin: 0 auto; }
+.equipo-lead .person-card { width: 300px; max-width: 100%; }
+.equipo-lead .person-body h4 { font-size: 1.1875rem; }
+
+.equipo-sub { display: flex; align-items: center; gap: 16px; max-width: 720px; margin: 46px auto 26px; }
+.equipo-sub-line { flex: 1; height: 1px; background: var(--border-subtle); }
+.equipo-sub-label { font: 700 0.8125rem/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tt-gray-500); }
+
+.equipo-roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 940px; margin: 0 auto; }
+@media (max-width: 900px) { .equipo-roles { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .equipo-roles { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+.dark .person-card { background: #131c23; border-color: #2f3d47; box-shadow: none; }
+.dark .person-body h4 { color: #eaf1f6; }
+.dark .person-body .prole, .dark .equipo-sub-label { color: #9fb0bd; }
+.dark .equipo-sub-line { background: #2f3d47; }
 
 @media (max-width: 1100px) { .etapas4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 980px) { .obj-grid { grid-template-columns: 1fr; } .func-grid { grid-template-columns: 1fr 1fr; } }

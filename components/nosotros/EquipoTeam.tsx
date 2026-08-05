@@ -30,27 +30,28 @@ function nombreCorto(full: string): string {
   return `${p[0]} ${p[p.length - 2]} ${p[p.length - 1][0].toUpperCase()}.`;
 }
 
-/** Mosaico Bento: foto (o marcador) con el nombre y el cargo sobre ella.
- *  `lead` = cuadro grande (Gerencia); `wide` = cuadro ancho para rellenar. */
-function BentoTile({ m, lead, wide, isAdmin, onEdit, onDelete }: { m: Member; lead?: boolean; wide?: boolean; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
+/** Tarjeta de integrante: foto grande arriba, nombre y cargo debajo. */
+function PersonCard({ m, isAdmin, onEdit, onDelete }: { m: Member; isAdmin: boolean; onEdit: () => void; onDelete: () => void }) {
   return (
-    <div id={m.id} className={`bento-tile member${lead ? " lead" : ""}${wide ? " wide" : ""}`}>
-      {m.photo ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={m.photo} alt={m.name || m.role} />
-      ) : (
-        <span className="bento-ph"><UserIcon size={lead ? 64 : 46} stroke="rgba(255,255,255,.55)" sw={1.4} /></span>
-      )}
-      <div className="bento-cap">
-        <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
-        <p>{m.name ? m.role : "Por designar"}</p>
+    <div id={m.id} className="person-card member lift">
+      <div className="person-photo">
+        {m.photo ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={m.photo} alt={m.name || m.role} />
+        ) : (
+          <UserIcon size={52} stroke="rgba(255,255,255,.6)" sw={1.4} />
+        )}
       </div>
-      {isAdmin && (
-        <div className="bento-actions">
-          <button className="adm-btn ghost sm" onClick={onEdit} aria-label="Editar"><Pencil /></button>
-          <button className="adm-btn danger sm" onClick={onDelete} aria-label="Eliminar"><Trash /></button>
-        </div>
-      )}
+      <div className="person-body">
+        <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
+        <p className="prole">{m.name ? m.role : "Por designar"}</p>
+        {isAdmin && (
+          <div className="adm-actions" style={{ justifyContent: "center", marginTop: 6 }}>
+            <button className="adm-btn ghost sm" onClick={onEdit} aria-label="Editar"><Pencil /></button>
+            <button className="adm-btn danger sm" onClick={onDelete} aria-label="Eliminar"><Trash /></button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -120,21 +121,33 @@ export default function EquipoTeam() {
             </div>
           )}
 
-          {/* Mosaico Bento: la Gerencia como cuadro grande + jefaturas en cuadros */}
-          <div className="team-bento reveal">
+          {/* Gerencia destacada */}
+          <div className="equipo-lead reveal">
             {direccion.map((m) => (
-              <BentoTile key={m.id} m={m} lead isAdmin={isAdmin}
+              <PersonCard key={m.id} m={m} isAdmin={isAdmin}
                 onEdit={() => { setCreatingArea(null); setEditing(m); }}
                 onDelete={() => handleDelete(m.id)} />
             ))}
-            {directivo.map((m, i) => (
-              <BentoTile key={m.id} m={m} isAdmin={isAdmin}
-                wide={i >= directivo.length - 2}
-                onEdit={() => { setCreatingArea(null); setEditing(m); }}
-                onDelete={() => handleDelete(m.id)} />
-            ))}
-            {direccion.length === 0 && directivo.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin integrantes aún.</p>}
+            {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
           </div>
+
+          {/* Equipo directivo */}
+          {(directivo.length > 0 || isAdmin) && (
+            <>
+              <div className="equipo-sub reveal">
+                <span className="equipo-sub-line" aria-hidden="true" />
+                <span className="equipo-sub-label">Equipo directivo</span>
+                <span className="equipo-sub-line" aria-hidden="true" />
+              </div>
+              <div className="equipo-roles reveal">
+                {directivo.map((m) => (
+                  <PersonCard key={m.id} m={m} isAdmin={isAdmin}
+                    onEdit={() => { setCreatingArea(null); setEditing(m); }}
+                    onDelete={() => handleDelete(m.id)} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.26.0] - 2026-08-05
+
+### Cambiado
+- **Nuestro Equipo** vuelve al primer diseño de tarjetas: foto grande arriba con el nombre y el cargo debajo, con la Gerencia destacada y las jefaturas en una grilla bajo el divisor "Equipo directivo" (se retira el mosaico Bento). Se conservan los nombres abreviados y la edición desde el panel.
+
 ## [2.25.0] - 2026-07-30
 
 ### Añadido
