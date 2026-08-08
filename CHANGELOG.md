@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.28.1] - 2026-08-08
+
+### Cambiado
+- **Misión y Visión** rediseñadas para textos largos: dos columnas alineadas a la izquierda (ya no centradas), con el título y un pequeño acento de color, mejor interlineado y ancho de lectura, divisor central en escritorio y apiladas en celular. Se elimina el CSS muerto del diseño alterno que duplicaba los estilos.
+
 ## [2.28.0] - 2026-08-08
 
 ### Cambiado

@@ -750,14 +750,18 @@ img { max-width: 100%; }
 
 /* Misión y Visión: dos columnas sobre la banda azul, con títulos grandes
    centrados y una línea blanca divisoria (sin tarjetas). */
-.mv-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 960px; margin: 0 auto; }
-.mv-col { text-align: center; padding: 6px clamp(24px, 4vw, 60px); }
-.mv-col + .mv-col { border-left: 1px solid rgba(255, 255, 255, .3); }
-.mv-title { margin: 0 0 22px; font: 700 clamp(2rem, 3.6vw, 2.75rem)/1.08 var(--font-sans); color: #fff; letter-spacing: -0.02em; }
-.mv-text { margin: 0; font: 400 clamp(1.0625rem, 1.55vw, 1.25rem)/1.8 var(--font-sans); color: rgba(255, 255, 255, .84); }
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 1040px; margin: 0 auto; align-items: start; }
+.mv-col { text-align: left; padding: 4px clamp(28px, 4vw, 56px); }
+.mv-col:first-child { padding-left: 0; }
+.mv-col:last-child { padding-right: 0; }
+.mv-col + .mv-col { border-left: 1px solid rgba(255, 255, 255, .20); }
+.mv-title { margin: 0 0 18px; font: 800 clamp(1.6rem, 2.8vw, 2.25rem)/1.1 var(--font-sans); color: #fff; letter-spacing: -0.02em; }
+.mv-title::after { content: ""; display: block; width: 52px; height: 4px; border-radius: 999px; margin-top: 14px; background: var(--ribbon); }
+.mv-text { margin: 0; font: 400 clamp(1rem, 1.25vw, 1.125rem)/1.78 var(--font-sans); color: rgba(255, 255, 255, .86); }
 @media (max-width: 720px) {
   .mv-grid { grid-template-columns: 1fr; }
-  .mv-col + .mv-col { border-left: none; border-top: 1px solid rgba(255, 255, 255, .3); margin-top: 14px; padding-top: 40px; }
+  .mv-col, .mv-col:first-child, .mv-col:last-child { padding: 0; }
+  .mv-col + .mv-col { border-left: none; border-top: 1px solid rgba(255, 255, 255, .20); margin-top: 32px; padding-top: 32px; }
 }
 
 /* "Lo que hacemos": 4 columnas con ícono verde arriba y texto corto centrado,
@@ -2278,19 +2282,6 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 /* ============================================================
    Nosotros — Misión/Visión (2 columnas) y Etapas (escalera)
    ============================================================ */
-/* Misión / Visión: título + texto divididos por línea vertical sutil */
-.mv-split { position: relative; display: grid; grid-template-columns: 1fr 1px 1fr; gap: clamp(28px,5vw,68px);
-  max-width: 1080px; margin: 0 auto; align-items: start; }
-.mv-line { align-self: stretch; width: 1px; background: rgba(255,255,255,.20); }
-.mv-title { margin: 0; font: 800 clamp(1.7rem,3vw,2.2rem)/1.05 var(--font-sans); letter-spacing: -.02em; color: #fff; }
-.mv-accent { display: block; width: 56px; height: 4px; border-radius: 999px; margin: 16px 0 20px; background: var(--ribbon); }
-.mv-text { margin: 0; font: 400 clamp(1rem,1.4vw,1.125rem)/1.7 var(--font-sans); color: rgba(255,255,255,.85); max-width: 42ch; }
-@media (max-width: 760px) {
-  .mv-split { grid-template-columns: 1fr; gap: 0; }
-  .mv-line { display: none; }
-  .mv-col + .mv-col { margin-top: 34px; padding-top: 34px; border-top: 1px solid rgba(255,255,255,.18); }
-}
-
 /* Etapas del proceso: barras verticales que crecen (escalera) */
 .etapas-stairs { display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(14px,2.2vw,26px); align-items: start; }
 .stair { display: flex; flex-direction: column; }
