@@ -146,13 +146,17 @@ export default function NosotrosPage() {
             <div className="mv-col">
               <h3 className="mv-title"><Editable as="span" id="nos.mision-title">Misión</Editable></h3>
               <p className="mv-text">
-                <Editable as="span" id="nos.mision" multiline>Operar el catastro multipropósito del municipio de Valledupar, manteniendo la información física, jurídica y económica de cada predio completa, actualizada y disponible para la ciudadanía y la administración municipal. Trabajamos para que esos datos sean una base confiable de seguridad jurídica, equidad tributaria y mejor planeación del territorio.</Editable>
+                <Editable as="span" id="nos.mision" multiline>{`En Tuterritorio, transformamos la gestión catastral multipropósito para acercar el catastro a las personas. Convertimos datos territoriales, antes dispersos y difíciles de acceder, en información clara, confiable y transparente, para que cada habitante pueda conocer, comprender y aprovechar plenamente la información sobre su predio y su comunidad.
+
+A través de procesos rigurosos y un enfoque cercano, hacemos del catastro una herramienta útil tanto para la ciudadanía como para la administración municipal. Nuestro objetivo es fortalecer la planeación, la formalización y la equidad, asegurando que cada decisión sobre el territorio se traduzca en beneficios concretos para el desarrollo sostenible del municipio.`}</Editable>
               </p>
             </div>
             <div className="mv-col">
               <h3 className="mv-title"><Editable as="span" id="nos.vision-title">Visión</Editable></h3>
               <p className="mv-text">
-                <Editable as="span" id="nos.vision" multiline>Ser el referente de la gestión catastral en la región: que cualquier persona en Valledupar pueda conocer y confiar en la información de su predio, y que el municipio planifique su territorio y sus finanzas sobre datos reales, actualizados y transparentes, al servicio del desarrollo y el bienestar de toda la ciudad.</Editable>
+                <Editable as="span" id="nos.vision" multiline>{`Ser reconocidos para el 2030 como la entidad líder en la modernización y gestión integral del catastro multipropósito, destacándonos por nuestra excelencia, innovación, transparencia y compromiso con la calidad, la satisfacción del cliente y la ciudadanía.
+
+Anhelamos consolidar un sistema catastral eficiente, accesible y confiable que impulse el desarrollo ordenado, sostenible y equitativo del territorio, fortaleciendo la confianza, y promoviendo la participación de la comunidad en la administración de sus bienes y espacios, posicionándonos, así como un aliado estratégico clave para entidades públicas y privadas.`}</Editable>
               </p>
             </div>
           </div>

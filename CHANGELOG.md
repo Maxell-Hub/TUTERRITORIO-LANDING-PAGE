@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.28.0] - 2026-08-08
+
+### Cambiado
+- Se actualizan los textos de **Misión y Visión** de Nosotros con la redacción entregada por la entidad (dos párrafos cada uno, con la visión al 2030).
+
 ## [2.27.2] - 2026-08-08
 
 ### Cambiado
