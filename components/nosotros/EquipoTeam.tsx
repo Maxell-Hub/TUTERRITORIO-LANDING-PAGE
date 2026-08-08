@@ -98,7 +98,7 @@ export default function EquipoTeam() {
           {/* Gerencia destacada: tarjeta con foto arriba, nombre y cargo debajo */}
           <div className="eq-lead reveal">
             {direccion.map((m) => (
-              <div id={m.id} key={m.id} className="eq-card member">
+              <div id={m.id} key={m.id} className="eq-card">
                 <div className="eq-photo">
                   {m.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -139,7 +139,7 @@ export default function EquipoTeam() {
 
               <div className="eq-grid">
                 {directivo.map((m) => (
-                  <div id={m.id} key={m.id} className="eq-member member">
+                  <div id={m.id} key={m.id} className="eq-member">
                     <div className="eq-member-photo">
                       {m.photo ? (
                         // eslint-disable-next-line @next/next/no-img-element

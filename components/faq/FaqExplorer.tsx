@@ -154,7 +154,7 @@ export default function FaqExplorer() {
       {/* Preguntas */}
       {results.length > 0 ? (
         <div className="fq-list">
-          {results.map((f, i) => {
+          {results.map((f) => {
             const isOpen = open.includes(f.id);
             return (
               <article
@@ -169,7 +169,6 @@ export default function FaqExplorer() {
                   aria-controls={`fq-a-${f.id}`}
                   onClick={() => toggle(f.id)}
                 >
-                  <span className="fq-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                   <span className="fq-qtext">
                     {f.q}
                     <span className="fq-cat">{cortoFor(f.cat)}</span>

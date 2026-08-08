@@ -6,6 +6,14 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.27.2] - 2026-08-08
+
+### Cambiado
+- Se quitan los números (01, 02, …) de cada pregunta en Preguntas frecuentes.
+
+### Corregido
+- En Nuestro Equipo, al pasar el cursor sobre una tarjeta ya no aparece un recuadro/sombra flotante mal ubicado: se retira la clase genérica `.member` (que duplicaba el efecto sobre un rectángulo transparente) y se conserva solo la elevación propia de la tarjeta y la foto.
+
 ## [2.27.1] - 2026-08-05
 
 ### Añadido
