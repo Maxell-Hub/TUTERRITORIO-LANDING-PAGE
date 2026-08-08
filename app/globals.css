@@ -755,8 +755,7 @@ img { max-width: 100%; }
 .mv-col:first-child { padding-left: 0; }
 .mv-col:last-child { padding-right: 0; }
 .mv-col + .mv-col { border-left: 1px solid rgba(255, 255, 255, .20); }
-.mv-title { margin: 0 0 18px; font: 800 clamp(1.6rem, 2.8vw, 2.25rem)/1.1 var(--font-sans); color: #fff; letter-spacing: -0.02em; }
-.mv-title::after { content: ""; display: block; width: 52px; height: 4px; border-radius: 999px; margin-top: 14px; background: var(--ribbon); }
+.mv-title { margin: 0 0 20px; font: 800 clamp(1.6rem, 2.8vw, 2.25rem)/1.1 var(--font-sans); color: #fff; letter-spacing: -0.02em; }
 .mv-text { margin: 0; font: 400 clamp(1rem, 1.25vw, 1.125rem)/1.78 var(--font-sans); color: rgba(255, 255, 255, .86); }
 @media (max-width: 720px) {
   .mv-grid { grid-template-columns: 1fr; }

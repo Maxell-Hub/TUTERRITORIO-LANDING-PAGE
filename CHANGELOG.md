@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.28.2] - 2026-08-08
+
+### Cambiado
+- Se retira la pequeña línea de acento de color debajo de los títulos Misión y Visión.
+
 ## [2.28.1] - 2026-08-08
 
 ### Cambiado
