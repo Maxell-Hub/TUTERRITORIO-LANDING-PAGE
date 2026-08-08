@@ -2114,7 +2114,6 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .fq-card.open { border-color: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 55%, #2f3d47); }
 .dark .fq-qbtn { color: #eaf1f6; }
 .dark .fq-qbtn:hover { background: rgba(255,255,255,.04); }
-.dark .fq-num { background: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 24%, #131c23); color: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 55%, #ffffff); }
 .dark .fq-cat { color: color-mix(in srgb, var(--accent, var(--tt-blue-700)) 55%, #ffffff); }
 .dark .fq-plus { background: #24313a; color: #c3d0d9; }
 .dark .fq-card.open .fq-plus { background: var(--accent, var(--tt-blue-700)); color: #fff; }
