@@ -32,9 +32,6 @@ export default function HomePage() {
         <Editable as="p" id="home.intro" className="sub" multiline>
           Consulta la información catastral oficial de tu propiedad en Valledupar como linderos, área, avalúo y estado de tus trámites en un solo lugar.
         </Editable>
-        <div className="atg-cta-row">
-          <a className="atg-pill ghost" href="/#visor"><Editable as="span" id="home.cta-visor">Conocer la plataforma</Editable></a>
-        </div>
       </section>
 
       {/* 2 · Feature: visor geográfico */}
