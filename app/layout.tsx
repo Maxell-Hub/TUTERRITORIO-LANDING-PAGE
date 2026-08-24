@@ -104,7 +104,7 @@ const jsonLd = [
       addressRegion: "Cesar",
       addressCountry: "CO",
     },
-    sameAs: ["https://www.instagram.com/tuterritorio_catrastro/"],
+    sameAs: ["https://www.instagram.com/tuterritorio_catastro/"],
   },
   {
     "@context": "https://schema.org",
