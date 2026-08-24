@@ -75,12 +75,36 @@ export default function EquipoTeam() {
   useScrollToHash(members);
 
   const isAdmin = !!user;
-  const direccion = members.filter((m) => m.area === "Dirección");
-  const directivo = members.filter((m) => m.area !== "Dirección");
+  const byArea = (a: string) => members.filter((m) => m.area === a);
+  const direccion = byArea("Dirección");
+  const tuterritorio = byArea("Equipo Tuterritorio");
+  const contratistas = byArea("Contratistas");
+  const alcaldia = byArea("Alcaldía");
+
+  /** Tarjeta de persona (grilla): foto cuadrada con animación al pasar el mouse. */
+  const MemberCard = (m: Member) => (
+    <div id={m.id} key={m.id} className="eq-member">
+      <div className="eq-member-photo">
+        {m.photo ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={m.photo} alt={m.name || m.role} loading="lazy" decoding="async" />
+        ) : (
+          <UserIcon size={40} />
+        )}
+      </div>
+      <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
+      {m.name ? <p>{m.role}</p> : <p className="pend">Por designar</p>}
+      {isAdmin && (
+        <div className="adm-actions">
+          <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }} aria-label="Editar"><Pencil /></button>
+          <button className="adm-btn danger sm" onClick={() => handleDelete(m.id)} aria-label="Eliminar"><Trash /></button>
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <>
-      {/* Estructura del equipo: Gerencia (destacada) + equipo directivo */}
       <section className="atg-band" id="equipo">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 40px", textAlign: "center" }}>
@@ -88,21 +112,23 @@ export default function EquipoTeam() {
           </div>
 
           {isAdmin && (
-            <div className="adm-bar" style={{ justifyContent: "center", padding: "0 0 22px" }}>
+            <div className="adm-bar" style={{ justifyContent: "center", padding: "0 0 22px", flexWrap: "wrap" }}>
               <span className="adm-flag">Modo administrador</span>
-              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Dirección"); }}><Plus /> Agregar en Gerencia</button>
-              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Equipo directivo"); }}><Plus /> Agregar cargo</button>
+              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Dirección"); }}><Plus /> Dirección</button>
+              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Equipo Tuterritorio"); }}><Plus /> Equipo Tuterritorio</button>
+              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Contratistas"); }}><Plus /> Contratista</button>
+              <button className="adm-btn" onClick={() => { setEditing(null); setCreatingArea("Alcaldía"); }}><Plus /> Alcaldía</button>
             </div>
           )}
 
-          {/* Gerencia destacada: tarjeta con foto arriba, nombre y cargo debajo */}
+          {/* 1 · Dirección destacada: Gerencia + Jefatura de la Oficina de Gestión Catastral */}
           <div className="eq-lead reveal">
             {direccion.map((m) => (
               <div id={m.id} key={m.id} className="eq-card">
                 <div className="eq-photo">
                   {m.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={m.photo} alt={m.name || m.role} />
+                    <img src={m.photo} alt={m.name || m.role} decoding="async" />
                   ) : (
                     <UserIcon size={58} />
                   )}
@@ -119,50 +145,56 @@ export default function EquipoTeam() {
                 )}
               </div>
             ))}
-            {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Gerencia asignada aún.</p>}
+            {direccion.length === 0 && <p style={{ color: "var(--tt-gray-500)" }}>Sin Dirección asignada aún.</p>}
           </div>
 
-          {/* Equipo directivo: encabezado + grilla de cargos */}
-          {(directivo.length > 0 || isAdmin) && (
-            <div className="eq-tech reveal">
+          {/* 2 · Equipo Tuterritorio: las jefaturas propias del operador */}
+          {(tuterritorio.length > 0 || isAdmin) && (
+            <div className="eq-block reveal">
               <div className="eq-tech-head">
                 <div>
-                  <span className="eq-eyebrow">Equipo directivo</span>
-                  <Editable as="h2" id="equipo.tech-title">Un equipo interdisciplinario</Editable>
-                  <Editable as="p" id="equipo.tech-sub" className="eq-sub" multiline>Las jefaturas y coordinaciones que dirigen cada área del catastro multipropósito de Valledupar, trabajando de forma coordinada en cada etapa del proceso.</Editable>
+                  <span className="eq-eyebrow">Equipo Tuterritorio</span>
+                  <Editable as="h2" id="equipo.tt-title">Las jefaturas que dirigen el operador</Editable>
+                  <Editable as="p" id="equipo.tt-sub" className="eq-sub" multiline>Los cargos directivos que lideran la gestión jurídica, administrativa y financiera del catastro multipropósito de Valledupar.</Editable>
+                </div>
+              </div>
+              <div className="eq-grid">{tuterritorio.map(MemberCard)}</div>
+            </div>
+          )}
+
+          {/* 3 · Contratistas (equipo operativo) */}
+          {(contratistas.length > 0 || isAdmin) && (
+            <div className="eq-block reveal">
+              <div className="eq-tech-head">
+                <div>
+                  <span className="eq-eyebrow">Equipo operativo</span>
+                  <Editable as="h2" id="equipo.contract-title">Nuestro equipo de contratistas</Editable>
+                  <Editable as="p" id="equipo.contract-sub" className="eq-sub" multiline>El talento humano que ejecuta en campo y oficina cada etapa del proceso catastral, de la mano de la Gerencia.</Editable>
                 </div>
                 <div className="eq-count" aria-hidden="true">
-                  <span className="num">{directivo.length}</span>
-                  <span className="lbl">cargos<br />directivos</span>
+                  <span className="num">{contratistas.length}</span>
+                  <span className="lbl">contratistas</span>
                 </div>
               </div>
-
-              <div className="eq-grid">
-                {directivo.map((m) => (
-                  <div id={m.id} key={m.id} className="eq-member">
-                    <div className="eq-member-photo">
-                      {m.photo ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={m.photo} alt={m.name || m.role} />
-                      ) : (
-                        <UserIcon size={40} />
-                      )}
-                    </div>
-                    <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
-                    {m.name ? <p>{m.role}</p> : <p className="pend">Por designar</p>}
-                    {isAdmin && (
-                      <div className="adm-actions">
-                        <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }} aria-label="Editar"><Pencil /></button>
-                        <button className="adm-btn danger sm" onClick={() => handleDelete(m.id)} aria-label="Eliminar"><Trash /></button>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+              <div className="eq-grid">{contratistas.map(MemberCard)}</div>
             </div>
           )}
         </div>
       </section>
+
+      {/* 4 · Alcaldía: aliado institucional (no hace parte del equipo de Tuterritorio) */}
+      {(alcaldia.length > 0 || isAdmin) && (
+        <section className="atg-band eq-ally-band" id="oficina-gestion-catastral">
+          <div className="atg-wrap">
+            <div className="eq-ally-head reveal">
+              <span className="eq-ally-tag">Aliado institucional</span>
+              <Editable as="h2" id="equipo.ally-title">La Oficina de Gestión Catastral del municipio</Editable>
+              <Editable as="p" id="equipo.ally-note" className="eq-ally-note" multiline>La Oficina de Gestión Catastral de la Alcaldía de Valledupar funciona en nuestra sede, por lo que día a día trabajamos hombro a hombro con su equipo. Estas personas son servidores públicos del municipio —no hacen parte del equipo de Tuterritorio—, y su labor es clave para la gestión catastral del territorio.</Editable>
+            </div>
+            <div className="eq-grid eq-grid-ally reveal">{alcaldia.map(MemberCard)}</div>
+          </div>
+        </section>
+      )}
 
       {(creatingArea !== null || editing) && (
         <TeamEditor

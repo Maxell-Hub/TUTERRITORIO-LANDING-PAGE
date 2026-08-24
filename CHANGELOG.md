@@ -6,6 +6,20 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.29.0] - 2026-08-12
+
+### Añadido
+- **Nuestro Equipo con fotos reales.** Se incorporan las fotografías y cargos del personal (35 integrantes) organizados en cuatro grupos: Dirección destacada (Gerencia + Jefatura de la Oficina de Gestión Catastral), Equipo Tuterritorio (jefaturas propias), Contratistas (equipo operativo) y una banda diferenciada de "Aliado institucional" para la Oficina de Gestión Catastral de la Alcaldía, con una nota que aclara que colaboran desde nuestra sede pero no hacen parte del equipo de Tuterritorio.
+- Animación al pasar el mouse sobre cada foto: zoom suave, velo de marca, anillo de acento y cinta de color inferior. Compatible con modo claro y oscuro.
+
+### Notas
+- Solo se publican las personas con foto disponible. Los cargos del área de contratistas se unifican como "Contratista".
+
+## [2.28.3] - 2026-08-12
+
+### Cambiado
+- Se retira el botón "Conocer la plataforma" del hero de INICIO.
+
 ## [2.28.2] - 2026-08-08
 
 ### Cambiado
