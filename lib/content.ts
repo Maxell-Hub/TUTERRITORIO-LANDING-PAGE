@@ -192,7 +192,6 @@ export const DEFAULT_EQUIPO: Member[] = [
   { id: "eq-jesus-alberto-vallenilla-castilla", name: "Jesús Alberto Vallenilla Castilla", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/jesus-alberto-vallenilla-castilla.webp" },
   { id: "eq-katerine-yulieth-ortega-almendrales", name: "Katerine Yulieth Ortega Almendrales", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/katerine-yulieth-ortega-almendrales.webp" },
   { id: "eq-miguel-angel-bolano-acosta", name: "Miguel Ángel Bolaño Acosta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/miguel-angel-bolano-acosta.webp" },
-  { id: "eq-maria-camila-maestre-charris", name: "María Camila Maestre Charris", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/maria-camila-maestre-charris.webp" },
   { id: "eq-wilmer-ortiz-canate", name: "Wilmer Ortiz Cañate", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/wilmer-ortiz-canate.webp" },
   { id: "eq-ivan-camilo-zuleta-lopez", name: "Iván Camilo Zuleta López", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/ivan-camilo-zuleta-lopez.webp" },
   { id: "eq-albert-emiro-zequeda-avila", name: "Albert Emiro Zequeda Ávila", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/albert-emiro-zequeda-avila.webp" },

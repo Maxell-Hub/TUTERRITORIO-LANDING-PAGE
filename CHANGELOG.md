@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.29.4] - 2026-08-12
+
+### Cambiado
+- Se retira a María Camila Maestre Charris de Nuestro Equipo (tarjeta y foto). El contador de contratistas pasa a 19.
+
 ## [2.29.3] - 2026-08-12
 
 ### Cambiado
