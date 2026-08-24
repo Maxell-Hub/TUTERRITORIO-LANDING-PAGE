@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.29.5] - 2026-08-12
+
+### Cambiado
+- Se revierte la sección Nuestro Equipo a la versión sin fotos: vuelve la estructura de cargos (Gerencia destacada + equipo directivo) con nombres por designar, y se retiran todas las fotografías del personal.
+
 ## [2.29.4] - 2026-08-12
 
 ### Cambiado
