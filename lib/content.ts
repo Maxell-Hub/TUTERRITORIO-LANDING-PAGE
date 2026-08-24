@@ -169,6 +169,7 @@ export const TEAM_AREAS = [
  * diseño de 4 grupos. Solo incluye a las personas con foto disponible (22).
  * No fusionar a producción hasta aprobar. */
 export const DEFAULT_EQUIPO: Member[] = [
+  { id: "ff-23", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas-preview/ff-23.webp" },
   { id: "ff-01", name: "Jorge Hernán Salgado Miranda", role: "Jefe de la Oficina de Gestión Catastral", area: "Dirección", photo: "/assets/equipo/personas-preview/ff-01.webp" },
   { id: "ff-19", name: "Ana Jeraldine Herrera Llerena", role: "Jefe Jurídico", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas-preview/ff-19.webp" },
   { id: "ff-05", name: "Juan David Calderón Márquez", role: "Coordinador Administrativo", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas-preview/ff-05.webp" },
