@@ -189,7 +189,7 @@ export default function EquipoTeam() {
             <div className="eq-ally-head reveal">
               <span className="eq-ally-tag">Aliado institucional</span>
               <Editable as="h2" id="equipo.ally-title">La Oficina de Gestión Catastral del municipio</Editable>
-              <Editable as="p" id="equipo.ally-note" className="eq-ally-note" multiline>La Oficina de Gestión Catastral de la Alcaldía de Valledupar funciona en nuestra sede, por lo que día a día trabajamos hombro a hombro con su equipo. Estas personas son servidores públicos del municipio —no hacen parte del equipo de Tuterritorio—, y su labor es clave para la gestión catastral del territorio.</Editable>
+              <Editable as="p" id="equipo.ally-note" className="eq-ally-note" multiline>La Oficina de Gestión Catastral de la Alcaldía de Valledupar funciona en nuestra sede, por lo que día a día trabajamos hombro a hombro con su equipo. Su labor como servidores públicos del municipio es clave para la gestión catastral del territorio.</Editable>
             </div>
             <div className="eq-grid eq-grid-ally reveal">{alcaldia.map(MemberCard)}</div>
           </div>

@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.29.1] - 2026-08-12
+
+### Cambiado
+- Se suaviza la nota de la Oficina de Gestión Catastral del municipio: se mantiene el tono de colaboración sin hacer énfasis en que no hacen parte del equipo de Tuterritorio.
+
 ## [2.29.0] - 2026-08-12
 
 ### Añadido
