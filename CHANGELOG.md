@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.29.3] - 2026-08-12
+
+### Cambiado
+- Las fotos del equipo pasan a proporción vertical (4/5) para encajar con el alto y ancho de su tarjeta, con mejor encuadre del rostro y fondo neutro.
+- Las tarjetas destacadas (Gerente y Jefe de la Oficina de Gestión Catastral) se muestran más pequeñas y con mayor separación entre sí.
+
 ## [2.29.2] - 2026-08-12
 
 ### Cambiado

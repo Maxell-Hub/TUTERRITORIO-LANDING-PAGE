@@ -859,15 +859,15 @@ img { max-width: 100%; }
 .avatar-grid .cap .role { font: 500 0.6875rem/1.25 var(--font-sans); color: var(--tt-gray-500); }
 
 /* --- Nuestro Equipo: Gerencia destacada (tarjetas con foto) + grilla de cargos --- */
-.eq-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; max-width: 720px; margin: 0 auto; }
-.eq-card { flex: 1 1 280px; max-width: 330px; border-radius: 22px; overflow: hidden;
+.eq-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(40px, 9vw, 96px); max-width: 640px; margin: 0 auto; }
+.eq-card { flex: 0 1 236px; max-width: 236px; border-radius: 20px; overflow: hidden;
   background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-md);
   display: flex; flex-direction: column; position: relative;
   transition: transform .28s var(--ease-soft), box-shadow .28s var(--ease-soft); }
 .eq-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.eq-photo { position: relative; aspect-ratio: 4/3; overflow: hidden; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(150deg, var(--tt-navy-600), var(--tt-navy-900)); }
-.eq-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
+.eq-photo { position: relative; aspect-ratio: 4/5; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--tt-gray-100); }
+.eq-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 12%;
   transition: transform .6s var(--ease-soft); }
 /* Velo de marca que aparece sobre la foto al pasar el mouse */
 .eq-photo::after { content: ""; position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .4s var(--ease-soft);
@@ -898,12 +898,12 @@ img { max-width: 100%; }
 .eq-block { margin-top: 58px; }
 .eq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 24px; max-width: 1040px; margin: 0 auto; }
 .eq-member { display: flex; flex-direction: column; position: relative; }
-.eq-member-photo { position: relative; aspect-ratio: 1/1; border-radius: 16px; overflow: hidden;
+.eq-member-photo { position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(150deg, var(--tt-navy-600), var(--tt-navy-900));
+  background: var(--tt-gray-100);
   box-shadow: 0 0 0 1px var(--border-subtle);
   transition: transform .32s var(--ease-soft), box-shadow .32s var(--ease-soft); }
-.eq-member-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+.eq-member-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 12%;
   transition: transform .6s var(--ease-soft); }
 /* Velo + anillo de marca al pasar el mouse por la foto */
 .eq-member-photo::after { content: ""; position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .4s var(--ease-soft);
@@ -935,6 +935,7 @@ img { max-width: 100%; }
 .dark .eq-member:hover h4 { color: #6db3cf; }
 .dark .eq-tech-head .eq-sub, .dark .eq-count .lbl, .dark .eq-ally-note { color: #9fb0bd; }
 .dark .eq-member p.pend { color: #6f8290; }
+.dark .eq-photo, .dark .eq-member-photo { background: #1a252d; }
 .dark .eq-member-photo { box-shadow: 0 0 0 1px #2f3d47; }
 .dark .eq-member:hover .eq-member-photo { box-shadow: 0 14px 28px rgba(0,0,0,.4), 0 0 0 2px #6db3cf; }
 .dark .eq-ally-band { background: #0d151b; border-top-color: #24313a; }
