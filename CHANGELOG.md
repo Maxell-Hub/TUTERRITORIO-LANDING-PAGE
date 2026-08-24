@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.29.2] - 2026-08-12
+
+### Cambiado
+- Se retiran los rótulos "Equipo Tuterritorio", "Equipo operativo" y "Aliado institucional" de la sección Nuestro Equipo.
+- "La Oficina de Gestión Catastral del municipio" pasa a escribirse con Municipio en mayúscula.
+
 ## [2.29.1] - 2026-08-12
 
 ### Cambiado

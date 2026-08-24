@@ -153,7 +153,6 @@ export default function EquipoTeam() {
             <div className="eq-block reveal">
               <div className="eq-tech-head">
                 <div>
-                  <span className="eq-eyebrow">Equipo Tuterritorio</span>
                   <Editable as="h2" id="equipo.tt-title">Las jefaturas que dirigen el operador</Editable>
                   <Editable as="p" id="equipo.tt-sub" className="eq-sub" multiline>Los cargos directivos que lideran la gestión jurídica, administrativa y financiera del catastro multipropósito de Valledupar.</Editable>
                 </div>
@@ -167,7 +166,6 @@ export default function EquipoTeam() {
             <div className="eq-block reveal">
               <div className="eq-tech-head">
                 <div>
-                  <span className="eq-eyebrow">Equipo operativo</span>
                   <Editable as="h2" id="equipo.contract-title">Nuestro equipo de contratistas</Editable>
                   <Editable as="p" id="equipo.contract-sub" className="eq-sub" multiline>El talento humano que ejecuta en campo y oficina cada etapa del proceso catastral, de la mano de la Gerencia.</Editable>
                 </div>
@@ -187,8 +185,7 @@ export default function EquipoTeam() {
         <section className="atg-band eq-ally-band" id="oficina-gestion-catastral">
           <div className="atg-wrap">
             <div className="eq-ally-head reveal">
-              <span className="eq-ally-tag">Aliado institucional</span>
-              <Editable as="h2" id="equipo.ally-title">La Oficina de Gestión Catastral del municipio</Editable>
+              <Editable as="h2" id="equipo.ally-title">La Oficina de Gestión Catastral del Municipio</Editable>
               <Editable as="p" id="equipo.ally-note" className="eq-ally-note" multiline>La Oficina de Gestión Catastral de la Alcaldía de Valledupar funciona en nuestra sede, por lo que día a día trabajamos hombro a hombro con su equipo. Su labor como servidores públicos del municipio es clave para la gestión catastral del territorio.</Editable>
             </div>
             <div className="eq-grid eq-grid-ally reveal">{alcaldia.map(MemberCard)}</div>
