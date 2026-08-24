@@ -1,10 +1,156 @@
 [
-  { "id": "m-ger", "name": "", "role": "Gerente", "area": "Dirección" },
-  { "id": "m-jofi", "name": "", "role": "Jefe de la Oficina de Gestión Catastral", "area": "Dirección" },
-  { "id": "m-th", "name": "", "role": "Profesional de Talento Humano", "area": "Equipo directivo" },
-  { "id": "m-jur", "name": "", "role": "Jefe Jurídico", "area": "Equipo directivo" },
-  { "id": "m-sig", "name": "", "role": "Jefe de Sistemas de Información Geográfica", "area": "Equipo directivo" },
-  { "id": "m-eco", "name": "", "role": "Jefe de Estudios Económicos", "area": "Equipo directivo" },
-  { "id": "m-adm", "name": "", "role": "Coordinador Administrativo", "area": "Equipo directivo" },
-  { "id": "m-con", "name": "", "role": "Contador", "area": "Equipo directivo" }
+  {
+    "id": "ff-01",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-01.webp"
+  },
+  {
+    "id": "ff-02",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-02.webp"
+  },
+  {
+    "id": "ff-03",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-03.webp"
+  },
+  {
+    "id": "ff-04",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-04.webp"
+  },
+  {
+    "id": "ff-05",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-05.webp"
+  },
+  {
+    "id": "ff-06",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-06.webp"
+  },
+  {
+    "id": "ff-07",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-07.webp"
+  },
+  {
+    "id": "ff-08",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-08.webp"
+  },
+  {
+    "id": "ff-09",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-09.webp"
+  },
+  {
+    "id": "ff-10",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-10.webp"
+  },
+  {
+    "id": "ff-11",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-11.webp"
+  },
+  {
+    "id": "ff-12",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-12.webp"
+  },
+  {
+    "id": "ff-13",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-13.webp"
+  },
+  {
+    "id": "ff-14",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-14.webp"
+  },
+  {
+    "id": "ff-15",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-15.webp"
+  },
+  {
+    "id": "ff-16",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-16.webp"
+  },
+  {
+    "id": "ff-17",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-17.webp"
+  },
+  {
+    "id": "ff-18",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-18.webp"
+  },
+  {
+    "id": "ff-19",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-19.webp"
+  },
+  {
+    "id": "ff-20",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-20.webp"
+  },
+  {
+    "id": "ff-21",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-21.webp"
+  },
+  {
+    "id": "ff-22",
+    "name": "",
+    "role": "",
+    "area": "Equipo",
+    "photo": "/assets/equipo/personas-preview/ff-22.webp"
+  }
 ]

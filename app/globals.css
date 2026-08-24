@@ -859,15 +859,25 @@ img { max-width: 100%; }
 .avatar-grid .cap .role { font: 500 0.6875rem/1.25 var(--font-sans); color: var(--tt-gray-500); }
 
 /* --- Nuestro Equipo: Gerencia destacada (tarjetas con foto) + grilla de cargos --- */
-.eq-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; max-width: 720px; margin: 0 auto; }
-.eq-card { flex: 1 1 280px; max-width: 330px; border-radius: 22px; overflow: hidden;
+.eq-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(40px, 9vw, 96px); max-width: 640px; margin: 0 auto; }
+.eq-card { flex: 0 1 236px; max-width: 236px; border-radius: 20px; overflow: hidden;
   background: #fff; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-md);
   display: flex; flex-direction: column; position: relative;
   transition: transform .28s var(--ease-soft), box-shadow .28s var(--ease-soft); }
-.eq-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.eq-photo { position: relative; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(150deg, var(--tt-navy-600), var(--tt-navy-900)); }
-.eq-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.eq-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.eq-photo { position: relative; aspect-ratio: 4/5; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--tt-gray-100); }
+.eq-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 12%;
+  transition: transform .6s var(--ease-soft); }
+/* Velo de marca que aparece sobre la foto al pasar el mouse */
+.eq-photo::after { content: ""; position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .4s var(--ease-soft);
+  background: linear-gradient(180deg, rgba(12,34,47,0) 45%, rgba(12,34,47,.55) 100%); }
+.eq-card:hover .eq-photo img { transform: scale(1.06); }
+.eq-card:hover .eq-photo::after { opacity: 1; }
+/* Cinta de acento inferior que crece bajo la foto */
+.eq-card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; z-index: 3;
+  background: var(--ribbon); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-soft); }
+.eq-card:hover::after { transform: scaleX(1); }
 .eq-cap { padding: 18px 18px 22px; text-align: center; background: #fff; }
 .eq-cap h3 { margin: 0; font: 700 1.1875rem/1.25 var(--font-sans); color: var(--tt-ink); letter-spacing: -0.01em; }
 .eq-cap p { margin: 6px 0 0; font: 600 0.875rem/1.35 var(--font-sans); color: var(--tt-blue-700); }
@@ -885,25 +895,51 @@ img { max-width: 100%; }
 .eq-count .num { font: 800 3rem/1 var(--font-sans); color: var(--tt-blue-700); letter-spacing: -0.03em; }
 .eq-count .lbl { font: 600 0.875rem/1.2 var(--font-sans); color: var(--tt-gray-500); }
 
+.eq-block { margin-top: 58px; }
 .eq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 24px; max-width: 1040px; margin: 0 auto; }
 .eq-member { display: flex; flex-direction: column; position: relative; }
-.eq-member-photo { position: relative; aspect-ratio: 1/1; border-radius: 16px; overflow: hidden;
+.eq-member-photo { position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(150deg, var(--tt-navy-600), var(--tt-navy-900));
-  transition: transform .28s var(--ease-soft), box-shadow .28s var(--ease-soft); }
-.eq-member:hover .eq-member-photo { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.eq-member-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.eq-member h4 { margin: 13px 0 0; font: 700 0.9375rem/1.25 var(--font-sans); color: var(--tt-ink); letter-spacing: -0.01em; }
+  background: var(--tt-gray-100);
+  box-shadow: 0 0 0 1px var(--border-subtle);
+  transition: transform .32s var(--ease-soft), box-shadow .32s var(--ease-soft); }
+.eq-member-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 12%;
+  transition: transform .6s var(--ease-soft); }
+/* Velo + anillo de marca al pasar el mouse por la foto */
+.eq-member-photo::after { content: ""; position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .4s var(--ease-soft);
+  background: linear-gradient(180deg, rgba(12,34,47,0) 50%, rgba(12,34,47,.5) 100%); }
+.eq-member:hover .eq-member-photo { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(14,34,51,.20), 0 0 0 2px var(--tt-blue-500); }
+.eq-member:hover .eq-member-photo img { transform: scale(1.07); }
+.eq-member:hover .eq-member-photo::after { opacity: 1; }
+.eq-member h4 { margin: 14px 0 0; font: 700 0.9375rem/1.25 var(--font-sans); color: var(--tt-ink); letter-spacing: -0.01em; transition: color .25s; }
+.eq-member:hover h4 { color: var(--tt-blue-700); }
 .eq-member p { margin: 3px 0 0; font: 500 0.8125rem/1.35 var(--font-sans); color: var(--tt-blue-700); }
 .eq-member p.pend { color: var(--tt-gray-400); font-style: italic; }
 .eq-member .adm-actions { position: absolute; top: 10px; right: 10px; z-index: 2; }
 
+/* --- Alcaldía: aliado institucional (banda diferenciada + nota) --- */
+.eq-ally-band { background: var(--tt-gray-50); border-top: 1px solid var(--border-subtle); }
+.eq-ally-head { max-width: 760px; margin: 0 auto 40px; text-align: center; }
+.eq-ally-tag { display: inline-block; padding: 6px 14px; border-radius: var(--radius-pill);
+  font: 700 0.75rem/1 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--tt-green-600); background: color-mix(in srgb, var(--tt-green-600) 12%, #fff);
+  border: 1px solid color-mix(in srgb, var(--tt-green-600) 26%, #fff); margin-bottom: 16px; }
+.eq-ally-head h2 { margin: 0; font: 800 clamp(1.5rem,3vw,1.875rem)/1.15 var(--font-sans); letter-spacing: -0.02em; color: var(--tt-ink); }
+.eq-ally-note { margin: 14px auto 0; max-width: 660px; font: 400 0.9375rem/1.7 var(--font-sans); color: var(--tt-gray-600); }
+.eq-grid-ally { max-width: 1040px; opacity: .96; }
+
 .dark .eq-card { background: #131c23; border-color: #2f3d47; box-shadow: none; }
 .dark .eq-cap { background: #0f171d; }
-.dark .eq-cap h3, .dark .eq-tech-head h2, .dark .eq-member h4 { color: #eaf1f6; }
+.dark .eq-cap h3, .dark .eq-tech-head h2, .dark .eq-member h4, .dark .eq-ally-head h2 { color: #eaf1f6; }
 .dark .eq-cap p, .dark .eq-member p, .dark .eq-eyebrow, .dark .eq-count .num { color: #6db3cf; }
-.dark .eq-tech-head .eq-sub, .dark .eq-count .lbl { color: #9fb0bd; }
+.dark .eq-member:hover h4 { color: #6db3cf; }
+.dark .eq-tech-head .eq-sub, .dark .eq-count .lbl, .dark .eq-ally-note { color: #9fb0bd; }
 .dark .eq-member p.pend { color: #6f8290; }
+.dark .eq-photo, .dark .eq-member-photo { background: #1a252d; }
+.dark .eq-member-photo { box-shadow: 0 0 0 1px #2f3d47; }
+.dark .eq-member:hover .eq-member-photo { box-shadow: 0 14px 28px rgba(0,0,0,.4), 0 0 0 2px #6db3cf; }
+.dark .eq-ally-band { background: #0d151b; border-top-color: #24313a; }
+.dark .eq-ally-tag { color: #7fd39a; background: rgba(78,134,84,.16); border-color: rgba(78,134,84,.4); }
 
 @media (max-width: 1100px) { .etapas4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 980px) { .obj-grid { grid-template-columns: 1fr; } .func-grid { grid-template-columns: 1fr 1fr; } }
