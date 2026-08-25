@@ -6,6 +6,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.30.1] - 2026-08-25
+
+### Cambiado
+- Tarjetas destacadas (Gerente y Jefe de la Oficina de Gestión Catastral) más anchas.
+- Nueva animación al pasar el mouse: elevación + anillo de acento azul + el nombre se resalta; se retira la línea que se deslizaba por debajo.
+
 ## [2.30.0] - 2026-08-25
 
 ### Añadido
