@@ -166,8 +166,8 @@ export const TEAM_AREAS = [
 ];
 
 /* VISTA PREVIA (rama equipo-fotos-preview): fotos sin fondo del personal, con el
- * diseño de 4 grupos. Solo incluye a las personas con foto disponible (33;
- * falta Gisella Esther Martínez, sin foto sin fondo). No fusionar hasta aprobar. */
+ * diseño de 4 grupos (34 integrantes). Fotos sin fondo, normalizadas por rostro
+ * para alinear todas a la misma altura. No fusionar a producción hasta aprobar. */
 export const DEFAULT_EQUIPO: Member[] = [
   { id: "ff-23", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas-preview/ff-23.webp" },
   { id: "ff-01", name: "Jorge Hernán Salgado Miranda", role: "Jefe de la Oficina de Gestión Catastral", area: "Dirección", photo: "/assets/equipo/personas-preview/ff-01.webp" },
@@ -202,6 +202,7 @@ export const DEFAULT_EQUIPO: Member[] = [
   { id: "ff-25", name: "Carlos Alberto Noguera Meza", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-25.webp" },
   { id: "ff-28", name: "Luis Eduardo Manjarres Ospino", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-28.webp" },
   { id: "ff-32", name: "Valentina Amaya Henriquez", role: "Técnico Catastral", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-32.webp" },
+  { id: "ff-34", name: "Gisella Esther Martínez Gutierrez", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-34.webp" },
 ];
 
 /**
