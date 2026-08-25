@@ -157,7 +157,12 @@ export const DEFAULT_GLOSARIO: Term[] = [
 
 export type Member = { id: string; name: string; role: string; area: string; photo?: string };
 
-/** Grupos del equipo, en el orden en que se muestran. */
+/** Grupos del equipo, en el orden en que se muestran:
+ *  - "Dirección": Gerencia + Jefatura de la Oficina de Gestión Catastral (destacados).
+ *  - "Equipo Tuterritorio": las jefaturas propias del operador catastral.
+ *  - "Contratistas": el equipo operativo (contratistas).
+ *  - "Alcaldía": servidores del municipio que trabajan en la Oficina de Gestión
+ *    Catastral que opera desde nuestra sede (aliados, no hacen parte del equipo). */
 export const TEAM_AREAS = [
   "Dirección",
   "Equipo Tuterritorio",
@@ -165,44 +170,45 @@ export const TEAM_AREAS = [
   "Alcaldía",
 ];
 
-/* VISTA PREVIA (rama equipo-fotos-preview): fotos sin fondo del personal, con el
- * diseño de 4 grupos (34 integrantes), procesamiento original de las fotos.
- * No fusionar a producción hasta aprobar. */
+/* Personas reales de Tuterritorio y su equipo. Solo se incluyen quienes tienen
+ * foto disponible. Los cargos del área "Contratistas" (Geomaping) se unifican
+ * como "Contratista". La Oficina de Gestión Catastral del municipio (área
+ * "Alcaldía") se muestra aparte como aliado institucional. */
 export const DEFAULT_EQUIPO: Member[] = [
-  { id: "ff-23", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas-orig/ff-23.webp" },
-  { id: "ff-01", name: "Jorge Hernán Salgado Miranda", role: "Jefe de la Oficina de Gestión Catastral", area: "Dirección", photo: "/assets/equipo/personas-orig/ff-01.webp" },
-  { id: "ff-19", name: "Ana Jeraldine Herrera Llerena", role: "Jefe Jurídico", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas-orig/ff-19.webp" },
-  { id: "ff-05", name: "Juan David Calderón Márquez", role: "Coordinador Administrativo", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas-orig/ff-05.webp" },
-  { id: "ff-11", name: "Liz Paola Muñoz Hernández", role: "Contador", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas-orig/ff-11.webp" },
-  { id: "ff-03", name: "Tomas Eduardo Díaz Fontalvo", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-03.webp" },
-  { id: "ff-04", name: "Luis Daniel Céspedes Arcia", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-04.webp" },
-  { id: "ff-06", name: "Asdrúbal Raúl Vega Salazar", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-06.webp" },
-  { id: "ff-07", name: "Albert Emiro Zequeda Ávila", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-07.webp" },
-  { id: "ff-08", name: "Iván Camilo Zuleta López", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-08.webp" },
-  { id: "ff-09", name: "Eljan Lizeth Cortes Ávila", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-09.webp" },
-  { id: "ff-12", name: "Katherin Julieth Duarte Díaz", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-12.webp" },
-  { id: "ff-13", name: "Katerine Yulieth Ortega Almendrales", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-13.webp" },
-  { id: "ff-14", name: "Zuleima Isabel Terán Bohórquez", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-14.webp" },
-  { id: "ff-16", name: "Kelly Johana Martínez Díaz", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-16.webp" },
-  { id: "ff-17", name: "María Amparo Camargo Bautista", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-17.webp" },
-  { id: "ff-21", name: "Wendy Patricia Amaya Alarza", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-21.webp" },
-  { id: "ff-22", name: "Miguel Ángel Bolaño Acosta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-22.webp" },
-  { id: "ff-26", name: "Enrique Jesús Fernández García", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-26.webp" },
-  { id: "ff-27", name: "Gina Paola García Pinto", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-27.webp" },
-  { id: "ff-29", name: "Luz Ángela Romero Zabaleta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-29.webp" },
-  { id: "ff-30", name: "Arnaldo Mauricio Núñez Ceballo", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-30.webp" },
-  { id: "ff-31", name: "Jesús Alberto Vallenilla Castilla", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-31.webp" },
-  { id: "ff-33", name: "Wilmer Ortiz Cañate", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-orig/ff-33.webp" },
-  { id: "ff-02", name: "Gladys Mercedes Rosado Díaz", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-02.webp" },
-  { id: "ff-10", name: "Margaret Liliana Muñoz Quintero", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-10.webp" },
-  { id: "ff-15", name: "Iranys Beatriz Ortiz Villalba", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-15.webp" },
-  { id: "ff-18", name: "Valeria Vergara Araujo", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-18.webp" },
-  { id: "ff-20", name: "Margarita Rosa Silva Rojas", role: "Técnico Administrativo", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-20.webp" },
-  { id: "ff-24", name: "Armando Fontalvo Gamarra", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-24.webp" },
-  { id: "ff-25", name: "Carlos Alberto Noguera Meza", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-25.webp" },
-  { id: "ff-28", name: "Luis Eduardo Manjarres Ospino", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-28.webp" },
-  { id: "ff-32", name: "Valentina Amaya Henriquez", role: "Técnico Catastral", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-32.webp" },
-  { id: "ff-34", name: "Gisella Esther Martínez Gutierrez", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-orig/ff-34.webp" },
+  { id: "eq-lulia-cristina-maestre-arcia", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas/lulia-cristina-maestre-arcia.webp" },
+  { id: "eq-jorge-hernan-salgado-miranda", name: "Jorge Hernán Salgado Miranda", role: "Jefe de la Oficina de Gestión Catastral", area: "Dirección", photo: "/assets/equipo/personas/jorge-hernan-salgado-miranda.webp" },
+  { id: "eq-ana-jeraldine-herrera-llerena", name: "Ana Jeraldine Herrera Llerena", role: "Jefe Jurídico", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/ana-jeraldine-herrera-llerena.webp" },
+  { id: "eq-juan-david-calderon-marquez", name: "Juan David Calderón Márquez", role: "Coordinador Administrativo", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/juan-david-calderon-marquez.webp" },
+  { id: "eq-liz-paola-munoz-hernandez", name: "Liz Paola Muñoz Hernández", role: "Contador", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/liz-paola-munoz-hernandez.webp" },
+  { id: "eq-katherin-julieth-duarte-diaz", name: "Katherin Julieth Duarte Díaz", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/katherin-julieth-duarte-diaz.webp" },
+  { id: "eq-asdrubal-raul-vega-salazar", name: "Asdrúbal Raúl Vega Salazar", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/asdrubal-raul-vega-salazar.webp" },
+  { id: "eq-tomas-eduardo-diaz-fontalvo", name: "Tomas Eduardo Díaz Fontalvo", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/tomas-eduardo-diaz-fontalvo.webp" },
+  { id: "eq-wendy-patricia-amaya-alarza", name: "Wendy Patricia Amaya Alarza", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/wendy-patricia-amaya-alarza.webp" },
+  { id: "eq-enrique-jesus-fernandez-garcia", name: "Enrique Jesús Fernández García", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/enrique-jesus-fernandez-garcia.webp" },
+  { id: "eq-arnaldo-mauricio-nunez-ceballo", name: "Arnaldo Mauricio Núñez Ceballo", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/arnaldo-mauricio-nunez-ceballo.webp" },
+  { id: "eq-luis-daniel-cespedes-arcia", name: "Luis Daniel Céspedes Arcia", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/luis-daniel-cespedes-arcia.webp" },
+  { id: "eq-gina-paola-garcia-pinto", name: "Gina Paola García Pinto", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/gina-paola-garcia-pinto.webp" },
+  { id: "eq-luz-angela-romero-zabaleta", name: "Luz Ángela Romero Zabaleta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/luz-angela-romero-zabaleta.webp" },
+  { id: "eq-jesus-alberto-vallenilla-castilla", name: "Jesús Alberto Vallenilla Castilla", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/jesus-alberto-vallenilla-castilla.webp" },
+  { id: "eq-katerine-yulieth-ortega-almendrales", name: "Katerine Yulieth Ortega Almendrales", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/katerine-yulieth-ortega-almendrales.webp" },
+  { id: "eq-miguel-angel-bolano-acosta", name: "Miguel Ángel Bolaño Acosta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/miguel-angel-bolano-acosta.webp" },
+  { id: "eq-wilmer-ortiz-canate", name: "Wilmer Ortiz Cañate", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/wilmer-ortiz-canate.webp" },
+  { id: "eq-ivan-camilo-zuleta-lopez", name: "Iván Camilo Zuleta López", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/ivan-camilo-zuleta-lopez.webp" },
+  { id: "eq-albert-emiro-zequeda-avila", name: "Albert Emiro Zequeda Ávila", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/albert-emiro-zequeda-avila.webp" },
+  { id: "eq-kelly-johana-martinez-diaz", name: "Kelly Johana Martínez Díaz", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/kelly-johana-martinez-diaz.webp" },
+  { id: "eq-zuleima-isabel-teran-bohorquez", name: "Zuleima Isabel Terán Bohórquez", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/zuleima-isabel-teran-bohorquez.webp" },
+  { id: "eq-eljan-lizeth-cortes-avila", name: "Eljan Lizeth Cortes Ávila", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/eljan-lizeth-cortes-avila.webp" },
+  { id: "eq-maria-amparo-camargo-bautista", name: "María Amparo Camargo Bautista", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/maria-amparo-camargo-bautista.webp" },
+  { id: "eq-armando-fontalvo-gamarra", name: "Armando Fontalvo Gamarra", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/armando-fontalvo-gamarra.webp" },
+  { id: "eq-carlos-alberto-noguera-meza", name: "Carlos Alberto Noguera Meza", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/carlos-alberto-noguera-meza.webp" },
+  { id: "eq-gisella-esther-martinez-gutierrez", name: "Gisella Esther Martínez Gutierrez", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/gisella-esther-martinez-gutierrez.webp" },
+  { id: "eq-gladys-mercedes-rosado-diaz", name: "Gladys Mercedes Rosado Díaz", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/gladys-mercedes-rosado-diaz.webp" },
+  { id: "eq-iranys-beatriz-ortiz-villalba", name: "Iranys Beatriz Ortiz Villalba", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/iranys-beatriz-ortiz-villalba.webp" },
+  { id: "eq-luis-eduardo-manjarres-ospino", name: "Luis Eduardo Manjarres Ospino", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/luis-eduardo-manjarres-ospino.webp" },
+  { id: "eq-margaret-liliana-munoz-quintero", name: "Margaret Liliana Muñoz Quintero", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/margaret-liliana-munoz-quintero.webp" },
+  { id: "eq-margarita-rosa-silva-rojas", name: "Margarita Rosa Silva Rojas", role: "Técnico Administrativo", area: "Alcaldía", photo: "/assets/equipo/personas/margarita-rosa-silva-rojas.webp" },
+  { id: "eq-valentina-amaya-henriquez", name: "Valentina Amaya Henriquez", role: "Técnico Catastral", area: "Alcaldía", photo: "/assets/equipo/personas/valentina-amaya-henriquez.webp" },
+  { id: "eq-valeria-vergara-araujo", name: "Valeria Vergara Araujo", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/valeria-vergara-araujo.webp" },
 ];
 
 /**
