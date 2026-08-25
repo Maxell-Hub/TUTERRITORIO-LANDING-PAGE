@@ -166,8 +166,8 @@ export const TEAM_AREAS = [
 ];
 
 /* VISTA PREVIA (rama equipo-fotos-preview): fotos sin fondo del personal, con el
- * diseño de 4 grupos. Solo incluye a las personas con foto disponible (22).
- * No fusionar a producción hasta aprobar. */
+ * diseño de 4 grupos. Solo incluye a las personas con foto disponible (33;
+ * falta Gisella Esther Martínez, sin foto sin fondo). No fusionar hasta aprobar. */
 export const DEFAULT_EQUIPO: Member[] = [
   { id: "ff-23", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas-preview/ff-23.webp" },
   { id: "ff-01", name: "Jorge Hernán Salgado Miranda", role: "Jefe de la Oficina de Gestión Catastral", area: "Dirección", photo: "/assets/equipo/personas-preview/ff-01.webp" },
@@ -187,11 +187,21 @@ export const DEFAULT_EQUIPO: Member[] = [
   { id: "ff-17", name: "María Amparo Camargo Bautista", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-17.webp" },
   { id: "ff-21", name: "Wendy Patricia Amaya Alarza", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-21.webp" },
   { id: "ff-22", name: "Miguel Ángel Bolaño Acosta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-22.webp" },
+  { id: "ff-26", name: "Enrique Jesús Fernández García", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-26.webp" },
+  { id: "ff-27", name: "Gina Paola García Pinto", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-27.webp" },
+  { id: "ff-29", name: "Luz Ángela Romero Zabaleta", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-29.webp" },
+  { id: "ff-30", name: "Arnaldo Mauricio Núñez Ceballo", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-30.webp" },
+  { id: "ff-31", name: "Jesús Alberto Vallenilla Castilla", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-31.webp" },
+  { id: "ff-33", name: "Wilmer Ortiz Cañate", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas-preview/ff-33.webp" },
   { id: "ff-02", name: "Gladys Mercedes Rosado Díaz", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-02.webp" },
   { id: "ff-10", name: "Margaret Liliana Muñoz Quintero", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-10.webp" },
   { id: "ff-15", name: "Iranys Beatriz Ortiz Villalba", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-15.webp" },
   { id: "ff-18", name: "Valeria Vergara Araujo", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-18.webp" },
   { id: "ff-20", name: "Margarita Rosa Silva Rojas", role: "Técnico Administrativo", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-20.webp" },
+  { id: "ff-24", name: "Armando Fontalvo Gamarra", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-24.webp" },
+  { id: "ff-25", name: "Carlos Alberto Noguera Meza", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-25.webp" },
+  { id: "ff-28", name: "Luis Eduardo Manjarres Ospino", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-28.webp" },
+  { id: "ff-32", name: "Valentina Amaya Henriquez", role: "Técnico Catastral", area: "Alcaldía", photo: "/assets/equipo/personas-preview/ff-32.webp" },
 ];
 
 /**

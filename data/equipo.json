@@ -126,6 +126,48 @@
     "photo": "/assets/equipo/personas-preview/ff-22.webp"
   },
   {
+    "id": "ff-26",
+    "name": "Enrique Jesús Fernández García",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas-preview/ff-26.webp"
+  },
+  {
+    "id": "ff-27",
+    "name": "Gina Paola García Pinto",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas-preview/ff-27.webp"
+  },
+  {
+    "id": "ff-29",
+    "name": "Luz Ángela Romero Zabaleta",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas-preview/ff-29.webp"
+  },
+  {
+    "id": "ff-30",
+    "name": "Arnaldo Mauricio Núñez Ceballo",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas-preview/ff-30.webp"
+  },
+  {
+    "id": "ff-31",
+    "name": "Jesús Alberto Vallenilla Castilla",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas-preview/ff-31.webp"
+  },
+  {
+    "id": "ff-33",
+    "name": "Wilmer Ortiz Cañate",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas-preview/ff-33.webp"
+  },
+  {
     "id": "ff-02",
     "name": "Gladys Mercedes Rosado Díaz",
     "role": "Profesional Universitario",
@@ -159,5 +201,33 @@
     "role": "Técnico Administrativo",
     "area": "Alcaldía",
     "photo": "/assets/equipo/personas-preview/ff-20.webp"
+  },
+  {
+    "id": "ff-24",
+    "name": "Armando Fontalvo Gamarra",
+    "role": "Profesional Universitario",
+    "area": "Alcaldía",
+    "photo": "/assets/equipo/personas-preview/ff-24.webp"
+  },
+  {
+    "id": "ff-25",
+    "name": "Carlos Alberto Noguera Meza",
+    "role": "Profesional Universitario",
+    "area": "Alcaldía",
+    "photo": "/assets/equipo/personas-preview/ff-25.webp"
+  },
+  {
+    "id": "ff-28",
+    "name": "Luis Eduardo Manjarres Ospino",
+    "role": "Contratista",
+    "area": "Alcaldía",
+    "photo": "/assets/equipo/personas-preview/ff-28.webp"
+  },
+  {
+    "id": "ff-32",
+    "name": "Valentina Amaya Henriquez",
+    "role": "Técnico Catastral",
+    "area": "Alcaldía",
+    "photo": "/assets/equipo/personas-preview/ff-32.webp"
   }
 ]
