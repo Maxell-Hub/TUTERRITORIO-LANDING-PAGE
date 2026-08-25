@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.30.4] - 2026-08-25
+
+### Añadido
+- Enlace a la página de Facebook en el footer (ícono + "Facebook"), junto a Instagram.
+
 ## [2.30.3] - 2026-08-25
 
 ### Cambiado

@@ -1,6 +1,6 @@
 ﻿/**
  * Footer institucional global. Idéntico al de INICIO pero LIMPIO:
- * - Solo red social Instagram (se eliminaron X y Facebook).
+ * - Redes sociales: Instagram y Facebook.
  * - Se eliminaron los enlaces de políticas redundantes.
  */
 /**
@@ -10,7 +10,7 @@
  * - MAYOR: rediseños o cambios que transforman el sitio por completo.
  * Se muestra en la esquina inferior derecha de la tarjeta del footer.
  */
-const SITE_VERSION = "2.30.3";
+const SITE_VERSION = "2.30.4";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -37,7 +37,7 @@ export default function Footer() {
             <div style={{ marginTop: 6 }}><b>Correo contacto:</b> <a href="mailto:contactenos@tuterritorio.gov.co">contactenos@tuterritorio.gov.co</a></div>
           </address>
 
-          {/* Footer limpio: SOLO Instagram */}
+          {/* Redes sociales: Instagram y Facebook */}
           <div className="footer-social">
             <a className="gc-social" href="https://www.instagram.com/tuterritorio_catastro" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Tuterritorio">
               <span className="ic">
@@ -48,6 +48,14 @@ export default function Footer() {
                 </svg>
               </span>
               Instagram
+            </a>
+            <a className="gc-social" href="https://www.facebook.com/share/1ANbhbiTtb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Tuterritorio">
+              <span className="ic">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </span>
+              Facebook
             </a>
           </div>
 
