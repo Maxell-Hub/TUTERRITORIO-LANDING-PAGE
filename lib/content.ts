@@ -175,7 +175,7 @@ export const TEAM_AREAS = [
  * como "Contratista". La Oficina de Gestión Catastral del municipio (área
  * "Alcaldía") se muestra aparte como aliado institucional. */
 export const DEFAULT_EQUIPO: Member[] = [
-  { id: "eq-lulia-cristina-maestre-arcia", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas/lulia-cristina-maestre-arcia.webp" },
+  { id: "eq-lulia-cristina-maestre-arcia", name: "Lulia Cristina Maestre Arcia", role: "Gerente", area: "Dirección", photo: "/assets/equipo/personas/lulia-cristina-maestre-arcia-v2.webp" },
   { id: "eq-jorge-hernan-salgado-miranda", name: "Jorge Hernán Salgado Miranda", role: "Jefe de la Oficina de Gestión Catastral", area: "Dirección", photo: "/assets/equipo/personas/jorge-hernan-salgado-miranda.webp" },
   { id: "eq-ana-jeraldine-herrera-llerena", name: "Ana Jeraldine Herrera Llerena", role: "Jefe Jurídico", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/ana-jeraldine-herrera-llerena.webp" },
   { id: "eq-juan-david-calderon-marquez", name: "Juan David Calderón Márquez", role: "Coordinador Administrativo", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/juan-david-calderon-marquez.webp" },
