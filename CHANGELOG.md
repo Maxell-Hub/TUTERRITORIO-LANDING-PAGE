@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.30.0] - 2026-08-25
+
+### Añadido
+- **Nuestro Equipo con fotografías.** Se publica la sección con las fotos y cargos del personal (34 integrantes) en cuatro grupos: Dirección destacada (Gerencia + Jefatura de la Oficina de Gestión Catastral), Equipo Tuterritorio, Contratistas y la banda "La Oficina de Gestión Catastral del Municipio" (Alcaldía). Fotos en formato vertical (4/5) con animación al pasar el mouse; claro y oscuro.
+
 ## [2.29.6] - 2026-08-12
 
 ### Corregido
