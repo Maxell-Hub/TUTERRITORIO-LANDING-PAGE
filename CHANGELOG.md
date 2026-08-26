@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.31.1] - 2026-08-26
+
+### Quitado
+- Se retiran los breadcrumbs (se consideraron redundantes con la navegación del encabezado).
+
 ## [2.31.0] - 2026-08-26
 
 ### Añadido
