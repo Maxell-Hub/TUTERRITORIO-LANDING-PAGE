@@ -3,6 +3,7 @@
 import { useSelectedLayoutSegment } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 /**
  * Decide si mostrar la estructura del sitio (encabezado, pie, etc.).
@@ -23,7 +24,10 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
       {/* Barra de progreso de scroll (colores de marca) */}
       <div id="scrollProg" />
       <Header />
-      <main id="main">{children}</main>
+      <main id="main">
+        <Breadcrumbs />
+        {children}
+      </main>
       <Footer />
     </>
   );

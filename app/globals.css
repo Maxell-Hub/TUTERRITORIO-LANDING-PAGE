@@ -2961,3 +2961,25 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .dark .atg-stat:nth-child(2) .n { color: #A7CF66; }
 .dark .atg-stat:nth-child(3) .n { color: #F0B63B; }
 .dark .atg-panel .photo { border-color: #2f3d47; }
+
+/* ============================================================
+   Breadcrumbs (ruta de navegación) — páginas internas
+   ============================================================ */
+.breadcrumbs { background: var(--tt-gray-50); border-bottom: 1px solid var(--border-subtle); }
+.bc-wrap { max-width: var(--container-max); margin: 0 auto; padding: 11px clamp(1rem, 5vw, 64px); }
+.breadcrumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center;
+  gap: 4px 8px; font: 500 0.8125rem/1.35 var(--font-sans); }
+.breadcrumbs li { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.breadcrumbs a { display: inline-flex; align-items: center; gap: 5px; color: var(--tt-blue-700); text-decoration: none;
+  border-radius: 6px; transition: color .2s; }
+.breadcrumbs a:hover { color: var(--tt-blue-800); text-decoration: underline; }
+.breadcrumbs [aria-current="page"] { color: var(--tt-gray-600); font-weight: 600; }
+.breadcrumbs .bc-plain { color: var(--tt-gray-500); }
+.breadcrumbs .bc-sep { color: var(--tt-gray-400); font-weight: 400; }
+.breadcrumbs svg { display: block; flex: none; }
+.dark .breadcrumbs { background: #0d151b; border-bottom-color: #24313a; }
+.dark .breadcrumbs a { color: #6db3cf; }
+.dark .breadcrumbs a:hover { color: #8fc8de; }
+.dark .breadcrumbs [aria-current="page"] { color: #cdd8e0; }
+.dark .breadcrumbs .bc-plain { color: #9fb0bd; }
+.dark .breadcrumbs .bc-sep { color: #5b6a76; }

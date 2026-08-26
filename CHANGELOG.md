@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ## [Unreleased]
 
+## [2.31.0] - 2026-08-26
+
+### Añadido
+- **Breadcrumbs (ruta de navegación)** en las páginas internas (Nosotros › Nuestro Equipo, Transparencia › …, Recursos › …, Noticias › detalle, etc.). Se generan automáticamente desde la URL, incluyen datos estructurados `BreadcrumbList` para buscadores y se ven bien en modo claro y oscuro.
+
 ## [2.30.4] - 2026-08-25
 
 ### Añadido
