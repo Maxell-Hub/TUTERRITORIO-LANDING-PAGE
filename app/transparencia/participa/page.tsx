@@ -41,14 +41,14 @@ export default function ParticipaPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/transparencia/foto-socializacion3.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/transparencia/foto-socializacion3-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/transparencia/foto-socializacion4.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/transparencia/foto-socializacion4-m.webp" media="(max-width: 720px)" fetchPriority="high" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
 
       {/* 1 · Hero fotográfico */}
       <section
         className="atg-hero"
-        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/transparencia/foto-socializacion3.webp)", ["--hero-m" as string]: "url(/assets/transparencia/foto-socializacion3-m.webp)", backgroundPosition: "center 40%" }}
+        style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/transparencia/foto-socializacion4.webp)", ["--hero-m" as string]: "url(/assets/transparencia/foto-socializacion4-m.webp)", backgroundPosition: "center 40%" }}
       >
         <h1>
           Tu voz también<br />construye el territorio
