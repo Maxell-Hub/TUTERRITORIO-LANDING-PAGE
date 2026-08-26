@@ -202,7 +202,7 @@ export const DEFAULT_EQUIPO: Member[] = [
   { id: "eq-armando-fontalvo-gamarra", name: "Armando Fontalvo Gamarra", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/armando-fontalvo-gamarra.webp" },
   { id: "eq-carlos-alberto-noguera-meza", name: "Carlos Alberto Noguera Meza", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/carlos-alberto-noguera-meza.webp" },
   { id: "eq-gisella-esther-martinez-gutierrez", name: "Gisella Esther Martínez Gutierrez", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/gisella-esther-martinez-gutierrez.webp" },
-  { id: "eq-gladys-mercedes-rosado-diaz", name: "Gladys Mercedes Rosado Díaz", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/gladys-mercedes-rosado-diaz.webp" },
+  { id: "eq-gladys-mercedes-rosado-diaz", name: "Gladys Mercedes Rosado Díaz", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/gladys-mercedes-rosado-diaz-v2.webp" },
   { id: "eq-iranys-beatriz-ortiz-villalba", name: "Iranys Beatriz Ortiz Villalba", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/iranys-beatriz-ortiz-villalba.webp" },
   { id: "eq-luis-eduardo-manjarres-ospino", name: "Luis Eduardo Manjarres Ospino", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/luis-eduardo-manjarres-ospino.webp" },
   { id: "eq-margaret-liliana-munoz-quintero", name: "Margaret Liliana Muñoz Quintero", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/margaret-liliana-munoz-quintero.webp" },
