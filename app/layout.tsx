@@ -27,8 +27,8 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Tuterritorio — Catastro Multipropósito de Valledupar",
-    template: "%s — Tuterritorio",
+    default: "Tuterritorio - Catastro Multipropósito de Valledupar",
+    template: "%s - Tuterritorio",
   },
   description: DESCRIPTION,
   applicationName: SITE_NAME,
