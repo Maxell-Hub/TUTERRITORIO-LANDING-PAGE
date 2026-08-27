@@ -108,7 +108,7 @@ export default function EquipoTeam() {
       <section className="atg-band" id="equipo">
         <div className="atg-wrap">
           <div className="reveal" style={{ maxWidth: "46rem", margin: "0 auto 40px", textAlign: "center" }}>
-            <Editable as="h2" id="equipo.lead-title">Quienes orientan nuestra gestión</Editable>
+            <Editable as="h2" id="equipo.lead-title">Quienes lideran nuestro trabajo</Editable>
           </div>
 
           {isAdmin && (
@@ -153,8 +153,8 @@ export default function EquipoTeam() {
             <div className="eq-block reveal">
               <div className="eq-tech-head">
                 <div>
-                  <Editable as="h2" id="equipo.tt-title">Las jefaturas que dirigen el operador</Editable>
-                  <Editable as="p" id="equipo.tt-sub" className="eq-sub" multiline>Los cargos directivos que lideran la gestión jurídica, administrativa y financiera del catastro multipropósito de Valledupar.</Editable>
+                  <Editable as="h2" id="equipo.tt-title">Las personas detrás de nuestra operación</Editable>
+                  <Editable as="p" id="equipo.tt-sub" className="eq-sub" multiline>Responsables de coordinar los aspectos jurídicos, administrativos y financieros que hacen parte del funcionamiento del operador y que apoyan el desarrollo de las actividades catastrales a su cargo.</Editable>
                 </div>
               </div>
               <div className="eq-grid">{tuterritorio.map(MemberCard)}</div>
@@ -167,7 +167,7 @@ export default function EquipoTeam() {
               <div className="eq-tech-head">
                 <div>
                   <Editable as="h2" id="equipo.contract-title">Nuestro equipo de contratistas</Editable>
-                  <Editable as="p" id="equipo.contract-sub" className="eq-sub" multiline>El talento humano que ejecuta en campo y oficina cada etapa del proceso catastral, de la mano de la Gerencia.</Editable>
+                  <Editable as="p" id="equipo.contract-sub" className="eq-sub" multiline>Un equipo multidisciplinario que, desde el trabajo en campo y oficina, contribuye al desarrollo de las actividades a cargo del operador catastral, poniendo sus conocimientos y experiencia al servicio de una operación eficiente y de calidad.</Editable>
                 </div>
                 <div className="eq-count" aria-hidden="true">
                   <span className="num">{contratistas.length}</span>
@@ -186,7 +186,7 @@ export default function EquipoTeam() {
           <div className="atg-wrap">
             <div className="eq-ally-head reveal">
               <Editable as="h2" id="equipo.ally-title">La Oficina de Gestión Catastral del Municipio</Editable>
-              <Editable as="p" id="equipo.ally-note" className="eq-ally-note" multiline>La Oficina de Gestión Catastral de la Alcaldía de Valledupar funciona en nuestra sede, por lo que día a día trabajamos hombro a hombro con su equipo. Su labor como servidores públicos del municipio es clave para la gestión catastral del territorio.</Editable>
+              <Editable as="p" id="equipo.ally-note" className="eq-ally-note" multiline>En nuestra sede también desarrolla sus funciones la Oficina de Gestión Catastral, esta presencia facilita el trabajo articulado entre el equipo del municipio y el operador, manteniendo en todo momento las competencias y responsabilidades propias de cada entidad.</Editable>
             </div>
             <div className="eq-grid eq-grid-ally reveal">{alcaldia.map(MemberCard)}</div>
           </div>

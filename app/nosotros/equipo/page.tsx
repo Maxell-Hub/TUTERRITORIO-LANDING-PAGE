@@ -30,7 +30,7 @@ export default function EquipoPage() {
           Detrás de cada predio,<br />hay <span style={{ color: "#fff" }}>un equipo</span> que lo hace posible
         </h1>
         <Editable as="p" id="equipo.intro" className="sub" multiline>
-          Estas son las personas que levantan, revisan y responden por la información catastral de tu predio, en campo y en oficina.
+          Conoce al equipo que apoya el desarrollo de las actividades técnicas y operativas de la gestión catastral, tanto en campo como en oficina, contribuyendo al levantamiento, revisión, procesamiento y actualización de la información catastral, de acuerdo con los procedimientos y lineamientos establecidos.
         </Editable>
         <div className="atg-cta-row">
           <a className="atg-pill" href="#equipo"><Editable as="span" id="equipo.hero-cta1">Conoce al equipo</Editable></a>
@@ -47,8 +47,8 @@ export default function EquipoPage() {
         style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/equipo/foto-mulata2.webp)", ["--band-m" as string]: "url(/assets/equipo/foto-mulata2-m.webp)", backgroundPosition: "center 42%" }}
       >
         <div className="atg-wrap">
-          <Editable as="h2" id="equipo.cierre-h2">Un equipo que responde por tu predio</Editable>
-          <Editable as="p" id="equipo.cierre-p" multiline>En campo y en oficina, cada integrante trabaja para que la información catastral de Valledupar sea confiable y esté al día.</Editable>
+          <Editable as="h2" id="equipo.cierre-h2">Un equipo que trabaja por una mejor información catastral</Editable>
+          <Editable as="p" id="equipo.cierre-p" multiline>En campo y en oficina, nuestro equipo desarrolla las actividades a su cargo, contribuyendo al adecuado desarrollo de los procesos técnicos y operativos relacionados con la información catastral del municipio, de acuerdo con los procedimientos y lineamientos establecidos.</Editable>
           <a className="atg-pill" href="/contactos"><Editable as="span" id="equipo.cierre-cta">Contáctanos</Editable></a>
         </div>
       </section>
