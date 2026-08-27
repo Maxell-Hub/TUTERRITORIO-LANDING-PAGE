@@ -46,8 +46,6 @@ const GRUPOS: { titulo: string; accent: string; enlaces: { href: string; label: 
       { href: "/transparencia", label: "Inicio de Transparencia" },
       { href: "/transparencia/informacion-entidad", label: "Información de la entidad" },
       { href: "/transparencia/normativa", label: "Normativa" },
-      { href: "/transparencia/contratacion", label: "Contratación" },
-      { href: "/transparencia/planeacion", label: "Planeación, presupuesto e informes" },
       { href: "/transparencia/tramites", label: "Trámites y servicios" },
       { href: "/transparencia/participa", label: "Participa" },
       { href: "/transparencia/datos-abiertos", label: "Datos abiertos" },

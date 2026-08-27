@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 const SUBSECCIONES: { n: string; href: string; titulo: string; desc: string }[] = [
   { n: "1", href: "/transparencia/informacion-entidad", titulo: "Información de la entidad", desc: "Mecanismos de contacto, sedes y horarios, normograma, estructura orgánica, directorio y entes de control." },
   { n: "2", href: "/transparencia/normativa", titulo: "Normativa", desc: "Normas generales y reglamentarias que rigen la entidad y proyectos normativos para comentarios." },
-  { n: "3", href: "/transparencia/contratacion", titulo: "Contratación", desc: "Plan Anual de Adquisiciones, ejecución contractual y enlace al SECOP II." },
-  { n: "4", href: "/transparencia/planeacion", titulo: "Planeación, presupuesto e informes", desc: "Plan de acción, presupuesto, ejecución presupuestal e informes de gestión." },
-  { n: "5", href: "/transparencia/tramites", titulo: "Trámites y servicios", desc: "Listado de trámites y servicios catastrales, con enlace al SUIT." },
-  { n: "6", href: "/transparencia/participa", titulo: "Participa", desc: "Espacios de participación ciudadana en la gestión de la entidad." },
-  { n: "7", href: "/transparencia/datos-abiertos", titulo: "Datos abiertos", desc: "Conjuntos de datos publicados en el portal datos.gov.co." },
-  { n: "8", href: "/transparencia/grupos-interes", titulo: "Información para grupos de interés", desc: "Información dirigida a poblaciones y grupos de interés específicos." },
-  { n: "9", href: "/transparencia/reporte-informacion", titulo: "Obligación de reporte de información", desc: "Información que la entidad debe reportar por ley a organismos de control." },
-  { n: "10", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
+  { n: "3", href: "/transparencia/tramites", titulo: "Trámites y servicios", desc: "Listado de trámites y servicios catastrales, con enlace al SUIT." },
+  { n: "4", href: "/transparencia/participa", titulo: "Participa", desc: "Espacios de participación ciudadana en la gestión de la entidad." },
+  { n: "5", href: "/transparencia/datos-abiertos", titulo: "Datos abiertos", desc: "Conjuntos de datos publicados en el portal datos.gov.co." },
+  { n: "6", href: "/transparencia/grupos-interes", titulo: "Información para grupos de interés", desc: "Información dirigida a poblaciones y grupos de interés específicos." },
+  { n: "7", href: "/transparencia/reporte-informacion", titulo: "Obligación de reporte de información", desc: "Información que la entidad debe reportar por ley a organismos de control." },
+  { n: "8", href: "/transparencia/proteccion-datos", titulo: "Protección de datos personales", desc: "Política de tratamiento de datos personales y derechos de los titulares." },
 ];
 
 /* Colores corporativos que se alternan por tarjeta (número), como en el diseño

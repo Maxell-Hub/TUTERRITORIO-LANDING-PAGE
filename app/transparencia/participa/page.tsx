@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PendienteContenido from "@/components/common/PendienteContenido";
 import Editable from "@/components/admin/Editable";
 
 export const metadata: Metadata = {
@@ -10,14 +9,7 @@ export const metadata: Metadata = {
 
 const SITE_URL = "https://tuterritorio.gov.co";
 
-/** Fases de participación aún sin espacios habilitados (6.1 a 6.3). */
-const FASES_PENDIENTES: { titulo: string; pendiente: string }[] = [
-  { titulo: "6.1 Diagnóstico e identificación de problemas", pendiente: "Espacios de diagnóstico participativo" },
-  { titulo: "6.2 Planeación y presupuesto participativo", pendiente: "Espacios de planeación participativa" },
-  { titulo: "6.3 Ejecución de programas y proyectos", pendiente: "Participación en la ejecución" },
-];
-
-/* Las tarjetas de fase (6.1 a 6.5) usan la clase .fase-card de globals.css,
+/* La tarjeta de fase (6.4) usa la clase .fase-card de globals.css,
    con estilos propios para modo claro y oscuro. */
 
 /**
@@ -66,26 +58,14 @@ export default function ParticipaPage() {
       <section className="atg-band" id="fases">
         <div className="atg-wrap">
           <div className="reveal" style={{ textAlign: "center", marginBottom: 44 }}>
-            <Editable as="h2" id="part.fases-h2">Participa en cada fase de la gestión</Editable>
+            <Editable as="h2" id="part.fases-h2">Participa en la gestión de la entidad</Editable>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 24 }}>
-            {FASES_PENDIENTES.map((f, i) => (
-              <div key={f.titulo} className="fase-card reveal">
-                <h3><Editable as="span" id={`part.fase-${i}-titulo`}>{f.titulo}</Editable></h3>
-                <PendienteContenido titulo={f.pendiente} descripcion="Información pendiente de cargar por la entidad." />
-              </div>
-            ))}
-
-            {/* 6.4 — única fase con espacio ya disponible: control social vía PQRSD */}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(260px,560px)", justifyContent: "center" }}>
+            {/* 6.4 — control social vía PQRSD */}
             <div id="control-social" className="fase-card reveal">
               <Editable as="h3" id="part.control-h3">6.4 Control y evaluación de la gestión</Editable>
               <Editable as="p" id="part.control-p" multiline>Ejerce control social: presenta tus peticiones, quejas, reclamos, sugerencias y denuncias con radicado inmediato y tiempos de respuesta según la ley.</Editable>
               <a className="atg-pill" href="/pqrsd" style={{ marginTop: "auto", alignSelf: "flex-start" }}><Editable as="span" id="part.control-cta">Radicar una PQRSD</Editable></a>
-            </div>
-
-            <div id="rendicion-de-cuentas" className="fase-card reveal">
-              <Editable as="h3" id="part.rendicion-h3">6.5 Rendición de cuentas</Editable>
-              <PendienteContenido titulo="Rendición de cuentas a la ciudadanía" descripcion="Cronograma e informes de rendición de cuentas pendientes de cargar por la entidad." />
             </div>
           </div>
         </div>

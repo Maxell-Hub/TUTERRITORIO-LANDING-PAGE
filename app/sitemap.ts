@@ -31,8 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/transparencia", priority: 0.8, freq: "monthly" },
     { path: "/transparencia/informacion-entidad", priority: 0.5, freq: "monthly" },
     { path: "/transparencia/normativa", priority: 0.5, freq: "monthly" },
-    { path: "/transparencia/contratacion", priority: 0.5, freq: "monthly" },
-    { path: "/transparencia/planeacion", priority: 0.5, freq: "monthly" },
     { path: "/transparencia/tramites", priority: 0.5, freq: "monthly" },
     { path: "/transparencia/participa", priority: 0.5, freq: "monthly" },
     { path: "/transparencia/datos-abiertos", priority: 0.5, freq: "monthly" },

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { TPageATG, Apartado, RecursoExistente } from "@/components/transparencia/Transparencia";
-import PendienteContenido from "@/components/common/PendienteContenido";
 
 export const metadata: Metadata = {
   title: "Información de la entidad — Transparencia",
@@ -31,15 +30,6 @@ export default function InformacionEntidadPage() {
       <Apartado titulo="1.3 Normograma">
         <p>El marco normativo que rige la gestión catastral está disponible en la sección de Normativas.</p>
         <RecursoExistente href="/recursos/normativas">Ver normativas</RecursoExistente>
-        <PendienteContenido titulo="Normograma institucional consolidado" descripcion="Tabla normativa propia de la entidad pendiente de cargar por la entidad." />
-      </Apartado>
-
-      <Apartado titulo="1.4 Estructura orgánica / organigrama">
-        <PendienteContenido titulo="Organigrama de la entidad" descripcion="Estructura orgánica pendiente de cargar por la entidad." />
-      </Apartado>
-
-      <Apartado titulo="1.5 Directorio de funcionarios y contratistas">
-        <PendienteContenido titulo="Directorio institucional" descripcion="Directorio de funcionarios y contratistas pendiente de cargar por la entidad." />
       </Apartado>
 
       <Apartado titulo="1.6 Entes que ejercen control sobre la entidad">
