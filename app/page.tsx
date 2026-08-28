@@ -21,10 +21,10 @@ export default function HomePage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/inicio/foto-panoramica2.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/inicio/foto-panoramica3-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/inicio/foto-panoramica2-v2.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/inicio/foto-panoramica3-m-v2.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
-      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/inicio/foto-panoramica2.webp)", ["--hero-m" as string]: "url(/assets/inicio/foto-panoramica3-m.webp)" }}>
+      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/inicio/foto-panoramica2-v2.webp)", ["--hero-m" as string]: "url(/assets/inicio/foto-panoramica3-m-v2.webp)" }}>
         <h1>
           {/* El espacio vive DENTRO del span notranslate: Google recorta el espacio
               del texto traducido y "ensure" quedaba pegado a "Tuterritorio". */}
@@ -42,7 +42,7 @@ export default function HomePage() {
             <div className="atg-visual reveal">
               <div className="atg-mock">
                 <div className="atg-map-body">
-                  <img src="/assets/inicio/foto-ortofoto2.webp" srcSet="/assets/inicio/foto-ortofoto2-m.webp 1080w, /assets/inicio/foto-ortofoto2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ortofoto de Valledupar con la malla predial" loading="lazy" decoding="async" width={1600} height={1067} />
+                  <img src="/assets/inicio/foto-ortofoto2.webp" srcSet="/assets/inicio/foto-ortofoto2-m-v2.webp 1080w, /assets/inicio/foto-ortofoto2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ortofoto de Valledupar con la malla predial" loading="lazy" decoding="async" width={1600} height={1067} />
                 </div>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/inicio/foto-archivo2.webp" srcSet="/assets/inicio/foto-archivo2-m.webp 860w, /assets/inicio/foto-archivo2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/inicio/foto-archivo2.webp" srcSet="/assets/inicio/foto-archivo2-m-v2.webp 860w, /assets/inicio/foto-archivo2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
