@@ -1293,7 +1293,7 @@ img { max-width: 100%; }
 .news-card-badge { position: absolute; top: 14px; left: 14px; padding: 6px 12px; border-radius: var(--radius-pill); color: #fff;
   font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans); letter-spacing: var(--ls-wide); text-transform: uppercase; }
 .news-card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
-.news-card-body h3 { margin: 0; font: var(--text-card-title); color: var(--tt-navy-700); }
+.news-card-body h3 { margin: 0; font: var(--text-card-title); font-weight: var(--fw-bold); color: var(--tt-navy-700); }
 .news-card-body p { margin: 0; font: var(--fw-regular) var(--fs-sm)/1.55 var(--font-sans); color: var(--tt-gray-700);
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 900px) { .feat-card { grid-template-columns: 1fr; } .feat-imgwrap { min-height: 240px; } }
