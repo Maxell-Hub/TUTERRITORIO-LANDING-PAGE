@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Editable from "@/components/admin/Editable";
 import EnlacesInteres from "@/components/home/EnlacesInteres";
+import NoticiasRecientes from "@/components/home/NoticiasRecientes";
 import CountUp from "@/components/site/CountUp";
 
 export const metadata: Metadata = {
@@ -107,7 +108,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7 · Franja fotográfica de cierre */}
+      {/* 7 · Noticias recientes */}
+      <NoticiasRecientes />
+
+      {/* 8 · Franja fotográfica de cierre */}
       <section className="atg-photo-band">
         <div className="atg-wrap">
           <Editable as="h2" id="home.cierre-h2">Hecho para el territorio de Valledupar</Editable>
