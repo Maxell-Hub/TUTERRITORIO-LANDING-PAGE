@@ -1278,6 +1278,11 @@ img { max-width: 100%; }
 .news-grid-head { margin-bottom: 28px; }
 .news-grid-head h2 { margin: 0; font: var(--fw-semibold) var(--fs-xl)/1.2 var(--font-sans); color: var(--tt-navy-700); }
 .news-grid-head .rule { height: 2px; background: var(--tt-navy-700); margin-top: 12px; }
+/* "Noticias recientes" del Inicio al mismo tamaño que "Enlaces de interés"
+   (.sec-title), con la línea y el "Ver todas" escalados a ese tamaño. */
+.home-news .news-grid-head h2 { font: var(--fw-bold) clamp(1.9rem,3.6vw,2.6rem)/1.12 var(--font-sans); }
+.home-news .news-grid-head .rule { height: 3px; margin-top: 16px; }
+.home-news .news-strip-hint { font-size: var(--fs-sm); margin-top: 16px; }
 .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(0, 400px)); gap: 24px; }
 .news-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
   overflow: hidden; text-decoration: none; box-shadow: var(--shadow-sm); transition: box-shadow .28s var(--ease-soft), transform .28s var(--ease-soft); }

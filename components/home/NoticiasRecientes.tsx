@@ -30,7 +30,7 @@ export default async function NoticiasRecientes() {
   if (recientes.length === 0) return null;
 
   return (
-    <section className="news-grid-section" aria-labelledby="home-news-title">
+    <section className="news-grid-section home-news" aria-labelledby="home-news-title">
       <div className="news-grid-inner">
         <div className="news-grid-head">
           <h2 id="home-news-title">Noticias recientes</h2>
