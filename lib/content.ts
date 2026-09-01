@@ -224,7 +224,7 @@ export const DEFAULT_EQUIPO: Member[] = [
   { id: "eq-zuleima-isabel-teran-bohorquez", name: "Zuleima Isabel Terán Bohórquez", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/zuleima-isabel-teran-bohorquez.webp" },
   { id: "eq-eljan-lizeth-cortes-avila", name: "Eljan Lizeth Cortes Ávila", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/eljan-lizeth-cortes-avila.webp" },
   { id: "eq-maria-amparo-camargo-bautista", name: "María Amparo Camargo Bautista", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/maria-amparo-camargo-bautista.webp" },
-  { id: "eq-juan-esteban-peraza-vergara", name: "Juan Esteban Peraza Vergara", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/juan-esteban-peraza-vergara-v2.webp" },
+  { id: "eq-juan-esteban-peraza-vergara", name: "Juan Esteban Peraza Vergara", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/juan-esteban-peraza-vergara-v3.webp" },
   { id: "eq-armando-fontalvo-gamarra", name: "Armando Fontalvo Gamarra", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/armando-fontalvo-gamarra.webp" },
   { id: "eq-carlos-alberto-noguera-meza", name: "Carlos Alberto Noguera Meza", role: "Profesional Universitario", area: "Alcaldía", photo: "/assets/equipo/personas/carlos-alberto-noguera-meza.webp" },
   { id: "eq-gisella-esther-martinez-gutierrez", name: "Gisella Esther Martínez Gutierrez", role: "Contratista", area: "Alcaldía", photo: "/assets/equipo/personas/gisella-esther-martinez-gutierrez.webp" },
