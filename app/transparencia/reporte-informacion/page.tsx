@@ -14,11 +14,11 @@ export default function ReporteInformacionPage() {
       editKey="transp-reporte-informacion"
       title="Obligación de reporte de información"
       lead="Información que la entidad reporta a organismos de control y entidades del Estado en cumplimiento de la ley."
-      eyebrow="Sección 9"
+      eyebrow="Sección 7"
       photo="transparencia/foto-cacique2"
       photoPos="center 55%"
     >
-      <Apartado titulo="9.1 Información reportada por la entidad">
+      <Apartado titulo="7.1 Información reportada por la entidad">
         <PendienteContenido titulo="Reportes de ley" descripcion="Relación de los reportes que la entidad presenta por obligación legal, pendiente de cargar por la entidad." />
       </Apartado>
     </TPageATG>

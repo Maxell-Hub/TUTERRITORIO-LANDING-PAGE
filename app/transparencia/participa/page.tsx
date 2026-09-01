@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const SITE_URL = "https://tuterritorio.gov.co";
 
-/* La tarjeta de fase (6.4) usa la clase .fase-card de globals.css,
+/* La tarjeta de fase (4.4) usa la clase .fase-card de globals.css,
    con estilos propios para modo claro y oscuro. */
 
 /**
@@ -61,9 +61,9 @@ export default function ParticipaPage() {
             <Editable as="h2" id="part.fases-h2">Participa en la gestión de la entidad</Editable>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "minmax(260px,560px)", justifyContent: "center" }}>
-            {/* 6.4 — control social vía PQRSD */}
+            {/* 4.4 — control social vía PQRSD */}
             <div id="control-social" className="fase-card reveal">
-              <Editable as="h3" id="part.control-h3">6.4 Control y evaluación de la gestión</Editable>
+              <Editable as="h3" id="part.control-h3">4.4 Control y evaluación de la gestión</Editable>
               <Editable as="p" id="part.control-p" multiline>Ejerce control social: presenta tus peticiones, quejas, reclamos, sugerencias y denuncias con radicado inmediato y tiempos de respuesta según la ley.</Editable>
               <a className="atg-pill" href="/pqrsd" style={{ marginTop: "auto", alignSelf: "flex-start" }}><Editable as="span" id="part.control-cta">Radicar una PQRSD</Editable></a>
             </div>

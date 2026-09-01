@@ -13,11 +13,11 @@ export default function TramitesTransparenciaPage() {
       editKey="transp-tramites"
       title="Trámites y servicios"
       lead="Trámites y servicios catastrales disponibles para la ciudadanía."
-      eyebrow="Sección 5"
+      eyebrow="Sección 3"
       photo="transparencia/foto-terminal2"
       photoPos="center 58%"
     >
-      <Apartado titulo="5.1 Listado de trámites y servicios">
+      <Apartado titulo="3.1 Listado de trámites y servicios">
         <p>El listado completo de trámites y productos catastrales (con requisitos, tiempos y costos) está publicado en la sección de Trámites y servicios del sitio.</p>
         <RecursoExistente href="/servicios">Ver trámites y servicios catastrales</RecursoExistente>
       </Apartado>

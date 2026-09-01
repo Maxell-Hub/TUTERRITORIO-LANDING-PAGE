@@ -13,16 +13,16 @@ export default function ProteccionDatosPage() {
       editKey="transp-proteccion-datos"
       title="Protección de datos personales"
       lead="Tratamiento de datos personales conforme a la Ley 1581 de 2012."
-      eyebrow="Sección 10"
+      eyebrow="Sección 8"
       photo="transparencia/foto-hernando2"
       photoPos="center 38%"
     >
-      <Apartado titulo="10.1 Política de Tratamiento de Datos Personales">
+      <Apartado titulo="8.1 Política de Tratamiento de Datos Personales">
         <p>Tuterritorio cuenta con su Política de Tratamiento de Datos Personales, donde se describen las finalidades, los derechos de los titulares y los canales para ejercerlos.</p>
         <RecursoExistente href="/politica-tratamiento-datos">Ver la Política de Tratamiento de Datos Personales</RecursoExistente>
       </Apartado>
 
-      <Apartado titulo="10.2 Derechos de los titulares y canales de atención">
+      <Apartado titulo="8.2 Derechos de los titulares y canales de atención">
         <p>Los titulares pueden conocer, actualizar, rectificar y solicitar la supresión de sus datos, así como revocar la autorización, a través de los canales oficiales de la entidad.</p>
         <RecursoExistente href="/contactos">Canales de atención</RecursoExistente>
       </Apartado>

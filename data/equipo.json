@@ -32,7 +32,7 @@
     "name": "Liz Paola Muñoz Hernández",
     "role": "Contador",
     "area": "Equipo Tuterritorio",
-    "photo": "/assets/equipo/personas/liz-paola-munoz-hernandez-v2.webp"
+    "photo": "/assets/equipo/personas/liz-paola-munoz-hernandez-v3.webp"
   },
   {
     "id": "eq-katherin-julieth-duarte-diaz",
@@ -166,6 +166,13 @@
     "role": "Contratista",
     "area": "Contratistas",
     "photo": "/assets/equipo/personas/maria-amparo-camargo-bautista.webp"
+  },
+  {
+    "id": "eq-juan-esteban-peraza-vergara",
+    "name": "Juan Esteban Peraza Vergara",
+    "role": "Contratista",
+    "area": "Contratistas",
+    "photo": "/assets/equipo/personas/juan-esteban-peraza-vergara.webp"
   },
   {
     "id": "eq-armando-fontalvo-gamarra",
