@@ -2697,15 +2697,25 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 /* Entrada escalonada del texto del hero en TODAS las páginas
    (titular → párrafo → botones). En el Inicio, además, "Tuterritorio"
    se desliza desde la izquierda cuando el titular ya está en su sitio. */
-.atg-hero h1, .atg-hero .sub, .atg-hero .atg-cta-row {
+/* El H1 es el elemento LCP: se anima SOLO con deslizamiento (sin opacity),
+   así se pinta desde el primer frame y no retrasa el LCP. El fade queda para
+   los elementos secundarios (párrafo y botones). */
+.atg-hero h1 {
+  animation: hero-rise-solid .7s cubic-bezier(.39,.575,.565,1) both;
+  animation-delay: .1s;
+}
+.atg-hero .sub, .atg-hero .atg-cta-row {
   animation: hero-rise .7s cubic-bezier(.39,.575,.565,1) both;
 }
-.atg-hero h1 { animation-delay: .25s; }
 .atg-hero .sub { animation-delay: .45s; }
 .atg-hero .atg-cta-row { animation-delay: .6s; }
 @keyframes hero-rise {
   0% { transform: translateY(24px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes hero-rise-solid {
+  0% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
 }
 #consultar h1 .b { animation: fade-in-left .8s cubic-bezier(.39,.575,.565,1) .55s both; }
 @keyframes fade-in-left {

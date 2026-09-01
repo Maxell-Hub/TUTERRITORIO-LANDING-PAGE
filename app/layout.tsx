@@ -144,8 +144,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {/* Google Analytics 4 (gtag.js) */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-1W6H8R3KJV" strategy="afterInteractive" />
-        <Script id="ga-gtag" strategy="afterInteractive">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-1W6H8R3KJV" strategy="lazyOnload" />
+        <Script id="ga-gtag" strategy="lazyOnload">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
