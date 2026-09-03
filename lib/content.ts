@@ -205,6 +205,7 @@ export const DEFAULT_EQUIPO: Member[] = [
   { id: "eq-ana-jeraldine-herrera-llerena", name: "Ana Jeraldine Herrera Llerena", role: "Jefe Jurídico", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/ana-jeraldine-herrera-llerena.webp" },
   { id: "eq-juan-david-calderon-marquez", name: "Juan David Calderón Márquez", role: "Coordinador Administrativo", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/juan-david-calderon-marquez.webp" },
   { id: "eq-liz-paola-munoz-hernandez", name: "Liz Paola Muñoz Hernández", role: "Contador", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/liz-paola-munoz-hernandez-v3.webp" },
+  { id: "eq-karol-tatiana-quintero-aristizabal", name: "Karol Tatiana Quintero Aristizabal", role: "Profesional de Talento Humano", area: "Equipo Tuterritorio", photo: "/assets/equipo/personas/karol-tatiana-quintero-aristizabal.webp" },
   { id: "eq-katherin-julieth-duarte-diaz", name: "Katherin Julieth Duarte Díaz", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/katherin-julieth-duarte-diaz.webp" },
   { id: "eq-asdrubal-raul-vega-salazar", name: "Asdrúbal Raúl Vega Salazar", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/asdrubal-raul-vega-salazar.webp" },
   { id: "eq-tomas-eduardo-diaz-fontalvo", name: "Tomas Eduardo Díaz Fontalvo", role: "Contratista", area: "Contratistas", photo: "/assets/equipo/personas/tomas-eduardo-diaz-fontalvo.webp" },
