@@ -13,9 +13,9 @@ export default function GlosarioPage() {
   return (
     <>
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
-      <link rel="preload" as="image" href="/assets/recursos/foto-recursos2.webp" media="(min-width: 721px)" fetchPriority="high" />
-      <link rel="preload" as="image" href="/assets/recursos/foto-recursos2-m.webp" media="(max-width: 720px)" fetchPriority="high" />
-      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/recursos/foto-recursos2.webp)", ["--hero-m" as string]: "url(/assets/recursos/foto-recursos2-m.webp)", backgroundPosition: "center 40%" }}>
+      <link rel="preload" as="image" href="/assets/recursos/foto-recursos3.webp" media="(min-width: 721px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/recursos/foto-recursos3-m.webp" media="(max-width: 720px)" fetchPriority="high" />
+      <section className="atg-hero" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/recursos/foto-recursos3.webp)", ["--hero-m" as string]: "url(/assets/recursos/foto-recursos3-m.webp)", backgroundPosition: "center 40%" }}>
         <Editable as="h1" id="glos.h1">ABC Catastral</Editable>
         <Editable as="p" id="glos.hero-intro" className="sub" multiline>Entiende los términos clave del catastro multipropósito explicados en lenguaje claro. Busca por palabra o filtra por inicial.</Editable>
       </section>
