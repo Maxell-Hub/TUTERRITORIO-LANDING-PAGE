@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { rateLimit, clientIp } from "@/lib/rateLimit";
+import { rateLimitAsync, clientIp } from "@/lib/rateLimit";
 
 /**
  * Endpoint de contacto: valida, aplica anti-spam (honeypot) y envía el mensaje
@@ -36,7 +36,7 @@ const esc = (s: unknown) =>
 
 export async function POST(req: Request) {
   // Anti-spam/abuso: máx. 5 envíos por IP cada 10 minutos.
-  if (!rateLimit(`contacto:${clientIp(req)}`, 5, 10 * 60_000)) {
+  if (!(await rateLimitAsync(`contacto:${clientIp(req)}`, 5, 10 * 60_000))) {
     return NextResponse.json(
       { ok: false, error: "Has enviado varios mensajes. Espera unos minutos antes de intentar de nuevo." },
       { status: 429 }

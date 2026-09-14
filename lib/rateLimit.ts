@@ -1,11 +1,47 @@
 /**
- * Limitador de tasa simple (ventana fija) en memoria.
+ * Limitador de tasa.
  *
- * Nota importante: en serverless (Vercel) la memoria es POR INSTANCIA y efímera,
- * así que esto es "mejor esfuerzo" — frena ataques básicos de fuerza bruta/spam,
- * pero no es un límite global estricto. Para protección robusta y compartida
- * entre instancias, usar Vercel KV / Upstash Ratelimit (ver SECURITY.md).
+ * - Si hay Upstash Redis conectado (variables UPSTASH_REDIS_REST_URL y
+ *   UPSTASH_REDIS_REST_TOKEN, que Vercel inyecta al conectar la integración),
+ *   usa un contador COMPARTIDO entre todas las instancias serverless →
+ *   límite global estricto y real.
+ * - Si NO está conectado, cae automáticamente al limitador en memoria de abajo
+ *   (por instancia y efímero): "mejor esfuerzo" para frenar spam básico.
+ *
+ * Usar `rateLimitAsync` en las rutas (con `await`). El `rateLimit` síncrono se
+ * conserva como respaldo interno.
  */
+import { Redis } from "@upstash/redis";
+
+const redis =
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    ? new Redis({
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+      })
+    : null;
+
+/** ¿Está activo el limitador compartido (Upstash)? */
+export const isSharedRateLimit = !!redis;
+
+/**
+ * Límite de tasa recomendado (async). Usa Upstash si está disponible; si no,
+ * o si Upstash fallara, usa el respaldo en memoria para NO bloquear el formulario.
+ * Devuelve true si se permite la petición; false si superó el límite.
+ */
+export async function rateLimitAsync(key: string, limit: number, windowMs: number): Promise<boolean> {
+  if (!redis) return rateLimit(key, limit, windowMs);
+  try {
+    const k = `rl:${key}`;
+    const count = await redis.incr(k);
+    // Al primer golpe de la ventana, fija el vencimiento.
+    if (count === 1) await redis.pexpire(k, windowMs);
+    return count <= limit;
+  } catch {
+    // Si Redis no responde, no dejamos el formulario inservible: respaldo local.
+    return rateLimit(key, limit, windowMs);
+  }
+}
 
 type Bucket = { count: number; reset: number };
 const buckets = new Map<string, Bucket>();
