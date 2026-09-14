@@ -46,10 +46,13 @@ const nextConfig = {
     inlineCss: true,
   },
   images: {
-    // Sirve AVIF/WebP automáticamente (mucho más livianos).
-    formats: ["image/avif", "image/webp"],
-    // Permite optimizar imágenes externas que el administrador pegue como URL
-    // (por ejemplo, en una noticia). Las imágenes locales de /assets no necesitan esto.
+    // Servimos las imágenes tal cual (ya son WebP optimizadas en /assets) SIN pasar
+    // por el optimizador de imágenes de Vercel. Motivo: cuando su cuota mensual se
+    // agota (o hay una incidencia), next/image devolvía error y las fotos de Noticias
+    // se rompían (se veía solo el texto alt). Al desactivarlo, las fotos siempre
+    // cargan y no se consume cuota de optimización.
+    unoptimized: true,
+    // Permite imágenes externas que el administrador pegue como URL (p. ej. en una noticia).
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
   // Cabeceras de seguridad aplicadas a todas las rutas.
