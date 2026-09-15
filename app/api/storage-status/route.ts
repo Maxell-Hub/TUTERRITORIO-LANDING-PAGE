@@ -14,6 +14,11 @@ export async function GET() {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
   const rl = await rateLimitStatus();
+  // Nombres (NO valores) de variables de entorno relacionadas con Redis/Upstash/KV,
+  // para diagnosticar por qué no se detecta la conexión. Es seguro: solo nombres.
+  const envKeys = Object.keys(process.env)
+    .filter((k) => /UPSTASH|REDIS|KV_/i.test(k))
+    .sort();
   return NextResponse.json({
     isServerless,
     isBlobConfigured,
@@ -23,5 +28,6 @@ export async function GET() {
       ? "Archivos /data en Vercel (SOLO LECTURA → guardar fallará). Conecta el Blob y haz Redeploy."
       : "Archivos /data locales (ok en desarrollo)",
     rateLimit: rl,
+    variablesDetectadas: envKeys.length ? envKeys : "(ninguna variable REDIS/UPSTASH/KV en Production)",
   });
 }

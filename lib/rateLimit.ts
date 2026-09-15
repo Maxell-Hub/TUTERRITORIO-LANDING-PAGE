@@ -13,13 +13,13 @@
  */
 import { Redis } from "@upstash/redis";
 
+// La integración de Upstash/KV en Vercel puede inyectar las credenciales con
+// distintos nombres según cómo se conecte. Aceptamos los dos esquemas comunes.
+const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+
 const redis =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? new Redis({
-        url: process.env.UPSTASH_REDIS_REST_URL,
-        token: process.env.UPSTASH_REDIS_REST_TOKEN,
-      })
-    : null;
+  REDIS_URL && REDIS_TOKEN ? new Redis({ url: REDIS_URL, token: REDIS_TOKEN }) : null;
 
 /** ¿Está activo el limitador compartido (Upstash)? */
 export const isSharedRateLimit = !!redis;
