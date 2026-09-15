@@ -71,7 +71,7 @@ export default function ContactosPage() {
       >
         <div className="atg-wrap">
           <Editable as="h2" id="cont.cierre-h2">También puedes radicar en línea</Editable>
-          <Editable as="p" id="cont.cierre-p" multiline>Si prefieres no desplazarte, radica tu petición, queja o reclamo desde cualquier lugar y haz seguimiento con tu número de radicado.</Editable>
+          <Editable as="p" id="cont.cierre-p" multiline>Si prefieres no desplazarte, radica tu petición, queja o reclamo desde cualquier lugar; cada solicitud queda registrada con tiempos de respuesta según la ley.</Editable>
           <a className="atg-pill" href="/pqrsd"><Editable as="span" id="cont.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>

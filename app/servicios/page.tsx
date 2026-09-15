@@ -108,7 +108,7 @@ export default async function ServiciosPage() {
       >
         <div className="atg-wrap">
           <Editable as="h2" id="serv.cierre-h2">¿No encontraste lo que buscabas?</Editable>
-          <Editable as="p" id="serv.cierre-p" multiline>Radica tu petición, queja, reclamo, sugerencia o denuncia. Cada solicitud queda con radicado y tiempos de respuesta según la ley.</Editable>
+          <Editable as="p" id="serv.cierre-p" multiline>Radica tu petición, queja, reclamo, sugerencia o denuncia. Cada solicitud queda registrada con tiempos de respuesta según la ley.</Editable>
           <a className="atg-pill" href="/pqrsd"><Editable as="span" id="serv.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>

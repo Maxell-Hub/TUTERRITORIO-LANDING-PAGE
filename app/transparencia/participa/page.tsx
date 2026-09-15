@@ -64,7 +64,7 @@ export default function ParticipaPage() {
             {/* 4.4 — control social vía PQRSD */}
             <div id="control-social" className="fase-card reveal">
               <Editable as="h3" id="part.control-h3">4.4 Control y evaluación de la gestión</Editable>
-              <Editable as="p" id="part.control-p" multiline>Ejerce control social: presenta tus peticiones, quejas, reclamos, sugerencias y denuncias con radicado inmediato y tiempos de respuesta según la ley.</Editable>
+              <Editable as="p" id="part.control-p" multiline>Ejerce control social: presenta tus peticiones, quejas, reclamos, sugerencias y denuncias con tiempos de respuesta según la ley.</Editable>
               <a className="atg-pill" href="/pqrsd" style={{ marginTop: "auto", alignSelf: "flex-start" }}><Editable as="span" id="part.control-cta">Radicar una PQRSD</Editable></a>
             </div>
           </div>

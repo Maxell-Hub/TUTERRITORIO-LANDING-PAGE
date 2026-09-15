@@ -79,7 +79,7 @@ export default function TransparenciaPage() {
       >
         <div className="atg-wrap">
           <Editable as="h2" id="transp.cierre-h2">La información pública, al alcance de todos</Editable>
-          <Editable as="p" id="transp.cierre-p" multiline>Si no encuentras un documento o necesitas más información, escríbenos: cada solicitud queda con radicado y tiempos de respuesta según la ley.</Editable>
+          <Editable as="p" id="transp.cierre-p" multiline>Si no encuentras un documento o necesitas más información, escríbenos: cada solicitud queda registrada con tiempos de respuesta según la ley.</Editable>
           <a className="atg-pill" href="/pqrsd"><Editable as="span" id="transp.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>

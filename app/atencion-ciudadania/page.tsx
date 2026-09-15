@@ -143,7 +143,7 @@ export default function AtencionCiudadaniaPage() {
       >
         <div className="atg-wrap">
           <Editable as="h2" id="aten.cierre-h2">¿No encontraste lo que buscabas?</Editable>
-          <Editable as="p" id="aten.cierre-p" multiline>Radica tu petición, queja, reclamo, sugerencia o denuncia: cada solicitud queda con radicado y tiempos de respuesta según la ley.</Editable>
+          <Editable as="p" id="aten.cierre-p" multiline>Radica tu petición, queja, reclamo, sugerencia o denuncia: cada solicitud queda registrada con tiempos de respuesta según la ley.</Editable>
           <a className="atg-pill" href="/pqrsd"><Editable as="span" id="aten.cierre-cta">Radicar una PQRSD</Editable></a>
         </div>
       </section>
