@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 
 // Content-Security-Policy ajustada a lo que el sitio realmente usa:
@@ -14,7 +16,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://www.gstatic.com https://fonts.gstatic.com",
-  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://translate.googleapis.com https://translate-pa.googleapis.com https://translate.google.com https://www.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://translate.googleapis.com https://translate-pa.googleapis.com https://translate.google.com https://www.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.sentry.io https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io",
   "frame-src 'self' https://www.google.com https://maps.google.com https://translate.google.com https://translate.googleapis.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
@@ -40,6 +42,12 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // El cliente solo lee variables NEXT_PUBLIC_*. Si la integración de Vercel puso
+  // el DSN de Sentry como SENTRY_DSN (server), lo exponemos también al cliente.
+  env: {
+    NEXT_PUBLIC_SENTRY_DSN:
+      process.env.NEXT_PUBLIC_SENTRY_DSN || process.env.SENTRY_DSN || "",
+  },
   experimental: {
     // Inserta el CSS en el HTML en vez de un <link> bloqueante: elimina la
     // solicitud que bloquea el primer renderizado (~300 ms en 4G lenta).
@@ -81,4 +89,13 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// Envuelve la config con Sentry. La subida de source maps solo ocurre si existe
+// SENTRY_AUTH_TOKEN (lo pone la integración de Vercel); sin él, se omite sin fallar.
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  disableLogger: true,
+  widenClientFileUpload: true,
+  // Solo sube source maps si hay token (lo pone la integración de Vercel).
+  // Sin token, se omite la subida y el build NO falla.
+  sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
+});
