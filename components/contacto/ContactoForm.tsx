@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import PrivacyNotice from "@/components/legal/PrivacyNotice";
+import Turnstile from "@/components/site/Turnstile";
 
 const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const NOMBRE_RE = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{2,}(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ.]{1,}){1,}$/;
@@ -77,6 +78,7 @@ export default function ContactoForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof Values, boolean>>>({});
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [captcha, setCaptcha] = useState("");
   const [error, setError] = useState<string | null>(null);
   const honeyRef = useRef<HTMLInputElement>(null);
 
@@ -122,7 +124,7 @@ export default function ContactoForm() {
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, autorizacion: "Sí", autorizacionFecha: new Date().toISOString() }),
+        body: JSON.stringify({ ...values, autorizacion: "Sí", autorizacionFecha: new Date().toISOString(), "cf-turnstile-response": captcha }),
       });
       if (!res.ok) {
         let msg = "No se pudo enviar el mensaje. Intenta de nuevo.";
@@ -266,6 +268,8 @@ export default function ContactoForm() {
           </span>
         </label>
         {touched.autorizacion && errors.autorizacion && <span id="ct-autorizacion-msg" className="pq-error" role="alert">{errors.autorizacion}</span>}
+
+        <Turnstile onToken={setCaptcha} />
 
         <button type="submit" className="ct-submit" disabled={sending}>
           {sending ? "Enviando…" : "Enviar mensaje"}

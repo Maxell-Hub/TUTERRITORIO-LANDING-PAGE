@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { rateLimitAsync, clientIp } from "@/lib/rateLimit";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 /**
  * Endpoint de contacto: valida, aplica anti-spam (honeypot) y envía el mensaje
@@ -53,6 +54,14 @@ export async function POST(req: Request) {
   // Anti-spam: si el honeypot viene lleno, fingimos éxito y no hacemos nada.
   if (typeof body._honey === "string" && body._honey.trim() !== "") {
     return NextResponse.json({ ok: true }, { status: 200 });
+  }
+
+  // Captcha (Cloudflare Turnstile). Solo bloquea si está configurado el secret.
+  if (!(await verifyTurnstile(body["cf-turnstile-response"] as string, clientIp(req)))) {
+    return NextResponse.json(
+      { error: "No se pudo verificar que eres una persona. Recarga la página e inténtalo de nuevo." },
+      { status: 400 }
+    );
   }
 
   const faltantes = REQUIRED.filter((k) => {

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import PrivacyNotice from "@/components/legal/PrivacyNotice";
+import Turnstile from "@/components/site/Turnstile";
 
 const TIPOS = ["Petición", "Queja", "Reclamo", "Sugerencia", "Denuncia"];
 const DOCS = ["Cédula de ciudadanía", "Cédula de extranjería", "NIT", "Pasaporte"];
@@ -134,6 +135,7 @@ export default function PqrsdForm() {
   const [archivos, setArchivos] = useState<File[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
+  const [captcha, setCaptcha] = useState("");
   const [ok, setOk] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const honeyRef = useRef<HTMLInputElement>(null);
@@ -220,6 +222,7 @@ export default function PqrsdForm() {
       // Prueba del consentimiento: fecha y hora exactas de la autorización (Ley 1581/2012).
       fd.set("autorizacionFecha", new Date().toISOString());
       for (const f of archivos) fd.append("archivos", f, f.name);
+      if (captcha) fd.set("cf-turnstile-response", captcha);
       const res = await fetch("/api/pqrsd", { method: "POST", body: fd });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json?.error || "No se pudo radicar. Intenta de nuevo.");
@@ -462,6 +465,8 @@ export default function PqrsdForm() {
         </span>
       </label>
       {touched.autorizacion && errors.autorizacion && <div id="pq-autorizacion-msg" className="pq-error" role="alert">{errors.autorizacion}</div>}
+
+      <Turnstile onToken={setCaptcha} />
 
       <div style={{ marginTop: 30, display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
         <button type="submit" className="pq-submit" disabled={sending}>
