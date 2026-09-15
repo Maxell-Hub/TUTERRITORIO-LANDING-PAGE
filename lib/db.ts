@@ -17,13 +17,11 @@ export const sql = url ? neon(url) : null;
 
 let schemaReady = false;
 
-/** Crea la tabla y la secuencia del radicado si no existen (idempotente). */
+/** Crea la tabla si no existe (idempotente). */
 export async function ensureSchema(): Promise<void> {
   if (!sql || schemaReady) return;
-  await sql`CREATE SEQUENCE IF NOT EXISTS pqrsd_rad_seq START 1`;
   await sql`CREATE TABLE IF NOT EXISTS pqrsd (
     id              BIGSERIAL PRIMARY KEY,
-    radicado        TEXT UNIQUE NOT NULL,
     tipo            TEXT NOT NULL,
     nombre          TEXT NOT NULL,
     doc_tipo        TEXT,
@@ -41,5 +39,9 @@ export async function ensureSchema(): Promise<void> {
     autorizacion_fecha TIMESTAMPTZ,
     creado_en       TIMESTAMPTZ NOT NULL DEFAULT now()
   )`;
+  // Migración segura: si una versión anterior creó la columna radicado, se quita
+  // (ya no se genera número de radicado). Idempotente.
+  await sql`ALTER TABLE pqrsd DROP COLUMN IF EXISTS radicado`;
+  await sql`DROP SEQUENCE IF EXISTS pqrsd_rad_seq`;
   schemaReady = true;
 }

@@ -8,7 +8,6 @@ export type Adjunto = { nombre: string; url: string; tamano?: number };
 
 export type Pqrsd = {
   id: number;
-  radicado: string;
   tipo: string;
   nombre: string;
   doc_tipo: string | null;
@@ -60,14 +59,10 @@ export type NuevaPqrsd = {
   autorizacion_fecha?: string;
 };
 
-/** Crea una PQRSD, genera el radicado y calcula la fecha límite. */
-export async function crearPqrsd(data: NuevaPqrsd): Promise<{ radicado: string; fechaLimite: string }> {
+/** Crea una PQRSD y calcula la fecha límite. Devuelve el id interno. */
+export async function crearPqrsd(data: NuevaPqrsd): Promise<{ id: number; fechaLimite: string }> {
   if (!sql) throw new Error("Base de datos no configurada");
   await ensureSchema();
-
-  const seq = (await sql`SELECT nextval('pqrsd_rad_seq')::text AS n`) as { n: string }[];
-  const year = new Date().getFullYear();
-  const radicado = `TT-${year}-${String(seq[0].n).padStart(6, "0")}`;
 
   const fechaLimite = sumarDiasHabiles(new Date(), DIAS_HABILES[data.tipo] ?? 15)
     .toISOString()
@@ -76,13 +71,14 @@ export async function crearPqrsd(data: NuevaPqrsd): Promise<{ radicado: string; 
   const historial = JSON.stringify([{ estado: "Recibida", en: new Date().toISOString() }]);
   const adjuntos = JSON.stringify(data.adjuntos ?? []);
 
-  await sql`INSERT INTO pqrsd
-    (radicado, tipo, nombre, doc_tipo, documento, correo, telefono, asunto, descripcion, adjuntos, historial, fecha_limite, autorizacion_fecha)
-    VALUES (${radicado}, ${data.tipo}, ${data.nombre}, ${data.doc_tipo ?? null}, ${data.documento ?? null},
+  const rows = (await sql`INSERT INTO pqrsd
+    (tipo, nombre, doc_tipo, documento, correo, telefono, asunto, descripcion, adjuntos, historial, fecha_limite, autorizacion_fecha)
+    VALUES (${data.tipo}, ${data.nombre}, ${data.doc_tipo ?? null}, ${data.documento ?? null},
             ${data.correo ?? null}, ${data.telefono ?? null}, ${data.asunto ?? null}, ${data.descripcion ?? null},
-            ${adjuntos}::jsonb, ${historial}::jsonb, ${fechaLimite}, ${data.autorizacion_fecha ?? null})`;
+            ${adjuntos}::jsonb, ${historial}::jsonb, ${fechaLimite}, ${data.autorizacion_fecha ?? null})
+    RETURNING id`) as { id: number }[];
 
-  return { radicado, fechaLimite };
+  return { id: rows[0].id, fechaLimite };
 }
 
 /** Lista las PQRSD más recientes (para el panel de administrador). */

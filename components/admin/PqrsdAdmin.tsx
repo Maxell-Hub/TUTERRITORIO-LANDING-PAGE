@@ -8,7 +8,6 @@ type Estado = (typeof ESTADOS)[number];
 type Adjunto = { nombre: string; url: string; tamano?: number };
 type Pqrsd = {
   id: number;
-  radicado: string;
   tipo: string;
   nombre: string;
   doc_tipo: string | null;
@@ -67,7 +66,7 @@ export default function PqrsdAdmin() {
     const t = q.trim().toLowerCase();
     return items.filter((p) => {
       if (fEstado !== "Todas" && p.estado !== fEstado) return false;
-      if (t && !(`${p.radicado} ${p.nombre} ${p.documento ?? ""} ${p.asunto ?? ""} ${p.tipo}`.toLowerCase().includes(t))) return false;
+      if (t && !(`#${p.id} ${p.nombre} ${p.documento ?? ""} ${p.asunto ?? ""} ${p.tipo}`.toLowerCase().includes(t))) return false;
       return true;
     });
   }, [items, fEstado, q]);
@@ -105,7 +104,7 @@ export default function PqrsdAdmin() {
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14, minWidth: 760 }}>
             <thead>
               <tr style={{ background: "#f5f8fa", textAlign: "left", color: "#5b6b74" }}>
-                <th style={{ padding: "11px 14px" }}>Radicado</th>
+                <th style={{ padding: "11px 14px" }}>Registro</th>
                 <th style={{ padding: "11px 14px" }}>Fecha</th>
                 <th style={{ padding: "11px 14px" }}>Tipo</th>
                 <th style={{ padding: "11px 14px" }}>Ciudadano</th>
@@ -117,7 +116,7 @@ export default function PqrsdAdmin() {
               {filtradas.map((p) => (
                 <tr key={p.id} onClick={() => setSel(p)}
                   style={{ borderTop: "1px solid #eef1f3", cursor: "pointer", background: sel?.id === p.id ? "#eef6fa" : "#fff" }}>
-                  <td style={{ padding: "11px 14px", fontWeight: 700, color: "#163A4C", whiteSpace: "nowrap" }}>{p.radicado}</td>
+                  <td style={{ padding: "11px 14px", fontWeight: 700, color: "#163A4C", whiteSpace: "nowrap" }}>#{p.id}</td>
                   <td style={{ padding: "11px 14px", whiteSpace: "nowrap", color: "#5b6b74" }}>{fmt(p.creado_en)}</td>
                   <td style={{ padding: "11px 14px" }}>{p.tipo}</td>
                   <td style={{ padding: "11px 14px" }}>{p.nombre}</td>
@@ -169,7 +168,7 @@ function Detalle({ p, onClose, onSaved }: { p: Pqrsd; onClose: () => void; onSav
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", gap: 12 }}>
           <div>
             <div style={{ fontSize: 12, color: "#5b6b74", textTransform: "uppercase", letterSpacing: ".06em", fontWeight: 700 }}>{p.tipo}</div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#163A4C" }}>{p.radicado}</div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: "#163A4C" }}>PQRSD #{p.id}</div>
           </div>
           <button onClick={onClose} style={{ border: "none", background: "#f0f4f6", borderRadius: 8, width: 34, height: 34, cursor: "pointer", fontSize: 18 }}>×</button>
         </div>
