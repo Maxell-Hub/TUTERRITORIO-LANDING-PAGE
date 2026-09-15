@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { isBlobConfigured, isServerless } from "@/lib/store";
+import { rateLimitStatus } from "@/lib/rateLimit";
 import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
 /**
@@ -12,6 +13,7 @@ export async function GET() {
   if (!verifyToken(store.get(SESSION_COOKIE)?.value)) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
+  const rl = await rateLimitStatus();
   return NextResponse.json({
     isServerless,
     isBlobConfigured,
@@ -20,5 +22,6 @@ export async function GET() {
       : isServerless
       ? "Archivos /data en Vercel (SOLO LECTURA → guardar fallará). Conecta el Blob y haz Redeploy."
       : "Archivos /data locales (ok en desarrollo)",
+    rateLimit: rl,
   });
 }

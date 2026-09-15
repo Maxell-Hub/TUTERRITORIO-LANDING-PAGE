@@ -25,6 +25,27 @@ const redis =
 export const isSharedRateLimit = !!redis;
 
 /**
+ * Diagnóstico del limitador: dice qué backend se usa y, si es Upstash, hace un
+ * ping real (set/get) para confirmar que responde. Solo para uso administrativo.
+ */
+export async function rateLimitStatus(): Promise<{ backend: string; upstash: boolean; ok: boolean }> {
+  if (!redis) {
+    return { backend: "En memoria (por instancia, mejor esfuerzo)", upstash: false, ok: true };
+  }
+  try {
+    await redis.set("rl:healthcheck", Date.now(), { ex: 30 });
+    const v = await redis.get("rl:healthcheck");
+    return { backend: "Upstash Redis (compartido y estricto)", upstash: true, ok: v != null };
+  } catch (e) {
+    return {
+      backend: `Upstash configurado pero SIN conexión: ${e instanceof Error ? e.message : String(e)}`,
+      upstash: true,
+      ok: false,
+    };
+  }
+}
+
+/**
  * Límite de tasa recomendado (async). Usa Upstash si está disponible; si no,
  * o si Upstash fallara, usa el respaldo en memoria para NO bloquear el formulario.
  * Devuelve true si se permite la petición; false si superó el límite.
