@@ -137,6 +137,7 @@ export default function PqrsdForm() {
   const [sending, setSending] = useState(false);
   const [captcha, setCaptcha] = useState("");
   const [ok, setOk] = useState(false);
+  const [radicado, setRadicado] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const honeyRef = useRef<HTMLInputElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -226,6 +227,7 @@ export default function PqrsdForm() {
       const res = await fetch("/api/pqrsd", { method: "POST", body: fd });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json?.error || "No se pudo radicar. Intenta de nuevo.");
+      setRadicado(typeof json?.radicado === "string" ? json.radicado : null);
       setOk(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
@@ -242,6 +244,7 @@ export default function PqrsdForm() {
     setArchivos([]);
     setFileError(null);
     setOk(false);
+    setRadicado(null);
   }
 
   // ---- Pantalla de éxito (estilo Contáctenos) ----
@@ -256,6 +259,13 @@ export default function PqrsdForm() {
             </span>
           </div>
           <h3>¡PQRSD radicada!</h3>
+          {radicado && (
+            <div style={{ margin: "0 auto 16px", maxWidth: 360, background: "#f0f6f9", border: "1px solid #d6e4ec", borderRadius: 12, padding: "14px 18px" }}>
+              <div style={{ fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#5b6b74", fontWeight: 700 }}>Tu número de radicado</div>
+              <div style={{ fontSize: 22, fontWeight: 800, color: "#163A4C", marginTop: 2 }}>{radicado}</div>
+              <div style={{ fontSize: 13, color: "#5b6b74", marginTop: 4 }}>Guárdalo para futuras consultas sobre tu solicitud.</div>
+            </div>
+          )}
           <p>
             Tu solicitud fue enviada correctamente a nuestro equipo. Recibirás respuesta al correo
             registrado dentro de los términos de ley.

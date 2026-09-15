@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { rateLimitAsync, clientIp } from "@/lib/rateLimit";
 import { verifyTurnstile } from "@/lib/turnstile";
+import { crearPqrsd, isDbConfigured } from "@/lib/pqrsd";
+import { put } from "@vercel/blob";
 
 /**
  * Endpoint para radicar PQRSD: valida en servidor, aplica anti-spam (honeypot)
@@ -148,6 +150,37 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Correo inválido" }, { status: 422 });
   }
 
+  // --- Seguimiento en base de datos (Neon), si está conectada ---
+  // Guarda la PQRSD con un número de radicado y sube los anexos al Blob.
+  // Si algo falla aquí, NO se bloquea la radicación: se continúa con el correo.
+  let radicado: string | null = null;
+  if (isDbConfigured) {
+    try {
+      const adjuntos = await Promise.all(
+        files.map(async (f) => {
+          // URL con sufijo aleatorio = enlace no adivinable (solo visible para el admin).
+          const { url } = await put(`pqrsd/${safeName(f.name)}`, f, { access: "public", addRandomSuffix: true });
+          return { nombre: safeName(f.name), url, tamano: f.size };
+        })
+      );
+      const r = await crearPqrsd({
+        tipo: String(body.tipo),
+        nombre: String(body.nombre),
+        doc_tipo: String(body.tipoDocumento || ""),
+        documento: String(body.documento || ""),
+        correo: String(body.correo || ""),
+        telefono: String(body.telefono || ""),
+        asunto: String(body.asunto || ""),
+        descripcion: String(body.descripcion || ""),
+        adjuntos,
+        autorizacion_fecha: body.autorizacionFecha ? String(body.autorizacionFecha) : undefined,
+      });
+      radicado = r.radicado;
+    } catch (e) {
+      console.error("[PQRSD] Error al guardar en la base de datos:", e);
+    }
+  }
+
   const tipo = esc(body.tipo);
   const nombre = esc(body.nombre);
   const tipoDocumento = esc(body.tipoDocumento);
@@ -169,6 +202,7 @@ export async function POST(req: Request) {
 
   const text =
     `Nueva PQRSD — Tuterritorio\n\n` +
+    (radicado ? `Radicado: ${radicado}\n` : "") +
     `Tipo: ${body.tipo}\nNombre: ${body.nombre}\n` +
     `Documento: ${body.tipoDocumento} ${body.documento}\n` +
     `Correo: ${body.correo}\nTeléfono: ${body.telefono || "—"}\nDirección: ${body.direccion || "—"}\n\n` +
@@ -203,6 +237,7 @@ export async function POST(req: Request) {
           <tr><td style="padding:30px 32px;">
             <p style="margin:0 0 22px;color:#4B4B4B;font-size:15px;line-height:1.6;">Se radicó una nueva solicitud (<strong>${tipo}</strong>) desde el formulario de PQRSD del sitio.</p>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;">
+              ${radicado ? row("Radicado", radicado) : ""}
               ${row("Tipo de solicitud", tipo)}
               ${row("Nombre", nombre)}
               ${row("Documento", `${tipoDocumento} ${documento}`)}
@@ -240,7 +275,7 @@ export async function POST(req: Request) {
     // Sin clave configurada (p. ej. en local): no se envía, pero no se rompe.
     // No se registran datos personales en los logs (minimización, Ley 1581/2012).
     console.warn("[PQRSD] RESEND_API_KEY no configurada — el correo NO se envió.");
-    return NextResponse.json({ ok: true, warning: "email-no-configurado" }, { status: 200 });
+    return NextResponse.json({ ok: true, warning: "email-no-configurado", radicado }, { status: 200 });
   }
 
   try {
@@ -272,5 +307,5 @@ export async function POST(req: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true }, { status: 200 });
+  return NextResponse.json({ ok: true, radicado }, { status: 200 });
 }

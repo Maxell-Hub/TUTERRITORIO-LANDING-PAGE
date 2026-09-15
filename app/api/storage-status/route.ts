@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { isBlobConfigured, isServerless } from "@/lib/store";
 import { rateLimitStatus } from "@/lib/rateLimit";
+import { isDbConfigured } from "@/lib/db";
 import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
 /**
@@ -17,7 +18,7 @@ export async function GET() {
   // Nombres (NO valores) de variables de entorno relacionadas con Redis/Upstash/KV,
   // para diagnosticar por qué no se detecta la conexión. Es seguro: solo nombres.
   const envKeys = Object.keys(process.env)
-    .filter((k) => /UPSTASH|REDIS|KV_|SENTRY|TURNSTILE/i.test(k))
+    .filter((k) => /UPSTASH|REDIS|KV_|SENTRY|TURNSTILE|DATABASE|POSTGRES|NEON/i.test(k))
     .sort();
   return NextResponse.json({
     isServerless,
@@ -28,6 +29,7 @@ export async function GET() {
       ? "Archivos /data en Vercel (SOLO LECTURA → guardar fallará). Conecta el Blob y haz Redeploy."
       : "Archivos /data locales (ok en desarrollo)",
     rateLimit: rl,
-    variablesDetectadas: envKeys.length ? envKeys : "(ninguna variable REDIS/UPSTASH/KV en Production)",
+    baseDatos: isDbConfigured ? "Neon Postgres (conectada) — seguimiento de PQRSD activo" : "No conectada (el seguimiento de PQRSD queda inactivo)",
+    variablesDetectadas: envKeys.length ? envKeys : "(ninguna variable de servicios en Production)",
   });
 }
