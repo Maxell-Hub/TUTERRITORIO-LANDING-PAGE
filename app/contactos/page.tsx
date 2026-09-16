@@ -24,10 +24,6 @@ export default function ContactosPage() {
         <p className="sub">
           <Editable as="span" id="cont.hero-sub" multiline>Conectamos personas, transformamos lugares. Escríbenos tu solicitud sobre tu predio y un miembro de nuestro equipo te responderá. También puedes visitarnos en nuestra sede principal.</Editable>
         </p>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="#formulario"><Editable as="span" id="cont.hero-cta1">Escríbenos</Editable></a>
-          <a className="atg-pill ghost" href="#mapa"><Editable as="span" id="cont.hero-cta2">Cómo llegar</Editable></a>
-        </div>
       </section>
 
       {/* 2 · Formulario de contacto */}

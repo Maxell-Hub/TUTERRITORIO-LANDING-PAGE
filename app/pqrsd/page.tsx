@@ -31,10 +31,6 @@ export default function PqrsdPage() {
         <p className="sub">
           <Editable as="span" id="pqrsd.hero-sub" multiline>Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias ante Tuterritorio. Completa el formulario y nuestro equipo dará trámite a tu solicitud.</Editable>
         </p>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="#formulario"><Editable as="span" id="pqrsd.hero-cta1">Diligenciar el formulario</Editable></a>
-          <a className="atg-pill ghost" href="/preguntas-frecuentes"><Editable as="span" id="pqrsd.hero-cta2">Preguntas frecuentes</Editable></a>
-        </div>
       </section>
 
       {/* Aviso modal que aparece al entrar a la página */}

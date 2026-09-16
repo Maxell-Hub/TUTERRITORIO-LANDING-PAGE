@@ -72,10 +72,6 @@ export default async function ServiciosPage() {
       >
         <Editable as="h1" id="serv.title">Trámites y servicios</Editable>
         <p className="sub"><Editable as="span" id="serv.intro" multiline>Actualiza, corrige y consulta la información de predios y propietarios. Cada trámite indica sus requisitos y su tiempo de respuesta en días hábiles.</Editable></p>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="#tramites"><Editable as="span" id="serv.hero-cta1">Ver los trámites</Editable></a>
-          <a className="atg-pill ghost" href="/pqrsd"><Editable as="span" id="serv.hero-cta2">Radicar una PQRSD</Editable></a>
-        </div>
       </section>
 
       {/* 2 · Banda: grilla de trámites */}

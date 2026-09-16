@@ -55,10 +55,6 @@ export default function AtencionCiudadaniaPage() {
         <p className="sub">
           <Editable as="span" id="aten.hero-sub" multiline>Todos los canales para hacer trámites, comunicarte con nosotros y ejercer tus derechos, en un solo lugar.</Editable>
         </p>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="/pqrsd"><Editable as="span" id="aten.hero-cta1">Radica tu PQRSD</Editable></a>
-          <a className="atg-pill ghost" href="/contactos"><Editable as="span" id="aten.hero-cta2">Canales de atención</Editable></a>
-        </div>
       </section>
 
       {/* 2 · Grid de canales de atención */}

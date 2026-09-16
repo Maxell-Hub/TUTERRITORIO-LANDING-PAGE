@@ -48,10 +48,6 @@ export default function ParticipaPage() {
         <p className="sub">
           <Editable as="span" id="part.hero-sub" multiline>Espacios para que la ciudadanía participe en las distintas fases de la gestión de la entidad.</Editable>
         </p>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="/pqrsd"><Editable as="span" id="part.hero-cta1">Radicar una PQRSD</Editable></a>
-          <a className="atg-pill ghost" href="/transparencia"><Editable as="span" id="part.hero-cta2">Volver a Transparencia</Editable></a>
-        </div>
       </section>
 
       {/* 2 · Grid: fases de participación */}

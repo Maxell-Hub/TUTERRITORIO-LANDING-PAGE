@@ -100,10 +100,6 @@ export default function NosotrosPage() {
         <Editable as="p" id="nos.intro2" className="sub" multiline>
           Conocer nuestro territorio para construir nuestro futuro: ese es el propósito que guía cada uno de nuestros procesos y servicios a la ciudadanía.
         </Editable>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="/nosotros/equipo"><Editable as="span" id="nos.hero-cta1">Conoce al equipo</Editable></a>
-          <a className="atg-pill ghost" href="/servicios"><Editable as="span" id="nos.hero-cta2">Trámites y servicios</Editable></a>
-        </div>
       </section>
 
       {/* 2 · Feature: quiénes somos */}

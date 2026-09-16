@@ -32,10 +32,6 @@ export default function EquipoPage() {
         <Editable as="p" id="equipo.intro" className="sub" multiline>
           Conoce al equipo que apoya el desarrollo de las actividades técnicas y operativas de la gestión catastral, tanto en campo como en oficina, contribuyendo al levantamiento, revisión, procesamiento y actualización de la información catastral, de acuerdo con los procedimientos y lineamientos establecidos.
         </Editable>
-        <div className="atg-cta-row">
-          <a className="atg-pill" href="#equipo"><Editable as="span" id="equipo.hero-cta1">Conoce al equipo</Editable></a>
-          <a className="atg-pill ghost" href="/contactos"><Editable as="span" id="equipo.hero-cta2">Contáctanos</Editable></a>
-        </div>
       </section>
 
       {/* 2-3 · Liderazgo + Equipo técnico (editable por el administrador) */}
