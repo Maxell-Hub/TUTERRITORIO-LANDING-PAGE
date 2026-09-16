@@ -74,5 +74,5 @@ export default function Turnstile({ onToken }: { onToken: (token: string) => voi
   }, [onToken]);
 
   if (!SITE_KEY) return null;
-  return <div ref={boxRef} className="cf-turnstile-box" style={{ margin: "4px 0" }} />;
+  return <div ref={boxRef} className="cf-turnstile-box" style={{ margin: "14px 0 4px" }} />;
 }
