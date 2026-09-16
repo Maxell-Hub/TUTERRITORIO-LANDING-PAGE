@@ -18,7 +18,7 @@ export async function GET() {
   // Nombres (NO valores) de variables de entorno relacionadas con Redis/Upstash/KV,
   // para diagnosticar por qué no se detecta la conexión. Es seguro: solo nombres.
   const envKeys = Object.keys(process.env)
-    .filter((k) => /UPSTASH|REDIS|KV_|SENTRY|TURNSTILE|DATABASE|POSTGRES|NEON/i.test(k))
+    .filter((k) => /UPSTASH|REDIS|KV_|SENTRY|TURNSTILE|DATABASE|POSTGRES|NEON|CRON/i.test(k))
     .sort();
   return NextResponse.json({
     isServerless,

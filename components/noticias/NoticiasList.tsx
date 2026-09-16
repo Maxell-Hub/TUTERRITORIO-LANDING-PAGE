@@ -77,12 +77,15 @@ export default function NoticiasList() {
 
   useScrollToHash(news);
 
+  const isAdmin = !!user;
   const chips = ["Todas", ...Array.from(new Set(news.map((n) => n.categoria).filter(Boolean)))];
   const ordenadas = [...news].sort((a, b) => fechaDe(b) - fechaDe(a));
-  const filtered = cat === "Todas" ? ordenadas : ordenadas.filter((n) => n.categoria === cat);
+  // Publicación programada: una noticia con fecha futura queda oculta al público
+  // hasta ese día. El administrador siempre las ve (para prepararlas).
+  const visibles = isAdmin ? ordenadas : ordenadas.filter((n) => fechaDe(n) <= Date.now());
+  const filtered = cat === "Todas" ? visibles : visibles.filter((n) => n.categoria === cat);
   const featured = filtered[0];
   const rest = filtered.slice(1);
-  const isAdmin = !!user;
 
   return (
     <>

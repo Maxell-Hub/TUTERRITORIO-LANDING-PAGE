@@ -26,7 +26,11 @@ const Arrow = ({ size = 16 }: { size?: number }) => (
 export default async function NoticiasRecientes() {
   const data = (await readContent("noticias", defaultFor("noticias"))) as News[];
   const lista = Array.isArray(data) ? data : [];
-  const recientes = [...lista].sort((a, b) => fechaDe(b) - fechaDe(a)).slice(0, 3);
+  // Oculta noticias con fecha futura (publicación programada).
+  const recientes = [...lista]
+    .filter((n) => fechaDe(n) <= Date.now())
+    .sort((a, b) => fechaDe(b) - fechaDe(a))
+    .slice(0, 3);
   if (recientes.length === 0) return null;
 
   return (

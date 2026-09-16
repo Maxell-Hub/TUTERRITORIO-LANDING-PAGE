@@ -1,0 +1,27 @@
+# Dependabot: revisa cada semana si hay actualizaciones de librerías (incluidas
+# las de seguridad) y abre PRs automáticamente en GitHub para actualizarlas.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencias"
+    commit-message:
+      prefix: "deps"
+    groups:
+      # Agrupa las actualizaciones menores/parche en un solo PR para no saturar.
+      produccion:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Mantiene actualizadas las propias acciones de GitHub (workflows).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

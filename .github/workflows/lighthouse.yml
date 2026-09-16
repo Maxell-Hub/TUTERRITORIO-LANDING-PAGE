@@ -1,0 +1,28 @@
+# Monitoreo de rendimiento: corre Lighthouse contra el sitio en producción una
+# vez por semana (y a demanda), y guarda el reporte. Avisa si el rendimiento o
+# el SEO caen por debajo del umbral, sin bloquear nada.
+name: Rendimiento (Lighthouse)
+
+on:
+  schedule:
+    - cron: "0 12 * * 1" # lunes 12:00 UTC (7:00 a.m. Colombia)
+  workflow_dispatch: {} # permite ejecutarlo manualmente desde la pestaña Actions
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecutar Lighthouse en móvil y escritorio
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://www.tuterritorio.gov.co/
+            https://www.tuterritorio.gov.co/servicios
+            https://www.tuterritorio.gov.co/nosotros/equipo
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          # Umbrales como AVISO (no falla el workflow): solo alerta si baja.
+          runs: 1
