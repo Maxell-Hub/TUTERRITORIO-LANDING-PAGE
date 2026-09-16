@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
+import { put, list, del } from "@vercel/blob";
 import { verifyCron } from "@/lib/cronAuth";
 import { sendReport, reportLayout } from "@/lib/reportMail";
-import { readContent } from "@/lib/store";
+import { readContent, isBlobConfigured } from "@/lib/store";
 import { defaultFor } from "@/lib/content";
+import { kv } from "@/lib/kv";
+import { sql, isDbConfigured } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -74,7 +77,26 @@ export async function GET(req: Request) {
         .join("")}</ul>`
     : `<p style="color:#4E8654;"><b>✓ Todos los ${lista.length} enlaces externos/documentos responden bien.</b></p>`;
 
-  // 2) Respaldo del contenido editable (noticias, equipo, textos…).
+  // 2) Detección de cambios en documentos oficiales (PDFs/docs): compara
+  //    tamaño y fecha con la última vez y avisa si cambiaron.
+  const docs = lista.filter((u) => /\.(pdf|docx?|xlsx?)$/i.test(u));
+  const cambios: string[] = [];
+  if (kv) {
+    for (const u of docs) {
+      try {
+        const res = await fetch(u, { method: "HEAD", redirect: "follow" });
+        const firma = `${res.headers.get("content-length") || "?"}|${res.headers.get("last-modified") || "?"}`;
+        const prev = await kv.get<string>(`doc:${u}`);
+        if (prev && prev !== firma) cambios.push(u);
+        await kv.set(`doc:${u}`, firma);
+      } catch { /* ignora */ }
+    }
+  }
+  const cambiosHtml = cambios.length
+    ? `<p style="color:#E7A32E;"><b>${cambios.length} documento(s) cambiaron</b> desde la última revisión:</p><ul>${cambios.map((u) => `<li>${u}</li>`).join("")}</ul>`
+    : `<p style="color:#4E8654;"><b>✓ Ningún documento oficial cambió.</b></p>`;
+
+  // 3) Respaldo del contenido editable (noticias, equipo, textos…).
   const respaldo: Record<string, unknown> = { generado: new Date().toISOString() };
   for (const k of CLAVES) {
     try {
@@ -86,11 +108,47 @@ export async function GET(req: Request) {
   const fecha = new Date().toISOString().slice(0, 10);
   const adjunto = Buffer.from(JSON.stringify(respaldo, null, 2), "utf-8");
 
+  // 3b) Guarda el respaldo VERSIONADO en el Blob (conserva los últimos 12).
+  let backupUrl: string | null = null;
+  if (isBlobConfigured) {
+    try {
+      const r = await put(`backups/respaldo-${fecha}.json`, adjunto, {
+        access: "public",
+        addRandomSuffix: false,
+        contentType: "application/json",
+      });
+      backupUrl = r.url;
+      const { blobs } = await list({ prefix: "backups/respaldo-" });
+      const viejos = blobs.sort((a, b) => (a.pathname < b.pathname ? 1 : -1)).slice(12);
+      for (const b of viejos) await del(b.url);
+    } catch (e) {
+      console.error("[cron] Error al versionar respaldo en Blob:", e);
+    }
+  }
+
+  // 4) Reporte de adjuntos huérfanos en el Blob (archivos de PQRSD que ya no
+  //    referencia ningún registro). Solo REPORTA, no borra.
+  let huerfanos = 0;
+  if (isBlobConfigured && isDbConfigured && sql) {
+    try {
+      const { blobs } = await list({ prefix: "pqrsd/" });
+      const rows = (await sql`SELECT adjuntos FROM pqrsd`) as { adjuntos: { url: string }[] }[];
+      const usados = new Set<string>();
+      for (const row of rows) for (const a of row.adjuntos || []) usados.add(a.url);
+      huerfanos = blobs.filter((b) => !usados.has(b.url)).length;
+    } catch (e) {
+      console.error("[cron] Error al revisar adjuntos huérfanos:", e);
+    }
+  }
+
   const cuerpo =
     `<h3 style="margin:0 0 8px;color:#163A4C;">Enlaces del sitio</h3>${enlacesHtml}` +
     `<hr style="border:none;border-top:1px solid #eef1f3;margin:18px 0;">` +
+    `<h3 style="margin:0 0 8px;color:#163A4C;">Documentos oficiales</h3>${cambiosHtml}` +
+    `<hr style="border:none;border-top:1px solid #eef1f3;margin:18px 0;">` +
     `<h3 style="margin:0 0 8px;color:#163A4C;">Respaldo del contenido</h3>` +
-    `<p>Se adjunta una copia del contenido editable (noticias, equipo, textos, normativas, glosario, FAQ y trámites) a la fecha.</p>`;
+    `<p>Se adjunta la copia del contenido editable${backupUrl ? " (también guardada versionada en el almacenamiento)" : ""}.</p>` +
+    (huerfanos ? `<p style="color:#5b6b74;">Adjuntos huérfanos en el almacenamiento: <b>${huerfanos}</b> (archivos de PQRSD ya sin referencia; se pueden limpiar).</p>` : "");
 
   await sendReport(
     `Reporte semanal del sitio — ${fecha}`,
@@ -102,6 +160,9 @@ export async function GET(req: Request) {
     ok: true,
     enlacesRevisados: lista.length,
     enlacesRotos: rotos.length,
+    documentosCambiados: cambios.length,
     respaldoBytes: adjunto.length,
+    respaldoVersionado: !!backupUrl,
+    adjuntosHuerfanos: huerfanos,
   });
 }
