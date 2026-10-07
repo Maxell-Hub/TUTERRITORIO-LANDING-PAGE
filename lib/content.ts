@@ -80,10 +80,10 @@ export const DEFAULT_NOTICIAS: News[] = [
     categoria: "Comunidad",
     badge: "var(--tt-teal-500)",
     fecha: "24 de julio de 2026",
-    titulo: "Tuterritorio ha atendido a 5.741 usuarios en lo que va de 2026",
+    titulo: "Tuterritorio ha atendido a 8.367 usuarios en lo que va de 2026",
     extracto: "La oficina de gestión catastral y los canales en línea acompañan a cada vez más ciudadanos en sus trámites catastrales y de avalúo.",
-    imagen: "/assets/noticias/noticia-usuarios.webp",
-    cuerpo: "En lo corrido de 2026, Tuterritorio ha atendido a 5.741 usuarios entre la sede principal y los canales en línea. La cifra refleja la confianza creciente de la ciudadanía en el operador catastral del municipio y el esfuerzo del equipo por dar respuesta oportuna a cada solicitud.\n\nLos trámites más frecuentes son el cambio de propietario, las rectificaciones de área y de datos del propietario, y la expedición de certificados catastrales. Cada trámite tiene definidos sus requisitos y tiempos de respuesta, que puedes consultar en la sección de Trámites y servicios.\n\nRecuerda que también puedes radicar tus peticiones, quejas, reclamos, sugerencias y denuncias a través del formulario PQRSD de este sitio. Nuestro compromiso es que la información catastral de Valledupar esté al día y al servicio de todos.",
+    imagen: "/assets/noticias/noticia-usuarios-v2.webp",
+    cuerpo: "En lo corrido de 2026, Tuterritorio ha atendido a 8.367 usuarios entre la sede principal y los canales en línea. La cifra refleja la confianza creciente de la ciudadanía en el operador catastral del municipio y el esfuerzo del equipo por dar respuesta oportuna a cada solicitud.\n\nLos trámites más frecuentes son el cambio de propietario, las rectificaciones de área y de datos del propietario, y la expedición de certificados catastrales. Cada trámite tiene definidos sus requisitos y tiempos de respuesta, que puedes consultar en la sección de Trámites y servicios.\n\nRecuerda que también puedes radicar tus peticiones, quejas, reclamos, sugerencias y denuncias a través del formulario PQRSD de este sitio. Nuestro compromiso es que la información catastral de Valledupar esté al día y al servicio de todos.",
   },
 ];
 
