@@ -3,14 +3,16 @@ import Image from "next/image";
 import { readContent } from "@/lib/store";
 import { defaultFor, type News } from "@/lib/content";
 
-/* Ordena por fecha real: primero el id (n-AAAA-MM-DD), luego la fecha en
-   español ("11 al 13 de agosto de 2026"). La más reciente queda de primera. */
+/* Ordena por fecha real: manda la fecha mostrada ("11 al 13 de agosto de 2026"),
+   que es la que edita la entidad; el id (n-AAAA-MM-DD) solo es respaldo. Así la
+   noticia con la fecha más reciente SIEMPRE queda de primera, aunque su id tenga
+   otra fecha. En rangos toma el último día. */
 const MESES: Record<string, number> = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
 function fechaDe(n: News): number {
-  const mId = n.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
-  if (mId) return new Date(+mId[1], +mId[2] - 1, +mId[3]).getTime();
   const mTxt = n.fecha.toLowerCase().match(/(\d{1,2})\s+.*?\bde\s+([a-záéíóúñ]+)\s+de\s+(\d{4})/);
   if (mTxt && MESES[mTxt[2]] !== undefined) return new Date(+mTxt[3], MESES[mTxt[2]], +mTxt[1]).getTime();
+  const mId = n.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
+  if (mId) return new Date(+mId[1], +mId[2] - 1, +mId[3]).getTime();
   return 0;
 }
 

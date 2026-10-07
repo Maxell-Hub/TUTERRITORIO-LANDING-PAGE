@@ -13,14 +13,17 @@ const Arrow = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
 );
 
-/* Ordena por fecha real: primero intenta el id (n-AAAA-MM-DD), luego la fecha
-   en español ("12 de junio de 2026"). La más reciente queda de primera. */
+/* Ordena por fecha real: manda la fecha mostrada ("06 de octubre de 2026"), que es
+   la que edita la entidad; el id (n-AAAA-MM-DD) solo es respaldo si no hay fecha de
+   texto válida. Así, la noticia con la fecha más reciente SIEMPRE queda de primera
+   (destacada), aunque su id tenga otra fecha. En rangos ("24 al 27 de agosto de
+   2026") toma el último día. */
 const MESES: Record<string, number> = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
 function fechaDe(n: News): number {
-  const mId = n.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
-  if (mId) return new Date(+mId[1], +mId[2] - 1, +mId[3]).getTime();
   const mTxt = n.fecha.toLowerCase().match(/(\d{1,2})\s+de\s+([a-záéíóúñ]+)\s+de\s+(\d{4})/);
   if (mTxt && MESES[mTxt[2]] !== undefined) return new Date(+mTxt[3], MESES[mTxt[2]], +mTxt[1]).getTime();
+  const mId = n.id.match(/^n-(\d{4})-(\d{2})-(\d{2})/);
+  if (mId) return new Date(+mId[1], +mId[2] - 1, +mId[3]).getTime();
   return 0;
 }
 
