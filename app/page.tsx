@@ -93,11 +93,11 @@ export default function HomePage() {
         <div className="atg-wrap">
           <div className="atg-stats">
             <div className="atg-stat reveal">
-              <div className="n"><CountUp value={4340} prefix="+" /></div>
+              <div className="n"><CountUp value={6370} prefix="+" /></div>
               <Editable as="div" id="home.stat1-d" className="d">Trámites finalizados</Editable>
             </div>
             <div className="atg-stat reveal">
-              <div className="n"><CountUp value={83} suffix="%" /></div>
+              <div className="n"><CountUp value={93} suffix="%" /></div>
               <Editable as="div" id="home.stat2-d" className="d">Efectividad operativa</Editable>
             </div>
             <div className="atg-stat reveal">
