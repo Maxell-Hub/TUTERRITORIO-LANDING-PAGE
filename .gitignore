@@ -32,3 +32,8 @@ yarn-error.log*
 /tuterritorio-qr.svg
 *.docx
 /Página Web de Tuterritorio - Historial de Versiones.pdf
+
+# Skills de desarrollo (locales; enlaces con rutas absolutas no son portables)
+/.agents/
+/.claude/skills/*
+!/.claude/skills/impeccable/
