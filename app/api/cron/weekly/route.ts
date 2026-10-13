@@ -81,6 +81,23 @@ async function checar(url: string): Promise<number> {
   return 0;
 }
 
+/**
+ * ¿El resultado de checar() indica un enlace REALMENTE roto?
+ * - Roto: sin respuesta (0), No encontrado (404), Eliminado (410) o error de
+ *   servidor (5xx).
+ * - NO roto: 2xx/3xx, cert no verificable (-1) y los códigos de "bloqueo de bots"
+ *   (400/401/403/405/406/429/999). Esos significan que el servidor RESPONDIÓ y el
+ *   enlace existe; solo rechaza peticiones automáticas. Redes sociales como
+ *   Facebook/Instagram/X devuelven 400/403 a los bots aunque el enlace abra bien
+ *   en el navegador — antes salían como falsos "roto".
+ */
+function esRoto(status: number): boolean {
+  if (status === 0) return true;
+  if (status === 404 || status === 410) return true;
+  if (status >= 500) return true;
+  return false;
+}
+
 export async function GET(req: Request) {
   if (!verifyCron(req)) return NextResponse.json({ error: "No autorizado" }, { status: 401 });
 
@@ -105,7 +122,7 @@ export async function GET(req: Request) {
 
   const lista = [...enlaces].slice(0, 200);
   const resultados = await Promise.all(lista.map(async (u) => ({ url: u, status: await checar(u) })));
-  const rotos = resultados.filter((r) => r.status === 0 || r.status >= 400);
+  const rotos = resultados.filter((r) => esRoto(r.status));
 
   const enlacesHtml = rotos.length
     ? nota(`<b>${rotos.length} enlace(s) con problema</b> de ${lista.length} revisados:`, "alert") +

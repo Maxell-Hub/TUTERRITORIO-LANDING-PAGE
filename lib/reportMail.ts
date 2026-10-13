@@ -75,8 +75,8 @@ export function reportLayout(titulo: string, cuerpoHtml: string, opts: LayoutOpt
           <tr><td style="background:${C.navy};padding:24px 32px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
               <td style="vertical-align:middle;">
-                <div style="color:${acento};font-size:11px;font-weight:bold;letter-spacing:1.6px;text-transform:uppercase;">Tuterritorio · Automatización</div>
-                <div style="color:#ffffff;font-size:21px;font-weight:bold;margin-top:7px;line-height:1.25;">${titulo}</div>
+                <span style="display:inline-block;background:${acento};color:${C.navy};font-size:11px;font-weight:bold;letter-spacing:.8px;text-transform:uppercase;padding:5px 12px;border-radius:999px;">📊 Reporte automático</span>
+                <div style="color:#ffffff;font-size:21px;font-weight:bold;margin-top:11px;line-height:1.25;">${titulo}</div>
                 ${opts.subtitulo ? `<div style="color:#a9bcc7;font-size:13px;margin-top:5px;">${opts.subtitulo}</div>` : ""}
               </td>
               <td style="vertical-align:middle;text-align:right;white-space:nowrap;">
@@ -92,7 +92,7 @@ export function reportLayout(titulo: string, cuerpoHtml: string, opts: LayoutOpt
           <tr><td style="background:${C.soft};padding:18px 32px;border-top:1px solid ${C.line};">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
               <td style="color:${C.gray};font-size:12px;line-height:1.5;">
-                <b style="color:${C.navy2};">Tuterritorio</b> — Catastro Multipropósito de Valledupar<br>
+                <b style="color:${C.navy2};">Tuterritorio</b> — Operador Catastral de Valledupar<br>
                 Reporte automático del sitio · ${fecha}
               </td>
               <td style="text-align:right;vertical-align:bottom;">

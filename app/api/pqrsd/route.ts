@@ -4,6 +4,7 @@ import { rateLimitAsync, clientIp } from "@/lib/rateLimit";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { crearPqrsd, isDbConfigured } from "@/lib/pqrsd";
 import { put } from "@vercel/blob";
+import { renderEmail, TIPOS } from "@/lib/mailTemplate";
 
 /**
  * Endpoint para radicar PQRSD: valida en servidor, aplica anti-spam (honeypot)
@@ -207,64 +208,34 @@ export async function POST(req: Request) {
     `Anexos:\n${anexosTxt}\n\n` +
     `Autorización de tratamiento de datos: Sí (vía web)\nFecha y hora del consentimiento: ${consentAt}`;
 
-  const row = (label: string, value: string, link?: string) => `
-    <tr>
-      <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#6C757D;width:140px;vertical-align:top;">${label}</td>
-      <td style="padding:11px 0;border-bottom:1px solid #eef1f3;color:#163A4C;font-weight:bold;">${link ? `<a href="${link}" style="color:#3B85A5;text-decoration:none;">${value}</a>` : value}</td>
-    </tr>`;
+  const anexosHtml = files.length
+    ? files.map((f) => `📎 ${esc(f.name)} <span style="color:#8a97a0;">(${Math.max(1, Math.round(f.size / 1024))} KB)</span>`).join("<br>")
+    : "El ciudadano no adjuntó documentos.";
 
-  const html = `
-  <body style="margin:0;background:#eef3f6;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef3f6;padding:28px 12px;font-family:Arial,Helvetica,sans-serif;">
-      <tr><td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 10px 34px rgba(14,34,51,.12);">
-          <tr><td style="background:#0C222F;padding:28px 32px;">
-            <div style="color:#8FBE4E;font-size:11px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;">Tuterritorio · Catastro de Valledupar</div>
-            <div style="color:#ffffff;font-size:22px;font-weight:bold;margin-top:8px;">Nueva PQRSD radicada</div>
-          </td></tr>
-          <tr><td style="padding:0;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-              <td style="height:6px;line-height:6px;font-size:0;background:#4E97B6;">&nbsp;</td>
-              <td style="height:6px;line-height:6px;font-size:0;background:#6AA070;">&nbsp;</td>
-              <td style="height:6px;line-height:6px;font-size:0;background:#8FBE4E;">&nbsp;</td>
-              <td style="height:6px;line-height:6px;font-size:0;background:#F0B63B;">&nbsp;</td>
-              <td style="height:6px;line-height:6px;font-size:0;background:#D83744;">&nbsp;</td>
-            </tr></table>
-          </td></tr>
-          <tr><td style="padding:30px 32px;">
-            <p style="margin:0 0 22px;color:#4B4B4B;font-size:15px;line-height:1.6;">Se radicó una nueva solicitud (<strong>${tipo}</strong>) desde el formulario de PQRSD del sitio.</p>
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;">
-              ${row("Tipo de solicitud", tipo)}
-              ${row("Nombre", nombre)}
-              ${row("Documento", `${tipoDocumento} ${documento}`)}
-              ${row("Correo", correo, `mailto:${correo}`)}
-              ${row("Teléfono", telefono)}
-              ${row("Dirección", direccion)}
-              ${row("Asunto", asunto)}
-            </table>
-            <div style="margin-top:24px;color:#6C757D;font-size:12px;font-weight:bold;letter-spacing:.5px;text-transform:uppercase;">Descripción</div>
-            <div style="margin-top:8px;background:#f6f9fa;border-left:4px solid #3B85A5;border-radius:8px;padding:16px 18px;color:#333333;font-size:15px;line-height:1.7;">${descripcion}</div>
-            <div style="margin-top:20px;color:#6C757D;font-size:12px;font-weight:bold;letter-spacing:.5px;text-transform:uppercase;">Anexos (${files.length})</div>
-            <div style="margin-top:8px;background:#f6f9fa;border-left:4px solid #4E8654;border-radius:8px;padding:12px 18px;color:#333333;font-size:14px;line-height:1.8;">${
-              files.length
-                ? files.map((f) => `📎 ${esc(f.name)} <span style="color:#6C757D;">(${Math.max(1, Math.round(f.size / 1024))} KB)</span>`).join("<br>")
-                : "El ciudadano no adjuntó documentos."
-            }</div>
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;"><tr>
-              <td style="border-radius:10px;background:#163A4C;">
-                <a href="mailto:${correo}?subject=Respuesta%20a%20tu%20PQRSD%20-%20Tuterritorio" style="display:inline-block;padding:13px 28px;color:#ffffff;text-decoration:none;font-weight:bold;font-size:14px;">Responder a ${nombre}</a>
-              </td>
-            </tr></table>
-          </td></tr>
-          <tr><td style="background:#f6f9fa;padding:18px 32px;border-top:1px solid #eef1f3;">
-            <div style="color:#6C757D;font-size:12px;line-height:1.5;"><strong>Autorización de datos:</strong> Sí (vía web) · <strong>Fecha del consentimiento:</strong> ${consentAt}</div>
-            <div style="color:#9AA3AB;font-size:12px;line-height:1.5;margin-top:6px;">PQRSD generada automáticamente desde el sitio web de Tuterritorio.</div>
-          </td></tr>
-        </table>
-        <div style="color:#9AA3AB;font-size:11px;margin-top:16px;">Tuterritorio — Oficina de Catastro Multipropósito de Valledupar</div>
-      </td></tr>
-    </table>
-  </body>`;
+  const html = renderEmail({
+    preheader: `Nueva PQRSD (${tipo}) de ${nombre} — ${asunto}`,
+    accent: TIPOS.pqrsd.color,
+    badge: `${TIPOS.pqrsd.badge} · ${tipo}`,
+    badgeIcon: TIPOS.pqrsd.icon,
+    titulo: "Nueva PQRSD radicada",
+    intro: `Se radicó una nueva solicitud de tipo <strong>${tipo}</strong> desde el formulario de PQRSD del sitio.`,
+    filas: [
+      { label: "Tipo de solicitud", value: tipo },
+      { label: "Nombre", value: nombre },
+      { label: "Documento", value: `${tipoDocumento} ${documento}` },
+      { label: "Correo", value: correo, href: `mailto:${correo}` },
+      { label: "Teléfono", value: telefono },
+      { label: "Dirección", value: direccion },
+      { label: "Asunto", value: asunto },
+    ],
+    bloques: [
+      { label: "Descripción", html: descripcion, accent: TIPOS.pqrsd.color },
+      { label: `Anexos (${files.length})`, html: anexosHtml, accent: "green" },
+    ],
+    cta: { href: `mailto:${correo}?subject=Respuesta%20a%20tu%20PQRSD%20-%20Tuterritorio`, label: `Responder a ${nombre}` },
+    consentAt,
+    notaPie: "PQRSD generada automáticamente desde el sitio web de Tuterritorio.",
+  });
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
