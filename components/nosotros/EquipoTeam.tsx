@@ -89,11 +89,13 @@ export default function EquipoTeam() {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={m.photo} alt={m.name || m.role} loading="lazy" decoding="async" />
         ) : (
-          <UserIcon size={40} />
+          <span className="eq-ph"><UserIcon size={34} /></span>
         )}
+        <div className="eq-cap">
+          <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
+          {m.name ? <p>{m.role}</p> : <p className="pend">Por designar</p>}
+        </div>
       </div>
-      <h4>{m.name ? nombreCorto(m.name) : m.role}</h4>
-      {m.name ? <p>{m.role}</p> : <p className="pend">Por designar</p>}
       {isAdmin && (
         <div className="adm-actions">
           <button className="adm-btn ghost sm" onClick={() => { setCreatingArea(null); setEditing(m); }} aria-label="Editar"><Pencil /></button>
@@ -130,12 +132,12 @@ export default function EquipoTeam() {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={m.photo} alt={m.name || m.role} decoding="async" />
                   ) : (
-                    <UserIcon size={58} />
+                    <span className="eq-ph"><UserIcon size={48} /></span>
                   )}
-                </div>
-                <div className="eq-cap">
-                  <h3>{m.name ? nombreCorto(m.name) : m.role}</h3>
-                  <p>{m.name ? m.role : "Por designar"}</p>
+                  <div className="eq-cap">
+                    <h3>{m.name ? nombreCorto(m.name) : m.role}</h3>
+                    <p>{m.name ? m.role : "Por designar"}</p>
+                  </div>
                 </div>
                 {isAdmin && (
                   <div className="adm-actions">
