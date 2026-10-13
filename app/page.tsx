@@ -25,10 +25,11 @@ export default function HomePage() {
       <link rel="preload" as="image" href="/assets/inicio/foto-panoramica3-m-v2.webp" media="(max-width: 720px)" fetchPriority="high" />
       {/* 1 · Hero fotográfico */}
       <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/inicio/foto-panoramica2-v2.webp)", ["--hero-m" as string]: "url(/assets/inicio/foto-panoramica3-m-v2.webp)" }}>
-        <h1>
-          {/* El espacio vive DENTRO del span notranslate: Google recorta el espacio
+        <h1 className="hero-h1">
+          {/* Entrada por líneas (solo transform → no retrasa el LCP). El espacio vive DENTRO del span notranslate: Google recorta el espacio
               del texto traducido y "ensure" quedaba pegado a "Tuterritorio". */}
-          Conoce tu predio,<br />asegura<span className="b notranslate" translate="no">{" Tuterritorio"}</span>
+          <span className="hl">Conoce tu predio,</span>
+          <span className="hl">asegura<span className="b notranslate" translate="no">{" Tuterritorio"}</span></span>
         </h1>
         <Editable as="p" id="home.intro" className="sub" multiline>
           Consulta la información catastral oficial de tu propiedad en Valledupar como linderos, área, avalúo y estado de tus trámites en un solo lugar.
