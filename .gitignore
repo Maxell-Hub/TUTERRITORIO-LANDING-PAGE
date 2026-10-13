@@ -37,3 +37,6 @@ yarn-error.log*
 /.agents/
 /.claude/skills/*
 !/.claude/skills/impeccable/
+
+# Lockfile del CLI de skills (local)
+/skills-lock.json
