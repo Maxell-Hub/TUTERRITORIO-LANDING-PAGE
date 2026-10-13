@@ -17,9 +17,6 @@ export const metadata: Metadata = {
  * → franja fotográfica de cierre.
  */
 
-// Acentos ATG (azul · verde · naranja) que ciclan en tarjetas y numeraciones.
-const ACC = ["#3B85A5", "#4E8654", "#F0B63B"];
-
 // "Lo que hacemos": 4 funciones en columnas, con ícono verde arriba y texto
 // corto centrado (separadas por líneas verticales).
 const fi = (d: ReactNode) => (
@@ -140,7 +137,6 @@ export default function NosotrosPage() {
         <div className="atg-wrap">
           <div className="mv-grid reveal">
             <div className="mv-col" style={{ ["--mv-c" as string]: "#8FBE4E" }}>
-              <span className="mv-ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.6" /></svg></span>
               <h3 className="mv-title"><Editable as="span" id="nos.mision-title">Misión</Editable></h3>
               <p className="mv-text">
                 <Editable as="span" id="nos.mision" multiline>{`En Tuterritorio, transformamos la gestión catastral multipropósito para acercar el catastro a las personas. Convertimos datos territoriales, antes dispersos y difíciles de acceder, en información clara, confiable y transparente, para que cada habitante pueda conocer, comprender y aprovechar plenamente la información sobre su predio y su comunidad.
@@ -149,7 +145,6 @@ A través de procesos rigurosos y un enfoque cercano, hacemos del catastro una h
               </p>
             </div>
             <div className="mv-col" style={{ ["--mv-c" as string]: "#59A9C4" }}>
-              <span className="mv-ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg></span>
               <h3 className="mv-title"><Editable as="span" id="nos.vision-title">Visión</Editable></h3>
               <p className="mv-text">
                 <Editable as="span" id="nos.vision" multiline>{`Ser reconocidos para el 2030 como la entidad líder en la modernización y gestión integral del catastro multipropósito, destacándonos por nuestra excelencia, innovación, transparencia y compromiso con la calidad, la satisfacción del cliente y la ciudadanía.
@@ -172,8 +167,7 @@ Anhelamos consolidar un sistema catastral eficiente, accesible y confiable que i
           </div>
           <div className="cap-row">
             {FUNCIONES.map((f, i) => (
-              <div key={f.t} className="cap-item reveal" style={{ ["--c" as string]: f.c }}>
-                <span className="cap-ic">{f.ic}</span>
+              <div key={f.t} className="cap-item reveal">
                 <h3><Editable as="span" id={`nos.func-${i}-t`}>{f.t}</Editable></h3>
                 <p><Editable as="span" id={`nos.func-${i}-d`}>{f.d}</Editable></p>
               </div>
@@ -194,8 +188,7 @@ Anhelamos consolidar un sistema catastral eficiente, accesible y confiable que i
             <div className="atg-visual reveal">
               <ol className="obj-timeline">
                 {OBJETIVOS.map((o, i) => (
-                  <li key={o.n} className="obj-step" style={{ ["--accent" as string]: ACC[i % ACC.length] }}>
-                    <span className="obj-dot" aria-hidden="true">{i + 1}</span>
+                  <li key={o.n} className="obj-step">
                     <p><Editable as="span" id={`nos.obj-${i}`}>{o.t}</Editable></p>
                   </li>
                 ))}
@@ -217,28 +210,17 @@ Anhelamos consolidar un sistema catastral eficiente, accesible y confiable que i
       <section className="atg-band" id="proceso"> {/* mismo fondo gris que la cabecera de Etapas: secciones unificadas */}
         <div className="atg-wrap">
           <div className="fases-grid">
-            {(() => {
-              let paso = 0;
-              return ETAPAS.map((e, i) => (
-                <div key={e.fase} className="fase-col reveal" style={{ ["--fc" as string]: e.color }}>
-                  <div className="fase-head">
-                    <span className="fase-num" aria-hidden="true">{i + 1}</span>
-                    <span className="fase-htext">
-                      <span className="fase-tag"><Editable as="span" id={`nos.etapa-${i}-fase`}>{e.fase}</Editable></span>
-                      <span className="fase-ttl"><Editable as="span" id={`nos.etapa-${i}-titulo`}>{e.titulo}</Editable></span>
-                    </span>
-                  </div>
-                  <ul className="fase-list">
-                    {e.items.map((it, j) => {
-                      paso += 1;
-                      return (
-                        <li key={it}><b>{paso}.</b> <Editable as="span" id={`nos.etapa-${i}-item-${j}`}>{it}</Editable></li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ));
-            })()}
+            {ETAPAS.map((e, i) => (
+              <div key={e.fase} className="fase-col reveal" style={{ ["--fc" as string]: e.color }}>
+                <span className="fase-tag"><Editable as="span" id={`nos.etapa-${i}-fase`}>{e.fase}</Editable></span>
+                <h3 className="fase-ttl"><Editable as="span" id={`nos.etapa-${i}-titulo`}>{e.titulo}</Editable></h3>
+                <ul className="fase-list">
+                  {e.items.map((it, j) => (
+                    <li key={it}><Editable as="span" id={`nos.etapa-${i}-item-${j}`}>{it}</Editable></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

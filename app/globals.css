@@ -748,40 +748,34 @@ img { max-width: 100%; }
 @media (max-width: 1040px) { .func-bento { grid-template-columns: 1fr 1fr; } .fn-lg, .fn-md, .fn-sm { grid-column: auto; } }
 @media (max-width: 640px) { .func-bento { grid-template-columns: 1fr; } }
 
-/* Misión y Visión: dos tarjetas sobre la banda azul oscuro, cada una con su
-   ícono, barra de acento (verde / azul) y buena legibilidad. */
-.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1040px; margin: 0 auto; align-items: stretch; }
-.mv-col { position: relative; overflow: hidden; text-align: left; padding: clamp(26px,3vw,38px);
-  background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.14); border-radius: 20px; }
-.mv-col::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--mv-c, #8FBE4E); }
-.mv-ic { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 15px;
-  color: var(--mv-c, #8FBE4E); background: color-mix(in srgb, var(--mv-c, #8FBE4E) 24%, transparent); margin-bottom: 18px; }
-.mv-ic svg { width: 28px; height: 28px; }
-.mv-title { margin: 0 0 14px; font: 800 clamp(1.5rem, 2.6vw, 2rem)/1.1 var(--font-sans); color: #fff; letter-spacing: -0.02em; }
-.mv-text { margin: 0; font: 400 clamp(.98rem, 1.1vw, 1.06rem)/1.78 var(--font-sans); color: rgba(255, 255, 255, .87); }
-@media (max-width: 760px) { .mv-grid { grid-template-columns: 1fr; } }
+/* Misión y Visión: dos columnas editoriales sobre la banda oscura, con un
+   divisor sutil y una fina línea de acento bajo cada título (verde / azul). */
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 1040px; margin: 0 auto; align-items: start; }
+.mv-col { text-align: left; padding: 2px clamp(28px, 4vw, 56px); }
+.mv-col:first-child { padding-left: 0; }
+.mv-col:last-child { padding-right: 0; }
+.mv-col + .mv-col { border-left: 1px solid rgba(255, 255, 255, .18); }
+.mv-title { display: inline-block; margin: 0 0 20px; padding-bottom: 14px;
+  font: 800 clamp(1.5rem, 2.6vw, 2rem)/1.1 var(--font-sans); color: #fff; letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--mv-c, #8FBE4E); }
+.mv-text { margin: 0; font: 400 clamp(1rem, 1.2vw, 1.1rem)/1.8 var(--font-sans); color: rgba(255, 255, 255, .86); }
+@media (max-width: 760px) {
+  .mv-grid { grid-template-columns: 1fr; }
+  .mv-col, .mv-col:first-child, .mv-col:last-child { padding: 0; }
+  .mv-col + .mv-col { border-left: none; border-top: 1px solid rgba(255,255,255,.18); margin-top: 34px; padding-top: 34px; }
+}
 
-/* "Lo que hacemos": 4 tarjetas con chip de ícono de color (acento por función). */
-.cap-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 44px; }
-.cap-item { position: relative; text-align: left; padding: 24px 22px 26px; background: #fff;
-  border: 1px solid var(--border-subtle); border-radius: 18px; box-shadow: 0 6px 18px rgba(14,34,51,.06);
-  transition: transform .24s var(--ease-soft), box-shadow .24s var(--ease-soft), border-color .24s var(--ease-soft); }
-.cap-item:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(14,34,51,.14);
-  border-color: color-mix(in srgb, var(--c) 45%, var(--border-subtle)); }
-.cap-ic { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px;
-  border-radius: 15px; color: var(--c); background: color-mix(in srgb, var(--c) 13%, #fff); margin-bottom: 16px; }
-.cap-ic svg { width: 28px; height: 28px; }
-.cap-item h3 { margin: 0 0 7px; font: 700 1.0625rem/1.3 var(--font-sans); color: var(--tt-navy-700); letter-spacing: -0.01em; }
-.cap-item p { margin: 0; font: 400 0.9rem/1.6 var(--font-sans); color: var(--tt-gray-500); }
-/* acento inferior que se dibuja en hover */
-.cap-item::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 0; height: 3px; border-radius: 3px;
-  background: var(--c); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease-soft); }
-.cap-item:hover::after { transform: scaleX(1); }
-.dark .cap-item { background: #131c23; border-color: #2f3d47; box-shadow: none; }
-.dark .cap-ic { color: color-mix(in srgb, var(--c) 72%, #fff); background: color-mix(in srgb, var(--c) 22%, #0f171d); }
+/* "Lo que hacemos": 4 columnas editoriales (sin iconos), separadas por una línea
+   fina; el peso lo lleva la tipografía y el aire. */
+.cap-row { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 46px; }
+.cap-item { position: relative; text-align: left; padding: 2px clamp(20px, 2.6vw, 34px); }
+.cap-item:not(:first-child)::before { content: ""; position: absolute; left: 0; top: 4%; bottom: 4%; width: 1px; background: var(--border-subtle); }
+.cap-item h3 { margin: 0 0 10px; font: 700 1.125rem/1.3 var(--font-sans); color: var(--tt-navy-700); letter-spacing: -0.01em; }
+.cap-item p { margin: 0; font: 400 0.9375rem/1.68 var(--font-sans); color: var(--tt-gray-500); }
 .dark .cap-item h3 { color: #eaf1f6; }
 .dark .cap-item p { color: #9fb0bd; }
-@media (max-width: 860px) { .cap-row { grid-template-columns: repeat(2, 1fr); } }
+.dark .cap-item:not(:first-child)::before { background: #2f3d47; }
+@media (max-width: 860px) { .cap-row { grid-template-columns: repeat(2, 1fr); row-gap: 40px; } .cap-item::before { display: none; } }
 @media (max-width: 440px) { .cap-row { grid-template-columns: 1fr; } }
 
 /* Mensaje */
@@ -2919,19 +2913,14 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-photo-band .atg-pill { background: #fff; color: #163A4C; }
 .atg-photo-band .atg-pill:hover { background: #E2E6E9; }
 
-/* Hacia dónde trabajamos (Nosotros) — línea de tiempo vertical de compromisos
-   (puntos de color sin número, conectados por una línea) */
-.obj-timeline { position: relative; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
-.obj-step { position: relative; display: flex; gap: 18px; padding: 0 0 26px; }
-.obj-step::before { content: ""; position: absolute; left: 13px; top: 36px; bottom: 2px; width: 2px; background: var(--border-subtle); }
-.obj-step:last-child { padding-bottom: 0; }
-.obj-step:last-child::before { display: none; }
-.obj-dot { position: relative; z-index: 1; flex: none; width: 28px; height: 28px; border-radius: 9px;
-  display: flex; align-items: center; justify-content: center; color: #fff; font: 800 13px/1 var(--font-display);
-  background: var(--accent, var(--tt-blue-700)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, var(--tt-blue-700)) 16%, transparent); }
-.obj-step p { margin: 0; font: 400 14.5px/1.65 var(--font-sans); color: var(--tt-gray-700); }
-.dark .obj-step::before { background: #2f3d47; }
-.dark .obj-step p { color: #9fb0bd; }
+/* Hacia dónde trabajamos (Nosotros) — lista editorial de compromisos,
+   separados por una línea fina (sin números ni viñetas). */
+.obj-timeline { margin: 0; padding: 0; list-style: none; }
+.obj-step { padding: 16px 0; border-top: 1px solid var(--border-subtle); }
+.obj-step:first-child { padding-top: 0; border-top: none; }
+.obj-step p { margin: 0; font: 400 1.0625rem/1.6 var(--font-sans); color: var(--tt-gray-700); }
+.dark .obj-step { border-top-color: #2f3d47; }
+.dark .obj-step p { color: #c3d0d9; }
 
 /* Fondos alternos para las bandas (evita que todas las secciones se vean iguales) */
 .atg-band.band-white { background: #fff; }
@@ -2945,24 +2934,24 @@ font[style] { background: none !important; box-shadow: none !important; transiti
 .atg-band.band-dark h2 { color: #fff; }
 .dark .atg-band.band-dark { background: linear-gradient(135deg, #0c1419 0%, #131c23 100%); }
 
-/* Etapas del Proceso Catastral (Nosotros) — 4 tarjetas-paso numeradas, con
-   cabecera del color de la fase: se lee como un proceso claro de 4 pasos. */
-.fases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.fase-col { position: relative; background: #fff; border: 1px solid var(--border-subtle); border-radius: 18px;
-  overflow: hidden; box-shadow: 0 6px 18px rgba(14,34,51,.06); }
-.fase-head { display: flex; align-items: center; gap: 13px; padding: 17px 18px 15px; background: var(--fc); color: #fff; }
-.fase-num { flex: none; width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.22);
-  display: flex; align-items: center; justify-content: center; font: 800 19px/1 var(--font-display); }
-.fase-htext { min-width: 0; }
-.fase-tag { display: block; font: 700 11px/1 var(--font-sans); letter-spacing: .09em; text-transform: uppercase; opacity: .9; margin-bottom: 4px; }
-.fase-ttl { display: block; font: 800 clamp(16px,1.5vw,19px)/1.12 var(--font-display); letter-spacing: -0.01em; }
-.fase-list { margin: 0; padding: 16px 18px 20px; list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.fase-list li { display: flex; gap: 9px; font: 400 14px/1.6 var(--font-sans); color: var(--tt-gray-700); }
-.fase-list li b { flex: none; font-weight: 800; color: var(--fc); }
-.dark .fase-col { background: #131c23; border-color: #2f3d47; box-shadow: none; }
+/* Etapas del Proceso Catastral (Nosotros) — 4 columnas en secuencia: un rótulo
+   de etapa, el nombre de la fase subrayado en su color y viñetas simples.
+   Editorial, sin tarjetas de color ni listas numeradas. */
+.fases-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.fase-col { position: relative; padding: 2px clamp(18px, 2.4vw, 30px); }
+.fase-col + .fase-col { border-left: 1px solid var(--border-subtle); }
+.fase-tag { display: block; margin: 0 0 7px; font: 700 11px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--fc); }
+.fase-ttl { display: inline-block; margin: 0 0 20px; padding-bottom: 12px;
+  font: 800 clamp(18px,1.7vw,22px)/1.15 var(--font-display); letter-spacing: -0.01em; color: var(--tt-navy-700);
+  border-bottom: 2px solid var(--fc); }
+.fase-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 13px; }
+.fase-list li { position: relative; padding-left: 16px; font: 400 14px/1.6 var(--font-sans); color: var(--tt-gray-700); }
+.fase-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--fc); }
+.dark .fase-col + .fase-col { border-left-color: #2f3d47; }
+.dark .fase-ttl { color: #eaf1f6; }
 .dark .fase-list li { color: #9fb0bd; }
-@media (max-width: 860px) { .fases-grid { grid-template-columns: 1fr 1fr; row-gap: 18px; } }
-@media (max-width: 520px) { .fases-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .fases-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; } .fase-col:nth-child(odd) { border-left: none; } }
+@media (max-width: 520px) { .fases-grid { grid-template-columns: 1fr; row-gap: 34px; } .fase-col { border-left: none !important; } }
 
 /* Tarjetas de fases de participación (Participa 6.1–6.5) */
 .fase-card { background: #fff; border: 1px solid var(--border-subtle); border-radius: 16px;
