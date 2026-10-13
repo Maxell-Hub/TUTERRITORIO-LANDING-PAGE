@@ -108,9 +108,8 @@ export async function POST(req: Request) {
     preheader: `Nuevo mensaje de ${nombre}${body.mensaje ? ` — ${String(body.mensaje).slice(0, 80)}` : ""}`,
     accent: TIPOS.contacto.color,
     badge: TIPOS.contacto.badge,
-    badgeIcon: TIPOS.contacto.icon,
     titulo: "Nuevo mensaje de contacto",
-    intro: `Recibiste un nuevo mensaje desde el formulario <strong>Envíanos un mensaje</strong> del sitio. Puedes responder directamente a <strong>${nombre}</strong>.`,
+    intro: `<strong>${nombre}</strong> escribió a través del formulario «Envíanos un mensaje» del sitio y espera una respuesta del equipo.`,
     filas: [
       { label: "Nombre", value: nombre },
       { label: "Cédula", value: cedula },

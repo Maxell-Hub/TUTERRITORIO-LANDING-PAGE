@@ -209,16 +209,15 @@ export async function POST(req: Request) {
     `Autorización de tratamiento de datos: Sí (vía web)\nFecha y hora del consentimiento: ${consentAt}`;
 
   const anexosHtml = files.length
-    ? files.map((f) => `📎 ${esc(f.name)} <span style="color:#8a97a0;">(${Math.max(1, Math.round(f.size / 1024))} KB)</span>`).join("<br>")
-    : "El ciudadano no adjuntó documentos.";
+    ? files.map((f) => `${esc(f.name)} <span style="color:#9a9488;">· ${Math.max(1, Math.round(f.size / 1024))} KB</span>`).join("<br>")
+    : "La persona no adjuntó documentos.";
 
   const html = renderEmail({
     preheader: `Nueva PQRSD (${tipo}) de ${nombre} — ${asunto}`,
     accent: TIPOS.pqrsd.color,
     badge: `${TIPOS.pqrsd.badge} · ${tipo}`,
-    badgeIcon: TIPOS.pqrsd.icon,
     titulo: "Nueva PQRSD radicada",
-    intro: `Se radicó una nueva solicitud de tipo <strong>${tipo}</strong> desde el formulario de PQRSD del sitio.`,
+    intro: `<strong>${nombre}</strong> radicó una nueva solicitud (<strong>${tipo}</strong>) a través del formulario de PQRSD del sitio. A continuación están sus datos y lo que solicita.`,
     filas: [
       { label: "Tipo de solicitud", value: tipo },
       { label: "Nombre", value: nombre },

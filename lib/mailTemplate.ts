@@ -1,164 +1,152 @@
 /**
- * Plantilla corporativa compartida para los correos que la ciudadanía genera
- * (PQRSD y contacto). Pensada como "papel membretado": logo, hairline de marca,
- * tipografía de la página (Poppins con respaldo del sistema), buena jerarquía y
- * aire — no un simple recuadro.
+ * Plantilla de los correos que la ciudadanía genera (PQRSD y contacto).
  *
- * Compatibilidad: tablas + estilos en línea (Gmail, Outlook, Apple Mail…). La
- * fuente Poppins se carga por @import para los clientes que lo permiten (Apple
- * Mail, iOS); el resto cae con elegancia a 'Segoe UI'/Arial. Los valores que se
- * interpolan deben venir YA escapados por quien llama.
+ * Dirección de diseño: "carta institucional cálida", no tarjeta de dashboard.
+ * - Tipografía Poppins (nombre/títulos) + Open Sans (cuerpo, humanista y legible).
+ * - Neutros CÁLIDOS (papel sand) en vez del gris azulado frío.
+ * - Nada de barra de acento sobre tarjeta redondeada, emojis-insignia ni pills:
+ *   el tipo se distingue por una ETIQUETA tipografiada + una línea de acento y el
+ *   color del botón. Un solo acento, usado con moderación.
+ * Compatibilidad: tablas + estilos en línea; las fuentes cargan por @import para
+ * los clientes que lo permiten y caen a stacks del sistema en el resto.
+ * Los valores interpolados deben venir YA escapados por quien llama.
  */
 
 const SITE = "https://www.tuterritorio.gov.co";
 const LOGO = `${SITE}/assets/global/logo-tuterritorio-v.png`;
 const ENTIDAD = "Operador Catastral de Valledupar";
 
-// Paleta de la marca.
+// Neutros cálidos + marca.
 const C = {
-  navy: "#0C222F",
-  navy2: "#163A4C",
-  ink: "#2b3a42",
-  gray: "#6b7a83",
-  grayL: "#8a97a0",
-  line: "#e8edf0",
-  soft: "#f5f8fa",
-  blue: "#3B85A5",
-  green: "#4E8654",
-  lime: "#8FBE4E",
+  paper: "#f1ece3",   // fondo alrededor de la carta (sand cálido)
+  sheet: "#ffffff",   // la "hoja"
+  ink: "#2b2721",     // tinta cálida casi negra
+  soft: "#6f685c",    // texto secundario cálido
+  faint: "#9a9488",   // etiquetas tenues
+  line: "#ece6db",    // hairline cálido
+  wash: "#faf7f2",    // tinte cálido para el bloque de mensaje
+  navy: "#163A4C",    // wordmark
 };
 
-const FONT = "'Poppins','Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+const H = "'Poppins','Segoe UI',Arial,sans-serif";       // títulos / nombre
+const B = "'Open Sans','Segoe UI',Arial,Helvetica,sans-serif"; // cuerpo
 
 export type Fila = { label: string; value: string; href?: string };
-/** accent: "blue" | "green" | un color hex ("#...") para usar el del tipo. */
-export type Bloque = { label: string; html: string; accent?: "blue" | "green" | string };
+/** accent: un color hex ("#...") del tipo, o "green". */
+export type Bloque = { label: string; html: string; accent?: string };
 
-/**
- * Identidad visual por TIPO de correo, para reconocerlo de un vistazo:
- * cada uno tiene color de acento, insignia (pill) e ícono propios.
- * Los reportes automáticos usan su propia plantilla (lib/reportMail.ts) con la
- * misma familia de insignia pero en color pizarra.
- */
+/** Identidad por TIPO (color de acento + etiqueta tipografiada). Sin emojis. */
 export const TIPOS = {
-  pqrsd: { color: "#C8821A", badge: "PQRSD", icon: "📋" },       // dorado → solicitud formal
-  contacto: { color: "#3B85A5", badge: "MENSAJE DE CONTACTO", icon: "✉️" }, // azul → comunicación
+  pqrsd: { color: "#B26B1E", badge: "PQRSD" },            // ámbar cálido
+  contacto: { color: "#2F7E9E", badge: "Mensaje ciudadano" }, // azul
 } as const;
 
 export type EmailOpts = {
-  /** Texto de vista previa en la bandeja (oculto en el cuerpo). */
   preheader: string;
-  /** Color de acento del tipo (hex) — identifica el correo de un vistazo. */
+  /** Color de acento del tipo (hex). */
   accent: string;
-  /** Insignia corta del tipo (p. ej. "PQRSD", "MENSAJE DE CONTACTO"). */
+  /** Etiqueta del tipo (p. ej. "PQRSD · Petición", "Mensaje ciudadano"). */
   badge: string;
-  /** Ícono (emoji) de la insignia. */
-  badgeIcon?: string;
-  /** Título grande del correo (p. ej. "Nueva PQRSD radicada"). */
   titulo: string;
-  /** Frase introductoria (puede llevar <strong>). */
   intro: string;
-  /** Fecha mostrada en la cabecera (por defecto, hoy en es-CO). */
   fecha?: string;
-  /** Datos en filas etiqueta/valor. */
   filas: Fila[];
-  /** Bloques de texto destacados (mensaje, descripción, anexos…). */
   bloques?: Bloque[];
-  /** Botón de acción principal. */
   cta?: { href: string; label: string };
-  /** Fecha/hora del consentimiento (para el pie legal). */
   consentAt?: string;
-  /** Nota del pie (p. ej. "PQRSD generada automáticamente…"). */
   notaPie?: string;
 };
 
 function filasHtml(filas: Fila[]): string {
   return filas
     .map((f, i) => {
-      const last = i === filas.length - 1;
-      const borde = last ? "" : `border-bottom:1px solid ${C.line};`;
+      const borde = i === filas.length - 1 ? "" : `border-bottom:1px solid ${C.line};`;
       const val = f.href
-        ? `<a href="${f.href}" style="color:${C.blue};text-decoration:none;font-weight:600;">${f.value}</a>`
+        ? `<a href="${f.href}" style="color:${C.ink};text-decoration:none;border-bottom:1px solid ${C.line};">${f.value}</a>`
         : f.value;
       return `<tr>
-        <td style="padding:12px 0;${borde}color:${C.gray};font-size:13px;width:140px;vertical-align:top;">${f.label}</td>
-        <td style="padding:12px 0;${borde}color:${C.navy2};font-size:14px;font-weight:600;vertical-align:top;">${val}</td>
+        <td style="padding:10px 0;${borde}color:${C.faint};font-size:13px;font-family:${B};width:132px;vertical-align:top;">${f.label}</td>
+        <td style="padding:10px 0;${borde}color:${C.ink};font-size:14.5px;font-weight:600;font-family:${B};vertical-align:top;">${val}</td>
       </tr>`;
     })
     .join("");
 }
 
-function bloqueHtml(b: Bloque): string {
-  const col = !b.accent ? C.blue : b.accent.startsWith("#") ? b.accent : b.accent === "green" ? C.green : C.blue;
+function bloqueHtml(b: Bloque, accentDefault: string): string {
+  const col = !b.accent ? accentDefault : b.accent === "green" ? "#4E8654" : b.accent;
   return `
-    <div style="margin:24px 0 0;color:${C.grayL};font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;">${b.label}</div>
-    <div style="margin-top:9px;background:${C.soft};border:1px solid ${C.line};border-left:3px solid ${col};border-radius:10px;padding:16px 18px;color:${C.ink};font-size:14.5px;line-height:1.7;">${b.html}</div>`;
+    <div style="margin:26px 0 0;color:${C.faint};font-size:11.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:${B};">${b.label}</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:9px;"><tr>
+      <td style="width:3px;background:${col};font-size:0;line-height:0;">&nbsp;</td>
+      <td style="background:${C.wash};padding:15px 18px;color:${C.ink};font-size:15px;line-height:1.72;font-family:${B};">${b.html}</td>
+    </tr></table>`;
 }
 
 export function renderEmail(opts: EmailOpts): string {
+  const accent = opts.accent;
   const fecha =
     opts.fecha ||
     new Date().toLocaleDateString("es-CO", { timeZone: "America/Bogota", day: "2-digit", month: "long", year: "numeric" });
 
-  const bloques = (opts.bloques || []).map(bloqueHtml).join("");
-
-  const accent = opts.accent;
-  const icon = opts.badgeIcon ? `${opts.badgeIcon} ` : "";
+  const bloques = (opts.bloques || []).map((b) => bloqueHtml(b, accent)).join("");
 
   const cta = opts.cta
-    ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px 0 2px;"><tr>
-        <td style="border-radius:10px;background:${C.navy2};">
-          <a href="${opts.cta.href}" style="display:inline-block;padding:13px 30px;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;font-family:${FONT};">${opts.cta.label}</a>
+    ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px 0 4px;"><tr>
+        <td style="border-radius:8px;background:${accent};">
+          <a href="${opts.cta.href}" style="display:inline-block;padding:13px 28px;color:#ffffff;text-decoration:none;font-weight:600;font-size:14.5px;font-family:${B};">${opts.cta.label}</a>
         </td>
       </tr></table>`
     : "";
 
   const consent = opts.consentAt
-    ? `<div style="color:${C.gray};font-size:12px;line-height:1.6;"><strong style="color:${C.navy2};">Autorización de tratamiento de datos:</strong> Sí (vía web) · <strong style="color:${C.navy2};">Consentimiento:</strong> ${opts.consentAt}</div>`
+    ? `<p style="margin:14px 0 0;color:${C.faint};font-size:12px;line-height:1.6;font-family:${B};">Autorización de tratamiento de datos: sí (vía web) · Consentimiento registrado el ${opts.consentAt}</p>`
     : "";
 
   const notaPie = opts.notaPie
-    ? `<div style="color:${C.grayL};font-size:12px;line-height:1.6;margin-top:6px;">${opts.notaPie}</div>`
+    ? `<p style="margin:4px 0 0;color:${C.faint};font-size:12px;line-height:1.6;font-family:${B};">${opts.notaPie}</p>`
     : "";
 
   return `<!doctype html>
 <html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light only">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-  body,table,td,a,p,div,span,h1,h2 { font-family:${FONT}; }
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+  body,table,td,a,p,div,span,h1 { font-family:${B}; }
   a { text-decoration:none; }
-  @media (max-width:620px){ .card{width:100%!important;} .pad{padding-left:22px!important;padding-right:22px!important;} }
+  @media (max-width:620px){ .sheet{width:100%!important;} .pad{padding-left:26px!important;padding-right:26px!important;} }
 </style>
 </head>
-<body style="margin:0;padding:0;background:#eef3f6;-webkit-font-smoothing:antialiased;">
+<body style="margin:0;padding:0;background:${C.paper};-webkit-font-smoothing:antialiased;">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${opts.preheader}</div>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef3f6;">
-    <tr><td align="center" style="padding:30px 12px;">
-      <table role="presentation" class="card" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;background:#ffffff;border:1px solid ${C.line};border-radius:16px;overflow:hidden;box-shadow:0 14px 40px rgba(14,34,51,.10);">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.paper};">
+    <tr><td align="center" style="padding:34px 14px 40px;">
+      <table role="presentation" class="sheet" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;background:${C.sheet};border:1px solid ${C.line};border-radius:10px;">
 
-        <!-- Barra superior del color del tipo: identifica el correo de un vistazo -->
-        <tr><td style="height:7px;line-height:7px;font-size:0;background:${accent};">&nbsp;</td></tr>
-
-        <!-- Membrete: logo + insignia del tipo + fecha -->
-        <tr><td class="pad" style="padding:22px 34px 16px;">
+        <!-- Membrete: logo + etiqueta del tipo -->
+        <tr><td class="pad" style="padding:30px 40px 0;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
             <td style="vertical-align:middle;">
-              <img src="${LOGO}" alt="Tuterritorio" height="44" style="height:44px;width:auto;display:block;border:0;">
+              <img src="${LOGO}" alt="Tuterritorio" height="42" style="height:42px;width:auto;display:block;border:0;">
             </td>
             <td style="vertical-align:middle;text-align:right;">
-              <span style="display:inline-block;background:${accent};color:#ffffff;font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:6px 13px;border-radius:999px;">${icon}${opts.badge}</span>
-              <div style="color:${C.grayL};font-size:12px;margin-top:7px;">${ENTIDAD} · ${fecha}</div>
+              <div style="color:${accent};font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;font-family:${H};">${opts.badge}</div>
+              <div style="color:${C.faint};font-size:12px;margin-top:4px;font-family:${B};">${fecha}</div>
             </td>
           </tr></table>
         </td></tr>
 
+        <!-- Regla del membrete -->
+        <tr><td class="pad" style="padding:18px 40px 0;">
+          <div style="height:1px;background:${C.line};font-size:0;line-height:0;">&nbsp;</div>
+        </td></tr>
+
         <!-- Cuerpo -->
-        <tr><td class="pad" style="padding:8px 34px 30px;border-top:1px solid ${C.line};">
-          <h1 style="margin:18px 0 4px;color:${C.navy};font-size:21px;font-weight:700;line-height:1.3;">${opts.titulo}</h1>
-          <p style="margin:0 0 22px;color:${C.gray};font-size:14.5px;line-height:1.65;">${opts.intro}</p>
+        <tr><td class="pad" style="padding:24px 40px 34px;">
+          <h1 style="margin:0;color:${C.ink};font-size:23px;font-weight:700;line-height:1.3;font-family:${H};">${opts.titulo}</h1>
+          <div style="width:34px;height:3px;background:${accent};margin:12px 0 0;border-radius:2px;font-size:0;line-height:0;">&nbsp;</div>
+          <p style="margin:16px 0 24px;color:${C.soft};font-size:15px;line-height:1.7;font-family:${B};">${opts.intro}</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${filasHtml(opts.filas)}</table>
 
@@ -167,15 +155,16 @@ export function renderEmail(opts: EmailOpts): string {
         </td></tr>
 
         <!-- Pie institucional -->
-        <tr><td class="pad" style="background:${C.soft};padding:20px 34px;border-top:1px solid ${C.line};">
-          <div style="color:${C.navy2};font-size:13px;font-weight:700;">Tuterritorio <span style="color:${C.gray};font-weight:400;">— ${ENTIDAD}</span></div>
-          <div style="color:${C.gray};font-size:12px;line-height:1.6;margin-top:3px;">Calle 16 #9-48, Edificio Caja Agraria · Oficina 1301 · Valledupar, Cesar · NIT 901996731-8</div>
-          ${consent ? `<div style="height:12px;line-height:12px;font-size:0;">&nbsp;</div>${consent}` : ""}
+        <tr><td class="pad" style="padding:22px 40px 30px;border-top:1px solid ${C.line};">
+          <div style="color:${C.navy};font-size:15px;font-weight:600;font-family:${H};">Tuterritorio</div>
+          <div style="color:${C.soft};font-size:13px;margin-top:2px;font-family:${B};">${ENTIDAD}</div>
+          <div style="color:${C.faint};font-size:12.5px;line-height:1.6;margin-top:8px;font-family:${B};">Calle 16 #9-48, Edificio Caja Agraria · Oficina 1301 · Valledupar, Cesar · NIT 901996731-8</div>
+          ${consent}
           ${notaPie}
         </td></tr>
 
       </table>
-      <div style="color:${C.grayL};font-size:11px;margin-top:14px;font-family:${FONT};">Tuterritorio — ${ENTIDAD} · ${SITE.replace("https://", "")}</div>
+      <div style="color:${C.faint};font-size:11.5px;margin-top:16px;font-family:${B};">Tuterritorio · ${SITE.replace("https://", "")}</div>
     </td></tr>
   </table>
 </body></html>`;
