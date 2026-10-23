@@ -16,15 +16,15 @@
     "@vercel/blob": "^2.4.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "^15.3.9",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "resend": "^6.14.0"
   },
   "devDependencies": {
-    "@types/node": "22.10.5",
-    "@types/react": "19.0.7",
-    "@types/react-dom": "19.0.3",
-    "typescript": "5.7.3"
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
   },
   "browserslist": [
     "chrome >= 111",
@@ -32,5 +32,11 @@
     "firefox >= 111",
     "safari >= 16.4",
     "ios_saf >= 16.4"
-  ]
+  ],
+  "engines": {
+    "node": "22.x"
+  },
+  "overrides": {
+    "postcss": "8.5.31"
+  }
 }
