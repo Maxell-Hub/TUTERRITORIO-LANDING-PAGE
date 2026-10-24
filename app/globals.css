@@ -2671,6 +2671,16 @@ font[style] { background: none !important; box-shadow: none !important; transiti
   /* En celular el hero usa la variante liviana -m.jpg (cada página define --hero-m) */
   .atg-hero { background-image: linear-gradient(var(--photo-tint), var(--photo-tint)), var(--hero-m) !important; }
 }
+/* Variante del hero del Inicio con imagen LCP real (<img>, no background-image).
+   El navegador pinta el <img> prioritario apenas lo decodifica, sin esperar a la
+   hidratación → el LCP baja mucho en móvil. Capas: imagen (z0) → tinte (z1) →
+   contenido (z2). El `background-image: none !important` anula tanto la regla base
+   como el override móvil de .atg-hero de arriba. */
+.atg-hero--img { position: relative; overflow: hidden; isolation: isolate; background-image: none !important; }
+.atg-hero--img > .atg-hero-bg { position: absolute; inset: 0; z-index: 0; margin: 0; line-height: 0; }
+.atg-hero--img > .atg-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; display: block; }
+.atg-hero--img > .atg-hero-tint { position: absolute; inset: 0; z-index: 1; background: var(--photo-tint); }
+.atg-hero--img > *:not(.atg-hero-bg):not(.atg-hero-tint) { position: relative; z-index: 2; }
 .atg-hero .atg-eyebrow { color: rgba(255,255,255,.75); display: block; margin-bottom: 20px; }
 .atg-hero .atg-eyebrow b { color: var(--tt-amber-500); }
 .atg-hero h1 { color: #fff; font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; max-width: 20ch; margin: 0 auto 18px; }

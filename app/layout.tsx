@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import RevealManager from "@/components/motion/RevealManager";
 import AuthProvider from "@/components/auth/AuthProvider";
@@ -10,6 +9,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import FloatingActions from "@/components/site/FloatingActions";
 import GoogleTranslate from "@/components/site/GoogleTranslate";
+import DeferredAnalytics from "@/components/site/DeferredAnalytics";
 
 // Poppins auto-hospedada por Next (no se llama a Google Fonts en runtime)
 const poppins = Poppins({
@@ -143,14 +143,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Google Analytics 4 (gtag.js) */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-1W6H8R3KJV" strategy="lazyOnload" />
-        <Script id="ga-gtag" strategy="lazyOnload">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-1W6H8R3KJV');`}
-        </Script>
         <AuthProvider>
           <OverridesProvider>
             <SiteChrome>{children}</SiteChrome>
@@ -159,6 +151,7 @@ gtag('config', 'G-1W6H8R3KJV');`}
         <RevealManager />
         <FloatingActions />
         <GoogleTranslate />
+        <DeferredAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

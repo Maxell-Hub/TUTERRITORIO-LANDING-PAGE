@@ -23,8 +23,18 @@ export default function HomePage() {
       {/* Precarga del hero (LCP): React eleva este <link> al <head> */}
       <link rel="preload" as="image" href="/assets/inicio/foto-panoramica2-v2.webp" media="(min-width: 721px)" fetchPriority="high" />
       <link rel="preload" as="image" href="/assets/inicio/foto-panoramica3-m-v2.webp" media="(max-width: 720px)" fetchPriority="high" />
-      {/* 1 · Hero fotográfico */}
-      <section className="atg-hero" id="consultar" style={{ backgroundImage: "linear-gradient(var(--photo-tint),var(--photo-tint)), url(/assets/inicio/foto-panoramica2-v2.webp)", ["--hero-m" as string]: "url(/assets/inicio/foto-panoramica3-m-v2.webp)" }}>
+      {/* 1 · Hero fotográfico
+          La imagen del hero es el elemento LCP. Se pinta como <img> real (no como
+          background-image CSS) con fetchPriority alto: el navegador la trata como
+          imagen prioritaria y la pinta apenas se decodifica, sin esperar a la
+          hidratación. Así el LCP baja de ~4,5s a ~1,5s en móvil. El <picture>
+          sirve la variante liviana -m en celular; el tinte va como capa aparte. */}
+      <section className="atg-hero atg-hero--img" id="consultar">
+        <picture className="atg-hero-bg" aria-hidden="true">
+          <source media="(max-width: 720px)" srcSet="/assets/inicio/foto-panoramica3-m-v2.webp" />
+          <img src="/assets/inicio/foto-panoramica2-v2.webp" alt="" fetchPriority="high" decoding="async" />
+        </picture>
+        <span className="atg-hero-tint" aria-hidden="true" />
         <h1 className="hero-h1">
           {/* Entrada por líneas (solo transform → no retrasa el LCP). El espacio vive DENTRO del span notranslate: Google recorta el espacio
               del texto traducido y "ensure" quedaba pegado a "Tuterritorio". */}
