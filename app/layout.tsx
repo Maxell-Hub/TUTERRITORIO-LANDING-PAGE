@@ -11,12 +11,18 @@ import FloatingActions from "@/components/site/FloatingActions";
 import GoogleTranslate from "@/components/site/GoogleTranslate";
 import DeferredAnalytics from "@/components/site/DeferredAnalytics";
 
-// Poppins auto-hospedada por Next (no se llama a Google Fonts en runtime)
+// Poppins auto-hospedada por Next (no se llama a Google Fonts en runtime).
+// preload:false a propósito: en móvil las ~6 fuentes (alta prioridad) competían
+// por el ancho de banda con la imagen LCP del hero y la retrasaban. Sin precarga,
+// las fuentes bajan en segundo plano y el texto se ve de inmediato con la fuente
+// de respaldo (display:swap, con métricas ajustadas para no mover el layout),
+// dejando el ancho de banda prioritario para la imagen del hero.
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-poppins",
   display: "swap",
+  preload: false,
 });
 
 const SITE_URL = "https://www.tuterritorio.gov.co";
