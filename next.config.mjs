@@ -1,4 +1,7 @@
-import { withSentryConfig } from "@sentry/nextjs";
+// Sentry 11: el ayudante de build `withSentryConfig` se movió al subpath
+// "@sentry/nextjs/config" (el entry raíz ya no lo exporta). El SDK en runtime
+// (captura de errores/trazas) se sigue importando desde "@sentry/nextjs".
+import { withSentryConfig } from "@sentry/nextjs/config";
 
 /** @type {import('next').NextConfig} */
 
@@ -42,6 +45,11 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Fija la raíz de rastreo de archivos a esta carpeta. Next 16 detecta otros
+  // package-lock.json fuera del repo (p. ej. en la carpeta del usuario) y avisa;
+  // así se evita ese aviso y se garantiza que Vercel empaquete los archivos
+  // correctos de ESTE proyecto.
+  outputFileTracingRoot: import.meta.dirname,
   // El cliente solo lee variables NEXT_PUBLIC_*. Si la integración de Vercel puso
   // el DSN de Sentry como SENTRY_DSN (server), lo exponemos también al cliente.
   env: {
