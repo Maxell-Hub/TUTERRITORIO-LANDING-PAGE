@@ -53,7 +53,7 @@ export default function HomePage() {
             <div className="atg-visual reveal">
               <div className="atg-mock">
                 <div className="atg-map-body">
-                  <img src="/assets/inicio/foto-ortofoto2.webp" srcSet="/assets/inicio/foto-ortofoto2-m-v2.webp 1080w, /assets/inicio/foto-ortofoto2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Ortofoto de Valledupar con la malla predial" loading="lazy" decoding="async" width={1600} height={1067} />
+                  <img src="/assets/inicio/foto-ortofoto2-v3.webp" srcSet="/assets/inicio/foto-ortofoto2-m-v3.webp 860w, /assets/inicio/foto-ortofoto2-v3.webp 1280w" sizes="(max-width: 900px) 100vw, 640px" alt="Ortofoto de Valledupar con la malla predial" loading="lazy" decoding="async" width={1280} height={733} />
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function HomePage() {
             </div>
             <div className="atg-visual reveal">
               <div className="atg-mock">
-                <img className="atg-mock-photo" src="/assets/inicio/foto-archivo2.webp" srcSet="/assets/inicio/foto-archivo2-m-v2.webp 860w, /assets/inicio/foto-archivo2.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1200} height={800} loading="lazy" decoding="async" />
+                <img className="atg-mock-photo" src="/assets/inicio/foto-archivo2-v3.webp" srcSet="/assets/inicio/foto-archivo2-m-v3.webp 860w, /assets/inicio/foto-archivo2-v3.webp 1280w" sizes="(max-width: 900px) 100vw, 640px" alt="Funcionario consultando expedientes en el archivo catastral" width={1280} height={855} loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
